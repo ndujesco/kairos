@@ -12,9 +12,9 @@
 
 ## 🔗 Project Links
 
-- 🎥 **Demo Video**: [Watch the demo](https://drive.google.com/file/d/1JD-Ud9-nGQA4oEAlboNbvb36Q9yl0oaT/view?usp=drivesdk)
-- 📊 **Pitch Deck**: [View the pitch deck](https://drive.google.com/file/d/1ITHqGO5zest31y39NPS1j-Ptvsz20sCH/view?usp=drivesdk)
-- 🌐 **Live Demo**: [Open Kairos](https://kairos-tos-hub-innovation.vercel.app/)
+- 🎥 [**Demo Video**](https://drive.google.com/file/d/1JD-Ud9-nGQA4oEAlboNbvb36Q9yl0oaT/view?usp=drivesdk)
+- 📊 [**Pitch Deck**](https://drive.google.com/file/d/1ITHqGO5zest31y39NPS1j-Ptvsz20sCH/view?usp=drivesdk)
+- 🌐 [**Live Demo**](https://kairos-tos-hub-innovation.vercel.app/)
 
 
 ## 🌍 SDGs Addressed
