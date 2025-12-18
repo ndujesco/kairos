@@ -67,13 +67,13 @@ These issues overload hospitals, frustrate patients, and leave health agencies w
 ## 🤖 How Generative AI Is Used
 
 Kairos uses Generative AI to:
-- Understand symptoms from text and voice input
-- Perform instant triage and urgency classification
-- Recommend hospitals based on capacity and proximity
-- Analyze emergency audio clips when users cannot interact
-- Detect abnormal health patterns across anonymized data
+- Understand symptoms from text and voice input  
+- Perform instant triage and urgency classification  
+- Recommend hospitals based on capacity and proximity  
+- Analyze emergency audio clips when users cannot interact  
+- Detect abnormal health patterns across anonymized data  
 
-These capabilities improve over time, creating a strong data moat as adoption grows.
+*Due to the complexity of these systems and their heavy reliance on large, high-quality datasets and real-world integrations, not all AI capabilities were fully implemented within the 24-hour hackathon window. The current build demonstrates the architectural approach, interfaces, and partial logic, with the remaining components designed for full deployment in a production environment.*
 
 
 ## 🧱 Tech Stack
