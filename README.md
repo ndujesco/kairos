@@ -4,11 +4,9 @@
 
 ## 👥 Team
 
-- **Sokenu Abigail** — Frontend Developer  
-  GitHub: https://github.com/abbydave
+- [**Sokenu Abigail**](https://github.com/abbydave) — Frontend Developer  
 
-- **Ndujekwu Ugochukwu** — Product & Engineering  
-  GitHub: https://github.com/ndujesco
+- [**Ndujekwu Ugochukwu**](https://github.com/ndujesco) — Software Engineer
 
 
 
@@ -21,7 +19,7 @@
 
 ## 🌍 SDGs Addressed
 
-- **SDG 3:** Good Health and Well-Being (MAJOR SDG)
+- **SDG 3:** Good Health and Well-Being (**MAJOR SDG**)
 - **SDG 11:** Sustainable Cities and Communities  
 - **SDG 16:** Peace, Justice, and Strong Institutions
 
@@ -107,7 +105,6 @@ npm run dev
 
 ### Backend (FastAPI)
 
-```bash
 git clone https://github.com/ndujesco/kairos.git
 cd ./backend
 pip install -r requirements.txt
