@@ -88,7 +88,7 @@ Kairos uses Generative AI to:
 - Gemini-class LLM APIs for inference
 
 ### AI & Dev Tools
-- Generative AI (LLMs + multimodal models)
+- Generative AI (gemini-2.5-flash)
 - GitHub Copilot (development acceleration)
 
 
