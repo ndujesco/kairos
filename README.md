@@ -1,8 +1,6 @@
 # Kairos 🏥⚡  
 **Real-time healthcare access, powered by Generative AI**
 
----
-
 
 ## 👥 Team
 
@@ -12,7 +10,6 @@
 - **Ndujekwu Ugochukwu** — Product & Engineering  
   GitHub: https://github.com/ndujesco
 
----
 
 
 ## 🔗 Project Links
@@ -28,7 +25,6 @@
 - **SDG 11:** Sustainable Cities and Communities  
 - **SDG 16:** Peace, Justice, and Strong Institutions
 
----
 ## 🚨 Problem
 
 Healthcare systems struggle with:
@@ -38,7 +34,6 @@ Healthcare systems struggle with:
 
 These issues overload hospitals, frustrate patients, and leave health agencies without timely data.
 
----
 
 ## 💡 Solution
 
@@ -49,7 +44,6 @@ These issues overload hospitals, frustrate patients, and leave health agencies w
 - Provides **live hospital dashboards** for staff
 - Generates **anonymized national health analytics** for early outbreak detection
 
----
 
 ## ✨ Key Features
 
@@ -71,7 +65,6 @@ These issues overload hospitals, frustrate patients, and leave health agencies w
 - Early detection of outbreaks and trends
 - Accurate capacity and utilization visibility
 
----
 
 ## 🤖 How Generative AI Is Used
 
@@ -84,7 +77,6 @@ Kairos uses Generative AI to:
 
 These capabilities improve over time, creating a strong data moat as adoption grows.
 
----
 
 ## 🧱 Tech Stack
 
@@ -101,7 +93,6 @@ These capabilities improve over time, creating a strong data moat as adoption gr
 - Generative AI (LLMs + multimodal models)
 - GitHub Copilot (development acceleration)
 
----
 
 
 ## 🚀 Getting Started
