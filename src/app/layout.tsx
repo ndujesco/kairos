@@ -23,7 +23,7 @@ const APP_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    default: "Kairos — Transparent Giving",
+    default: "Kairos - Transparent Giving",
     template: "%s · Kairos",
   },
   description:
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Kairos",
-    title: "Kairos — Transparent Giving",
+    title: "Kairos - Transparent Giving",
     description:
       "Give with proof, not faith. Every naira watched until it arrives at the need it was given for.",
     locale: "en_NG",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kairos — Transparent Giving",
+    title: "Kairos - Transparent Giving",
     description:
       "Give with proof, not faith. Every naira watched until it arrives at the need it was given for.",
   },

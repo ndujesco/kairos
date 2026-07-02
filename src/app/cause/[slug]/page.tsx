@@ -72,7 +72,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
     ...disbursements.map((d) => ({
       kind: "out" as const,
       at: new Date(d.createdAt),
-      label: `Paid ${d.vendorName} — ${d.budgetLabel} (Invoice ${d.invoiceNo})`,
+      label: `Paid ${d.vendorName} - ${d.budgetLabel} (Invoice ${d.invoiceNo})`,
       amount: d.amount,
     })),
   ].sort((a, b) => b.at.getTime() - a.at.getTime());
@@ -166,21 +166,20 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
               ✓{" "}
               <span className="text-foreground">
                 {e.label}{" "}
-                <span className="text-muted">
-                  — {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
+                <span className="text-muted"> - {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
                 </span>
               </span>
             </li>
           ))}
           <li className="flex items-center gap-2 text-accent">
-            ✓ <span className="text-foreground">AI fraud screen passed — no image reuse or timeline contradictions</span>
+            ✓ <span className="text-foreground">AI fraud screen passed - no image reuse or timeline contradictions</span>
           </li>
         </ul>
       </section>
 
       {/* itemized budget */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">📋 Itemized budget — where every naira goes</h2>
+        <h2 className="font-extrabold">📋 Itemized budget - where every naira goes</h2>
         <div className="mt-3 flex flex-col gap-3">
           {cause.budget.map((b, i) => {
             const done = b.spent >= b.amount;
@@ -280,7 +279,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
 
       {/* public ledger */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">📖 Public ledger — the full money story</h2>
+        <h2 className="font-extrabold">📖 Public ledger - the full money story</h2>
         <div className="mt-3 flex flex-col">
           {ledger.length === 0 && <p className="text-sm text-muted">No transactions yet.</p>}
           {ledger.map((l, i) => (

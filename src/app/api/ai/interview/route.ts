@@ -6,7 +6,7 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 export const maxDuration = 60;
 
 /**
- * The Kairos AI intake interviewer — a real Claude conversation.
+ * The Kairos AI intake interviewer - a real Claude conversation.
  *
  * The assistant interviews the cause creator, probes for verifiable detail
  * (names, dates, places, documents, vendors), watches for fraud signals, and
@@ -30,7 +30,7 @@ const InterviewTurn = z.object({
   reply: z
     .string()
     .describe(
-      "Your next message to the cause creator. Warm, concise (2-4 sentences), ends with ONE clear question — unless done is true, in which case it is a short wrap-up telling them you've assembled their cause for review."
+      "Your next message to the cause creator. Warm, concise (2-4 sentences), ends with ONE clear question - unless done is true, in which case it is a short wrap-up telling them you've assembled their cause for review."
     ),
   done: z
     .boolean()
@@ -62,15 +62,17 @@ const InterviewTurn = z.object({
     ),
 });
 
-const SYSTEM = `You are the Kairos intake assistant. Kairos is a Nigerian transparent-giving platform: donations are held in escrow and paid directly to verified vendors (hospitals, caterers, suppliers) — never to the organizer's personal account — and every donor gets a receipt for their exact share of every payment.
+const SYSTEM = `You are the Kairos intake assistant. Kairos is a Nigerian transparent-giving platform: donations are held in escrow and paid directly to verified vendors (hospitals, caterers, suppliers) - never to the organizer's personal account - and every donor gets a receipt for their exact share of every payment.
 
 Your job is to interview someone who wants to create a cause, and to discern legitimacy while helping them make the strongest possible case.
 
+Style rule: never use em dashes (—) anywhere in your replies or extracted text; use commas, periods, or hyphens instead.
+
 How to interview:
 - Ask ONE question at a time. Keep each message to 2-4 warm, plain sentences. Use naira (₦).
-- You need, in roughly this order: (1) what happened / what the need is, (2) who exactly is affected, when and where — specific names, dates, places, (3) what evidence they can upload (bills, invoices, photos, approval letters, quotes), (4) the itemized budget: what each naira buys, the amount, and the NAMED vendor that Kairos will pay directly.
+- You need, in roughly this order: (1) what happened / what the need is, (2) who exactly is affected, when and where - specific names, dates, places, (3) what evidence they can upload (bills, invoices, photos, approval letters, quotes), (4) the itemized budget: what each naira buys, the amount, and the NAMED vendor that Kairos will pay directly.
 - Probe gently but firmly for verifiability. Vague answers ("a hospital", "sometime ago") get a respectful follow-up asking for the specific name/date. Explain briefly why: donors only give when details are checkable.
-- Watch for fraud signals: internally inconsistent dates, refusal to name vendors, budgets wildly out of proportion to the stated need, stories that avoid all specifics. Don't accuse — ask clarifying questions. Reflect genuine concerns in your final checks.
+- Watch for fraud signals: internally inconsistent dates, refusal to name vendors, budgets wildly out of proportion to the stated need, stories that avoid all specifics. Don't accuse - ask clarifying questions. Reflect genuine concerns in your final checks.
 - Typical interview: 4-6 exchanges. Do not drag it out; once you have story + specifics + evidence + budget, set done=true, assemble "extracted" faithfully from what THEY said (clean up grammar, keep their voice, never invent facts, amounts or vendors they didn't give), and produce your "checks".
 - If an amount is given without a vendor, ask who should be paid. Kairos cannot release money to a person, only to a named counterparty.
 - Reasonable rounding of amounts stated in words ("about 300k" → 300000) is fine.`;
@@ -80,11 +82,11 @@ How to interview:
 const FALLBACK_STEPS = [
   {
     reply:
-      "Hi, I’m the Kairos intake assistant 🤝. Let’s build a cause people can trust. First — in one or two sentences, what happened, and what do you need?",
+      "Hi, I’m the Kairos intake assistant 🤝. Let’s build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
   },
   {
     reply:
-      "Thank you for sharing that. Who exactly is affected, and when and where did this happen? Specific names, dates and places make your cause verifiable — that’s what convinces donors.",
+      "Thank you for sharing that. Who exactly is affected, and when and where did this happen? Specific names, dates and places make your cause verifiable - that’s what convinces donors.",
   },
   {
     reply:
@@ -92,7 +94,7 @@ const FALLBACK_STEPS = [
   },
   {
     reply:
-      "Last thing — the itemized budget. Not “support us”, but exactly what each naira buys and from whom. Which named vendors will Kairos pay directly? e.g. “Surgery — ₦850,000 to LUTH; Drugs — ₦120,000 to HealthPlus Pharmacy.”",
+      "Last thing - the itemized budget. Not “support us”, but exactly what each naira buys and from whom. Which named vendors will Kairos pay directly? e.g. “Surgery - ₦850,000 to LUTH; Drugs - ₦120,000 to HealthPlus Pharmacy.”",
   },
 ];
 
@@ -113,7 +115,7 @@ function fallbackTurn(messages: ChatMsg[]) {
   const answers = messages.filter((m) => m.from === "me").map((m) => m.text);
   return {
     reply:
-      "Perfect — I have everything I need. I’ve assembled your cause for review; refine anything I got wrong before we run verification.",
+      "Perfect - I have everything I need. I’ve assembled your cause for review; refine anything I got wrong before we run verification.",
     done: true,
     extracted: {
       title: (answers[0] ?? "My cause").slice(0, 70),

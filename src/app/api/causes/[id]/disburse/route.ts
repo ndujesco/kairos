@@ -5,7 +5,7 @@ import { getSessionUser } from "@/lib/session";
 
 /**
  * The heart of Kairos: money leaves escrow only toward a named vendor on a
- * published budget line — and every donor is told, proportionally, what THEIR
+ * published budget line - and every donor is told, proportionally, what THEIR
  * money just did.
  */
 export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   if (!item) return NextResponse.json({ error: "Budget item not found" }, { status: 400 });
   if (!item.vendor?.verified)
     return NextResponse.json(
-      { error: "Vendor failed verification — payment paused for review" },
+      { error: "Vendor failed verification - payment paused for review" },
       { status: 400 }
     );
   if (!amt || amt <= 0) return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       user: cause.organizer,
       type: "milestone",
       title: "Cause completed 🎉",
-      body: `“${cause.title}” is fully executed with receipts. Your trust level went up — you can now raise bigger causes.`,
+      body: `“${cause.title}” is fully executed with receipts. Your trust level went up - you can now raise bigger causes.`,
       causeSlug: cause.slug,
     });
   }

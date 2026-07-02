@@ -12,7 +12,7 @@ export interface IUser {
   emoji: string;
   role: "donor" | "organizer" | "ngo";
   verified: { identity: boolean; method?: "BVN" | "NIN"; cac?: boolean };
-  trustLevel: number; // 1..5 — internal, drives raise limit
+  trustLevel: number; // 1..5 - internal, drives raise limit
   raiseLimit: number; // max active raise in naira
   completedCauses: number;
   createdAt: Date;

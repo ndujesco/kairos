@@ -135,7 +135,7 @@ export default function CreateWizard({
     setError("");
     setStage("checks");
 
-    // reveal checks one by one — the "AI screening" moment
+    // reveal checks one by one - the "AI screening" moment
     for (let i = 1; i <= checks.length; i++) {
       await new Promise((r) => setTimeout(r, 900));
       setChecksShown(i);
@@ -178,9 +178,9 @@ export default function CreateWizard({
         <div>
           <h1 className="text-lg font-extrabold">Start a Cause</h1>
           <p className="text-[13px] text-muted">
-            {stage === "chat" && "Step 1 of 3 — tell your story to the intake assistant"}
-            {stage === "structure" && "Step 2 of 3 — the verifiable structure"}
-            {(stage === "checks" || stage === "publishing") && "Step 3 of 3 — AI fraud screening"}
+            {stage === "chat" && "Step 1 of 3 - tell your story to the intake assistant"}
+            {stage === "structure" && "Step 2 of 3 - the verifiable structure"}
+            {(stage === "checks" || stage === "publishing") && "Step 3 of 3 - AI fraud screening"}
           </p>
         </div>
       </div>
@@ -277,7 +277,7 @@ export default function CreateWizard({
 
           <div>
             <label className="mb-1 block text-sm font-bold">
-              Itemized budget <span className="font-normal text-muted">— paid directly to vendors, never to you</span>
+              Itemized budget <span className="font-normal text-muted"> - paid directly to vendors, never to you</span>
             </label>
             <div className="flex flex-col gap-2">
               {budget.map((b, i) => (
@@ -357,7 +357,7 @@ export default function CreateWizard({
               />
             </div>
             <p className="mt-1 text-[12px] text-muted">
-              File uploads are simulated in this prototype — each item goes through the reuse/EXIF/date screen.
+              File uploads are simulated in this prototype - each item goes through the reuse/EXIF/date screen.
             </p>
           </div>
 
@@ -396,7 +396,7 @@ export default function CreateWizard({
           ))}
           {stage === "publishing" && (
             <p className="animate-pulse-soft mt-2 text-center text-muted">
-              All checks passed — publishing your cause…
+              All checks passed - publishing your cause…
             </p>
           )}
         </div>

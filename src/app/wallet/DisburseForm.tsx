@@ -58,7 +58,7 @@ export default function DisburseForm({
         <p className="mt-1 text-muted">
           Invoice {result.invoiceNo} issued. <b className="text-foreground">{result.notified} donor
           {result.notified === 1 ? "" : "s"}</b> just received a personal breakdown of what their
-          money did — check the Notifications tab as a donor to see it.
+          money did - check the Notifications tab as a donor to see it.
         </p>
       </div>
     );

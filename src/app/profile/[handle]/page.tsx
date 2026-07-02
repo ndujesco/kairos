@@ -20,12 +20,12 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
     title: `${user.name} (@${user.handle})`,
     description:
       user.bio ??
-      `${user.name} on Kairos — verified identity, transparent causes, every naira receipted.`,
+      `${user.name} on Kairos - verified identity, transparent causes, every naira receipted.`,
     openGraph: {
       type: "profile",
       siteName: "Kairos",
       title: `${user.name} (@${user.handle}) · Kairos`,
-      description: user.bio ?? `${user.name} on Kairos — verified, transparent giving.`,
+      description: user.bio ?? `${user.name} on Kairos - verified, transparent giving.`,
     },
   };
 }

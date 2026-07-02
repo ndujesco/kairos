@@ -37,7 +37,7 @@ export default function CauseActions({
       <button
         onClick={share}
         className="flex-1 rounded-full border border-line py-2.5 font-bold transition hover:bg-white/5"
-        title="Anyone with this link can donate — no app needed"
+        title="Anyone with this link can donate - no app needed"
       >
         {copied ? "Link copied ✓" : "🔗 Share on WhatsApp"}
       </button>

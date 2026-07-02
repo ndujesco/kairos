@@ -47,7 +47,7 @@ export default async function RightRail() {
       <section className="rounded-2xl border border-line p-4">
         <h2 className="text-xl font-extrabold">Why trust Kairos?</h2>
         <ul className="mt-2 flex flex-col gap-2 text-[14px] text-muted">
-          <li>🔒 Funds sit in escrow — organizers can’t withdraw cash.</li>
+          <li>🔒 Funds sit in escrow - organizers can’t withdraw cash.</li>
           <li>🏥 We pay verified vendors directly, never personal accounts.</li>
           <li>🧾 Every payment comes back to you as a receipt, sliced to your share.</li>
           <li>🪪 Every organizer is BVN/NIN verified. One person, one reputation.</li>
@@ -55,7 +55,7 @@ export default async function RightRail() {
       </section>
 
       <p className="px-2 text-[13px] text-muted">
-        Kairos · Transparent Giving — prototype build · 2026
+        Kairos · Transparent Giving - prototype build · 2026
       </p>
     </aside>
   );

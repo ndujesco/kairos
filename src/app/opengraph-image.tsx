@@ -3,7 +3,7 @@ import { loadOgFonts, ogFontConfig } from "@/lib/og/fonts";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Kairos — Transparent Giving";
+export const alt = "Kairos - Transparent Giving";
 
 export default async function OgImage() {
   const fonts = await loadOgFonts();

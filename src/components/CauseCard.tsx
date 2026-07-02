@@ -119,7 +119,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
               className={`group flex min-w-0 items-center gap-1 text-xs transition sm:gap-1.5 sm:text-sm ${
                 vouched ? "text-rose-400" : "hover:text-rose-400"
               }`}
-              title="Vouch — I believe this cause is real"
+              title="Vouch - I believe this cause is real"
             >
               <span className="rounded-full p-1 group-hover:bg-rose-400/10 sm:p-1.5">
                 {vouched ? "🤝" : "🫱"}
@@ -133,7 +133,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
             <button
               onClick={share}
               className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-accent sm:gap-1.5 sm:text-sm"
-              title="Share link — donors don’t need the app"
+              title="Share link - donors don’t need the app"
             >
               <span className="rounded-full p-1 group-hover:bg-accent/10 sm:p-1.5">🔗</span>
               <span className="hidden min-[400px]:inline">{copied ? "Copied!" : "Share"}</span>

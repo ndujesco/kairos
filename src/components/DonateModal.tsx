@@ -108,8 +108,7 @@ export default function DonateModal({
             />
 
             <div className="mb-4 rounded-xl border border-line bg-white/5 p-3 text-[13px] text-muted">
-              🔒 Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b> —
-              not the organizer’s account. It is only ever paid out to verified vendors, and you’ll
+              🔒 Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b> - not the organizer’s account. It is only ever paid out to verified vendors, and you’ll
               get a receipt for your exact share of every payment.
             </div>
 
@@ -174,7 +173,7 @@ export default function DonateModal({
               ← Change amount
             </button>
             <p className="mt-3 text-center text-[12px] text-muted">
-              Simulated gateway — Paystack/Flutterwave virtual accounts in production
+              Simulated gateway - Paystack/Flutterwave virtual accounts in production
             </p>
           </div>
         )}
@@ -194,10 +193,10 @@ export default function DonateModal({
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-3xl">
               ✅
             </div>
-            <h2 className="text-xl font-extrabold">Payment received — you’re in escrow</h2>
+            <h2 className="text-xl font-extrabold">Payment received - you’re in escrow</h2>
             <p className="text-sm text-muted">
-              {naira(finalAmount)} is now held safely for this cause. The moment it moves — to a
-              hospital, a vendor, a supplier — you’ll get an alert showing exactly what{" "}
+              {naira(finalAmount)} is now held safely for this cause. The moment it moves - to a
+              hospital, a vendor, a supplier - you’ll get an alert showing exactly what{" "}
               <i>your</i> money did.
             </p>
             <button

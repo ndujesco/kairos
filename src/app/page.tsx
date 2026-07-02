@@ -38,7 +38,7 @@ export default async function Home() {
 
       {causes.length === 0 && (
         <p className="p-8 text-center text-muted">
-          No causes yet — run <code>npm run seed</code> to load demo data.
+          No causes yet - run <code>npm run seed</code> to load demo data.
         </p>
       )}
     </div>

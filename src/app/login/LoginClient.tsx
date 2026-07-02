@@ -87,8 +87,7 @@ export default function LoginClient() {
           Giving shouldn’t be an act of faith.
         </h1>
         <p className="hidden max-w-md text-center text-lg text-muted md:block">
-          Kairos holds every donation in escrow, pays verified vendors directly, and shows you —
-          personally — what your naira did.
+          Kairos holds every donation in escrow, pays verified vendors directly, and shows you - personally - what your naira did.
         </p>
       </div>
 
@@ -192,7 +191,7 @@ export default function LoginClient() {
             )}
             {verifying === "ok" && (
               <div className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent/10 p-3 text-sm text-accent">
-                ✓ Identity verified — welcome to Kairos
+                ✓ Identity verified - welcome to Kairos
               </div>
             )}
             {error && <p className="text-sm text-rose-400">{error}</p>}

@@ -1,5 +1,5 @@
 /**
- * Kairos demo seed — loads a believable world:
+ * Kairos demo seed - loads a believable world:
  *  - 6 personas (donors, organizers, an NGO)
  *  - a live medical cause with a real disbursement + donor attribution alerts
  *  - a prison outreach ready for the LIVE demo disbursement
@@ -82,12 +82,12 @@ async function main() {
   /* ---------------------- cause 1: medical (live) ----------------------- */
   const medical = {
     _id: oid(),
-    title: "Help Chidinma walk again — surgery at LUTH",
+    title: "Help Chidinma walk again - surgery at LUTH",
     slug: "help-chidinma-walk-again",
     summary:
-      "My sister Chidinma, 24, shattered her leg in an okada accident on Ikorodu Road. LUTH can fix it — we can’t fix the bill alone. Every naira goes to the hospital directly, never to me.",
+      "My sister Chidinma, 24, shattered her leg in an okada accident on Ikorodu Road. LUTH can fix it - we can’t fix the bill alone. Every naira goes to the hospital directly, never to me.",
     story:
-      "On June 14th my younger sister Chidinma was riding an okada along Ikorodu Road when a truck swerved into their lane. She survived — thank God — but her left leg was shattered in three places.\n\nThe orthopaedic team at LUTH says she needs corrective surgery with implants, followed by eight weeks of medication. The total estimate is ₦970,000. Our family has raised what we can; we need help with the rest.\n\nI chose Kairos because I know how hard it is to trust a stranger’s story. You are not sending money to me — the hospital gets paid directly, and you’ll see the invoice the moment it happens.",
+      "On June 14th my younger sister Chidinma was riding an okada along Ikorodu Road when a truck swerved into their lane. She survived - thank God - but her left leg was shattered in three places.\n\nThe orthopaedic team at LUTH says she needs corrective surgery with implants, followed by eight weeks of medication. The total estimate is ₦970,000. Our family has raised what we can; we need help with the rest.\n\nI chose Kairos because I know how hard it is to trust a stranger’s story. You are not sending money to me - the hospital gets paid directly, and you’ll see the invoice the moment it happens.",
     category: "Medical",
     coverEmoji: "🏥",
     coverColor: "rose",
@@ -100,7 +100,7 @@ async function main() {
     budget: [
       {
         label: "Corrective surgery + implants", amount: 850000, spent: 400000,
-        vendor: { name: "LUTH — Lagos University Teaching Hospital", verified: true, account: "•••• 4127" },
+        vendor: { name: "LUTH - Lagos University Teaching Hospital", verified: true, account: "•••• 4127" },
       },
       {
         label: "Post-op medication (8 weeks)", amount: 120000, spent: 0,
@@ -108,13 +108,13 @@ async function main() {
       },
     ],
     evidence: [
-      { label: "Hospital bill — LUTH orthopaedics", kind: "invoice", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+      { label: "Hospital bill - LUTH orthopaedics", kind: "invoice", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
       { label: "Doctor’s estimate & treatment plan", kind: "document", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
       { label: "Photos from the ward", kind: "photo", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
     ],
     updates: [
       {
-        text: "Deposit paid! LUTH has scheduled Chidinma’s surgery for next Tuesday. Thank you — she cried when I showed her the donor list. Receipts are on the cause page.",
+        text: "Deposit paid! LUTH has scheduled Chidinma’s surgery for next Tuesday. Thank you - she cried when I showed her the donor list. Receipts are on the cause page.",
         photos: ["🩺", "💊", "🙏🏾"],
         at: daysAgo(2),
       },
@@ -128,12 +128,12 @@ async function main() {
   /* ----------------- cause 2: prison outreach (for live demo) ----------------- */
   const outreach = {
     _id: oid(),
-    title: "Kirikiri Outreach — a hot meal for 200 inmates",
+    title: "Kirikiri Outreach - a hot meal for 200 inmates",
     slug: "kirikiri-outreach-200-inmates",
     summary:
-      "Last month I visited Kirikiri and couldn’t sleep after. On July 19th we go back with hot food, toiletries and toothpaste for 200 inmates. Itemized below — vendors get paid, not me.",
+      "Last month I visited Kirikiri and couldn’t sleep after. On July 19th we go back with hot food, toiletries and toothpaste for 200 inmates. Itemized below - vendors get paid, not me.",
     story:
-      "I’m not an NGO. I’m just a guy who followed a friend to Kirikiri Medium Security Prison one Saturday and left changed.\n\nMany inmates there are awaiting trial for years. The food is thin, toiletries are a luxury, and a hot meal from outside is an event.\n\nOn Saturday July 19th, with five volunteers, we’re bringing hot jollof and chicken for 200 inmates, plus toiletry packs (soap, toothpaste, sanitary items). The caterer and suppliers are named below — Kairos pays them directly. After the visit, you get the photos, time-stamped and location-checked.\n\nI did this once before on Kairos (see my profile — completed, every naira receipted). Let’s do it again, bigger.",
+      "I’m not an NGO. I’m just a guy who followed a friend to Kirikiri Medium Security Prison one Saturday and left changed.\n\nMany inmates there are awaiting trial for years. The food is thin, toiletries are a luxury, and a hot meal from outside is an event.\n\nOn Saturday July 19th, with five volunteers, we’re bringing hot jollof and chicken for 200 inmates, plus toiletry packs (soap, toothpaste, sanitary items). The caterer and suppliers are named below - Kairos pays them directly. After the visit, you get the photos, time-stamped and location-checked.\n\nI did this once before on Kairos (see my profile - completed, every naira receipted). Let’s do it again, bigger.",
     category: "Prison Outreach",
     coverEmoji: "🕊️",
     coverColor: "sky",
@@ -172,12 +172,12 @@ async function main() {
   /* ------------------------- cause 3: NGO shelter ------------------------ */
   const shelter = {
     _id: oid(),
-    title: "Keep 40 women safe — Hope Haven shelter, Q3",
+    title: "Keep 40 women safe - Hope Haven shelter, Q3",
     slug: "hope-haven-shelter-q3",
     summary:
-      "Our shelter houses 40 women escaping domestic abuse. Q3 costs: rent, food, counseling — fully itemized. As an NGO we publish every receipt; Kairos makes that automatic.",
+      "Our shelter houses 40 women escaping domestic abuse. Q3 costs: rent, food, counseling - fully itemized. As an NGO we publish every receipt; Kairos makes that automatic.",
     story:
-      "Hope Haven has run a shelter in Surulere since 2019. Right now, 40 women and 12 children call it home while they rebuild their lives.\n\nEvery quarter we raise our operating budget openly. This quarter: rent for the shelter building, food supplies, and professional counseling sessions.\n\nWe moved to Kairos because donors kept asking the same fair question: “where does my money actually go?” Now the answer is automatic — the landlord, the food supplier and the counselors are paid directly through escrow, and every donor sees their share of every payment.",
+      "Hope Haven has run a shelter in Surulere since 2019. Right now, 40 women and 12 children call it home while they rebuild their lives.\n\nEvery quarter we raise our operating budget openly. This quarter: rent for the shelter building, food supplies, and professional counseling sessions.\n\nWe moved to Kairos because donors kept asking the same fair question: “where does my money actually go?” Now the answer is automatic - the landlord, the food supplier and the counselors are paid directly through escrow, and every donor sees their share of every payment.",
     category: "Food & Shelter",
     coverEmoji: "🏠",
     coverColor: "amber",
@@ -208,7 +208,7 @@ async function main() {
     ],
     updates: [
       {
-        text: "Half of Q3 rent is paid — receipt below. Two new residents arrived this week; your food-supply donations go out to FoodCo on the 15th.",
+        text: "Half of Q3 rent is paid - receipt below. Two new residents arrived this week; your food-supply donations go out to FoodCo on the 15th.",
         photos: ["🏠", "🧺"],
         at: daysAgo(4),
       },
@@ -222,12 +222,12 @@ async function main() {
   /* -------------------- cause 4: completed (trust loop) ------------------- */
   const completed = {
     _id: oid(),
-    title: "Ikoyi Custodial Centre — first outreach (COMPLETED)",
+    title: "Ikoyi Custodial Centre - first outreach (COMPLETED)",
     slug: "ikoyi-outreach-completed",
     summary:
-      "My first outreach on Kairos: hot meals for 120 inmates at Ikoyi Custodial Centre. Fully executed — every receipt and photo is below. This is why you can trust the next one.",
+      "My first outreach on Kairos: hot meals for 120 inmates at Ikoyi Custodial Centre. Fully executed - every receipt and photo is below. This is why you can trust the next one.",
     story:
-      "This was my first cause on Kairos. 120 hot meals delivered to Ikoyi Custodial Centre on May 24th.\n\nEverything was paid through escrow: the caterer got ₦180,000 directly, transport ₦40,000. The photos below were verified against the date and location we promised.\n\nBecause this completed cleanly, my trust level went up — which is how I’m allowed to raise ₦500,000 for the bigger Kirikiri outreach now. That’s the Kairos loop: deliver, prove it, unlock more.",
+      "This was my first cause on Kairos. 120 hot meals delivered to Ikoyi Custodial Centre on May 24th.\n\nEverything was paid through escrow: the caterer got ₦180,000 directly, transport ₦40,000. The photos below were verified against the date and location we promised.\n\nBecause this completed cleanly, my trust level went up - which is how I’m allowed to raise ₦500,000 for the bigger Kirikiri outreach now. That’s the Kairos loop: deliver, prove it, unlock more.",
     category: "Prison Outreach",
     coverEmoji: "✅",
     coverColor: "emerald",
@@ -253,7 +253,7 @@ async function main() {
     ],
     updates: [
       {
-        text: "DONE. 120 meals served at Ikoyi Custodial Centre. Photos verified: taken 24 May, 12:41pm, on location. Thank you to all 3 donors — you saw exactly where every naira went.",
+        text: "DONE. 120 meals served at Ikoyi Custodial Centre. Photos verified: taken 24 May, 12:41pm, on location. Thank you to all 3 donors - you saw exactly where every naira went.",
         photos: ["🍛", "🕊️", "📸"],
         at: daysAgo(38),
       },
@@ -269,20 +269,20 @@ async function main() {
 
   /* ------------------------------ donations ------------------------------ */
   const donations = [
-    // medical — raised 614,000 (ugo 7k, abby 50k, amina 7k, ngo-person? use david 550k? no — david is organizer elsewhere, fine as donor here)
+    // medical - raised 614,000 (ugo 7k, abby 50k, amina 7k, ngo-person? use david 550k? no - david is organizer elsewhere, fine as donor here)
     { _id: oid(), cause: medical._id, donor: ugo._id, amount: 7000, anonymous: false, createdAt: daysAgo(10), updatedAt: daysAgo(10) },
     { _id: oid(), cause: medical._id, donor: abby._id, amount: 50000, anonymous: false, createdAt: daysAgo(9), updatedAt: daysAgo(9) },
     { _id: oid(), cause: medical._id, donor: amina._id, amount: 7000, anonymous: false, createdAt: daysAgo(8), updatedAt: daysAgo(8) },
     { _id: oid(), cause: medical._id, donor: david._id, amount: 550000, anonymous: false, createdAt: daysAgo(7), updatedAt: daysAgo(7) },
-    // outreach — raised 155,000
+    // outreach - raised 155,000
     { _id: oid(), cause: outreach._id, donor: ugo._id, amount: 25000, anonymous: false, createdAt: daysAgo(4), updatedAt: daysAgo(4) },
     { _id: oid(), cause: outreach._id, donor: abby._id, amount: 100000, anonymous: false, createdAt: daysAgo(3), updatedAt: daysAgo(3) },
     { _id: oid(), cause: outreach._id, donor: amina._id, amount: 30000, anonymous: false, createdAt: daysAgo(2), updatedAt: daysAgo(2) },
-    // shelter — raised 1,340,000
+    // shelter - raised 1,340,000
     { _id: oid(), cause: shelter._id, donor: ugo._id, amount: 40000, anonymous: false, createdAt: daysAgo(15), updatedAt: daysAgo(15) },
     { _id: oid(), cause: shelter._id, donor: abby._id, amount: 300000, anonymous: false, createdAt: daysAgo(14), updatedAt: daysAgo(14) },
     { _id: oid(), cause: shelter._id, donor: chiamaka._id, amount: 1000000, anonymous: false, createdAt: daysAgo(13), updatedAt: daysAgo(13) },
-    // completed — raised 220,000
+    // completed - raised 220,000
     { _id: oid(), cause: completed._id, donor: ugo._id, amount: 20000, anonymous: false, createdAt: daysAgo(48), updatedAt: daysAgo(48) },
     { _id: oid(), cause: completed._id, donor: abby._id, amount: 100000, anonymous: false, createdAt: daysAgo(47), updatedAt: daysAgo(47) },
     { _id: oid(), cause: completed._id, donor: amina._id, amount: 100000, anonymous: false, createdAt: daysAgo(46), updatedAt: daysAgo(46) },
@@ -294,8 +294,8 @@ async function main() {
   const disbursements = [
     {
       _id: oid(), cause: medical._id, budgetLabel: "Corrective surgery + implants",
-      vendorName: "LUTH — Lagos University Teaching Hospital", vendorAccount: "•••• 4127",
-      amount: 400000, invoiceNo: "#0042", note: "Surgery deposit — theatre booked for Tuesday",
+      vendorName: "LUTH - Lagos University Teaching Hospital", vendorAccount: "•••• 4127",
+      amount: 400000, invoiceNo: "#0042", note: "Surgery deposit - theatre booked for Tuesday",
       createdAt: daysAgo(2, 3), updatedAt: daysAgo(2, 3),
     },
     {
@@ -334,13 +334,13 @@ async function main() {
     user: u._id,
     type: "money_moved",
     title: "Your donation just moved 💸",
-    body: `₦${Math.round(amt * pct).toLocaleString()} of your ₦${amt.toLocaleString()} was paid to LUTH — Lagos University Teaching Hospital for “Corrective surgery + implants” (Invoice #0042).`,
+    body: `₦${Math.round(amt * pct).toLocaleString()} of your ₦${amt.toLocaleString()} was paid to LUTH - Lagos University Teaching Hospital for “Corrective surgery + implants” (Invoice #0042).`,
     causeSlug: medical.slug,
     detail: {
       yourShare: Math.round(amt * pct),
       yourDonation: amt,
       totalPaid: 400000,
-      vendor: "LUTH — Lagos University Teaching Hospital",
+      vendor: "LUTH - Lagos University Teaching Hospital",
       invoiceNo: "#0042",
       pct: Math.round(pct * 100),
     },
@@ -353,14 +353,14 @@ async function main() {
     {
       _id: oid(), user: david._id, type: "milestone",
       title: "Cause completed 🎉",
-      body: "“Ikoyi Custodial Centre — first outreach” is fully executed with receipts. Your trust level went up — you can now raise bigger causes.",
+      body: "“Ikoyi Custodial Centre - first outreach” is fully executed with receipts. Your trust level went up - you can now raise bigger causes.",
       causeSlug: completed.slug, detail: {}, read: true,
       createdAt: daysAgo(38), updatedAt: daysAgo(38),
     },
     {
       _id: oid(), user: chiamaka._id, type: "donation_received",
       title: "New donation in escrow",
-      body: "@david_outreach put ₦550,000 into escrow for “Help Chidinma walk again — surgery at LUTH”.",
+      body: "@david_outreach put ₦550,000 into escrow for “Help Chidinma walk again - surgery at LUTH”.",
       causeSlug: medical.slug, detail: {}, read: true,
       createdAt: daysAgo(7), updatedAt: daysAgo(7),
     }
@@ -372,17 +372,17 @@ async function main() {
   await db.collection("comments").insertMany([
     {
       _id: oid(), cause: medical._id, author: amina._id,
-      text: "Praying for Chidinma’s full recovery. Gave my widow’s mite — and I actually saw it reach LUTH. God bless this platform. 🙏🏾",
+      text: "Praying for Chidinma’s full recovery. Gave my widow’s mite - and I actually saw it reach LUTH. God bless this platform. 🙏🏾",
       createdAt: daysAgo(2), updatedAt: daysAgo(2),
     },
     {
       _id: oid(), cause: medical._id, author: ugo._id,
-      text: "Got the alert when the surgery deposit was paid — ₦4,558 of my ₦7,000 went straight to the hospital. This is how giving should work.",
+      text: "Got the alert when the surgery deposit was paid - ₦4,558 of my ₦7,000 went straight to the hospital. This is how giving should work.",
       createdAt: daysAgo(1), updatedAt: daysAgo(1),
     },
     {
       _id: oid(), cause: outreach._id, author: abby._id,
-      text: "Vouched AND donated. David’s Ikoyi outreach receipts convinced me — check his profile, everything is there.",
+      text: "Vouched AND donated. David’s Ikoyi outreach receipts convinced me - check his profile, everything is there.",
       createdAt: daysAgo(3), updatedAt: daysAgo(3),
     },
     {

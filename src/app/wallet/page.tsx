@@ -45,7 +45,7 @@ export default async function WalletPage() {
         <p className="mt-2 text-[13px] text-muted">
           Complete causes honestly, with proof, and this limit grows. {user.completedCauses} cause
           {user.completedCauses === 1 ? "" : "s"} completed so far. This score is never shown
-          publicly — it unlocks bigger projects, it doesn’t rank people.
+          publicly - it unlocks bigger projects, it doesn’t rank people.
         </p>
       </div>
 
@@ -54,7 +54,7 @@ export default async function WalletPage() {
         <h2 className="mb-1 text-lg font-extrabold">Causes you manage</h2>
         <p className="mb-3 text-sm text-muted">
           {naira(totalEscrow)} held in escrow across {myCauses.length} cause
-          {myCauses.length === 1 ? "" : "s"}. You can’t withdraw it — you can only direct it to
+          {myCauses.length === 1 ? "" : "s"}. You can’t withdraw it - you can only direct it to
           verified vendors on your published budget.
         </p>
 
@@ -103,11 +103,11 @@ export default async function WalletPage() {
                 />
               ) : c.status === "completed" ? (
                 <p className="mt-2 text-sm font-bold text-accent">
-                  ✓ Fully executed — every naira accounted for
+                  ✓ Fully executed - every naira accounted for
                 </p>
               ) : (
                 <p className="mt-2 text-sm text-muted">
-                  No funds in escrow yet — share your cause link to start raising.
+                  No funds in escrow yet - share your cause link to start raising.
                 </p>
               )}
             </div>

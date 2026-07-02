@@ -61,7 +61,7 @@ export default async function ExplorePage(props: {
         <CauseCard key={String(cause._id)} cause={toCardData(cause, String(user._id))} />
       ))}
       {causes.length === 0 && (
-        <p className="p-8 text-center text-muted">No causes match — yet. Causes that move you are coming.</p>
+        <p className="p-8 text-center text-muted">No causes match - yet. Causes that move you are coming.</p>
       )}
     </div>
   );
