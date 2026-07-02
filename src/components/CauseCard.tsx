@@ -52,6 +52,8 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
   }
 
   const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
+  const remaining = Math.max(0, cause.goal - cause.raised);
+  const fullyFunded = remaining <= 0 || cause.status === "completed";
 
   return (
     <article className="border-b border-line px-4 py-3 transition hover:bg-white/[0.03]">
@@ -140,18 +142,29 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
               {copied && <span className="min-[400px]:hidden">✓</span>}
             </button>
 
-            <button
-              onClick={() => setDonating(true)}
-              className="shrink-0 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-black transition hover:bg-accent/90 sm:px-5 sm:text-sm"
-            >
-              Donate
-            </button>
+            {fullyFunded ? (
+              <span className="shrink-0 rounded-full bg-accent/15 px-4 py-1.5 text-xs font-bold text-accent sm:text-sm">
+                Funded ✓
+              </span>
+            ) : (
+              <button
+                onClick={() => setDonating(true)}
+                className="shrink-0 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-black transition hover:bg-accent/90 sm:px-5 sm:text-sm"
+              >
+                Donate
+              </button>
+            )}
           </div>
         </div>
       </div>
 
       {donating && (
-        <DonateModal causeId={cause.id} causeTitle={cause.title} onClose={() => setDonating(false)} />
+        <DonateModal
+          causeId={cause.id}
+          causeTitle={cause.title}
+          remaining={remaining}
+          onClose={() => setDonating(false)}
+        />
       )}
     </article>
   );

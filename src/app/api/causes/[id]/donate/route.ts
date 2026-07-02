@@ -18,6 +18,21 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   if (cause.status === "completed")
     return NextResponse.json({ error: "This cause is completed" }, { status: 400 });
 
+  const remaining = cause.goal - cause.raised;
+  if (remaining <= 0)
+    return NextResponse.json(
+      { error: "This cause is fully funded. Thank you, but it no longer needs donations." },
+      { status: 400 }
+    );
+  if (amt > remaining)
+    return NextResponse.json(
+      {
+        error: `Only ₦${remaining.toLocaleString()} is needed to complete this cause. Please donate ₦${remaining.toLocaleString()} or less.`,
+        remaining,
+      },
+      { status: 400 }
+    );
+
   const already = await Donation.exists({ cause: cause._id, donor: user._id });
 
   await Donation.create({ cause: cause._id, donor: user._id, amount: amt });

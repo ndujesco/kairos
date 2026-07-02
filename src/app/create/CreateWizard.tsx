@@ -43,6 +43,7 @@ export default function CreateWizard({
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   /* structure state */
   const [title, setTitle] = useState("");
@@ -92,6 +93,7 @@ export default function CreateWizard({
     const transcript: Msg[] = [...messages, { from: "me", text: answer }];
     setMessages(transcript);
     setInput("");
+    if (inputRef.current) inputRef.current.style.height = "auto"; // collapse back to one line
     setThinking(true);
 
     const j = await interviewTurn(transcript);
@@ -214,18 +216,29 @@ export default function CreateWizard({
             <div ref={bottomRef} />
           </div>
           <div className="sticky bottom-[68px] border-t border-line bg-black p-3 sm:bottom-0">
-            <div className="flex gap-2">
-              <input
+            <div className="flex items-end gap-2">
+              <textarea
+                ref={inputRef}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && send()}
-                placeholder="Type your answer…"
-                className="flex-1 rounded-full border border-line bg-transparent px-4 py-3 outline-none placeholder:text-muted focus:border-accent"
+                rows={1}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  e.target.style.height = "auto";
+                  e.target.style.height = Math.min(e.target.scrollHeight, 140) + "px";
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    send();
+                  }
+                }}
+                placeholder="Type your answer… (Shift+Enter for a new line)"
+                className="max-h-[140px] flex-1 resize-none overflow-y-auto rounded-2xl border border-line bg-transparent px-4 py-3 leading-snug outline-none placeholder:text-muted focus:border-accent"
               />
               <button
                 onClick={send}
                 disabled={thinking || !input.trim()}
-                className="rounded-full bg-accent px-5 font-bold text-black disabled:opacity-40"
+                className="rounded-full bg-accent px-5 py-3 font-bold text-black disabled:opacity-40"
               >
                 Send
               </button>

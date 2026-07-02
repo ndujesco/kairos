@@ -151,6 +151,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           causeTitle={cause.title}
           slug={cause.slug}
           completed={cause.status === "completed"}
+          remaining={Math.max(0, cause.goal - cause.raised)}
         />
       </div>
 

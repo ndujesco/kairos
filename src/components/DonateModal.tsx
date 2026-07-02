@@ -12,10 +12,12 @@ function naira(n: number) {
 export default function DonateModal({
   causeId,
   causeTitle,
+  remaining,
   onClose,
 }: {
   causeId: string;
   causeTitle: string;
+  remaining: number;
   onClose: () => void;
 }) {
   const router = useRouter();
@@ -38,6 +40,12 @@ export default function DonateModal({
   function toGateway() {
     if (finalAmount < 100) {
       setError("Minimum donation is ₦100");
+      return;
+    }
+    if (finalAmount > remaining) {
+      setError(
+        `Only ${naira(remaining)} is needed to complete this cause. Please donate ${naira(remaining)} or less.`
+      );
       return;
     }
     setError("");
@@ -77,19 +85,23 @@ export default function DonateModal({
                 ✕
               </button>
             </div>
-            <p className="mb-4 text-sm text-muted">
+            <p className="mb-1 text-sm text-muted">
               to <span className="text-foreground">{causeTitle}</span>
+            </p>
+            <p className="mb-4 text-[13px] font-bold text-accent">
+              {naira(remaining)} still needed to reach the goal
             </p>
 
             <div className="mb-3 grid grid-cols-3 gap-2">
               {PRESETS.map((p) => (
                 <button
                   key={p}
+                  disabled={p > remaining}
                   onClick={() => {
                     setAmount(p);
                     setCustom("");
                   }}
-                  className={`rounded-full border px-2 py-2 text-sm font-bold transition ${
+                  className={`rounded-full border px-2 py-2 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-30 ${
                     !custom && amount === p
                       ? "border-accent bg-accent/15 text-accent"
                       : "border-line hover:bg-white/5"
