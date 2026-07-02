@@ -213,7 +213,7 @@ export default function CreateWizard({
             )}
             <div ref={bottomRef} />
           </div>
-          <div className="sticky bottom-0 border-t border-line bg-black p-3">
+          <div className="sticky bottom-[68px] border-t border-line bg-black p-3 sm:bottom-0">
             <div className="flex gap-2">
               <input
                 value={input}
@@ -281,14 +281,14 @@ export default function CreateWizard({
             </label>
             <div className="flex flex-col gap-2">
               {budget.map((b, i) => (
-                <div key={i} className="flex gap-2">
+                <div key={i} className="flex flex-wrap gap-2 rounded-xl border border-line/60 p-2 sm:border-0 sm:p-0">
                   <input
                     value={b.label}
                     onChange={(e) =>
                       setBudget(budget.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)))
                     }
                     placeholder="What for? e.g. Surgery"
-                    className="flex-1 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent"
+                    className="w-full flex-1 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent sm:w-auto"
                   />
                   <input
                     value={b.amount}
@@ -297,7 +297,7 @@ export default function CreateWizard({
                     }
                     placeholder="₦ amount"
                     inputMode="numeric"
-                    className="w-28 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent"
+                    className="min-w-0 flex-1 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent sm:w-28 sm:flex-none"
                   />
                   <input
                     value={b.vendorName}
@@ -305,7 +305,7 @@ export default function CreateWizard({
                       setBudget(budget.map((x, j) => (j === i ? { ...x, vendorName: e.target.value } : x)))
                     }
                     placeholder="Vendor e.g. LUTH"
-                    className="w-36 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent"
+                    className="min-w-0 flex-1 rounded-xl border border-line bg-transparent px-3 py-2 text-sm outline-none focus:border-accent sm:w-36 sm:flex-none"
                   />
                 </div>
               ))}

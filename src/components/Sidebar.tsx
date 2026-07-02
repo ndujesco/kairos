@@ -31,7 +31,7 @@ export default function Sidebar({
   user: { name: string; handle: string; emoji: string; avatarColor: string };
 }) {
   return (
-    <header className="sticky top-0 flex h-screen w-[76px] shrink-0 flex-col justify-between px-2 py-3 xl:w-[260px]">
+    <header className="sticky top-0 hidden h-screen w-[76px] shrink-0 flex-col justify-between px-2 py-3 sm:flex xl:w-[260px]">
       <div className="flex flex-col gap-1">
         <Link
           href="/"

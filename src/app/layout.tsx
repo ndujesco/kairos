@@ -4,6 +4,7 @@ import "./globals.css";
 import { getSessionUser } from "@/lib/session";
 import Sidebar from "@/components/Sidebar";
 import RightRail from "@/components/RightRail";
+import MobileNav, { MobileTopBar } from "@/components/MobileNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,20 +36,26 @@ export default async function RootLayout({
     >
       <body className="min-h-full">
         {user ? (
-          <div className="mx-auto flex min-h-screen max-w-[1280px] justify-center">
-            <Sidebar
-              user={{
-                name: user.name,
-                handle: user.handle,
-                emoji: user.emoji,
-                avatarColor: user.avatarColor,
-              }}
+          <>
+            <MobileTopBar
+              user={{ handle: user.handle, emoji: user.emoji, avatarColor: user.avatarColor }}
             />
-            <main className="w-full max-w-[600px] border-x border-line min-h-screen">
-              {children}
-            </main>
-            <RightRail />
-          </div>
+            <div className="mx-auto flex min-h-screen max-w-[1280px] justify-center">
+              <Sidebar
+                user={{
+                  name: user.name,
+                  handle: user.handle,
+                  emoji: user.emoji,
+                  avatarColor: user.avatarColor,
+                }}
+              />
+              <main className="min-h-screen w-full max-w-[600px] border-line pb-24 sm:border-x sm:pb-0">
+                {children}
+              </main>
+              <RightRail />
+            </div>
+            <MobileNav />
+          </>
         ) : (
           children
         )}

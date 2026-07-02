@@ -9,10 +9,18 @@
  * Run: npm run seed
  */
 import mongoose from "mongoose";
+import { randomBytes, scryptSync } from "crypto";
 
 const URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/kairos";
 
 const daysAgo = (d, h = 0) => new Date(Date.now() - d * 864e5 - h * 36e5);
+
+// all seeded personas share the demo password: kairos123
+function hashPassword(password) {
+  const salt = randomBytes(16).toString("hex");
+  return `${salt}:${scryptSync(password, salt, 64).toString("hex")}`;
+}
+const DEMO_HASH = hashPassword("kairos123");
 
 async function main() {
   await mongoose.connect(URI);
@@ -28,42 +36,42 @@ async function main() {
   /* ------------------------------- users ------------------------------- */
   const ugo = {
     _id: oid(), name: "Ugo Ndujekwu", handle: "ugo", emoji: "👨🏾‍💻", avatarColor: "sky",
-    role: "donor", bio: "Give, watch it land. Building Kairos.",
+    passwordHash: DEMO_HASH, role: "donor", bio: "Give, watch it land. Building Kairos.",
     verified: { identity: true, method: "BVN", cac: false },
     trustLevel: 2, raiseLimit: 500000, completedCauses: 0,
     createdAt: daysAgo(90), updatedAt: daysAgo(90),
   };
   const abby = {
     _id: oid(), name: "Abby Sokenu", handle: "abby", emoji: "👩🏾‍💼", avatarColor: "violet",
-    role: "donor", bio: "Product @ Kairos. Generosity needs infrastructure.",
+    passwordHash: DEMO_HASH, role: "donor", bio: "Product @ Kairos. Generosity needs infrastructure.",
     verified: { identity: true, method: "NIN", cac: false },
     trustLevel: 2, raiseLimit: 500000, completedCauses: 0,
     createdAt: daysAgo(90), updatedAt: daysAgo(90),
   };
   const amina = {
     _id: oid(), name: "Amina Yusuf", handle: "amina_gives", emoji: "🧕🏾", avatarColor: "amber",
-    role: "donor", bio: "I give small small, but I give often.",
+    passwordHash: DEMO_HASH, role: "donor", bio: "I give small small, but I give often.",
     verified: { identity: true, method: "BVN", cac: false },
     trustLevel: 1, raiseLimit: 200000, completedCauses: 0,
     createdAt: daysAgo(60), updatedAt: daysAgo(60),
   };
   const chiamaka = {
     _id: oid(), name: "Chiamaka Obi", handle: "chiamaka", emoji: "👩🏾", avatarColor: "rose",
-    role: "organizer", bio: "Raising for my sister’s surgery. Every receipt public.",
+    passwordHash: DEMO_HASH, role: "organizer", bio: "Raising for my sister’s surgery. Every receipt public.",
     verified: { identity: true, method: "NIN", cac: false },
     trustLevel: 2, raiseLimit: 1500000, completedCauses: 0,
     createdAt: daysAgo(30), updatedAt: daysAgo(30),
   };
   const david = {
     _id: oid(), name: "David Adeleke", handle: "david_outreach", emoji: "🧑🏿‍🦱", avatarColor: "emerald",
-    role: "organizer", bio: "Saw Kirikiri once. Couldn’t unsee it. Now we go monthly.",
+    passwordHash: DEMO_HASH, role: "organizer", bio: "Saw Kirikiri once. Couldn’t unsee it. Now we go monthly.",
     verified: { identity: true, method: "BVN", cac: false },
     trustLevel: 3, raiseLimit: 1000000, completedCauses: 1,
     createdAt: daysAgo(75), updatedAt: daysAgo(75),
   };
   const ngo = {
     _id: oid(), name: "Hope Haven Foundation", handle: "hopehaven", emoji: "🏠", avatarColor: "slate",
-    role: "ngo", bio: "Shelter and a second chance for women escaping abuse. RC 1482290.",
+    passwordHash: DEMO_HASH, role: "ngo", bio: "Shelter and a second chance for women escaping abuse. RC 1482290.",
     verified: { identity: true, method: "BVN", cac: true },
     trustLevel: 4, raiseLimit: 10000000, completedCauses: 6,
     createdAt: daysAgo(200), updatedAt: daysAgo(200),

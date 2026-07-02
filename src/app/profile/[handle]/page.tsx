@@ -47,6 +47,16 @@ export default async function ProfilePage(props: { params: Promise<{ handle: str
             <Avatar emoji={user.emoji} color={user.avatarColor} size={20} />
           </div>
         </div>
+        {String(user._id) === String(viewer._id) && (
+          <form action="/api/auth/logout" method="POST" className="float-right mt-2">
+            <button
+              type="submit"
+              className="rounded-full border border-line px-4 py-1.5 text-sm font-bold text-muted transition hover:border-rose-400/50 hover:text-rose-400"
+            >
+              Log out
+            </button>
+          </form>
+        )}
         <p className="flex items-center gap-1.5 text-xl font-extrabold">
           {user.name}
           {user.verified?.identity && <VerifiedBadge />}
@@ -59,7 +69,7 @@ export default async function ProfilePage(props: { params: Promise<{ handle: str
         <p className="text-muted">@{user.handle}</p>
         {user.bio && <p className="mt-2 text-[15px]">{user.bio}</p>}
 
-        <div className="mt-3 flex gap-5 text-sm">
+        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           <span>
             <b>{causes.length}</b> <span className="text-muted">causes organized</span>
           </span>
