@@ -12,6 +12,33 @@ import CommentForm from "./CommentForm";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const { slug } = await props.params;
+  await dbConnect();
+  const cause = await Cause.findOne({ slug }).populate<{ organizer: IUser }>("organizer").lean();
+  if (!cause) return { title: "Cause not found" };
+
+  const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
+  const description = `${cause.summary} · ₦${cause.raised.toLocaleString()} raised of ₦${cause.goal.toLocaleString()} (${pct}%) · organized by ${cause.organizer.name} · every naira escrowed & receipted on Kairos.`;
+
+  return {
+    title: cause.title,
+    description: cause.summary,
+    openGraph: {
+      type: "article",
+      siteName: "Kairos",
+      title: cause.title,
+      description,
+      url: `/cause/${cause.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: cause.title,
+      description,
+    },
+  };
+}
+
 export default async function CausePage(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params;
   const viewer = await getSessionUser();
@@ -65,7 +92,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       </div>
 
       {/* organizer */}
-      <div className="flex items-center gap-3 px-4 pt-4">
+      <div className="flex flex-wrap items-center gap-3 px-4 pt-4">
         <Link href={`/profile/${cause.organizer.handle}`}>
           <Avatar emoji={cause.organizer.emoji} color={cause.organizer.avatarColor} size={11} />
         </Link>
@@ -113,7 +140,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           <span className="text-muted">of {naira(cause.goal)} · {pct}%</span>
         </div>
         <ProgressBar raised={cause.raised} goal={cause.goal} />
-        <div className="mt-3 flex items-center justify-between text-sm text-muted">
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-muted">
           <span>🔒 {naira(cause.escrowBalance)} currently in escrow</span>
           <span>
             🤝 {cause.vouches?.length ?? 0} independent vouch{(cause.vouches?.length ?? 0) === 1 ? "" : "es"}

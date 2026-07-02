@@ -11,6 +11,25 @@ import { toCardData } from "@/lib/serialize";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata(props: { params: Promise<{ handle: string }> }) {
+  const { handle } = await props.params;
+  await dbConnect();
+  const user = await User.findOne({ handle }).lean();
+  if (!user) return { title: "Profile not found" };
+  return {
+    title: `${user.name} (@${user.handle})`,
+    description:
+      user.bio ??
+      `${user.name} on Kairos — verified identity, transparent causes, every naira receipted.`,
+    openGraph: {
+      type: "profile",
+      siteName: "Kairos",
+      title: `${user.name} (@${user.handle}) · Kairos`,
+      description: user.bio ?? `${user.name} on Kairos — verified, transparent giving.`,
+    },
+  };
+}
+
 export default async function ProfilePage(props: { params: Promise<{ handle: string }> }) {
   const viewer = await getSessionUser();
   if (!viewer) redirect("/login");

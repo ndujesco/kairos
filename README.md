@@ -35,7 +35,7 @@ npm run seed
 npm run dev        # → http://localhost:3000
 ```
 
-Sign in as any persona on the login screen. Try: donate to the **Kirikiri outreach** as *Ugo*, then switch to *David Adeleke* → **Escrow Wallet** → pay the caterer — and check Ugo's notifications.
+Create an account (mock BVN check), or sign in as a seeded persona — all use password `kairos123` (e.g. `ugo`, `david_outreach`). Try: donate to the **Kirikiri outreach**, then sign in as *david_outreach* → **Escrow Wallet** → pay the caterer — and check your notifications.
 
 ## Team
 

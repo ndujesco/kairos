@@ -104,41 +104,45 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
             <ProgressBar raised={cause.raised} goal={cause.goal} />
           </div>
 
-          <div className="mt-3 flex items-center justify-between text-muted">
+          <div className="mt-3 flex items-center justify-between gap-1 text-muted">
             <Link
               href={`/cause/${cause.slug}`}
-              className="group flex items-center gap-1.5 text-sm transition hover:text-sky-400"
+              className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-sky-400 sm:gap-1.5 sm:text-sm"
               title="Words of support"
             >
-              <span className="rounded-full p-1.5 group-hover:bg-sky-400/10">💬</span>
-              Support
+              <span className="rounded-full p-1 group-hover:bg-sky-400/10 sm:p-1.5">💬</span>
+              <span className="hidden min-[400px]:inline">Support</span>
             </Link>
 
             <button
               onClick={toggleVouch}
-              className={`group flex items-center gap-1.5 text-sm transition ${
+              className={`group flex min-w-0 items-center gap-1 text-xs transition sm:gap-1.5 sm:text-sm ${
                 vouched ? "text-rose-400" : "hover:text-rose-400"
               }`}
               title="Vouch — I believe this cause is real"
             >
-              <span className="rounded-full p-1.5 group-hover:bg-rose-400/10">
+              <span className="rounded-full p-1 group-hover:bg-rose-400/10 sm:p-1.5">
                 {vouched ? "🤝" : "🫱"}
               </span>
-              {vouchCount} vouch{vouchCount === 1 ? "" : "es"}
+              <span className="truncate">
+                {vouchCount}
+                <span className="hidden min-[400px]:inline"> vouch{vouchCount === 1 ? "" : "es"}</span>
+              </span>
             </button>
 
             <button
               onClick={share}
-              className="group flex items-center gap-1.5 text-sm transition hover:text-accent"
+              className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-accent sm:gap-1.5 sm:text-sm"
               title="Share link — donors don’t need the app"
             >
-              <span className="rounded-full p-1.5 group-hover:bg-accent/10">🔗</span>
-              {copied ? "Copied!" : "Share"}
+              <span className="rounded-full p-1 group-hover:bg-accent/10 sm:p-1.5">🔗</span>
+              <span className="hidden min-[400px]:inline">{copied ? "Copied!" : "Share"}</span>
+              {copied && <span className="min-[400px]:hidden">✓</span>}
             </button>
 
             <button
               onClick={() => setDonating(true)}
-              className="rounded-full bg-accent px-5 py-1.5 text-sm font-bold text-black transition hover:bg-accent/90"
+              className="shrink-0 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-black transition hover:bg-accent/90 sm:px-5 sm:text-sm"
             >
               Donate
             </button>

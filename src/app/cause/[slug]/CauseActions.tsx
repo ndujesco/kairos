@@ -25,7 +25,7 @@ export default function CauseActions({
   }
 
   return (
-    <div className="mt-4 flex gap-2">
+    <div className="mt-4 flex flex-col gap-2 sm:flex-row">
       {!completed && (
         <button
           onClick={() => setDonating(true)}
