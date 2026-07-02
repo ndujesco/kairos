@@ -63,18 +63,33 @@ export default function CreateWizard({
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, thinking]);
 
-  async function interviewTurn(transcript: Msg[]) {
-    const res = await fetch("/api/ai/interview", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: transcript.map(({ from, text }) => ({ from, text })) }),
-    });
-    return res.json() as Promise<{
-      reply: string;
-      done: boolean;
-      extracted: Extracted | null;
-      checks: Check[] | null;
-    }>;
+  type Turn = {
+    reply: string;
+    done: boolean;
+    extracted: Extracted | null;
+    checks: Check[] | null;
+  };
+
+  async function interviewTurn(transcript: Msg[]): Promise<Turn> {
+    try {
+      const res = await fetch("/api/ai/interview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: transcript.map(({ from, text }) => ({ from, text })) }),
+        signal: AbortSignal.timeout(45_000), // don't hang forever on a dead connection
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return (await res.json()) as Turn;
+    } catch {
+      // never leave the chat stuck on "typing…" - surface a retryable message
+      return {
+        reply:
+          "Sorry, I lost connection for a moment. Please send that last message again and we'll continue.",
+        done: false,
+        extracted: null,
+        checks: null,
+      };
+    }
   }
 
   // kick off the interview

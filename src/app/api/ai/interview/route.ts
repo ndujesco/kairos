@@ -139,6 +139,18 @@ export async function POST(req: NextRequest) {
   const { messages } = (await req.json()) as { messages: ChatMsg[] };
   const chat: ChatMsg[] = Array.isArray(messages) ? messages : [];
 
+  // the opener never needs the AI - serve it instantly so the chat feels alive
+  if (chat.filter((m) => m.from === "me").length === 0) {
+    return NextResponse.json({
+      reply:
+        "Hi, I'm the Kairos intake assistant 🤝. Let's build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
+      done: false,
+      extracted: null,
+      checks: null,
+      source: "instant",
+    });
+  }
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({ ...fallbackTurn(chat), source: "scripted" });
   }
@@ -159,12 +171,12 @@ export async function POST(req: NextRequest) {
     }
 
     const response = await client.messages.parse({
-      model: "claude-opus-4-8",
-      max_tokens: 4000,
+      // Haiku 4.5: fastest Claude model - demo needs snappy replies over depth
+      model: "claude-haiku-4-5",
+      max_tokens: 2500,
       system: SYSTEM,
       messages: history,
       output_config: {
-        effort: "low", // keep the chat snappy for live use
         format: zodOutputFormat(InterviewTurn),
       },
     });

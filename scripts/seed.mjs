@@ -28,9 +28,12 @@ async function main() {
   const db = mongoose.connection.db;
 
   console.log("→ clearing old data…");
-  for (const c of ["users", "causes", "donations", "disbursements", "notifications", "comments"]) {
+  for (const c of ["causes", "donations", "disbursements", "notifications", "comments"]) {
     await db.collection(c).deleteMany({});
   }
+  // only replace the seeded personas - accounts people created via signup survive reseeds
+  const PERSONA_HANDLES = ["ugo", "abby", "amina_gives", "chiamaka", "david_outreach", "hopehaven"];
+  await db.collection("users").deleteMany({ handle: { $in: PERSONA_HANDLES } });
 
   const oid = () => new mongoose.Types.ObjectId();
 

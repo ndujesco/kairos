@@ -63,20 +63,30 @@ export default function Sidebar({
         </Link>
       </div>
 
-      <form action="/api/auth/logout" method="POST">
-        <button
-          type="submit"
-          className="flex w-full items-center gap-3 rounded-full p-3 text-left transition hover:bg-white/10"
-          title="Switch account"
+      <div className="flex items-center gap-1">
+        <Link
+          href={`/profile/${user.handle}`}
+          className="flex min-w-0 flex-1 items-center gap-3 rounded-full p-3 transition hover:bg-white/10"
+          title="Your profile"
         >
           <Avatar emoji={user.emoji} color={user.avatarColor} size={10} />
           <span className="hidden min-w-0 xl:block">
-            <span className="block truncate font-bold text-[15px]">{user.name}</span>
+            <span className="block truncate text-[15px] font-bold">{user.name}</span>
             <span className="block truncate text-sm text-muted">@{user.handle}</span>
           </span>
-          <span className="ml-auto hidden text-muted xl:block">⋯</span>
-        </button>
-      </form>
+        </Link>
+        <form action="/api/auth/logout" method="POST" className="hidden shrink-0 xl:block">
+          <button
+            type="submit"
+            title="Log out"
+            className="rounded-full p-3 text-muted transition hover:bg-rose-400/10 hover:text-rose-400"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+              <path d="M16 13v-2H7V8l-5 4 5 4v-3h9zm4-10h-9v2h9v14h-9v2h9c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+            </svg>
+          </button>
+        </form>
+      </div>
     </header>
   );
 }
