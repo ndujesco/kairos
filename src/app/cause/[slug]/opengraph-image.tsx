@@ -106,10 +106,10 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
                 <span style={{ fontSize: 28, color: "#ffffff", fontWeight: 700 }}>
                   {cause?.organizer?.name ?? "Verified organizer"}
                 </span>
-                <span style={{ fontSize: 24, color: "#00ba7c" }}>✅ verified</span>
+                <span style={{ fontSize: 24, color: "#00ba7c" }}>verified</span>
               </div>
               <span style={{ fontSize: 22, color: "#71767b" }}>
-                escrowed · vendor-paid · every donor receipted
+                held in escrow · paid to verified vendors
               </span>
             </div>
           </div>

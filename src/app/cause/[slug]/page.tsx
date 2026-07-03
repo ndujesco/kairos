@@ -19,7 +19,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   if (!cause) return { title: "Cause not found" };
 
   const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
-  const description = `${cause.summary} · ₦${cause.raised.toLocaleString()} raised of ₦${cause.goal.toLocaleString()} (${pct}%) · organized by ${cause.organizer.name} · every naira escrowed & receipted on Kairos.`;
+  const description = `${cause.summary} · ₦${cause.raised.toLocaleString()} raised of ₦${cause.goal.toLocaleString()} (${pct}%) · organized by ${cause.organizer.name} on Kairos.`;
 
   return {
     title: cause.title,
@@ -66,7 +66,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
     ...donations.map((d) => ({
       kind: "in" as const,
       at: new Date(d.createdAt),
-      label: d.donor ? `@${d.donor.handle} donated` : "Donation",
+      label: d.anonymous ? "Anonymous donation" : d.donor ? `@${d.donor.handle} donated` : "Donation",
       amount: d.amount,
     })),
     ...disbursements.map((d) => ({
@@ -112,7 +112,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
         </div>
         {cause.status === "completed" ? (
           <span className="rounded-full bg-accent/15 px-3 py-1 text-sm font-bold text-accent">
-            ✓ Completed
+            Completed
           </span>
         ) : cause.status === "funded" ? (
           <span className="rounded-full bg-sky-500/15 px-3 py-1 text-sm font-bold text-sky-400">
@@ -141,9 +141,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
         </div>
         <ProgressBar raised={cause.raised} goal={cause.goal} />
         <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-muted">
-          <span>🔒 {naira(cause.escrowBalance)} currently in escrow</span>
+          <span>{naira(cause.escrowBalance)} currently in escrow</span>
           <span>
-            🤝 {cause.vouches?.length ?? 0} independent vouch{(cause.vouches?.length ?? 0) === 1 ? "" : "es"}
+            {cause.vouches?.length ?? 0} independent vouch{(cause.vouches?.length ?? 0) === 1 ? "" : "es"}
           </span>
         </div>
         <CauseActions
@@ -157,30 +157,40 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
 
       {/* AI verification */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">🛡️ Verification</h2>
+        <h2 className="font-extrabold">Verification</h2>
         <ul className="mt-2 flex flex-col gap-1.5 text-sm">
-          <li className="flex items-center gap-2 text-accent">
-            ✓ <span className="text-foreground">Organizer identity verified ({cause.organizer.verified?.method ?? "BVN"})</span>
+          <li className="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+            </svg>
+            <span>Organizer identity verified ({cause.organizer.verified?.method ?? "BVN"})</span>
           </li>
           {cause.evidence.map((e, i) => (
-            <li key={i} className="flex items-center gap-2 text-accent">
-              ✓{" "}
-              <span className="text-foreground">
+            <li key={i} className="flex items-start gap-2">
+              <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              <span>
                 {e.label}{" "}
-                <span className="text-muted"> - {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
+                <span className="text-muted">
+                  {" "}- {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
                 </span>
               </span>
             </li>
           ))}
-          <li className="flex items-center gap-2 text-accent">
-            ✓ <span className="text-foreground">AI fraud screen passed - no image reuse or timeline contradictions</span>
+          <li className="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+            </svg>
+            <span>Fraud screen passed - no image reuse or timeline contradictions found</span>
           </li>
         </ul>
       </section>
 
       {/* itemized budget */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">📋 Itemized budget - where every naira goes</h2>
+        <h2 className="font-extrabold">Itemized budget</h2>
+        <p className="mt-0.5 text-[13px] text-muted">Each line is paid to a named vendor, not the organizer.</p>
         <div className="mt-3 flex flex-col gap-3">
           {cause.budget.map((b, i) => {
             const done = b.spent >= b.amount;
@@ -194,16 +204,16 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                   </p>
                 </div>
                 <p className="mt-0.5 text-sm text-muted">
-                  → {b.vendor.name}{" "}
+                  Paid to {b.vendor.name}{" "}
                   {b.vendor.verified && (
-                    <span className="text-accent">✓ verified vendor</span>
+                    <span className="text-accent">verified</span>
                   )}{" "}
                   · acct {b.vendor.account}
                 </p>
                 <div className="mt-2">
                   <ProgressBar raised={b.spent} goal={b.amount} />
                 </div>
-                {done && <p className="mt-1 text-[13px] font-bold text-accent">Paid in full ✓</p>}
+                {done && <p className="mt-1 text-[13px] font-bold text-accent">Paid in full</p>}
               </div>
             );
           })}
@@ -217,7 +227,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       {/* receipts */}
       {disbursements.length > 0 && (
         <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-          <h2 className="font-extrabold">🧾 Receipts</h2>
+          <h2 className="font-extrabold">Receipts</h2>
           <div className="mt-3 flex flex-col gap-3">
             {disbursements.map((d) => (
               <div
@@ -254,7 +264,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       {/* updates */}
       {cause.updates?.length > 0 && (
         <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-          <h2 className="font-extrabold">📸 Updates from the field</h2>
+          <h2 className="font-extrabold">Updates</h2>
           <div className="mt-3 flex flex-col gap-4">
             {cause.updates.map((u, i) => (
               <div key={i}>
@@ -280,7 +290,8 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
 
       {/* public ledger */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">📖 Public ledger - the full money story</h2>
+        <h2 className="font-extrabold">Public ledger</h2>
+        <p className="mt-0.5 text-[13px] text-muted">Every naira in and out of this cause.</p>
         <div className="mt-3 flex flex-col">
           {ledger.length === 0 && <p className="text-sm text-muted">No transactions yet.</p>}
           {ledger.map((l, i) => (
@@ -309,7 +320,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
 
       {/* words of support */}
       <section className="mx-4 my-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">💬 Words of support</h2>
+        <h2 className="font-extrabold">Words of support</h2>
         {viewer && <CommentForm causeId={String(cause._id)} />}
         <div className="mt-3 flex flex-col gap-3">
           {comments.map((c) => (

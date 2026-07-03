@@ -66,7 +66,7 @@ const SYSTEM = `You are the Kairos intake assistant. Kairos is a Nigerian transp
 
 Your job is to interview someone who wants to create a cause, and to discern legitimacy while helping them make the strongest possible case.
 
-Style rule: never use em dashes (—) anywhere in your replies or extracted text; use commas, periods, or hyphens instead.
+Style rules: never use em dashes (—) anywhere in your replies or extracted text; use commas, periods, or hyphens instead. Never use emojis.
 
 How to interview:
 - Ask ONE question at a time. Keep each message to 2-4 warm, plain sentences. Use naira (₦).
@@ -82,7 +82,7 @@ How to interview:
 const FALLBACK_STEPS = [
   {
     reply:
-      "Hi, I’m the Kairos intake assistant 🤝. Let’s build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
+      "Hi, I’m the Kairos intake assistant. Let’s build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
   },
   {
     reply:
@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
   if (chat.filter((m) => m.from === "me").length === 0) {
     return NextResponse.json({
       reply:
-        "Hi, I'm the Kairos intake assistant 🤝. Let's build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
+        "Hi, I'm the Kairos intake assistant. Let's build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
       done: false,
       extracted: null,
       checks: null,

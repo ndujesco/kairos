@@ -112,7 +112,11 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
               className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-sky-400 sm:gap-1.5 sm:text-sm"
               title="Words of support"
             >
-              <span className="rounded-full p-1 group-hover:bg-sky-400/10 sm:p-1.5">💬</span>
+              <span className="rounded-full p-1 group-hover:bg-sky-400/10 sm:p-1.5">
+                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+                </svg>
+              </span>
               <span className="hidden min-[400px]:inline">Support</span>
             </Link>
 
@@ -121,10 +125,18 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
               className={`group flex min-w-0 items-center gap-1 text-xs transition sm:gap-1.5 sm:text-sm ${
                 vouched ? "text-rose-400" : "hover:text-rose-400"
               }`}
-              title="Vouch - I believe this cause is real"
+              title="Vouch for this cause"
             >
               <span className="rounded-full p-1 group-hover:bg-rose-400/10 sm:p-1.5">
-                {vouched ? "🤝" : "🫱"}
+                {vouched ? (
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current">
+                    <path d="M1 21h4V9H1v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current">
+                    <path d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z" />
+                  </svg>
+                )}
               </span>
               <span className="truncate">
                 {vouchCount}
@@ -135,16 +147,20 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
             <button
               onClick={share}
               className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-accent sm:gap-1.5 sm:text-sm"
-              title="Share link - donors don’t need the app"
+              title="Copy link, anyone can donate without the app"
             >
-              <span className="rounded-full p-1 group-hover:bg-accent/10 sm:p-1.5">🔗</span>
-              <span className="hidden min-[400px]:inline">{copied ? "Copied!" : "Share"}</span>
-              {copied && <span className="min-[400px]:hidden">✓</span>}
+              <span className="rounded-full p-1 group-hover:bg-accent/10 sm:p-1.5">
+                <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current">
+                  <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+                </svg>
+              </span>
+              <span className="hidden min-[400px]:inline">{copied ? "Copied" : "Share"}</span>
+              {copied && <span className="min-[400px]:hidden">Copied</span>}
             </button>
 
             {fullyFunded ? (
               <span className="shrink-0 rounded-full bg-accent/15 px-4 py-1.5 text-xs font-bold text-accent sm:text-sm">
-                Funded ✓
+                Funded
               </span>
             ) : (
               <button

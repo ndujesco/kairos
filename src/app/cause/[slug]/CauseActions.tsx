@@ -32,7 +32,7 @@ export default function CauseActions({
     <div className="mt-4 flex flex-col gap-2 sm:flex-row">
       {fullyFunded ? (
         <div className="flex flex-1 items-center justify-center rounded-full bg-accent/15 py-2.5 text-center font-bold text-accent">
-          ✓ Fully funded - no more donations needed
+          Fully funded
         </div>
       ) : (
         <button
@@ -45,9 +45,9 @@ export default function CauseActions({
       <button
         onClick={share}
         className="flex-1 rounded-full border border-line py-2.5 font-bold transition hover:bg-white/5"
-        title="Anyone with this link can donate - no app needed"
+        title="Anyone with this link can donate, no app needed"
       >
-        {copied ? "Link copied ✓" : "🔗 Copy link"}
+        {copied ? "Link copied" : "Copy link"}
       </button>
       {donating && (
         <DonateModal

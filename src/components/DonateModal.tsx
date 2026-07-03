@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const PRESETS = [1000, 2000, 5000, 7000, 10000, 25000];
@@ -23,19 +23,14 @@ export default function DonateModal({
   const router = useRouter();
   const [amount, setAmount] = useState<number>(7000);
   const [custom, setCustom] = useState("");
+  const [anonymous, setAnonymous] = useState(false);
   const [stage, setStage] = useState<"amount" | "gateway" | "confirming" | "done">("amount");
   const [error, setError] = useState("");
 
   const finalAmount = custom ? parseInt(custom.replace(/\D/g, ""), 10) || 0 : amount;
 
-  // stable fake checkout details for this session
-  const checkout = useMemo(
-    () => ({
-      account: String(9_000_000_000 + Math.floor(Math.random() * 999_999_999)),
-      reference: "KAI-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
-    }),
-    []
-  );
+  // stable fake checkout details, generated once when checkout starts
+  const [checkout, setCheckout] = useState<{ account: string; reference: string } | null>(null);
 
   function toGateway() {
     if (finalAmount < 100) {
@@ -49,6 +44,13 @@ export default function DonateModal({
       return;
     }
     setError("");
+    setCheckout(
+      (c) =>
+        c ?? {
+          account: String(9_000_000_000 + Math.floor(Math.random() * 999_999_999)),
+          reference: "KAI-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+        }
+    );
     setStage("gateway");
   }
 
@@ -58,7 +60,7 @@ export default function DonateModal({
     const res = await fetch(`/api/causes/${causeId}/donate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: finalAmount }),
+      body: JSON.stringify({ amount: finalAmount, anonymous }),
     });
     if (!res.ok) {
       const j = await res.json().catch(() => ({}));
@@ -119,10 +121,37 @@ export default function DonateModal({
               className="mb-4 w-full rounded-xl border border-line bg-transparent px-4 py-3 outline-none placeholder:text-muted focus:border-accent"
             />
 
-            <div className="mb-4 rounded-xl border border-line bg-white/5 p-3 text-[13px] text-muted">
-              🔒 Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b> - not the organizer’s account. It is only ever paid out to verified vendors, and you’ll
-              get a receipt for your exact share of every payment.
+            <div className="mb-3 rounded-xl border border-line bg-white/5 p-3 text-[13px] leading-snug text-muted">
+              Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b>,
+              not the organizer&rsquo;s account. It is only paid out to verified vendors, and you
+              get a receipt for your share of every payment.
             </div>
+
+            <label className="mb-4 flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-line p-3">
+              <span>
+                <span className="block text-sm font-bold">Donate anonymously</span>
+                <span className="mt-0.5 block text-[13px] leading-snug text-muted">
+                  Your name won&rsquo;t appear on the cause&rsquo;s public ledger. You still get
+                  your receipts.
+                </span>
+              </span>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={anonymous}
+                onClick={() => setAnonymous(!anonymous)}
+                className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+                  anonymous ? "bg-accent" : "bg-white/15"
+                }`}
+              >
+                <span
+                  className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-transform ${
+                    anonymous ? "translate-x-[22px]" : "translate-x-0.5"
+                  }`}
+                  style={{ left: 0 }}
+                />
+              </button>
+            </label>
 
             {error && <p className="mb-3 text-sm text-rose-400">{error}</p>}
 
@@ -160,11 +189,11 @@ export default function DonateModal({
               </div>
               <div className="flex justify-between">
                 <span className="text-muted">Account number</span>
-                <b className="tracking-wider">{checkout.account}</b>
+                <b className="tracking-wider">{checkout?.account}</b>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted">Account name</span>
-                <b>KAIROS ESCROW / {checkout.reference}</b>
+                <b>KAIROS ESCROW / {checkout?.reference}</b>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted">Amount</span>
@@ -195,21 +224,22 @@ export default function DonateModal({
           <div className="flex flex-col items-center gap-4 p-10">
             <div className="h-10 w-10 animate-spin rounded-full border-[3px] border-line border-t-accent" />
             <p className="animate-pulse-soft text-muted">Confirming your transfer…</p>
-            <p className="font-mono text-[12px] text-muted">{checkout.reference}</p>
+            <p className="font-mono text-[12px] text-muted">{checkout?.reference}</p>
           </div>
         )}
 
         {/* ------------------------------- done ------------------------------- */}
         {stage === "done" && (
           <div className="flex flex-col items-center gap-3 p-8 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-3xl">
-              ✅
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/15 text-accent">
+              <svg viewBox="0 0 24 24" className="h-8 w-8 fill-current">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
             </div>
-            <h2 className="text-xl font-extrabold">Payment received - you’re in escrow</h2>
-            <p className="text-sm text-muted">
-              {naira(finalAmount)} is now held safely for this cause. The moment it moves - to a
-              hospital, a vendor, a supplier - you’ll get an alert showing exactly what{" "}
-              <i>your</i> money did.
+            <h2 className="text-xl font-extrabold">Donation received</h2>
+            <p className="text-sm leading-snug text-muted">
+              {naira(finalAmount)} is now held in escrow for this cause. Whenever it is paid out to
+              a vendor, you get a notification showing your share of the payment.
             </p>
             <button
               onClick={onClose}

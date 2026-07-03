@@ -45,12 +45,20 @@ export default async function RightRail() {
       </section>
 
       <section className="rounded-2xl border border-line p-4">
-        <h2 className="text-xl font-extrabold">Why trust Kairos?</h2>
-        <ul className="mt-2 flex flex-col gap-2 text-[14px] text-muted">
-          <li>🔒 Funds sit in escrow - organizers can’t withdraw cash.</li>
-          <li>🏥 We pay verified vendors directly, never personal accounts.</li>
-          <li>🧾 Every payment comes back to you as a receipt, sliced to your share.</li>
-          <li>🪪 Every organizer is BVN/NIN verified. One person, one reputation.</li>
+        <h2 className="text-xl font-extrabold">How Kairos works</h2>
+        <ul className="mt-3 flex flex-col gap-2.5 text-[14px] leading-snug text-muted">
+          <li className="border-l-2 border-accent/60 pl-3">
+            Donations sit in escrow. Organizers can&rsquo;t withdraw cash.
+          </li>
+          <li className="border-l-2 border-accent/60 pl-3">
+            Payments go to verified vendors directly, never personal accounts.
+          </li>
+          <li className="border-l-2 border-accent/60 pl-3">
+            Every payment comes back to you as a receipt for your share.
+          </li>
+          <li className="border-l-2 border-accent/60 pl-3">
+            Every organizer is BVN or NIN verified. One person, one record.
+          </li>
         </ul>
       </section>
 

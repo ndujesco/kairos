@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s · Kairos",
   },
   description:
-    "Give with proof, not faith. Donations are held in escrow, paid directly to verified vendors, and every donor sees exactly what their naira did.",
+    "Donations are held in escrow, paid directly to verified vendors, and every donor gets a receipt for their share of each payment.",
   applicationName: "Kairos",
   keywords: [
     "donate",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     siteName: "Kairos",
     title: "Kairos - Transparent Giving",
     description:
-      "Give with proof, not faith. Every naira watched until it arrives at the need it was given for.",
+      "Donations held in escrow, paid directly to verified vendors, with a receipt for every donor.",
     locale: "en_NG",
   },
   twitter: {
     card: "summary_large_image",
     title: "Kairos - Transparent Giving",
     description:
-      "Give with proof, not faith. Every naira watched until it arrives at the need it was given for.",
+      "Donations held in escrow, paid directly to verified vendors, with a receipt for every donor.",
   },
 };
 

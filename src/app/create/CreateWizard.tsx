@@ -360,7 +360,7 @@ export default function CreateWizard({
                   key={i}
                   className="flex items-center gap-1 rounded-full border border-line bg-white/5 px-3 py-1 text-sm"
                 >
-                  📎 {ev}
+                  {ev}
                   <button
                     onClick={() => setEvidence(evidence.filter((_, j) => j !== i))}
                     className="ml-1 text-muted hover:text-rose-400"
@@ -403,7 +403,7 @@ export default function CreateWizard({
       {/* ---------------------- STAGE 3: FRAUD SCREEN ---------------------- */}
       {(stage === "checks" || stage === "publishing") && (
         <div className="flex flex-col gap-3 p-6">
-          <h2 className="text-lg font-extrabold">🛡️ Screening “{title}”</h2>
+          <h2 className="text-lg font-extrabold">Screening “{title}”</h2>
           {checks.map((c, i) => (
             <div
               key={i}
@@ -412,7 +412,9 @@ export default function CreateWizard({
               }`}
             >
               {i < checksShown ? (
-                <span className="text-accent">✓</span>
+                <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current text-accent">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
               ) : (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-line border-t-accent" />
               )}

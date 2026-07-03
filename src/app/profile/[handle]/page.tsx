@@ -18,9 +18,7 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
   if (!user) return { title: "Profile not found" };
   return {
     title: `${user.name} (@${user.handle})`,
-    description:
-      user.bio ??
-      `${user.name} on Kairos - verified identity, transparent causes, every naira receipted.`,
+    description: user.bio ?? `${user.name} on Kairos - verified identity, transparent causes.`,
     openGraph: {
       type: "profile",
       siteName: "Kairos",
@@ -105,8 +103,7 @@ export default async function ProfilePage(props: { params: Promise<{ handle: str
           </span>
         </div>
         <p className="mt-2 text-[13px] text-muted">
-          🪪 One verified identity · accountable record since{" "}
-          {new Date(user.createdAt).getFullYear()}
+          Verified identity · on record since {new Date(user.createdAt).getFullYear()}
         </p>
       </div>
 

@@ -8,7 +8,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
   const { id } = await ctx.params;
-  const { amount } = await req.json();
+  const { amount, anonymous } = await req.json();
   const amt = Math.floor(Number(amount));
   if (!amt || amt < 100) return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
 
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
 
   const already = await Donation.exists({ cause: cause._id, donor: user._id });
 
-  await Donation.create({ cause: cause._id, donor: user._id, amount: amt });
+  await Donation.create({ cause: cause._id, donor: user._id, amount: amt, anonymous: Boolean(anonymous) });
   cause.raised += amt;
   cause.escrowBalance += amt;
   if (!already) cause.donorCount += 1;
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     user: cause.organizer,
     type: "donation_received",
     title: "New donation in escrow",
-    body: `@${user.handle} put ₦${amt.toLocaleString()} into escrow for “${cause.title}”.`,
+    body: `${anonymous ? "An anonymous donor" : `@${user.handle}`} put ₦${amt.toLocaleString()} into escrow for “${cause.title}”.`,
     causeSlug: cause.slug,
   });
 

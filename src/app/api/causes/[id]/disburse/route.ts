@@ -66,7 +66,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const notifications = [...byDonor.entries()].map(([donorId, donorTotal]) => ({
     user: donorId,
     type: "money_moved" as const,
-    title: "Your donation just moved 💸",
+    title: "Your donation was paid out",
     body: `₦${Math.round(donorTotal * pct).toLocaleString()} of your ₦${donorTotal.toLocaleString()} was paid to ${item.vendor.name} for “${item.label}” (Invoice ${invoiceNo}).`,
     causeSlug: cause.slug,
     detail: {
@@ -89,8 +89,8 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     await Notification.create({
       user: cause.organizer,
       type: "milestone",
-      title: "Cause completed 🎉",
-      body: `“${cause.title}” is fully executed with receipts. Your trust level went up - you can now raise bigger causes.`,
+      title: "Cause completed",
+      body: `“${cause.title}” is fully paid out, with receipts. Your trust level went up, so you can now raise more.`,
       causeSlug: cause.slug,
     });
   }
