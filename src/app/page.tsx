@@ -8,6 +8,10 @@ import type { IUser } from "@/lib/models";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default async function Home() {
   const user = await getSessionUser();
   if (!user) redirect("/login");

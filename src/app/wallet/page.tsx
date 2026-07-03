@@ -8,6 +8,11 @@ import DisburseForm from "./DisburseForm";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Wallet",
+  robots: { index: false },
+};
+
 const STATUS_STYLES: Record<string, { label: string; cls: string }> = {
   live: { label: "Live", cls: "bg-white/10 text-foreground" },
   funded: { label: "Funded", cls: "bg-sky-500/15 text-sky-400" },

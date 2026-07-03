@@ -19,9 +19,16 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
   return {
     title: `${user.name} (@${user.handle})`,
     description: user.bio ?? `${user.name} on Kairos - verified identity, transparent causes.`,
+    alternates: { canonical: `/profile/${user.handle}` },
     openGraph: {
       type: "profile",
       siteName: "Kairos",
+      title: `${user.name} (@${user.handle}) · Kairos`,
+      description: user.bio ?? `${user.name} on Kairos - verified, transparent giving.`,
+      url: `/profile/${user.handle}`,
+    },
+    twitter: {
+      card: "summary_large_image",
       title: `${user.name} (@${user.handle}) · Kairos`,
       description: user.bio ?? `${user.name} on Kairos - verified, transparent giving.`,
     },

@@ -4,6 +4,11 @@ import CreateWizard from "./CreateWizard";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Start a Cause",
+  robots: { index: false },
+};
+
 export default async function CreatePage() {
   const user = await getSessionUser();
   if (!user) redirect("/login");

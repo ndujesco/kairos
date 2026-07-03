@@ -8,6 +8,13 @@ import CauseCard from "@/components/CauseCard";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Explore causes",
+  description:
+    "Browse verified causes on Kairos - medical, education, food and shelter, emergencies, and community projects across Nigeria.",
+  alternates: { canonical: "/explore" },
+};
+
 const CATEGORIES = ["All", "Medical", "Prison Outreach", "Education", "Food & Shelter", "Emergency", "Community"];
 
 export default async function ExplorePage(props: {

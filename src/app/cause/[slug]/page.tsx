@@ -24,6 +24,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   return {
     title: cause.title,
     description: cause.summary,
+    alternates: { canonical: `/cause/${cause.slug}` },
     openGraph: {
       type: "article",
       siteName: "Kairos",

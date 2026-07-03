@@ -24,6 +24,7 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
   const cause = await Cause.findOne({ slug }).populate<{ organizer: IUser }>("organizer").lean();
 
   const [c1, c2] = GRADIENTS[cause?.coverColor ?? "emerald"] ?? GRADIENTS.emerald;
+  const [a1, a2] = GRADIENTS[cause?.organizer?.avatarColor ?? "emerald"] ?? GRADIENTS.emerald;
   const pct = cause ? Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100)) : 0;
   const naira = (n: number) => "₦" + Math.round(n).toLocaleString("en-NG");
 
@@ -38,19 +39,48 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
           fontFamily: "Noto Sans",
         }}
       >
-        {/* left color band with the cause emoji */}
+        {/* left band: the organizer's avatar, drawn like it appears in the app */}
         <div
           style={{
             width: 380,
             height: "100%",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            gap: 28,
             background: `linear-gradient(135deg, ${c1}, ${c2})`,
-            fontSize: 190,
           }}
         >
-          {cause?.coverEmoji ?? "💚"}
+          <div
+            style={{
+              width: 240,
+              height: 240,
+              borderRadius: 999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: `linear-gradient(135deg, ${a1}, ${a2})`,
+              border: "8px solid rgba(0,0,0,0.55)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
+              fontSize: 130,
+            }}
+          >
+            {cause?.organizer?.emoji ?? "🙂"}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              padding: "8px 22px",
+              borderRadius: 999,
+              background: "rgba(0,0,0,0.55)",
+              color: "#ffffff",
+              fontSize: 24,
+              fontWeight: 700,
+            }}
+          >
+            @{cause?.organizer?.handle ?? "kairos"}
+          </div>
         </div>
 
         {/* right content */}
@@ -65,7 +95,9 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
         >
           {/* brand */}
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <span style={{ fontSize: 44, color: "#00ba7c", fontWeight: 700 }}>⏳</span>
+            <svg viewBox="0 0 24 24" width={40} height={40} fill="#00ba7c">
+              <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zM8 7.5V4h8v3.5l-4 4-4-4z" />
+            </svg>
             <span style={{ fontSize: 34, color: "#ffffff", fontWeight: 700 }}>Kairos</span>
             <span style={{ fontSize: 24, color: "#71767b", marginLeft: 8 }}>
               give with proof, not faith
@@ -86,32 +118,16 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
           </div>
 
           {/* organizer */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 999,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: `linear-gradient(135deg, ${c1}, ${c2})`,
-                fontSize: 34,
-              }}
-            >
-              {cause?.organizer?.emoji ?? "🙂"}
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 28, color: "#ffffff", fontWeight: 700 }}>
-                  {cause?.organizer?.name ?? "Verified organizer"}
-                </span>
-                <span style={{ fontSize: 24, color: "#00ba7c" }}>verified</span>
-              </div>
-              <span style={{ fontSize: 22, color: "#71767b" }}>
-                held in escrow · paid to verified vendors
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 28, color: "#ffffff", fontWeight: 700 }}>
+                {cause?.organizer?.name ?? "Verified organizer"}
               </span>
+              <span style={{ fontSize: 24, color: "#00ba7c" }}>verified</span>
             </div>
+            <span style={{ fontSize: 22, color: "#71767b" }}>
+              held in escrow · paid to verified vendors
+            </span>
           </div>
 
           {/* progress */}

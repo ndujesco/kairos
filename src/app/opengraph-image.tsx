@@ -22,7 +22,9 @@ export default async function OgImage() {
           fontFamily: "Noto Sans",
         }}
       >
-        <div style={{ display: "flex", fontSize: 120, color: "#00ba7c", fontWeight: 700 }}>⏳</div>
+        <svg viewBox="0 0 24 24" width={120} height={120} fill="#00ba7c">
+          <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zM8 7.5V4h8v3.5l-4 4-4-4z" />
+        </svg>
         <div style={{ display: "flex", fontSize: 72, color: "#ffffff", fontWeight: 700 }}>
           Kairos
         </div>

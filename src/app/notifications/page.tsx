@@ -7,6 +7,11 @@ import { naira, timeAgo } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Notifications",
+  robots: { index: false },
+};
+
 const ICONS: Record<string, { path: string; cls: string }> = {
   money_moved: {
     path: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z",
