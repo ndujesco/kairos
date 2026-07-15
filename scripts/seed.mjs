@@ -337,7 +337,7 @@ async function main() {
     _id: oid(),
     user: u._id,
     type: "money_moved",
-    title: "Your donation just moved 💸",
+    title: "Your donation was paid out",
     body: `₦${Math.round(amt * pct).toLocaleString()} of your ₦${amt.toLocaleString()} was paid to LUTH - Lagos University Teaching Hospital for “Corrective surgery + implants” (Invoice #0042).`,
     causeSlug: medical.slug,
     detail: {
@@ -356,8 +356,8 @@ async function main() {
   notifications.push(
     {
       _id: oid(), user: david._id, type: "milestone",
-      title: "Cause completed 🎉",
-      body: "“Ikoyi Custodial Centre - first outreach” is fully executed with receipts. Your trust level went up - you can now raise bigger causes.",
+      title: "Cause completed",
+      body: "“Ikoyi Custodial Centre - first outreach” is fully paid out, with receipts. Your trust level went up, so you can now raise more.",
       causeSlug: completed.slug, detail: {}, read: true,
       createdAt: daysAgo(38), updatedAt: daysAgo(38),
     },

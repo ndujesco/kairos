@@ -6,7 +6,7 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 export const maxDuration = 60;
 
 /**
- * The Kairos AI intake interviewer - a real Claude conversation.
+ * The Kairos AI intake interviewer - a real model-driven conversation.
  *
  * The assistant interviews the cause creator, probes for verifiable detail
  * (names, dates, places, documents, vendors), watches for fraud signals, and
@@ -171,7 +171,7 @@ export async function POST(req: NextRequest) {
     }
 
     const response = await client.messages.parse({
-      // Haiku 4.5: fastest Claude model - demo needs snappy replies over depth
+      // small fast model - demo needs snappy replies over depth
       model: "claude-haiku-4-5",
       max_tokens: 2500,
       system: SYSTEM,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
 
     const parsed = response.parsed_output;
     if (!parsed) throw new Error("No parsed output");
-    return NextResponse.json({ ...parsed, source: "claude" });
+    return NextResponse.json({ ...parsed, source: "live" });
   } catch (err) {
     console.error("AI interview falling back to script:", err);
     return NextResponse.json({ ...fallbackTurn(chat), source: "scripted" });

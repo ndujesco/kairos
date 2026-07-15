@@ -13,7 +13,7 @@ An internal trust system caps how much newcomers can raise and unlocks bigger ca
 ## Stack
 
 - **Next.js** (App Router) + **MongoDB** (Mongoose)
-- **Claude (Anthropic API)** powers the AI intake interviewer with structured output
+- **An LLM API** powers the AI intake interviewer with structured output
 - Tailwind CSS, Twitter-style social interface
 
 This is a functioning prototype: escrow accounting, disbursements, per-donor attribution, notifications, vouching, trust levels and the public ledger are real, running code. Identity checks (NIBSS/NIMC), card payments (Paystack/Flutterwave) and file uploads are simulated, each mapping 1:1 to a production Nigerian API.
