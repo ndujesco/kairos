@@ -48,3 +48,11 @@ body {
 .animate-slide-up {
   animation: slide-up 0.25s ease-out;
 }
+
+@keyframes scanline {
+  0%   { top: 12px; }
+  100% { top: calc(100% - 14px); }
+}
+.animate-scanline {
+  animation: scanline 1.1s ease-in-out infinite alternate;
+}

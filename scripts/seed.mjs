@@ -83,6 +83,42 @@ async function main() {
   await db.collection("users").insertMany([ugo, abby, amina, chiamaka, david, ngo]);
   console.log("✓ users");
 
+  /* ------------- cause 0: school fees, the wedge (live, first in feed) ------------- */
+  const schoolfees = {
+    _id: oid(),
+    title: "Keep Tobi in school - final year fees, UNILAG",
+    slug: "keep-tobi-in-school-unilag",
+    summary:
+      "Tobi is in his final year at UNILAG and ₦218,400 short after a fee increase. Kairos pays the Remita reference directly to the university. The money cannot reach me, or him.",
+    story:
+      "Tobi is my cousin. He is in his final year of Mechanical Engineering at UNILAG, two semesters from graduating, and the fee went up this session.\n\nHe has ₦60,000 of it. The balance is ₦218,400 and the portal closes in eleven days. If he does not pay, he sits out a year.\n\nThis is the easiest kind of cause to trust, and that is why we are starting here. He generated a Remita reference on the school portal. That reference belongs to one student, one fee, one university account. Anyone holding it can pay it, and it cannot be redirected to me, to him, or to anybody else. When it is paid, the receipt comes back from UNILAG, not from us.",
+    category: "Education",
+    coverEmoji: "🎓",
+    coverColor: "sky",
+    organizer: abby._id,
+    goal: 218400,
+    raised: 96400,
+    escrowBalance: 96400,
+    donorCount: 7,
+    vouches: [ugo._id, amina._id, chiamaka._id, david._id],
+    budget: [
+      {
+        label: "UNILAG session fee - RRR 280194771532", amount: 218400, spent: 0,
+        vendor: { name: "University of Lagos (Remita RRR 280194771532)", verified: true, account: "Remita biller" },
+      },
+    ],
+    evidence: [
+      { label: "Remita reference from the UNILAG portal", kind: "invoice", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+      { label: "Student ID card", kind: "document", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+      { label: "Fee schedule screenshot", kind: "document", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+    ],
+    updates: [],
+    status: "live",
+    aiVerified: true,
+    createdAt: daysAgo(1),
+    updatedAt: daysAgo(1),
+  };
+
   /* ---------------------- cause 1: medical (live) ----------------------- */
   const medical = {
     _id: oid(),
@@ -103,7 +139,7 @@ async function main() {
     vouches: [ugo._id, amina._id, david._id],
     budget: [
       {
-        label: "Corrective surgery + implants", amount: 850000, spent: 400000,
+        label: "Corrective surgery + implants", amount: 850000, spent: 429800,
         vendor: { name: "LUTH - Lagos University Teaching Hospital", verified: true, account: "•••• 4127" },
       },
       {
@@ -268,7 +304,7 @@ async function main() {
     updatedAt: daysAgo(38),
   };
 
-  await db.collection("causes").insertMany([medical, outreach, shelter, completed]);
+  await db.collection("causes").insertMany([schoolfees, medical, outreach, shelter, completed]);
   console.log("✓ causes");
 
   /* ------------------------------ donations ------------------------------ */
@@ -299,7 +335,7 @@ async function main() {
     {
       _id: oid(), cause: medical._id, budgetLabel: "Corrective surgery + implants",
       vendorName: "LUTH - Lagos University Teaching Hospital", vendorAccount: "•••• 4127",
-      amount: 400000, invoiceNo: "#0042", note: "Surgery deposit - theatre booked for Tuesday",
+      amount: 429800, invoiceNo: "#0042", note: "Surgery deposit - theatre booked for Tuesday",
       createdAt: daysAgo(2, 3), updatedAt: daysAgo(2, 3),
     },
     {
@@ -325,8 +361,8 @@ async function main() {
   console.log("✓ disbursements");
 
   /* ---------------------------- notifications ---------------------------- */
-  // LUTH payment attribution: 400,000 of 614,000 raised → 65% (round to real math)
-  const pct = 400000 / 614000;
+  // LUTH payment attribution: 429,800 of 614,000 raised → 70%, so a ₦7,000 gift shows ₦4,900
+  const pct = 429800 / 614000;
   const medDonors = [
     [ugo, 7000],
     [abby, 50000],
@@ -343,7 +379,7 @@ async function main() {
     detail: {
       yourShare: Math.round(amt * pct),
       yourDonation: amt,
-      totalPaid: 400000,
+      totalPaid: 429800,
       vendor: "LUTH - Lagos University Teaching Hospital",
       invoiceNo: "#0042",
       pct: Math.round(pct * 100),

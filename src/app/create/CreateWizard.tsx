@@ -36,7 +36,23 @@ export default function CreateWizard({
   user: { name: string; emoji: string; raiseLimit: number };
 }) {
   const router = useRouter();
-  const [stage, setStage] = useState<"chat" | "structure" | "checks" | "publishing">("chat");
+  const [stage, setStage] = useState<"chat" | "structure" | "identity" | "checks" | "publishing">("chat");
+  /* identity step */
+  const [nin, setNin] = useState("");
+  const [idState, setIdState] = useState<"idle" | "scanning" | "matched">("idle");
+  const [idScore, setIdScore] = useState(0);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const q = new URLSearchParams(window.location.search).get("stage");
+    if (q === "identity") setStage("identity");
+    if (q === "checks") {
+      setChecks(DEFAULT_CHECKS);
+      setTitle("Help Emeka get surgery at Igbobi");
+      setStage("checks");
+      DEFAULT_CHECKS.forEach((_, i) =>
+        setTimeout(() => setChecksShown(i + 1), 900 + i * 1500));
+    }
+  }, []);
 
   /* chat state */
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -141,6 +157,24 @@ export default function CreateWizard({
 
   const goal = budget.reduce((s, b) => s + (parseInt(b.amount.replace(/\D/g, ""), 10) || 0), 0);
 
+  async function startIdentity() {
+    setStage("identity");
+  }
+
+  async function runFaceCheck() {
+    setIdState("scanning");
+    const vid = document.getElementById("face-clip") as HTMLVideoElement | null;
+    if (vid) { vid.currentTime = 0; vid.play().catch(() => {}); }
+    // the match score climbs while the clip plays, then settles
+    for (let i = 1; i <= 24; i++) {
+      await new Promise((r) => setTimeout(r, 170));
+      setIdScore(Math.min(98, Math.round(i * 4.3)));
+    }
+    setIdState("matched");
+    await new Promise((r) => setTimeout(r, 900));
+    runChecksAndPublish();
+  }
+
   async function runChecksAndPublish() {
     if (!title.trim() || !story.trim()) return setError("Title and story are required.");
     const cleanBudget = budget.filter((b) => b.label.trim() && parseInt(b.amount.replace(/\D/g, ""), 10) > 0);
@@ -195,9 +229,10 @@ export default function CreateWizard({
         <div>
           <h1 className="text-lg font-extrabold">Start a Cause</h1>
           <p className="text-[13px] text-muted">
-            {stage === "chat" && "Step 1 of 3 - tell your story to the intake assistant"}
-            {stage === "structure" && "Step 2 of 3 - the verifiable structure"}
-            {(stage === "checks" || stage === "publishing") && "Step 3 of 3 - AI fraud screening"}
+            {stage === "chat" && "Step 1 of 4 - tell your story to the intake assistant"}
+            {stage === "structure" && "Step 2 of 4 - the verifiable structure"}
+            {stage === "identity" && "Step 3 of 4 - prove who you are"}
+            {(stage === "checks" || stage === "publishing") && "Step 4 of 4 - AI fraud screening"}
           </p>
         </div>
       </div>
@@ -392,18 +427,108 @@ export default function CreateWizard({
           {error && <p className="text-sm text-rose-400">{error}</p>}
 
           <button
-            onClick={runChecksAndPublish}
+            onClick={startIdentity}
             className="rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
           >
-            Run AI verification & publish
+            Continue to identity check
           </button>
         </div>
       )}
 
-      {/* ---------------------- STAGE 3: FRAUD SCREEN ---------------------- */}
+      {/* ------------------- STAGE 3: IDENTITY / FACE CHECK ------------------ */}
+      {stage === "identity" && (
+        <div className="mx-auto w-full max-w-[560px] px-4 py-8">
+          <h2 className="text-xl font-extrabold">Prove it is you</h2>
+          <p className="mt-1 text-[15px] text-muted">
+            You are about to ask strangers for money, so this is the one moment we check
+            who you are. Donors never do this.
+          </p>
+
+          <div className="mt-6 border-b border-line pb-5">
+            <label className="text-[13px] font-bold text-muted">NIN</label>
+            <input
+              value={nin}
+              onChange={(e) => setNin(e.target.value.replace(/\D/g, "").slice(0, 11))}
+              placeholder="11 digits"
+              inputMode="numeric"
+              className="mt-2 w-full rounded-xl border border-line bg-transparent px-4 py-3 text-[15px] outline-none focus:border-accent"
+            />
+            <p className="mt-2 text-[13px] text-muted">
+              Checked through a licensed partner. We store the result, never the number.
+            </p>
+          </div>
+
+          <div className="mt-6 flex gap-5">
+            <div className="relative h-[232px] w-[174px] shrink-0 overflow-hidden rounded-xl border border-line bg-black">
+              <video
+                id="face-clip"
+                poster=""
+                muted
+                loop
+                autoPlay
+                playsInline
+                preload="auto"
+                className="h-full w-full object-cover"
+              >
+                <source src="/demo/face-check.webm" type="video/webm" />
+                <source src="/demo/face-check.mp4" type="video/mp4" />
+              </video>
+              {idState !== "idle" && (
+                <div className="pointer-events-none absolute inset-0">
+                  <div className="absolute inset-x-3 top-3 bottom-3 rounded-lg border-2 border-accent/70" />
+                  {idState === "scanning" && (
+                    <div className="absolute inset-x-3 h-[2px] bg-accent shadow-[0_0_12px_2px] shadow-accent animate-scanline" />
+                  )}
+                </div>
+              )}
+              {idState === "matched" && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/55">
+                  <span className="text-3xl text-accent">✓</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex-1">
+              <p className="text-[13px] font-bold uppercase tracking-wider text-muted">
+                Liveness &amp; face match
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                A number can be bought. A face cannot. We match a live capture against the
+                photograph the registry holds.
+              </p>
+
+              <div className="mt-4 space-y-2 text-[14px]">
+                <Row label="Liveness" ok={idState !== "idle"} note={idState === "idle" ? "waiting" : "live person"} />
+                <Row label="Face match" ok={idState === "matched"} note={idState === "idle" ? "waiting" : idScore + "%"} />
+                <Row label="Name on record" ok={idState === "matched"} note={idState === "matched" ? "exact" : "waiting"} />
+              </div>
+
+              {idState === "idle" && (
+                <button
+                  onClick={runFaceCheck}
+                  disabled={nin.length < 11}
+                  className="mt-5 w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90 disabled:opacity-40"
+                >
+                  Start face check
+                </button>
+              )}
+              {idState === "scanning" && (
+                <p className="mt-5 text-[14px] text-accent animate-pulse-soft">Matching against NIMC record…</p>
+              )}
+              {idState === "matched" && (
+                <p className="mt-5 text-[14px] font-bold text-accent">Identity confirmed. Screening the cause…</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------------- STAGE 4: FRAUD SCREEN ---------------------- */}
       {(stage === "checks" || stage === "publishing") && (
         <div className="flex flex-col gap-3 p-6">
-          <h2 className="text-lg font-extrabold">Screening “{title}”</h2>
+          <h2 className="text-lg font-extrabold">
+            {title ? `Screening “${title}”` : "Screening this cause"}
+          </h2>
           {checks.map((c, i) => (
             <div
               key={i}
@@ -431,6 +556,18 @@ export default function CreateWizard({
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+function Row({ label, ok, note }: { label: string; ok: boolean; note: string }) {
+  return (
+    <div className="flex items-center justify-between border-b border-line/60 pb-2">
+      <span className="text-muted">{label}</span>
+      <span className={ok ? "font-bold text-accent" : "text-muted"}>
+        {ok ? "✓ " : ""}
+        {note}
+      </span>
     </div>
   );
 }
