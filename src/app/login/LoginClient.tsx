@@ -15,8 +15,6 @@ export default function LoginClient() {
 
   // signup fields
   const [name, setName] = useState("");
-  const [idNumber, setIdNumber] = useState("");
-  const [verifying, setVerifying] = useState<"idle" | "checking" | "ok">("idle");
 
   async function signin() {
     if (!handle.trim() || !password) {
@@ -49,16 +47,8 @@ export default function LoginClient() {
       setError("Password must be at least 6 characters.");
       return;
     }
-    if (idNumber.replace(/\D/g, "").length < 11) {
-      setError("Enter a valid 11-digit BVN or NIN.");
-      return;
-    }
     setError("");
     setBusy(true);
-    setVerifying("checking");
-    await new Promise((r) => setTimeout(r, 1800)); // mock NIBSS/NIMC lookup
-    setVerifying("ok");
-    await new Promise((r) => setTimeout(r, 700));
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -67,7 +57,6 @@ export default function LoginClient() {
     if (!res.ok) {
       const j = await res.json().catch(() => ({}));
       setError(j.error || "Signup failed");
-      setVerifying("idle");
       setBusy(false);
       return;
     }
@@ -158,7 +147,7 @@ export default function LoginClient() {
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Full name (as on BVN/NIN)"
+              placeholder="Full name"
               className={inputCls}
             />
             <input
@@ -175,28 +164,6 @@ export default function LoginClient() {
               type="password"
               className={inputCls}
             />
-            <input
-              value={idNumber}
-              onChange={(e) => setIdNumber(e.target.value)}
-              placeholder="BVN or NIN (11 digits)"
-              inputMode="numeric"
-              className={inputCls}
-            />
-
-            {verifying === "checking" && (
-              <div className="flex items-center gap-3 rounded-xl border border-line bg-white/5 p-3 text-sm text-muted">
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-line border-t-accent" />
-                Verifying identity with NIBSS/NIMC…
-              </div>
-            )}
-            {verifying === "ok" && (
-              <div className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent/10 p-3 text-sm text-accent">
-                <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                </svg>
-                Identity verified
-              </div>
-            )}
             {error && <p className="text-sm text-rose-400">{error}</p>}
 
             <button
@@ -204,11 +171,11 @@ export default function LoginClient() {
               disabled={busy}
               className="mt-1 rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90 disabled:opacity-60"
             >
-              {busy ? "Creating account…" : "Verify & create account"}
+              {busy ? "Creating account…" : "Create account"}
             </button>
             <p className="text-[12px] text-muted">
-              Identity check is simulated in this prototype; production uses NIBSS BVN-matching and
-              NIMC NIN lookup.
+              No ID needed to join or to give. We only verify identity when you publish a cause and
+              start asking strangers for money.
             </p>
           </div>
         )}

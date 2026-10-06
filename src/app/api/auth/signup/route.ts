@@ -27,7 +27,9 @@ export async function POST(req: NextRequest) {
     avatarColor: COLORS[Math.floor(Math.random() * COLORS.length)],
     emoji: EMOJI[Math.floor(Math.random() * EMOJI.length)],
     role: "donor",
-    verified: { identity: true, method: "BVN" }, // the mock NIBSS check "passed"
+    // new accounts are unverified: donors never need it, and an organiser is
+    // checked at publish, not at the door
+    verified: { identity: false },
     trustLevel: 1,
     raiseLimit: 500_000, // newcomers start small; grows with completed causes
   });

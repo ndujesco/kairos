@@ -171,6 +171,12 @@ export default function CreateWizard({
       setIdScore(Math.min(98, Math.round(i * 4.3)));
     }
     setIdState("matched");
+    // the check has passed, so record the outcome before the cause is published
+    await fetch("/api/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ method: "NIN" }),
+    }).catch(() => {});
     await new Promise((r) => setTimeout(r, 900));
     runChecksAndPublish();
   }
