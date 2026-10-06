@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Avatar from "./Avatar";
+import KairosMark from "./KairosMark";
 
 const TABS = [
   { href: "/", label: "Home", icon: "M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z" },
@@ -27,8 +28,9 @@ export function MobileTopBar({
 }) {
   return (
     <div className="flex items-center justify-between border-b border-line bg-black px-4 py-2 sm:hidden">
-      <Link href="/" className="text-2xl font-black text-accent" title="Kairos">
-        ⧖ <span className="text-base font-extrabold text-foreground">Kairos</span>
+      <Link href="/" className="flex items-center gap-2 text-accent" title="Kairos">
+        <KairosMark size={22} />
+        <span className="text-base font-extrabold text-foreground">Kairos</span>
       </Link>
       <Link href={`/profile/${user.handle}`} title="Profile">
         <Avatar emoji={user.emoji} color={user.avatarColor} size={8} />

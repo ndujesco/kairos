@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Avatar from "./Avatar";
+import KairosMark from "./KairosMark";
 
 const NAV = [
   { href: "/", label: "Home", icon: "M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z" },
@@ -38,7 +39,7 @@ export default function Sidebar({
           className="mb-1 flex h-12 w-12 items-center justify-center rounded-full text-2xl font-black text-accent hover:bg-accent/10 xl:ml-1"
           title="Kairos"
         >
-          ⧖
+          <KairosMark size={26} />
         </Link>
 
         {NAV.map((item) => (

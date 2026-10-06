@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import KairosMark from "@/components/KairosMark";
 
 export default function LoginClient() {
   const router = useRouter();
@@ -71,7 +72,7 @@ export default function LoginClient() {
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* brand panel */}
       <div className="flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-emerald-950 via-black to-black p-8 md:flex-1 md:gap-6 md:p-10">
-        <span className="text-6xl leading-none text-accent md:text-[120px]">⧖</span>
+        <KairosMark size={120} className="h-16 w-16 text-accent md:h-[120px] md:w-[120px]" />
         <h1 className="max-w-md text-center text-2xl font-extrabold leading-tight md:text-4xl">
           Giving shouldn’t be an act of faith.
         </h1>

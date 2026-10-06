@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import KairosMark from "@/components/KairosMark";
 
 type Msg = { from: "ai" | "me"; text: string; hint?: string };
 type BudgetRow = { label: string; amount: string; vendorName: string };
@@ -256,7 +257,7 @@ export default function CreateWizard({
                       : "rounded-bl-sm border border-line bg-white/5"
                   }`}
                 >
-                  {m.from === "ai" && <span className="mb-1 block text-xs font-bold text-accent">⧖ Kairos AI</span>}
+                  {m.from === "ai" && <span className="mb-1 flex items-center gap-1 text-xs font-bold text-accent"><KairosMark size={12} /> Kairos AI</span>}
                   {m.text}
                   {m.hint && <span className="mt-2 block text-[13px] text-muted">{m.hint}</span>}
                 </div>
