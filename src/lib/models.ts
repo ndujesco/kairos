@@ -6,6 +6,7 @@ export interface IUser {
   _id: Types.ObjectId;
   name: string;
   handle: string;
+  email?: string;          // optional: used only to send receipts
   passwordHash?: string;
   bio?: string;
   avatarColor: string; // gradient key for the mock avatar
@@ -22,6 +23,7 @@ const UserSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
     handle: { type: String, required: true, unique: true },
+    email: { type: String, trim: true, lowercase: true },
     passwordHash: { type: String },
     bio: String,
     avatarColor: { type: String, default: "emerald" },
@@ -46,10 +48,17 @@ export interface IBudgetItem {
   amount: number;
   spent: number;
   vendor: { name: string; verified: boolean; account: string };
+  /* School fees settle against a Remita reference rather than an account
+     number. The reference belongs to one student, one fee and one institution,
+     so it verifies itself and can only ever be paid to the school. */
+  rrr?: string;
+  rrrStudent?: string;
+  rrrMatric?: string;
 }
 
 export interface IEvidence {
   label: string;
+  url?: string;          // the document itself, when one was uploaded
   kind: "photo" | "document" | "invoice";
   checks: { reuse: "clean" | "flagged"; exif: "consistent" | "flagged"; dates: "consistent" | "flagged" };
 }
@@ -107,11 +116,15 @@ const CauseSchema = new Schema<ICause>(
         amount: Number,
         spent: { type: Number, default: 0 },
         vendor: { name: String, verified: { type: Boolean, default: true }, account: String },
+        rrr: String,
+        rrrStudent: String,
+        rrrMatric: String,
       },
     ],
     evidence: [
       {
         label: String,
+        url: String,
         kind: { type: String, enum: ["photo", "document", "invoice"] },
         checks: {
           reuse: { type: String, default: "clean" },

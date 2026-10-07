@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { dbConnect } from "@/lib/db";
 import { Cause, Donation, Disbursement, Notification, User } from "@/lib/models";
 import { getSessionUser } from "@/lib/session";
+import { sendMail, paidOutEmail } from "@/lib/mail";
 
 /**
  * The heart of Kairos: money leaves escrow only toward a named vendor on a
@@ -81,6 +82,30 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     },
   }));
   if (notifications.length) await Notification.insertMany(notifications);
+
+  /* and by email, for the donors who gave us an address */
+  const donors = await User.find(
+    { _id: { $in: [...byDonor.keys()] }, email: { $exists: true, $ne: "" } },
+    { name: 1, email: 1 }
+  );
+  /* After the response. With one handshake per donor this is the difference
+     between an instant receipt and a payout that appears to hang. */
+  after(() => Promise.all(
+    donors.map((d) => {
+      const credited = byDonor.get(String(d._id)) ?? 0;
+      const mail = paidOutEmail({
+        donorName: (d.name || "there").split(" ")[0],
+        share: Math.round(credited * pct),
+        credited,
+        vendor: item.vendor.name,
+        causeTitle: cause.title,
+        causeSlug: cause.slug,
+        invoiceNo,
+        pct: Math.round(pct * 100),
+      });
+      return sendMail(d.email as string, mail.subject, mail.html);
+    })
+  ));
 
   /* ---- trust grows with honest, completed execution ---- */
   if (allSpent) {

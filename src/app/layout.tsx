@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { getSessionUser } from "@/lib/session";
 import Sidebar from "@/components/Sidebar";
+import DesktopAlerts from "@/components/DesktopAlerts";
 import RightRail from "@/components/RightRail";
 import MobileNav, { MobileTopBar } from "@/components/MobileNav";
 
@@ -81,6 +82,7 @@ export default async function RootLayout({
                   avatarColor: user.avatarColor,
                 }}
               />
+              <DesktopAlerts />
               <main className="min-h-screen w-full max-w-[600px] border-line pb-24 sm:border-x sm:pb-0">
                 {children}
               </main>

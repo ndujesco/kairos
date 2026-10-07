@@ -15,6 +15,7 @@ export function toCardData(c: PopulatedCause, viewerId?: string): CauseCardData 
     coverColor: c.coverColor,
     goal: c.goal,
     raised: c.raised,
+    upkeepTaken: c.upkeepTaken ?? 0,
     donorCount: c.donorCount,
     vouchCount: c.vouches?.length ?? 0,
     vouchedByMe: viewerId

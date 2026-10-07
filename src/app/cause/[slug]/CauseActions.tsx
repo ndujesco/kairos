@@ -9,12 +9,14 @@ export default function CauseActions({
   slug,
   completed,
   remaining,
+  upkeepTaken,
 }: {
   causeId: string;
   causeTitle: string;
   slug: string;
   completed: boolean;
   remaining: number;
+  upkeepTaken: number;
 }) {
   const [donating, setDonating] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -54,6 +56,7 @@ export default function CauseActions({
           causeId={causeId}
           causeTitle={causeTitle}
           remaining={remaining}
+          upkeepTaken={upkeepTaken}
           onClose={() => setDonating(false)}
         />
       )}

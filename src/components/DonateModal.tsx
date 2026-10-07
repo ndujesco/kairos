@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { UPKEEP_CAP, UPKEEP_RATE, upkeepFor } from "@/lib/fees";
 
 const PRESETS = [1000, 2000, 5000, 7000, 10000, 25000];
 
@@ -13,11 +14,13 @@ export default function DonateModal({
   causeId,
   causeTitle,
   remaining,
+  upkeepTaken = 0,
   onClose,
 }: {
   causeId: string;
   causeTitle: string;
   remaining: number;
+  upkeepTaken?: number;
   onClose: () => void;
 }) {
   const router = useRouter();
@@ -30,10 +33,9 @@ export default function DonateModal({
   const finalAmount = custom ? parseInt(custom.replace(/\D/g, ""), 10) || 0 : amount;
 
   /* Upkeep: 2% of the gift, capped at ₦5,000 per cause. The donor pays what they
-     chose; this comes off before the money reaches escrow. */
-  const UPKEEP_RATE = 0.02;
-  const UPKEEP_CAP = 5000;
-  const upkeep = Math.min(Math.round(finalAmount * UPKEEP_RATE), UPKEEP_CAP);
+     chose; this comes off before the money reaches escrow. Same function the
+     donate route uses, so the figure shown here is the figure that posts. */
+  const upkeep = upkeepFor(finalAmount, upkeepTaken);
   const causeGets = Math.max(0, finalAmount - upkeep);
 
   // stable fake checkout details, generated once when checkout starts
@@ -44,9 +46,15 @@ export default function DonateModal({
       setError("Minimum donation is ₦100");
       return;
     }
-    if (finalAmount > remaining) {
+    if (causeGets > remaining) {
+      /* Invert the fee to find the biggest gift whose net still fits. */
+      const room = Math.max(0, UPKEEP_CAP - upkeepTaken);
+      const maxGift =
+        Math.round(remaining * UPKEEP_RATE) >= room
+          ? remaining + room
+          : Math.floor(remaining / (1 - UPKEEP_RATE));
       setError(
-        `Only ${naira(remaining)} is needed to complete this cause. Please donate ${naira(remaining)} or less.`
+        `Only ${naira(remaining)} more is needed. Please give ${naira(maxGift)} or less.`
       );
       return;
     }

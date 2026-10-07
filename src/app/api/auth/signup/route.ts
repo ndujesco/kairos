@@ -9,7 +9,7 @@ const COLORS = ["emerald", "sky", "rose", "amber", "violet"];
 const EMOJI = ["🙂", "😊", "🌟", "🌱", "🕊️", "🤲"];
 
 export async function POST(req: NextRequest) {
-  const { name, handle, password } = await req.json();
+  const { name, handle, password, email } = await req.json();
   if (!name?.trim() || !handle?.trim())
     return NextResponse.json({ error: "Name and handle required" }, { status: 400 });
   if (!password || password.length < 6)
@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
   const user = await User.create({
     name: name.trim(),
     handle: clean,
+    email: typeof email === "string" && email.includes("@") ? email.trim().toLowerCase() : undefined,
     passwordHash: hashPassword(password),
     avatarColor: COLORS[Math.floor(Math.random() * COLORS.length)],
     emoji: EMOJI[Math.floor(Math.random() * EMOJI.length)],

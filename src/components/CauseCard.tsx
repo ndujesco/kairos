@@ -179,6 +179,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
           causeId={cause.id}
           causeTitle={cause.title}
           remaining={remaining}
+          upkeepTaken={cause.upkeepTaken ?? 0}
           onClose={() => setDonating(false)}
         />
       )}

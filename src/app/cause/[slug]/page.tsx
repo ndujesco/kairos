@@ -153,6 +153,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           slug={cause.slug}
           completed={cause.status === "completed"}
           remaining={Math.max(0, cause.goal - cause.raised)}
+          upkeepTaken={cause.upkeepTaken ?? 0}
         />
       </div>
 
@@ -172,7 +173,18 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
               </svg>
               <span>
-                {e.label}{" "}
+                {e.url ? (
+                  <a
+                    href={e.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-bold text-accent underline underline-offset-2 hover:opacity-80"
+                  >
+                    {e.label}
+                  </a>
+                ) : (
+                  e.label
+                )}{" "}
                 <span className="text-muted">
                   {" "}- {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
                 </span>

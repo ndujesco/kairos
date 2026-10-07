@@ -8,6 +8,7 @@ export type CauseCardData = {
   coverColor: string;
   goal: number;
   raised: number;
+  upkeepTaken: number;
   donorCount: number;
   vouchCount: number;
   vouchedByMe: boolean;

@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { dbConnect } from "@/lib/db";
 import { Cause, Donation, Notification } from "@/lib/models";
 import { getSessionUser } from "@/lib/session";
 import { upkeepFor } from "@/lib/fees";
+import { sendMail, donationEmail } from "@/lib/mail";
 
 export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
   const user = await getSessionUser();
@@ -19,26 +20,31 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   if (cause.status === "completed")
     return NextResponse.json({ error: "This cause is completed" }, { status: 400 });
 
+  /* Upkeep comes off before the money reaches escrow, so it is the NET that
+     counts toward the goal. Compare on that, or a donor is told they can give
+     less than they actually can. */
+  const upkeep = upkeepFor(amt, cause.upkeepTaken ?? 0);
+  const net = amt - upkeep;
+
   const remaining = cause.goal - cause.raised;
   if (remaining <= 0)
     return NextResponse.json(
       { error: "This cause is fully funded. Thank you, but it no longer needs donations." },
       { status: 400 }
     );
-  if (amt > remaining)
+  if (net > remaining) {
+    // the largest gift whose net still fits
+    const maxGift = Math.floor(remaining / (1 - 0.02));
     return NextResponse.json(
       {
-        error: `Only ₦${remaining.toLocaleString()} is needed to complete this cause. Please donate ₦${remaining.toLocaleString()} or less.`,
+        error: `Only ₦${remaining.toLocaleString()} more is needed. Please give ₦${maxGift.toLocaleString()} or less.`,
         remaining,
       },
       { status: 400 }
     );
+  }
 
   const already = await Donation.exists({ cause: cause._id, donor: user._id });
-
-  // the donor pays `amt`; upkeep comes off before it reaches escrow
-  const upkeep = upkeepFor(amt, cause.upkeepTaken ?? 0);
-  const net = amt - upkeep;
 
   await Donation.create({
     cause: cause._id, donor: user._id, amount: amt,
@@ -59,6 +65,18 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     body: `${anonymous ? "An anonymous donor" : `@${user.handle}`} gave ₦${amt.toLocaleString()}. ₦${net.toLocaleString()} is in escrow for “${cause.title}” after ₦${upkeep.toLocaleString()} upkeep.`,
     causeSlug: cause.slug,
   });
+
+  /* The receipt goes out after the response, not before it. An SMTP handshake
+     is seconds of someone staring at "confirming your transfer", and a mail
+     server having a bad day must never look like a failed donation. */
+  if (user.email) {
+    const mail = donationEmail({
+      donorName: (user.name || "there").split(" ")[0],
+      amount: amt, upkeep, net,
+      causeTitle: cause.title, causeSlug: cause.slug,
+    });
+    after(() => sendMail(user.email as string, mail.subject, mail.html));
+  }
 
   return NextResponse.json({ ok: true, raised: cause.raised, upkeep, net });
 }

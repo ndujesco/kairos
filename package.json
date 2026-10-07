@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "node --env-file=.env.local scripts/seed.mjs"
+    "seed": "node --env-file=.env.local scripts/seed.mjs",
+    "demo:reset": "node scripts/demo-reset.mjs",
+    "demo:record": "node scripts/demo-reset.mjs --recording"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",
     "mongoose": "^9.7.3",
     "next": "16.2.10",
+    "nodemailer": "^10.0.16",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "zod": "^4.4.3"
@@ -20,6 +23,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

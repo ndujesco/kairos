@@ -16,6 +16,7 @@ export default function LoginClient() {
 
   // signup fields
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   async function signin() {
     if (!handle.trim() || !password) {
@@ -53,7 +54,7 @@ export default function LoginClient() {
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, handle, password }),
+      body: JSON.stringify({ name, handle, password, email }),
     });
     if (!res.ok) {
       const j = await res.json().catch(() => ({}));
@@ -159,6 +160,14 @@ export default function LoginClient() {
               className={inputCls}
             />
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email (optional) — for your receipts"
+              type="email"
+              autoCapitalize="none"
+              className={inputCls}
+            />
+            <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password (min. 6 characters)"
@@ -175,8 +184,9 @@ export default function LoginClient() {
               {busy ? "Creating account…" : "Create account"}
             </button>
             <p className="text-[12px] text-muted">
-              No ID needed to join or to give. We only verify identity when you publish a cause and
-              start asking strangers for money.
+              No ID needed to join or to give. We only verify identity when you publish a cause
+              and start asking strangers for money. Email is optional: give it and we will send
+              you a receipt every time your money moves.
             </p>
           </div>
         )}

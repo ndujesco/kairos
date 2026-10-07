@@ -143,10 +143,14 @@ export default async function WalletPage() {
                     <DisburseForm
                       causeId={String(c._id)}
                       escrow={c.escrowBalance}
+                      causeTitle={c.title}
                       items={c.budget.map((b) => ({
                         label: b.label,
                         remaining: b.amount - b.spent,
                         vendor: b.vendor.name,
+                        rrr: b.rrr ?? null,
+                        rrrStudent: b.rrrStudent ?? null,
+                        rrrMatric: b.rrrMatric ?? null,
                       }))}
                     />
                   ) : c.status === "completed" ? (
