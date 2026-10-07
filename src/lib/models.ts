@@ -73,6 +73,7 @@ export interface ICause {
   goal: number;
   raised: number;
   escrowBalance: number;
+  upkeepTaken: number;   // cumulative, capped per cause
   donorCount: number;
   vouches: Types.ObjectId[];
   budget: IBudgetItem[];
@@ -97,6 +98,7 @@ const CauseSchema = new Schema<ICause>(
     goal: { type: Number, required: true },
     raised: { type: Number, default: 0 },
     escrowBalance: { type: Number, default: 0 },
+    upkeepTaken: { type: Number, default: 0 },
     donorCount: { type: Number, default: 0 },
     vouches: [{ type: Schema.Types.ObjectId, ref: "User" }],
     budget: [
@@ -132,7 +134,9 @@ export interface IDonation {
   _id: Types.ObjectId;
   cause: Types.ObjectId;
   donor: Types.ObjectId;
-  amount: number;
+  amount: number;   // what the donor paid
+  upkeep: number;   // taken before it reached escrow
+  net: number;      // what the cause received
   anonymous: boolean;
   createdAt: Date;
 }
@@ -142,6 +146,8 @@ const DonationSchema = new Schema<IDonation>(
     cause: { type: Schema.Types.ObjectId, ref: "Cause", required: true },
     donor: { type: Schema.Types.ObjectId, ref: "User", required: true },
     amount: { type: Number, required: true },
+    upkeep: { type: Number, default: 0 },
+    net: { type: Number, default: 0 },
     anonymous: { type: Boolean, default: false },
   },
   { timestamps: true }

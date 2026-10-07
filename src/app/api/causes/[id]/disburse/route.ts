@@ -59,7 +59,9 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const donations = await Donation.find({ cause: cause._id });
   const byDonor = new Map<string, number>();
   for (const d of donations) {
-    byDonor.set(String(d.donor), (byDonor.get(String(d.donor)) ?? 0) + d.amount);
+    // a donor's claim is what reached escrow, not what they paid
+    const credited = d.net ?? d.amount;
+    byDonor.set(String(d.donor), (byDonor.get(String(d.donor)) ?? 0) + credited);
   }
   const pct = cause.raised > 0 ? amt / cause.raised : 0;
 

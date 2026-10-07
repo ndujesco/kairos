@@ -310,22 +310,22 @@ async function main() {
   /* ------------------------------ donations ------------------------------ */
   const donations = [
     // medical - raised 614,000 (ugo 7k, abby 50k, amina 7k, ngo-person? use david 550k? no - david is organizer elsewhere, fine as donor here)
-    { _id: oid(), cause: medical._id, donor: ugo._id, amount: 7000, anonymous: false, createdAt: daysAgo(10), updatedAt: daysAgo(10) },
-    { _id: oid(), cause: medical._id, donor: abby._id, amount: 50000, anonymous: false, createdAt: daysAgo(9), updatedAt: daysAgo(9) },
-    { _id: oid(), cause: medical._id, donor: amina._id, amount: 7000, anonymous: false, createdAt: daysAgo(8), updatedAt: daysAgo(8) },
-    { _id: oid(), cause: medical._id, donor: david._id, amount: 550000, anonymous: false, createdAt: daysAgo(7), updatedAt: daysAgo(7) },
+    { _id: oid(), cause: medical._id, donor: ugo._id, amount: 7000, anonymous: false, upkeep: 0, net: 7000, createdAt: daysAgo(10), updatedAt: daysAgo(10) },
+    { _id: oid(), cause: medical._id, donor: abby._id, amount: 50000, anonymous: false, upkeep: 0, net: 50000, createdAt: daysAgo(9), updatedAt: daysAgo(9) },
+    { _id: oid(), cause: medical._id, donor: amina._id, amount: 7000, anonymous: false, upkeep: 0, net: 7000, createdAt: daysAgo(8), updatedAt: daysAgo(8) },
+    { _id: oid(), cause: medical._id, donor: david._id, amount: 550000, anonymous: false, upkeep: 0, net: 550000, createdAt: daysAgo(7), updatedAt: daysAgo(7) },
     // outreach - raised 155,000
-    { _id: oid(), cause: outreach._id, donor: ugo._id, amount: 25000, anonymous: false, createdAt: daysAgo(4), updatedAt: daysAgo(4) },
-    { _id: oid(), cause: outreach._id, donor: abby._id, amount: 100000, anonymous: false, createdAt: daysAgo(3), updatedAt: daysAgo(3) },
-    { _id: oid(), cause: outreach._id, donor: amina._id, amount: 30000, anonymous: false, createdAt: daysAgo(2), updatedAt: daysAgo(2) },
+    { _id: oid(), cause: outreach._id, donor: ugo._id, amount: 25000, anonymous: false, upkeep: 0, net: 25000, createdAt: daysAgo(4), updatedAt: daysAgo(4) },
+    { _id: oid(), cause: outreach._id, donor: abby._id, amount: 100000, anonymous: false, upkeep: 0, net: 100000, createdAt: daysAgo(3), updatedAt: daysAgo(3) },
+    { _id: oid(), cause: outreach._id, donor: amina._id, amount: 30000, anonymous: false, upkeep: 0, net: 30000, createdAt: daysAgo(2), updatedAt: daysAgo(2) },
     // shelter - raised 1,340,000
-    { _id: oid(), cause: shelter._id, donor: ugo._id, amount: 40000, anonymous: false, createdAt: daysAgo(15), updatedAt: daysAgo(15) },
-    { _id: oid(), cause: shelter._id, donor: abby._id, amount: 300000, anonymous: false, createdAt: daysAgo(14), updatedAt: daysAgo(14) },
-    { _id: oid(), cause: shelter._id, donor: chiamaka._id, amount: 1000000, anonymous: false, createdAt: daysAgo(13), updatedAt: daysAgo(13) },
+    { _id: oid(), cause: shelter._id, donor: ugo._id, amount: 40000, anonymous: false, upkeep: 0, net: 40000, createdAt: daysAgo(15), updatedAt: daysAgo(15) },
+    { _id: oid(), cause: shelter._id, donor: abby._id, amount: 300000, anonymous: false, upkeep: 0, net: 300000, createdAt: daysAgo(14), updatedAt: daysAgo(14) },
+    { _id: oid(), cause: shelter._id, donor: chiamaka._id, amount: 1000000, anonymous: false, upkeep: 0, net: 1000000, createdAt: daysAgo(13), updatedAt: daysAgo(13) },
     // completed - raised 220,000
-    { _id: oid(), cause: completed._id, donor: ugo._id, amount: 20000, anonymous: false, createdAt: daysAgo(48), updatedAt: daysAgo(48) },
-    { _id: oid(), cause: completed._id, donor: abby._id, amount: 100000, anonymous: false, createdAt: daysAgo(47), updatedAt: daysAgo(47) },
-    { _id: oid(), cause: completed._id, donor: amina._id, amount: 100000, anonymous: false, createdAt: daysAgo(46), updatedAt: daysAgo(46) },
+    { _id: oid(), cause: completed._id, donor: ugo._id, amount: 20000, anonymous: false, upkeep: 0, net: 20000, createdAt: daysAgo(48), updatedAt: daysAgo(48) },
+    { _id: oid(), cause: completed._id, donor: abby._id, amount: 100000, anonymous: false, upkeep: 0, net: 100000, createdAt: daysAgo(47), updatedAt: daysAgo(47) },
+    { _id: oid(), cause: completed._id, donor: amina._id, amount: 100000, anonymous: false, upkeep: 0, net: 100000, createdAt: daysAgo(46), updatedAt: daysAgo(46) },
   ];
   await db.collection("donations").insertMany(donations);
   console.log("✓ donations");
