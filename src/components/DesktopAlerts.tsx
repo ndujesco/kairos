@@ -47,7 +47,7 @@ export default function DesktopAlerts() {
       ]);
       try {
         if (reg?.active) reg.active.postMessage(payload);
-        else new Notification(a.title, { body: a.body, icon: "/icon.png" });
+        else new Notification(a.title, { body: a.body, icon: "/icon-192.png" });
       } catch {
         /* some browsers forbid the Notification constructor once a worker is
            controlling the page; the worker path above is the one that counts */

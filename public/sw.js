@@ -9,8 +9,8 @@ self.addEventListener("message", (event) => {
   if (d.kind !== "kairos-notify") return;
   self.registration.showNotification(d.title || "Kairos", {
     body: d.body || "",
-    icon: "/icon.png",
-    badge: "/icon.png",
+    icon: "/icon-192.png",     // the Kairos mark, drawn beside the text
+    badge: "/badge-96.png",    // monochrome mask, Android status bar
     tag: d.id,
     requireInteraction: true,
     data: { url: d.url || "/notifications" },

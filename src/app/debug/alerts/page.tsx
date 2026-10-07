@@ -125,7 +125,7 @@ export default function AlertsDebug() {
             try {
               new Notification("Kairos test (direct)", {
                 body: "Raised by the page, with no service worker involved.",
-                icon: "/icon.png",
+                icon: "/icon-192.png",
               });
               say("direct Notification() constructed with no error");
             } catch (e) {

@@ -14,7 +14,8 @@
     "snapshot:save": "node scripts/snapshot-save.mjs",
     "snapshot:restore": "node scripts/snapshot-restore.mjs",
     "snapshot:verify": "node scripts/snapshot-verify.mjs",
-    "demo:prep": "node scripts/prep-ugo-cause.mjs"
+    "demo:prep": "node scripts/prep-ugo-cause.mjs",
+    "icons": "node scripts/make-icons.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",
