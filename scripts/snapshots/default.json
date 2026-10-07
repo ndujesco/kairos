@@ -1,0 +1,1678 @@
+{
+  "takenAt": {
+    "$date": {
+      "$numberLong": "1791408137642"
+    }
+  },
+  "db": "kairosDB",
+  "collections": {
+    "causes": [
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "title": "Help Chidinma walk again - surgery at LUTH",
+        "slug": "help-chidinma-walk-again",
+        "summary": "My sister Chidinma, 24, shattered her leg in an okada accident on Ikorodu Road. LUTH can fix it - we can’t fix the bill alone. Every naira goes to the hospital directly, never to me.",
+        "story": "On June 14th my younger sister Chidinma was riding an okada along Ikorodu Road when a truck swerved into their lane. She survived - thank God - but her left leg was shattered in three places.\n\nThe orthopaedic team at LUTH says she needs corrective surgery with implants, followed by eight weeks of medication. The total estimate is ₦970,000. Our family has raised what we can; we need help with the rest.\n\nI chose Kairos because I know how hard it is to trust a stranger’s story. You are not sending money to me - the hospital gets paid directly, and you’ll see the invoice the moment it happens.",
+        "category": "Medical",
+        "coverEmoji": "🏥",
+        "coverColor": "rose",
+        "organizer": {
+          "$oid": "6ac675b6e5c06a4eaf627c45"
+        },
+        "goal": {
+          "$numberInt": "970000"
+        },
+        "raised": {
+          "$numberInt": "614000"
+        },
+        "escrowBalance": {
+          "$numberInt": "214000"
+        },
+        "donorCount": {
+          "$numberInt": "4"
+        },
+        "vouches": [
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c42"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c44"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c46"
+          }
+        ],
+        "budget": [
+          {
+            "label": "Corrective surgery + implants",
+            "amount": {
+              "$numberInt": "850000"
+            },
+            "spent": {
+              "$numberInt": "429800"
+            },
+            "vendor": {
+              "name": "LUTH - Lagos University Teaching Hospital",
+              "verified": true,
+              "account": "•••• 4127"
+            }
+          },
+          {
+            "label": "Post-op medication (8 weeks)",
+            "amount": {
+              "$numberInt": "120000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "HealthPlus Pharmacy, Yaba",
+              "verified": true,
+              "account": "•••• 8843"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Hospital bill - LUTH orthopaedics",
+            "kind": "invoice",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Doctor’s estimate & treatment plan",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Photos from the ward",
+            "kind": "photo",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          }
+        ],
+        "updates": [
+          {
+            "text": "Deposit paid! LUTH has scheduled Chidinma’s surgery for next Tuesday. Thank you - she cried when I showed her the donor list. Receipts are on the cause page.",
+            "photos": [
+              "🩺",
+              "💊",
+              "🙏🏾"
+            ],
+            "at": {
+              "$date": {
+                "$numberLong": "1791218358570"
+              }
+            }
+          }
+        ],
+        "status": "live",
+        "aiVerified": true,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790354358570"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791218358570"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4b"
+        },
+        "title": "Kirikiri Outreach - a hot meal for 200 inmates",
+        "slug": "kirikiri-outreach-200-inmates",
+        "summary": "Last month I visited Kirikiri and couldn’t sleep after. On July 19th we go back with hot food, toiletries and toothpaste for 200 inmates. Itemized below - vendors get paid, not me.",
+        "story": "I’m not an NGO. I’m just a guy who followed a friend to Kirikiri Medium Security Prison one Saturday and left changed.\n\nMany inmates there are awaiting trial for years. The food is thin, toiletries are a luxury, and a hot meal from outside is an event.\n\nOn Saturday July 19th, with five volunteers, we’re bringing hot jollof and chicken for 200 inmates, plus toiletry packs (soap, toothpaste, sanitary items). The caterer and suppliers are named below - Kairos pays them directly. After the visit, you get the photos, time-stamped and location-checked.\n\nI did this once before on Kairos (see my profile - completed, every naira receipted). Let’s do it again, bigger.",
+        "category": "Prison Outreach",
+        "coverEmoji": "🕊️",
+        "coverColor": "sky",
+        "organizer": {
+          "$oid": "6ac675b6e5c06a4eaf627c46"
+        },
+        "goal": {
+          "$numberInt": "500000"
+        },
+        "raised": {
+          "$numberInt": "155000"
+        },
+        "escrowBalance": {
+          "$numberInt": "155000"
+        },
+        "donorCount": {
+          "$numberInt": "3"
+        },
+        "vouches": [
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c42"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c43"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c44"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c45"
+          }
+        ],
+        "budget": [
+          {
+            "label": "Hot meals ×200 (jollof + chicken)",
+            "amount": {
+              "$numberInt": "300000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "Iya Basira Catering Services",
+              "verified": true,
+              "account": "•••• 5561"
+            }
+          },
+          {
+            "label": "Toiletry packs ×200",
+            "amount": {
+              "$numberInt": "120000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "Wellmart Supplies, Apapa",
+              "verified": true,
+              "account": "•••• 2209"
+            }
+          },
+          {
+            "label": "Transport & logistics",
+            "amount": {
+              "$numberInt": "80000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "GIG Logistics",
+              "verified": true,
+              "account": "•••• 7734"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Outreach plan & prison approval letter",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Caterer’s quotation",
+            "kind": "invoice",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Photos from last outreach",
+            "kind": "photo",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          }
+        ],
+        "updates": [],
+        "status": "live",
+        "aiVerified": true,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790959158570"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790959158570"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4c"
+        },
+        "title": "Keep 40 women safe - Hope Haven shelter, Q3",
+        "slug": "hope-haven-shelter-q3",
+        "summary": "Our shelter houses 40 women escaping domestic abuse. Q3 costs: rent, food, counseling - fully itemized. As an NGO we publish every receipt; Kairos makes that automatic.",
+        "story": "Hope Haven has run a shelter in Surulere since 2019. Right now, 40 women and 12 children call it home while they rebuild their lives.\n\nEvery quarter we raise our operating budget openly. This quarter: rent for the shelter building, food supplies, and professional counseling sessions.\n\nWe moved to Kairos because donors kept asking the same fair question: “where does my money actually go?” Now the answer is automatic - the landlord, the food supplier and the counselors are paid directly through escrow, and every donor sees their share of every payment.",
+        "category": "Food & Shelter",
+        "coverEmoji": "🏠",
+        "coverColor": "amber",
+        "organizer": {
+          "$oid": "6ac675b6e5c06a4eaf627c47"
+        },
+        "goal": {
+          "$numberInt": "2100000"
+        },
+        "raised": {
+          "$numberInt": "1340000"
+        },
+        "escrowBalance": {
+          "$numberInt": "740000"
+        },
+        "donorCount": {
+          "$numberInt": "3"
+        },
+        "vouches": [
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c42"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c43"
+          }
+        ],
+        "budget": [
+          {
+            "label": "Shelter rent (Q3)",
+            "amount": {
+              "$numberInt": "1200000"
+            },
+            "spent": {
+              "$numberInt": "600000"
+            },
+            "vendor": {
+              "name": "Adewale Properties Ltd",
+              "verified": true,
+              "account": "•••• 9012"
+            }
+          },
+          {
+            "label": "Food supplies (3 months)",
+            "amount": {
+              "$numberInt": "600000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "FoodCo Wholesale, Mushin",
+              "verified": true,
+              "account": "•••• 3345"
+            }
+          },
+          {
+            "label": "Counseling sessions ×24",
+            "amount": {
+              "$numberInt": "300000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "Mindful Wellness Consulting",
+              "verified": true,
+              "account": "•••• 6678"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "CAC registration RC 1482290",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Tenancy agreement",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Q2 impact report with receipts",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          }
+        ],
+        "updates": [
+          {
+            "text": "Half of Q3 rent is paid - receipt below. Two new residents arrived this week; your food-supply donations go out to FoodCo on the 15th.",
+            "photos": [
+              "🏠",
+              "🧺"
+            ],
+            "at": {
+              "$date": {
+                "$numberLong": "1791045558570"
+              }
+            }
+          }
+        ],
+        "status": "live",
+        "aiVerified": true,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1789663158570"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791045558570"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4d"
+        },
+        "title": "Ikoyi Custodial Centre - first outreach (COMPLETED)",
+        "slug": "ikoyi-outreach-completed",
+        "summary": "My first outreach on Kairos: hot meals for 120 inmates at Ikoyi Custodial Centre. Fully executed - every receipt and photo is below. This is why you can trust the next one.",
+        "story": "This was my first cause on Kairos. 120 hot meals delivered to Ikoyi Custodial Centre on May 24th.\n\nEverything was paid through escrow: the caterer got ₦180,000 directly, transport ₦40,000. The photos below were verified against the date and location we promised.\n\nBecause this completed cleanly, my trust level went up - which is how I’m allowed to raise ₦500,000 for the bigger Kirikiri outreach now. That’s the Kairos loop: deliver, prove it, unlock more.",
+        "category": "Prison Outreach",
+        "coverEmoji": "✅",
+        "coverColor": "emerald",
+        "organizer": {
+          "$oid": "6ac675b6e5c06a4eaf627c46"
+        },
+        "goal": {
+          "$numberInt": "220000"
+        },
+        "raised": {
+          "$numberInt": "220000"
+        },
+        "escrowBalance": {
+          "$numberInt": "0"
+        },
+        "donorCount": {
+          "$numberInt": "3"
+        },
+        "vouches": [
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c42"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c43"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c44"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c45"
+          },
+          {
+            "$oid": "6ac675b6e5c06a4eaf627c47"
+          }
+        ],
+        "budget": [
+          {
+            "label": "Hot meals ×120",
+            "amount": {
+              "$numberInt": "180000"
+            },
+            "spent": {
+              "$numberInt": "180000"
+            },
+            "vendor": {
+              "name": "Iya Basira Catering Services",
+              "verified": true,
+              "account": "•••• 5561"
+            }
+          },
+          {
+            "label": "Transport",
+            "amount": {
+              "$numberInt": "40000"
+            },
+            "spent": {
+              "$numberInt": "40000"
+            },
+            "vendor": {
+              "name": "GIG Logistics",
+              "verified": true,
+              "account": "•••• 7734"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Outreach plan & approval",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Caterer’s invoice",
+            "kind": "invoice",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          }
+        ],
+        "updates": [
+          {
+            "text": "DONE. 120 meals served at Ikoyi Custodial Centre. Photos verified: taken 24 May, 12:41pm, on location. Thank you to all 3 donors - you saw exactly where every naira went.",
+            "photos": [
+              "🍛",
+              "🕊️",
+              "📸"
+            ],
+            "at": {
+              "$date": {
+                "$numberLong": "1788107958570"
+              }
+            }
+          }
+        ],
+        "status": "completed",
+        "aiVerified": true,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1787071158570"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1788107958570"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac6b24854e9bfeb9330c2a2"
+        },
+        "title": "Final Year Student - UNILAG Tuition Fees",
+        "slug": "final-year-student-unilag-tuition-fees-aom2",
+        "story": "I am Ndujekwu Ugochukwu, a final year student at UNILAG. As an orphan, I have struggled to meet my tuition obligations, and I now face a critical deadline tomorrow to pay my outstanding school fees or risk being locked out of my final exams and graduation. Without this 300,000 naira, I will not be able to complete my degree. This payment will go directly to UNILAG through the Remita system, ensuring every naira reaches the institution and allows me to sit my final exams and graduate.",
+        "summary": "Ndujekwu Ugochukwu, a final year orphan student at UNILAG, needs 300,000 naira to clear outstanding fees and complete his degree before the deadline.",
+        "category": "Education",
+        "coverEmoji": "📚",
+        "coverColor": "violet",
+        "organizer": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "goal": {
+          "$numberInt": "300000"
+        },
+        "raised": {
+          "$numberInt": "147000"
+        },
+        "escrowBalance": {
+          "$numberInt": "147000"
+        },
+        "upkeepTaken": {
+          "$numberInt": "3000"
+        },
+        "donorCount": {
+          "$numberInt": "1"
+        },
+        "vouches": [],
+        "budget": [
+          {
+            "label": "UNILAG Final Year Tuition Fees",
+            "amount": {
+              "$numberInt": "300000"
+            },
+            "spent": {
+              "$numberInt": "0"
+            },
+            "vendor": {
+              "name": "UNILAG via Remita RRR 3456 8835 9933",
+              "verified": true,
+              "account": "•••• 1579"
+            },
+            "_id": {
+              "$oid": "6ac6b24854e9bfeb9330c2a3"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "UNILAG statement of outstanding fees - RRR 3456 8835 9933",
+            "url": "/demo/docs/unilag-fee-demand-notice.pdf",
+            "kind": "invoice",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Student identity and matriculation record (210403512)",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Student portal screenshot showing the outstanding balance",
+            "kind": "photo",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            }
+          },
+          {
+            "label": "Remita reference number (RRR) provided for direct payment verification",
+            "kind": "document",
+            "checks": {
+              "reuse": "clean",
+              "exif": "consistent",
+              "dates": "consistent"
+            },
+            "_id": {
+              "$oid": "6ac6b24854e9bfeb9330c2a4"
+            }
+          }
+        ],
+        "status": "live",
+        "aiVerified": true,
+        "updates": [],
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791406664772"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791408096106"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "comments": [
+      {
+        "_id": {
+          "$oid": "6ac675b7e5c06a4eaf627c65"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "author": {
+          "$oid": "6ac675b6e5c06a4eaf627c44"
+        },
+        "text": "Praying for Chidinma’s full recovery. Gave my widow’s mite - and I actually saw it reach LUTH. God bless this platform. 🙏🏾",
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791218359547"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791218359547"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b7e5c06a4eaf627c66"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "author": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "text": "Got the alert when the surgery deposit was paid - ₦4,558 of my ₦7,000 went straight to the hospital. This is how giving should work.",
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791304759547"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791304759547"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b7e5c06a4eaf627c67"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4b"
+        },
+        "author": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "text": "Vouched AND donated. David’s Ikoyi outreach receipts convinced me - check his profile, everything is there.",
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791131959547"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791131959547"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b7e5c06a4eaf627c68"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4c"
+        },
+        "author": {
+          "$oid": "6ac675b6e5c06a4eaf627c45"
+        },
+        "text": "An NGO that shows the rent receipt. Never seen that before. Following every update.",
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791045559547"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791045559547"
+          }
+        }
+      }
+    ],
+    "disbursements": [],
+    "donations": [
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4e"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "amount": {
+          "$numberInt": "7000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "7000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790527158814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790527158814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c4f"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "amount": {
+          "$numberInt": "50000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "50000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790613558814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790613558814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c50"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c44"
+        },
+        "amount": {
+          "$numberInt": "7000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "7000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790699958814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790699958814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c51"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4a"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c46"
+        },
+        "amount": {
+          "$numberInt": "550000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "550000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790786358814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790786358814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c52"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4b"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "amount": {
+          "$numberInt": "25000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "25000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791045558814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791045558814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c53"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4b"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "amount": {
+          "$numberInt": "100000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "100000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791131958814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791131958814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c54"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4b"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c44"
+        },
+        "amount": {
+          "$numberInt": "30000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "30000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791218358814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791218358814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c55"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4c"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "amount": {
+          "$numberInt": "40000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "40000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790095158814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790095158814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c56"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4c"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "amount": {
+          "$numberInt": "300000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "300000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790181558814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790181558814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c57"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4c"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c45"
+        },
+        "amount": {
+          "$numberInt": "1000000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "1000000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1790267958814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1790267958814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c58"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4d"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "amount": {
+          "$numberInt": "20000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "20000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1787243958814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1787243958814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c59"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4d"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "amount": {
+          "$numberInt": "100000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "100000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1787330358814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1787330358814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c5a"
+        },
+        "cause": {
+          "$oid": "6ac675b6e5c06a4eaf627c4d"
+        },
+        "donor": {
+          "$oid": "6ac675b6e5c06a4eaf627c44"
+        },
+        "amount": {
+          "$numberInt": "100000"
+        },
+        "anonymous": false,
+        "upkeep": {
+          "$numberInt": "0"
+        },
+        "net": {
+          "$numberInt": "100000"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1787416758814"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1787416758814"
+          }
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ac6b34d54e9bfeb9330c2a7"
+        },
+        "cause": {
+          "$oid": "6ac6b24854e9bfeb9330c2a2"
+        },
+        "donor": {
+          "$oid": "6ac69f2f33d1e4da2f3d72cb"
+        },
+        "amount": {
+          "$numberInt": "150000"
+        },
+        "upkeep": {
+          "$numberInt": "3000"
+        },
+        "net": {
+          "$numberInt": "147000"
+        },
+        "anonymous": false,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791406925456"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791406925456"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "notifications": [
+      {
+        "_id": {
+          "$oid": "6ac6b34d54e9bfeb9330c2a8"
+        },
+        "user": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "type": "donation_received",
+        "title": "New donation in escrow",
+        "body": "@okefe gave ₦150,000. ₦147,000 is in escrow for “Final Year Student - UNILAG Tuition Fees” after ₦3,000 upkeep.",
+        "causeSlug": "final-year-student-unilag-tuition-fees-aom2",
+        "read": false,
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791406925489"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791406925489"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        }
+      }
+    ],
+    "users": [
+      {
+        "_id": {
+          "$oid": "6a466643a7ed13bbf60dcdf3"
+        },
+        "name": "Sokenu Abigail",
+        "handle": "abbydave",
+        "passwordHash": "6a8b6af2ea37cdc9c4dbb61ecb0b86cd:bf1e5d36f8dce8c7a296585867521d53a98bc12e6d6487f979f4290f336e0795b0569bd32a672a523073e55f943adec037217604b1461724bf694b0ee97ccf43",
+        "avatarColor": "rose",
+        "emoji": "🙂",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "2"
+        },
+        "raiseLimit": {
+          "$numberInt": "1000000"
+        },
+        "completedCauses": {
+          "$numberInt": "1"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1782998595569"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1783055695256"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6a4666766dbec4de855dedf4"
+        },
+        "name": "Doe Jon",
+        "handle": "ndujekwuu",
+        "passwordHash": "6a84da83ddd08743148b3ebdc038d810:5ab3a19d5bd521f50fb6c7f7a803e5f9ff3d752929973fdcc5b59cb0eaeb57c5a034516e2f47f676c9f1d287336de140503815eda73a7ec8b32ca67338634ed2",
+        "avatarColor": "violet",
+        "emoji": "🌱",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "2"
+        },
+        "raiseLimit": {
+          "$numberInt": "1000000"
+        },
+        "completedCauses": {
+          "$numberInt": "1"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1782998646741"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1783045168860"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6a47443bb2e1dcc3ce2a24e0"
+        },
+        "name": "Bukola Tewogboye",
+        "handle": "bukky",
+        "passwordHash": "d396c0f98f9d57e9b734deb4f26f503c:b0d871aa0d7c4556f1c8cc1895d138c95e92e6b89709de0260087cf50aa07ff46ab373515768678a5b71ec4d636f1e9142de17aca585d28a12b111e181f74f2b",
+        "avatarColor": "emerald",
+        "emoji": "🙂",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1783055419639"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1783055419639"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac17b8a8cbb6c4b2f1a2e16"
+        },
+        "name": "Mercy",
+        "handle": "mercy",
+        "passwordHash": "e3bfdb1d1f75c7149f4b29a1a0cb0dea:d008818981894d3c45183e3a1b8ca8fcba22583044989ddf6a2528f30d7a59a8f096e2ed403a3fa828e0bc41b01985718e349266dcef3260379fb92acff1427d",
+        "avatarColor": "emerald",
+        "emoji": "🙂",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791064970070"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791064970070"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac22f53cb3c9d795fa6dee8"
+        },
+        "name": "Doe",
+        "handle": "ndujesco",
+        "passwordHash": "a5fb89393bc3b1da1dc84779363c20c8:c5ebb239b95f914d8fda1012f073391cedf4412e4380b01f405bb83307a4ef44c35c467c602a81716669cbaf5e682717182ff091c01472e72a62a55e8aa8569b",
+        "avatarColor": "rose",
+        "emoji": "🤲",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791110995246"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791110995246"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac345f58950bdf9db55f8c1"
+        },
+        "name": "Comfort David",
+        "handle": "commy_dave",
+        "passwordHash": "ce656d8cf5c1140955d76e60c43c102f:4047ce7a3aea4262cfec83f44c5383c5399bce293f035b41bab4d3b041452f1bf40c6c0f1afde23365c7a07977e4d3f4e2cd5c3137109a9babedb9475c9b1295",
+        "avatarColor": "sky",
+        "emoji": "🕊️",
+        "role": "donor",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791182325910"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791182325910"
+          }
+        },
+        "__v": {
+          "$numberInt": "0"
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c42"
+        },
+        "name": "Ugo Ndujekwu",
+        "handle": "ugo",
+        "emoji": "👨🏾‍💻",
+        "avatarColor": "sky",
+        "passwordHash": "aa6ec41f3a8dade6833aaf8a9f1a00cb:099e5648a16dbf2150e31c3f31fe7db56d7fb224b4d1efcccb009fdb935773f4abc41bda79b83ae7b5ac65345ccfe1c3865babf8d718ea0761bef65d713b006c",
+        "role": "donor",
+        "bio": "Give, watch it land. Building Kairos.",
+        "verified": {
+          "identity": true,
+          "method": "NIN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "8"
+        },
+        "raiseLimit": {
+          "$numberInt": "32000000"
+        },
+        "completedCauses": {
+          "$numberInt": "6"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1783615158201"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791406659031"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c43"
+        },
+        "name": "Abby Sokenu",
+        "handle": "abby",
+        "emoji": "👩🏾‍💼",
+        "avatarColor": "violet",
+        "passwordHash": "33cc8ab2710f8d04079e9d2e49c69f22:57a2c4811fd54bdd5c5f472553279c11f82d6182d9bba33eacd4138d7e3fd904e862cf36c0e723f3d9f425d01fd982f82e180abc463392a2f877fed081a588f1",
+        "role": "donor",
+        "bio": "Product @ Kairos. Generosity needs infrastructure.",
+        "verified": {
+          "identity": true,
+          "method": "NIN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "2"
+        },
+        "raiseLimit": {
+          "$numberInt": "500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1783615158229"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1783615158229"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c44"
+        },
+        "name": "Amina Yusuf",
+        "handle": "amina_gives",
+        "emoji": "🧕🏾",
+        "avatarColor": "amber",
+        "passwordHash": "e215dbaf24eb6499f267c4056e618faa:8315c9c3292e9bf55ea042cfc35bb65aefa826624ac20c103b8c0498f7dae2a03eb2c47e03f0485fe9fa6d1f63c4c2f7c5fd2ea90d99d5f6995513f80f1ba40a",
+        "role": "donor",
+        "bio": "I give small small, but I give often.",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "200000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1786207158251"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1786207158251"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c45"
+        },
+        "name": "Chiamaka Obi",
+        "handle": "chiamaka",
+        "emoji": "👩🏾",
+        "avatarColor": "rose",
+        "passwordHash": "0a770c82434f38712499b7fb8296f53a:4d6ac543392a0a6ad2ca5a8fd0a38de81a20ed49f5be4596d1bc094bfd2686020896c2c91a2963607601e1f05fe1693aa5d441db25eead317fffad1437d4cb06",
+        "role": "organizer",
+        "bio": "Raising for my sister’s surgery. Every receipt public.",
+        "verified": {
+          "identity": true,
+          "method": "NIN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "2"
+        },
+        "raiseLimit": {
+          "$numberInt": "1500000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1788799158273"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1788799158273"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c46"
+        },
+        "name": "David Adeleke",
+        "handle": "david_outreach",
+        "emoji": "🧑🏿‍🦱",
+        "avatarColor": "emerald",
+        "passwordHash": "f1b721ecb50e97630ba3fd61e8521e62:3ae877f4911f7a0c79a5de1379281c3e5f56b23643e46c87fbe0f142b1ce2d9cd1d0e8fc071eb67e796a6133783b9e285ea8ed77db766aae89fcd270fdb47cc9",
+        "role": "organizer",
+        "bio": "Saw Kirikiri once. Couldn’t unsee it. Now we go monthly.",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "3"
+        },
+        "raiseLimit": {
+          "$numberInt": "1000000"
+        },
+        "completedCauses": {
+          "$numberInt": "1"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1784911158295"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1784911158295"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac675b6e5c06a4eaf627c47"
+        },
+        "name": "Hope Haven Foundation",
+        "handle": "hopehaven",
+        "emoji": "🏠",
+        "avatarColor": "slate",
+        "passwordHash": "0ab27f05f272c72e95003088382357eb:fa65a439a47afbfa40aac2e2a53ed745536a4b25f4f3fc0e2a64e05414eda8a4cea5aa19785f068479b4728c503ed91245aa8de91ad3b14323c37f652b4e9675",
+        "role": "ngo",
+        "bio": "Shelter and a second chance for women escaping abuse. RC 1482290.",
+        "verified": {
+          "identity": true,
+          "method": "BVN",
+          "cac": true
+        },
+        "trustLevel": {
+          "$numberInt": "4"
+        },
+        "raiseLimit": {
+          "$numberInt": "10000000"
+        },
+        "completedCauses": {
+          "$numberInt": "6"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1774111158317"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1774111158317"
+          }
+        },
+        "email": "ugondu635@gmail.com"
+      },
+      {
+        "_id": {
+          "$oid": "6ac69f2f33d1e4da2f3d72cb"
+        },
+        "name": "Okefe Joseph",
+        "handle": "okefe",
+        "passwordHash": "aa6ec41f3a8dade6833aaf8a9f1a00cb:099e5648a16dbf2150e31c3f31fe7db56d7fb224b4d1efcccb009fdb935773f4abc41bda79b83ae7b5ac65345ccfe1c3865babf8d718ea0761bef65d713b006c",
+        "email": "ugondu635@gmail.com",
+        "bio": "Software engineer. Gives to causes he can check.",
+        "avatarColor": "amber",
+        "emoji": "🧑🏾‍💻",
+        "role": "donor",
+        "verified": {
+          "identity": false,
+          "cac": false
+        },
+        "trustLevel": {
+          "$numberInt": "1"
+        },
+        "raiseLimit": {
+          "$numberInt": "200000"
+        },
+        "completedCauses": {
+          "$numberInt": "0"
+        },
+        "createdAt": {
+          "$date": {
+            "$numberLong": "1791401775959"
+          }
+        },
+        "updatedAt": {
+          "$date": {
+            "$numberLong": "1791401775959"
+          }
+        }
+      }
+    ]
+  }
+}

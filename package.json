@@ -10,7 +10,10 @@
     "seed": "node --env-file=.env.local scripts/seed.mjs",
     "demo:reset": "node scripts/demo-reset.mjs",
     "demo:record": "node scripts/demo-reset.mjs --recording",
-    "demo:clean": "node scripts/demo-clean.mjs"
+    "demo:clean": "node scripts/demo-clean.mjs",
+    "snapshot:save": "node scripts/snapshot-save.mjs",
+    "snapshot:restore": "node scripts/snapshot-restore.mjs",
+    "snapshot:verify": "node scripts/snapshot-verify.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",

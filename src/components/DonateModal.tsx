@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { UPKEEP_CAP, UPKEEP_RATE, upkeepFor } from "@/lib/fees";
+import { UPKEEP_CAP, UPKEEP_RATE, giftForNet, upkeepFor } from "@/lib/fees";
 
 const PRESETS = [1000, 2000, 5000, 7000, 10000, 25000];
 
@@ -37,6 +37,12 @@ export default function DonateModal({
      donate route uses, so the figure shown here is the figure that posts. */
   const upkeep = upkeepFor(finalAmount, upkeepTaken);
   const causeGets = Math.max(0, finalAmount - upkeep);
+
+  /* What someone must pay for the cause to land exactly on its goal, upkeep
+     included. Offering this saves the donor doing the fee arithmetic to find
+     out that giving the remaining figure leaves the cause short. */
+  const balanceGift = giftForNet(remaining, upkeepTaken);
+  const isBalance = finalAmount === balanceGift;
 
   // stable fake checkout details, generated once when checkout starts
   const [checkout, setCheckout] = useState<{ account: string; reference: string } | null>(null);
@@ -128,6 +134,29 @@ export default function DonateModal({
                 </button>
               ))}
             </div>
+            {remaining > 0 && (
+              <button
+                onClick={() => {
+                  setCustom(String(balanceGift));
+                  setError("");
+                }}
+                className={`mb-3 w-full rounded-xl border px-4 py-3 text-left transition ${
+                  isBalance
+                    ? "border-accent bg-accent/15"
+                    : "border-accent/40 hover:bg-accent/10"
+                }`}
+              >
+                <span className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm font-bold text-accent">Donate the balance</span>
+                  <span className="text-base font-extrabold text-accent">{naira(balanceGift)}</span>
+                </span>
+                <span className="mt-0.5 block text-[12px] leading-snug text-muted">
+                  Covers the {naira(remaining)} still needed plus the{" "}
+                  {naira(balanceGift - remaining)} upkeep, so the cause is fully funded.
+                </span>
+              </button>
+            )}
+
             <input
               value={custom}
               onChange={(e) => setCustom(e.target.value)}
