@@ -38,9 +38,20 @@ export default function DesktopAlerts() {
         body: a.body,
         url: a.url || "/notifications",
       };
-      const reg = await navigator.serviceWorker?.ready.catch(() => null);
-      if (reg?.active) reg.active.postMessage(payload);
-      else new Notification(a.title, { body: a.body });
+      /* serviceWorker.ready never rejects: if registration failed it simply
+         never settles, and awaiting it would swallow the alert in silence.
+         Give it a moment, then raise the notification directly instead. */
+      const reg = await Promise.race([
+        navigator.serviceWorker?.ready.catch(() => null) ?? Promise.resolve(null),
+        new Promise<null>((r) => setTimeout(() => r(null), 1500)),
+      ]);
+      try {
+        if (reg?.active) reg.active.postMessage(payload);
+        else new Notification(a.title, { body: a.body, icon: "/icon.png" });
+      } catch {
+        /* some browsers forbid the Notification constructor once a worker is
+           controlling the page; the worker path above is the one that counts */
+      }
     };
 
     /* 1 - announced by whichever tab did the payout */

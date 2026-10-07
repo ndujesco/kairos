@@ -28,10 +28,23 @@ function transport() {
 
 const naira = (n: number) => "₦" + Math.round(n).toLocaleString("en-NG");
 
+/**
+ * Addresses we must never hand to the mail server.
+ *
+ * The demo personas carry plausible-looking addresses so the app does not read
+ * as empty, but those domains are reserved by RFC 2606 and will never accept
+ * mail. Attempting them earns a delivery failure for every payout, which is
+ * noise at best and gets the sending account rate limited at worst.
+ */
+const UNDELIVERABLE = /@(([^@]*\.)?example\.(com|org|net)|[^@]*\.(invalid|test|local|example))$/i;
+
 /** Never let a mail failure break a payment. */
 export async function sendMail(to: string, subject: string, html: string) {
   const t = transport();
   if (!t || !to) return { sent: false as const, reason: "not configured" };
+  if (UNDELIVERABLE.test(to.trim())) {
+    return { sent: false as const, reason: "placeholder address, not sent" };
+  }
   try {
     await t.sendMail({ from: FROM, to, subject, html });
     return { sent: true as const };
