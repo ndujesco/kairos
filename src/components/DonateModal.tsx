@@ -98,7 +98,7 @@ export default function DonateModal({
       className="fixed inset-0 z-50 flex items-end justify-center bg-[#5b708366] p-0 backdrop-blur-[2px] sm:items-center sm:p-4"
       onClick={(e) => e.target === e.currentTarget && stage !== "confirming" && onClose()}
     >
-      <div className="w-full max-w-md animate-slide-up rounded-t-2xl bg-black shadow-[0_0_40px_rgba(0,186,124,0.15)] ring-1 ring-line sm:rounded-2xl">
+      <div className="flex max-h-[92dvh] w-full max-w-md animate-slide-up flex-col overflow-y-auto overscroll-contain rounded-t-2xl bg-black shadow-[0_0_40px_rgba(0,186,124,0.15)] ring-1 ring-line sm:max-h-[88dvh] sm:rounded-2xl">
         {/* ------------------------------ amount ------------------------------ */}
         {stage === "amount" && (
           <div className="p-5 sm:p-6">
@@ -218,12 +218,16 @@ export default function DonateModal({
 
             {error && <p className="mb-3 text-sm text-rose-400">{error}</p>}
 
-            <button
-              onClick={toGateway}
-              className="w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
-            >
-              Continue to payment
-            </button>
+            {/* sticky, so the way forward is on screen no matter how long the
+                form gets on a short window */}
+            <div className="sticky bottom-0 -mx-5 -mb-5 bg-gradient-to-t from-black via-black to-transparent px-5 pb-5 pt-3 sm:-mx-6 sm:-mb-6 sm:px-6 sm:pb-6">
+              <button
+                onClick={toGateway}
+                className="w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
+              >
+                Continue to payment
+              </button>
+            </div>
           </div>
         )}
 

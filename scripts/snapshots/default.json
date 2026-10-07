@@ -1,7 +1,7 @@
 {
   "takenAt": {
     "$date": {
-      "$numberLong": "1791409348241"
+      "$numberLong": "1791410209806"
     }
   },
   "db": "kairosDB",
@@ -553,13 +553,16 @@
               "$numberInt": "0"
             },
             "vendor": {
-              "name": "UNILAG via Remita RRR 3456 8835 9933",
+              "name": "University of Lagos (Bursary)",
               "verified": true,
-              "account": "•••• 1579"
+              "account": "Remita biller"
             },
             "_id": {
               "$oid": "6ac6b24854e9bfeb9330c2a3"
-            }
+            },
+            "rrr": "3456 8835 9933",
+            "rrrMatric": "210403512",
+            "rrrStudent": "Ndujekwu Ugochukwu Peter"
           }
         ],
         "evidence": [
@@ -614,7 +617,7 @@
         },
         "updatedAt": {
           "$date": {
-            "$numberLong": "1791408096106"
+            "$numberLong": "1791410205155"
           }
         },
         "__v": {
@@ -1450,7 +1453,7 @@
             "$numberLong": "1791406659031"
           }
         },
-        "email": "ugo_ndujekwu64@example.com"
+        "email": "ugopeter26@gmail.com"
       },
       {
         "_id": {
