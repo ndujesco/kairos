@@ -32,10 +32,10 @@ const FEES = 220500;
 const OKEFE_GIFT = 150000;          // upkeep ₦3,000 → ₦147,000 net
 const ABBY_GIFT  = 75000;           // upkeep ₦1,500 → ₦73,500 net
 
-/* The donors need a real inbox, otherwise the payment email has nowhere to go.
-   Both personas point at the same address so whichever one gives, the alert
-   lands in the inbox that is open on the projector. Override with DEMO_EMAIL. */
-const INBOX = process.env.DEMO_EMAIL || "210403512@live.unilag.edu.ng";
+/* Every account points at the same inbox, so whoever gives and whoever is
+   alerted, the mail lands in the one inbox that is open on the projector.
+   Override with DEMO_EMAIL. */
+const INBOX = process.env.DEMO_EMAIL || "ugondu635@gmail.com";
 
 /* Two points on the same timeline:
      --recording   the cause is published and nobody has given yet, so Okefe's
@@ -66,7 +66,7 @@ const okefe = (await user("okefe")) || (await U.insertOne({
 }).then(() => user("okefe")));
 const abby = await user("abby");
 
-await U.updateMany({ handle: { $in: ["okefe", "abby"] } }, { $set: { email: INBOX } });
+await U.updateMany({}, { $set: { email: INBOX } });
 
 /* ---- clear the other school-fee and demo causes, so the feed reads cleanly ---- */
 for (const slug of ["keep-tobi-in-school-unilag", "help-emeka-surgery-igbobi"]) {
@@ -167,7 +167,7 @@ if (FOR_RECORDING) {
 } else {
   console.log(`  in escrow  ₦${net.toLocaleString()}   (@okefe gave ₦${OKEFE_GIFT.toLocaleString()}, upkeep ₦${upkeep.toLocaleString()})`);
   console.log(`  fees due   ₦${FEES.toLocaleString()}   ·  RRR ${RRR}   ·  still short ₦${(FEES - net).toLocaleString()}`);
-  console.log(`  email      ${INBOX}   (both donors — the payout alert lands here)`);
+  console.log(`  email      ${INBOX}   (every account — all mail lands here)`);
   console.log(`  live       Abby gives ₦${ABBY_GIFT.toLocaleString()} → Ugo pays the fees → Abby is notified\n`);
 }
 await client.close();

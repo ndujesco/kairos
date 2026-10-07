@@ -1,14 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { listen, type AlertPayload } from "@/lib/alerts";
 
 /**
- * Desktop alerts for the signed-in donor.
+ * Desktop alerts for the donor.
  *
- * A donor is not staring at Kairos when their money moves, so the receipt has
- * to come to them. This asks once, then polls for new notifications and shows
- * them through the service worker - which keeps working while the tab sits in
- * the background. Email covers the case where the browser is closed entirely.
+ * Two ways in, because they fail in different situations:
+ *
+ *   1. Another tab announces the alert the instant a payout succeeds. This is
+ *      what carries the demo - the session cookie is shared across tabs, so the
+ *      donor tab cannot poll for its own alerts once the organizer signs in.
+ *   2. A poll, for the ordinary case of one person in one tab whose money moved
+ *      while they were elsewhere on the site.
+ *
+ * Email covers the case where the browser is closed entirely.
  */
 export default function DesktopAlerts() {
   const seen = useRef<Set<string>>(new Set());
@@ -20,30 +26,43 @@ export default function DesktopAlerts() {
     setPerm(Notification.permission);
     navigator.serviceWorker?.register("/sw.js").catch(() => {});
 
+    /** Raise one OS notification, through the worker when we have it. */
+    const show = async (a: AlertPayload) => {
+      if (seen.current.has(a.id)) return;
+      seen.current.add(a.id);
+      if (Notification.permission !== "granted") return;
+      const payload = {
+        kind: "kairos-notify",
+        id: a.id,
+        title: a.title,
+        body: a.body,
+        url: a.url || "/notifications",
+      };
+      const reg = await navigator.serviceWorker?.ready.catch(() => null);
+      if (reg?.active) reg.active.postMessage(payload);
+      else new Notification(a.title, { body: a.body });
+    };
+
+    /* 1 - announced by whichever tab did the payout */
+    const stop = listen(show);
+
+    /* 2 - and a poll, for this tab's own notifications */
     const tick = async () => {
       try {
         const r = await fetch("/api/notifications/latest", { cache: "no-store" });
         const { items } = await r.json();
-        // the first pass only records what already exists
         if (!primed.current) {
           items.forEach((n: { id: string }) => seen.current.add(n.id));
           primed.current = true;
           return;
         }
         for (const n of [...items].reverse()) {
-          if (seen.current.has(n.id)) continue;
-          seen.current.add(n.id);
-          if (Notification.permission !== "granted") continue;
-          const reg = await navigator.serviceWorker?.ready.catch(() => null);
-          const payload = {
-            kind: "kairos-notify",
+          await show({
             id: n.id,
             title: n.title,
             body: n.body,
             url: n.causeSlug ? `/cause/${n.causeSlug}` : "/notifications",
-          };
-          if (reg?.active) reg.active.postMessage(payload);
-          else new Notification(n.title, { body: n.body });
+          });
         }
       } catch {
         /* a poll failure must never break the page */
@@ -52,7 +71,15 @@ export default function DesktopAlerts() {
 
     tick();
     const id = setInterval(tick, 3000);
-    return () => clearInterval(id);
+    /* a hidden tab has its timers throttled, so catch up the moment it is seen */
+    const onVisible = () => document.visibilityState === "visible" && tick();
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisible);
+      stop();
+    };
   }, []);
 
   if (perm === "granted" || perm === "denied") return null;

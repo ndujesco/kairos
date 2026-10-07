@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import RemitaReceipt from "./RemitaReceipt";
+import { announce } from "@/lib/alerts";
 
 function naira(n: number) {
   return "₦" + Math.round(n).toLocaleString("en-NG");
@@ -82,6 +83,10 @@ export default function DisburseForm({
       setStage("idle");
       return;
     }
+    /* Tell the donor's tab directly. It shares this browser's session cookie,
+       so it cannot poll for its own alert once the organizer is signed in. */
+    announce(j.alerts ?? []);
+
     setResult({ invoiceNo: j.invoiceNo, notified: j.notified });
     setStage("done");
     router.refresh();

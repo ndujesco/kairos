@@ -81,7 +81,23 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       pct: Math.round(pct * 100),
     },
   }));
-  if (notifications.length) await Notification.insertMany(notifications);
+  const inserted = notifications.length ? await Notification.insertMany(notifications) : [];
+
+  /* Hand the donor alerts back to the caller so the organizer's tab can
+     announce them to the donor's tab. Same browser, one session cookie - the
+     donor tab cannot poll for these itself. */
+  const donorNames = new Map(
+    (await User.find({ _id: { $in: [...byDonor.keys()] } }, { name: 1 })).map(
+      (u) => [String(u._id), u.name as string]
+    )
+  );
+  const alerts = inserted.map((n, i) => ({
+    id: String(n._id),
+    title: notifications[i].title,
+    body: notifications[i].body,
+    url: `/cause/${cause.slug}`,
+    donorName: donorNames.get(String(notifications[i].user)) ?? "A donor",
+  }));
 
   /* and by email, for the donors who gave us an address */
   const donors = await User.find(
@@ -126,6 +142,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     ok: true,
     invoiceNo,
     notified: notifications.length,
+    alerts,
     disbursementId: String(disb._id),
     completed: allSpent,
   });
