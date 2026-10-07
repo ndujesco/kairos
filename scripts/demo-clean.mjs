@@ -27,6 +27,29 @@ const SLUGS = [
   "help-emeka-surgery-igbobi",
 ];
 
+/* Abby is the donor who gives live on stage, so hers is the only address that
+   needs to reach a real inbox. Everyone else gets a plausible-looking address
+   on example.com, the reserved placeholder domain, so a payout email can never
+   land on a real stranger. */
+async function setEmails(U, inbox) {
+  const users = await U.find({}, { projection: { handle: 1, name: 1 } }).toArray();
+  const parts = (s) => s.toLowerCase().normalize("NFD").replace(/[^a-z ]/g, "").trim().split(/\s+/);
+  const styles = [
+    (p, n) => `${p[0]}.${p[1] ?? p[0]}${n}`,
+    (p, n) => `${p[0]}${p[1] ? p[1][0] : ""}${n}`,
+    (p, n) => `${p[1] ?? p[0]}${p[0][0]}${n}`,
+    (p, n) => `${p[0]}_${p[1] ?? "ng"}${n}`,
+  ];
+  const ops = users.map((u) => {
+    if (u.handle === "abby") return { updateOne: { filter: { _id: u._id }, update: { $set: { email: inbox } } } };
+    const p = parts(u.name || u.handle);
+    const n = 10 + Math.floor(Math.random() * 89);
+    const local = styles[Math.floor(Math.random() * styles.length)](p, n).replace(/\.\./g, ".");
+    return { updateOne: { filter: { _id: u._id }, update: { $set: { email: `${local}@example.com` } } } };
+  });
+  if (ops.length) await U.bulkWrite(ops);
+}
+
 const client = await MongoClient.connect(uri);
 const db = client.db();
 
@@ -45,15 +68,16 @@ for (const c of mine) {
 /* every notification goes - a leftover alert is what gives a demo away */
 const notes = (await db.collection("notifications").deleteMany({})).deletedCount;
 
-/* one inbox for every account, so any alert can be shown from one mailbox */
-await db.collection("users").updateMany({}, { $set: { email: INBOX } });
+/* only Abby has an inbox - she is the donor who gives live, and one arriving
+   mail is far clearer to show than thirteen */
+await setEmails(db.collection("users"), INBOX);
 
 console.log("\n  Clean. Nothing of the school-fees demo is left.\n");
 console.log(`  causes removed     ${mine.length}${mine.length ? "  (" + mine.map((c) => c.slug).join(", ") + ")" : ""}`);
 console.log(`  donations removed  ${donations}`);
 console.log(`  payouts removed    ${payouts}`);
 console.log(`  notifications      ${notes} deleted (all users)`);
-console.log(`  email              ${INBOX} on every account`);
+console.log(`  email              ${INBOX} on @abby only`);
 console.log(`  users              ${await db.collection("users").countDocuments({})} kept\n`);
 console.log("  Next: sign in as @ugo and create the cause on camera.\n");
 await client.close();

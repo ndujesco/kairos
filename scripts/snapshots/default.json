@@ -1,7 +1,7 @@
 {
   "takenAt": {
     "$date": {
-      "$numberLong": "1791408137642"
+      "$numberLong": "1791409348241"
     }
   },
   "db": "kairosDB",
@@ -1218,7 +1218,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "abigails76@example.com"
       },
       {
         "_id": {
@@ -1257,7 +1257,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "doe.jon65@example.com"
       },
       {
         "_id": {
@@ -1296,7 +1296,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "bukolat10@example.com"
       },
       {
         "_id": {
@@ -1335,7 +1335,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "mercym61@example.com"
       },
       {
         "_id": {
@@ -1374,7 +1374,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "doe_ng12@example.com"
       },
       {
         "_id": {
@@ -1413,7 +1413,7 @@
         "__v": {
           "$numberInt": "0"
         },
-        "email": "ugondu635@gmail.com"
+        "email": "comfort_david47@example.com"
       },
       {
         "_id": {
@@ -1450,7 +1450,7 @@
             "$numberLong": "1791406659031"
           }
         },
-        "email": "ugondu635@gmail.com"
+        "email": "ugo_ndujekwu64@example.com"
       },
       {
         "_id": {
@@ -1524,7 +1524,7 @@
             "$numberLong": "1786207158251"
           }
         },
-        "email": "ugondu635@gmail.com"
+        "email": "amina_yusuf47@example.com"
       },
       {
         "_id": {
@@ -1561,7 +1561,7 @@
             "$numberLong": "1788799158273"
           }
         },
-        "email": "ugondu635@gmail.com"
+        "email": "obic13@example.com"
       },
       {
         "_id": {
@@ -1598,7 +1598,7 @@
             "$numberLong": "1784911158295"
           }
         },
-        "email": "ugondu635@gmail.com"
+        "email": "davida89@example.com"
       },
       {
         "_id": {
@@ -1635,7 +1635,7 @@
             "$numberLong": "1774111158317"
           }
         },
-        "email": "ugondu635@gmail.com"
+        "email": "hope_haven88@example.com"
       },
       {
         "_id": {
@@ -1644,7 +1644,7 @@
         "name": "Okefe Joseph",
         "handle": "okefe",
         "passwordHash": "aa6ec41f3a8dade6833aaf8a9f1a00cb:099e5648a16dbf2150e31c3f31fe7db56d7fb224b4d1efcccb009fdb935773f4abc41bda79b83ae7b5ac65345ccfe1c3865babf8d718ea0761bef65d713b006c",
-        "email": "ugondu635@gmail.com",
+        "email": "okefe_joseph45@example.com",
         "bio": "Software engineer. Gives to causes he can check.",
         "avatarColor": "amber",
         "emoji": "🧑🏾‍💻",

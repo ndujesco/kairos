@@ -32,9 +32,10 @@ const FEES = 220500;
 const OKEFE_GIFT = 150000;          // upkeep ₦3,000 → ₦147,000 net
 const ABBY_GIFT  = 75000;           // upkeep ₦1,500 → ₦73,500 net
 
-/* Every account points at the same inbox, so whoever gives and whoever is
-   alerted, the mail lands in the one inbox that is open on the projector.
-   Override with DEMO_EMAIL. */
+/* Only Abby carries an email address. She is the donor who gives live on
+   stage, so hers is the only alert that needs to land in a real inbox, and one
+   arriving mail is far clearer to show than thirteen. Override with
+   DEMO_EMAIL. */
 const INBOX = process.env.DEMO_EMAIL || "ugondu635@gmail.com";
 
 /* Two points on the same timeline:
@@ -52,13 +53,36 @@ const D = db.collection("donations");
 const P = db.collection("disbursements");
 const N = db.collection("notifications");
 
+/* Abby is the donor who gives live on stage, so hers is the only address that
+   needs to reach a real inbox. Everyone else gets a plausible-looking address
+   on example.com, the reserved placeholder domain, so a payout email can never
+   land on a real stranger. */
+async function setEmails(U, inbox) {
+  const users = await U.find({}, { projection: { handle: 1, name: 1 } }).toArray();
+  const parts = (s) => s.toLowerCase().normalize("NFD").replace(/[^a-z ]/g, "").trim().split(/\s+/);
+  const styles = [
+    (p, n) => `${p[0]}.${p[1] ?? p[0]}${n}`,
+    (p, n) => `${p[0]}${p[1] ? p[1][0] : ""}${n}`,
+    (p, n) => `${p[1] ?? p[0]}${p[0][0]}${n}`,
+    (p, n) => `${p[0]}_${p[1] ?? "ng"}${n}`,
+  ];
+  const ops = users.map((u) => {
+    if (u.handle === "abby") return { updateOne: { filter: { _id: u._id }, update: { $set: { email: inbox } } } };
+    const p = parts(u.name || u.handle);
+    const n = 10 + Math.floor(Math.random() * 89);
+    const local = styles[Math.floor(Math.random() * styles.length)](p, n).replace(/\.\./g, ".");
+    return { updateOne: { filter: { _id: u._id }, update: { $set: { email: `${local}@example.com` } } } };
+  });
+  if (ops.length) await U.bulkWrite(ops);
+}
+
 const user = async (h) => U.findOne({ handle: h });
 const ugo = await user("ugo");
 const okefe = (await user("okefe")) || (await U.insertOne({
   name: "Okefe Joseph", handle: "okefe",
   // same hash shape as the seeded personas: password is "password"
   passwordHash: (await user("ugo")).passwordHash,
-  email: INBOX, bio: "Software engineer. Gives to causes he can check.",
+  email: "", bio: "Software engineer. Gives to causes he can check.",
   avatarColor: "amber", emoji: "🧑🏾‍💻", role: "donor",
   verified: { identity: false, cac: false },
   trustLevel: 1, raiseLimit: 200000, completedCauses: 0,
@@ -66,7 +90,7 @@ const okefe = (await user("okefe")) || (await U.insertOne({
 }).then(() => user("okefe")));
 const abby = await user("abby");
 
-await U.updateMany({}, { $set: { email: INBOX } });
+await setEmails(U, INBOX);
 
 /* ---- clear the other school-fee and demo causes, so the feed reads cleanly ---- */
 for (const slug of ["keep-tobi-in-school-unilag", "help-emeka-surgery-igbobi"]) {
@@ -167,7 +191,7 @@ if (FOR_RECORDING) {
 } else {
   console.log(`  in escrow  ₦${net.toLocaleString()}   (@okefe gave ₦${OKEFE_GIFT.toLocaleString()}, upkeep ₦${upkeep.toLocaleString()})`);
   console.log(`  fees due   ₦${FEES.toLocaleString()}   ·  RRR ${RRR}   ·  still short ₦${(FEES - net).toLocaleString()}`);
-  console.log(`  email      ${INBOX}   (every account — all mail lands here)`);
+  console.log(`  email      ${INBOX}   (@abby only — she is the live donor)`);
   console.log(`  live       Abby gives ₦${ABBY_GIFT.toLocaleString()} → Ugo pays the fees → Abby is notified\n`);
 }
 await client.close();
