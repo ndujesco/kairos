@@ -42,6 +42,9 @@ export default function DisburseForm({
   const maxPay = Math.min(escrow, selected?.remaining ?? 0);
 
   const isFees = Boolean(selected?.rrr);
+  /* A Remita reference settles the whole balance or nothing, so the cause has
+     to be funded before the button means anything. */
+  const short = isFees ? Math.max(0, (selected?.remaining ?? 0) - escrow) : 0;
 
   /* Settling a school fee is a different act from paying a supplier: the
      reference carries the student, the fee and the institution, so there is
@@ -192,11 +195,18 @@ export default function DisburseForm({
               </span>
               <button
                 onClick={pay}
-                className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-black transition hover:bg-accent/90"
+                disabled={short > 0}
+                className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-black transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-muted"
               >
                 Pay fees
               </button>
             </div>
+            {short > 0 && (
+              <p className="mt-2 text-[12px] leading-snug text-amber-400">
+                {naira(short)} more is needed before this can be settled. A fee reference is
+                paid in full or not at all, so there is no part payment.
+              </p>
+            )}
             <p className="mt-2 text-[11.5px] leading-snug text-muted">
               The reference is fixed to one student, one fee and one institution. There is
               no amount to type and nowhere else it can go.
