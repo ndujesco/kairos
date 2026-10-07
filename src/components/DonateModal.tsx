@@ -24,10 +24,19 @@ export default function DonateModal({
   const [amount, setAmount] = useState<number>(7000);
   const [custom, setCustom] = useState("");
   const [anonymous, setAnonymous] = useState(false);
+  const [coverFee, setCoverFee] = useState(true);
   const [stage, setStage] = useState<"amount" | "gateway" | "confirming" | "done">("amount");
   const [error, setError] = useState("");
 
   const finalAmount = custom ? parseInt(custom.replace(/\D/g, ""), 10) || 0 : amount;
+
+  /* Upkeep: 2% of the gift, capped at ₦5,000 for the whole cause. Shown before
+     you confirm, never discovered afterwards. Covering it keeps the cause whole. */
+  const UPKEEP_RATE = 0.02;
+  const UPKEEP_CAP = 5000;
+  const upkeep = Math.min(Math.round(finalAmount * UPKEEP_RATE), UPKEEP_CAP);
+  const youPay = coverFee ? finalAmount + upkeep : finalAmount;
+  const causeGets = coverFee ? finalAmount : finalAmount - upkeep;
 
   // stable fake checkout details, generated once when checkout starts
   const [checkout, setCheckout] = useState<{ account: string; reference: string } | null>(null);
@@ -125,6 +134,37 @@ export default function DonateModal({
               Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b>,
               not the organizer&rsquo;s account. It is only paid out to verified vendors, and you
               get a receipt for your share of every payment.
+            </div>
+
+            {/* the upkeep line, in naira, before you confirm */}
+            <div className="mb-3 rounded-xl border border-line p-3 text-[13px]">
+              <div className="flex justify-between py-0.5">
+                <span className="text-muted">Donation</span>
+                <span className="font-bold">{naira(finalAmount || 0)}</span>
+              </div>
+              <div className="flex justify-between py-0.5">
+                <span className="text-muted">Kairos upkeep (2%, capped at ₦5,000)</span>
+                <span className="font-bold">{naira(upkeep)}</span>
+              </div>
+              <label className="mt-2 flex cursor-pointer items-start gap-2 border-t border-line pt-2">
+                <input
+                  type="checkbox"
+                  checked={coverFee}
+                  onChange={(e) => setCoverFee(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--accent)]"
+                />
+                <span className="text-muted">
+                  Add {naira(upkeep)} so the cause receives the full {naira(finalAmount || 0)}
+                </span>
+              </label>
+              <div className="mt-2 flex justify-between border-t border-line pt-2">
+                <span className="font-bold">You pay</span>
+                <span className="font-bold text-accent">{naira(youPay)}</span>
+              </div>
+              <div className="flex justify-between py-0.5">
+                <span className="text-muted">The cause receives</span>
+                <span className="font-bold">{naira(causeGets)}</span>
+              </div>
             </div>
 
             <label className="mb-4 flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-line p-3">
