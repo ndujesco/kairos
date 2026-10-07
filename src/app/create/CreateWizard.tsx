@@ -43,6 +43,14 @@ export default function CreateWizard({
   const [idState, setIdState] = useState<"idle" | "scanning" | "matched">("idle");
   const [idScore, setIdScore] = useState(0);
   useEffect(() => {
+    // nudge past 0 so the first frame paints before the check is started
+    const v = document.getElementById("face-clip") as HTMLVideoElement | null;
+    if (!v) return;
+    const seek = () => { try { v.currentTime = 0.05; } catch {} };
+    v.addEventListener("loadeddata", seek, { once: true });
+    if (v.readyState >= 2) seek();
+  }, [stage]);
+  useEffect(() => {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("stage");
     if (q === "identity") setStage("identity");
@@ -164,13 +172,31 @@ export default function CreateWizard({
 
   async function runFaceCheck() {
     setIdState("scanning");
+    setIdScore(0);
     const vid = document.getElementById("face-clip") as HTMLVideoElement | null;
-    if (vid) { vid.currentTime = 0; vid.play().catch(() => {}); }
-    // the match score climbs while the clip plays, then settles
-    for (let i = 1; i <= 24; i++) {
-      await new Promise((r) => setTimeout(r, 170));
-      setIdScore(Math.min(98, Math.round(i * 4.3)));
+
+    /* The capture runs once. Confidence tracks how much of it we have seen, so
+       the result lands exactly when the clip ends - not on a timer of its own. */
+    if (vid) {
+      const onTime = () => {
+        if (!vid.duration || !isFinite(vid.duration)) return;
+        setIdScore(Math.min(98, Math.round((vid.currentTime / vid.duration) * 98)));
+      };
+      vid.addEventListener("timeupdate", onTime);
+      await new Promise<void>((resolve) => {
+        let settled = false;
+        const finish = () => { if (!settled) { settled = true; resolve(); } };
+        vid.addEventListener("ended", finish, { once: true });
+        vid.currentTime = 0;
+        vid.play().catch(() => setTimeout(finish, 3500));   // autoplay blocked
+        setTimeout(finish, 20000);                          // never hang the flow
+      });
+      vid.removeEventListener("timeupdate", onTime);
+    } else {
+      await new Promise((r) => setTimeout(r, 3500));
     }
+
+    setIdScore(98);
     setIdState("matched");
     // the check has passed, so record the outcome before the cause is published
     await fetch("/api/auth/verify", {
@@ -469,10 +495,7 @@ export default function CreateWizard({
             <div className="relative h-[232px] w-[174px] shrink-0 overflow-hidden rounded-xl border border-line bg-black">
               <video
                 id="face-clip"
-                poster=""
                 muted
-                loop
-                autoPlay
                 playsInline
                 preload="auto"
                 className="h-full w-full object-cover"

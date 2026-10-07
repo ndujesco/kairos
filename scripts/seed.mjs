@@ -83,6 +83,46 @@ async function main() {
   await db.collection("users").insertMany([ugo, abby, amina, chiamaka, david, ngo]);
   console.log("✓ users");
 
+  /* ---- cause 0b: the demo journey cause, created by abby, settled on camera ----
+     Pre-funded to ₦90,200 net. The demo adds a live ₦10,000 gift (₦200 upkeep,
+     ₦9,800 net) which brings escrow to exactly ₦100,000, then pays ₦50,000 to
+     the hospital - half the pot - so a ₦10,000 donor sees ₦4,900 of it.        */
+  const emeka = {
+    _id: oid(),
+    title: "Help Emeka get surgery at Igbobi",
+    slug: "help-emeka-surgery-igbobi",
+    summary:
+      "My brother Emeka broke his arm playing football. National Orthopaedic Hospital, Igbobi, can fix it. The money goes to the hospital, never to me.",
+    story:
+      "On the 21st of June my younger brother Emeka broke his arm during a school football match in Surulere. He is 16.\n\nThe orthopaedic team at National Orthopaedic Hospital, Igbobi, says he needs corrective surgery within three weeks. The estimate is ₦450,000 and we have raised what we can.\n\nI chose Kairos because I know how hard it is to trust a stranger's story. You are not sending money to me. The hospital gets paid directly, and you will see the invoice the moment it happens.",
+    category: "Medical",
+    coverEmoji: "🦴",
+    coverColor: "sky",
+    organizer: abby._id,
+    goal: 450000,
+    raised: 90200,
+    escrowBalance: 90200,
+    upkeepTaken: 0,
+    donorCount: 3,
+    vouches: [amina._id, chiamaka._id, david._id],
+    budget: [
+      {
+        label: "Corrective surgery + cast", amount: 450000, spent: 0,
+        vendor: { name: "National Orthopaedic Hospital, Igbobi", verified: true, account: "•••• 7741" },
+      },
+    ],
+    evidence: [
+      { label: "Hospital estimate - Igbobi orthopaedics", kind: "invoice", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+      { label: "X-ray and doctor's note", kind: "document", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+      { label: "Photo from the day of the injury", kind: "photo", checks: { reuse: "clean", exif: "consistent", dates: "consistent" } },
+    ],
+    updates: [],
+    status: "live",
+    aiVerified: true,
+    createdAt: daysAgo(3),
+    updatedAt: daysAgo(1),
+  };
+
   /* ------------- cause 0: school fees, the wedge (live, first in feed) ------------- */
   const schoolfees = {
     _id: oid(),
@@ -304,7 +344,7 @@ async function main() {
     updatedAt: daysAgo(38),
   };
 
-  await db.collection("causes").insertMany([schoolfees, medical, outreach, shelter, completed]);
+  await db.collection("causes").insertMany([emeka, schoolfees, medical, outreach, shelter, completed]);
   console.log("✓ causes");
 
   /* ------------------------------ donations ------------------------------ */
