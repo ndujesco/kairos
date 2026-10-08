@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import LoginClient from "./LoginClient";
 
 export const dynamic = "force-dynamic";
@@ -10,5 +11,10 @@ export const metadata = {
 };
 
 export default function LoginPage() {
-  return <LoginClient />;
+  /* useSearchParams needs a boundary, even on a dynamic page */
+  return (
+    <Suspense>
+      <LoginClient />
+    </Suspense>
+  );
 }

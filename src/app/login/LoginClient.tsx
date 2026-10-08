@@ -1,18 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import KairosMark from "@/components/KairosMark";
+
+/**
+ * Demo personas, so the stage launcher can land on a filled-in form.
+ * Only these handles prefill, and only with the seeded demo password.
+ */
+const DEMO: Record<string, string> = { ugo: "password", abby: "password", okefe: "password" };
 
 export default function LoginClient() {
   const router = useRouter();
+  const params = useSearchParams();
+  const as = (params.get("as") || "").toLowerCase().trim();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
-  // shared fields
-  const [handle, setHandle] = useState("");
-  const [password, setPassword] = useState("");
+  // shared fields, prefilled when the stage launcher names a persona
+  const [handle, setHandle] = useState(as in DEMO ? as : "");
+  const [password, setPassword] = useState(DEMO[as] ?? "");
 
   // signup fields
   const [name, setName] = useState("");
