@@ -8,6 +8,7 @@ import Avatar from "@/components/Avatar";
 import VerifiedBadge from "@/components/VerifiedBadge";
 import ProgressBar from "@/components/ProgressBar";
 import CauseActions from "./CauseActions";
+import EvidenceViewer from "@/components/EvidenceViewer";
 import CommentForm from "./CommentForm";
 
 export const dynamic = "force-dynamic";
@@ -175,14 +176,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
               </svg>
               <span>
                 {e.url ? (
-                  <a
-                    href={e.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-bold text-accent underline underline-offset-2 hover:opacity-80"
-                  >
-                    {e.label}
-                  </a>
+                  <EvidenceViewer url={e.url} label={e.label} />
                 ) : (
                   e.label
                 )}{" "}

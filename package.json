@@ -16,7 +16,8 @@
     "snapshot:verify": "node scripts/snapshot-verify.mjs",
     "demo:prep": "node scripts/prep-ugo-cause.mjs",
     "icons": "node scripts/make-icons.mjs",
-    "stage": "bash scripts/stage.sh"
+    "stage": "bash scripts/stage.sh",
+    "advice": "node scripts/make-payment-advice.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",
