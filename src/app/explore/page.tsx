@@ -37,7 +37,7 @@ export default async function ExplorePage(props: {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-line bg-black/80 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-line bg-background/80 backdrop-blur">
         <h1 className="px-4 pt-3 text-xl font-extrabold">Explore</h1>
         <form className="px-4 pt-2" action="/explore" method="GET">
           <input
@@ -55,7 +55,7 @@ export default async function ExplorePage(props: {
               className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-bold transition ${
                 c === cat
                   ? "border-accent bg-accent/15 text-accent"
-                  : "border-line text-muted hover:bg-white/5"
+                  : "border-line text-muted hover:bg-surface"
               }`}
             >
               {cat}

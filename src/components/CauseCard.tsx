@@ -56,7 +56,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
   const fullyFunded = remaining <= 0 || cause.status === "completed";
 
   return (
-    <article className="border-b border-line px-4 py-3 transition hover:bg-white/[0.03]">
+    <article className="border-b border-line px-4 py-3 transition hover:bg-hover">
       <div className="flex gap-3">
         <Link href={`/profile/${cause.organizer.handle}`}>
           <Avatar emoji={cause.organizer.emoji} color={cause.organizer.avatarColor} />
@@ -165,7 +165,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
             ) : (
               <button
                 onClick={() => setDonating(true)}
-                className="shrink-0 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-black transition hover:bg-accent/90 sm:px-5 sm:text-sm"
+                className="shrink-0 rounded-full bg-accent px-4 py-1.5 text-xs font-bold text-on-accent transition hover:bg-accent/90 sm:px-5 sm:text-sm"
               >
                 Donate
               </button>

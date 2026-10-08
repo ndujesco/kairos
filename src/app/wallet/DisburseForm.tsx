@@ -133,7 +133,7 @@ export default function DisburseForm({
 
   if (stage === "paying")
     return (
-      <div className="mt-3 rounded-xl border border-line bg-white/5 p-4">
+      <div className="mt-3 rounded-xl border border-line bg-surface p-4">
         <div className="flex items-center gap-3">
           <div className="h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-line border-t-accent" />
           <p className="text-sm font-bold">{STEPS[step]}</p>
@@ -168,7 +168,7 @@ export default function DisburseForm({
             setLabel(e.target.value);
             setAmount("");
           }}
-          className="w-full rounded-lg border border-line bg-black px-3 py-2.5 text-sm outline-none focus:border-accent"
+          className="w-full rounded-lg border border-line bg-background px-3 py-2.5 text-sm outline-none focus:border-accent"
         >
           {payable.map((i) => (
             <option key={i.label} value={i.label}>
@@ -196,7 +196,7 @@ export default function DisburseForm({
               <button
                 onClick={pay}
                 disabled={short > 0}
-                className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-black transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-muted"
+                className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-on-accent transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-raised disabled:text-muted"
               >
                 Pay fees
               </button>
@@ -232,7 +232,7 @@ export default function DisburseForm({
           </div>
           <button
             onClick={pay}
-            className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-black transition hover:bg-accent/90"
+            className="shrink-0 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-on-accent transition hover:bg-accent/90"
           >
             Pay vendor
           </button>

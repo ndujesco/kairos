@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Avatar from "./Avatar";
+import BellBadge from "./BellBadge";
 import KairosMark from "./KairosMark";
 
 const TABS = [
@@ -27,7 +28,7 @@ export function MobileTopBar({
   user: { handle: string; emoji: string; avatarColor: string };
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-line bg-black px-4 py-2 sm:hidden">
+    <div className="flex items-center justify-between border-b border-line bg-background px-4 py-2 sm:hidden">
       <Link href="/" className="flex items-center gap-2 text-accent" title="Kairos">
         <KairosMark size={22} />
         <span className="text-base font-extrabold text-foreground">Kairos</span>
@@ -41,7 +42,7 @@ export function MobileTopBar({
 
 export default function MobileNav({ unread = 0 }: { unread?: number }) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-around border-t border-line bg-black/90 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-around border-t border-line bg-background/90 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
       {TABS.slice(0, 2).map((t) => (
         <Link key={t.href} href={t.href} className="flex flex-col items-center gap-0.5 p-2.5 text-muted">
           <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
@@ -53,7 +54,7 @@ export default function MobileNav({ unread = 0 }: { unread?: number }) {
 
       <Link
         href="/create"
-        className="-mt-5 flex items-center justify-center rounded-full bg-accent text-3xl font-bold text-black shadow-[0_0_20px_rgba(0,186,124,0.4)]"
+        className="-mt-5 flex items-center justify-center rounded-full bg-accent text-3xl font-bold text-on-accent shadow-[0_0_20px_rgba(0,186,124,0.4)]"
         title="Start a Cause"
         style={{ width: 52, height: 52 }}
       >
@@ -66,13 +67,11 @@ export default function MobileNav({ unread = 0 }: { unread?: number }) {
             <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
               <path d={t.icon} />
             </svg>
-            {t.href === "/notifications" && unread > 0 && (
-              <span
-                className="absolute -right-2 -top-1 grid h-[17px] min-w-[17px] place-items-center rounded-full bg-accent px-1 text-[10px] font-extrabold leading-none text-black"
-                aria-label={`${unread} unread`}
-              >
-                {unread > 9 ? "9+" : unread}
-              </span>
+            {t.href === "/notifications" && (
+              <BellBadge
+                count={unread}
+                className="absolute -right-2 -top-1 h-[17px] min-w-[17px] px-1 text-[10px]"
+              />
             )}
           </span>
           <span className="text-[10px] font-bold">{t.label}</span>

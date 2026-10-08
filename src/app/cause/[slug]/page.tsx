@@ -80,8 +80,8 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
 
   return (
     <div>
-      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-black/80 px-4 py-3 backdrop-blur">
-        <Link href="/" className="rounded-full p-2 hover:bg-white/10">
+      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-background/80 px-4 py-3 backdrop-blur">
+        <Link href="/" className="rounded-full p-2 hover:bg-raised">
           ←
         </Link>
         <div>
@@ -120,7 +120,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
             Fully funded
           </span>
         ) : (
-          <span className="rounded-full bg-white/10 px-3 py-1 text-sm font-bold">Live</span>
+          <span className="rounded-full bg-raised px-3 py-1 text-sm font-bold">Live</span>
         )}
       </div>
 

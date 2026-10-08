@@ -98,7 +98,7 @@ export default function DesktopAlerts() {
   return (
     <button
       onClick={async () => setPerm(await Notification.requestPermission())}
-      className="fixed bottom-4 right-4 z-50 rounded-full border border-accent/40 bg-black/90 px-4 py-2.5 text-sm font-bold text-accent shadow-lg backdrop-blur hover:bg-accent/10"
+      className="fixed bottom-4 right-4 z-50 rounded-full border border-accent/40 bg-background/90 px-4 py-2.5 text-sm font-bold text-accent shadow-lg backdrop-blur hover:bg-accent/10"
     >
       Turn on payment alerts
     </button>

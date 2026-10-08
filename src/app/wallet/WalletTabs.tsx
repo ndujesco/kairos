@@ -25,7 +25,7 @@ export default function WalletTabs({
       onClick={() => setTab(id)}
       aria-selected={tab === id}
       role="tab"
-      className={`relative flex-1 px-4 py-3.5 text-[15px] transition hover:bg-white/[0.03] ${
+      className={`relative flex-1 px-4 py-3.5 text-[15px] transition hover:bg-hover ${
         tab === id ? "font-extrabold" : "font-semibold text-muted"
       }`}
     >
@@ -38,7 +38,7 @@ export default function WalletTabs({
 
   return (
     <>
-      <div role="tablist" className="sticky top-[57px] z-10 flex border-b border-line bg-black/70 backdrop-blur-md">
+      <div role="tablist" className="sticky top-[57px] z-10 flex border-b border-line bg-background/70 backdrop-blur-md">
         <Tab id="manage" label={manageLabel} />
         <Tab id="give" label={giveLabel} />
       </div>

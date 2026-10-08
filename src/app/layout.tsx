@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { getSessionUser } from "@/lib/session";
+import { headers } from "next/headers";
 import { dbConnect } from "@/lib/db";
 import { Notification } from "@/lib/models";
 import Sidebar from "@/components/Sidebar";
 import DesktopAlerts from "@/components/DesktopAlerts";
 import LiveRefresh from "@/components/LiveRefresh";
+import ThemeScript from "@/components/ThemeScript";
 import RightRail from "@/components/RightRail";
 import MobileNav, { MobileTopBar } from "@/components/MobileNav";
 
@@ -69,7 +71,13 @@ export default async function RootLayout({
   let unread = 0;
   if (user) {
     await dbConnect();
-    unread = await Notification.countDocuments({ user: user._id, read: false });
+    /* The notifications page marks everything read as it renders, which is the
+       same pass this count runs in. Reading the path lets the bell clear on
+       arrival rather than a beat later. */
+    const onBell = (await headers()).get("x-pathname") === "/notifications";
+    unread = onBell
+      ? 0
+      : await Notification.countDocuments({ user: user._id, read: false });
   }
 
   return (
@@ -78,6 +86,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <ThemeScript />
         {user ? (
           <>
             <MobileTopBar

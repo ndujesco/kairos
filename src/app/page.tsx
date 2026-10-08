@@ -24,13 +24,13 @@ export default async function Home() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-line bg-black/80 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-line bg-background/80 backdrop-blur">
         <h1 className="px-4 pt-3 text-xl font-extrabold">Home</h1>
         <div className="mt-2 flex text-[15px] font-semibold text-muted">
           <span className="flex-1 cursor-pointer border-b-[3px] border-accent pb-3 text-center text-foreground">
             For you
           </span>
-          <span className="flex-1 cursor-pointer pb-3 text-center transition hover:bg-white/5">
+          <span className="flex-1 cursor-pointer pb-3 text-center transition hover:bg-surface">
             Following
           </span>
         </div>

@@ -255,8 +255,8 @@ export default function CreateWizard({
 
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-black/80 px-4 py-3 backdrop-blur">
-        <Link href="/" className="rounded-full p-2 hover:bg-white/10">
+      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-background/80 px-4 py-3 backdrop-blur">
+        <Link href="/" className="rounded-full p-2 hover:bg-raised">
           ←
         </Link>
         <div>
@@ -279,8 +279,8 @@ export default function CreateWizard({
                 <div
                   className={`max-w-[85%] animate-slide-up rounded-2xl px-4 py-3 text-[15px] leading-relaxed ${
                     m.from === "me"
-                      ? "rounded-br-sm bg-accent text-black"
-                      : "rounded-bl-sm border border-line bg-white/5"
+                      ? "rounded-br-sm bg-accent text-on-accent"
+                      : "rounded-bl-sm border border-line bg-surface"
                   }`}
                 >
                   {m.from === "ai" && <span className="mb-1 flex items-center gap-1 text-xs font-bold text-accent"><KairosMark size={12} /> Kairos AI</span>}
@@ -291,14 +291,14 @@ export default function CreateWizard({
             ))}
             {thinking && (
               <div className="flex">
-                <div className="animate-pulse-soft rounded-2xl rounded-bl-sm border border-line bg-white/5 px-4 py-3 text-muted">
+                <div className="animate-pulse-soft rounded-2xl rounded-bl-sm border border-line bg-surface px-4 py-3 text-muted">
                   typing…
                 </div>
               </div>
             )}
             <div ref={bottomRef} />
           </div>
-          <div className="sticky bottom-[68px] border-t border-line bg-black p-3 sm:bottom-0">
+          <div className="sticky bottom-[68px] border-t border-line bg-background p-3 sm:bottom-0">
             <div className="flex items-end gap-2">
               <textarea
                 ref={inputRef}
@@ -321,7 +321,7 @@ export default function CreateWizard({
               <button
                 onClick={send}
                 disabled={thinking || !input.trim()}
-                className="rounded-full bg-accent px-5 py-3 font-bold text-black disabled:opacity-40"
+                className="rounded-full bg-accent px-5 py-3 font-bold text-on-accent disabled:opacity-40"
               >
                 Send
               </button>
@@ -352,7 +352,7 @@ export default function CreateWizard({
                   className={`rounded-full border px-4 py-1.5 text-sm font-bold transition ${
                     category === c
                       ? "border-accent bg-accent/15 text-accent"
-                      : "border-line text-muted hover:bg-white/5"
+                      : "border-line text-muted hover:bg-surface"
                   }`}
                 >
                   {c}
@@ -426,7 +426,7 @@ export default function CreateWizard({
               {evidence.map((ev, i) => (
                 <span
                   key={i}
-                  className="flex items-center gap-1 rounded-full border border-line bg-white/5 px-3 py-1 text-sm"
+                  className="flex items-center gap-1 rounded-full border border-line bg-surface px-3 py-1 text-sm"
                 >
                   {ev}
                   <button
@@ -461,7 +461,7 @@ export default function CreateWizard({
 
           <button
             onClick={startIdentity}
-            className="rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
+            className="rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90"
           >
             Continue to identity check
           </button>
@@ -492,7 +492,7 @@ export default function CreateWizard({
           </div>
 
           <div className="mt-6 flex gap-5">
-            <div className="relative h-[232px] w-[174px] shrink-0 overflow-hidden rounded-xl border border-line bg-black">
+            <div className="relative h-[232px] w-[174px] shrink-0 overflow-hidden rounded-xl border border-line bg-background">
               <video
                 id="face-clip"
                 muted
@@ -512,7 +512,7 @@ export default function CreateWizard({
                 </div>
               )}
               {idState === "matched" && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/55">
+                <div className="absolute inset-0 flex items-center justify-center bg-background/55">
                   <span className="text-3xl text-accent">✓</span>
                 </div>
               )}
@@ -537,7 +537,7 @@ export default function CreateWizard({
                 <button
                   onClick={runFaceCheck}
                   disabled={nin.length < 11}
-                  className="mt-5 w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90 disabled:opacity-40"
+                  className="mt-5 w-full rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90 disabled:opacity-40"
                 >
                   Start face check
                 </button>

@@ -76,7 +76,7 @@ export default function AlertsDebug() {
   }, []);
 
   const btn =
-    "rounded-lg border border-line px-3 py-2 text-sm font-bold transition hover:bg-white/5";
+    "rounded-lg border border-line px-3 py-2 text-sm font-bold transition hover:bg-surface";
 
   return (
     <div className="mx-auto max-w-2xl p-5">

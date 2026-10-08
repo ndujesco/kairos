@@ -17,7 +17,7 @@ export default function RemitaReceipt({
     </div>
   );
   return (
-    <div className="mt-3 overflow-hidden rounded-xl border border-accent/40 bg-black">
+    <div className="mt-3 overflow-hidden rounded-xl border border-accent/40 bg-background">
       <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
         <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
           Payment successful

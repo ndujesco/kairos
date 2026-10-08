@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Avatar from "./Avatar";
+import BellBadge from "./BellBadge";
+import ThemeToggle from "./ThemeToggle";
 import KairosMark from "./KairosMark";
 
 const NAV = [
@@ -48,19 +50,17 @@ export default function Sidebar({
           <Link
             key={item.href}
             href={item.href}
-            className="group flex items-center gap-4 rounded-full p-3 text-xl transition-colors hover:bg-white/10"
+            className="group flex items-center gap-4 rounded-full p-3 text-xl transition-colors hover:bg-raised"
           >
             <span className="relative">
               <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
                 <path d={item.icon} />
               </svg>
-              {item.href === "/notifications" && unread > 0 && (
-                <span
-                  className="absolute -right-2 -top-1.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-accent px-1 text-[11px] font-extrabold leading-none text-black"
-                  aria-label={`${unread} unread`}
-                >
-                  {unread > 9 ? "9+" : unread}
-                </span>
+              {item.href === "/notifications" && (
+                <BellBadge
+                  count={unread}
+                  className="absolute -right-2 -top-1.5 h-[18px] min-w-[18px] px-1 text-[11px]"
+                />
               )}
             </span>
             <span className="hidden xl:block">{item.label}</span>
@@ -69,17 +69,21 @@ export default function Sidebar({
 
         <Link
           href="/create"
-          className="mt-3 flex h-[52px] items-center justify-center rounded-full bg-accent font-bold text-black transition hover:bg-accent/90 xl:w-[90%]"
+          className="mt-3 flex h-[52px] items-center justify-center rounded-full bg-accent font-bold text-on-accent transition hover:bg-accent/90 xl:w-[90%]"
         >
           <span className="hidden xl:block">Start a Cause</span>
           <span className="text-2xl xl:hidden">+</span>
         </Link>
       </div>
 
+      <div className="flex flex-col gap-1">
+        <ThemeToggle />
+      </div>
+
       <div className="flex items-center gap-1">
         <Link
           href={`/profile/${user.handle}`}
-          className="flex min-w-0 flex-1 items-center gap-3 rounded-full p-3 transition hover:bg-white/10"
+          className="flex min-w-0 flex-1 items-center gap-3 rounded-full p-3 transition hover:bg-raised"
           title="Your profile"
         >
           <Avatar emoji={user.emoji} color={user.avatarColor} size={10} />

@@ -33,7 +33,7 @@ const ICONS: Record<string, { path: string; cls: string }> = {
 
 const DEFAULT_ICON = {
   path: "M12 2C7.58 2 4 5.58 4 10v5l-2 2v1h20v-1l-2-2v-5c0-4.42-3.58-8-8-8zm0 20c1.38 0 2.5-1.12 2.5-2.5h-5c0 1.38 1.12 2.5 2.5 2.5z",
-  cls: "bg-white/10 text-muted",
+  cls: "bg-raised text-muted",
 };
 
 export default async function NotificationsPage() {
@@ -47,7 +47,7 @@ export default async function NotificationsPage() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-line bg-black/80 px-4 py-3 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-line bg-background/80 px-4 py-3 backdrop-blur">
         <h1 className="text-xl font-extrabold">Notifications</h1>
       </div>
 
@@ -61,7 +61,7 @@ export default async function NotificationsPage() {
         <Link
           key={String(n._id)}
           href={`/cause/${n.causeSlug}`}
-          className={`block border-b border-line px-4 py-3 transition hover:bg-white/[0.03] ${
+          className={`block border-b border-line px-4 py-3 transition hover:bg-hover ${
             !n.read ? "bg-accent/[0.04]" : ""
           }`}
         >

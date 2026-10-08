@@ -1,11 +1,47 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   --background: #000000;
   --foreground: #e7e9ea;
   --muted: #71767b;
   --border: #2f3336;
   --accent: #00ba7c;
+  /* surfaces, so panels and hovers are not hardcoded to white at low alpha */
+  --surface: rgba(255, 255, 255, 0.05);
+  --raised: rgba(255, 255, 255, 0.1);
+  --hover: rgba(255, 255, 255, 0.04);
+  --on-accent: #000000;
+}
+
+/* Light. Follows the system unless the viewer has chosen, and the accent goes
+   a shade deeper because the dark green has to sit on white and still read. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --background: #ffffff;
+    --foreground: #0f1419;
+    --muted: #536471;
+    --border: #cfd9de;
+    --accent: #00875a;
+    --surface: rgba(0, 0, 0, 0.035);
+    --raised: rgba(0, 0, 0, 0.075);
+    --hover: rgba(0, 0, 0, 0.035);
+    --on-accent: #ffffff;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #0f1419;
+  --muted: #536471;
+  --border: #cfd9de;
+  --accent: #00875a;
+  --surface: rgba(0, 0, 0, 0.035);
+  --raised: rgba(0, 0, 0, 0.075);
+  --hover: rgba(0, 0, 0, 0.035);
+  --on-accent: #ffffff;
 }
 
 @theme inline {
@@ -14,6 +50,10 @@
   --color-muted: var(--muted);
   --color-line: var(--border);
   --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-hover: var(--hover);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

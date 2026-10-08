@@ -39,14 +39,14 @@ export default function CauseActions({
       ) : (
         <button
           onClick={() => setDonating(true)}
-          className="flex-1 rounded-full bg-accent py-2.5 font-bold text-black transition hover:bg-accent/90"
+          className="flex-1 rounded-full bg-accent py-2.5 font-bold text-on-accent transition hover:bg-accent/90"
         >
           Donate
         </button>
       )}
       <button
         onClick={share}
-        className="flex-1 rounded-full border border-line py-2.5 font-bold transition hover:bg-white/5"
+        className="flex-1 rounded-full border border-line py-2.5 font-bold transition hover:bg-surface"
         title="Anyone with this link can donate, no app needed"
       >
         {copied ? "Link copied" : "Copy link"}

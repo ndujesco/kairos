@@ -33,7 +33,7 @@ export default function CommentForm({ causeId }: { causeId: string }) {
       <button
         onClick={post}
         disabled={busy || !text.trim()}
-        className="rounded-full bg-accent px-4 py-2 text-sm font-bold text-black disabled:opacity-40"
+        className="rounded-full bg-accent px-4 py-2 text-sm font-bold text-on-accent disabled:opacity-40"
       >
         Post
       </button>

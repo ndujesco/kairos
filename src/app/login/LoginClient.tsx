@@ -96,7 +96,7 @@ export default function LoginClient() {
           <button
             onClick={() => { setMode("signin"); setError(""); }}
             className={`flex-1 rounded-full py-2 transition ${
-              mode === "signin" ? "bg-accent text-black" : "text-muted hover:text-foreground"
+              mode === "signin" ? "bg-accent text-on-accent" : "text-muted hover:text-foreground"
             }`}
           >
             Sign in
@@ -104,7 +104,7 @@ export default function LoginClient() {
           <button
             onClick={() => { setMode("signup"); setError(""); }}
             className={`flex-1 rounded-full py-2 transition ${
-              mode === "signup" ? "bg-accent text-black" : "text-muted hover:text-foreground"
+              mode === "signup" ? "bg-accent text-on-accent" : "text-muted hover:text-foreground"
             }`}
           >
             Create account
@@ -141,7 +141,7 @@ export default function LoginClient() {
             <button
               onClick={signin}
               disabled={busy}
-              className="mt-1 rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90 disabled:opacity-60"
+              className="mt-1 rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90 disabled:opacity-60"
             >
               {busy ? "Signing in…" : "Sign in"}
             </button>
@@ -187,7 +187,7 @@ export default function LoginClient() {
             <button
               onClick={signup}
               disabled={busy}
-              className="mt-1 rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90 disabled:opacity-60"
+              className="mt-1 rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90 disabled:opacity-60"
             >
               {busy ? "Creating account…" : "Create account"}
             </button>

@@ -98,13 +98,13 @@ export default function DonateModal({
       className="fixed inset-0 z-50 flex items-end justify-center bg-[#5b708366] p-0 backdrop-blur-[2px] sm:items-center sm:p-4"
       onClick={(e) => e.target === e.currentTarget && stage !== "confirming" && onClose()}
     >
-      <div className="flex max-h-[92dvh] w-full max-w-md animate-slide-up flex-col overflow-y-auto overscroll-contain rounded-t-2xl bg-black shadow-[0_0_40px_rgba(0,186,124,0.15)] ring-1 ring-line sm:max-h-[88dvh] sm:rounded-2xl">
+      <div className="flex max-h-[92dvh] w-full max-w-md animate-slide-up flex-col overflow-y-auto overscroll-contain rounded-t-2xl bg-background shadow-[0_0_40px_rgba(0,186,124,0.15)] ring-1 ring-line sm:max-h-[88dvh] sm:rounded-2xl">
         {/* ------------------------------ amount ------------------------------ */}
         {stage === "amount" && (
           <div className="p-5 sm:p-6">
             <div className="mb-1 flex items-center justify-between">
               <h2 className="text-xl font-extrabold">Donate</h2>
-              <button onClick={onClose} className="rounded-full p-1 text-muted hover:bg-white/10">
+              <button onClick={onClose} className="rounded-full p-1 text-muted hover:bg-raised">
                 ✕
               </button>
             </div>
@@ -127,7 +127,7 @@ export default function DonateModal({
                   className={`rounded-full border px-2 py-2 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-30 ${
                     !custom && amount === p
                       ? "border-accent bg-accent/15 text-accent"
-                      : "border-line hover:bg-white/5"
+                      : "border-line hover:bg-surface"
                   }`}
                 >
                   {naira(p)}
@@ -165,7 +165,7 @@ export default function DonateModal({
               className="mb-4 w-full rounded-xl border border-line bg-transparent px-4 py-3 outline-none placeholder:text-muted focus:border-accent"
             />
 
-            <div className="mb-3 rounded-xl border border-line bg-white/5 p-3 text-[13px] leading-snug text-muted">
+            <div className="mb-3 rounded-xl border border-line bg-surface p-3 text-[13px] leading-snug text-muted">
               Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b>,
               not the organizer&rsquo;s account. It is only paid out to verified vendors, and you
               get a receipt for your share of every payment.
@@ -204,7 +204,7 @@ export default function DonateModal({
                 aria-checked={anonymous}
                 onClick={() => setAnonymous(!anonymous)}
                 className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-                  anonymous ? "bg-accent" : "bg-white/15"
+                  anonymous ? "bg-accent" : "bg-raised"
                 }`}
               >
                 <span
@@ -223,7 +223,7 @@ export default function DonateModal({
             <div className="sticky bottom-0 -mx-5 -mb-5 bg-gradient-to-t from-black via-black to-transparent px-5 pb-5 pt-3 sm:-mx-6 sm:-mb-6 sm:px-6 sm:pb-6">
               <button
                 onClick={toGateway}
-                className="w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
+                className="w-full rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90"
               >
                 Continue to payment
               </button>
@@ -249,7 +249,7 @@ export default function DonateModal({
               account below. It expires in 30 minutes.
             </p>
 
-            <div className="mb-4 flex flex-col gap-2 rounded-xl border border-line bg-white/5 p-4 font-mono text-sm">
+            <div className="mb-4 flex flex-col gap-2 rounded-xl border border-line bg-surface p-4 font-mono text-sm">
               <div className="flex justify-between">
                 <span className="text-muted">Bank</span>
                 <b>Wema Bank (Kairos Escrow)</b>
@@ -270,13 +270,13 @@ export default function DonateModal({
 
             <button
               onClick={confirmPayment}
-              className="w-full rounded-full bg-accent py-3 font-bold text-black transition hover:bg-accent/90"
+              className="w-full rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90"
             >
               I have completed this transfer
             </button>
             <button
               onClick={() => setStage("amount")}
-              className="mt-2 w-full rounded-full border border-line py-2.5 text-sm font-bold text-muted transition hover:bg-white/5"
+              className="mt-2 w-full rounded-full border border-line py-2.5 text-sm font-bold text-muted transition hover:bg-surface"
             >
               ← Change amount
             </button>
@@ -310,7 +310,7 @@ export default function DonateModal({
             </p>
             <button
               onClick={onClose}
-              className="mt-2 w-full rounded-full bg-accent py-3 font-bold text-black hover:bg-accent/90"
+              className="mt-2 w-full rounded-full bg-accent py-3 font-bold text-on-accent hover:bg-accent/90"
             >
               Done
             </button>

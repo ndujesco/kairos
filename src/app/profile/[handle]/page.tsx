@@ -57,8 +57,8 @@ export default async function ProfilePage(props: { params: Promise<{ handle: str
 
   return (
     <div>
-      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-black/80 px-4 py-3 backdrop-blur">
-        <Link href="/" className="rounded-full p-2 hover:bg-white/10">
+      <div className="sticky top-0 z-10 flex items-center gap-6 border-b border-line bg-background/80 px-4 py-3 backdrop-blur">
+        <Link href="/" className="rounded-full p-2 hover:bg-raised">
           ←
         </Link>
         <h1 className="text-lg font-extrabold">{user.name}</h1>

@@ -15,7 +15,7 @@ export const metadata = {
 };
 
 const STATUS: Record<string, { label: string; cls: string }> = {
-  live: { label: "Raising", cls: "bg-white/10 text-foreground" },
+  live: { label: "Raising", cls: "bg-raised text-foreground" },
   funded: { label: "Funded", cls: "bg-sky-500/15 text-sky-400" },
   completed: { label: "Paid out", cls: "bg-accent/15 text-accent" },
 };
@@ -42,7 +42,6 @@ export default async function WalletPage() {
   const totalGiven = myDonations.reduce((s, d) => s + d.amount, 0);
   const totalToCauses = myDonations.reduce((s, d) => s + (d.net ?? d.amount), 0);
   const totalPaidOut = payouts.reduce((s, p) => s + p.amount, 0);
-  const trust = Math.min(5, Math.max(0, user.trustLevel));
   const isOrganizer = myCauses.length > 0;
 
   /* ------------------------------ managing ------------------------------ */
@@ -83,7 +82,7 @@ export default async function WalletPage() {
                     </span>
                   </div>
 
-                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-raised">
                     <div className="h-full rounded-full bg-accent" style={{ width: `${pct}%` }} />
                   </div>
                   <div className="mt-1.5 flex items-baseline justify-between text-[13px]">
@@ -165,7 +164,7 @@ export default async function WalletPage() {
             <Link
               key={String(d._id)}
               href={`/cause/${d.cause?.slug ?? ""}`}
-              className="flex gap-3 border-b border-line px-4 py-3.5 transition hover:bg-white/[0.03]"
+              className="flex gap-3 border-b border-line px-4 py-3.5 transition hover:bg-hover"
             >
               <div
                 className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br text-lg ${gradient(
@@ -205,7 +204,7 @@ export default async function WalletPage() {
 
   return (
     <div>
-      <header className="sticky top-0 z-20 flex h-[57px] items-center border-b border-line bg-black/70 px-4 backdrop-blur-md">
+      <header className="sticky top-0 z-20 flex h-[57px] items-center border-b border-line bg-background/70 px-4 backdrop-blur-md">
         <div>
           <h1 className="text-xl font-extrabold leading-tight">Wallet</h1>
           <p className="text-[12px] leading-tight text-muted">@{user.handle}</p>
@@ -221,7 +220,7 @@ export default async function WalletPage() {
           {naira(isOrganizer ? totalEscrow : totalGiven)}
         </p>
 
-        <div className="mt-3 flex items-start gap-2 rounded-xl border border-line bg-white/[0.02] p-3">
+        <div className="mt-3 flex items-start gap-2 rounded-xl border border-line bg-surface p-3">
           <span aria-hidden className="mt-0.5 text-accent">&#9679;</span>
           <p className="text-[13px] leading-snug text-muted">
             {isOrganizer ? (
@@ -260,24 +259,6 @@ export default async function WalletPage() {
           )}
         </dl>
 
-        <div className="mt-2 rounded-xl border border-line p-3.5">
-          <div className="flex items-baseline justify-between">
-            <p className="text-sm font-bold">Trust level</p>
-            <p className="text-sm tabular-nums text-muted">{trust} of 5</p>
-          </div>
-          <div className="mt-2.5 flex gap-1.5" role="img" aria-label={`Trust level ${trust} of 5`}>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className={`h-1.5 flex-1 rounded-full ${i <= trust ? "bg-accent" : "bg-white/10"}`}
-              />
-            ))}
-          </div>
-          <p className="mt-2.5 text-[13px] leading-snug text-muted">
-            Visible only to you. Completing causes with receipts raises your level and your raise
-            limit. {user.completedCauses} completed so far.
-          </p>
-        </div>
       </section>
 
       <WalletTabs
@@ -324,7 +305,7 @@ function Empty({
         href={href}
         className={
           solid
-            ? "mt-3 inline-block rounded-full bg-accent px-5 py-2 text-sm font-bold text-black transition hover:bg-accent/90"
+            ? "mt-3 inline-block rounded-full bg-accent px-5 py-2 text-sm font-bold text-on-accent transition hover:bg-accent/90"
             : "mt-2 inline-block text-sm font-bold text-accent hover:underline"
         }
       >
