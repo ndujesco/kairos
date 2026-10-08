@@ -36,6 +36,7 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
      appeal wearing a school-fees advice would be worse than no image at all. */
   const THUMBS: Record<string, string> = {
     "/demo/docs/unilag-fee-demand-notice.pdf": "advice-thumb.png",
+    "/demo/docs/luth-surgical-estimate.pdf": "estimate-thumb.png",
   };
   let doc: string | null = null;
   const attached = cause?.evidence?.find((e) => e.url && THUMBS[e.url]);
@@ -49,28 +50,32 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
   }
   const lines = (cause?.budget ?? []).slice(0, 3);
 
-  const PAPER = "#EFEAE0", INK = "#171510", MUTED = "#6B6457", GREEN = "#0B7A4B", RULE = "#D6CFC0";
+  /* The app's own colours. The document is a white page, so on black it reads
+     like evidence laid on a dark table rather than a decorative panel. */
+  const BG = "#000000", PANEL = "#0C0F0E", INK = "#E7E9EA",
+        MUTED = "#71767B", GREEN = "#00BA7C", RULE = "#2F3336";
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: PAPER,
+      <div style={{ width: "100%", height: "100%", display: "flex", background: BG,
                     fontFamily: "Noto Sans" }}>
 
         {/* evidence */}
         <div style={{ width: 470, height: "100%", display: "flex", alignItems: "center",
-                      justifyContent: "center", background: "#E4DDCF",
+                      justifyContent: "center",
+                      background: "linear-gradient(145deg, #0E1A15 0%, #070807 60%, #050505 100%)",
                       borderRight: `1px solid ${RULE}`, overflow: "hidden" }}>
           {doc ? (
             <img src={doc} width={400} height={350}
                  style={{ objectFit: "cover", objectPosition: "top",
-                          border: `1px solid ${RULE}`,
-                          boxShadow: "0 18px 40px rgba(23,21,16,0.18)" }} />
+                          border: "1px solid rgba(255,255,255,0.14)",
+                          boxShadow: "0 20px 60px rgba(0,0,0,0.75)" }} />
           ) : (
             /* No document, so the budget itself is the evidence. It is the
                thing a sceptical reader actually wants: who gets paid, how much. */
             <div style={{ display: "flex", flexDirection: "column", width: 382,
-                          background: "#FBF8F2", border: `1px solid ${RULE}`,
-                          boxShadow: "0 18px 40px rgba(23,21,16,0.18)" }}>
+                          background: "#121614", border: `1px solid ${RULE}`,
+                          boxShadow: "0 20px 60px rgba(0,0,0,0.75)" }}>
               <div style={{ display: "flex", justifyContent: "space-between",
                             padding: "16px 22px", borderBottom: `1px solid ${RULE}` }}>
                 <span style={{ fontSize: 15, letterSpacing: 1.6, color: MUTED }}>ITEMISED BUDGET</span>
@@ -141,7 +146,7 @@ export default async function OgImage(props: { params: Promise<{ slug: string }>
                 of {naira(cause?.goal ?? 0)} &middot; {pct}% &middot; held in escrow
               </span>
             </div>
-            <div style={{ display: "flex", width: "100%", height: 8, background: "#DCD5C6" }}>
+            <div style={{ display: "flex", width: "100%", height: 8, background: "#20262B" }}>
               <div style={{ display: "flex", width: `${Math.max(pct, 2)}%`, background: GREEN }} />
             </div>
           </div>

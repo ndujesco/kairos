@@ -1,7 +1,7 @@
 {
   "takenAt": {
     "$date": {
-      "$numberLong": "1791421151014"
+      "$numberLong": "1791446184954"
     }
   },
   "db": "kairosDB",
@@ -76,13 +76,14 @@
         ],
         "evidence": [
           {
-            "label": "Hospital bill - LUTH orthopaedics",
+            "label": "LUTH estimate of treatment cost - EST-000000",
             "kind": "invoice",
             "checks": {
               "reuse": "clean",
               "exif": "consistent",
               "dates": "consistent"
-            }
+            },
+            "url": "/demo/docs/luth-surgical-estimate.pdf"
           },
           {
             "label": "Doctor’s estimate & treatment plan",
@@ -127,7 +128,7 @@
         },
         "updatedAt": {
           "$date": {
-            "$numberLong": "1791218358570"
+            "$numberLong": "1791446135976"
           }
         }
       },
@@ -1167,7 +1168,7 @@
         "title": "New donation in escrow",
         "body": "@okefe gave ₦150,000. ₦147,000 is in escrow for “Final Year Student - UNILAG Tuition Fees” after ₦3,000 upkeep.",
         "causeSlug": "final-year-student-unilag-tuition-fees-aom2",
-        "read": false,
+        "read": true,
         "createdAt": {
           "$date": {
             "$numberLong": "1791406925489"
@@ -1175,7 +1176,7 @@
         },
         "updatedAt": {
           "$date": {
-            "$numberLong": "1791406925489"
+            "$numberLong": "1791445628347"
           }
         },
         "__v": {
