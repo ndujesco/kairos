@@ -1,7 +1,7 @@
 {
   "takenAt": {
     "$date": {
-      "$numberLong": "1791410209806"
+      "$numberLong": "1791421151014"
     }
   },
   "db": "kairosDB",

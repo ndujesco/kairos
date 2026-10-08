@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse, after } from "next/server";
 import { dbConnect } from "@/lib/db";
-import { Cause, Donation, Notification } from "@/lib/models";
+import { Cause, Donation, Notification, User } from "@/lib/models";
 import { getSessionUser } from "@/lib/session";
 import { upkeepFor } from "@/lib/fees";
-import { sendMail, donationEmail } from "@/lib/mail";
+import { sendMail, donationEmail, raisedEmail } from "@/lib/mail";
 
 export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
   const user = await getSessionUser();
@@ -76,6 +76,20 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       causeTitle: cause.title, causeSlug: cause.slug,
     });
     after(() => sendMail(user.email as string, mail.subject, mail.html));
+  }
+
+  /* and the organiser hears about it too, not just in the bell */
+  const organizer = await User.findById(cause.organizer, { name: 1, email: 1 }).lean();
+  if (organizer?.email) {
+    const mail = raisedEmail({
+      organizerName: (organizer.name || "there").split(" ")[0],
+      donorLabel: anonymous ? "An anonymous donor" : `@${user.handle}`,
+      amount: amt, upkeep, net,
+      causeTitle: cause.title, causeSlug: cause.slug,
+      raised: cause.raised, goal: cause.goal,
+      funded: cause.raised >= cause.goal,
+    });
+    after(() => sendMail(organizer.email as string, mail.subject, mail.html));
   }
 
   return NextResponse.json({ ok: true, raised: cause.raised, upkeep, net });

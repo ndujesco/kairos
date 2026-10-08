@@ -161,3 +161,50 @@ export function donationEmail(o: {
       </div>`),
   };
 }
+
+/** Told to the organiser the moment a gift lands against their cause. */
+export function raisedEmail(o: {
+  organizerName: string; donorLabel: string; amount: number; upkeep: number;
+  net: number; causeTitle: string; causeSlug: string; raised: number;
+  goal: number; funded: boolean;
+}) {
+  const pct = o.goal > 0 ? Math.min(100, Math.round((o.raised / o.goal) * 100)) : 0;
+  return {
+    subject: o.funded
+      ? `${o.causeTitle} is fully funded`
+      : `${o.donorLabel} gave ${naira(o.amount)} to ${o.causeTitle}`,
+    html: shell(o.funded ? "Fully funded" : "New donation in escrow", `
+      <div class="k-text" style="padding:22px;color:#15202b">
+        <p style="margin:0 0 14px;font-size:15px">Hi ${o.organizerName},</p>
+        <p style="margin:0 0 18px;font-size:15px;line-height:1.6">
+          <b>${o.donorLabel}</b> gave ${naira(o.amount)} to <b>${o.causeTitle}</b>.
+          ${o.funded
+            ? "That completes it. You can now pay the vendors on your published budget."
+            : "It is in escrow, held against your published budget."}
+        </p>
+        <div class="k-panel" style="border:1px solid #dfe3e8;border-radius:12px;padding:16px;background:#f8fafb">
+          <div class="k-muted" style="color:#5b7083;font-size:11px;letter-spacing:.08em;text-transform:uppercase">
+            Raised so far
+          </div>
+          <div style="color:#00875a;font-size:30px;font-weight:800;margin:6px 0 2px">
+            ${naira(o.raised)}
+          </div>
+          <div class="k-muted" style="color:#5b7083;font-size:13px">of ${naira(o.goal)} &middot; ${pct}%</div>
+          <table class="k-text" style="width:100%;margin-top:14px;font-size:13px;color:#15202b" cellpadding="0">
+            <tr><td class="k-muted" style="color:#5b7083;padding:3px 0">They paid</td><td align="right">${naira(o.amount)}</td></tr>
+            <tr><td class="k-muted" style="color:#5b7083;padding:3px 0">Kairos upkeep</td><td align="right">&minus;${naira(o.upkeep)}</td></tr>
+            <tr><td class="k-muted" style="color:#5b7083;padding:3px 0"><b>Into escrow</b></td><td align="right"><b>${naira(o.net)}</b></td></tr>
+          </table>
+        </div>
+        <a href="${APP_URL}/wallet"
+           style="display:inline-block;margin-top:18px;background:#00875a;color:#ffffff;
+                  text-decoration:none;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px">
+          Open your wallet
+        </a>
+        <p class="k-muted" style="margin:16px 0 0;color:#5b7083;font-size:13px;line-height:1.6">
+          Escrow never reaches your own account. It can only be paid to the verified
+          counterparties on this cause&rsquo;s budget.
+        </p>
+      </div>`),
+  };
+}
