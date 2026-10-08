@@ -20,11 +20,26 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   if (!cause) return { title: "Cause not found" };
 
   const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
-  const description = `${cause.summary} · ₦${cause.raised.toLocaleString()} raised of ₦${cause.goal.toLocaleString()} (${pct}%) · organized by ${cause.organizer.name} on Kairos.`;
+  const naira = (n: number) => "₦" + n.toLocaleString("en-NG");
+  const remaining = Math.max(0, cause.goal - cause.raised);
+  const vendor = cause.budget?.[0]?.vendor?.name;
+
+  /* A preview has about two lines before it is cut. Lead with the state of the
+     cause, then the one fact that separates this from an account number in a
+     WhatsApp message: the money has a named destination that is not the person
+     asking. The story is already in the title and the image. */
+  const progress =
+    pct >= 100
+      ? `Fully funded at ${naira(cause.goal)}.`
+      : `${naira(cause.raised)} of ${naira(cause.goal)} raised, ${naira(remaining)} to go.`;
+  const proof = vendor
+    ? `Held in escrow and paid straight to ${vendor}, never to the organiser.`
+    : "Held in escrow and paid straight to verified vendors, never to the organiser.";
+  const description = `${progress} ${proof} Every donor gets a receipt for their exact share.`;
 
   return {
     title: cause.title,
-    description: cause.summary,
+    description,
     alternates: { canonical: `/cause/${cause.slug}` },
     openGraph: {
       type: "article",
@@ -38,6 +53,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
       title: cause.title,
       description,
     },
+    other: { "og:image:alt": `${cause.title} on Kairos - ${progress}` },
   };
 }
 

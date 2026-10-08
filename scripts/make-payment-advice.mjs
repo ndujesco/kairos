@@ -66,9 +66,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
   body{margin:0;font-family:Helvetica,Arial,sans-serif;color:#000;font-size:9.2pt}
   .page{width:210mm;height:297mm;padding:13mm 15mm;overflow:hidden}
   header{display:flex;align-items:center;gap:20px;margin-bottom:14px}
-  .crest{width:74px;height:74px;border-radius:50%;border:2px solid #15616d;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    color:#15616d;font-size:5.4pt;font-weight:bold;line-height:1.2;text-align:center;flex:0 0 auto}
+  .crest{width:74px;height:auto;flex:0 0 auto}
   h1{margin:0;font-size:19pt;font-weight:normal}
   .sub{margin-top:9px;font-size:10.5pt}
   .meta{margin-bottom:12px}
@@ -87,7 +85,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
     font-size:7.4pt;color:#666}
 </style></head><body><div class="page">
   <header>
-    <div class="crest">UNIVERSITY<br>OF<br>LAGOS</div>
+    <img class="crest" src="CREST_SRC" alt="">
     <div><h1>University of Lagos</h1><div class="sub">PAYMENT ADVICE</div></div>
   </header>
   <div class="meta">
@@ -105,19 +103,20 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
     <div class="s">Please note that RRR numbers contained on this payment advice would be
       invalidated after<br>payment deadline date.</div>
   </div>
-  <div class="foot">
-    <span>Demonstration document generated for the Kairos prototype. Not a genuine record.</span>
-    <span>Page 1 of 1</span>
-  </div>
+  <div class="foot"><span></span><span>Page 1 of 1</span></div>
 </div></body></html>`;
 
 const out = path.join(
   fileURLToPath(new URL("../public/demo/docs/", import.meta.url)),
   "unilag-fee-demand-notice.pdf"
 );
+const crest = fs.readFileSync(
+  path.join(fileURLToPath(new URL("../public/demo/docs/", import.meta.url)), "unilag-crest.png")
+).toString("base64");
+
 const browser = await chromium.launch();
 const page = await browser.newPage();
-await page.setContent(html, { waitUntil: "load" });
+await page.setContent(html.replace("CREST_SRC", `data:image/png;base64,${crest}`), { waitUntil: "load" });
 await page.pdf({ path: out, format: "A4", printBackground: true, pageRanges: "1" });
 await browser.close();
 
