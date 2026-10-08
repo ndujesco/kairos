@@ -16,6 +16,7 @@ export function toCardData(c: PopulatedCause, viewerId?: string): CauseCardData 
     goal: c.goal,
     raised: c.raised,
     upkeepTaken: c.upkeepTaken ?? 0,
+    isMine: Boolean(viewerId) && String(c.organizer._id) === viewerId,
     donorCount: c.donorCount,
     vouchCount: c.vouches?.length ?? 0,
     vouchedByMe: viewerId

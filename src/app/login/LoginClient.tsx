@@ -79,13 +79,14 @@ export default function LoginClient() {
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
-      {/* brand panel */}
-      <div className="flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-emerald-950 via-black to-black p-8 md:flex-1 md:gap-6 md:p-10">
+      {/* Brand panel. The gradient and the ink on it are tokens, so the whole
+          panel flips with the theme instead of staying dark on a light page. */}
+      <div className="brand-panel flex flex-col items-center justify-center gap-3 p-8 md:flex-1 md:gap-6 md:p-10">
         <KairosMark size={120} className="h-16 w-16 text-accent md:h-[120px] md:w-[120px]" />
         <h1 className="max-w-md text-center text-2xl font-extrabold leading-tight md:text-4xl">
           Giving shouldn’t be an act of faith.
         </h1>
-        <p className="hidden max-w-md text-center text-lg text-muted md:block">
+        <p className="brand-dim hidden max-w-md text-center text-lg md:block">
           Kairos holds every donation in escrow, pays verified vendors directly, and sends you a receipt for your share of every payment.
         </p>
       </div>

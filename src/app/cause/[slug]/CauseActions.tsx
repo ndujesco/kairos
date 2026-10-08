@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import DonateModal from "@/components/DonateModal";
 
 export default function CauseActions({
@@ -10,6 +11,7 @@ export default function CauseActions({
   completed,
   remaining,
   upkeepTaken,
+  isOwner = false,
 }: {
   causeId: string;
   causeTitle: string;
@@ -17,6 +19,7 @@ export default function CauseActions({
   completed: boolean;
   remaining: number;
   upkeepTaken: number;
+  isOwner?: boolean;
 }) {
   const [donating, setDonating] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -32,7 +35,16 @@ export default function CauseActions({
 
   return (
     <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-      {fullyFunded ? (
+      {isOwner ? (
+        /* You cannot give to your own cause. The useful action here is the
+           one the organiser actually has: paying the vendor. */
+        <Link
+          href="/wallet"
+          className="flex flex-1 items-center justify-center rounded-full border border-line py-2.5 text-center font-bold transition hover:bg-surface"
+        >
+          {fullyFunded ? "Pay the vendor" : "Manage in wallet"}
+        </Link>
+      ) : fullyFunded ? (
         <div className="flex flex-1 items-center justify-center rounded-full bg-accent/15 py-2.5 text-center font-bold text-accent">
           Fully funded
         </div>
@@ -51,7 +63,7 @@ export default function CauseActions({
       >
         {copied ? "Link copied" : "Copy link"}
       </button>
-      {donating && (
+      {donating && !isOwner && (
         <DonateModal
           causeId={causeId}
           causeTitle={causeTitle}

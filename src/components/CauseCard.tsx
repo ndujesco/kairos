@@ -162,6 +162,10 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
               <span className="shrink-0 rounded-full bg-accent/15 px-4 py-1.5 text-xs font-bold text-accent sm:text-sm">
                 Funded
               </span>
+            ) : cause.isMine ? (
+              <span className="shrink-0 rounded-full border border-line px-4 py-1.5 text-xs font-bold text-muted sm:text-sm">
+                Your cause
+              </span>
             ) : (
               <button
                 onClick={() => setDonating(true)}

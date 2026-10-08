@@ -64,7 +64,7 @@ export default async function ProfilePage(props: { params: Promise<{ handle: str
         <h1 className="text-lg font-extrabold">{user.name}</h1>
       </div>
 
-      <div className="h-32 bg-gradient-to-r from-emerald-900 via-teal-900 to-black" />
+      <div className="banner-grad h-32" />
       <div className="px-4">
         <div className="-mt-10 mb-3">
           <div className="inline-block rounded-full ring-4 ring-black">

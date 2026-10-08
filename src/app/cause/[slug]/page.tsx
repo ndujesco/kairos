@@ -154,6 +154,7 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           completed={cause.status === "completed"}
           remaining={Math.max(0, cause.goal - cause.raised)}
           upkeepTaken={cause.upkeepTaken ?? 0}
+          isOwner={Boolean(viewer) && String(cause.organizer._id) === String(viewer!._id)}
         />
       </div>
 

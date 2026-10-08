@@ -208,7 +208,7 @@ export default function DonateModal({
                 }`}
               >
                 <span
-                  className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-transform ${
+                  className={`absolute top-0.5 h-5 w-5 rounded-full bg-[var(--knob)] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-transform ${
                     anonymous ? "translate-x-[22px]" : "translate-x-0.5"
                   }`}
                   style={{ left: 0 }}
@@ -220,7 +220,7 @@ export default function DonateModal({
 
             {/* sticky, so the way forward is on screen no matter how long the
                 form gets on a short window */}
-            <div className="sticky bottom-0 -mx-5 -mb-5 bg-gradient-to-t from-black via-black to-transparent px-5 pb-5 pt-3 sm:-mx-6 sm:-mb-6 sm:px-6 sm:pb-6">
+            <div className="fade-to-bg sticky bottom-0 -mx-5 -mb-5 px-5 pb-5 pt-3 sm:-mx-6 sm:-mb-6 sm:px-6 sm:pb-6">
               <button
                 onClick={toGateway}
                 className="w-full rounded-full bg-accent py-3 font-bold text-on-accent transition hover:bg-accent/90"

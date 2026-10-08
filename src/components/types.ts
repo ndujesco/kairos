@@ -12,6 +12,7 @@ export type CauseCardData = {
   donorCount: number;
   vouchCount: number;
   vouchedByMe: boolean;
+  isMine: boolean;
   status: string;
   createdAt: string;
   organizer: {

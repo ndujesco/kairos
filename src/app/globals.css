@@ -12,6 +12,12 @@
   --raised: rgba(255, 255, 255, 0.1);
   --hover: rgba(255, 255, 255, 0.04);
   --on-accent: #000000;
+  /* composites that cannot be a single colour */
+  --brand-grad: linear-gradient(to bottom right, #04291f, #000000 55%, #000000);
+  --brand-ink: #ffffff;
+  --brand-ink-dim: rgba(255, 255, 255, 0.7);
+  --banner-grad: linear-gradient(to right, #064e3b, #134e4a, #000000);
+  --knob: #ffffff;
 }
 
 /* Light. Follows the system unless the viewer has chosen, and the accent goes
@@ -28,6 +34,16 @@
     --raised: rgba(0, 0, 0, 0.075);
     --hover: rgba(0, 0, 0, 0.035);
     --on-accent: #ffffff;
+  --brand-grad: linear-gradient(to bottom right, #e6f6ef, #ffffff 55%, #ffffff);
+  --brand-ink: #0f1419;
+  --brand-ink-dim: rgba(15, 20, 25, 0.62);
+  --banner-grad: linear-gradient(to right, #a7e8cf, #99e2d9, #e6f6ef);
+  --knob: #ffffff;
+    --brand-grad: linear-gradient(to bottom right, #e6f6ef, #ffffff 55%, #ffffff);
+    --brand-ink: #0f1419;
+    --brand-ink-dim: rgba(15, 20, 25, 0.62);
+    --banner-grad: linear-gradient(to right, #a7e8cf, #99e2d9, #e6f6ef);
+    --knob: #ffffff;
   }
 }
 
@@ -42,6 +58,11 @@
   --raised: rgba(0, 0, 0, 0.075);
   --hover: rgba(0, 0, 0, 0.035);
   --on-accent: #ffffff;
+  --brand-grad: linear-gradient(to bottom right, #e6f6ef, #ffffff 55%, #ffffff);
+  --brand-ink: #0f1419;
+  --brand-ink-dim: rgba(15, 20, 25, 0.62);
+  --banner-grad: linear-gradient(to right, #a7e8cf, #99e2d9, #e6f6ef);
+  --knob: #ffffff;
 }
 
 @theme inline {
@@ -95,4 +116,28 @@ body {
 }
 .animate-scanline {
   animation: scanline 1.1s ease-in-out infinite alternate;
+}
+
+/* A sticky action melting into whatever the panel behind it is. Hardcoding
+   black here is what put a dark band across the bottom of the light modal. */
+.fade-to-bg {
+  background: linear-gradient(
+    to top,
+    var(--background) 0%,
+    var(--background) 62%,
+    transparent 100%
+  );
+}
+
+/* Sign-in brand panel and profile banner: gradients, so they need their own
+   tokens rather than a single colour. */
+.brand-panel {
+  background: var(--brand-grad);
+  color: var(--brand-ink);
+}
+.brand-panel .brand-dim {
+  color: var(--brand-ink-dim);
+}
+.banner-grad {
+  background: var(--banner-grad);
 }
