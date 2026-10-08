@@ -27,8 +27,10 @@ const NAV = [
 ];
 
 export default function Sidebar({
+  unread = 0,
   user,
 }: {
+  unread?: number;
   user: { name: string; handle: string; emoji: string; avatarColor: string };
 }) {
   return (
@@ -48,9 +50,19 @@ export default function Sidebar({
             href={item.href}
             className="group flex items-center gap-4 rounded-full p-3 text-xl transition-colors hover:bg-white/10"
           >
-            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-              <path d={item.icon} />
-            </svg>
+            <span className="relative">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
+                <path d={item.icon} />
+              </svg>
+              {item.href === "/notifications" && unread > 0 && (
+                <span
+                  className="absolute -right-2 -top-1.5 grid h-[18px] min-w-[18px] place-items-center rounded-full bg-accent px-1 text-[11px] font-extrabold leading-none text-black"
+                  aria-label={`${unread} unread`}
+                >
+                  {unread > 9 ? "9+" : unread}
+                </span>
+              )}
+            </span>
             <span className="hidden xl:block">{item.label}</span>
           </Link>
         ))}

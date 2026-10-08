@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { getSessionUser } from "@/lib/session";
+import { dbConnect } from "@/lib/db";
+import { Notification } from "@/lib/models";
 import Sidebar from "@/components/Sidebar";
 import DesktopAlerts from "@/components/DesktopAlerts";
+import LiveRefresh from "@/components/LiveRefresh";
 import RightRail from "@/components/RightRail";
 import MobileNav, { MobileTopBar } from "@/components/MobileNav";
 
@@ -61,6 +64,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await getSessionUser();
+  /* The bell carries a count, and LiveRefresh re-renders this layout the moment
+     anything lands, so it fills in without the viewer touching the page. */
+  let unread = 0;
+  if (user) {
+    await dbConnect();
+    unread = await Notification.countDocuments({ user: user._id, read: false });
+  }
 
   return (
     <html
@@ -75,6 +85,7 @@ export default async function RootLayout({
             />
             <div className="mx-auto flex min-h-screen max-w-[1280px] justify-center">
               <Sidebar
+                unread={unread}
                 user={{
                   name: user.name,
                   handle: user.handle,
@@ -83,12 +94,13 @@ export default async function RootLayout({
                 }}
               />
               <DesktopAlerts />
+              <LiveRefresh />
               <main className="min-h-screen w-full max-w-[600px] border-line pb-24 sm:border-x sm:pb-0">
                 {children}
               </main>
               <RightRail />
             </div>
-            <MobileNav />
+            <MobileNav unread={unread} />
           </>
         ) : (
           children

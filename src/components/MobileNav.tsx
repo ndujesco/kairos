@@ -39,7 +39,7 @@ export function MobileTopBar({
   );
 }
 
-export default function MobileNav() {
+export default function MobileNav({ unread = 0 }: { unread?: number }) {
   return (
     <nav className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-around border-t border-line bg-black/90 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
       {TABS.slice(0, 2).map((t) => (
@@ -62,9 +62,19 @@ export default function MobileNav() {
 
       {TABS.slice(2).map((t) => (
         <Link key={t.href} href={t.href} className="flex flex-col items-center gap-0.5 p-2.5 text-muted">
-          <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-            <path d={t.icon} />
-          </svg>
+          <span className="relative">
+            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
+              <path d={t.icon} />
+            </svg>
+            {t.href === "/notifications" && unread > 0 && (
+              <span
+                className="absolute -right-2 -top-1 grid h-[17px] min-w-[17px] place-items-center rounded-full bg-accent px-1 text-[10px] font-extrabold leading-none text-black"
+                aria-label={`${unread} unread`}
+              >
+                {unread > 9 ? "9+" : unread}
+              </span>
+            )}
+          </span>
           <span className="text-[10px] font-bold">{t.label}</span>
         </Link>
       ))}
