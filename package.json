@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "pitch:build": "python3 scripts/build-pitch.py",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
