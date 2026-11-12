@@ -26,6 +26,32 @@ tabs.forEach((tab,i)=>{
 const blocks=[...document.querySelectorAll('.scriptblock')];
 const images=[...document.querySelectorAll('.slideimage')];
 const jumps=[...document.querySelectorAll('.jump button')];
+const PRESENTER_KEY='kairos-pitch-presenter-v1';
+function setPresenter(key,persist=false){
+  const chosen=Object.hasOwn(DATA.presenters,key)?key:DATA.defaultPresenter;
+  const person=DATA.presenters[chosen],script=DATA.scripts[chosen];
+  $('presenter').value=chosen;
+  $('presenter-summary').textContent=person.name+' presenting';
+  $('spoken-total').textContent=script.words;
+  blocks.forEach((block,i)=>{
+    const section=script.slides[i];
+    block.querySelector('.speaker').textContent=section.speaker;
+    block.querySelector('.say').replaceChildren(...section.paragraphs.map(text=>{
+      const paragraph=document.createElement('p');paragraph.textContent=text;return paragraph;
+    }));
+    block.querySelector('.delivery-note').textContent=section.cue;
+    block.querySelector('.spoken-words').textContent=section.words+' spoken words';
+  });
+  document.querySelectorAll('.presenter-script').forEach(link=>{
+    link.href='pitch-assets/pitch-script-'+chosen+'.md';
+    link.textContent='Download '+person.name+'’s script ↓';
+  });
+  if(persist){try{localStorage.setItem(PRESENTER_KEY,chosen);}catch{}}
+}
+let savedPresenter=DATA.defaultPresenter;
+try{savedPresenter=localStorage.getItem(PRESENTER_KEY)||savedPresenter;}catch{}
+setPresenter(savedPresenter);
+$('presenter').addEventListener('change',()=>setPresenter($('presenter').value,true));
 const LAST=DATA.slides.at(-1).end;
 let elapsed=0,startedAt=null,interval=null;
 function seconds(){return elapsed+(startedAt===null?0:(performance.now()-startedAt)/1000);}
@@ -133,7 +159,7 @@ $('demo-start').addEventListener('click',()=>{
   else{demoStart=performance.now();demoInterval=setInterval(paintDemo,200);$('demo-start').textContent='Pause';}paintDemo();
 });
 $('demo-reset').addEventListener('click',()=>{demoElapsed=0;demoStart=null;clearInterval(demoInterval);$('demo-start').textContent='Start';paintDemo();});
-const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY='kairos-shared-pitch-checks-v2';
+const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY='kairos-shared-pitch-checks-v3';
 try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'{}');checks.forEach(c=>c.checked=saved[c.dataset.check]===true);}catch{}
 checks.forEach(c=>c.addEventListener('change',()=>{try{localStorage.setItem(CHECK_KEY,JSON.stringify(Object.fromEntries(checks.map(x=>[x.dataset.check,x.checked]))));}catch{}}));
 $('print').addEventListener('click',()=>window.print());

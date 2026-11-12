@@ -14,7 +14,7 @@ The invitation lists problem, solution, prototype / MVP and team preparedness. I
 
 Optional spoken emphasis:
 
-Our connection to the future of payments is keeping the purpose attached to the contribution: a named bill, the provider payment, and proof back to each donor.
+The future of payments should let you follow your contribution to the bill, then see your own receipt.
 
 Only if asked about funding rails: Cleva or stablecoin funding could be explored later with suitable partners. Neither integration is built today.
 
@@ -30,6 +30,6 @@ The supplied notice asks teams to explain the idea, the problem and proposed sol
 
 Optional spoken emphasis:
 
-The social innovation is making community giving easier to account for: genuine needs can earn support, organisers can show what was paid, and every donor can follow their own contribution.
+For community giving, the social innovation is knowing what your help paid for, so genuine needs can earn support.
 
 Keep the focus on the need, direct provider payments and donor receipts. The shared deck and main script need no changes for this session.

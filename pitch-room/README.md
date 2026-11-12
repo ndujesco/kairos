@@ -7,8 +7,17 @@ the APWEN team slide. The product remains transparent giving.
 
 The exported deck, speaker notes and main script contain no sponsor,
 competition, track or event-date references. Separate event notes and the Prep
-tab hold the two schedules and optional emphasis. The script is 578 words,
-with an estimated 4:45 rehearsal plan; the optional demo is separate.
+tab hold the two schedules and optional emphasis. The script is 367 words
+for either speaker, with an estimated 3:00 rehearsal plan; the optional demo
+is separate. Its length follows the short JCI Grand Finale script, while the
+user's supplied JCI virtual script provides the voice and matching phrases.
+The original school-fees story opens the problem; current implementation
+limits remain explicit.
+
+Use **Lead presenter** to choose Abigail or Miracle. That person can present
+all eleven slides. The opening, team introduction, speaker badges and script
+download update together, and the choice is remembered in this browser.
+Both people and their original portraits stay on the team slide.
 
 Edit `cleva_content.py` for the shared script, timing, event notes, demo guide
 and 110 questions. Its original filename is retained for compatibility.
@@ -31,7 +40,10 @@ python3 '../hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary 
 ```
 
 Run that from `website/` to rebuild the PowerPoint, PDF, slide previews, script,
-Q&A and presenter HTML together. PowerPoint notes use the same spoken script.
+Q&A and presenter HTML together. PowerPoint notes include both alternatives
+for the opening and team introduction, with shared wording everywhere else.
+`pitch-script.md` also includes both alternatives; `pitch-script-abigail.md`
+and `pitch-script-miracle.md` are ready to read for the selected presenter.
 Rebuilding the HTML alone does not regenerate the exported slide artwork or
 PowerPoint notes. The older JCI artifacts remain in the pitch kit and its
 historical competition folders.
@@ -40,5 +52,5 @@ The deck and video stay in their existing `02 Preliminary Pitch/deck/` folder.
 The copied `demo.mp4` remains unchanged. The build does not rewrite it.
 An earlier branded draft is retained in the competition's archive directory.
 
-Question stars and preparation checkboxes are stored only in the browser.
+Presenter choice, question stars and preparation checkboxes stay in the browser.
 No account, backend change or donation-data reset is needed for this page.

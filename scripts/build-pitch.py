@@ -24,16 +24,48 @@ def mmss(s):
     return f"{s//60}:{s%60:02}"
 
 
-def build():
-    ASSETS.mkdir(exist_ok=True)
+def timed_slides(presenter):
     elapsed = 0
     slides = []
-    for i, source in enumerate(content.SLIDES, 1):
+    for i, source in enumerate(content.slides_for_presenter(presenter), 1):
         slide = dict(source, n=i, start=elapsed, end=elapsed + source["seconds"])
         slide["words"] = sum(len(p.split()) for p in source["paragraphs"])
         slides.append(slide)
         elapsed = slide["end"]
+    return slides
+
+
+def write_script(slides, presenter=None):
     words = sum(s["words"] for s in slides)
+    elapsed = slides[-1]["end"]
+    who = content.PRESENTERS[presenter]["name"] if presenter else "Abigail or Miracle"
+    script = ["# Kairos: shared pitch script", content.META["team"],
+              f"Lead presenter: {who}.",
+              f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.",
+              "Either person can present the whole deck. Choose the matching introduction and team introduction; the other sections are identical. The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. The optional demo is separate from this timing."]
+    for i, s in enumerate(slides):
+        paragraphs = s["paragraphs"] if presenter else content.shared_paragraphs(content.SLIDES[i], markdown=True)
+        script += [f'## Slide {s["n"]}: {s["title"]}',
+                   f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
+        script += paragraphs + [f'Delivery: {s["cue"]}']
+    script += ["## Short explanation"] + content.SHORT_PITCH
+    script += ["## Optional 90-second demo"]
+    for d in content.DEMO:
+        script += [f'### {d["title"]} ({d["seconds"]} seconds)', d["say"], "On screen: " + d["action"]]
+    filename = f"pitch-script-{presenter}.md" if presenter else "pitch-script.md"
+    (ASSETS / filename).write_text('\n\n'.join(script) + '\n')
+
+
+def build():
+    ASSETS.mkdir(exist_ok=True)
+    scripts = {}
+    for key in content.PRESENTERS:
+        variant = timed_slides(key)
+        scripts[key] = {"slides": variant, "words": sum(s["words"] for s in variant)}
+    slides = scripts[content.DEFAULT_PRESENTER]["slides"]
+    elapsed = slides[-1]["end"]
+    words = sum(s["words"] for s in slides)
+    default_name = content.PRESENTERS[content.DEFAULT_PRESENTER]["name"]
     priority_count = sum(q["priority"] for q in content.QUESTIONS)
     question_count = len(content.QUESTIONS)
     script_blocks, images, jump = [], [], []
@@ -47,8 +79,8 @@ def build():
             f'<span class="speaker">{e(s["speaker"])}</span></div>'
             f'<div class="scriptbody"><h2>{e(s["title"])}</h2><div class="say">'
             + ''.join(f'<p>{e(p)}</p>' for p in s["paragraphs"])
-            + f'</div><div class="cue"><strong>DELIVERY NOTE</strong>{e(s["cue"])}</div></div>'
-            + f'<div class="scriptfoot"><span>{s["words"]} spoken words</span>'
+            + f'</div><div class="cue"><strong>DELIVERY NOTE</strong><span class="delivery-note">{e(s["cue"])}</span></div></div>'
+            + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
         image_path = ASSETS / "slides" / f'slide{s["n"]:02}.jpg'
@@ -83,15 +115,21 @@ def build():
     checklist = [
         "Confirm both meeting links, start times and the time available for deck, demo and questions.",
         "Check each organiser's email and group updates for selection and presentation instructions.",
-        "Abigail leads; Miracle covers the receipt and prototype. Practise both handovers.",
-        "Rehearse with the clock. If one speaker presents throughout, read Miracle's sections unchanged.",
+        "Choose Abigail or Miracle in the Lead presenter menu. Check the opening and team introduction.",
+        "Rehearse with the clock and download the selected speaker's script for backup.",
         "Open the deck PDF, the presenter page and the prepared demo. Keep local backups available.",
         "Rehearse the demo on seeded data. Know which steps are simulated before screen sharing.",
         "Test audio, screen sharing, internet and the backup hotspot. Join early.",
         "Read the shared priority questions, then the Cleva and APWEN topic groups for each session.",
     ]
     check_html = ''.join(f'<label><input type="checkbox" data-check="c{i}"><span>{e(t)}</span></label>' for i,t in enumerate(checklist,1))
-    data = json.dumps({"meta": content.META, "slides": slides, "questions": content.QUESTIONS}, ensure_ascii=False).replace('<', '\\u003c')
+    data = json.dumps({"meta": content.META, "slides": slides, "scripts": scripts,
+                       "presenters": content.PRESENTERS, "defaultPresenter": content.DEFAULT_PRESENTER,
+                       "questions": content.QUESTIONS}, ensure_ascii=False).replace('<', '\\u003c')
+    presenter_options = ''.join(
+        f'<option value="{key}"{" selected" if key == content.DEFAULT_PRESENTER else ""}>{e(person["name"])}</option>'
+        for key, person in content.PRESENTERS.items()
+    )
     css = (SOURCE / "pitch.css").read_text()
     js = (SOURCE / "pitch.js").read_text()
     short = ''.join(f'<p>{e(p)}</p>' for p in content.SHORT_PITCH)
@@ -120,7 +158,9 @@ def build():
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
 <div class="intro"><div><p class="kicker">The need. The provider. Your own receipt.</p><h1>Give with proof, not faith.</h1>
-<p>{len(slides)} slides · {words} spoken words · about {mmss(elapsed)} with pauses · Abigail + Miracle</p></div><span class="statusbadge">Working prototype · simulated settlement</span></div>
+<p>{len(slides)} slides · <span id="spoken-total">{words}</span> spoken words · about {mmss(elapsed)} with pauses · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">Working prototype · simulated settlement</span></div>
+<div class="presenterbar"><div class="presenterfield"><label for="presenter">Lead presenter</label><select id="presenter" aria-describedby="presenter-help">{presenter_options}</select></div>
+<p id="presenter-help">Either person can present the whole deck. Your choice is saved in this browser.</p></div>
 <div class="stage"><div class="scriptpaper" id="script-paper">{''.join(script_blocks)}</div>
 <aside class="deck" id="deck-view" aria-label="Deck and rehearsal controls"><div class="shotwrap">{''.join(images)}</div>
 <div class="decktools"><span class="subtle" id="current-label" aria-live="polite">Slide 1 of {len(slides)}</span><div>
@@ -133,9 +173,9 @@ def build():
 <div class="clockstatus" id="clock-status" role="status">Ready. Start the clock when you begin speaking.</div></div>
 <div class="jump">{''.join(jump)}</div><div class="modes"><button type="button" class="button on" id="one-slide" aria-pressed="true">One slide</button>
 <button type="button" class="button" id="read-through" aria-pressed="false">Read through</button><span class="subtle" style="margin:auto 0 auto auto">← → slides · / search</span></div>
-<p class="timingnote">One deck and main script for both sessions. Timing is a rehearsal estimate and excludes the optional demo. Confirm each organiser's limit. Share the PDF or Deck only; keep the script on your own screen.</p>
+<p class="timingnote">Choose either presenter for the whole deck. Timing is a rehearsal estimate and excludes the optional demo. Confirm each organiser's limit. Share the PDF or Deck only; keep the script on your own screen.</p>
 </aside></div><details class="shortpitch"><summary>Short on time? The 90-second explanation.</summary>{short}</details>
-<p class="sourceline"><a href="pitch-assets/pitch-script.md" download>Download script</a> · Same script is included in the PowerPoint speaker notes.</p></section>
+<p class="sourceline"><a class="presenter-script" href="pitch-assets/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="pitch-assets/pitch-script.md" download>Script with both introductions ↓</a> · PowerPoint notes include both presenter options.</p></section>
 <section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden><div class="intro"><div><p class="kicker">Show one cause, then stop</p>
 <h1>The proof is in the receipt.</h1><p>A 90-second demonstration route. Rehearse on the seeded prototype before the call.</p></div>
 <div class="controls"><span class="clock" id="demo-clock">0:00</span><button class="button primary" type="button" id="demo-start">Start</button><button class="button" type="button" id="demo-reset">Reset</button></div></div>
@@ -153,24 +193,17 @@ def build():
 <div class="prepgrid">{event_cards}</div><p class="sourceline"><a href="pitch-assets/event-notes.md" download>Download event notes ↓</a> · These notes are separate from the shared deck and main script.</p>
 <div class="prepgrid"><section class="prepbox"><h2>Before joining</h2><div class="checklist">{check_html}</div></section>
 <section class="prepbox"><h2>Where the deck answers them</h2><div class="criterion"><strong>Problem</strong><span>Slide 2</span></div><div class="criterion"><strong>Solution</strong><span>Slides 3 and 4</span></div><div class="criterion"><strong>Prototype</strong><span>Slide 5 + optional demo</span></div><div class="criterion"><strong>Community impact</strong><span>Slide 8</span></div><div class="criterion"><strong>Preparedness and execution</strong><span>Slides 7, 9, 10 and 11 + Q&A</span></div>
-<div class="notice">The main script is planned below five minutes. Neither supplied update confirms the virtual session's exact time limit. Use the shorter explanation if needed; only add the demo when there is a separate slot.</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
+<div class="notice">The full script is planned at {mmss(elapsed)}, including the original school-fees story. Neither supplied update confirms the virtual session's exact time limit. Use the shorter explanation if needed; only add the demo when there is a separate slot.</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
 <section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>Shared focus:</strong> the need, direct provider payments and each donor's receipt. Sponsor-specific funding ideas stay in optional notes.</li></ul></section>
-<section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Start with the familiar WhatsApp moment. Let the hesitation land.</li><li>Explain the three steps before discussing rails or integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Abigail leads; Miracle takes slides 4 and 5. One lead speaker throughout also works.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
-<p class="sourceline"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a> · <a href="pitch-assets/pitch-script.md" download>Script ↓</a> · <a href="pitch-assets/qa-bank.md" download>{question_count} questions ↓</a></p>
+<section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose Abigail or Miracle as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
+<p class="sourceline"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a> · <a class="presenter-script" href="pitch-assets/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="pitch-assets/qa-bank.md" download>{question_count} questions ↓</a></p>
 <p class="sourceline">Prepared from the Cleva invitation, the supplied APWEN stage update, the latest Faith & Tech design, the existing two-person portraits, the JCI scripts and current prototype code.</p></section>
 </main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>Abigail + Miracle · Shared product pitch</span></div></footer>
 <script type="application/json" id="pitch-data">{data}</script><script>{js}</script></body></html>'''
     (PUBLIC / "pitch.html").write_text(document)
-    script_md = ["# Kairos: shared pitch script", "", content.META["team"], "",
-                 f"{len(slides)} slides, {words} spoken words. Planning time {mmss(elapsed)}, including pauses.",
-                 "The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. Abigail leads; Miracle takes slides 4 and 5. A single lead speaker can read every section unchanged. The optional demo is separate from this timing."]
-    for s in slides:
-        script_md += ["", f'## Slide {s["n"]}: {s["title"]}', "", f'{s["speaker"]} · {mmss(s["start"])} to {mmss(s["end"])}', ""] + s["paragraphs"] + ["", f'Delivery: {s["cue"]}']
-    script_md += ["", "## Short explanation", ""] + content.SHORT_PITCH
-    script_md += ["", "## Optional 90-second demo", ""]
-    for d in content.DEMO:
-        script_md += [f'### {d["title"]} ({d["seconds"]} seconds)', "", d["say"], "", "On screen: " + d["action"], ""]
-    (ASSETS / "pitch-script.md").write_text('\n\n'.join(p for p in script_md if p) + '\n')
+    write_script(slides)
+    for presenter, script in scripts.items():
+        write_script(script["slides"], presenter)
     qa = [f"# Kairos: {question_count} questions for both pitch sessions", "", content.META["team"], "",
           "Answers describe the current prototype and intended live flow separately. Rehearse the shared priority questions first, then the event-specific topic groups. The main deck and script are event-neutral; optional funding-rail ideas are roadmap only."]
     for category, _ in content.GROUPS:
@@ -185,7 +218,10 @@ def build():
         event_md += ["- " + line for line in event["schedule"]]
         event_md += ["", event["assess"], "", "Optional spoken emphasis:", "", event["spoken"], "", event["follow_up"]]
     (ASSETS / "event-notes.md").write_text('\n'.join(event_md) + '\n')
-    (ASSETS / "pitch-manifest.json").write_text(json.dumps({"version": content.META["version"], "slides": len(slides), "questions": len(content.QUESTIONS), "priority": priority_count, "words": words, "seconds": elapsed}, indent=2) + '\n')
+    (ASSETS / "pitch-manifest.json").write_text(json.dumps({"version": content.META["version"], "slides": len(slides), "questions": len(content.QUESTIONS), "priority": priority_count, "words": words, "seconds": elapsed,
+        "default_presenter": content.DEFAULT_PRESENTER,
+        "presenters": {key: {"name": content.PRESENTERS[key]["name"], "words": script["words"],
+                              "script": f"pitch-script-{key}.md"} for key, script in scripts.items()}}, indent=2) + '\n')
     print(f"Built pitch.html: {len(slides)} shared slides, {words} words, {mmss(elapsed)} plan, {question_count} questions ({priority_count} priority).")
 
 

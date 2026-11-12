@@ -2,123 +2,115 @@
 
 Sokenu Abigail · Omohuma Miracle
 
-11 slides, 578 spoken words. Planning time 4:45, including pauses.
+Lead presenter: Abigail or Miracle.
 
-The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. Abigail leads; Miracle takes slides 4 and 5. A single lead speaker can read every section unchanged. The optional demo is separate from this timing.
+11 slides, 367 spoken words for either presenter. Planning time 3:00, including pauses.
+
+Either person can present the whole deck. Choose the matching introduction and team introduction; the other sections are identical. The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. The optional demo is separate from this timing.
 
 ## Slide 1: Transparent giving for Nigeria
 
-Abigail · 0:00 to 0:18
+Abigail or Miracle · 0:00 to 0:23
 
-Good day. I'm Sokenu Abigail, and I'm here with Omohuma Miracle, representing Team Kairos.
+**As Abigail:** Good day everyone. My name is Sokenu Abigail, presenting on behalf of Team Kairos.
 
-Kairos is a transparent giving platform. We want someone helping with a bill to see what their own contribution paid for.
+**As Miracle:** Good day everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.
+
+We built Kairos, which is a transparent giving platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.
 
 Delivery: Camera on. Say Kairos clearly. The deck is already shared.
 
 ## Slide 2: A transfer succeeds. The doubt stays.
 
-Abigail · 0:18 to 0:54
+Abigail or Miracle · 0:23 to 0:55
 
-A message lands on WhatsApp. Someone's sister needs surgery, with an account number attached. You want to help. Then you hesitate. Is it real? What will my money pay for?
+Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-We felt that around school-fee appeals. Similar posts appeared with almost identical screenshots, and it became hard to tell which ones to believe.
+So donors hold back and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
 
-Even after giving, 'transfer successful' only tells you an account was credited. It doesn't tell you the bill was paid. That gap is what Kairos addresses.
-
-Delivery: Pause after 'Then you hesitate.' Keep the example personal and familiar.
+Delivery: Keep the school-fees story personal and familiar. Pause before 'The missing piece is not compassion.'
 
 ## Slide 3: From a published budget to a personal receipt.
 
-Abigail · 0:54 to 1:29
+Abigail or Miracle · 0:55 to 1:13
 
-The organiser publishes the need and an itemised budget naming the school, hospital or supplier to be paid. An AI interviewer helps put the case together.
+Kairos is that trusted middle layer.
 
-The intended live flow holds donations with a licensed partner and pays those providers directly. The organiser cannot withdraw into a personal account.
+An AI interviewer helps the organizer publish the need and an itemised budget. In the intended live flow, a licensed partner holds the money and pays only named, verified providers.
 
-Each payment appears in the public record, and every donor receives their own share with the receipt. Miracle will show what that means.
-
-Delivery: Three steps. Explain the intended live flow, then hand over to Miracle.
+Delivery: The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.
 
 ## Slide 4: Every giver sees their own part.
 
-Miracle · 1:29 to 1:58
+Abigail or Miracle · 1:13 to 1:29
 
-Suppose you give seven thousand naira, with upkeep covered separately. The cause pays seventy percent of its contributed funds to LUTH.
+A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.
 
-Your update says: four thousand nine hundred naira of your seven thousand helped pay that bill, with the invoice attached.
-
-The prototype calculates each donor's share automatically. Even a small contribution has a clear account of what it helped cover.
-
-Delivery: Point at the receipt. Read the numbers slowly, then pause for two seconds.
+Delivery: Point at the receipt. Read the numbers slowly. This example allocates seventy percent to the bill, with upkeep covered separately.
 
 ## Slide 5: What runs today.
 
-Miracle · 1:58 to 2:30
+Abigail or Miracle · 1:29 to 1:49
 
-Our working web prototype runs cause creation, escrow accounting, budget payments, donor-share calculations, notifications and the public history.
+The accounting, donor shares, notifications and public ledger are running.
 
-Bank transfer, Remita settlement and NIN lookup are simulated. CAC and bank account-name checks remain unbuilt, and no custody partner is signed. No real donations have moved.
-
-We can demonstrate the flow today and show exactly what needs to be connected before live use.
+Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks are not built. No real donations have moved, and no custody partner is signed.
 
 Delivery: Say all three simulated parts. A seeded balance is not a bank balance.
 
 ## Slide 6: Useful to give. Sustainable to run.
 
-Abigail · 2:30 to 2:57
+Abigail or Miracle · 1:49 to 2:05
 
-We propose two percent upkeep, capped at five thousand naira for the whole cause. Donors see it before confirming and can cover it so the cause receives the full gift.
+Kairos is built to be run, not sold.
 
-The aim is cost recovery, with grants, credits and sponsorship supporting shared costs. Those economics still need testing in a pilot.
+Tentatively, we take two percent of each donation, capped at five thousand naira per cause. Donors see the fee before they confirm.
 
-Delivery: Take back the floor. Stress that the cap is per cause and the rate is tentative.
+Delivery: Stress that the cap is per cause and the rate is tentative. These economics still need pilot validation.
 
 ## Slide 7: Start with a bill that can be checked.
 
-Abigail · 2:57 to 3:25
+Abigail or Miracle · 2:05 to 2:15
 
-We plan to start with school fees, tying contributions to an institution's payment reference. Then a small list of hospitals whose registration, accounts and invoices are checked before use.
+We start with school fees because they're easy to verify in Nigeria.
 
-We'd begin with communities already organising support, such as alumni groups and student welfare funds. A few real bills fully accounted for would be the first test.
+Then we plan to move to hospitals and other service providers.
 
 Delivery: This is the launch sequence, not a completed pilot or signed partnership.
 
 ## Slide 8: Clearer giving. Real needs met.
 
-Abigail · 3:25 to 3:49
+Abigail or Miracle · 2:15 to 2:25
 
-For donors, the aim is confidence to help again. For honest organisers, it's an account they can share as bills are paid. For the person waiting for help, it's support reaching the right bill.
-
-We'd measure bills settled, whether donors understand their receipts, and whether they give again.
+Nigerians already give. Kairos helps people with genuine need get help with less hesitation, and honest organizers account for it.
 
 Delivery: Connect the receipt to the people it serves. These are intended outcomes, not pilot results.
 
 ## Slide 9: Accountability has rules.
 
-Abigail · 3:49 to 4:13
+Abigail or Miracle · 2:25 to 2:37
 
-The prototype checks who can request a payment, the available balance and the amount left on that budget item.
+We don't claim fraud is impossible. Before live donations, we need provider checks, reliable settlement and refunds, consent controls and a dispute process.
 
-Before live donations, we need provider checks, licensed custody, reliable settlement and refunds, and consent and privacy controls. A payment receipt alone doesn't prove delivery, so a dispute process matters too.
-
-Delivery: Lead with what is enforced today. Avoid 'fraud-proof' or a guarantee of delivery.
+Delivery: The prototype enforces payment permissions, balances and budget limits. A receipt alone does not prove delivery. Keep launch requirements distinct from working checks.
 
 ## Slide 10: Abigail and Miracle.
 
-Abigail · 4:13 to 4:26
+Abigail or Miracle · 2:37 to 2:47
 
-I'm Abigail, the team lead and product manager. Miracle leads product design. We share responsibility for understanding the need, the prototype and the work ahead.
+**As Abigail:** And this is the team. I'm Abigail, the team lead and product manager. Miracle is our product designer.
 
-Delivery: Only Abigail and Miracle participate in these entries. Keep the introduction natural.
+**As Miracle:** And this is the team. I'm Miracle, the product designer. Abigail is our team lead and product manager.
+
+Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead this presentation.
 
 ## Slide 11: Give with proof, not faith.
 
-Abigail · 4:26 to 4:45
+Abigail or Miracle · 2:47 to 3:00
 
-Next we need a suitable payments and custody partner, verification support and a few pilot communities.
+Next we need a licensed partner and pilot communities.
 
-Nigerians already help one another. Kairos gives that help a clear record: the need, the provider and each donor's own receipt. Thank you.
+In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
 
 Delivery: Finish, then stop. Offer the demo if there is time.
 

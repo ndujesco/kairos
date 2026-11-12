@@ -10,116 +10,162 @@ META = {
     "stage": "Transparent giving · Abigail and Miracle",
     "team": "Sokenu Abigail · Omohuma Miracle",
     "date": "13 November 2026",
-    "version": "shared-pitch-2026-11-12",
+    "version": "shared-pitch-presenters-2026-11-12",
     "demo_url": "https://drive.google.com/file/d/1AuvERGMvTvp39lxLGsgHUWnPvmE0a3jn/view?usp=sharing",
 }
 
+PRESENTERS = {
+    "abigail": {
+        "name": "Abigail", "full_name": "Sokenu Abigail",
+        "team_intro": "I'm Abigail, the team lead and product manager. Miracle is our product designer.",
+    },
+    "miracle": {
+        "name": "Miracle", "full_name": "Omohuma Miracle",
+        "team_intro": "I'm Miracle, the product designer. Abigail is our team lead and product manager.",
+    },
+}
+DEFAULT_PRESENTER = "abigail"
+
 # The common deck and script contain no competition or sponsor references.
+# The short JCI Grand Finale script sets the length and direct structure.
+# The user's supplied JCI virtual script sets the voice, with matching lines
+# retained where possible. Keep this a short script for the current slides.
+# Verification and payment claims are updated to the current implementation.
 # Timing is a rehearsal estimate. Confirm each organiser's actual time limit.
 SLIDES = [
     {
         "title": "Transparent giving for Nigeria",
-        "speaker": "Abigail", "seconds": 18,
+        "seconds": 23,
         "cue": "Camera on. Say Kairos clearly. The deck is already shared.",
         "paragraphs": [
-            "Good day. I'm Sokenu Abigail, and I'm here with Omohuma Miracle, representing Team Kairos.",
-            "Kairos is a transparent giving platform. We want someone helping with a bill to see what their own contribution paid for.",
+            "Good day everyone. My name is {presenter_full_name}, presenting on behalf of Team Kairos.",
+            "We built Kairos, which is a transparent giving platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.",
         ],
     },
     {
         "title": "A transfer succeeds. The doubt stays.",
-        "speaker": "Abigail", "seconds": 36,
-        "cue": "Pause after 'Then you hesitate.' Keep the example personal and familiar.",
+        "seconds": 32,
+        "cue": "Keep the school-fees story personal and familiar. Pause before 'The missing piece is not compassion.'",
         "paragraphs": [
-            "A message lands on WhatsApp. Someone's sister needs surgery, with an account number attached. You want to help. Then you hesitate. Is it real? What will my money pay for?",
-            "We felt that around school-fee appeals. Similar posts appeared with almost identical screenshots, and it became hard to tell which ones to believe.",
-            "Even after giving, 'transfer successful' only tells you an account was credited. It doesn't tell you the bill was paid. That gap is what Kairos addresses.",
+            "Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.",
+            "So donors hold back and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.",
         ],
     },
     {
         "title": "From a published budget to a personal receipt.",
-        "speaker": "Abigail", "seconds": 35,
-        "cue": "Three steps. Explain the intended live flow, then hand over to Miracle.",
+        "seconds": 18,
+        "cue": "The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.",
         "paragraphs": [
-            "The organiser publishes the need and an itemised budget naming the school, hospital or supplier to be paid. An AI interviewer helps put the case together.",
-            "The intended live flow holds donations with a licensed partner and pays those providers directly. The organiser cannot withdraw into a personal account.",
-            "Each payment appears in the public record, and every donor receives their own share with the receipt. Miracle will show what that means.",
+            "Kairos is that trusted middle layer.",
+            "An AI interviewer helps the organizer publish the need and an itemised budget. In the intended live flow, a licensed partner holds the money and pays only named, verified providers.",
         ],
     },
     {
         "title": "Every giver sees their own part.",
-        "speaker": "Miracle", "seconds": 29,
-        "cue": "Point at the receipt. Read the numbers slowly, then pause for two seconds.",
+        "seconds": 16,
+        "cue": "Point at the receipt. Read the numbers slowly. This example allocates seventy percent to the bill, with upkeep covered separately.",
         "paragraphs": [
-            "Suppose you give seven thousand naira, with upkeep covered separately. The cause pays seventy percent of its contributed funds to LUTH.",
-            "Your update says: four thousand nine hundred naira of your seven thousand helped pay that bill, with the invoice attached.",
-            "The prototype calculates each donor's share automatically. Even a small contribution has a clear account of what it helped cover.",
+            "A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.",
         ],
     },
     {
         "title": "What runs today.",
-        "speaker": "Miracle", "seconds": 32,
+        "seconds": 20,
         "cue": "Say all three simulated parts. A seeded balance is not a bank balance.",
         "paragraphs": [
-            "Our working web prototype runs cause creation, escrow accounting, budget payments, donor-share calculations, notifications and the public history.",
-            "Bank transfer, Remita settlement and NIN lookup are simulated. CAC and bank account-name checks remain unbuilt, and no custody partner is signed. No real donations have moved.",
-            "We can demonstrate the flow today and show exactly what needs to be connected before live use.",
+            "The accounting, donor shares, notifications and public ledger are running.",
+            "Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks are not built. No real donations have moved, and no custody partner is signed.",
         ],
     },
     {
         "title": "Useful to give. Sustainable to run.",
-        "speaker": "Abigail", "seconds": 27,
-        "cue": "Take back the floor. Stress that the cap is per cause and the rate is tentative.",
+        "seconds": 16,
+        "cue": "Stress that the cap is per cause and the rate is tentative. These economics still need pilot validation.",
         "paragraphs": [
-            "We propose two percent upkeep, capped at five thousand naira for the whole cause. Donors see it before confirming and can cover it so the cause receives the full gift.",
-            "The aim is cost recovery, with grants, credits and sponsorship supporting shared costs. Those economics still need testing in a pilot.",
+            "Kairos is built to be run, not sold.",
+            "Tentatively, we take two percent of each donation, capped at five thousand naira per cause. Donors see the fee before they confirm.",
         ],
     },
     {
         "title": "Start with a bill that can be checked.",
-        "speaker": "Abigail", "seconds": 28,
+        "seconds": 10,
         "cue": "This is the launch sequence, not a completed pilot or signed partnership.",
         "paragraphs": [
-            "We plan to start with school fees, tying contributions to an institution's payment reference. Then a small list of hospitals whose registration, accounts and invoices are checked before use.",
-            "We'd begin with communities already organising support, such as alumni groups and student welfare funds. A few real bills fully accounted for would be the first test.",
+            "We start with school fees because they're easy to verify in Nigeria.",
+            "Then we plan to move to hospitals and other service providers.",
         ],
     },
     {
         "title": "Clearer giving. Real needs met.",
-        "speaker": "Abigail", "seconds": 24,
+        "seconds": 10,
         "cue": "Connect the receipt to the people it serves. These are intended outcomes, not pilot results.",
         "paragraphs": [
-            "For donors, the aim is confidence to help again. For honest organisers, it's an account they can share as bills are paid. For the person waiting for help, it's support reaching the right bill.",
-            "We'd measure bills settled, whether donors understand their receipts, and whether they give again.",
+            "Nigerians already give. Kairos helps people with genuine need get help with less hesitation, and honest organizers account for it.",
         ],
     },
     {
         "title": "Accountability has rules.",
-        "speaker": "Abigail", "seconds": 24,
-        "cue": "Lead with what is enforced today. Avoid 'fraud-proof' or a guarantee of delivery.",
+        "seconds": 12,
+        "cue": "The prototype enforces payment permissions, balances and budget limits. A receipt alone does not prove delivery. Keep launch requirements distinct from working checks.",
         "paragraphs": [
-            "The prototype checks who can request a payment, the available balance and the amount left on that budget item.",
-            "Before live donations, we need provider checks, licensed custody, reliable settlement and refunds, and consent and privacy controls. A payment receipt alone doesn't prove delivery, so a dispute process matters too.",
+            "We don't claim fraud is impossible. Before live donations, we need provider checks, reliable settlement and refunds, consent controls and a dispute process.",
         ],
     },
     {
         "title": "Abigail and Miracle.",
-        "speaker": "Abigail", "seconds": 13,
-        "cue": "Only Abigail and Miracle participate in these entries. Keep the introduction natural.",
+        "seconds": 10,
+        "cue": "Introduce both people on the slide. Either Abigail or Miracle can lead this presentation.",
         "paragraphs": [
-            "I'm Abigail, the team lead and product manager. Miracle leads product design. We share responsibility for understanding the need, the prototype and the work ahead.",
+            "And this is the team. {presenter_team_intro}",
         ],
     },
     {
         "title": "Give with proof, not faith.",
-        "speaker": "Abigail", "seconds": 19,
+        "seconds": 13,
         "cue": "Finish, then stop. Offer the demo if there is time.",
         "paragraphs": [
-            "Next we need a suitable payments and custody partner, verification support and a few pilot communities.",
-            "Nigerians already help one another. Kairos gives that help a clear record: the need, the provider and each donor's own receipt. Thank you.",
+            "Next we need a licensed partner and pilot communities.",
+            "In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.",
         ],
     },
 ]
+
+
+def paragraph_for_presenter(paragraph, presenter):
+    person = PRESENTERS[presenter]
+    return paragraph.format(presenter_full_name=person["full_name"],
+                            presenter_team_intro=person["team_intro"])
+
+
+def slides_for_presenter(presenter):
+    """Resolve one complete script; all shared wording stays identical."""
+    person = PRESENTERS[presenter]
+    return [dict(section, speaker=person["name"], paragraphs=[
+        paragraph_for_presenter(p, presenter) for p in section["paragraphs"]
+    ]) for section in SLIDES]
+
+
+def shared_paragraphs(section, markdown=False):
+    """One notes/script body with alternatives only where the speaker matters."""
+    paragraphs = []
+    for paragraph in section["paragraphs"]:
+        if "{presenter_" in paragraph:
+            for key, person in PRESENTERS.items():
+                label = f'As {person["name"]}:'
+                if markdown:
+                    label = f"**{label}**"
+                paragraphs.append(label + " " + paragraph_for_presenter(paragraph, key))
+        else:
+            paragraphs.append(paragraph)
+    return paragraphs
+
+
+def speaker_notes(section):
+    return ("LEAD PRESENTER: Abigail or Miracle. Choose the matching introduction; "
+            "either person can present the whole deck.\n\n"
+            + "\n\n".join(shared_paragraphs(section))
+            + "\n\nDELIVERY: " + section["cue"])
+
 
 SHORT_PITCH = [
     "Kairos is a transparent giving platform. Think of a hospital appeal on WhatsApp: you want to help, but an account number and a transfer confirmation don't tell you whether the bill was paid.",
@@ -135,7 +181,7 @@ EVENTS = [
                      "Eleven teams selected; five advance to the live final on 21 November.",
                      "Book by EOD 12 November. Complete event registration and Cleva KYC with referral code UNILAG."],
         "assess": "The invitation lists problem, solution, prototype / MVP and team preparedness. It gives no presentation duration.",
-        "spoken": "Our connection to the future of payments is keeping the purpose attached to the contribution: a named bill, the provider payment, and proof back to each donor.",
+        "spoken": "The future of payments should let you follow your contribution to the bill, then see your own receipt.",
         "follow_up": "Only if asked about funding rails: Cleva or stablecoin funding could be explored later with suitable partners. Neither integration is built today.",
     },
     {
@@ -144,7 +190,7 @@ EVENTS = [
                      "Five teams advance to the physical final on Friday 27 November.",
                      "Check the official email and group for the meeting link, start time and presentation requirements."],
         "assess": "The supplied notice asks teams to explain the idea, the problem and proposed solution, demonstrate understanding, and answer judges' questions. It does not give scoring weights or the virtual pitch duration.",
-        "spoken": "The social innovation is making community giving easier to account for: genuine needs can earn support, organisers can show what was paid, and every donor can follow their own contribution.",
+        "spoken": "For community giving, the social innovation is knowing what your help paid for, so genuine needs can earn support.",
         "follow_up": "Keep the focus on the need, direct provider payments and donor receipts. The shared deck and main script need no changes for this session.",
     },
 ]
