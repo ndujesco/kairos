@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "pitch:build": "python3 scripts/build-pitch.py",
+    "pitch:cleva": "python3 scripts/build-pitch.py --edition cleva",
+    "pitch:shared": "python3 scripts/build-pitch.py --edition shared",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

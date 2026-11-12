@@ -1,60 +1,67 @@
-# Kairos presenter page
+# Kairos pitch rooms
 
-The current `/pitch.html` supports both Cleva × Tether and APWEN LASU.
-Its two representatives are **Sokenu Abigail and Omohuma Miracle**. It uses
-the latest Faith & Tech deck design and the exact two portraits embedded in
-the APWEN team slide. The product remains transparent giving.
+Three independent URLs now serve the presentation:
 
-The exported deck, speaker notes and main script contain no sponsor,
-competition, track or event-date references. Separate event notes and the Prep
-tab hold the two schedules and optional emphasis. The script is 412 words
-for either speaker, with an estimated 3:20 rehearsal plan; the optional demo
-is separate. Its length follows the short JCI Grand Finale script, while the
-user's supplied JCI virtual script provides the voice and matching phrases.
-The original school-fees story opens the problem; current implementation
-limits remain explicit.
+- `/pitch.html`: the original general page, preserved exactly.
+- `/apwen-pitch.html`: an exact copy of that page for APWEN, preserved separately.
+- `/cleva-pitch.html`: the Cleva edition, with its own script, preparation notes,
+  questions and downloads under `pitch-assets/cleva/`.
 
-Use **Lead presenter** to choose Abigail or Miracle. That person can present
-all eleven slides. The opening, team introduction, speaker badges and script
-download update together, and the choice is remembered in this browser.
-Both people and their original portraits stay on the team slide.
+All rooms retain the original eleven slide images and only Abigail and Miracle's
+portraits. The native PDF, PowerPoint, existing notes and demo video are unchanged.
+The general/APWEN script is 406 words with a 3:20 rehearsal plan. Cleva is
+444 words with a 3:30 plan, excluding the optional demo.
 
-Edit `cleva_content.py` for the shared script, timing, event notes, demo guide
-and 110 questions. Its original filename is retained for compatibility.
-`pitch.css` and `pitch.js` control the page. `scripts/build-pitch.py` generates
-`public/pitch.html`, the Markdown downloads and the content manifest. Do not
-hand-edit the generated HTML.
+The Cleva edition keeps the original spoken text except the slide 8 passage and
+the first line of the closing ask. It explores funding from supporters abroad,
+using Cleva only if the giving use case and integration access are confirmed.
+Licensed custody needs a separate arrangement. No Cleva or stablecoin integration,
+approved donation collection, API access or signed partnership is claimed.
+The Prep tab and `sources.md` link the official product and policy sources.
+
+`cleva_content.py` is the legacy filename for the general content. Native deck
+tooling still imports it. Leave it alone when tailoring Cleva; edit
+`cleva_pitch_content.py` instead. CSS and JS remain shared source, but each
+published HTML embeds its own copy. Updating Cleva does not regenerate the two
+preserved HTML files. Cleva's presenter choice, stars and checkboxes use separate
+browser storage, and its presenter switch retains Cleva download URLs.
 
 ```sh
+# Safe default: create APWEN if missing; build Cleva without rewriting originals
 npm run pitch:build
+
+# Cleva only
+npm run pitch:cleva
+
+# Explicitly regenerate the original general page, only when requested
+npm run pitch:shared
 ```
 
-The generated HTML embeds all eleven slide previews and has no external font,
-JavaScript or image dependency. It can be opened offline. Its PDF, PowerPoint
-and Markdown download links work when served with `public/pitch-assets/`.
+The safe commands check hashes before and after building. Existing APWEN HTML
+is never overwritten. `scripts/build-pitch.py` generates Cleva HTML and all its
+Markdown downloads from tracked source; do not hand-edit generated HTML.
+Both Cleva presenter scripts use identical timings and update the opening and
+team introduction. All images/fonts/scripts needed for presenting are embedded;
+HTTP downloads require the accompanying `pitch-assets/` directory.
 
-The full deck builder is kept in the competition's `02 Preliminary Pitch/`:
+To build the rooms and copy the Cleva materials into the existing prep folder,
+run from the Kairos root:
 
 ```sh
-python3 '../hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/build_prepitch.py'
+python3 'hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/build_prepitch.py'
 ```
 
-Run that from `website/` to rebuild the PowerPoint, PDF, slide previews, script,
-Q&A and presenter HTML together. PowerPoint notes include both alternatives
-for the opening and team introduction, with shared wording everywhere else.
-`pitch-script.md` also includes both alternatives; `pitch-script-abigail.md`
-and `pitch-script-miracle.md` are ready to read for the selected presenter.
-The later 12 November solution expansion was explicitly requested as a
-script-only change. The deck files and their notes were left untouched;
-use the page or Markdown downloads for the current solution wording. Only
-the solution script and its planning duration changed.
-Rebuilding the HTML alone does not regenerate the exported slide artwork or
-PowerPoint notes. The older JCI artifacts remain in the pitch kit and its
-historical competition folders.
+That command now preserves the native deck by default. Its explicit
+`--rebuild-shared-deck` option also rebuilds the original native deck/notes and
+general page; use it only for an authorised shared-deck revision. It does not
+rewrite the existing APWEN HTML snapshot. Those rooms still reference common
+deck assets, so a deliberate shared-deck change affects their deck downloads.
 
-The deck and video stay in their existing `02 Preliminary Pitch/deck/` folder.
-The copied `demo.mp4` remains unchanged. The build does not rewrite it.
-An earlier branded draft is retained in the competition's archive directory.
+The latest general solution expansion was script-only, so the native notes
+retain their older wording. Use each room's page or Markdown script for its
+current spoken text. Historical JCI artifacts remain untouched.
 
-Presenter choice, question stars and preparation checkboxes stay in the browser.
-No account, backend change or donation-data reset is needed for this page.
+The later authorised common edit restores the fraud line as an aim on all three
+pages. Team and Thank You remain the last two main sections. The general page
+was deliberately regenerated and copied to APWEN for that edit; routine builds
+continue to preserve both files. Other general spoken sections are unchanged.

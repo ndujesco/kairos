@@ -1,20 +1,20 @@
 {
-  "version": "shared-pitch-solution-2026-11-12",
+  "version": "shared-pitch-rooms-2026-11-12",
   "slides": 11,
   "questions": 110,
   "priority": 22,
-  "words": 412,
+  "words": 406,
   "seconds": 200,
   "default_presenter": "abigail",
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 412,
+      "words": 406,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 412,
+      "words": 406,
       "script": "pitch-script-miracle.md"
     }
   }

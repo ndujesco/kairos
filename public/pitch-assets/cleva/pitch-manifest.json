@@ -1,0 +1,23 @@
+{
+  "version": "cleva-pitch-2026-11-12",
+  "slides": 11,
+  "questions": 110,
+  "priority": 24,
+  "words": 444,
+  "seconds": 210,
+  "default_presenter": "abigail",
+  "presenters": {
+    "abigail": {
+      "name": "Abigail",
+      "words": 444,
+      "script": "pitch-script-abigail.md"
+    },
+    "miracle": {
+      "name": "Miracle",
+      "words": 444,
+      "script": "pitch-script-miracle.md"
+    }
+  },
+  "assetsBase": "pitch-assets/cleva",
+  "storagePrefix": "kairos-cleva-room-v1"
+}

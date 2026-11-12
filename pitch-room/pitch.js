@@ -26,7 +26,9 @@ tabs.forEach((tab,i)=>{
 const blocks=[...document.querySelectorAll('.scriptblock')];
 const images=[...document.querySelectorAll('.slideimage')];
 const jumps=[...document.querySelectorAll('.jump button')];
-const PRESENTER_KEY='kairos-pitch-presenter-v1';
+const ASSETS_BASE=DATA.assetsBase||'pitch-assets';
+const roomKey=name=>DATA.storagePrefix?DATA.storagePrefix+':'+name:null;
+const PRESENTER_KEY=roomKey('presenter')||'kairos-pitch-presenter-v1';
 function setPresenter(key,persist=false){
   const chosen=Object.hasOwn(DATA.presenters,key)?key:DATA.defaultPresenter;
   const person=DATA.presenters[chosen],script=DATA.scripts[chosen];
@@ -43,7 +45,7 @@ function setPresenter(key,persist=false){
     block.querySelector('.spoken-words').textContent=section.words+' spoken words';
   });
   document.querySelectorAll('.presenter-script').forEach(link=>{
-    link.href='pitch-assets/pitch-script-'+chosen+'.md';
+    link.href=ASSETS_BASE+'/pitch-script-'+chosen+'.md';
     link.textContent='Download '+person.name+'’s script ↓';
   });
   if(persist){try{localStorage.setItem(PRESENTER_KEY,chosen);}catch{}}
@@ -62,7 +64,7 @@ function paintClock(){
   const planned=DATA.slides.findIndex(s=>t>=s.start&&t<s.end);
   const status=$('clock-status');status.classList.remove('late');
   if(t===0){status.textContent='Ready. Start the clock when you begin speaking.';return;}
-  if(t>LAST){status.textContent='Past the planning time by '+Math.ceil(t-LAST)+'s. Finish the thought, then take questions.';status.classList.add('late');return;}
+  if(t>=LAST){const over=Math.ceil(t-LAST);status.textContent=over>0?'Past the planning time by '+over+'s. Finish the thought, then take questions.':'Planning time reached. Finish the thought, then take questions.';status.classList.add('late');return;}
   if(planned===current){status.textContent='On the planned slide · '+Math.max(0,Math.ceil(DATA.slides[current].end-t))+'s until the next section.';}
   else if(planned>current){status.textContent='The planning clock is on slide '+(planned+1)+'. Keep a natural pace and use the short route if needed.';status.classList.add('late');}
   else{status.textContent='You are ahead of the plan. Leave room for the receipt moment.';}
@@ -110,7 +112,7 @@ const cards=[...document.querySelectorAll('.qcard')];
 const normalise=s=>s.normalize('NFKC').toLowerCase().replace(/[’']/g,'').replace(/\s+/g,' ');
 const questionMap=new Map(DATA.questions.map(q=>[q.id,q]));
 cards.forEach(c=>{const q=questionMap.get(c.dataset.id);c.dataset.search=normalise(q.question+' '+q.answer+' '+q.category);});
-const STAR_KEY='kairos-cleva-prepitch-stars-v1';
+const STAR_KEY=roomKey('stars')||'kairos-cleva-prepitch-stars-v1';
 let stars=new Set(),priorityOnly=false,starredOnly=false;
 try{const saved=JSON.parse(localStorage.getItem(STAR_KEY)||'[]');if(Array.isArray(saved))stars=new Set(saved.filter(x=>questionMap.has(x)));}catch{}
 function paintStars(){
@@ -159,7 +161,7 @@ $('demo-start').addEventListener('click',()=>{
   else{demoStart=performance.now();demoInterval=setInterval(paintDemo,200);$('demo-start').textContent='Pause';}paintDemo();
 });
 $('demo-reset').addEventListener('click',()=>{demoElapsed=0;demoStart=null;clearInterval(demoInterval);$('demo-start').textContent='Start';paintDemo();});
-const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY='kairos-shared-pitch-checks-v3';
+const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY=roomKey('checks')||'kairos-shared-pitch-checks-v3';
 try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'{}');checks.forEach(c=>c.checked=saved[c.dataset.check]===true);}catch{}
 checks.forEach(c=>c.addEventListener('change',()=>{try{localStorage.setItem(CHECK_KEY,JSON.stringify(Object.fromEntries(checks.map(x=>[x.dataset.check,x.checked]))));}catch{}}));
 $('print').addEventListener('click',()=>window.print());

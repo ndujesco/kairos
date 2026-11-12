@@ -10,7 +10,7 @@ META = {
     "stage": "Transparent giving · Abigail and Miracle",
     "team": "Sokenu Abigail · Omohuma Miracle",
     "date": "13 November 2026",
-    "version": "shared-pitch-solution-2026-11-12",
+    "version": "shared-pitch-rooms-2026-11-12",
     "demo_url": "https://drive.google.com/file/d/1AuvERGMvTvp39lxLGsgHUWnPvmE0a3jn/view?usp=sharing",
 }
 
@@ -110,7 +110,7 @@ SLIDES = [
         "seconds": 12,
         "cue": "The prototype enforces payment permissions, balances and budget limits. A receipt alone does not prove delivery. Keep launch requirements distinct from working checks.",
         "paragraphs": [
-            "We don't claim fraud is impossible. Before live donations, we need provider checks, reliable settlement and refunds, consent controls and a dispute process.",
+            "We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.",
         ],
     },
     {

@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Miracle.
 
-11 slides, 412 spoken words for either presenter. Planning time 3:20, including pauses.
+11 slides, 406 spoken words for either presenter. Planning time 3:20, including pauses.
 
 Either person can present the whole deck. Choose the matching introduction and team introduction; the other sections are identical. The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. The optional demo is separate from this timing.
 
@@ -92,7 +92,7 @@ Delivery: Connect the receipt to the people it serves. These are intended outcom
 
 Miracle · 2:45 to 2:57
 
-We don't claim fraud is impossible. Before live donations, we need provider checks, reliable settlement and refunds, consent controls and a dispute process.
+We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
 
 Delivery: The prototype enforces payment permissions, balances and budget limits. A receipt alone does not prove delivery. Keep launch requirements distinct from working checks.
 
