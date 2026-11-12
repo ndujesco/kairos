@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-11 slides, 457 spoken words for either presenter. Planning time 3:30, including pauses.
+11 slides, 428 spoken words for either presenter. Planning time 3:30, including pauses.
 
 Either presenter can deliver the whole pitch. The Cleva funding connection is proposed, subject to eligibility and integration access; licensed custody needs a separate arrangement. The demo is outside this timing. Use this script for the Cleva wording; the original slide files and their notes are unchanged.
 
@@ -90,8 +90,6 @@ Nigerians abroad should have that same transparency.
 
 Cleva supports dollar receipts, USDT deposits and conversion to local currency. With Cleva's approval, we'd explore connecting that funding to a named bill in Kairos, right through to each donor's receipt.
 
-That connection is proposed. Licensed custody still needs a separate partner.
-
 Delivery: Connect the supporter abroad to the same bill and receipt. This is a proposed, unbuilt connection; eligibility and access need Cleva's confirmation. Custody needs a separate licensed arrangement.
 
 ## Slide 9: Accountability has rules.
@@ -116,11 +114,9 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 Abigail or Miracle · 3:12 to 3:30
 
-Next, we'd like Cleva's guidance on an eligible funding flow, alongside a licensed custody partner and pilot communities.
-
 In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
 
-Delivery: Ask for confirmation of the use case and an integration path, then stop. The demo shows today's prototype, not a Cleva integration.
+Delivery: Finish, then stop. Offer the demo if there is time.
 
 ## Short explanation
 

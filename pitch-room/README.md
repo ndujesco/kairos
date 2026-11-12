@@ -10,10 +10,9 @@ Three independent URLs now serve the presentation:
 All rooms retain the original eleven slide images and only Abigail and Miracle's
 portraits. The native PDF, PowerPoint, existing notes and demo video are unchanged.
 The general/APWEN script is 410 words with a 3:27 rehearsal plan. Cleva is
-457 words with a 3:30 plan, excluding the optional demo.
+428 words with a 3:30 plan, excluding the optional demo.
 
-The Cleva edition keeps the original spoken text except the slide 8 passage and
-the first line of the closing ask. It explores funding from supporters abroad,
+The Cleva edition keeps the original spoken text except the slide 8 passage. It explores funding from supporters abroad,
 using Cleva only if the giving use case and integration access are confirmed.
 Licensed custody needs a separate arrangement. No Cleva or stablecoin integration,
 approved donation collection, API access or signed partnership is claimed.

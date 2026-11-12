@@ -15,21 +15,15 @@ DEFAULT_PRESENTER = shared.DEFAULT_PRESENTER
 SLIDES = deepcopy(shared.SLIDES)
 
 # Keep the familiar voice and all eleven original slide images. Change only
-# the impact/partnership passage and the ask; other spoken sections stay exact.
+# the impact/partnership passage; the shared closing stays intact.
 SLIDES[7].update(
     title="Where Cleva could come in.",
     cue="Connect the supporter abroad to the same bill and receipt. This is a proposed, unbuilt connection; eligibility and access need Cleva's confirmation. Custody needs a separate licensed arrangement.",
     paragraphs=[
         "Nigerians abroad should have that same transparency.",
         "Cleva supports dollar receipts, USDT deposits and conversion to local currency. With Cleva's approval, we'd explore connecting that funding to a named bill in Kairos, right through to each donor's receipt.",
-        "That connection is proposed. Licensed custody still needs a separate partner.",
     ],
 )
-SLIDES[10]["paragraphs"] = [
-    "Next, we'd like Cleva's guidance on an eligible funding flow, alongside a licensed custody partner and pilot communities.",
-    *SLIDES[10]["paragraphs"],
-]
-SLIDES[10]["cue"] = "Ask for confirmation of the use case and an integration path, then stop. The demo shows today's prototype, not a Cleva integration."
 
 # Rehearsal timings include pauses. Both presenters use exactly the same plan.
 for section, seconds in zip(SLIDES, [22, 30, 34, 13, 17, 20, 10, 27, 10, 9, 18]):
