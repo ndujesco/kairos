@@ -9,7 +9,7 @@ Three independent URLs now serve the presentation:
 
 All rooms retain the original eleven slide images and only Abigail and Miracle's
 portraits. The native PDF, PowerPoint, existing notes and demo video are unchanged.
-The general/APWEN script is 419 words with a 3:27 rehearsal plan. Cleva is
+The general/APWEN script is 410 words with a 3:27 rehearsal plan. Cleva is
 457 words with a 3:30 plan, excluding the optional demo.
 
 The Cleva edition keeps the original spoken text except the slide 8 passage and

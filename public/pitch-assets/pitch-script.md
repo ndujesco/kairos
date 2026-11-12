@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-11 slides, 419 spoken words for either presenter. Planning time 3:27, including pauses.
+11 slides, 410 spoken words for either presenter. Planning time 3:27, including pauses.
 
 Either person can present the whole deck. Choose the matching introduction and team introduction; the other sections are identical. The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. The optional demo is separate from this timing.
 
@@ -111,8 +111,6 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 ## Slide 11: Give with proof, not faith.
 
 Abigail or Miracle · 3:14 to 3:27
-
-Next we need a licensed partner and pilot communities.
 
 In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
 

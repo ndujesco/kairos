@@ -126,7 +126,6 @@ SLIDES = [
         "seconds": 13,
         "cue": "Finish, then stop. Offer the demo if there is time.",
         "paragraphs": [
-            "Next we need a licensed partner and pilot communities.",
             "In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.",
         ],
     },

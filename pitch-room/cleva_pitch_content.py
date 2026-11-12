@@ -25,9 +25,10 @@ SLIDES[7].update(
         "That connection is proposed. Licensed custody still needs a separate partner.",
     ],
 )
-SLIDES[10]["paragraphs"][0] = (
-    "Next, we'd like Cleva's guidance on an eligible funding flow, alongside a licensed custody partner and pilot communities."
-)
+SLIDES[10]["paragraphs"] = [
+    "Next, we'd like Cleva's guidance on an eligible funding flow, alongside a licensed custody partner and pilot communities.",
+    *SLIDES[10]["paragraphs"],
+]
 SLIDES[10]["cue"] = "Ask for confirmation of the use case and an integration path, then stop. The demo shows today's prototype, not a Cleva integration."
 
 # Rehearsal timings include pauses. Both presenters use exactly the same plan.

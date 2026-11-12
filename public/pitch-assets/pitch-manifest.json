@@ -3,18 +3,18 @@
   "slides": 11,
   "questions": 110,
   "priority": 22,
-  "words": 419,
+  "words": 410,
   "seconds": 207,
   "default_presenter": "abigail",
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 419,
+      "words": 410,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 419,
+      "words": 410,
       "script": "pitch-script-miracle.md"
     }
   }
