@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail.
 
-12 slides, 453 presenter words. Planning time 7:37, including pauses and the full embedded demo recording.
+12 slides, 420 presenter words. Planning time 7:37, including pauses and the full embedded demo recording.
 
 Either presenter can deliver the whole pitch. Total planning time is 7:37, including the full 3:47 recording and handover. The existing spoken sections are retained. Confirm APWEN's time limit and any new slide requirements; this duration is a rehearsal plan, not an announced competition allowance.
 
@@ -100,7 +100,7 @@ Delivery: The prototype enforces payment permissions, balances and budget limits
 
 Abigail · 3:04 to 7:14
 
-Let me show you the prototype. The accounting and donor receipts are running. This earlier recording also describes checks we plan to add. Bank transfer, Remita settlement and NIN lookup are simulated; independent provider and image checks and licensed custody are not live.
+This slide shows a quick demonstration of how it works
 
 Delivery: Share computer sound. Play the embedded 3:47 recording once, then move to Team and Thank You. The original recording mentions planned checks; it is not evidence of live settlement or independent verification.
 
