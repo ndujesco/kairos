@@ -115,5 +115,6 @@
   "demoUrl": "pitch-assets/apwen/demo.mp4",
   "demo_slide": 10,
   "demo_video_seconds": 227.033,
-  "demo_section_seconds": 250
+  "demo_section_seconds": 250,
+  "deck_keynote": "pitch-assets/apwen/deck/kairos-pitch-deck.key"
 }

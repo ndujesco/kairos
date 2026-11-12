@@ -23,9 +23,11 @@ the demonstration before the last two slides. Its format can change separately.
 
 Each `public/pitch-assets/{cleva,apwen}/` contains its own deck PDF/PPTX, slide
 previews, `demo.mp4`, scripts, Q&A, event notes and manifest. The PPTX contains
-an internal MP4, not just a link. Its PDF is a static poster with a separate
-video link; use the PowerPoint or event page for playback. The browser player
-is manual, pauses when hidden, and is shared by the Pitch and Demo tabs.
+an internal MP4, not just a link. Native `.key` copies open directly in Keynote, with editable objects, notes
+and embedded video verified in the app. The PPTX notes-master registration is
+repaired for Keynote import too. The demo slide contains only the video; press
+Play. PDF copies show a static poster. The browser Demo tab shows only the same video player; press Play. Playback
+position is retained between Pitch and Demo, and leaving for Q&A pauses it.
 
 ```sh
 # Build event pages/scripts from already exported decks; preserve agnostic files

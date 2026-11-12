@@ -4,12 +4,16 @@ const $=id=>document.getElementById(id);
 const tabs=[...document.querySelectorAll('[role="tab"]')];
 const panels=[...document.querySelectorAll('[role="tabpanel"]')];
 const mmss=s=>Math.floor(Math.max(0,s)/60)+':'+String(Math.floor(Math.max(0,s)%60)).padStart(2,'0');
-let current=0,readAll=false,deckOnly=false;
+let current=0,readAll=false,deckOnly=false,demoInTab=false;
 function activateTab(id,focus=false){
   const selected=tabs.find(t=>t.id===id)||tabs[0];
   tabs.forEach(t=>{const on=t===selected;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});
   panels.forEach(p=>p.hidden=p.id!==selected.getAttribute('aria-controls'));
-  if(selected.id!=='tab-pitch')pauseDeckVideos();
+  const returningToPitch=demoInTab&&selected.id==='tab-pitch';
+  if(returningToPitch)current=DATA.demoSlide-1;
+  placeDemo(selected.id==='tab-demo',selected.id==='tab-demo'||selected.id==='tab-pitch');
+  if(returningToPitch)showSlide(current);
+  if(selected.id!=='tab-pitch'&&selected.id!=='tab-demo')pauseDeckVideos();
   window.scrollTo(0,0);
   if(focus)selected.focus();
   if(selected.id==='tab-questions'&&focus)$('search').focus();
@@ -27,6 +31,10 @@ tabs.forEach((tab,i)=>{
 const blocks=[...document.querySelectorAll('.scriptblock')];
 const media=[...document.querySelectorAll('.slidemedia')];
 const deckVideos=[...document.querySelectorAll('.demo-video')];
+const demoMedia=document.querySelector('.demo-slide');
+const demoHome=demoMedia?.parentElement;
+const demoNextSibling=demoMedia?.nextSibling;
+const demoTabStage=$('demo-tab-stage');
 const jumps=[...document.querySelectorAll('.jump button')];
 const ASSETS_BASE=DATA.assetsBase||'pitch-assets';
 const roomKey=name=>DATA.storagePrefix?DATA.storagePrefix+':'+name:null;
@@ -60,6 +68,21 @@ const LAST=DATA.slides.at(-1).end;
 let elapsed=0,startedAt=null,interval=null;
 function seconds(){return elapsed+(startedAt===null?0:(performance.now()-startedAt)/1000);}
 function pauseDeckVideos(){deckVideos.forEach(video=>video.pause());}
+function placeDemo(inTab,visible){
+  if(!demoMedia||!demoTabStage)return;
+  const destination=inTab?demoTabStage:demoHome;
+  const before=inTab?null:demoNextSibling;
+  const video=deckVideos[0];
+  const playing=!video.paused&&!video.ended,position=video.currentTime;
+  if(demoMedia.parentElement!==destination){
+    if(typeof destination.moveBefore==='function')destination.moveBefore(demoMedia,before);
+    else destination.insertBefore(demoMedia,before);
+    if(video.readyState>0&&Math.abs(video.currentTime-position)>.01)video.currentTime=position;
+    if(playing&&visible&&video.paused)video.play().catch(()=>{});
+  }
+  demoInTab=inTab;
+  demoMedia.hidden=!inTab&&current!==DATA.demoSlide-1;
+}
 function paintClock(){
   const t=seconds();$('clock').textContent=mmss(t);
   $('meterfill').style.width=Math.min(100,100*t/LAST)+'%';
@@ -75,6 +98,7 @@ function paintClock(){
 function showSlide(n){
   current=Math.max(0,Math.min(DATA.slides.length-1,n));
   media.forEach(item=>{
+    if(item===demoMedia&&demoInTab){item.hidden=false;return;}
     item.hidden=Number(item.dataset.slide)!==current+1;
     if(item.hidden)item.querySelectorAll('video').forEach(video=>video.pause());
   });
@@ -114,20 +138,6 @@ $('fullscreen').addEventListener('click',async()=>{
   catch{deckOnly=true;document.body.classList.add('deckonly');$('deck-mode').textContent='Show script';$('deck-mode').setAttribute('aria-pressed','true');}
 });
 showSlide(0);
-document.querySelectorAll('[data-open-demo]').forEach(button=>button.addEventListener('click',()=>{
-  activateTab('tab-pitch');showSlide(DATA.demoSlide-1);
-  const video=deckVideos[0];
-  if(video){video.scrollIntoView({behavior:'smooth',block:'center'});video.focus({preventScroll:true});}
-}));
-deckVideos.forEach(video=>{
-  const status=$('demo-playback-status');
-  video.addEventListener('ended',()=>{status.textContent='Recording finished. Advance to the next slide when ready.';});
-  video.addEventListener('play',()=>{status.textContent='Recording playing · advance manually after it finishes.';});
-  video.addEventListener('pause',()=>{
-    if(!video.ended&&video.currentTime>0)status.textContent='Recording paused at '+mmss(video.currentTime)+'. Press Play to continue.';
-  });
-  video.addEventListener('error',()=>{status.textContent='The recording could not load. Use the download link in the Demo tab.';});
-});
 
 const cards=[...document.querySelectorAll('.qcard')];
 const normalise=s=>s.normalize('NFKC').toLowerCase().replace(/[’']/g,'').replace(/\s+/g,' ');

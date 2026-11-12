@@ -21,7 +21,7 @@ SLIDES[1].update(
     title="A transfer succeeds. The bill may still be unpaid.",
     paragraphs=[
         shared.SLIDES[1]["paragraphs"][0],
-        "People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That's the payment gap: keeping the money tied to the need it was given for, instead of letting it get pocketed along the way.",
+        "People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we manage to keep money tied to the need it was given for, instead of risking it getting pocketed along the way?",
     ],
     cue="Use the school-fees story, then name the payment gap plainly. The problem is money reaching an account without proof it paid the intended bill.",
     deck={"eyebrow": "THE PAYMENT CHALLENGE",
@@ -33,20 +33,21 @@ SLIDES[1].update(
           "band": "A successful transfer is not proof that the need was met."},
 )
 SLIDES[2].update(
-    title="Keep the payment tied to the need.",
+    title="Our solution.",
     paragraphs=[
         "Kairos is that trusted middle layer.",
-        "First, the organizer publishes the need and an itemised budget naming the school, hospital or supplier. Our AI interviewer helps them put that case together.",
-        "Second, the planned live setup holds donations with a licensed partner. The organizer can request payment against the budget, but can't withdraw into a personal account. Checks tie each release to the named provider and the amount remaining on that budget line.",
-        "Third, every payment goes into the public history, and every donor gets a receipt showing their share of that payment. So the payment doesn't end at 'sent'. It ends with an account of what that money paid for.",
+        "Here is how it's designed to work.",
+        "First, the cause gets checked. The person raising money proves who they are with their BVN or NIN. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming real suppliers, and screens the evidence for reused photos and mismatched dates.",
+        "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget, and the ledger. The money lands in escrow, never a personal account.",
+        "Third, funds leave escrow only toward named, verified vendors.",
     ],
     cue="Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.",
     deck={"eyebrow": "THE SOLUTION",
           "lead": "Connect the contribution, the provider payment and each donor's own proof.",
           "cards": [
-              {"tag": "01", "title": "Publish the bill", "body": "An AI-guided case with an itemised budget and named providers."},
-              {"tag": "02", "title": "Pay the provider", "body": "Request payment against the budget. No personal withdrawal path."},
-              {"tag": "03", "title": "Return the proof", "body": "Public payment history and a personal receipt for every donor."}],
+              {"tag": "01", "title": "Check the cause", "body": "Identity, AI-assisted intake and an itemised budget naming suppliers."},
+              {"tag": "02", "title": "Share one clear link", "body": "Story, budget and public ledger. Donations are intended to stay in escrow."},
+              {"tag": "03", "title": "Pay verified vendors", "body": "Release funds to named providers, with a receipt for every donor."}],
           "band": "The prototype demonstrates the flow. Live custody and settlement remain to be integrated."},
 )
 SLIDES[3]["paragraphs"].append(
@@ -56,8 +57,8 @@ SLIDES[4].update(
     title="What we can show you today.",
     paragraphs=[
         "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app.",
-        "Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks are not built, and no real donations have moved.",
-        "With Cleva's approval, we'd also explore funding from supporters abroad, linking a contribution in dollars or USDT to the same bill and receipt.",
+        "Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.",
+        "With Cleva's approval, we could also explore funding from supporters abroad, linking a contribution in dollars or USDT to the same bill and receipt.",
         "We aim to cover running costs through donations and NGO grants. Without that support, our tentative fallback is two percent upkeep, capped at five thousand naira per cause.",
         shared.SLIDES[8]["paragraphs"][0],
     ],
@@ -67,19 +68,19 @@ SLIDES[4].update(
           "cards": [
               {"tag": "WORKING", "title": "Application logic", "body": "Accounting, budget checks, donor shares, notifications and public history."},
               {"tag": "SIMULATED", "title": "Money and identity", "body": "Bank transfer, Remita settlement and NIN lookup."},
-              {"tag": "NEXT", "title": "Live integrations", "body": "Independent provider checks, licensed custody and reliable settlement."}],
+              {"tag": "NEXT", "title": "Live integrations", "body": "Independent provider and evidence checks, licensed custody and settlement."}],
           "band": "The demo uses seeded data. No real donations have moved."},
 )
 SLIDES += [
     {"title": "Watch the payment become a receipt.", "deck_key": "demo", "is_demo": True,
-     "seconds": 250, "video_seconds": VIDEO_SECONDS,
-     "paragraphs": ["Let me show you the prototype. The accounting and donor receipts are running. This earlier recording also describes checks we plan to add. Bank transfer, Remita settlement and NIN lookup are simulated; independent provider and image checks and licensed custody are not live."],
-     "cue": "Share computer sound. Play the embedded 3:47 recording once. Its narration includes intended checks and custody that are not live; make the introduction clear. After it ends, move to Team, then Thank You. Do not narrate over the recording."},
+     "seconds": 239, "video_seconds": VIDEO_SECONDS,
+     "paragraphs": ["Now let us watch a demonstration of how the app works."],
+     "cue": "Share computer sound. Play the embedded 3:47 recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording."},
     dict(deepcopy(shared.SLIDES[9]), deck_key="team"),
     dict(deepcopy(shared.SLIDES[10]), deck_key="closing"),
 ]
 # Full presentation: 7:50, including the unmodified 3:47 recording.
-for section, seconds in zip(SLIDES, [21, 48, 50, 24, 56, 250, 9, 12]):
+for section, seconds in zip(SLIDES, [21, 51, 55, 24, 59, 239, 9, 12]):
     section["seconds"] = seconds
 SLIDES[-1]["cue"] = "Thank them, then stop. The demo has already played."
 

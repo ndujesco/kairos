@@ -3,10 +3,10 @@
   "slides": 8,
   "questions": 110,
   "priority": 24,
-  "words": 505,
+  "words": 474,
   "seconds": 470,
   "source_content": "cleva_pitch_content.py",
-  "source_sha256": "0fb88ad2bc577a0c2c42b0281d06f1c570fac36548fa78952deb53570fc17a62",
+  "source_sha256": "155b9ee0112a7e6b23ac0ac2955f3a39d1e1b8749f605ffc0dd71aa71d5315d2",
   "deckBase": "pitch-assets/cleva/deck",
   "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
@@ -23,14 +23,14 @@
       "n": 2,
       "key": "problem",
       "title": "A transfer succeeds. The bill may still be unpaid.",
-      "seconds": 48,
+      "seconds": 51,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
-      "title": "Keep the payment tied to the need.",
-      "seconds": 50,
+      "title": "Our solution.",
+      "seconds": 55,
       "is_demo": false
     },
     {
@@ -44,14 +44,14 @@
       "n": 5,
       "key": "prototype",
       "title": "What we can show you today.",
-      "seconds": 56,
+      "seconds": 59,
       "is_demo": false
     },
     {
       "n": 6,
       "key": "demo",
       "title": "Watch the payment become a receipt.",
-      "seconds": 250,
+      "seconds": 239,
       "is_demo": true
     },
     {
@@ -73,12 +73,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 505,
+      "words": 474,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 505,
+      "words": 474,
       "script": "pitch-script-miracle.md"
     }
   },
@@ -87,5 +87,6 @@
   "demoUrl": "pitch-assets/cleva/demo.mp4",
   "demo_slide": 6,
   "demo_video_seconds": 227.033,
-  "demo_section_seconds": 250
+  "demo_section_seconds": 239,
+  "deck_keynote": "pitch-assets/cleva/deck/kairos-pitch-deck.key"
 }
