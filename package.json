@@ -5,6 +5,7 @@
   "scripts": {
     "pitch:build": "python3 scripts/build-pitch.py",
     "pitch:cleva": "python3 scripts/build-pitch.py --edition cleva",
+    "pitch:apwen": "python3 scripts/build-pitch.py --edition apwen",
     "pitch:shared": "python3 scripts/build-pitch.py --edition shared",
     "dev": "next dev",
     "build": "next build",

@@ -1,23 +1,91 @@
 {
-  "version": "cleva-pitch-2026-11-12",
-  "slides": 11,
+  "version": "cleva-office-hours-demo-2026-11-12",
+  "slides": 8,
   "questions": 110,
   "priority": 24,
-  "words": 428,
-  "seconds": 210,
+  "words": 505,
+  "seconds": 470,
+  "source_content": "cleva_pitch_content.py",
+  "source_sha256": "0fb88ad2bc577a0c2c42b0281d06f1c570fac36548fa78952deb53570fc17a62",
+  "deckBase": "pitch-assets/cleva/deck",
+  "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
+  "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
+  "timing_includes_full_demo": true,
+  "slide_order": [
+    {
+      "n": 1,
+      "key": "cover",
+      "title": "Transparent giving for Nigeria",
+      "seconds": 21,
+      "is_demo": false
+    },
+    {
+      "n": 2,
+      "key": "problem",
+      "title": "A transfer succeeds. The bill may still be unpaid.",
+      "seconds": 48,
+      "is_demo": false
+    },
+    {
+      "n": 3,
+      "key": "solution",
+      "title": "Keep the payment tied to the need.",
+      "seconds": 50,
+      "is_demo": false
+    },
+    {
+      "n": 4,
+      "key": "receipt",
+      "title": "Every giver sees their own part.",
+      "seconds": 24,
+      "is_demo": false
+    },
+    {
+      "n": 5,
+      "key": "prototype",
+      "title": "What we can show you today.",
+      "seconds": 56,
+      "is_demo": false
+    },
+    {
+      "n": 6,
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": 250,
+      "is_demo": true
+    },
+    {
+      "n": 7,
+      "key": "team",
+      "title": "Abigail and Miracle.",
+      "seconds": 9,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "closing",
+      "title": "Give with proof, not faith.",
+      "seconds": 12,
+      "is_demo": false
+    }
+  ],
   "default_presenter": "abigail",
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 428,
+      "words": 505,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 428,
+      "words": 505,
       "script": "pitch-script-miracle.md"
     }
   },
   "assetsBase": "pitch-assets/cleva",
-  "storagePrefix": "kairos-cleva-room-v1"
+  "storagePrefix": "kairos-cleva-room-v1",
+  "demoUrl": "pitch-assets/cleva/demo.mp4",
+  "demo_slide": 6,
+  "demo_video_seconds": 227.033,
+  "demo_section_seconds": 250
 }

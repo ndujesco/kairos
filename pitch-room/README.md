@@ -1,66 +1,62 @@
-# Kairos pitch rooms
+# Kairos presentation rooms
 
-Three independent URLs now serve the presentation:
+The agnostic `/pitch.html` and all its shared downloads remain unchanged.
+The event rooms now have independent decks, scripts, assets and video playback:
 
-- `/pitch.html`: the original general page, preserved exactly.
-- `/apwen-pitch.html`: an exact copy of that page for APWEN, preserved separately.
-- `/cleva-pitch.html`: the Cleva edition, with its own script, preparation notes,
-  questions and downloads under `pitch-assets/cleva/`.
+| Room | Source | Slides | Full rehearsal plan |
+| --- | --- | --- | --- |
+| `/cleva-pitch.html` | `cleva_pitch_content.py` | 8 | 7:50 |
+| `/apwen-pitch.html` | `apwen_pitch_content.py` | 12 | 7:37 |
 
-All rooms retain the original eleven slide images and only Abigail and Miracle's
-portraits. The native PDF, PowerPoint, existing notes and demo video are unchanged.
-The general/APWEN script is 410 words with a 3:27 rehearsal plan. Cleva is
-428 words with a 3:30 plan, excluding the optional demo.
+Both durations include the unchanged 3:47.033 recording, an introduction and
+pauses. These are rehearsal plans; neither organiser has confirmed that exact
+allowance. The recording is before Team and Thank You in both decks. Only
+Abigail and Miracle appear; either can be selected to present the whole script.
 
-The Cleva edition keeps the original spoken text except the slide 8 passage. It explores funding from supporters abroad,
-using Cleva only if the giving use case and integration access are confirmed.
-Licensed custody needs a separate arrangement. No Cleva or stablecoin integration,
-approved donation collection, API access or signed partnership is claimed.
-The Prep tab and `sources.md` link the official product and policy sources.
+Cleva follows the latest Office Hours brief: Problem, Solution, Demo & Progress.
+Abigail's voice note informs the payment framing: a transfer can reach an
+account without paying the intended bill. The shorter deck connects money given
+to a published budget, controlled direct provider payment and donor receipt.
+The prototype, simulated parts and proposed Cleva connection stay distinct.
+APWEN retains the previous spoken content and original slide subjects, adding
+the demonstration before the last two slides. Its format can change separately.
 
-`cleva_content.py` is the legacy filename for the general content. Native deck
-tooling still imports it. Leave it alone when tailoring Cleva; edit
-`cleva_pitch_content.py` instead. CSS and JS remain shared source, but each
-published HTML embeds its own copy. Updating Cleva does not regenerate the two
-preserved HTML files. Cleva's presenter choice, stars and checkboxes use separate
-browser storage, and its presenter switch retains Cleva download URLs.
+Each `public/pitch-assets/{cleva,apwen}/` contains its own deck PDF/PPTX, slide
+previews, `demo.mp4`, scripts, Q&A, event notes and manifest. The PPTX contains
+an internal MP4, not just a link. Its PDF is a static poster with a separate
+video link; use the PowerPoint or event page for playback. The browser player
+is manual, pauses when hidden, and is shared by the Pitch and Demo tabs.
 
 ```sh
-# Safe default: create APWEN if missing; build Cleva without rewriting originals
+# Build event pages/scripts from already exported decks; preserve agnostic files
 npm run pitch:build
-
-# Cleva only
 npm run pitch:cleva
-
-# Explicitly regenerate the original general page, only when requested
-npm run pitch:shared
+npm run pitch:apwen
 ```
 
-The safe commands check hashes before and after building. Existing APWEN HTML
-is never overwritten. `scripts/build-pitch.py` generates Cleva HTML and all its
-Markdown downloads from tracked source; do not hand-edit generated HTML.
-Both Cleva presenter scripts use identical timings and update the opening and
-team introduction. All images/fonts/scripts needed for presenting are embedded;
-HTTP downloads require the accompanying `pitch-assets/` directory.
-
-To build the rooms and copy the Cleva materials into the existing prep folder,
+To rebuild native event decks, preview images, notes and both pages together,
 run from the Kairos root:
 
 ```sh
 python3 'hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/build_prepitch.py'
 ```
 
-That command now preserves the native deck by default. Its explicit
-`--rebuild-shared-deck` option also rebuilds the original native deck/notes and
-general page; use it only for an authorised shared-deck revision. It does not
-rewrite the existing APWEN HTML snapshot. Those rooms still reference common
-deck assets, so a deliberate shared-deck change affects their deck downloads.
+Use `--pages-only` when deck assets are already current. The old agnostic deck
+and page are regenerated only with the explicit `--rebuild-shared-deck` flag;
+do not use that for event edits. Safe builds hash-check the frozen agnostic
+HTML and shared assets. Never hand-edit generated public HTML.
 
-The latest general solution expansion was script-only, so the native notes
-retain their older wording. Use each room's page or Markdown script for its
-current spoken text. Historical JCI artifacts remain untouched.
+Local bundles:
 
-The later authorised common edit restores the fraud line as an aim on all three
-pages. Team and Thank You remain the last two main sections. The general page
-was deliberately regenerated and copied to APWEN for that edit; routine builds
-continue to preserve both files. Other general spoken sections are unchanged.
+- Cleva: `hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/cleva/`.
+- APWEN: `hackathons/2026-10 APWEN LASU/02 Virtual Pitch/`.
+
+Each has `deck/`, adjacent `demo.mp4`, Markdown scripts and an offline HTML page
+with local relative paths. Leave those files together for offline video playback.
+The original deck/demo in the old shared folder remain preserved.
+
+The recording is an earlier prototype walkthrough. Its narration includes
+intended verification/custody/settlement claims, so the new spoken introduction
+makes the unbuilt and simulated parts explicit. No live donations, approved
+Cleva integration or signed custody partner are claimed. The official Cleva
+research remains in its own Prep tab and sources download.

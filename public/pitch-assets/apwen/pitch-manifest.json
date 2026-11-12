@@ -1,0 +1,119 @@
+{
+  "version": "apwen-embedded-demo-2026-11-12",
+  "slides": 12,
+  "questions": 110,
+  "priority": 22,
+  "words": 453,
+  "seconds": 457,
+  "source_content": "apwen_pitch_content.py",
+  "source_sha256": "a614167a8e0540534f3331176015144730fd580b1ef354f90bde80d68f1c8d3e",
+  "deckBase": "pitch-assets/apwen/deck",
+  "deck_pdf": "pitch-assets/apwen/deck/kairos-pitch-deck.pdf",
+  "deck_pptx": "pitch-assets/apwen/deck/kairos-pitch-deck.pptx",
+  "timing_includes_full_demo": true,
+  "slide_order": [
+    {
+      "n": 1,
+      "key": "cover",
+      "title": "Transparent giving for Nigeria",
+      "seconds": 23,
+      "is_demo": false
+    },
+    {
+      "n": 2,
+      "key": "problem",
+      "title": "A transfer succeeds. The doubt stays.",
+      "seconds": 32,
+      "is_demo": false
+    },
+    {
+      "n": 3,
+      "key": "solution",
+      "title": "From a published budget to a personal receipt.",
+      "seconds": 38,
+      "is_demo": false
+    },
+    {
+      "n": 4,
+      "key": "receipt",
+      "title": "Every giver sees their own part.",
+      "seconds": 16,
+      "is_demo": false
+    },
+    {
+      "n": 5,
+      "key": "prototype",
+      "title": "What runs today.",
+      "seconds": 20,
+      "is_demo": false
+    },
+    {
+      "n": 6,
+      "key": "model",
+      "title": "Useful to give. Sustainable to run.",
+      "seconds": 23,
+      "is_demo": false
+    },
+    {
+      "n": 7,
+      "key": "growth",
+      "title": "Start with a bill that can be checked.",
+      "seconds": 10,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "impact",
+      "title": "Clearer giving. Real needs met.",
+      "seconds": 10,
+      "is_demo": false
+    },
+    {
+      "n": 9,
+      "key": "safeguards",
+      "title": "Accountability has rules.",
+      "seconds": 12,
+      "is_demo": false
+    },
+    {
+      "n": 10,
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": 250,
+      "is_demo": true
+    },
+    {
+      "n": 11,
+      "key": "team",
+      "title": "Abigail and Miracle.",
+      "seconds": 10,
+      "is_demo": false
+    },
+    {
+      "n": 12,
+      "key": "closing",
+      "title": "Give with proof, not faith.",
+      "seconds": 13,
+      "is_demo": false
+    }
+  ],
+  "default_presenter": "abigail",
+  "presenters": {
+    "abigail": {
+      "name": "Abigail",
+      "words": 453,
+      "script": "pitch-script-abigail.md"
+    },
+    "miracle": {
+      "name": "Miracle",
+      "words": 453,
+      "script": "pitch-script-miracle.md"
+    }
+  },
+  "assetsBase": "pitch-assets/apwen",
+  "storagePrefix": "kairos-apwen-room-v1",
+  "demoUrl": "pitch-assets/apwen/demo.mp4",
+  "demo_slide": 10,
+  "demo_video_seconds": 227.033,
+  "demo_section_seconds": 250
+}

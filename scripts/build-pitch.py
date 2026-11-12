@@ -3,8 +3,9 @@
 
 No web service or package installation is needed. Slide previews and deck
 downloads are exported from the event's Faith & Tech-derived deck builder.
-The default build preserves the original shared room and its assets. Explicitly
-select ``--edition shared`` to regenerate those legacy files.
+The default build creates the independent APWEN and Cleva rooms while preserving
+the original shared room and its assets. Only ``--edition shared`` regenerates
+the legacy files.
 """
 from pathlib import Path
 import argparse
@@ -35,6 +36,7 @@ def load_content(filename):
 
 
 def mmss(s):
+    s = int(round(s))
     return f"{s//60}:{s%60:02}"
 
 
@@ -53,19 +55,26 @@ def write_script(content, assets, page, slides, presenter=None):
     words = sum(s["words"] for s in slides)
     elapsed = slides[-1]["end"]
     who = content.PRESENTERS[presenter]["name"] if presenter else "Abigail or Miracle"
+    integrated_demo = any(s.get("is_demo") for s in slides)
+    timing = (f"{len(slides)} slides, {words} presenter words. Planning time {mmss(elapsed)}, including pauses and the full embedded demo recording."
+              if integrated_demo else f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.")
     script = ["# " + page["script_title"], content.META["team"],
               f"Lead presenter: {who}.",
-              f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.",
+              timing,
               page["script_intro"]]
     for i, s in enumerate(slides):
         paragraphs = s["paragraphs"] if presenter else content.shared_paragraphs(content.SLIDES[i], markdown=True)
         script += [f'## Slide {s["n"]}: {s["title"]}',
                    f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
         script += paragraphs + [f'Delivery: {s["cue"]}']
+        if s.get("is_demo"):
+            script += ["Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.",
+                       f'Recording: {page["demo_url"]} · {mmss(s.get("video_seconds", s["seconds"]))}. This section is already included in the main pitch timing.']
     script += ["## Short explanation"] + content.SHORT_PITCH
-    script += ["## Optional 90-second demo"]
-    for d in content.DEMO:
-        script += [f'### {d["title"]} ({d["seconds"]} seconds)', d["say"], "On screen: " + d["action"]]
+    if not integrated_demo:
+        script += ["## Optional 90-second demo"]
+        for d in getattr(content, "DEMO", []):
+            script += [f'### {d["title"]} ({d["seconds"]} seconds)', d["say"], "On screen: " + d["action"]]
     filename = f"pitch-script-{presenter}.md" if presenter else "pitch-script.md"
     (assets / filename).write_text('\n\n'.join(script) + '\n')
 
@@ -149,10 +158,42 @@ def page_options(content, cleva=False):
     return page
 
 
+def local_asset(url):
+    """Resolve a public-relative asset without permitting paths outside public."""
+    path = (PUBLIC / url).resolve()
+    if not path.is_relative_to(PUBLIC.resolve()):
+        raise ValueError(f"Asset must stay inside public: {url}")
+    return path
+
+
+def criteria_for(slides, page):
+    if "criteria" in page:
+        return page["criteria"]
+    groups = [
+        ("Problem", {"problem"}),
+        ("Solution", {"solution", "flow"}),
+        ("Proof and prototype", {"receipt", "prototype", "demo"}),
+        ("Impact and execution", {"impact", "business", "roadmap", "market"}),
+        ("Team and next step", {"team", "closing", "ask"}),
+    ]
+    rows = []
+    for label, keys in groups:
+        numbers = [str(s["n"]) for s in slides if s.get("deck_key") in keys]
+        if numbers:
+            rows.append((label, ("Slide " if len(numbers) == 1 else "Slides ") + ", ".join(numbers)))
+    return rows or [("Presentation", f'Slides 1–{len(slides)} + Q&A')]
+
+
 def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
           assets_base="pitch-assets", storage_prefix=None, cleva=False):
     assets.mkdir(parents=True, exist_ok=True)
     page = page_options(content, cleva=cleva)
+    deck_base = page.get("deck_base", assets_base + "/deck" if storage_prefix else assets_base).rstrip("/")
+    deck_pdf = page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
+    deck_pptx = page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
+    for url in (deck_pdf, deck_pptx):
+        if not local_asset(url).is_file():
+            raise FileNotFoundError(f"Export this edition's deck first: {local_asset(url)}")
     scripts = {}
     for key in content.PRESENTERS:
         variant = timed_slides(content, key)
@@ -160,6 +201,21 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     slides = scripts[content.DEFAULT_PRESENTER]["slides"]
     elapsed = slides[-1]["end"]
     words = sum(s["words"] for s in slides)
+    demo_slide = next((s for s in slides if s.get("is_demo")), None)
+    if demo_slide:
+        page["demo_url"] = page.get("demo_url", assets_base + "/demo.mp4")
+        if not local_asset(page["demo_url"]).is_file():
+            raise FileNotFoundError(f"Copy the demo recording first: {local_asset(page['demo_url'])}")
+        demo_poster = page.get("demo_poster", f'{deck_base}/slides/slide{demo_slide["n"]:02}.jpg')
+        video_seconds = demo_slide.get("video_seconds", demo_slide["seconds"])
+        if demo_slide["seconds"] < video_seconds:
+            raise ValueError("The demo section must include the full recording duration.")
+    else:
+        demo_poster = None
+        video_seconds = 0
+    timing_summary = "including the full demo and pauses" if demo_slide else "with pauses"
+    criteria = ''.join(f'<div class="criterion"><strong>{e(label)}</strong><span>{e(location)}</span></div>'
+                       for label, location in criteria_for(slides, page))
     default_name = content.PRESENTERS[content.DEFAULT_PRESENTER]["name"]
     priority_count = sum(q["priority"] for q in content.QUESTIONS)
     question_count = len(content.QUESTIONS)
@@ -178,12 +234,21 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
-        image_path = ASSETS / "slides" / f'slide{s["n"]:02}.jpg'
+        image_path = local_asset(f'{deck_base}/slides/slide{s["n"]:02}.jpg')
         if not image_path.is_file():
             raise FileNotFoundError(f"Export the deck previews first: {image_path}")
-        image = base64.b64encode(image_path.read_bytes()).decode()
-        images.append(f'<img class="slideimage" data-slide="{s["n"]}" width="1440" height="810" '
-                      f'src="data:image/jpeg;base64,{image}" alt="Slide {s["n"]}: {e(s["title"])}"{hidden}>')
+        if s.get("is_demo"):
+            images.append(f'<div class="slidemedia demo-slide" data-slide="{s["n"]}"{hidden}>'
+                          f'<video class="slideimage demo-video" controls preload="metadata" playsinline tabindex="0" '
+                          f'poster="{e(demo_poster)}" src="{e(page["demo_url"])}" '
+                          f'aria-label="Slide {s["n"]}: {e(s["title"])}" aria-describedby="demo-playback-status">'
+                          f'Your browser cannot play this recording. <a href="{e(page["demo_url"])}">Download the demo video</a>.</video>'
+                          '<p class="demo-playback-status" id="demo-playback-status" role="status">'
+                          f'{mmss(video_seconds)} recording · press Play when ready. Advance to the next slide after it finishes.</p></div>')
+        else:
+            image = base64.b64encode(image_path.read_bytes()).decode()
+            images.append(f'<img class="slideimage slidemedia" data-slide="{s["n"]}" width="1440" height="810" '
+                          f'src="data:image/jpeg;base64,{image}" alt="Slide {s["n"]}: {e(s["title"])}"{hidden}>')
         jump.append(f'<button type="button" aria-current="{str(s["n"]==1).lower()}" '
                     f'aria-label="Go to slide {s["n"]}: {e(s["title"])}">'
                     f'<span>{s["n"]:02} · {mmss(s["start"])}</span>{e(s["title"])}</button>')
@@ -201,7 +266,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     options = ''.join(f'<option value="{e(name)}">{e(name)} · {len(rows)}</option>' for name, rows in content.GROUPS)
     demo_steps = []
     at = 0
-    for i, d in enumerate(content.DEMO, 1):
+    for i, d in enumerate(getattr(content, "DEMO", []), 1):
         demo_steps.append(f'<article class="demostep"><div class="demoheading">'
                           f'<span class="slideindex">0{i}</span><h2>{e(d["title"])}</h2>'
                           f'<span class="demotime">{mmss(at)} to {mmss(at+d["seconds"])}</span></div>'
@@ -211,7 +276,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     check_html = ''.join(f'<label><input type="checkbox" data-check="c{i}"><span>{e(t)}</span></label>' for i,t in enumerate(checklist,1))
     page_data = {"meta": content.META, "slides": slides, "scripts": scripts,
                  "presenters": content.PRESENTERS, "defaultPresenter": content.DEFAULT_PRESENTER,
-                 "questions": content.QUESTIONS}
+                 "questions": content.QUESTIONS, "deckBase": deck_base}
+    if demo_slide:
+        page_data.update({"demoUrl": page["demo_url"], "demoSlide": demo_slide["n"],
+                          "demoVideoSeconds": video_seconds})
     if assets_base != "pitch-assets":
         page_data["assetsBase"] = assets_base
     if storage_prefix:
@@ -238,6 +306,26 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     event_cards = ''.join(event_cards)
     header = '<br>'.join(e(line) for line in page["header"].split('\n'))
     source_line = e(page["source_note"])
+    if demo_slide:
+        demo_intro = page.get("demo_intro", f'The full {mmss(video_seconds)} recording is slide {demo_slide["n"]} of this pitch and is included in the {mmss(elapsed)} plan.')
+        demo_notice = page.get("demo_notice", "This is a working prototype using demo data. Bank transfer, Remita settlement and NIN lookup are simulated. The recording includes planned checks; explain the current limits before playback.")
+        demo_panel = (
+            '<div class="intro"><div><p class="kicker">' + e(page.get("demo_kicker", "Part of the main pitch")) + '</p>'
+            '<h1>' + e(page.get("demo_title", "The proof is in the receipt.")) + '</h1><p>' + e(demo_intro) + '</p></div></div>'
+            '<div class="notice">' + e(demo_notice) + '</div>'
+            '<article class="demostep"><div class="demoheading"><span class="slideindex">' + f'{demo_slide["n"]:02}' + '</span>'
+            '<h2>' + e(demo_slide["title"]) + '</h2><span class="demotime">' + mmss(demo_slide["start"]) + ' to ' + mmss(demo_slide["end"]) + '</span></div>'
+            '<p>' + e(demo_slide["cue"]) + '</p><div class="demo-actions">'
+            '<button type="button" class="button primary" data-open-demo>Open demo in the deck</button>'
+            '<a class="button" href="' + e(page["demo_url"]) + '" download>Download recording ↓</a></div></article>'
+            '<p class="sourceline">Start playback yourself. The video keeps its position when you leave the slide; advance manually after the recording finishes. Its narration is separate from the presenter word count.</p>'
+        )
+    else:
+        demo_panel = f'''<div class="intro"><div><p class="kicker">Show one cause, then stop</p>
+<h1>The proof is in the receipt.</h1><p>A {mmss(at)} demonstration route. Rehearse on the seeded prototype before the call.</p></div>
+<div class="controls"><span class="clock" id="demo-clock">0:00</span><button class="button primary" type="button" id="demo-start">Start</button><button class="button" type="button" id="demo-reset">Reset</button></div></div>
+<div class="notice">Say this first: “This is a working prototype using demo data. Bank transfer, Remita settlement and NIN lookup are simulated.”</div>
+<div class="demosteps">{''.join(demo_steps)}</div><p class="sourceline"><a href="{e(content.META["demo_url"])}" target="_blank" rel="noopener">Existing full demo recording ↗</a> · Older narration includes planned checks. Explain the simulation limits before using it.</p>'''
     document = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(content.META["title"])}</title><meta name="description" content="{e(page["description"])}">
@@ -250,12 +338,12 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <button type="button" class="tab" role="tab" id="tab-demo" aria-controls="panel-demo" aria-selected="false" tabindex="-1">Demo</button>
 <button type="button" class="tab" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1">Q&A <span class="counter">{question_count}</span></button>
 <button type="button" class="tab" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1">Prep</button></nav>
-<div class="downloads"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a>
-<a class="pptx-link" href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a></div></div></div></header>
+<div class="downloads"><a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>
+<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a></div></div></div></header>
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
 <div class="intro"><div><p class="kicker">The need. The provider. Your own receipt.</p><h1>Give with proof, not faith.</h1>
-<p>{len(slides)} slides · <span id="spoken-total">{words}</span> spoken words · about {mmss(elapsed)} with pauses · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">Working prototype · simulated settlement</span></div>
+<p>{len(slides)} slides · <span id="spoken-total">{words}</span> presenter words · about {mmss(elapsed)} {timing_summary} · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">Working prototype · simulated settlement</span></div>
 <div class="presenterbar"><div class="presenterfield"><label for="presenter">Lead presenter</label><select id="presenter" aria-describedby="presenter-help">{presenter_options}</select></div>
 <p id="presenter-help">Either person can present the whole deck. Your choice is saved in this browser.</p></div>
 <div class="stage"><div class="scriptpaper" id="script-paper">{''.join(script_blocks)}</div>
@@ -273,11 +361,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <p class="timingnote">{e(page["timing_note"])}</p>
 </aside></div><details class="shortpitch"><summary>Short on time? The 90-second explanation.</summary>{short}</details>
 <p class="sourceline"><a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/pitch-script.md" download>Script with both introductions ↓</a> · {e(page["notes_note"])}</p></section>
-<section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden><div class="intro"><div><p class="kicker">Show one cause, then stop</p>
-<h1>The proof is in the receipt.</h1><p>A 90-second demonstration route. Rehearse on the seeded prototype before the call.</p></div>
-<div class="controls"><span class="clock" id="demo-clock">0:00</span><button class="button primary" type="button" id="demo-start">Start</button><button class="button" type="button" id="demo-reset">Reset</button></div></div>
-<div class="notice">Say this first: “This is a working prototype using demo data. Bank transfer, Remita settlement and NIN lookup are simulated.”</div>
-<div class="demosteps">{''.join(demo_steps)}</div><p class="sourceline"><a href="{e(content.META["demo_url"])}" target="_blank" rel="noopener">Existing full demo recording ↗</a> · Older narration includes planned checks. Explain the simulation limits before using it.</p></section>
+<section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden>{demo_panel}</section>
 <section class="panel" id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden><div class="intro"><div><p class="kicker">Direct answers. Then the supporting detail.</p>
 <h1>Ready for the follow-up.</h1><p>{e(page["qa_page_intro"])}</p></div><a class="button" href="{e(assets_base)}/qa-bank.md" download>Download Q&A ↓</a></div>
 <div class="questiontools"><label for="search" class="searchlabel">Search questions and answers</label><div class="searchrow"><div class="searchwrap"><input id="search" type="search" placeholder="Try: stablecoins, escrow, refunds, AI…" autocomplete="off"><button type="button" id="clear-search" class="clearsearch" aria-label="Clear search" hidden>×</button></div><button class="button" type="button" id="expand-answers">Expand answers</button></div>
@@ -289,11 +373,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <section class="panel" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep" hidden><div class="intro"><div><p class="kicker">{e(page["prep_kicker"])}</p><h1>{e(page["prep_title"])}</h1><p>{e(page["prep_intro"])}</p></div><button type="button" class="button" id="print">Print preparation pack</button></div>
 <div class="prepgrid">{event_cards}</div><p class="sourceline"><a href="{e(assets_base)}/event-notes.md" download>Download event notes ↓</a> · {e(page["event_download_note"])}</p>
 <div class="prepgrid"><section class="prepbox"><h2>Before joining</h2><div class="checklist">{check_html}</div></section>
-<section class="prepbox"><h2>Where the deck answers them</h2><div class="criterion"><strong>Problem</strong><span>Slide 2</span></div><div class="criterion"><strong>Solution</strong><span>Slides 3 and 4</span></div><div class="criterion"><strong>Prototype</strong><span>Slide 5 + optional demo</span></div><div class="criterion"><strong>Community impact</strong><span>Slide 8</span></div><div class="criterion"><strong>Preparedness and execution</strong><span>Slides 7, 9, 10 and 11 + Q&A</span></div>
-<div class="notice">The full script is planned at {mmss(elapsed)}, including the original school-fees story. {e(page["prep_timing_note"])}</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
+<section class="prepbox"><h2>Where the deck answers them</h2>{criteria}
+<div class="notice">The full pitch is planned at {mmss(elapsed)}, {timing_summary}. {e(page["prep_timing_note"])}</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
 <section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>{e(page["focus_label"])}</strong> {e(page["focus_note"])}</li></ul></section>
 <section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose Abigail or Miracle as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
-<p class="sourceline"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a> · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
+<p class="sourceline"><a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="{e(deck_pptx)}" download>PowerPoint ↓</a> · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
 <p class="sourceline">{source_line}</p>{page["source_html"]}</section>
 </main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>{e(page["footer"])}</span></div></footer>
 <script type="application/json" id="pitch-data">{data}</script><script>{js}</script></body></html>'''
@@ -315,6 +399,12 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         event_md += ["", event["assess"], "", page["event_spoken_label"], "", event["spoken"], "", event["follow_up"]]
     (assets / "event-notes.md").write_text('\n'.join(event_md) + '\n')
     manifest = {"version": content.META["version"], "slides": len(slides), "questions": len(content.QUESTIONS), "priority": priority_count, "words": words, "seconds": elapsed,
+        "source_content": Path(content.__file__).name,
+        "source_sha256": hashlib.sha256(Path(content.__file__).read_bytes()).hexdigest(),
+        "deckBase": deck_base, "deck_pdf": deck_pdf, "deck_pptx": deck_pptx,
+        "timing_includes_full_demo": bool(demo_slide),
+        "slide_order": [{"n": s["n"], "key": s.get("deck_key"), "title": s["title"],
+                         "seconds": s["seconds"], "is_demo": bool(s.get("is_demo"))} for s in slides],
         "default_presenter": content.DEFAULT_PRESENTER,
         "presenters": {key: {"name": content.PRESENTERS[key]["name"], "words": script["words"],
                               "script": f"pitch-script-{key}.md"} for key, script in scripts.items()}}
@@ -322,6 +412,9 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         manifest["assetsBase"] = assets_base
     if storage_prefix:
         manifest["storagePrefix"] = storage_prefix
+    if demo_slide:
+        manifest.update({"demoUrl": page["demo_url"], "demo_slide": demo_slide["n"],
+                         "demo_video_seconds": video_seconds, "demo_section_seconds": demo_slide["seconds"]})
     (assets / "pitch-manifest.json").write_text(json.dumps(manifest, indent=2) + '\n')
     if cleva and hasattr(content, "RESEARCH_NOTES"):
         (assets / "sources.md").write_text(content.RESEARCH_NOTES.rstrip() + '\n')
@@ -329,10 +422,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 
 
 def legacy_fingerprints():
-    """Hash the preserved shared room and every asset outside the new edition."""
+    """Hash the frozen shared room and every asset outside the event editions."""
     files = [PUBLIC / "pitch.html"]
     files += [path for path in ASSETS.rglob("*")
-              if path.is_file() and path.relative_to(ASSETS).parts[0] != "cleva"]
+              if path.is_file() and path.relative_to(ASSETS).parts[0] not in {"cleva", "apwen"}]
     return {str(path.relative_to(PUBLIC)): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in files}
 
@@ -345,39 +438,22 @@ def verify_preserved(before):
         raise RuntimeError("Preserved pitch files changed during build: " + ", ".join(changed))
 
 
-def ensure_apwen_copy():
-    """Create the exact original page once; an existing APWEN page is protected."""
-    destination = PUBLIC / "apwen-pitch.html"
-    try:
-        with destination.open("xb") as target:
-            target.write((PUBLIC / "pitch.html").read_bytes())
-    except FileExistsError:
-        print("Preserved existing apwen-pitch.html.")
-    else:
-        print("Created apwen-pitch.html as an exact copy of pitch.html.")
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--edition", choices=("all", "cleva", "shared"), default="all",
-                        help="all (default): preserve shared files, copy APWEN once and build Cleva; cleva: build only Cleva; shared: explicitly regenerate legacy shared files")
+    parser.add_argument("--edition", choices=("all", "apwen", "cleva", "shared"), default="all",
+                        help="all (default): build APWEN and Cleva; apwen/cleva: build one event; shared: explicitly regenerate legacy shared files")
     args = parser.parse_args()
     if args.edition == "shared":
         build(load_content("cleva_content.py"))
         return
 
     before = legacy_fingerprints()
-    apwen = PUBLIC / "apwen-pitch.html"
-    apwen_before = apwen.read_bytes() if apwen.exists() else None
     try:
-        if args.edition == "all":
-            ensure_apwen_copy()
-        build(load_content("cleva_pitch_content.py"), PUBLIC / "cleva-pitch.html", ASSETS / "cleva",
-              assets_base="pitch-assets/cleva", storage_prefix="kairos-cleva-room-v1", cleva=True)
+        for edition in ("apwen", "cleva") if args.edition == "all" else (args.edition,):
+            build(load_content(f"{edition}_pitch_content.py"), PUBLIC / f"{edition}-pitch.html", ASSETS / edition,
+                  assets_base=f"pitch-assets/{edition}", storage_prefix=f"kairos-{edition}-room-v1", cleva=edition == "cleva")
     finally:
         verify_preserved(before)
-        if apwen_before is not None and (not apwen.exists() or apwen.read_bytes() != apwen_before):
-            raise RuntimeError("Existing apwen-pitch.html changed during build.")
 
 
 if __name__ == "__main__":

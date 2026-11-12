@@ -1,0 +1,19 @@
+{
+  "event": "cleva",
+  "slide_count": 8,
+  "plan_seconds": 470,
+  "demo_seconds": 227.033333,
+  "demo_sha256": "f9dfef4c1be9309a100922bab4b6621063725f1b34cafcdf7d9c603ffe714e23",
+  "slide_keys": [
+    "cover",
+    "problem",
+    "solution",
+    "receipt",
+    "prototype",
+    "demo",
+    "team",
+    "closing"
+  ],
+  "native_video_start": "click",
+  "pdf_video": "Static poster. Play ../demo.mp4 separately."
+}
