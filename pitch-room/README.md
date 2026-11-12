@@ -62,3 +62,9 @@ intended verification/custody/settlement claims, so the new spoken introduction
 makes the unbuilt and simulated parts explicit. No live donations, approved
 Cleva integration or signed custody partner are claimed. The official Cleva
 research remains in its own Prep tab and sources download.
+
+On phones (up to 800px), both event pages always show the full script with a
+compact sticky preview that follows the section being read. Mobile controls
+are reduced to the presenter selector and current-slide caption; desktop modes
+are restored when returning to a wider viewport. The demo remains one shared
+player, and Q&A/Prep restores the prior reading position.

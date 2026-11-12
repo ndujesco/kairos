@@ -5,16 +5,30 @@ const tabs=[...document.querySelectorAll('[role="tab"]')];
 const panels=[...document.querySelectorAll('[role="tabpanel"]')];
 const mmss=s=>Math.floor(Math.max(0,s)/60)+':'+String(Math.floor(Math.max(0,s)%60)).padStart(2,'0');
 let current=0,readAll=false,deckOnly=false,demoInTab=false;
+const mobileReaderQuery=window.matchMedia('(max-width:800px)');
+let mobileReader=false,desktopReadingState=null,mobilePitchPosition=null,readerFrame=0;
 function activateTab(id,focus=false){
   const selected=tabs.find(t=>t.id===id)||tabs[0];
+  const enteringPitch=$('panel-pitch').hidden&&selected.id==='tab-pitch';
+  if(mobileReader&&!$('panel-pitch').hidden&&selected.id!=='tab-pitch'){
+    mobilePitchPosition={slide:current,offset:blocks[current].getBoundingClientRect().top};
+  }
   tabs.forEach(t=>{const on=t===selected;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});
   panels.forEach(p=>p.hidden=p.id!==selected.getAttribute('aria-controls'));
   const returningToPitch=demoInTab&&selected.id==='tab-pitch';
   if(returningToPitch)current=DATA.demoSlide-1;
   placeDemo(selected.id==='tab-demo',selected.id==='tab-demo'||selected.id==='tab-pitch');
-  if(returningToPitch)showSlide(current);
+  if(returningToPitch)showSlide(current,!mobileReader);
   if(selected.id!=='tab-pitch'&&selected.id!=='tab-demo')pauseDeckVideos();
-  window.scrollTo(0,0);
+  if(mobileReader&&returningToPitch){
+    measureReader();
+    blocks[current].scrollIntoView({behavior:'instant',block:'start'});
+  }else if(mobileReader&&enteringPitch&&mobilePitchPosition){
+    showSlide(mobilePitchPosition.slide,false);
+    measureReader();
+    window.scrollTo({top:window.scrollY+blocks[current].getBoundingClientRect().top-mobilePitchPosition.offset,behavior:'instant'});
+  }else window.scrollTo(0,0);
+  queueReaderUpdate();
   if(focus)selected.focus();
   if(selected.id==='tab-questions'&&focus)$('search').focus();
 }
@@ -59,6 +73,7 @@ function setPresenter(key,persist=false){
     link.textContent='Download '+person.name+'’s script ↓';
   });
   if(persist){try{localStorage.setItem(PRESENTER_KEY,chosen);}catch{}}
+  queueReaderUpdate();
 }
 let savedPresenter=DATA.defaultPresenter;
 try{savedPresenter=localStorage.getItem(PRESENTER_KEY)||savedPresenter;}catch{}
@@ -95,20 +110,20 @@ function paintClock(){
   else if(planned>current){status.textContent='The planning clock is on slide '+(planned+1)+'. Keep a natural pace and use the short route if needed.';status.classList.add('late');}
   else{status.textContent='You are ahead of the plan. Leave room for the receipt moment.';}
 }
-function showSlide(n){
+function showSlide(n,scroll=true){
   current=Math.max(0,Math.min(DATA.slides.length-1,n));
   media.forEach(item=>{
     if(item===demoMedia&&demoInTab){item.hidden=false;return;}
     item.hidden=Number(item.dataset.slide)!==current+1;
     if(item.hidden)item.querySelectorAll('video').forEach(video=>video.pause());
   });
-  blocks.forEach((b,i)=>b.hidden=!readAll&&i!==current);
+  blocks.forEach((b,i)=>b.hidden=!(readAll||mobileReader)&&i!==current);
   jumps.forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));
   $('prev').disabled=current===0;$('next').disabled=current===DATA.slides.length-1;
   $('current-label').textContent='Slide '+(current+1)+' of '+DATA.slides.length;
   if(DATA.slides[current].is_demo)$('current-label').textContent+=' · demo recording';
   paintClock();
-  if(readAll)blocks[current].scrollIntoView({behavior:'smooth',block:'start'});
+  if(readAll&&scroll)blocks[current].scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('prev').addEventListener('click',()=>showSlide(current-1));
 $('next').addEventListener('click',()=>showSlide(current+1));
@@ -120,24 +135,82 @@ function toggleClock(){
 }
 $('clock-toggle').addEventListener('click',toggleClock);
 $('clock-reset').addEventListener('click',()=>{elapsed=0;startedAt=null;clearInterval(interval);$('clock-toggle').textContent='Start';paintClock();});
-function setReadAll(on){
-  readAll=on;$('script-paper').classList.toggle('readall',on);
-  $('one-slide').classList.toggle('on',!on);$('read-through').classList.toggle('on',on);
-  $('one-slide').setAttribute('aria-pressed',String(!on));$('read-through').setAttribute('aria-pressed',String(on));
-  showSlide(current);
+function setReadAll(on,scroll=true){
+  readAll=mobileReader||on;$('script-paper').classList.toggle('readall',readAll);
+  $('one-slide').classList.toggle('on',!readAll);$('read-through').classList.toggle('on',readAll);
+  $('one-slide').setAttribute('aria-pressed',String(!readAll));$('read-through').setAttribute('aria-pressed',String(readAll));
+  showSlide(current,scroll);
 }
 $('one-slide').addEventListener('click',()=>setReadAll(false));
 $('read-through').addEventListener('click',()=>setReadAll(true));
 $('deck-mode').addEventListener('click',()=>{
+  if(mobileReader)return;
   deckOnly=!deckOnly;document.body.classList.toggle('deckonly',deckOnly);
   $('deck-mode').textContent=deckOnly?'Show script':'Deck only';
   $('deck-mode').setAttribute('aria-pressed',String(deckOnly));
 });
 $('fullscreen').addEventListener('click',async()=>{
+  if(mobileReader)return;
   try{if(document.fullscreenElement)await document.exitFullscreen();else await $('deck-view').requestFullscreen();}
   catch{deckOnly=true;document.body.classList.add('deckonly');$('deck-mode').textContent='Show script';$('deck-mode').setAttribute('aria-pressed','true');}
 });
 showSlide(0);
+
+// Phones keep the whole script open; only the small preview changes as it is read.
+function measureReader(){
+  if(!mobileReader)return;
+  const root=document.documentElement;
+  const header=Math.ceil(document.querySelector('.top').getBoundingClientRect().height);
+  const preview=Math.ceil($('deck-view').getBoundingClientRect().height);
+  root.style.setProperty('--reader-header',header+'px');
+  root.style.setProperty('--reader-preview',preview+'px');
+}
+function queueReaderUpdate(){
+  if(!mobileReader||readerFrame||$('panel-pitch').hidden)return;
+  readerFrame=requestAnimationFrame(()=>{
+    readerFrame=0;
+    if(!mobileReader||$('panel-pitch').hidden)return;
+    measureReader();
+    const header=document.querySelector('.top').getBoundingClientRect().bottom;
+    const readingLine=Math.max(header,$('deck-view').getBoundingClientRect().bottom)+16;
+    let active=0;
+    for(let i=0;i<blocks.length;i++){
+      if(blocks[i].getBoundingClientRect().top<=readingLine)active=i;
+      else break;
+    }
+    if(window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2)active=blocks.length-1;
+    if(active!==current)showSlide(active,false);
+  });
+}
+function setMobileReader(){
+  const on=mobileReaderQuery.matches;
+  if(on===mobileReader){queueReaderUpdate();return;}
+  if(on)desktopReadingState={readAll,deckOnly};
+  mobileReader=on;
+  document.body.classList.toggle('mobile-reader',on);
+  deckOnly=on?false:desktopReadingState.deckOnly;
+  document.body.classList.toggle('deckonly',deckOnly);
+  $('deck-mode').textContent=deckOnly?'Show script':'Deck only';
+  $('deck-mode').setAttribute('aria-pressed',String(deckOnly));
+  setReadAll(on?true:desktopReadingState.readAll,false);
+  if(on){measureReader();queueReaderUpdate();}
+  else{
+    cancelAnimationFrame(readerFrame);readerFrame=0;
+    document.documentElement.style.removeProperty('--reader-header');
+    document.documentElement.style.removeProperty('--reader-preview');
+    desktopReadingState=null;
+    mobilePitchPosition=null;
+  }
+}
+mobileReaderQuery.addEventListener('change',setMobileReader);
+window.addEventListener('scroll',queueReaderUpdate,{passive:true});
+window.addEventListener('resize',queueReaderUpdate,{passive:true});
+window.visualViewport?.addEventListener('resize',queueReaderUpdate,{passive:true});
+if(typeof ResizeObserver==='function'){
+  const readerObserver=new ResizeObserver(queueReaderUpdate);
+  [document.querySelector('.top'),$('deck-view'),$('script-paper')].forEach(element=>readerObserver.observe(element));
+}
+setMobileReader();
 
 const cards=[...document.querySelectorAll('.qcard')];
 const normalise=s=>s.normalize('NFKC').toLowerCase().replace(/[’']/g,'').replace(/\s+/g,' ');
