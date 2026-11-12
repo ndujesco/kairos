@@ -133,7 +133,7 @@ $('demo-start').addEventListener('click',()=>{
   else{demoStart=performance.now();demoInterval=setInterval(paintDemo,200);$('demo-start').textContent='Pause';}paintDemo();
 });
 $('demo-reset').addEventListener('click',()=>{demoElapsed=0;demoStart=null;clearInterval(demoInterval);$('demo-start').textContent='Start';paintDemo();});
-const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY='kairos-cleva-prepitch-checks-v1';
+const checks=[...document.querySelectorAll('[data-check]')];const CHECK_KEY='kairos-shared-pitch-checks-v2';
 try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'{}');checks.forEach(c=>c.checked=saved[c.dataset.check]===true);}catch{}
 checks.forEach(c=>c.addEventListener('change',()=>{try{localStorage.setItem(CHECK_KEY,JSON.stringify(Object.fromEntries(checks.map(x=>[x.dataset.check,x.checked]))));}catch{}}));
 $('print').addEventListener('click',()=>window.print());

@@ -1,8 +1,8 @@
 {
-  "version": "cleva-prepitch-2026-11-11",
+  "version": "shared-pitch-2026-11-12",
   "slides": 11,
-  "questions": 100,
-  "priority": 19,
-  "words": 730,
-  "seconds": 335
+  "questions": 110,
+  "priority": 22,
+  "words": 578,
+  "seconds": 285
 }

@@ -1,125 +1,122 @@
-"""Cleva preliminary pitch: one source for the script, notes and question bank.
+"""Shared two-person pitch: one source for the script, notes and question bank.
 
 Product scope: transparent giving. This entry is represented by Abigail and
 Miracle. Status is grounded in the November Faith & Tech materials and code.
 """
 
 META = {
-    "title": "Kairos | Cleva × Tether Prepitch",
-    "event": "Cleva × Tether",
-    "stage": "Future of Payments · Preliminary pitch",
+    "title": "Kairos | Shared Pitch Room",
+    "event": "Shared pitch",
+    "stage": "Transparent giving · Abigail and Miracle",
     "team": "Sokenu Abigail · Omohuma Miracle",
     "date": "13 November 2026",
-    "version": "cleva-prepitch-2026-11-11",
+    "version": "shared-pitch-2026-11-12",
     "demo_url": "https://drive.google.com/file/d/1AuvERGMvTvp39lxLGsgHUWnPvmE0a3jn/view?usp=sharing",
 }
 
-# Duration is an estimate at a natural speaking pace, including a little room
-# for pauses. The invitation does not specify a pitch time limit.
+# The common deck and script contain no competition or sponsor references.
+# Timing is a rehearsal estimate. Confirm each organiser's actual time limit.
 SLIDES = [
     {
         "title": "Transparent giving for Nigeria",
-        "speaker": "Abigail", "seconds": 20,
+        "speaker": "Abigail", "seconds": 18,
         "cue": "Camera on. Say Kairos clearly. The deck is already shared.",
         "paragraphs": [
             "Good day. I'm Sokenu Abigail, and I'm here with Omohuma Miracle, representing Team Kairos.",
-            "Kairos is a transparent giving platform. We want someone helping with a hospital bill or school fees to see what their own contribution actually paid for.",
+            "Kairos is a transparent giving platform. We want someone helping with a bill to see what their own contribution paid for.",
         ],
     },
     {
         "title": "A transfer succeeds. The doubt stays.",
-        "speaker": "Abigail", "seconds": 42,
+        "speaker": "Abigail", "seconds": 36,
         "cue": "Pause after 'Then you hesitate.' Keep the example personal and familiar.",
         "paragraphs": [
-            "A message lands on WhatsApp. Someone's sister needs surgery, and there's an account number at the bottom. You want to help. Then you hesitate. Is it real? And if I send five thousand naira, what will it pay for?",
-            "We felt that around school-fee appeals. People gave, then similar posts appeared with almost identical screenshots. It became hard to tell which ones to believe.",
-            "Even after you give, 'transfer successful' only tells you an account was credited. It doesn't tell you the bill was paid. That gap is what Kairos addresses.",
+            "A message lands on WhatsApp. Someone's sister needs surgery, with an account number attached. You want to help. Then you hesitate. Is it real? What will my money pay for?",
+            "We felt that around school-fee appeals. Similar posts appeared with almost identical screenshots, and it became hard to tell which ones to believe.",
+            "Even after giving, 'transfer successful' only tells you an account was credited. It doesn't tell you the bill was paid. That gap is what Kairos addresses.",
         ],
     },
     {
         "title": "From a published budget to a personal receipt.",
-        "speaker": "Abigail", "seconds": 39,
+        "speaker": "Abigail", "seconds": 35,
         "cue": "Three steps. Explain the intended live flow, then hand over to Miracle.",
         "paragraphs": [
-            "The organiser starts with the need and an itemised budget naming who should be paid: the school, the hospital, the supplier. An AI interviewer helps them put that case together.",
-            "The intended live flow holds donations with a licensed partner. The organiser can request payment against that budget, but cannot withdraw the money into a personal account.",
-            "When a provider is paid, the payment appears in the public record, and every donor receives their own share with the receipt. Miracle will show what that means for one donor.",
+            "The organiser publishes the need and an itemised budget naming the school, hospital or supplier to be paid. An AI interviewer helps put the case together.",
+            "The intended live flow holds donations with a licensed partner and pays those providers directly. The organiser cannot withdraw into a personal account.",
+            "Each payment appears in the public record, and every donor receives their own share with the receipt. Miracle will show what that means.",
         ],
     },
     {
         "title": "Every giver sees their own part.",
-        "speaker": "Miracle", "seconds": 33,
+        "speaker": "Miracle", "seconds": 29,
         "cue": "Point at the receipt. Read the numbers slowly, then pause for two seconds.",
         "paragraphs": [
-            "Suppose you give seven thousand naira, with upkeep covered separately. The cause pays seventy percent of its contributed funds to LUTH for surgery.",
+            "Suppose you give seven thousand naira, with upkeep covered separately. The cause pays seventy percent of its contributed funds to LUTH.",
             "Your update says: four thousand nine hundred naira of your seven thousand helped pay that bill, with the invoice attached.",
-            "Nobody writes a separate message for each donor. The prototype calculates the shares automatically. Even someone giving a small amount can see what their own help contributed to.",
+            "The prototype calculates each donor's share automatically. Even a small contribution has a clear account of what it helped cover.",
         ],
     },
     {
         "title": "What runs today.",
-        "speaker": "Miracle", "seconds": 37,
+        "speaker": "Miracle", "seconds": 32,
         "cue": "Say all three simulated parts. A seeded balance is not a bank balance.",
         "paragraphs": [
-            "We've built a working web prototype. Cause creation, escrow accounting, payments recorded against budget lines, donor-share calculations, notifications and the public history run in code.",
-            "The bank transfer, Remita settlement and NIN lookup are simulated. CAC and bank account-name checks are still to be connected, and we have not signed a custody partner. No real donations have moved.",
-            "So we can demonstrate the full flow today, while being clear about what needs to happen before anyone entrusts it with real money.",
+            "Our working web prototype runs cause creation, escrow accounting, budget payments, donor-share calculations, notifications and the public history.",
+            "Bank transfer, Remita settlement and NIN lookup are simulated. CAC and bank account-name checks remain unbuilt, and no custody partner is signed. No real donations have moved.",
+            "We can demonstrate the flow today and show exactly what needs to be connected before live use.",
         ],
     },
     {
         "title": "Useful to give. Sustainable to run.",
-        "speaker": "Abigail", "seconds": 34,
+        "speaker": "Abigail", "seconds": 27,
         "cue": "Take back the floor. Stress that the cap is per cause and the rate is tentative.",
         "paragraphs": [
-            "This serves people with urgent bills, the communities organising support, and donors who want a clear account.",
-            "We're proposing a small upkeep charge: two percent, capped at five thousand naira for the whole cause. Donors see it in naira before confirming and can cover it so the cause receives the full gift.",
-            "The aim is cost recovery. Grants, credits and sponsored upkeep would cover shared costs. We still need to test those economics in a pilot.",
+            "We propose two percent upkeep, capped at five thousand naira for the whole cause. Donors see it before confirming and can cover it so the cause receives the full gift.",
+            "The aim is cost recovery, with grants, credits and sponsorship supporting shared costs. Those economics still need testing in a pilot.",
         ],
     },
     {
         "title": "Start with a bill that can be checked.",
-        "speaker": "Abigail", "seconds": 33,
+        "speaker": "Abigail", "seconds": 28,
         "cue": "This is the launch sequence, not a completed pilot or signed partnership.",
         "paragraphs": [
-            "We plan to start with school fees, using an institution's payment reference to tie the contribution to a specific bill.",
-            "Then a small list of hospitals, with their registration, payout accounts and invoices checked before use.",
-            "We'd work first with communities that already organise support, such as alumni groups and student welfare funds. The first test is a few real bills fully accounted for, then whether those donors choose to give again.",
+            "We plan to start with school fees, tying contributions to an institution's payment reference. Then a small list of hospitals whose registration, accounts and invoices are checked before use.",
+            "We'd begin with communities already organising support, such as alumni groups and student welfare funds. A few real bills fully accounted for would be the first test.",
         ],
     },
     {
-        "title": "A payment should carry its purpose.",
-        "speaker": "Abigail", "seconds": 32,
-        "cue": "Connect to the theme without changing the product. Roadmap stays conditional.",
+        "title": "Clearer giving. Real needs met.",
+        "speaker": "Abigail", "seconds": 24,
+        "cue": "Connect the receipt to the people it serves. These are intended outcomes, not pilot results.",
         "paragraphs": [
-            "That is our connection to the future of payments: a contribution stays connected to the need it was given for, all the way to the provider and back to the donor as proof.",
-            "The same giving flow could later support someone abroad helping with a bill at home. A Cleva or stablecoin funding route would be a future integration to explore with suitable partners. Neither is built into Kairos today.",
+            "For donors, the aim is confidence to help again. For honest organisers, it's an account they can share as bills are paid. For the person waiting for help, it's support reaching the right bill.",
+            "We'd measure bills settled, whether donors understand their receipts, and whether they give again.",
         ],
     },
     {
         "title": "Accountability has rules.",
-        "speaker": "Abigail", "seconds": 29,
+        "speaker": "Abigail", "seconds": 24,
         "cue": "Lead with what is enforced today. Avoid 'fraud-proof' or a guarantee of delivery.",
         "paragraphs": [
-            "In the prototype, a recorded payout cannot exceed the available balance or what that budget item has left, and only the cause organiser can request it.",
-            "Before live donations, we need independent provider checks, licensed custody, reliable settlement and refunds, and consent and privacy controls.",
-            "A receipt proves a payment. Delivery can still fail. That's why we need a dispute process too.",
+            "The prototype checks who can request a payment, the available balance and the amount left on that budget item.",
+            "Before live donations, we need provider checks, licensed custody, reliable settlement and refunds, and consent and privacy controls. A payment receipt alone doesn't prove delivery, so a dispute process matters too.",
         ],
     },
     {
         "title": "Abigail and Miracle.",
-        "speaker": "Abigail", "seconds": 15,
-        "cue": "Only these two people participate in this entry. These are the exact APWEN portraits.",
+        "speaker": "Abigail", "seconds": 13,
+        "cue": "Only Abigail and Miracle participate in these entries. Keep the introduction natural.",
         "paragraphs": [
-            "I'm Abigail, the team lead and product manager. Miracle leads product design. We're representing Kairos in this competition, with a shared understanding of the need, the prototype and the work needed to launch.",
+            "I'm Abigail, the team lead and product manager. Miracle leads product design. We share responsibility for understanding the need, the prototype and the work ahead.",
         ],
     },
     {
         "title": "Give with proof, not faith.",
-        "speaker": "Abigail", "seconds": 21,
+        "speaker": "Abigail", "seconds": 19,
         "cue": "Finish, then stop. Offer the demo if there is time.",
         "paragraphs": [
-            "What we need next is a suitable payments and custody partner, support with verification, and a few communities willing to pilot the flow.",
-            "Nigerians already help one another. Kairos gives that help a clear record: the need, the provider, and each donor's own receipt. Thank you.",
+            "Next we need a suitable payments and custody partner, verification support and a few pilot communities.",
+            "Nigerians already help one another. Kairos gives that help a clear record: the need, the provider and each donor's own receipt. Thank you.",
         ],
     },
 ]
@@ -128,7 +125,28 @@ SHORT_PITCH = [
     "Kairos is a transparent giving platform. Think of a hospital appeal on WhatsApp: you want to help, but an account number and a transfer confirmation don't tell you whether the bill was paid.",
     "On Kairos, the organiser publishes an itemised budget naming the hospital, school or supplier. The intended live flow holds donations with a licensed partner and pays those providers directly. Every donor receives a receipt showing their own share of each payment.",
     "The prototype already demonstrates the accounting, budget checks, donor attribution and notifications. Bank transfers, Remita settlement and NIN lookup are simulated. Provider checks and licensed custody still need to be connected, and no real donations have moved.",
-    "Our payments contribution is keeping the purpose attached to the money. We would start with school fees and a few pilot communities, then hospital bills. Cleva or stablecoin funding is a future option to explore, not a feature we claim today.",
+    "We would start with school fees and a few pilot communities, then hospital bills. The aim is a clearer account for donors and organisers, so more genuine needs can earn support.",
+]
+
+EVENTS = [
+    {
+        "name": "Cleva × Tether", "focus": "Future of Payments",
+        "schedule": ["Office hour: Friday 13 November 2026.",
+                     "Eleven teams selected; five advance to the live final on 21 November.",
+                     "Book by EOD 12 November. Complete event registration and Cleva KYC with referral code UNILAG."],
+        "assess": "The invitation lists problem, solution, prototype / MVP and team preparedness. It gives no presentation duration.",
+        "spoken": "Our connection to the future of payments is keeping the purpose attached to the contribution: a named bill, the provider payment, and proof back to each donor.",
+        "follow_up": "Only if asked about funding rails: Cleva or stablecoin funding could be explored later with suitable partners. Neither integration is built today.",
+    },
+    {
+        "name": "APWEN LASU", "focus": "Social Innovation & Community Development",
+        "schedule": ["Virtual pitching: Friday 13 November 2026, for ten shortlisted teams.",
+                     "Five teams advance to the physical final on Friday 27 November.",
+                     "Check the official email and group for the meeting link, start time and presentation requirements."],
+        "assess": "The supplied notice asks teams to explain the idea, the problem and proposed solution, demonstrate understanding, and answer judges' questions. It does not give scoring weights or the virtual pitch duration.",
+        "spoken": "The social innovation is making community giving easier to account for: genuine needs can earn support, organisers can show what was paid, and every donor can follow their own contribution.",
+        "follow_up": "Keep the focus on the need, direct provider payments and donor receipts. The shared deck and main script need no changes for this session.",
+    },
 ]
 
 DEMO = [
@@ -251,7 +269,7 @@ GROUPS = [
         ("What would you spend prize money on?", "We would prioritise partner and verification setup, production payment reliability, privacy and security work, and the costs of a tightly scoped pilot. We do not have a quoted budget to defend yet, so we should not invent percentage allocations or promise a launch date that depends on unconfirmed partners."),
     ]),
     ("Pilot and team", [
-        ("Who is participating in this competition?", "Sokenu Abigail and Omohuma Miracle. Abigail is the team lead and product manager; Miracle leads product design. These are the two representatives for this entry, and the deck uses their exact portraits from the APWEN edition.", True),
+        ("Who is participating in this competition?", "Sokenu Abigail and Omohuma Miracle represent Kairos in both competitions. Abigail is the team lead and product manager; Miracle leads product design. They are the only two people named and pictured in the shared deck.", True),
         ("Did the two of you write every part of the code?", "We are the two people representing this entry. Kairos is an existing team project with product, design and engineering contributions documented in its history. We should describe our own contributions accurately rather than imply the code was all written by the two people on this call."),
         ("Who answers technical questions if your developers aren't on the call?", "Both of us should understand the core journey, what the server checks, how donor shares are calculated and what is simulated. We have the source and preparation notes to support that. If a detail needs checking, we'll say so and verify it rather than improvise an answer."),
         ("Why are you the right people to work on this?", "The idea comes from a giving problem we have encountered ourselves, and we have taken it beyond a description into a working prototype. Abigail brings product and project leadership; Miracle brings product design. Our next responsibility is to test the assumptions with real organisers and suitable payment partners."),
@@ -260,7 +278,19 @@ GROUPS = [
         ("What is your biggest unresolved risk?", "Getting a reliable live operating arrangement and proving that people actually want to use it. A working demo does not establish either. Provider collusion, payment failures, privacy and the cost of supporting each cause also need attention. We would keep the first pilot narrow enough to learn responsibly."),
         ("What can you finish before the office hour or final?", "We can rehearse and demonstrate the existing prototype, make the implementation limits clear, and prepare a concrete integration and pilot plan. Any extra sandbox integration depends on confirmed access. We should commit only to work that is feasible and distinguish a new plan from progress already made."),
         ("What would make you change your mind about the idea?", "If donors cannot understand or value the receipt, organisers will not use a provider-directed flow, or operating costs and dispute burdens are too high. A small pilot should test those points. We would use the evidence to improve the current giving flow rather than assume the prototype proves demand."),
-        ("What should you ask the organisers?", "We would ask about the expected office-hour and final pitch lengths, the support available for suitable payment and custody introductions, any technical requirements for the final, and which integration or pilot gaps they would most like us to address. We should also confirm both participants' event registration and Cleva KYC status separately."),
+        ("What should you ask the organisers?", "Confirm the start time, meeting link and how long is available for the deck, demo and questions. Ask what they most want to see before the next stage and what support or introductions are available. The two competitions have separate logistics; the shared product pitch stays the same."),
+    ]),
+    ("APWEN focus", [
+        ("Why does Kairos fit the APWEN track?", "We entered Social Innovation & Community Development. Kairos addresses the hesitation around giving to strangers and the difficulty honest organisers face proving where support went. It uses ordinary payment infrastructure to make community help easier to account for, with direct provider payments and a receipt for each giver.", True),
+        ("What is the social innovation rather than just another app?", "The important change is the giving arrangement: a published budget, the provider as the intended payee, and each donor's share of the resulting payment. The feed is just how people find the cause. We can demonstrate the accounting behind that arrangement in the prototype.", True),
+        ("Who in the community would you work with first?", "A student welfare fund, alumni group or other community already raising support for a specific school bill. They bring an organiser, a real need and existing supporters. That is a proposed pilot route; no community partnership has been confirmed."),
+        ("How could women benefit from this?", "Women facing urgent bills, women organising community support and women donating could use the same giving flow. We have not built a separate women-only product or measured gender-specific outcomes. A pilot should include the people who actually experience the problem and examine whether access and benefit are fair."),
+        ("How would you include someone who finds the technology difficult?", "The intention is for an organiser to help explain a need through the guided interview and share a web link with supporters. Accessibility still needs testing, including plain language and low-data use. We should not claim completed local-language, voice or offline payment features."),
+        ("What community impact can you prove already?", "We can demonstrate the software connecting a contribution, a budget payment and a donor receipt. We cannot yet prove bills settled with real donations or improved community giving rates. Those are outcomes the pilot needs to measure.", True),
+        ("How do you protect the dignity of someone asking for help?", "The launch process needs consent, careful wording and control over sensitive documents. A beneficiary should not have to expose an entire medical or family history publicly to make a payment checkable. Those privacy and consent controls still need to be completed."),
+        ("How will you know this improved giving rather than just added paperwork?", "Measure whether people understand the receipt, whether organisers can use the flow without excessive work, what it costs per completed cause, and whether donors return. Compare those findings with the communities' current process. We should not assume more visible records automatically mean more donations."),
+        ("What are the APWEN stages and dates?", "The supplied update says ten teams advance from screening to virtual pitching on 13 November. Five then advance to the physical final on 27 November. Check the official notification for selection, meeting times and presentation requirements; the notice does not establish a specific pitch duration."),
+        ("Why should the APWEN judges take you to the final five?", "We have moved beyond describing the idea into a working prototype and can show the link between a need, a budget payment and each donor's receipt. We understand its current limits and have a narrow pilot plan. The next step is making that existing flow dependable with real partners and communities."),
     ]),
 ]
 
@@ -272,5 +302,5 @@ for category, rows in GROUPS:
                           "question": q, "answer": a,
                           "priority": bool(priority and priority[0])})
 
-assert len(QUESTIONS) == 100
+assert len(QUESTIONS) == 110
 assert len({q["question"] for q in QUESTIONS}) == len(QUESTIONS)

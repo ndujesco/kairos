@@ -1,8 +1,8 @@
-# Kairos: 100 questions for the preliminary pitch
+# Kairos: 110 questions for both pitch sessions
 
 Sokenu Abigail · Omohuma Miracle
 
-Answers describe the current prototype and intended live flow separately. Rehearse the questions marked ★ first. The product remains transparent giving; Cleva and stablecoin funding are roadmap only.
+Answers describe the current prototype and intended live flow separately. Rehearse the shared priority questions first, then the event-specific topic groups. The main deck and script are event-neutral; optional funding-rail ideas are roadmap only.
 
 ## Start here
 
@@ -395,7 +395,7 @@ We would prioritise partner and verification setup, production payment reliabili
 
 ### 091. ★ Who is participating in this competition?
 
-Sokenu Abigail and Omohuma Miracle. Abigail is the team lead and product manager; Miracle leads product design. These are the two representatives for this entry, and the deck uses their exact portraits from the APWEN edition.
+Sokenu Abigail and Omohuma Miracle represent Kairos in both competitions. Abigail is the team lead and product manager; Miracle leads product design. They are the only two people named and pictured in the shared deck.
 
 ### 092. Did the two of you write every part of the code?
 
@@ -431,5 +431,48 @@ If donors cannot understand or value the receipt, organisers will not use a prov
 
 ### 100. What should you ask the organisers?
 
-We would ask about the expected office-hour and final pitch lengths, the support available for suitable payment and custody introductions, any technical requirements for the final, and which integration or pilot gaps they would most like us to address. We should also confirm both participants' event registration and Cleva KYC status separately.
+Confirm the start time, meeting link and how long is available for the deck, demo and questions. Ask what they most want to see before the next stage and what support or introductions are available. The two competitions have separate logistics; the shared product pitch stays the same.
+
+
+## APWEN focus
+
+### 101. ★ Why does Kairos fit the APWEN track?
+
+We entered Social Innovation & Community Development. Kairos addresses the hesitation around giving to strangers and the difficulty honest organisers face proving where support went. It uses ordinary payment infrastructure to make community help easier to account for, with direct provider payments and a receipt for each giver.
+
+### 102. ★ What is the social innovation rather than just another app?
+
+The important change is the giving arrangement: a published budget, the provider as the intended payee, and each donor's share of the resulting payment. The feed is just how people find the cause. We can demonstrate the accounting behind that arrangement in the prototype.
+
+### 103. Who in the community would you work with first?
+
+A student welfare fund, alumni group or other community already raising support for a specific school bill. They bring an organiser, a real need and existing supporters. That is a proposed pilot route; no community partnership has been confirmed.
+
+### 104. How could women benefit from this?
+
+Women facing urgent bills, women organising community support and women donating could use the same giving flow. We have not built a separate women-only product or measured gender-specific outcomes. A pilot should include the people who actually experience the problem and examine whether access and benefit are fair.
+
+### 105. How would you include someone who finds the technology difficult?
+
+The intention is for an organiser to help explain a need through the guided interview and share a web link with supporters. Accessibility still needs testing, including plain language and low-data use. We should not claim completed local-language, voice or offline payment features.
+
+### 106. ★ What community impact can you prove already?
+
+We can demonstrate the software connecting a contribution, a budget payment and a donor receipt. We cannot yet prove bills settled with real donations or improved community giving rates. Those are outcomes the pilot needs to measure.
+
+### 107. How do you protect the dignity of someone asking for help?
+
+The launch process needs consent, careful wording and control over sensitive documents. A beneficiary should not have to expose an entire medical or family history publicly to make a payment checkable. Those privacy and consent controls still need to be completed.
+
+### 108. How will you know this improved giving rather than just added paperwork?
+
+Measure whether people understand the receipt, whether organisers can use the flow without excessive work, what it costs per completed cause, and whether donors return. Compare those findings with the communities' current process. We should not assume more visible records automatically mean more donations.
+
+### 109. What are the APWEN stages and dates?
+
+The supplied update says ten teams advance from screening to virtual pitching on 13 November. Five then advance to the physical final on 27 November. Check the official notification for selection, meeting times and presentation requirements; the notice does not establish a specific pitch duration.
+
+### 110. Why should the APWEN judges take you to the final five?
+
+We have moved beyond describing the idea into a working prototype and can show the link between a need, a budget payment and each donor's receipt. We understand its current limits and have a narrow pilot plan. The next step is making that existing flow dependable with real partners and communities.
 

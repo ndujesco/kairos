@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build public/pitch.html from the tracked Cleva content, CSS and JavaScript.
+"""Build the shared presenter page from tracked content, CSS and JavaScript.
 
 No web service or package installation is needed. Slide previews and deck
 downloads are exported from the event's Faith & Tech-derived deck builder.
@@ -35,6 +35,7 @@ def build():
         elapsed = slide["end"]
     words = sum(s["words"] for s in slides)
     priority_count = sum(q["priority"] for q in content.QUESTIONS)
+    question_count = len(content.QUESTIONS)
     script_blocks, images, jump = [], [], []
     for s in slides:
         hidden = "" if s["n"] == 1 else " hidden"
@@ -80,31 +81,39 @@ def build():
                           f'<p class="say">{e(d["say"])}</p><p class="democue"><strong>On screen: </strong>{e(d["action"])}</p></article>')
         at += d["seconds"]
     checklist = [
-        "Confirm the booked office-hour slot and the time available for deck, demo and questions.",
-        "Both participants: event registration and Cleva KYC complete, using referral code UNILAG.",
+        "Confirm both meeting links, start times and the time available for deck, demo and questions.",
+        "Check each organiser's email and group updates for selection and presentation instructions.",
         "Abigail leads; Miracle covers the receipt and prototype. Practise both handovers.",
         "Rehearse with the clock. If one speaker presents throughout, read Miracle's sections unchanged.",
         "Open the deck PDF, the presenter page and the prepared demo. Keep local backups available.",
         "Rehearse the demo on seeded data. Know which steps are simulated before screen sharing.",
         "Test audio, screen sharing, internet and the backup hotspot. Join early.",
-        "Read the priority questions, especially custody, stablecoins, provider checks and prototype limits.",
+        "Read the shared priority questions, then the Cleva and APWEN topic groups for each session.",
     ]
     check_html = ''.join(f'<label><input type="checkbox" data-check="c{i}"><span>{e(t)}</span></label>' for i,t in enumerate(checklist,1))
     data = json.dumps({"meta": content.META, "slides": slides, "questions": content.QUESTIONS}, ensure_ascii=False).replace('<', '\\u003c')
     css = (SOURCE / "pitch.css").read_text()
     js = (SOURCE / "pitch.js").read_text()
     short = ''.join(f'<p>{e(p)}</p>' for p in content.SHORT_PITCH)
+    event_cards = ''.join(
+        f'<section class="prepbox"><p class="kicker">{e(event["focus"])}</p><h2>{e(event["name"])}</h2>'
+        + '<ul>' + ''.join(f'<li>{e(line)}</li>' for line in event["schedule"]) + '</ul>'
+        + f'<p>{e(event["assess"])}</p><div class="notice"><strong>Optional emphasis for slide 8</strong><br>'
+        + 'Use this in place of its first paragraph, rather than adding time to the pitch.</div>'
+        + f'<p class="say">{e(event["spoken"])}</p><p>{e(event["follow_up"])}</p></section>'
+        for event in content.EVENTS
+    )
     document = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(content.META["title"])}</title><meta name="description" content="Kairos preliminary pitch: Abigail and Miracle, the deck, spoken script, demo guide and 100 judge questions.">
+<title>{e(content.META["title"])}</title><meta name="description" content="Kairos shared pitch for Abigail and Miracle: a reusable deck, spoken script, demo guide and {question_count} judge questions.">
 <meta name="color-scheme" content="light"><meta name="kairos-pitch-version" content="{e(content.META["version"])}">
 <style>{css}</style></head><body><a class="skip" href="#main">Skip to presentation</a>
 <header class="top"><div class="shell"><div class="brandrow"><a href="#main" class="brand">KAIROS</a>
-<div class="event">Cleva × Tether<br>Future of Payments · Prepitch</div><div class="people">{e(content.META["team"])}</div></div>
+<div class="event">Shared product pitch<br>Cleva × Tether · APWEN LASU</div><div class="people">{e(content.META["team"])}</div></div>
 <div class="navrow"><nav class="tabs" role="tablist" aria-label="Presenter tools">
 <button type="button" class="tab" role="tab" id="tab-pitch" aria-controls="panel-pitch" aria-selected="true">Pitch & script</button>
 <button type="button" class="tab" role="tab" id="tab-demo" aria-controls="panel-demo" aria-selected="false" tabindex="-1">Demo</button>
-<button type="button" class="tab" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1">Q&A <span class="counter">100</span></button>
+<button type="button" class="tab" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1">Q&A <span class="counter">{question_count}</span></button>
 <button type="button" class="tab" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1">Prep</button></nav>
 <div class="downloads"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a>
 <a class="pptx-link" href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a></div></div></div></header>
@@ -124,7 +133,7 @@ def build():
 <div class="clockstatus" id="clock-status" role="status">Ready. Start the clock when you begin speaking.</div></div>
 <div class="jump">{''.join(jump)}</div><div class="modes"><button type="button" class="button on" id="one-slide" aria-pressed="true">One slide</button>
 <button type="button" class="button" id="read-through" aria-pressed="false">Read through</button><span class="subtle" style="margin:auto 0 auto auto">← → slides · / search</span></div>
-<p class="timingnote">Timing is a rehearsal estimate, not an organiser-confirmed limit. Share the deck PDF or use Deck only when presenting; keep the script on your own screen.</p>
+<p class="timingnote">One deck and main script for both sessions. Timing is a rehearsal estimate and excludes the optional demo. Confirm each organiser's limit. Share the PDF or Deck only; keep the script on your own screen.</p>
 </aside></div><details class="shortpitch"><summary>Short on time? The 90-second explanation.</summary>{short}</details>
 <p class="sourceline"><a href="pitch-assets/pitch-script.md" download>Download script</a> · Same script is included in the PowerPoint speaker notes.</p></section>
 <section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden><div class="intro"><div><p class="kicker">Show one cause, then stop</p>
@@ -133,27 +142,28 @@ def build():
 <div class="notice">Say this first: “This is a working prototype using demo data. Bank transfer, Remita settlement and NIN lookup are simulated.”</div>
 <div class="demosteps">{''.join(demo_steps)}</div><p class="sourceline"><a href="{e(content.META["demo_url"])}" target="_blank" rel="noopener">Existing full demo recording ↗</a> · Older narration includes planned checks. Explain the simulation limits before using it.</p></section>
 <section class="panel" id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden><div class="intro"><div><p class="kicker">Direct answers. Then the supporting detail.</p>
-<h1>Ready for the follow-up.</h1><p>100 questions across ten topics. Start with the {priority_count} marked “Rehearse first”.</p></div><a class="button" href="pitch-assets/qa-bank.md" download>Download Q&A ↓</a></div>
+<h1>Ready for the follow-up.</h1><p>{question_count} questions across {len(content.GROUPS)} topics. Start with the {priority_count} marked “Rehearse first”, then use the event-specific topic groups.</p></div><a class="button" href="pitch-assets/qa-bank.md" download>Download Q&A ↓</a></div>
 <div class="questiontools"><label for="search" class="searchlabel">Search questions and answers</label><div class="searchrow"><div class="searchwrap"><input id="search" type="search" placeholder="Try: stablecoins, escrow, refunds, AI…" autocomplete="off"><button type="button" id="clear-search" class="clearsearch" aria-label="Clear search" hidden>×</button></div><button class="button" type="button" id="expand-answers">Expand answers</button></div>
 <div class="filterrow"><select id="category" aria-label="Question topic"><option value="">All topics</option>{options}</select>
 <button type="button" class="chip" id="priority-filter" aria-pressed="false">Rehearse first · {priority_count}</button><button type="button" class="chip" id="star-filter" aria-pressed="false">My stars · <span id="star-count">0</span></button>
-<button type="button" class="chip" id="clear-filters">Clear filters</button><span class="qcount" id="question-count" role="status">100 of 100 questions</span></div></div>
+<button type="button" class="chip" id="clear-filters">Clear filters</button><span class="qcount" id="question-count" role="status">{question_count} of {question_count} questions</span></div></div>
 <div class="questionlist">{''.join(question_cards)}</div><p class="empty" id="empty" hidden>No questions match. Try fewer words or clear the filters.</p>
 <p class="sourceline">Stars stay in this browser. Answers distinguish working code from launch plans; they do not claim completed legal review, signed partners or live donations.</p></section>
-<section class="panel" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep" hidden><div class="intro"><div><p class="kicker">Office hour · 13 November 2026</p><h1>A clear story. A prepared team.</h1><p>Selected among eleven teams; five will advance to the live final.</p></div><button type="button" class="button" id="print">Print preparation pack</button></div>
+<section class="panel" id="panel-prep" role="tabpanel" aria-labelledby="tab-prep" hidden><div class="intro"><div><p class="kicker">Two sessions · 13 November 2026</p><h1>One deck. Two rooms.</h1><p>The same product, portraits and main script work for both. Each competition's logistics and optional emphasis are kept below.</p></div><button type="button" class="button" id="print">Print preparation pack</button></div>
+<div class="prepgrid">{event_cards}</div><p class="sourceline"><a href="pitch-assets/event-notes.md" download>Download event notes ↓</a> · These notes are separate from the shared deck and main script.</p>
 <div class="prepgrid"><section class="prepbox"><h2>Before joining</h2><div class="checklist">{check_html}</div></section>
-<section class="prepbox"><h2>What they assess</h2><div class="criterion"><strong>Problem</strong><span>Slide 2</span></div><div class="criterion"><strong>Solution</strong><span>Slides 3, 4 and 8</span></div><div class="criterion"><strong>Prototype / MVP</strong><span>Slide 5 + demo</span></div><div class="criterion"><strong>Team preparedness</strong><span>Slides 7, 9, 10 and 11 + Q&A</span></div>
-<div class="notice">No pitch duration is stated in the invitation. Confirm the slot; use the short explanation if the session is conversational.</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
-<section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>Roadmap:</strong> Cleva or stablecoin funding. The product remains transparent giving.</li></ul></section>
+<section class="prepbox"><h2>Where the deck answers them</h2><div class="criterion"><strong>Problem</strong><span>Slide 2</span></div><div class="criterion"><strong>Solution</strong><span>Slides 3 and 4</span></div><div class="criterion"><strong>Prototype</strong><span>Slide 5 + optional demo</span></div><div class="criterion"><strong>Community impact</strong><span>Slide 8</span></div><div class="criterion"><strong>Preparedness and execution</strong><span>Slides 7, 9, 10 and 11 + Q&A</span></div>
+<div class="notice">The main script is planned below five minutes. Neither supplied update confirms the virtual session's exact time limit. Use the shorter explanation if needed; only add the demo when there is a separate slot.</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
+<section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>Shared focus:</strong> the need, direct provider payments and each donor's receipt. Sponsor-specific funding ideas stay in optional notes.</li></ul></section>
 <section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Start with the familiar WhatsApp moment. Let the hesitation land.</li><li>Explain the three steps before discussing rails or integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Abigail leads; Miracle takes slides 4 and 5. One lead speaker throughout also works.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
-<p class="sourceline"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a> · <a href="pitch-assets/pitch-script.md" download>Script ↓</a> · <a href="pitch-assets/qa-bank.md" download>100 questions ↓</a></p>
-<p class="sourceline">Prepared from the organiser's invitation, the latest Faith & Tech deck, the APWEN two-person team edition, the JCI scripts and the current prototype code.</p></section>
-</main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>Abigail + Miracle · Cleva × Tether preliminary pitch</span></div></footer>
+<p class="sourceline"><a href="pitch-assets/kairos-pitch-deck.pdf" target="_blank" rel="noopener">Deck PDF ↗</a> · <a href="pitch-assets/kairos-pitch-deck.pptx" download>PowerPoint ↓</a> · <a href="pitch-assets/pitch-script.md" download>Script ↓</a> · <a href="pitch-assets/qa-bank.md" download>{question_count} questions ↓</a></p>
+<p class="sourceline">Prepared from the Cleva invitation, the supplied APWEN stage update, the latest Faith & Tech design, the existing two-person portraits, the JCI scripts and current prototype code.</p></section>
+</main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>Abigail + Miracle · Shared product pitch</span></div></footer>
 <script type="application/json" id="pitch-data">{data}</script><script>{js}</script></body></html>'''
     (PUBLIC / "pitch.html").write_text(document)
-    script_md = ["# Kairos: preliminary pitch script", "", content.META["team"], "",
+    script_md = ["# Kairos: shared pitch script", "", content.META["team"], "",
                  f"{len(slides)} slides, {words} spoken words. Planning time {mmss(elapsed)}, including pauses.",
-                 "The invitation does not set a pitch duration. Confirm the slot. Abigail leads; Miracle takes slides 4 and 5. A single lead speaker can read every section unchanged."]
+                 "The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. Abigail leads; Miracle takes slides 4 and 5. A single lead speaker can read every section unchanged. The optional demo is separate from this timing."]
     for s in slides:
         script_md += ["", f'## Slide {s["n"]}: {s["title"]}', "", f'{s["speaker"]} · {mmss(s["start"])} to {mmss(s["end"])}', ""] + s["paragraphs"] + ["", f'Delivery: {s["cue"]}']
     script_md += ["", "## Short explanation", ""] + content.SHORT_PITCH
@@ -161,16 +171,22 @@ def build():
     for d in content.DEMO:
         script_md += [f'### {d["title"]} ({d["seconds"]} seconds)', "", d["say"], "", "On screen: " + d["action"], ""]
     (ASSETS / "pitch-script.md").write_text('\n\n'.join(p for p in script_md if p) + '\n')
-    qa = ["# Kairos: 100 questions for the preliminary pitch", "", content.META["team"], "",
-          "Answers describe the current prototype and intended live flow separately. Rehearse the questions marked ★ first. The product remains transparent giving; Cleva and stablecoin funding are roadmap only."]
+    qa = [f"# Kairos: {question_count} questions for both pitch sessions", "", content.META["team"], "",
+          "Answers describe the current prototype and intended live flow separately. Rehearse the shared priority questions first, then the event-specific topic groups. The main deck and script are event-neutral; optional funding-rail ideas are roadmap only."]
     for category, _ in content.GROUPS:
         qa += ["", f"## {category}", ""]
         for q in content.QUESTIONS:
             if q["category"] == category:
                 qa += [f'### {q["id"][1:]}. {"★ " if q["priority"] else ""}{q["question"]}', "", q["answer"], ""]
     (ASSETS / "qa-bank.md").write_text('\n'.join(qa) + '\n')
+    event_md = ["# Kairos: separate event notes", "", "Use the same deck and main script for both sessions. If helpful, substitute an event's optional line for slide 8's first paragraph; do not add it to the running time."]
+    for event in content.EVENTS:
+        event_md += ["", "## " + event["name"], "", event["focus"], ""]
+        event_md += ["- " + line for line in event["schedule"]]
+        event_md += ["", event["assess"], "", "Optional spoken emphasis:", "", event["spoken"], "", event["follow_up"]]
+    (ASSETS / "event-notes.md").write_text('\n'.join(event_md) + '\n')
     (ASSETS / "pitch-manifest.json").write_text(json.dumps({"version": content.META["version"], "slides": len(slides), "questions": len(content.QUESTIONS), "priority": priority_count, "words": words, "seconds": elapsed}, indent=2) + '\n')
-    print(f"Built pitch.html: {len(slides)} slides, {words} words, {mmss(elapsed)} plan, 100 questions ({priority_count} priority).")
+    print(f"Built pitch.html: {len(slides)} shared slides, {words} words, {mmss(elapsed)} plan, {question_count} questions ({priority_count} priority).")
 
 
 if __name__ == "__main__":
