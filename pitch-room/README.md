@@ -7,8 +7,8 @@ the APWEN team slide. The product remains transparent giving.
 
 The exported deck, speaker notes and main script contain no sponsor,
 competition, track or event-date references. Separate event notes and the Prep
-tab hold the two schedules and optional emphasis. The script is 367 words
-for either speaker, with an estimated 3:00 rehearsal plan; the optional demo
+tab hold the two schedules and optional emphasis. The script is 412 words
+for either speaker, with an estimated 3:20 rehearsal plan; the optional demo
 is separate. Its length follows the short JCI Grand Finale script, while the
 user's supplied JCI virtual script provides the voice and matching phrases.
 The original school-fees story opens the problem; current implementation
@@ -44,6 +44,10 @@ Q&A and presenter HTML together. PowerPoint notes include both alternatives
 for the opening and team introduction, with shared wording everywhere else.
 `pitch-script.md` also includes both alternatives; `pitch-script-abigail.md`
 and `pitch-script-miracle.md` are ready to read for the selected presenter.
+The later 12 November solution expansion was explicitly requested as a
+script-only change. The deck files and their notes were left untouched;
+use the page or Markdown downloads for the current solution wording. Only
+the solution script and its planning duration changed.
 Rebuilding the HTML alone does not regenerate the exported slide artwork or
 PowerPoint notes. The older JCI artifacts remain in the pitch kit and its
 historical competition folders.

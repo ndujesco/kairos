@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-11 slides, 367 spoken words for either presenter. Planning time 3:00, including pauses.
+11 slides, 412 spoken words for either presenter. Planning time 3:20, including pauses.
 
 Either person can present the whole deck. Choose the matching introduction and team introduction; the other sections are identical. The deck and main script are reusable. Timing is a rehearsal estimate; confirm each organiser's limit. The optional demo is separate from this timing.
 
@@ -32,17 +32,21 @@ Delivery: Keep the school-fees story personal and familiar. Pause before 'The mi
 
 ## Slide 3: From a published budget to a personal receipt.
 
-Abigail or Miracle · 0:55 to 1:13
+Abigail or Miracle · 0:55 to 1:33
 
 Kairos is that trusted middle layer.
 
-An AI interviewer helps the organizer publish the need and an itemised budget. In the intended live flow, a licensed partner holds the money and pays only named, verified providers.
+First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or supplier.
+
+Second, the cause is shared as a link, so donors can see the story, budget and payment history. The plan is for a licensed partner to hold donations in escrow and pay only those verified providers, never the organizer's personal account.
+
+Third, every donor gets a receipt showing their own share of each payment.
 
 Delivery: The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.
 
 ## Slide 4: Every giver sees their own part.
 
-Abigail or Miracle · 1:13 to 1:29
+Abigail or Miracle · 1:33 to 1:49
 
 A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.
 
@@ -50,7 +54,7 @@ Delivery: Point at the receipt. Read the numbers slowly. This example allocates 
 
 ## Slide 5: What runs today.
 
-Abigail or Miracle · 1:29 to 1:49
+Abigail or Miracle · 1:49 to 2:09
 
 The accounting, donor shares, notifications and public ledger are running.
 
@@ -60,7 +64,7 @@ Delivery: Say all three simulated parts. A seeded balance is not a bank balance.
 
 ## Slide 6: Useful to give. Sustainable to run.
 
-Abigail or Miracle · 1:49 to 2:05
+Abigail or Miracle · 2:09 to 2:25
 
 Kairos is built to be run, not sold.
 
@@ -70,7 +74,7 @@ Delivery: Stress that the cap is per cause and the rate is tentative. These econ
 
 ## Slide 7: Start with a bill that can be checked.
 
-Abigail or Miracle · 2:05 to 2:15
+Abigail or Miracle · 2:25 to 2:35
 
 We start with school fees because they're easy to verify in Nigeria.
 
@@ -80,7 +84,7 @@ Delivery: This is the launch sequence, not a completed pilot or signed partnersh
 
 ## Slide 8: Clearer giving. Real needs met.
 
-Abigail or Miracle · 2:15 to 2:25
+Abigail or Miracle · 2:35 to 2:45
 
 Nigerians already give. Kairos helps people with genuine need get help with less hesitation, and honest organizers account for it.
 
@@ -88,7 +92,7 @@ Delivery: Connect the receipt to the people it serves. These are intended outcom
 
 ## Slide 9: Accountability has rules.
 
-Abigail or Miracle · 2:25 to 2:37
+Abigail or Miracle · 2:45 to 2:57
 
 We don't claim fraud is impossible. Before live donations, we need provider checks, reliable settlement and refunds, consent controls and a dispute process.
 
@@ -96,7 +100,7 @@ Delivery: The prototype enforces payment permissions, balances and budget limits
 
 ## Slide 10: Abigail and Miracle.
 
-Abigail or Miracle · 2:37 to 2:47
+Abigail or Miracle · 2:57 to 3:07
 
 **As Abigail:** And this is the team. I'm Abigail, the team lead and product manager. Miracle is our product designer.
 
@@ -106,7 +110,7 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 ## Slide 11: Give with proof, not faith.
 
-Abigail or Miracle · 2:47 to 3:00
+Abigail or Miracle · 3:07 to 3:20
 
 Next we need a licensed partner and pilot communities.
 

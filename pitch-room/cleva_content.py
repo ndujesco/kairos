@@ -10,7 +10,7 @@ META = {
     "stage": "Transparent giving · Abigail and Miracle",
     "team": "Sokenu Abigail · Omohuma Miracle",
     "date": "13 November 2026",
-    "version": "shared-pitch-presenters-2026-11-12",
+    "version": "shared-pitch-solution-2026-11-12",
     "demo_url": "https://drive.google.com/file/d/1AuvERGMvTvp39lxLGsgHUWnPvmE0a3jn/view?usp=sharing",
 }
 
@@ -53,11 +53,13 @@ SLIDES = [
     },
     {
         "title": "From a published budget to a personal receipt.",
-        "seconds": 18,
+        "seconds": 38,
         "cue": "The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.",
         "paragraphs": [
             "Kairos is that trusted middle layer.",
-            "An AI interviewer helps the organizer publish the need and an itemised budget. In the intended live flow, a licensed partner holds the money and pays only named, verified providers.",
+            "First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or supplier.",
+            "Second, the cause is shared as a link, so donors can see the story, budget and payment history. The plan is for a licensed partner to hold donations in escrow and pay only those verified providers, never the organizer's personal account.",
+            "Third, every donor gets a receipt showing their own share of each payment.",
         ],
     },
     {
