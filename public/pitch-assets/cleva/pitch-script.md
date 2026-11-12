@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-11 slides, 444 spoken words for either presenter. Planning time 3:30, including pauses.
+11 slides, 457 spoken words for either presenter. Planning time 3:30, including pauses.
 
 Either presenter can deliver the whole pitch. The Cleva funding connection is proposed, subject to eligibility and integration access; licensed custody needs a separate arrangement. The demo is outside this timing. Use this script for the Cleva wording; the original slide files and their notes are unchanged.
 
@@ -46,7 +46,7 @@ Delivery: The case, the provider payment, the receipt. Describe licensed custody
 
 ## Slide 4: Every giver sees their own part.
 
-Abigail or Miracle · 1:26 to 1:40
+Abigail or Miracle · 1:26 to 1:39
 
 A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.
 
@@ -54,7 +54,7 @@ Delivery: Point at the receipt. Read the numbers slowly. This example allocates 
 
 ## Slide 5: What runs today.
 
-Abigail or Miracle · 1:40 to 1:58
+Abigail or Miracle · 1:39 to 1:56
 
 The accounting, donor shares, notifications and public ledger are running.
 
@@ -64,17 +64,17 @@ Delivery: Say all three simulated parts. A seeded balance is not a bank balance.
 
 ## Slide 6: Useful to give. Sustainable to run.
 
-Abigail or Miracle · 1:58 to 2:11
+Abigail or Miracle · 1:56 to 2:16
 
 Kairos is built to be run, not sold.
 
-Tentatively, we take two percent of each donation, capped at five thousand naira per cause. Donors see the fee before they confirm.
+We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively take two percent per donation, capped at five thousand naira per cause. Donors see the fee before confirming.
 
-Delivery: Stress that the cap is per cause and the rate is tentative. These economics still need pilot validation.
+Delivery: NGO donations and grants are intended support, not secured funding. The upkeep is a tentative fallback; its cap is per cause. The prototype's fee flow does not implement a grant-dependent switch.
 
 ## Slide 7: Start with a bill that can be checked.
 
-Abigail or Miracle · 2:11 to 2:21
+Abigail or Miracle · 2:16 to 2:26
 
 We start with school fees because they're easy to verify in Nigeria.
 
@@ -84,7 +84,7 @@ Delivery: This is the launch sequence, not a completed pilot or signed partnersh
 
 ## Slide 8: Where Cleva could come in.
 
-Abigail or Miracle · 2:21 to 2:51
+Abigail or Miracle · 2:26 to 2:53
 
 Nigerians abroad should have that same transparency.
 
@@ -96,7 +96,7 @@ Delivery: Connect the supporter abroad to the same bill and receipt. This is a p
 
 ## Slide 9: Accountability has rules.
 
-Abigail or Miracle · 2:51 to 3:01
+Abigail or Miracle · 2:53 to 3:03
 
 We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
 
@@ -104,7 +104,7 @@ Delivery: The prototype enforces payment permissions, balances and budget limits
 
 ## Slide 10: Abigail and Miracle.
 
-Abigail or Miracle · 3:01 to 3:10
+Abigail or Miracle · 3:03 to 3:12
 
 **As Abigail:** And this is the team. I'm Abigail, the team lead and product manager. Miracle is our product designer.
 
@@ -114,7 +114,7 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 ## Slide 11: Give with proof, not faith.
 
-Abigail or Miracle · 3:10 to 3:30
+Abigail or Miracle · 3:12 to 3:30
 
 Next, we'd like Cleva's guidance on an eligible funding flow, alongside a licensed custody partner and pilot communities.
 

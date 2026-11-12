@@ -352,7 +352,7 @@ Our intended model does not sell donor data or let sponsorship buy ranking or ea
 
 ### 081. ★ How will Kairos sustain itself?
 
-The proposed model is a visible 2% upkeep charge, capped at ₦5,000 per cause, alongside grants, credits and sponsored upkeep for shared costs. The prototype implements the demo fee calculation and cover option. The commercial arrangements and real unit economics still need validation.
+We aim to cover running costs through donations and grants from NGOs. Without that support, the tentative fallback is visible 2% upkeep, capped at ₦5,000 per cause. No such funding is secured. The prototype demonstrates the fee calculation and cover option, but it does not implement a grant-dependent fee switch. The funding arrangements and real unit economics still need validation.
 
 ### 082. Is the ₦5,000 cap per donor or per cause?
 

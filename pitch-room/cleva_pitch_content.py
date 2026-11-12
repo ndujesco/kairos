@@ -31,7 +31,7 @@ SLIDES[10]["paragraphs"][0] = (
 SLIDES[10]["cue"] = "Ask for confirmation of the use case and an integration path, then stop. The demo shows today's prototype, not a Cleva integration."
 
 # Rehearsal timings include pauses. Both presenters use exactly the same plan.
-for section, seconds in zip(SLIDES, [22, 30, 34, 14, 18, 13, 10, 30, 10, 9, 20]):
+for section, seconds in zip(SLIDES, [22, 30, 34, 13, 17, 20, 10, 27, 10, 9, 18]):
     section["seconds"] = seconds
 
 

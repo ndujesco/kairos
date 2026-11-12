@@ -81,11 +81,11 @@ SLIDES = [
     },
     {
         "title": "Useful to give. Sustainable to run.",
-        "seconds": 16,
-        "cue": "Stress that the cap is per cause and the rate is tentative. These economics still need pilot validation.",
+        "seconds": 23,
+        "cue": "NGO donations and grants are intended support, not secured funding. The upkeep is a tentative fallback; its cap is per cause. The prototype's fee flow does not implement a grant-dependent switch.",
         "paragraphs": [
             "Kairos is built to be run, not sold.",
-            "Tentatively, we take two percent of each donation, capped at five thousand naira per cause. Donors see the fee before they confirm.",
+            "We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively take two percent per donation, capped at five thousand naira per cause. Donors see the fee before confirming.",
         ],
     },
     {
@@ -305,7 +305,7 @@ GROUPS = [
         ("Will sponsors get access to donors or preferential treatment?", "Our intended model does not sell donor data or let sponsorship buy ranking or easier verification. A sponsor could cover upkeep with clear attribution. Those principles need to be reflected in the agreements, access controls and operating policies before sponsorship goes live."),
     ]),
     ("Sustainability", [
-        ("How will Kairos sustain itself?", "The proposed model is a visible 2% upkeep charge, capped at ₦5,000 per cause, alongside grants, credits and sponsored upkeep for shared costs. The prototype implements the demo fee calculation and cover option. The commercial arrangements and real unit economics still need validation.", True),
+        ("How will Kairos sustain itself?", "We aim to cover running costs through donations and grants from NGOs. Without that support, the tentative fallback is visible 2% upkeep, capped at ₦5,000 per cause. No such funding is secured. The prototype demonstrates the fee calculation and cover option, but it does not implement a grant-dependent fee switch. The funding arrangements and real unit economics still need validation.", True),
         ("Is the ₦5,000 cap per donor or per cause?", "Per cause, across the contributions to that cause. It is not a fresh ₦5,000 allowance for each donor or each payout. The code tracks upkeep already taken against that cause so the demo charge stops when the cap has been reached."),
         ("What does the donor actually pay?", "They see the amount before confirming. If upkeep is deducted from the chosen payment, the cause receives the net amount. If they choose to cover upkeep, the total is adjusted so the intended gift reaches the cause. The prototype shows that breakdown; real processing charges need partner terms."),
         ("Why did older materials say 5%?", "That was an earlier commercial model explored for other applications. The later JCI and Faith & Tech materials moved to tentative 2% upkeep capped per cause, with cost recovery as the intention. We should use the current model consistently instead of mixing old projections into this pitch."),
