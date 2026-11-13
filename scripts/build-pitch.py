@@ -256,11 +256,14 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     question_cards = []
     for q in content.QUESTIONS:
         priority = '<span class="prioritylabel">Rehearse first</span>' if q["priority"] else ''
+        references = ' · '.join(f'<a href="{e(url)}" target="_blank" rel="noopener">{e(title)}</a>'
+                                for title, url in q.get("sources", []))
+        references = f'<p class="qanswer subtle">Sources: {references}</p>' if references else ''
         question_cards.append(
             f'<article class="qcard" data-id="{q["id"]}"><details><summary>'
             f'<span class="qheading">{e(q["question"])}<span class="qmeta">{priority}'
-            f'{q["id"][1:]} · {e(q["category"])}</span></span></summary>'
-            f'<p class="qanswer">{e(q["answer"])}</p></details>'
+            f'{q.get("display_number", q["id"][1:])} · {e(q["category"])}</span></span></summary>'
+            f'<p class="qanswer">{e(q["answer"])}</p>{references}</details>'
             f'<button type="button" class="star" aria-pressed="false" '
             f'aria-label="Star: {e(q["question"])}">☆</button></article>'
         )
@@ -381,7 +384,9 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         qa += ["", f"## {category}", ""]
         for q in content.QUESTIONS:
             if q["category"] == category:
-                qa += [f'### {q["id"][1:]}. {"★ " if q["priority"] else ""}{q["question"]}', "", q["answer"], ""]
+                qa += [f'### {q.get("display_number", q["id"][1:])}. {"★ " if q["priority"] else ""}{q["question"]}', "", q["answer"], ""]
+                if q.get("sources"):
+                    qa += ["Sources: " + ' · '.join(f'[{title}]({url})' for title, url in q["sources"]), ""]
     (assets / "qa-bank.md").write_text('\n'.join(qa) + '\n')
     event_md = ["# " + page["event_title"], "", page["event_intro"]]
     for event in content.EVENTS:

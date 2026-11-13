@@ -1,12 +1,12 @@
 {
-  "version": "apwen-embedded-demo-2026-11-12",
+  "version": "apwen-feedback-2026-11-13",
   "slides": 12,
-  "questions": 110,
-  "priority": 22,
-  "words": 421,
+  "questions": 113,
+  "priority": 28,
+  "words": 451,
   "seconds": 457,
   "source_content": "apwen_pitch_content.py",
-  "source_sha256": "37d09bc304a02dd6aaa452d28c3b3a71efe122bb334edd861c4efdc38f2e2e26",
+  "source_sha256": "ae22db47ee362d2353cd492c589eb50d935f299bfecac7f2f260dbacd6d5a185",
   "deckBase": "pitch-assets/apwen/deck",
   "deck_pdf": "pitch-assets/apwen/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/apwen/deck/kairos-pitch-deck.pptx",
@@ -51,14 +51,14 @@
       "n": 6,
       "key": "model",
       "title": "Useful to give. Sustainable to run.",
-      "seconds": 23,
+      "seconds": 25,
       "is_demo": false
     },
     {
       "n": 7,
       "key": "growth",
       "title": "Start with a bill that can be checked.",
-      "seconds": 10,
+      "seconds": 22,
       "is_demo": false
     },
     {
@@ -79,7 +79,7 @@
       "n": 10,
       "key": "demo",
       "title": "Watch the payment become a receipt.",
-      "seconds": 250,
+      "seconds": 236,
       "is_demo": true
     },
     {
@@ -101,12 +101,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 421,
+      "words": 451,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 421,
+      "words": 451,
       "script": "pitch-script-miracle.md"
     }
   },
@@ -115,6 +115,6 @@
   "demoUrl": "pitch-assets/apwen/demo.mp4",
   "demo_slide": 10,
   "demo_video_seconds": 227.033,
-  "demo_section_seconds": 250,
+  "demo_section_seconds": 236,
   "deck_keynote": "pitch-assets/apwen/deck/kairos-pitch-deck.key"
 }

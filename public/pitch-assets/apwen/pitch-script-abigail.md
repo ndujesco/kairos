@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail.
 
-12 slides, 421 presenter words. Planning time 7:37, including pauses and the full embedded demo recording.
+12 slides, 451 presenter words. Planning time 7:37, including pauses and the full embedded demo recording.
 
 Either presenter can deliver the whole pitch. Total planning time is 7:37, including the full 3:47 recording and handover. The existing spoken sections are retained. Confirm APWEN's time limit and any new slide requirements; this duration is a rehearsal plan, not an announced competition allowance.
 
@@ -62,27 +62,27 @@ Delivery: Say all three simulated parts. A seeded balance is not a bank balance.
 
 ## Slide 6: Useful to give. Sustainable to run.
 
-Abigail · 2:09 to 2:32
+Abigail · 2:09 to 2:34
 
-Kairos is built to be run, not sold.
+We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively earn revenue through two percent upkeep per donation, capped at five thousand naira per cause. Donors see the fee before confirming. This revenue is to maintain the app, not to make a profit.
 
-We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively take two percent per donation, capped at five thousand naira per cause. Donors see the fee before confirming.
-
-Delivery: NGO donations and grants are intended support, not secured funding. The upkeep is a tentative fallback; its cap is per cause. The prototype's fee flow does not implement a grant-dependent switch.
+Delivery: Cost recovery is the intention, not a proven break-even result. NGO support is not secured and the fee is tentative; the cap is per cause.
 
 ## Slide 7: Start with a bill that can be checked.
 
-Abigail · 2:32 to 2:42
+Abigail · 2:34 to 2:56
 
 We start with school fees because they're easy to verify in Nigeria.
 
+We'd begin with a few bills confirmed directly with the school, publish the receipts, and earn trust one completed payment at a time.
+
 Then we plan to move to hospitals and other service providers.
 
-Delivery: This is the launch sequence, not a completed pilot or signed partnership.
+Delivery: These are the proposed first pilot steps, not completed payments or signed school partnerships. Trust starts with independently checkable evidence.
 
 ## Slide 8: Clearer giving. Real needs met.
 
-Abigail · 2:42 to 2:52
+Abigail · 2:56 to 3:06
 
 Nigerians already give. Kairos helps people with genuine need get help with less hesitation, and honest organizers account for it.
 
@@ -90,7 +90,7 @@ Delivery: Connect the receipt to the people it serves. These are intended outcom
 
 ## Slide 9: Accountability has rules.
 
-Abigail · 2:52 to 3:04
+Abigail · 3:06 to 3:18
 
 We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
 
@@ -98,7 +98,7 @@ Delivery: The prototype enforces payment permissions, balances and budget limits
 
 ## Slide 10: Watch the payment become a receipt.
 
-Abigail · 3:04 to 7:14
+Abigail · 3:18 to 7:14
 
 The next slide shows a quick demonstration of how it works
 
