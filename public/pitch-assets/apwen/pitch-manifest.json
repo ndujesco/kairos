@@ -3,10 +3,10 @@
   "slides": 12,
   "questions": 110,
   "priority": 22,
-  "words": 420,
+  "words": 421,
   "seconds": 457,
   "source_content": "apwen_pitch_content.py",
-  "source_sha256": "40ed4f3b3ddbf8bc0f4b65f4a29d0d76f4f88e97022d30d401572792236d1012",
+  "source_sha256": "37d09bc304a02dd6aaa452d28c3b3a71efe122bb334edd861c4efdc38f2e2e26",
   "deckBase": "pitch-assets/apwen/deck",
   "deck_pdf": "pitch-assets/apwen/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/apwen/deck/kairos-pitch-deck.pptx",
@@ -101,12 +101,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 420,
+      "words": 421,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 420,
+      "words": 421,
       "script": "pitch-script-miracle.md"
     }
   },

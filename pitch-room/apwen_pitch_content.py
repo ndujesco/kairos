@@ -19,7 +19,7 @@ for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "pro
 SLIDES.insert(-2, {
     "title": "Watch the payment become a receipt.", "deck_key": "demo", "is_demo": True,
     "seconds": 250, "video_seconds": VIDEO_SECONDS,
-    "paragraphs": ["This slide shows a quick demonstration of how it works"],
+    "paragraphs": ["The next slide shows a quick demonstration of how it works"],
     "cue": "Share computer sound. Play the embedded 3:47 recording once, then move to Team and Thank You. The original recording mentions planned checks; it is not evidence of live settlement or independent verification.",
 })
 SLIDES[-1]["cue"] = "Thank them, then stop. The demo has already played."
