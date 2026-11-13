@@ -12,22 +12,36 @@
 @media(max-width:800px){:root{--header:129px}.shell{padding:0 18px}.brandrow{min-height:74px;gap:12px;flex-wrap:wrap;padding-top:10px;padding-bottom:9px}.brand{font-size:26px}.event{font-size:9px;padding-left:12px;letter-spacing:.8px}.people{width:100%;margin:0;font-size:10px}.navrow{align-items:center;min-height:45px}.tabs{gap:18px}.tab{font-size:12px}.downloads{gap:8px;font-size:10px}.downloads .pptx-link{display:none}.panel{padding-top:24px}.intro{align-items:flex-start;margin-bottom:20px}.statusbadge{display:none}.stage{display:flex;flex-direction:column}.scriptpaper{width:100%}.deck{position:static;width:100%;order:-1}.shotwrap{max-width:650px;margin:auto}.decktools{margin-bottom:12px}.clockbox{padding:14px}.clock{font-size:29px}.clocklabel{display:none}.progress{margin-top:12px}.jump{display:none}.timingnote{margin-top:10px}.scriptbody{padding:23px}.say{font-size:22px}.scriptbody h2{font-size:23px}.prepgrid{grid-template-columns:1fr}.searchrow{align-items:stretch;flex-wrap:wrap}.qcount{width:100%;margin:0}.filterrow select{min-width:0;max-width:100%;flex:1}.questiontools{padding:15px}.qcard details summary{padding:19px 56px 19px 16px;gap:8px}.qheading{font-size:15px}.qanswer{font-size:16px;margin:0 20px 22px 39px}.empty{padding:30px 16px}.demoheading h2{font-size:19px}.demostep{padding:20px}.footer .shell{flex-direction:column;gap:3px}.deckonly .jump{display:none}.shortpitch{padding:22px}.intro h1{font-size:28px}}
 @media(max-width:440px){.tabs{gap:12px}.tab{font-size:11px}.downloads{font-size:9px}.controls .button{padding:7px 9px;font-size:11px}.clockrow{gap:6px}.scripthead{padding:15px 18px}.speaker{padding:2px 8px}.intro p{font-size:12px}.say{font-size:20px}}
 @media screen and (max-width:800px){
-  .mobile-reader #panel-pitch{padding-top:12px}
+  html{scroll-behavior:auto}
+  .mobile-reader .brandrow{min-height:34px;flex-wrap:nowrap;gap:10px;padding:4px 0}
+  .mobile-reader .brand{font-size:20px;line-height:1}
+  .mobile-reader .event{font-size:8px;line-height:1.3;letter-spacing:.5px;padding-left:10px}
+  .mobile-reader .people,.mobile-reader .top .downloads{display:none}
+  .mobile-reader .navrow{min-height:36px}
+  .mobile-reader .tabs{width:100%;justify-content:space-between;gap:12px}
+  .mobile-reader .tab{font-size:12px;line-height:1.25;padding:8px 0;min-height:36px}
+  .mobile-reader #panel-pitch{padding-top:8px}
   .mobile-reader #panel-pitch>.intro{display:none}
-  .mobile-reader .presenterbar{padding:8px 10px;margin-bottom:12px}
+  .mobile-reader .presenterbar{padding:0;margin-bottom:4px;border:0;background:transparent}
+  .mobile-reader .presenterfield{width:100%;justify-content:space-between;gap:10px}
+  .mobile-reader .presenterfield label{font-size:12px}
+  .mobile-reader .presenterfield select{min-width:0;width:140px;height:34px;padding:4px 28px 4px 10px;font-size:16px}
   .mobile-reader .presenterbar p{display:none}
-  .mobile-reader .stage{gap:12px;align-items:stretch}
+  .mobile-reader .stage{gap:8px;align-items:stretch}
   .mobile-reader .scriptpaper{display:block;overflow:visible}
   .mobile-reader .scriptblock{scroll-margin-top:calc(var(--reader-header,129px) + var(--reader-preview,190px) + 16px)}
-  .mobile-reader .deck{position:sticky;top:var(--reader-header,129px);z-index:9;align-self:stretch;flex-shrink:0;padding:8px 0;background:var(--paper);border-bottom:1px solid var(--line)}
-  .mobile-reader .deck .shotwrap{height:min(24vh,160px);height:min(24dvh,160px);display:flex;justify-content:center;align-items:center}
+  .mobile-reader .deck{position:sticky;top:var(--reader-header,129px);z-index:9;align-self:stretch;flex-shrink:0;padding:4px 0;background:var(--paper);border-bottom:1px solid var(--line)}
+  .mobile-reader .deck .shotwrap{height:min(14vh,88px);height:min(14dvh,88px);display:flex;justify-content:center;align-items:center}
   .mobile-reader .deck .slideimage{width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain}
   .mobile-reader .deck .demo-slide{height:100%;display:flex;justify-content:center;align-items:center}
-  .mobile-reader .decktools{justify-content:center;margin:5px 0 0;line-height:1.3}
+  .mobile-reader .decktools{justify-content:center;margin:3px 0 0;line-height:1.2}
   .mobile-reader #current-label{font-size:10px}
+  .mobile-reader .scripthead{padding:7px 14px;gap:10px}
+  .mobile-reader .scriptbody{padding:16px}
+  .mobile-reader .scriptbody h2{font-size:19px;line-height:1.25;margin-bottom:14px}
   .mobile-reader .decktools>div,.mobile-reader .clockbox,.mobile-reader .jump,.mobile-reader .modes,.mobile-reader .timingnote,.mobile-reader .scripthead>.subtle,.mobile-reader .cue,.mobile-reader .scriptfoot{display:none}
 }
-@media screen and (max-width:800px) and (max-height:500px){.mobile-reader .deck .shotwrap{height:min(20vh,88px);height:min(20dvh,88px)}}
+@media screen and (max-width:800px) and (max-height:500px){.mobile-reader .deck .shotwrap{height:min(14vh,56px);height:min(14dvh,56px)}}
 @media print{.stage{display:block}.deckonly .scriptpaper{display:block!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress i{transition:none}}
 @media print{body{background:white;font-size:11pt}.top,.footer,.deck,.intro .statusbadge,.questiontools,.star,.modes,.screen-only,.decktools,.clockbox,.downloads{display:none!important}.shell{padding:0;max-width:none}.panel[hidden],.scriptblock[hidden],.qcard[hidden]{display:block!important}.panel{padding:0 0 25px}.scriptpaper{border:0;box-shadow:none}.scriptbody{padding:0}.scripthead{padding:8px 0}.say{font-size:13pt;line-height:1.5}.scriptblock{page-break-inside:avoid;margin-bottom:20px}.scriptbody h2{font-size:17pt;margin:14px 0}.cue{margin-top:12px}.qcard{break-inside:avoid;margin-bottom:10px;border:0;border-bottom:1px solid #ddd}.qcard details summary{padding:10px 0;display:block}.qcard summary:before{display:none}.qanswer{margin:0 0 15px;font-size:11pt;line-height:1.5}.qheading{font-size:12pt}.qmeta{font-size:8pt}.prepgrid{display:block}.prepbox,.demostep{border:0;break-inside:avoid;padding:10px 0}.shortpitch{background:white;color:black;border:1px solid #ddd}.shortpitch summary{color:black}.shortpitch p{font-size:12pt}details::details-content{display:block!important}.notice{background:white}.intro h1{font-size:22pt}.intro{margin:20px 0}}
