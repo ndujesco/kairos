@@ -1,17 +1,18 @@
 """Independent APWEN presentation, retaining the existing spoken content.
 
-Adds the existing recording before Team and Thank You. Never rebuild or copy
-this output over the agnostic pitch.html.
+Uses the Forge recording at 1.2x within APWEN's five-minute limit. Never
+rebuild or copy this output over the agnostic pitch.html.
 """
 from copy import deepcopy
 import cleva_content as shared
 
 META = dict(shared.META, title="Kairos | APWEN Pitch Room", event="APWEN LASU",
             stage="Social Innovation & Community Development",
-            version="apwen-feedback-2026-11-13")
+            version="apwen-five-minutes-2026-11-14")
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = shared.DEFAULT_PRESENTER
-VIDEO_SECONDS = 227.033
+VIDEO_SECONDS = 108.333333
+VIDEO_PATH = "hackathons/2026-10 APWEN LASU/02 Virtual Pitch/demo-forge-1.2x.mp4"
 SLIDES = deepcopy(shared.SLIDES)
 for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "prototype",
                                 "model", "growth", "impact", "safeguards", "team", "closing"]):
@@ -27,11 +28,23 @@ SLIDES[6]["seconds"] = 22
 SLIDES[6]["cue"] = "These are the proposed first pilot steps, not completed payments or signed school partnerships. Trust starts with independently checkable evidence."
 SLIDES.insert(-2, {
     "title": "Watch the payment become a receipt.", "deck_key": "demo", "is_demo": True,
-    "seconds": 236, "video_seconds": VIDEO_SECONDS,
+    "seconds": 115, "video_seconds": VIDEO_SECONDS,
     "paragraphs": ["The next slide shows a quick demonstration of how it works"],
-    "cue": "Share computer sound. Play the embedded 3:47 recording once, then move to Team and Thank You. The original recording mentions planned checks; it is not evidence of live settlement or independent verification.",
+    "cue": "Say the introduction before advancing to the video. Share computer sound and play the 1:48 Forge recording at its baked-in 1.2x speed once, then move to Team and Thank You. The older narration describes intended checks and seeded data, not live settlement or independent verification.",
 })
 SLIDES[-1]["cue"] = "Thank them, then stop. The demo has already played."
+
+# The solution and demo already cover the standalone receipt example and
+# impact summary. Remove those whole sections; retain every other spoken word.
+SLIDES = [section for section in SLIDES if section["deck_key"] not in {"receipt", "impact"}]
+_five_minute_seconds = {
+    "cover": 22, "problem": 30, "solution": 34, "prototype": 18,
+    "model": 23, "growth": 21, "safeguards": 8, "demo": 115,
+    "team": 8, "closing": 11,
+}
+for section in SLIDES:
+    section["seconds"] = _five_minute_seconds[section["deck_key"]]
+assert sum(section["seconds"] for section in SLIDES) == 290
 
 
 def slides_for_presenter(presenter):
@@ -83,9 +96,10 @@ assert len({q["question"] for q in QUESTIONS}) == len(QUESTIONS)
 
 EVENTS = [deepcopy(shared.EVENTS[1])]
 EVENTS[0].update(
-    notice="The existing script is retained, with the 3:47 recording added before Team and Thank You. Confirm APWEN's actual time allowance before presenting the full route.",
+    notice="APWEN has confirmed five minutes for everything. Target 4:50 including the Forge recording at 1.2x (about 1:48), leaving ten seconds of margin.",
+    notice_detail="The standalone receipt example and impact slide are omitted; all retained spoken wording is unchanged.",
     spoken="The social innovation is knowing what your help paid for, so genuine needs can earn support and organisers can account for it.",
-    follow_up="APWEN's final slide requirements remain unconfirmed. This deck and page are independent of Cleva, so changes can be made here without changing either other room.",
+    follow_up="Rehearse the full route with sound within five minutes. This deck and page remain independent of the completed Cleva presentation.",
 )
 
 PAGE = {
@@ -94,33 +108,33 @@ PAGE = {
     "header": "APWEN LASU\nSocial Innovation & Community Development",
     "description": "Kairos APWEN presentation with its own deck, script and embedded demonstration before Team and Thank You.",
     "footer": "Abigail + Miracle · APWEN pitch",
-    "prep_kicker": "APWEN LASU · 13 November 2026",
+    "prep_kicker": "APWEN LASU · Five-minute pitch",
     "prep_title": "Ready for APWEN.",
-    "prep_intro": "The existing pitch is retained with the demo before the last two slides. This room and deck are independent of Cleva and the agnostic page.",
+    "prep_intro": "A ten-slide route for APWEN's confirmed five-minute slot. The 1:48 Forge demo is before Team and Thank You. All retained spoken wording is unchanged.",
     "script_title": "Kairos: APWEN pitch script",
-    "script_intro": "Either presenter can deliver the whole pitch. Total planning time is 7:37, including the full 3:47 recording and handover. The existing spoken sections are retained. Confirm APWEN's time limit and any new slide requirements; this duration is a rehearsal plan, not an announced competition allowance.",
+    "script_intro": "Either presenter can deliver the whole pitch. APWEN has confirmed five minutes for everything. Target 4:50, including the Forge recording at 1.2x (about 1:48) and handover, with ten seconds left before the limit. Only the standalone receipt example and impact slide have been removed; all remaining spoken wording is unchanged. Rehearse the whole route at a natural, steady pace.",
     "qa_title": "Kairos: APWEN question bank",
     "qa_intro": "Start with the APWEN judges' feedback: trust before a track record, revenue, custody permissions and verification costs. The first seven answers address those points. Existing question IDs are retained for saved stars. The funding model is intended cost recovery, not a proven break-even result; current capabilities remain separate from launch plans.",
     "qa_page_intro": "113 questions. The judges' trust-and-revenue question and six related follow-ups come first. Rehearse those before the other topics.",
     "event_title": "Kairos: APWEN preparation notes",
-    "event_intro": "Keep this presentation independent of Cleva. The full route is planned at 7:37 including the recorded demonstration; confirm the organiser's allowed time and slide format.",
+    "event_intro": "APWEN has confirmed a five-minute total slot. This independent ten-slide route targets 4:50 including the 1:48 Forge demonstration at 1.2x. Keep the ten-second margin and rehearse with sound.",
     "focus_note": "Community giving, direct provider payments and each donor's own receipt. The demonstration uses seeded data and simulated money movement.",
-    "source_note": "Prepared from the supplied APWEN notice, existing Kairos script, original two-person portraits and unchanged demo recording.",
-    "notes_note": "Read the revised wording from this page or the APWEN script downloads. The separate Keynote and PowerPoint files retain their existing notes.",
-    "timing_note": "7:37 including the 3:47 recording. Demo is before Team and Thank You. Confirm APWEN's actual allowance and format. Share computer sound when playing the video.",
-    "prep_timing_note": "The full route is 7:37 including the recording. No supplied APWEN notice confirms the virtual presentation duration. Use the shorter explanation and a separate demo if the confirmed slot requires it.",
+    "source_note": "Prepared from the supplied APWEN five-minute limit, existing Kairos script, original two-person portraits and Forge demo sped up to 1.2x.",
+    "notes_note": "Keynote and PowerPoint notes include the same retained wording and both presenter options.",
+    "timing_note": "Target 4:50 within APWEN's confirmed five minutes, including the 1:48 recording at 1.2x. Demo is before Team and Thank You. Share computer sound; keep playback at 1x because the file is already sped up.",
+    "prep_timing_note": "The target is 4:50 including the recording, leaving ten seconds before the confirmed five-minute limit. Rehearse the complete route; the video file is already sped up, so play it at 1x.",
     "demo_kicker": "Embedded in the main presentation",
     "demo_title": "The payment and the receipt.",
-    "demo_intro": "The same 3:47 recording is in slide 10 of this deck, immediately before Team and Thank You.",
+    "demo_intro": "The Forge recording at 1.2x runs about 1:48 and is slide 8, immediately before Team and Thank You.",
     "demo_notice": "Working prototype with demo data. Bank transfer, Remita settlement and NIN lookup are simulated; the recording is not proof of live provider verification.",
-    "criteria": [["Problem", "Slide 2"], ["Solution and uniqueness", "Slides 3 and 4"],
-                 ["Prototype", "Slide 5"], ["Community impact", "Slide 8"],
-                 ["Recorded demo", "Slide 10"], ["Team and closing", "Slides 11 and 12"]],
+    "criteria": [["Problem", "Slide 2"], ["Solution and uniqueness", "Slide 3"],
+                 ["Prototype", "Slide 4"], ["Revenue and first-donor trust", "Slides 5 and 6"],
+                 ["Recorded demo", "Slide 8"], ["Team and closing", "Slides 9 and 10"]],
     "checklist": [
-        "Confirm APWEN's start time, meeting link, time allowance and slide requirements.",
+        "Rehearse the full route within APWEN's confirmed five-minute limit; target 4:50.",
         "Choose Abigail or Miracle and download that presenter's APWEN script.",
         "Use the APWEN PowerPoint or page, not the Cleva or agnostic deck.",
-        "Test the embedded recording and computer-sound sharing before joining.",
+        "Test the 1:48 embedded recording and computer-sound sharing; playback stays at 1x because the file is already sped up.",
         "Keep the local MP4 beside the deck as a playback backup.",
         "State that bank transfer, Remita settlement and NIN lookup are simulated.",
         "Play the recording before Team and Thank You; do not add a second demo.",

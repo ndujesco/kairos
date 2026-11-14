@@ -1,6 +1,6 @@
 # Kairos: APWEN preparation notes
 
-Keep this presentation independent of Cleva. The full route is planned at 7:37 including the recorded demonstration; confirm the organiser's allowed time and slide format.
+APWEN has confirmed a five-minute total slot. This independent ten-slide route targets 4:50 including the 1:48 Forge demonstration at 1.2x. Keep the ten-second margin and rehearse with sound.
 
 ## APWEN LASU
 
@@ -16,4 +16,4 @@ Optional spoken emphasis:
 
 The social innovation is knowing what your help paid for, so genuine needs can earn support and organisers can account for it.
 
-APWEN's final slide requirements remain unconfirmed. This deck and page are independent of Cleva, so changes can be made here without changing either other room.
+Rehearse the full route with sound within five minutes. This deck and page remain independent of the completed Cleva presentation.

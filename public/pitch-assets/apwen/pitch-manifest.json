@@ -1,12 +1,12 @@
 {
-  "version": "apwen-feedback-2026-11-13",
-  "slides": 12,
+  "version": "apwen-five-minutes-2026-11-14",
+  "slides": 10,
   "questions": 113,
   "priority": 28,
-  "words": 451,
-  "seconds": 457,
+  "words": 406,
+  "seconds": 290,
   "source_content": "apwen_pitch_content.py",
-  "source_sha256": "ae22db47ee362d2353cd492c589eb50d935f299bfecac7f2f260dbacd6d5a185",
+  "source_sha256": "4f08b35eb77a9fbc5f0beecc5a89b46b98b3b9ca95fdba93853951a1fa75e180",
   "deckBase": "pitch-assets/apwen/deck",
   "deck_pdf": "pitch-assets/apwen/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/apwen/deck/kairos-pitch-deck.pptx",
@@ -16,84 +16,70 @@
       "n": 1,
       "key": "cover",
       "title": "Transparent giving for Nigeria",
-      "seconds": 23,
+      "seconds": 22,
       "is_demo": false
     },
     {
       "n": 2,
       "key": "problem",
       "title": "A transfer succeeds. The doubt stays.",
-      "seconds": 32,
+      "seconds": 30,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
       "title": "From a published budget to a personal receipt.",
-      "seconds": 38,
+      "seconds": 34,
       "is_demo": false
     },
     {
       "n": 4,
-      "key": "receipt",
-      "title": "Every giver sees their own part.",
-      "seconds": 16,
+      "key": "prototype",
+      "title": "What runs today.",
+      "seconds": 18,
       "is_demo": false
     },
     {
       "n": 5,
-      "key": "prototype",
-      "title": "What runs today.",
-      "seconds": 20,
+      "key": "model",
+      "title": "Useful to give. Sustainable to run.",
+      "seconds": 23,
       "is_demo": false
     },
     {
       "n": 6,
-      "key": "model",
-      "title": "Useful to give. Sustainable to run.",
-      "seconds": 25,
+      "key": "growth",
+      "title": "Start with a bill that can be checked.",
+      "seconds": 21,
       "is_demo": false
     },
     {
       "n": 7,
-      "key": "growth",
-      "title": "Start with a bill that can be checked.",
-      "seconds": 22,
+      "key": "safeguards",
+      "title": "Accountability has rules.",
+      "seconds": 8,
       "is_demo": false
     },
     {
       "n": 8,
-      "key": "impact",
-      "title": "Clearer giving. Real needs met.",
-      "seconds": 10,
-      "is_demo": false
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": 115,
+      "is_demo": true
     },
     {
       "n": 9,
-      "key": "safeguards",
-      "title": "Accountability has rules.",
-      "seconds": 12,
+      "key": "team",
+      "title": "Abigail and Miracle.",
+      "seconds": 8,
       "is_demo": false
     },
     {
       "n": 10,
-      "key": "demo",
-      "title": "Watch the payment become a receipt.",
-      "seconds": 236,
-      "is_demo": true
-    },
-    {
-      "n": 11,
-      "key": "team",
-      "title": "Abigail and Miracle.",
-      "seconds": 10,
-      "is_demo": false
-    },
-    {
-      "n": 12,
       "key": "closing",
       "title": "Give with proof, not faith.",
-      "seconds": 13,
+      "seconds": 11,
       "is_demo": false
     }
   ],
@@ -101,20 +87,20 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 451,
+      "words": 406,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 451,
+      "words": 406,
       "script": "pitch-script-miracle.md"
     }
   },
   "assetsBase": "pitch-assets/apwen",
   "storagePrefix": "kairos-apwen-room-v1",
   "demoUrl": "pitch-assets/apwen/demo.mp4",
-  "demo_slide": 10,
-  "demo_video_seconds": 227.033,
-  "demo_section_seconds": 236,
+  "demo_slide": 8,
+  "demo_video_seconds": 108.333333,
+  "demo_section_seconds": 115,
   "deck_keynote": "pitch-assets/apwen/deck/kairos-pitch-deck.key"
 }
