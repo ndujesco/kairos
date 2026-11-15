@@ -16,7 +16,11 @@ An internal trust system caps how much newcomers can raise and unlocks bigger ca
 - **An LLM API** powers the AI intake interviewer with structured output
 - Tailwind CSS, Twitter-style social interface
 
-This is a functioning prototype: escrow accounting, disbursements, per-donor attribution, notifications, vouching, trust levels and the public ledger are real, running code. Identity checks (NIBSS/NIMC), card payments (Paystack/Flutterwave) and file uploads are simulated, each mapping 1:1 to a production Nigerian API.
+This is a functioning prototype: escrow accounting, disbursements, per-donor attribution, notifications, vouching, trust levels and the public ledger are real, running code. Identity checks (NIBSS/NIMC), card payments (Paystack/Flutterwave) are simulated, each mapping 1:1 to a production Nigerian API. Supporting files upload to MongoDB, can be attached during intake or later by the cause owner, and become public when attached to a published cause.
+
+The intake asks at most five questions, accepts supplied demonstration details, and falls back locally if the model times out. Email is optional; use a handle and password to sign in. Signed-out visitors can donate anonymously and follow the public ledger. Personal receipt notifications require an account.
+
+For current progress, deployment details and exact conversation history paths, read [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
 
 ## Run it
 
@@ -34,6 +38,8 @@ npm run seed
 
 npm run dev        # → http://localhost:3000
 ```
+
+To reset existing demo account passwords without changing any profiles, causes or payment history, run `npm run accounts:passwords`. Do not reseed the database for this.
 
 Create an account (mock BVN check), or sign in as a seeded persona - all use password `password` (e.g. `ugo`, `david_outreach`). Try: donate to the **Kirikiri outreach**, then sign in as *david_outreach* → **Escrow Wallet** → pay the caterer - and check your notifications.
 

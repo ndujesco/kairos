@@ -34,11 +34,6 @@
     --raised: rgba(0, 0, 0, 0.075);
     --hover: rgba(0, 0, 0, 0.035);
     --on-accent: #ffffff;
-  --brand-grad: linear-gradient(to bottom right, #e6f6ef, #ffffff 55%, #ffffff);
-  --brand-ink: #0f1419;
-  --brand-ink-dim: rgba(15, 20, 25, 0.62);
-  --banner-grad: linear-gradient(to right, #a7e8cf, #99e2d9, #e6f6ef);
-  --knob: #ffffff;
     --brand-grad: linear-gradient(to bottom right, #e6f6ef, #ffffff 55%, #ffffff);
     --brand-ink: #0f1419;
     --brand-ink-dim: rgba(15, 20, 25, 0.62);
@@ -75,7 +70,7 @@
   --color-raised: var(--raised);
   --color-hover: var(--hover);
   --color-on-accent: var(--on-accent);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -87,6 +82,14 @@ body {
 
 ::selection {
   background: rgba(0, 186, 124, 0.35);
+}
+
+button, a, summary, input { -webkit-tap-highlight-color: transparent; }
+button, summary { cursor: pointer; }
+button:disabled { cursor: default; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 
 * {

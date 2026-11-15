@@ -12,6 +12,7 @@ export default function CauseActions({
   remaining,
   upkeepTaken,
   isOwner = false,
+  guest = false,
 }: {
   causeId: string;
   causeTitle: string;
@@ -20,6 +21,7 @@ export default function CauseActions({
   remaining: number;
   upkeepTaken: number;
   isOwner?: boolean;
+  guest?: boolean;
 }) {
   const [donating, setDonating] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -53,7 +55,7 @@ export default function CauseActions({
           onClick={() => setDonating(true)}
           className="flex-1 rounded-full bg-accent py-2.5 font-bold text-on-accent transition hover:bg-accent/90"
         >
-          Donate
+          {guest ? "Donate anonymously" : "Donate"}
         </button>
       )}
       <button
@@ -69,6 +71,7 @@ export default function CauseActions({
           causeTitle={causeTitle}
           remaining={remaining}
           upkeepTaken={upkeepTaken}
+          guest={guest}
           onClose={() => setDonating(false)}
         />
       )}

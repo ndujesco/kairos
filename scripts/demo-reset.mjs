@@ -32,11 +32,10 @@ const FEES = 220500;
 const OKEFE_GIFT = 150000;          // upkeep ₦3,000 → ₦147,000 net
 const ABBY_GIFT  = 75000;           // upkeep ₦1,500 → ₦73,500 net
 
-/* Only Abby carries an email address. She is the donor who gives live on
-   stage, so hers is the only alert that needs to land in a real inbox, and one
-   arriving mail is far clearer to show than thirteen. Override with
-   DEMO_EMAIL. */
-const INBOX = process.env.DEMO_EMAIL || "ugondu635@gmail.com";
+/* Abby receives the live donor receipt. The user also assigned Bukky a real
+   inbox; setEmails below preserves both requested addresses. DEMO_EMAIL can
+   override Abby's address for a rehearsal. */
+const INBOX = process.env.DEMO_EMAIL || "sokenuabigail@gmail.com";
 
 /* Two points on the same timeline:
      --recording   the cause is published and nobody has given yet, so Okefe's
@@ -67,6 +66,7 @@ async function setEmails(U, inbox) {
     (p, n) => `${p[0]}_${p[1] ?? "ng"}${n}`,
   ];
   const ops = users.map((u) => {
+    if (u.handle === "bukky") return { updateOne: { filter: { _id: u._id }, update: { $set: { email: "ugondu635@gmail.com" } } } };
     if (u.handle === "abby") return { updateOne: { filter: { _id: u._id }, update: { $set: { email: inbox } } } };
     const p = parts(u.name || u.handle);
     const n = 10 + Math.floor(Math.random() * 89);

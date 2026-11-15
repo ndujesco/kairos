@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dbConnect } from "@/lib/db";
-import { Cause, Comment, Disbursement, Donation, type IUser } from "@/lib/models";
+import {
+  Cause,
+  Comment,
+  Disbursement,
+  Donation,
+  type IUser,
+} from "@/lib/models";
 import { getSessionUser } from "@/lib/session";
 import { naira, timeAgo, gradient } from "@/lib/format";
 import Avatar from "@/components/Avatar";
@@ -9,17 +15,25 @@ import VerifiedBadge from "@/components/VerifiedBadge";
 import ProgressBar from "@/components/ProgressBar";
 import CauseActions from "./CauseActions";
 import EvidenceViewer from "@/components/EvidenceViewer";
+import EvidenceUpload from "@/components/EvidenceUpload";
 import CommentForm from "./CommentForm";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await props.params;
   await dbConnect();
-  const cause = await Cause.findOne({ slug }).populate<{ organizer: IUser }>("organizer").lean();
+  const cause = await Cause.findOne({ slug })
+    .populate<{ organizer: IUser }>("organizer")
+    .lean();
   if (!cause) return { title: "Cause not found" };
 
-  const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
+  const pct = Math.min(
+    100,
+    Math.round((cause.raised / Math.max(cause.goal, 1)) * 100),
+  );
   const naira = (n: number) => "₦" + n.toLocaleString("en-NG");
   const remaining = Math.max(0, cause.goal - cause.raised);
   const vendor = cause.budget?.[0]?.vendor?.name;
@@ -57,12 +71,16 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   };
 }
 
-export default async function CausePage(props: { params: Promise<{ slug: string }> }) {
+export default async function CausePage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await props.params;
   const viewer = await getSessionUser();
 
   await dbConnect();
-  const cause = await Cause.findOne({ slug }).populate<{ organizer: IUser }>("organizer").lean();
+  const cause = await Cause.findOne({ slug })
+    .populate<{ organizer: IUser }>("organizer")
+    .lean();
   if (!cause) notFound();
 
   const [donations, disbursements, comments] = await Promise.all([
@@ -77,14 +95,21 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       .lean(),
   ]);
 
-  const pct = Math.min(100, Math.round((cause.raised / Math.max(cause.goal, 1)) * 100));
+  const pct = Math.min(
+    100,
+    Math.round((cause.raised / Math.max(cause.goal, 1)) * 100),
+  );
 
   // merge the money story into one public ledger, newest first
   const ledger = [
     ...donations.map((d) => ({
       kind: "in" as const,
       at: new Date(d.createdAt),
-      label: d.anonymous ? "Anonymous donation" : d.donor ? `@${d.donor.handle} donated` : "Donation",
+      label: d.anonymous
+        ? "Anonymous donation"
+        : d.donor
+          ? `@${d.donor.handle} donated`
+          : "Donation",
       amount: d.amount,
     })),
     ...disbursements.map((d) => ({
@@ -102,7 +127,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           ←
         </Link>
         <div>
-          <h1 className="text-lg font-extrabold leading-tight">{cause.title}</h1>
+          <h1 className="text-lg font-extrabold leading-tight">
+            {cause.title}
+          </h1>
           <p className="text-[13px] text-muted">
             {cause.category} · {cause.donorCount} donors
           </p>
@@ -112,7 +139,11 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       {/* organizer */}
       <div className="flex flex-wrap items-center gap-3 px-4 pt-4">
         <Link href={`/profile/${cause.organizer.handle}`}>
-          <Avatar emoji={cause.organizer.emoji} color={cause.organizer.avatarColor} size={11} />
+          <Avatar
+            emoji={cause.organizer.emoji}
+            color={cause.organizer.avatarColor}
+            size={11}
+          />
         </Link>
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-1 font-bold">
@@ -137,7 +168,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
             Fully funded
           </span>
         ) : (
-          <span className="rounded-full bg-raised px-3 py-1 text-sm font-bold">Live</span>
+          <span className="rounded-full bg-raised px-3 py-1 text-sm font-bold">
+            Live
+          </span>
         )}
       </div>
 
@@ -148,20 +181,44 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
         >
           {cause.coverEmoji}
         </div>
-        <p className="mt-4 whitespace-pre-line text-[15px] leading-relaxed">{cause.story}</p>
+        <p className="mt-4 whitespace-pre-line text-[15px] leading-relaxed">
+          {cause.story}
+        </p>
       </div>
 
       {/* progress + actions */}
       <div className="mx-4 mt-5 rounded-2xl border border-line p-4">
+        {!viewer && (
+          <div className="mb-4 border-b border-line pb-4 text-sm leading-relaxed">
+            <p className="font-bold">Your donation will be anonymous.</p>
+            <p className="mt-1 text-muted">
+              You’re not signed in, so your name won’t appear on the public
+              ledger.{" "}
+              <Link
+                href={`/login?next=${encodeURIComponent(`/cause/${cause.slug}`)}`}
+                className="font-bold text-accent hover:underline"
+              >
+                Sign in
+              </Link>{" "}
+              for personal receipts and payment notifications, or continue as a
+              guest.
+            </p>
+          </div>
+        )}
         <div className="mb-2 flex items-baseline justify-between">
-          <span className="text-2xl font-extrabold text-accent">{naira(cause.raised)}</span>
-          <span className="text-muted">of {naira(cause.goal)} · {pct}%</span>
+          <span className="text-2xl font-extrabold text-accent">
+            {naira(cause.raised)}
+          </span>
+          <span className="text-muted">
+            of {naira(cause.goal)} · {pct}%
+          </span>
         </div>
         <ProgressBar raised={cause.raised} goal={cause.goal} />
         <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm text-muted">
           <span>{naira(cause.escrowBalance)} currently in escrow</span>
           <span>
-            {cause.vouches?.length ?? 0} independent vouch{(cause.vouches?.length ?? 0) === 1 ? "" : "es"}
+            {cause.vouches?.length ?? 0} independent vouch
+            {(cause.vouches?.length ?? 0) === 1 ? "" : "es"}
           </span>
         </div>
         <CauseActions
@@ -171,23 +228,44 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
           completed={cause.status === "completed"}
           remaining={Math.max(0, cause.goal - cause.raised)}
           upkeepTaken={cause.upkeepTaken ?? 0}
-          isOwner={Boolean(viewer) && String(cause.organizer._id) === String(viewer!._id)}
+          guest={!viewer}
+          isOwner={
+            Boolean(viewer) &&
+            String(cause.organizer._id) === String(viewer!._id)
+          }
         />
       </div>
 
       {/* AI verification */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">Verification</h2>
+        <h2 className="font-extrabold">Evidence & verification</h2>
+        {viewer && String(viewer._id) === String(cause.organizer._id) && (
+          <div className="mt-3">
+            <EvidenceUpload
+              causeId={String(cause._id)}
+              existingCount={cause.evidence.filter((e) => e.url).length}
+            />
+          </div>
+        )}
         <ul className="mt-2 flex flex-col gap-1.5 text-sm">
           <li className="flex items-start gap-2">
-            <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+            <svg
+              viewBox="0 0 24 24"
+              className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent"
+            >
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
             </svg>
-            <span>Organizer identity verified ({cause.organizer.verified?.method ?? "BVN"})</span>
+            <span>
+              Organizer identity verified (
+              {cause.organizer.verified?.method ?? "BVN"})
+            </span>
           </li>
           {cause.evidence.map((e, i) => (
             <li key={i} className="flex items-start gap-2">
-              <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+              <svg
+                viewBox="0 0 24 24"
+                className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent"
+              >
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
               </svg>
               <span>
@@ -197,16 +275,26 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                   e.label
                 )}{" "}
                 <span className="text-muted">
-                  {" "}- {e.kind}, reuse check {e.checks.reuse}, dates {e.checks.dates}
+                  {" "}
+                  - {e.kind}
+                  {e.url?.startsWith("/api/evidence/")
+                    ? ", supplied by organizer"
+                    : `, reuse check ${e.checks.reuse}, dates ${e.checks.dates}`}
                 </span>
               </span>
             </li>
           ))}
           <li className="flex items-start gap-2">
-            <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent">
+            <svg
+              viewBox="0 0 24 24"
+              className="mt-0.5 h-4 w-4 shrink-0 fill-current text-accent"
+            >
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
             </svg>
-            <span>Fraud screen passed - no image reuse or timeline contradictions found</span>
+            <span>
+              Prototype screening completed. Supporting documents are supplied
+              by the organizer.
+            </span>
           </li>
         </ul>
       </section>
@@ -214,7 +302,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       {/* itemized budget */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
         <h2 className="font-extrabold">Itemized budget</h2>
-        <p className="mt-0.5 text-[13px] text-muted">Each line is paid to a named vendor, not the organizer.</p>
+        <p className="mt-0.5 text-[13px] text-muted">
+          Each line is paid to a named vendor, not the organizer.
+        </p>
         <div className="mt-3 flex flex-col gap-3">
           {cause.budget.map((b, i) => {
             const done = b.spent >= b.amount;
@@ -223,7 +313,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="font-bold">{b.label}</p>
                   <p className="shrink-0 text-sm">
-                    <span className={done ? "text-accent" : ""}>{naira(b.spent)}</span>
+                    <span className={done ? "text-accent" : ""}>
+                      {naira(b.spent)}
+                    </span>
                     <span className="text-muted"> / {naira(b.amount)}</span>
                   </p>
                 </div>
@@ -237,14 +329,18 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                 <div className="mt-2">
                   <ProgressBar raised={b.spent} goal={b.amount} />
                 </div>
-                {done && <p className="mt-1 text-[13px] font-bold text-accent">Paid in full</p>}
+                {done && (
+                  <p className="mt-1 text-[13px] font-bold text-accent">
+                    Paid in full
+                  </p>
+                )}
               </div>
             );
           })}
         </div>
         <p className="mt-3 text-[13px] text-muted">
-          Funds are released to these vendors directly, in stages. The organizer cannot withdraw
-          cash.
+          Funds are released to these vendors directly, in stages. The organizer
+          cannot withdraw cash.
         </p>
       </section>
 
@@ -260,7 +356,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
               >
                 <div className="flex justify-between text-muted">
                   <span>KAIROS ESCROW PAYMENT</span>
-                  <span>{new Date(d.createdAt).toLocaleDateString("en-NG")}</span>
+                  <span>
+                    {new Date(d.createdAt).toLocaleDateString("en-NG")}
+                  </span>
                 </div>
                 <div className="mt-2 flex justify-between">
                   <span>Paid to</span>
@@ -305,7 +403,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
                     ))}
                   </div>
                 )}
-                <p className="mt-1 text-[13px] text-muted">{timeAgo(u.at)} ago · location & time verified</p>
+                <p className="mt-1 text-[13px] text-muted">
+                  {timeAgo(u.at)} ago · location & time verified
+                </p>
               </div>
             ))}
           </div>
@@ -315,9 +415,13 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
       {/* public ledger */}
       <section className="mx-4 mt-5 rounded-2xl border border-line p-4">
         <h2 className="font-extrabold">Public ledger</h2>
-        <p className="mt-0.5 text-[13px] text-muted">Every naira in and out of this cause.</p>
+        <p className="mt-0.5 text-[13px] text-muted">
+          Every naira in and out of this cause.
+        </p>
         <div className="mt-3 flex flex-col">
-          {ledger.length === 0 && <p className="text-sm text-muted">No transactions yet.</p>}
+          {ledger.length === 0 && (
+            <p className="text-sm text-muted">No transactions yet.</p>
+          )}
           {ledger.map((l, i) => (
             <div
               key={i}
@@ -326,14 +430,18 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
               <span className="flex items-center gap-2">
                 <span
                   className={`flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                    l.kind === "in" ? "bg-accent/15 text-accent" : "bg-sky-500/15 text-sky-400"
+                    l.kind === "in"
+                      ? "bg-accent/15 text-accent"
+                      : "bg-sky-500/15 text-sky-400"
                   }`}
                 >
                   {l.kind === "in" ? "↓" : "↗"}
                 </span>
                 {l.label}
               </span>
-              <span className={`font-bold ${l.kind === "in" ? "text-accent" : "text-sky-400"}`}>
+              <span
+                className={`font-bold ${l.kind === "in" ? "text-accent" : "text-sky-400"}`}
+              >
                 {l.kind === "in" ? "+" : "−"}
                 {naira(l.amount)}
               </span>
@@ -349,7 +457,11 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
         <div className="mt-3 flex flex-col gap-3">
           {comments.map((c) => (
             <div key={String(c._id)} className="flex gap-2">
-              <Avatar emoji={c.author?.emoji ?? "🙂"} color={c.author?.avatarColor ?? "slate"} size={8} />
+              <Avatar
+                emoji={c.author?.emoji ?? "🙂"}
+                color={c.author?.avatarColor ?? "slate"}
+                size={8}
+              />
               <div>
                 <p className="text-sm">
                   <b>{c.author?.name}</b>{" "}
@@ -362,7 +474,9 @@ export default async function CausePage(props: { params: Promise<{ slug: string 
             </div>
           ))}
           {comments.length === 0 && (
-            <p className="text-sm text-muted">Be the first to leave a word of support.</p>
+            <p className="text-sm text-muted">
+              Be the first to leave a word of support.
+            </p>
           )}
         </div>
       </section>

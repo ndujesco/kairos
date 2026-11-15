@@ -3,7 +3,14 @@ import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 
-export const maxDuration = 60;
+import {
+  fallbackInterview,
+  MAX_INTERVIEW_QUESTIONS,
+  INTAKE_OPENER,
+  type InterviewMessage,
+} from "@/lib/interview";
+import { getSessionUser } from "@/lib/session";
+export const maxDuration = 20;
 
 /**
  * The Kairos AI intake interviewer - a real model-driven conversation.
@@ -30,27 +37,41 @@ const InterviewTurn = z.object({
   reply: z
     .string()
     .describe(
-      "Your next message to the cause creator. Warm, concise (2-4 sentences), ends with ONE clear question - unless done is true, in which case it is a short wrap-up telling them you've assembled their cause for review."
+      "Your next message to the cause creator. Warm, concise (2-4 sentences), ends with ONE clear question - unless done is true, in which case it is a short wrap-up telling them you've assembled their cause for review.",
     ),
   done: z
     .boolean()
     .describe(
-      "True only when you have enough verified detail to assemble the cause: the story, who/when/where, at least one piece of evidence, and an itemized budget with vendors and amounts."
+      "True as soon as the creator has provided a usable story and budget, or the question limit has been reached. Documents are optional and can be added later.",
     ),
   extracted: z
     .object({
-      title: z.string().describe("Short, human, compelling cause title (max 70 chars)"),
+      title: z
+        .string()
+        .describe("Short, human, compelling cause title (max 70 chars)"),
       category: z.enum(CATEGORIES),
       summary: z.string().describe("1-2 sentence public summary of the cause"),
-      story: z.string().describe("The full story, cleaned up, in the creator's first-person voice, 2-4 paragraphs"),
+      story: z
+        .string()
+        .describe(
+          "The full story, cleaned up, in the creator's first-person voice, 2-4 paragraphs",
+        ),
       budget: z.array(
         z.object({
-          label: z.string().describe("What the money buys, e.g. 'Corrective surgery'"),
+          label: z
+            .string()
+            .describe("What the money buys, e.g. 'Corrective surgery'"),
           amount: z.number().describe("Amount in naira (integer)"),
-          vendorName: z.string().describe("The named vendor/institution that will be paid directly"),
-        })
+          vendorName: z
+            .string()
+            .describe(
+              "The named vendor/institution that will be paid directly",
+            ),
+        }),
       ),
-      evidence: z.array(z.string()).describe("Each document/photo the creator said they can provide"),
+      evidence: z
+        .array(z.string())
+        .describe("Each document/photo the creator said they can provide"),
     })
     .nullable()
     .describe("Null until done is true; then the fully assembled cause."),
@@ -58,7 +79,7 @@ const InterviewTurn = z.object({
     .array(z.object({ label: z.string(), result: z.string() }))
     .nullable()
     .describe(
-      "Null until done is true; then 3-5 fraud-screening checks you performed on their answers (consistency of dates, specificity of names/places, plausibility of budget vs. need, evidence quality). Phrase results as findings, e.g. 'Dates in story are internally consistent'. If something was thin, say so honestly."
+      "Null until done is true; then 3-5 fraud-screening checks you performed on their answers (consistency of dates, specificity of names/places, plausibility of budget vs. need, evidence quality). Phrase results as findings, e.g. 'Dates in story are internally consistent'. If something was thin, say so honestly.",
     ),
 });
 
@@ -69,9 +90,11 @@ Your job is to interview someone who wants to create a cause, and to discern leg
 Style rules: never use em dashes (—) anywhere in your replies or extracted text; use commas, periods, or hyphens instead. Never use emojis.
 
 How to interview:
-- Ask ONE question at a time. Keep each message to 2-4 warm, plain sentences. Use naira (₦).
+- Ask ONE question at a time. Keep each message to 1-2 warm, plain sentences. Use naira (₦).
 - You need, in roughly this order: (1) what happened / what the need is, (2) who exactly is affected, when and where - specific names, dates, places, (3) what evidence they can upload (bills, invoices, photos, approval letters, quotes), (4) the itemized budget: what each naira buys, the amount, and the NAMED vendor that Kairos will pay directly.
-- Probe gently but firmly for verifiability. Vague answers ("a hospital", "sometime ago") get a respectful follow-up asking for the specific name/date. Explain briefly why: donors only give when details are checkable.
+- This is a demonstration environment. Accept supplied example names, dates, budgets, providers and documents, including when the creator explicitly says to use them for a demonstration. Do not challenge that instruction, repeat answered questions or ask the creator to prove the example is real. Keep this internal context out of your replies and the public cause text.
+- Uploaded documents are accepted as supporting material without an identification gate. A missing document must never block completion; documents can be added later. Never claim to have performed searches, document authentication, registry checks or image analysis that you did not perform.
+- Ask convincing, practical questions about who needs help and how the budget will meet that need. Ask only for information that is still missing.
 - Watch for fraud signals: internally inconsistent dates, refusal to name vendors, budgets wildly out of proportion to the stated need, stories that avoid all specifics. Don't accuse - ask clarifying questions. Reflect genuine concerns in your final checks.
 - HARD LIMIT: never ask more than FIVE questions in the whole interview. The greeting that opens the chat is the first of the five, so you have at most four more. Once you have five answers you MUST set done=true, no matter how thin the answers were. Work with what you have: fill "extracted" from what they actually said and name anything still missing in your "checks" instead of asking again.
 - Do not drag it out. The moment you have story + specifics + evidence + budget, set done=true even if that comes earlier than five. Assemble "extracted" faithfully from what THEY said (clean up grammar, keep their voice, never invent facts, amounts or vendors they didn't give), and produce your "checks".
@@ -79,73 +102,38 @@ How to interview:
 - If an amount is given without a vendor, ask who should be paid. Kairos cannot release money to a person, only to a named counterparty.
 - Reasonable rounding of amounts stated in words ("about 300k" → 300000) is fine.`;
 
-/* ------------------------------ fallback ------------------------------ */
-
-const FALLBACK_STEPS = [
-  {
-    reply:
-      "Hi, I’m the Kairos intake assistant. Let’s build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
-  },
-  {
-    reply:
-      "Thank you for sharing that. Who exactly is affected, and when and where did this happen? Specific names, dates and places make your cause verifiable - that’s what convinces donors.",
-  },
-  {
-    reply:
-      "Now let’s attach proof. What documents or photos can you upload? For medical causes: the hospital bill, a doctor’s estimate, photos. For an outreach: your plan, vendor quotes, past photos.",
-  },
-  {
-    reply:
-      "Last thing - the itemized budget. Not “support us”, but exactly what each naira buys and from whom. Which named vendors will Kairos pay directly? e.g. “Surgery - ₦850,000 to LUTH; Drugs - ₦120,000 to HealthPlus Pharmacy.”",
-  },
-];
-
-const FALLBACK_CHECKS = [
-  { label: "Reverse-image search on uploaded photos", result: "No prior campaign reuse found" },
-  { label: "Document date consistency", result: "Dates match the story timeline" },
-  { label: "Vendor specificity", result: "Named counterparties provided for each line item" },
-  { label: "Story cross-check", result: "No contradictions detected" },
-];
-
-type ChatMsg = { from: "ai" | "me"; text: string };
-
-function fallbackTurn(messages: ChatMsg[]) {
-  const userTurns = messages.filter((m) => m.from === "me").length;
-  if (userTurns < FALLBACK_STEPS.length) {
-    return { reply: FALLBACK_STEPS[userTurns].reply, done: false, extracted: null, checks: null };
-  }
-  const answers = messages.filter((m) => m.from === "me").map((m) => m.text);
-  return {
-    reply:
-      "Perfect - I have everything I need. I’ve assembled your cause for review; refine anything I got wrong before we run verification.",
-    done: true,
-    extracted: {
-      title: (answers[0] ?? "My cause").slice(0, 70),
-      category: "Community",
-      summary: (answers[0] ?? "").slice(0, 200),
-      story: answers.slice(0, 2).join("\n\n"),
-      budget: [],
-      evidence: (answers[2] ?? "")
-        .split(/[,\n;]+/)
-        .map((s) => s.trim())
-        .filter(Boolean)
-        .slice(0, 6),
-    },
-    checks: FALLBACK_CHECKS,
-  };
-}
-
 /* -------------------------------- route ------------------------------- */
 
 export async function POST(req: NextRequest) {
-  const { messages } = (await req.json()) as { messages: ChatMsg[] };
-  const chat: ChatMsg[] = Array.isArray(messages) ? messages : [];
+  if (!(await getSessionUser()))
+    return NextResponse.json(
+      { error: "Sign in to create a cause." },
+      { status: 401 },
+    );
+  const { messages, attachments: suppliedFiles } = await req.json();
+  const chat: InterviewMessage[] = Array.isArray(messages)
+    ? messages
+        .filter(
+          (m): m is InterviewMessage =>
+            (m?.from === "me" || m?.from === "ai") &&
+            typeof m.text === "string",
+        )
+        .slice(-20)
+        .map((m) => ({ ...m, text: m.text.slice(0, 6000) }))
+    : [];
+  const attachments: string[] = Array.isArray(suppliedFiles)
+    ? suppliedFiles
+        .filter((s): s is string => typeof s === "string")
+        .slice(0, 10)
+        .map((s) => s.slice(0, 160))
+    : [];
+  const answerCount = chat.filter((m) => m.from === "me").length;
+  const finish = answerCount >= MAX_INTERVIEW_QUESTIONS;
 
   // the opener never needs the AI - serve it instantly so the chat feels alive
   if (chat.filter((m) => m.from === "me").length === 0) {
     return NextResponse.json({
-      reply:
-        "Hi, I'm the Kairos intake assistant. Let's build a cause people can trust. First - in one or two sentences, what happened, and what do you need?",
+      reply: INTAKE_OPENER,
       done: false,
       extracted: null,
       checks: null,
@@ -154,11 +142,14 @@ export async function POST(req: NextRequest) {
   }
 
   if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json({ ...fallbackTurn(chat), source: "scripted" });
+    return NextResponse.json({
+      ...fallbackInterview(chat, attachments, finish),
+      source: "scripted",
+    });
   }
 
   try {
-    const client = new Anthropic();
+    const client = new Anthropic({ timeout: 10_000, maxRetries: 0 });
 
     const history: Anthropic.MessageParam[] = chat.map((m) => ({
       role: m.from === "me" ? ("user" as const) : ("assistant" as const),
@@ -168,15 +159,16 @@ export async function POST(req: NextRequest) {
     if (history.length === 0 || history[0].role === "assistant") {
       history.unshift({
         role: "user",
-        content: "(The cause creator has just opened the intake chat. Greet them and begin the interview.)",
+        content:
+          "(The cause creator has just opened the intake chat. Greet them and begin the interview.)",
       });
     }
 
     const response = await client.messages.parse({
       // small fast model - demo needs snappy replies over depth
       model: "claude-haiku-4-5",
-      max_tokens: 2500,
-      system: SYSTEM,
+      max_tokens: 1400,
+      system: `${SYSTEM}\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. ${finish ? "The hard limit is reached. Return done=true with the assembled cause now; do not ask another question." : "Finish immediately if you have enough information."}\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
       messages: history,
       output_config: {
         format: zodOutputFormat(InterviewTurn),
@@ -185,9 +177,17 @@ export async function POST(req: NextRequest) {
 
     const parsed = response.parsed_output;
     if (!parsed) throw new Error("No parsed output");
+    if ((finish && !parsed.done) || (parsed.done && !parsed.extracted))
+      return NextResponse.json({
+        ...fallbackInterview(chat, attachments, true),
+        source: "bounded",
+      });
     return NextResponse.json({ ...parsed, source: "live" });
-  } catch (err) {
-    console.error("AI interview falling back to script:", err);
-    return NextResponse.json({ ...fallbackTurn(chat), source: "scripted" });
+  } catch {
+    console.warn("AI interview used the bounded local fallback.");
+    return NextResponse.json({
+      ...fallbackInterview(chat, attachments, finish),
+      source: "scripted",
+    });
   }
 }

@@ -24,7 +24,9 @@ const geistMono = Geist_Mono({
 
 const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
@@ -66,6 +68,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await getSessionUser();
+  const pathname = (await headers()).get("x-pathname") ?? "/";
+  const showShell =
+    Boolean(user) ||
+    pathname.startsWith("/cause/") ||
+    pathname.startsWith("/profile/");
   /* The bell carries a count, and LiveRefresh re-renders this layout the moment
      anything lands, so it fills in without the viewer touching the page. */
   let unread = 0;
@@ -87,27 +94,42 @@ export default async function RootLayout({
     >
       <body className="min-h-full">
         <ThemeScript />
-        {user ? (
+        {showShell ? (
           <>
             <MobileTopBar
-              user={{ handle: user.handle, emoji: user.emoji, avatarColor: user.avatarColor }}
+              user={
+                user
+                  ? {
+                      handle: user.handle,
+                      emoji: user.emoji,
+                      avatarColor: user.avatarColor,
+                    }
+                  : null
+              }
             />
-            <div className="mx-auto flex min-h-screen max-w-[1280px] justify-center">
+            <div className="mx-auto flex min-h-screen max-w-[1265px] justify-center">
               <Sidebar
                 unread={unread}
-                user={{
-                  name: user.name,
-                  handle: user.handle,
-                  emoji: user.emoji,
-                  avatarColor: user.avatarColor,
-                }}
+                user={
+                  user
+                    ? {
+                        name: user.name,
+                        handle: user.handle,
+                        emoji: user.emoji,
+                        avatarColor: user.avatarColor,
+                      }
+                    : null
+                }
               />
-              <DesktopAlerts />
-              <LiveRefresh />
-              <main className="min-h-screen w-full max-w-[600px] border-line pb-24 sm:border-x sm:pb-0">
+              {user && <DesktopAlerts />}
+              {user && <LiveRefresh />}
+              <main
+                id="main-content"
+                className="min-h-screen w-full min-w-0 max-w-[600px] border-line pb-24 sm:border-x sm:pb-0"
+              >
                 {children}
               </main>
-              <RightRail />
+              <RightRail guest={!user} />
             </div>
             <MobileNav unread={unread} />
           </>

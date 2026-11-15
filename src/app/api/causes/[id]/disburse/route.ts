@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse, after } from "next/server";
 import { dbConnect } from "@/lib/db";
-import { Cause, Donation, Disbursement, Notification, User } from "@/lib/models";
+import {
+  Cause,
+  Donation,
+  Disbursement,
+  Notification,
+  User,
+} from "@/lib/models";
 import { getSessionUser } from "@/lib/session";
 import { sendMail, paidOutEmail } from "@/lib/mail";
 
@@ -9,9 +15,13 @@ import { sendMail, paidOutEmail } from "@/lib/mail";
  * published budget line - and every donor is told, proportionally, what THEIR
  * money just did.
  */
-export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
+export async function POST(
+  req: NextRequest,
+  ctx: { params: Promise<{ id: string }> },
+) {
   const user = await getSessionUser();
-  if (!user) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
+  if (!user)
+    return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
   const { id } = await ctx.params;
   const { budgetLabel, amount, note } = await req.json();
@@ -19,22 +29,37 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
 
   await dbConnect();
   const cause = await Cause.findById(id);
-  if (!cause) return NextResponse.json({ error: "Cause not found" }, { status: 404 });
+  if (!cause)
+    return NextResponse.json({ error: "Cause not found" }, { status: 404 });
   if (String(cause.organizer) !== String(user._id))
-    return NextResponse.json({ error: "Only the organizer can direct payments" }, { status: 403 });
+    return NextResponse.json(
+      { error: "Only the organizer can direct payments" },
+      { status: 403 },
+    );
 
   const item = cause.budget.find((b) => b.label === budgetLabel);
-  if (!item) return NextResponse.json({ error: "Budget item not found" }, { status: 400 });
+  if (!item)
+    return NextResponse.json(
+      { error: "Budget item not found" },
+      { status: 400 },
+    );
   if (!item.vendor?.verified)
     return NextResponse.json(
       { error: "Vendor failed verification - payment paused for review" },
-      { status: 400 }
+      { status: 400 },
     );
-  if (!amt || amt <= 0) return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+  if (!amt || amt <= 0)
+    return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
   if (amt > cause.escrowBalance)
-    return NextResponse.json({ error: "Amount exceeds escrow balance" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Amount exceeds escrow balance" },
+      { status: 400 },
+    );
   if (amt > item.amount - item.spent)
-    return NextResponse.json({ error: "Amount exceeds what this line item has left" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Amount exceeds what this line item has left" },
+      { status: 400 },
+    );
 
   const invoiceNo = "#" + String(Math.floor(1000 + Math.random() * 9000));
 
@@ -60,9 +85,14 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const donations = await Donation.find({ cause: cause._id });
   const byDonor = new Map<string, number>();
   for (const d of donations) {
+    // Guest gifts remain in the public ledger; there is no personal inbox.
+    if (!d.donor) continue;
     // a donor's claim is what reached escrow, not what they paid
     const credited = d.net ?? d.amount;
-    byDonor.set(String(d.donor), (byDonor.get(String(d.donor)) ?? 0) + credited);
+    byDonor.set(
+      String(d.donor),
+      (byDonor.get(String(d.donor)) ?? 0) + credited,
+    );
   }
   const pct = cause.raised > 0 ? amt / cause.raised : 0;
 
@@ -81,15 +111,17 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       pct: Math.round(pct * 100),
     },
   }));
-  const inserted = notifications.length ? await Notification.insertMany(notifications) : [];
+  const inserted = notifications.length
+    ? await Notification.insertMany(notifications)
+    : [];
 
   /* Hand the donor alerts back to the caller so the organizer's tab can
      announce them to the donor's tab. Same browser, one session cookie - the
      donor tab cannot poll for these itself. */
   const donorNames = new Map(
     (await User.find({ _id: { $in: [...byDonor.keys()] } }, { name: 1 })).map(
-      (u) => [String(u._id), u.name as string]
-    )
+      (u) => [String(u._id), u.name as string],
+    ),
   );
   const alerts = inserted.map((n, i) => ({
     id: String(n._id),
@@ -102,26 +134,28 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   /* and by email, for the donors who gave us an address */
   const donors = await User.find(
     { _id: { $in: [...byDonor.keys()] }, email: { $exists: true, $ne: "" } },
-    { name: 1, email: 1 }
+    { name: 1, email: 1 },
   );
   /* After the response. With one handshake per donor this is the difference
      between an instant receipt and a payout that appears to hang. */
-  after(() => Promise.all(
-    donors.map((d) => {
-      const credited = byDonor.get(String(d._id)) ?? 0;
-      const mail = paidOutEmail({
-        donorName: (d.name || "there").split(" ")[0],
-        share: Math.round(credited * pct),
-        credited,
-        vendor: item.vendor.name,
-        causeTitle: cause.title,
-        causeSlug: cause.slug,
-        invoiceNo,
-        pct: Math.round(pct * 100),
-      });
-      return sendMail(d.email as string, mail.subject, mail.html);
-    })
-  ));
+  after(() =>
+    Promise.all(
+      donors.map((d) => {
+        const credited = byDonor.get(String(d._id)) ?? 0;
+        const mail = paidOutEmail({
+          donorName: (d.name || "there").split(" ")[0],
+          share: Math.round(credited * pct),
+          credited,
+          vendor: item.vendor.name,
+          causeTitle: cause.title,
+          causeSlug: cause.slug,
+          invoiceNo,
+          pct: Math.round(pct * 100),
+        });
+        return sendMail(d.email as string, mail.subject, mail.html);
+      }),
+    ),
+  );
 
   /* ---- trust grows with honest, completed execution ---- */
   if (allSpent) {

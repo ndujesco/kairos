@@ -70,6 +70,7 @@ export interface ICauseUpdate {
 }
 
 export interface ICause {
+  creationKey?: string;
   _id: Types.ObjectId;
   title: string;
   slug: string;
@@ -96,6 +97,7 @@ export interface ICause {
 
 const CauseSchema = new Schema<ICause>(
   {
+    creationKey: { type: String, unique: true, sparse: true },
     title: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     story: { type: String, required: true },
@@ -146,7 +148,7 @@ const CauseSchema = new Schema<ICause>(
 export interface IDonation {
   _id: Types.ObjectId;
   cause: Types.ObjectId;
-  donor: Types.ObjectId;
+  donor: Types.ObjectId | null; // guests have no account and are always anonymous
   amount: number;   // what the donor paid
   upkeep: number;   // taken before it reached escrow
   net: number;      // what the cause received
@@ -157,7 +159,7 @@ export interface IDonation {
 const DonationSchema = new Schema<IDonation>(
   {
     cause: { type: Schema.Types.ObjectId, ref: "Cause", required: true },
-    donor: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    donor: { type: Schema.Types.ObjectId, ref: "User", default: null },
     amount: { type: Number, required: true },
     upkeep: { type: Number, default: 0 },
     net: { type: Number, default: 0 },

@@ -15,22 +15,28 @@ export default function DonateModal({
   causeTitle,
   remaining,
   upkeepTaken = 0,
+  guest = false,
   onClose,
 }: {
   causeId: string;
   causeTitle: string;
   remaining: number;
   upkeepTaken?: number;
+  guest?: boolean;
   onClose: () => void;
 }) {
   const router = useRouter();
   const [amount, setAmount] = useState<number>(7000);
   const [custom, setCustom] = useState("");
-  const [anonymous, setAnonymous] = useState(false);
-  const [stage, setStage] = useState<"amount" | "gateway" | "confirming" | "done">("amount");
+  const [anonymous, setAnonymous] = useState(guest);
+  const [stage, setStage] = useState<
+    "amount" | "gateway" | "confirming" | "done"
+  >("amount");
   const [error, setError] = useState("");
 
-  const finalAmount = custom ? parseInt(custom.replace(/\D/g, ""), 10) || 0 : amount;
+  const finalAmount = custom
+    ? parseInt(custom.replace(/\D/g, ""), 10) || 0
+    : amount;
 
   /* Upkeep: 2% of the gift, capped at ₦5,000 per cause. The donor pays what they
      chose; this comes off before the money reaches escrow. Same function the
@@ -45,7 +51,10 @@ export default function DonateModal({
   const isBalance = finalAmount === balanceGift;
 
   // stable fake checkout details, generated once when checkout starts
-  const [checkout, setCheckout] = useState<{ account: string; reference: string } | null>(null);
+  const [checkout, setCheckout] = useState<{
+    account: string;
+    reference: string;
+  } | null>(null);
 
   function toGateway() {
     if (finalAmount < 100) {
@@ -60,7 +69,7 @@ export default function DonateModal({
           ? remaining + room
           : Math.floor(remaining / (1 - UPKEEP_RATE));
       setError(
-        `Only ${naira(remaining)} more is needed. Please give ${naira(maxGift)} or less.`
+        `Only ${naira(remaining)} more is needed. Please give ${naira(maxGift)} or less.`,
       );
       return;
     }
@@ -68,35 +77,51 @@ export default function DonateModal({
     setCheckout(
       (c) =>
         c ?? {
-          account: String(9_000_000_000 + Math.floor(Math.random() * 999_999_999)),
-          reference: "KAI-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
-        }
+          account: String(
+            9_000_000_000 + Math.floor(Math.random() * 999_999_999),
+          ),
+          reference:
+            "KAI-" + Math.random().toString(36).slice(2, 8).toUpperCase(),
+        },
     );
     setStage("gateway");
   }
 
   async function confirmPayment() {
-    setStage("confirming");
-    await new Promise((r) => setTimeout(r, 1800)); // gateway "verifying transfer"
-    const res = await fetch(`/api/causes/${causeId}/donate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: finalAmount, anonymous }),
-    });
-    if (!res.ok) {
-      const j = await res.json().catch(() => ({}));
-      setError(j.error || "Payment failed");
+    try {
+      setStage("confirming");
+      await new Promise((r) => setTimeout(r, 1800)); // gateway "verifying transfer"
+      const res = await fetch(`/api/causes/${causeId}/donate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: finalAmount, anonymous }),
+        signal: AbortSignal.timeout(12000),
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        setError(j.error || "Payment failed");
+        setStage("amount");
+        return;
+      }
+      setStage("done");
+      router.refresh();
+    } catch {
+      setError(
+        "The connection was interrupted. Check the public ledger before trying again.",
+      );
       setStage("amount");
-      return;
     }
-    setStage("done");
-    router.refresh();
   }
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Donate to this cause"
       className="fixed inset-0 z-50 flex items-end justify-center bg-[#5b708366] p-0 backdrop-blur-[2px] sm:items-center sm:p-4"
-      onClick={(e) => e.target === e.currentTarget && stage !== "confirming" && onClose()}
+      onClick={(e) =>
+        e.target === e.currentTarget && stage !== "confirming" && onClose()
+      }
     >
       <div className="flex max-h-[92dvh] w-full max-w-md animate-slide-up flex-col overflow-y-auto overscroll-contain rounded-t-2xl bg-background shadow-[0_0_40px_rgba(0,186,124,0.15)] ring-1 ring-line sm:max-h-[88dvh] sm:rounded-2xl">
         {/* ------------------------------ amount ------------------------------ */}
@@ -104,7 +129,10 @@ export default function DonateModal({
           <div className="p-5 sm:p-6">
             <div className="mb-1 flex items-center justify-between">
               <h2 className="text-xl font-extrabold">Donate</h2>
-              <button onClick={onClose} className="rounded-full p-1 text-muted hover:bg-raised">
+              <button
+                onClick={onClose}
+                className="rounded-full p-1 text-muted hover:bg-raised"
+              >
                 ✕
               </button>
             </div>
@@ -147,12 +175,17 @@ export default function DonateModal({
                 }`}
               >
                 <span className="flex items-baseline justify-between gap-3">
-                  <span className="text-sm font-bold text-accent">Donate the balance</span>
-                  <span className="text-base font-extrabold text-accent">{naira(balanceGift)}</span>
+                  <span className="text-sm font-bold text-accent">
+                    Donate the balance
+                  </span>
+                  <span className="text-base font-extrabold text-accent">
+                    {naira(balanceGift)}
+                  </span>
                 </span>
                 <span className="mt-0.5 block text-[12px] leading-snug text-muted">
                   Covers the {naira(remaining)} still needed plus the{" "}
-                  {naira(balanceGift - remaining)} upkeep, so the cause is fully funded.
+                  {naira(balanceGift - remaining)} upkeep, so the cause is fully
+                  funded.
                 </span>
               </button>
             )}
@@ -166,9 +199,13 @@ export default function DonateModal({
             />
 
             <div className="mb-3 rounded-xl border border-line bg-surface p-3 text-[13px] leading-snug text-muted">
-              Your {naira(finalAmount || 0)} goes into <b className="text-foreground">escrow</b>,
-              not the organizer&rsquo;s account. It is only paid out to verified vendors, and you
-              get a receipt for your share of every payment.
+              Your {naira(finalAmount || 0)} goes into{" "}
+              <b className="text-foreground">escrow</b>, not the
+              organizer&rsquo;s account. It is only paid out to verified
+              vendors, and you
+              {guest
+                ? "can follow every payment on the public ledger."
+                : "get a receipt for your share of every payment."}
             </div>
 
             {/* the upkeep line, in naira, before you confirm */}
@@ -178,43 +215,65 @@ export default function DonateModal({
                 <span className="font-bold">{naira(finalAmount || 0)}</span>
               </div>
               <div className="flex justify-between py-0.5">
-                <span className="text-muted">Kairos upkeep (2%, capped at ₦5,000)</span>
+                <span className="text-muted">
+                  Kairos upkeep (2%, capped at ₦5,000)
+                </span>
                 <span className="font-bold">&minus;{naira(upkeep)}</span>
               </div>
               <div className="mt-2 flex justify-between border-t border-line pt-2">
                 <span className="font-bold">The cause receives</span>
-                <span className="font-bold text-accent">{naira(causeGets)}</span>
+                <span className="font-bold text-accent">
+                  {naira(causeGets)}
+                </span>
               </div>
               <p className="mt-2 text-[12px] leading-snug text-muted">
-                Deducted before the money reaches escrow, and posted on the public ledger.
+                Deducted before the money reaches escrow, and posted on the
+                public ledger.
               </p>
             </div>
 
-            <label className="mb-4 flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-line p-3">
-              <span>
-                <span className="block text-sm font-bold">Donate anonymously</span>
-                <span className="mt-0.5 block text-[13px] leading-snug text-muted">
-                  Your name won&rsquo;t appear on the cause&rsquo;s public ledger. You still get
-                  your receipts.
-                </span>
-              </span>
-              <button
-                type="button"
-                role="switch"
-                aria-checked={anonymous}
-                onClick={() => setAnonymous(!anonymous)}
-                className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-                  anonymous ? "bg-accent" : "bg-raised"
-                }`}
+            {guest ? (
+              <div
+                className="mb-4 rounded-xl border border-accent/30 bg-accent/10 p-3 text-sm"
+                role="note"
               >
-                <span
-                  className={`absolute top-0.5 h-5 w-5 rounded-full bg-[var(--knob)] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-transform ${
-                    anonymous ? "translate-x-[22px]" : "translate-x-0.5"
+                <p className="font-bold">Your donation will be anonymous</p>
+                <p className="mt-1 text-muted">
+                  You’re giving as a guest. Your name won’t appear on the public
+                  ledger. Personal receipts and notifications require an
+                  account.
+                </p>
+              </div>
+            ) : (
+              <label className="mb-4 flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-line p-3">
+                <span>
+                  <span className="block text-sm font-bold">
+                    Donate anonymously
+                  </span>
+                  <span className="mt-0.5 block text-[13px] leading-snug text-muted">
+                    Your name won&rsquo;t appear on the cause&rsquo;s public
+                    ledger. You still get your receipts.
+                  </span>
+                </span>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-label="Donate anonymously"
+                  aria-checked={anonymous}
+                  onClick={() => setAnonymous(!anonymous)}
+                  className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
+                    anonymous ? "bg-accent" : "bg-raised"
                   }`}
-                  style={{ left: 0 }}
-                />
-              </button>
-            </label>
+                >
+                  <span
+                    className={`absolute top-0.5 h-5 w-5 rounded-full bg-[var(--knob)] shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-transform ${
+                      anonymous ? "translate-x-[22px]" : "translate-x-0.5"
+                    }`}
+                    style={{ left: 0 }}
+                  />
+                </button>
+              </label>
+            )}
 
             {error && <p className="mb-3 text-sm text-rose-400">{error}</p>}
 
@@ -241,12 +300,14 @@ export default function DonateModal({
                 </p>
                 <p className="text-sm text-muted">Pay with bank transfer</p>
               </div>
-              <span className="text-xl font-extrabold text-accent">{naira(finalAmount)}</span>
+              <span className="text-xl font-extrabold text-accent">
+                {naira(finalAmount)}
+              </span>
             </div>
 
             <p className="mb-3 text-sm text-muted">
-              Transfer <b className="text-foreground">{naira(finalAmount)}</b> to the one-time
-              account below. It expires in 30 minutes.
+              Transfer <b className="text-foreground">{naira(finalAmount)}</b>{" "}
+              to the one-time account below. It expires in 30 minutes.
             </p>
 
             <div className="mb-4 flex flex-col gap-2 rounded-xl border border-line bg-surface p-4 font-mono text-sm">
@@ -281,7 +342,8 @@ export default function DonateModal({
               ← Change amount
             </button>
             <p className="mt-3 text-center text-[12px] text-muted">
-              Simulated gateway - Paystack/Flutterwave virtual accounts in production
+              Simulated gateway - Paystack/Flutterwave virtual accounts in
+              production
             </p>
           </div>
         )}
@@ -290,8 +352,12 @@ export default function DonateModal({
         {stage === "confirming" && (
           <div className="flex flex-col items-center gap-4 p-10">
             <div className="h-10 w-10 animate-spin rounded-full border-[3px] border-line border-t-accent" />
-            <p className="animate-pulse-soft text-muted">Confirming your transfer…</p>
-            <p className="font-mono text-[12px] text-muted">{checkout?.reference}</p>
+            <p className="animate-pulse-soft text-muted">
+              Confirming your transfer…
+            </p>
+            <p className="font-mono text-[12px] text-muted">
+              {checkout?.reference}
+            </p>
           </div>
         )}
 
@@ -305,8 +371,11 @@ export default function DonateModal({
             </div>
             <h2 className="text-xl font-extrabold">Donation received</h2>
             <p className="text-sm leading-snug text-muted">
-              {naira(finalAmount)} is now held in escrow for this cause. Whenever it is paid out to
-              a vendor, you get a notification showing your share of the payment.
+              {naira(causeGets)} is now held in escrow for this cause after{" "}
+              {naira(upkeep)} upkeep.{" "}
+              {guest
+                ? "Your donation is anonymous. Follow this cause’s public ledger to see payments to vendors."
+                : "Whenever it is paid out to a vendor, you get a notification showing your share of the payment."}
             </p>
             <button
               onClick={onClose}

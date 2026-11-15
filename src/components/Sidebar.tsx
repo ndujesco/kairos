@@ -1,108 +1,126 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Avatar from "./Avatar";
 import BellBadge from "./BellBadge";
 import ThemeToggle from "./ThemeToggle";
 import KairosMark from "./KairosMark";
-
+import NavIcon from "./NavIcon";
 const NAV = [
-  { href: "/", label: "Home", icon: "M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z" },
-  {
-    href: "/explore",
-    label: "Explore",
-    icon: "M10.25 4.25c-3.31 0-6 2.69-6 6s2.69 6 6 6c1.52 0 2.9-.56 3.96-1.48l4.63 4.64 1.42-1.42-4.64-4.63c.92-1.06 1.48-2.44 1.48-3.96 0-3.31-2.69-6-6-6zm-4 6c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z",
-  },
-  {
-    href: "/notifications",
-    label: "Notifications",
-    icon: "M12 2C7.58 2 4 5.58 4 10v5l-2 2v1h20v-1l-2-2v-5c0-4.42-3.58-8-8-8zm0 20c1.38 0 2.5-1.12 2.5-2.5h-5c0 1.38 1.12 2.5 2.5 2.5z",
-  },
-  {
-    href: "/wallet",
-    label: "Wallet",
-    icon: "M4 5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2H5c-.55 0-1-.45-1-1s.45-1 1-1h15V3H4zm13 8.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z",
-  },
-  {
-    href: "/profile",
-    label: "Profile",
-    icon: "M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.34 0-10 1.67-10 5v3h20v-3c0-3.33-6.66-5-10-5z",
-  },
+  { href: "/", label: "Home" },
+  { href: "/explore", label: "Explore" },
+  { href: "/notifications", label: "Notifications" },
+  { href: "/wallet", label: "Wallet" },
+  { href: "/profile", label: "Profile" },
 ];
-
 export default function Sidebar({
   unread = 0,
   user,
 }: {
   unread?: number;
-  user: { name: string; handle: string; emoji: string; avatarColor: string };
+  user?: {
+    name: string;
+    handle: string;
+    emoji: string;
+    avatarColor: string;
+  } | null;
 }) {
+  const pathname = usePathname();
   return (
-    <header className="sticky top-0 hidden h-screen w-[76px] shrink-0 flex-col justify-between px-2 py-3 sm:flex xl:w-[260px]">
-      <div className="flex flex-col gap-1">
+    <header className="sticky top-0 hidden h-dvh w-[88px] shrink-0 flex-col justify-between px-3 py-2 sm:flex xl:w-[275px] xl:px-3">
+      <div>
         <Link
           href="/"
-          className="mb-1 flex h-12 w-12 items-center justify-center rounded-full text-2xl font-black text-accent hover:bg-accent/10 xl:ml-1"
-          title="Kairos"
+          className="mb-3 flex h-14 w-14 items-center justify-center rounded-full text-accent transition hover:bg-accent/10"
+          aria-label="Kairos home"
         >
-          <KairosMark size={26} />
+          <KairosMark size={32} />
         </Link>
-
-        {NAV.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="group flex items-center gap-4 rounded-full p-3 text-xl transition-colors hover:bg-raised"
-          >
-            <span className="relative">
-              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-                <path d={item.icon} />
-              </svg>
-              {item.href === "/notifications" && (
-                <BellBadge
-                  count={unread}
-                  className="absolute -right-2 -top-1.5 h-[18px] min-w-[18px] px-1 text-[11px]"
-                />
-              )}
-            </span>
-            <span className="hidden xl:block">{item.label}</span>
-          </Link>
-        ))}
-
-        <Link
-          href="/create"
-          className="mt-3 flex h-[52px] items-center justify-center rounded-full bg-accent font-bold text-on-accent transition hover:bg-accent/90 xl:w-[90%]"
+        <nav
+          aria-label="Main navigation"
+          className="flex flex-col items-start gap-1"
         >
-          <span className="hidden xl:block">Start a Cause</span>
-          <span className="text-2xl xl:hidden">+</span>
-        </Link>
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <ThemeToggle />
-      </div>
-
-      <div className="flex items-center gap-1">
+          {NAV.map((item) => {
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-label={item.label}
+                aria-current={active ? "page" : undefined}
+                className={`flex max-w-full items-center gap-5 rounded-full p-3 text-xl transition hover:bg-raised xl:pr-6 ${active ? "font-bold" : "font-normal"}`}
+              >
+                <span className="relative">
+                  <NavIcon name={item.label} active={active} />
+                  {item.label === "Notifications" && (
+                    <BellBadge
+                      count={unread}
+                      className="absolute -right-2 -top-1.5 h-[18px] min-w-[18px] px-1 text-[11px]"
+                    />
+                  )}
+                </span>
+                <span className="hidden xl:block">{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
         <Link
-          href={`/profile/${user.handle}`}
-          className="flex min-w-0 flex-1 items-center gap-3 rounded-full p-3 transition hover:bg-raised"
-          title="Your profile"
+          href={user ? "/create" : "/login"}
+          aria-label={user ? "Start a cause" : "Sign in"}
+          className="mt-5 flex h-[52px] w-[52px] items-center justify-center gap-2 rounded-full bg-accent text-[17px] font-bold text-on-accent transition hover:bg-accent/90 xl:w-[90%]"
         >
-          <Avatar emoji={user.emoji} color={user.avatarColor} size={10} />
-          <span className="hidden min-w-0 xl:block">
-            <span className="block truncate text-[15px] font-bold">{user.name}</span>
-            <span className="block truncate text-sm text-muted">@{user.handle}</span>
+          <span className="hidden xl:block">
+            {user ? "Start a cause" : "Sign in"}
+          </span>
+          <span className="xl:hidden">
+            <NavIcon name="Create" />
           </span>
         </Link>
-        <form action="/api/auth/logout" method="POST" className="hidden shrink-0 xl:block">
-          <button
-            type="submit"
-            title="Log out"
-            className="rounded-full p-3 text-muted transition hover:bg-rose-400/10 hover:text-rose-400"
-          >
-            <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-              <path d="M16 13v-2H7V8l-5 4 5 4v-3h9zm4-10h-9v2h9v14h-9v2h9c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
-            </svg>
-          </button>
-        </form>
+        <p className="mt-4 hidden max-w-[215px] px-3 text-[13px] leading-relaxed text-muted xl:block">
+          Small acts. Real change.
+          <br />
+          Every naira accounted for.
+        </p>
+      </div>
+      <div className="space-y-2 pb-2">
+        <ThemeToggle />
+        {user && (
+          <details className="relative">
+            <summary
+              className="flex cursor-pointer list-none items-center gap-3 rounded-full p-2.5 hover:bg-raised"
+              aria-label="Account menu"
+            >
+              <Avatar emoji={user.emoji} color={user.avatarColor} />
+              <span className="hidden min-w-0 flex-1 xl:block">
+                <span className="block truncate text-[15px] font-bold">
+                  {user.name}
+                </span>
+                <span className="block truncate text-[15px] text-muted">
+                  @{user.handle}
+                </span>
+              </span>
+              <span className="hidden font-bold xl:block" aria-hidden="true">
+                ···
+              </span>
+            </summary>
+            <div className="absolute bottom-full left-0 z-30 mb-3 w-60 rounded-2xl border border-line bg-background p-2 shadow-xl">
+              <Link
+                href={`/profile/${user.handle}`}
+                className="block rounded-xl p-3 font-bold hover:bg-surface"
+              >
+                View your profile
+              </Link>
+              <form action="/api/auth/logout" method="POST">
+                <button className="w-full rounded-xl p-3 text-left font-bold hover:bg-surface">
+                  Log out @{user.handle}
+                </button>
+              </form>
+            </div>
+          </details>
+        )}
       </div>
     </header>
   );

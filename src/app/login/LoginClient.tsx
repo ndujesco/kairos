@@ -44,7 +44,8 @@ export default function LoginClient() {
       setBusy(false);
       return;
     }
-    router.push("/");
+    const next = params.get("next");
+    router.push(next && /^\/(?!\/|\\)/.test(next) ? next : "/");
     router.refresh();
   }
 
@@ -70,7 +71,8 @@ export default function LoginClient() {
       setBusy(false);
       return;
     }
-    router.push("/");
+    const next = params.get("next");
+    router.push(next && /^\/(?!\/|\\)/.test(next) ? next : "/");
     router.refresh();
   }
 

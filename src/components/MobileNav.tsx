@@ -1,82 +1,83 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Avatar from "./Avatar";
 import BellBadge from "./BellBadge";
 import KairosMark from "./KairosMark";
-
+import NavIcon from "./NavIcon";
+import ThemeToggle from "./ThemeToggle";
 const TABS = [
-  { href: "/", label: "Home", icon: "M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z" },
-  {
-    href: "/explore",
-    label: "Explore",
-    icon: "M10.25 4.25c-3.31 0-6 2.69-6 6s2.69 6 6 6c1.52 0 2.9-.56 3.96-1.48l4.63 4.64 1.42-1.42-4.64-4.63c.92-1.06 1.48-2.44 1.48-3.96 0-3.31-2.69-6-6-6zm-4 6c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z",
-  },
-  {
-    href: "/notifications",
-    label: "Alerts",
-    icon: "M12 2C7.58 2 4 5.58 4 10v5l-2 2v1h20v-1l-2-2v-5c0-4.42-3.58-8-8-8zm0 20c1.38 0 2.5-1.12 2.5-2.5h-5c0 1.38 1.12 2.5 2.5 2.5z",
-  },
-  {
-    href: "/wallet",
-    label: "Wallet",
-    icon: "M4 5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2H5c-.55 0-1-.45-1-1s.45-1 1-1h15V3H4zm13 8.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z",
-  },
+  { href: "/", label: "Home" },
+  { href: "/explore", label: "Explore" },
+  { href: "/notifications", label: "Notifications" },
+  { href: "/wallet", label: "Wallet" },
 ];
-
 export function MobileTopBar({
   user,
 }: {
-  user: { handle: string; emoji: string; avatarColor: string };
+  user?: { handle: string; emoji: string; avatarColor: string } | null;
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-line bg-background px-4 py-2 sm:hidden">
-      <Link href="/" className="flex items-center gap-2 text-accent" title="Kairos">
-        <KairosMark size={22} />
-        <span className="text-base font-extrabold text-foreground">Kairos</span>
+    <div className="relative flex h-[56px] items-center justify-between border-b border-line px-4 sm:hidden">
+      {user ? (
+        <Link href={`/profile/${user.handle}`} aria-label="Your profile">
+          <Avatar emoji={user.emoji} color={user.avatarColor} size={8} />
+        </Link>
+      ) : (
+        <Link href="/login" className="text-sm font-bold text-accent">
+          Sign in
+        </Link>
+      )}
+      <Link
+        href="/"
+        aria-label="Kairos home"
+        className="absolute left-1/2 -translate-x-1/2 text-accent"
+      >
+        <KairosMark size={28} />
       </Link>
-      <Link href={`/profile/${user.handle}`} title="Profile">
-        <Avatar emoji={user.emoji} color={user.avatarColor} size={8} />
-      </Link>
+      <ThemeToggle compact />
     </div>
   );
 }
-
 export default function MobileNav({ unread = 0 }: { unread?: number }) {
+  const pathname = usePathname();
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 flex items-center justify-around border-t border-line bg-background/90 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
-      {TABS.slice(0, 2).map((t) => (
-        <Link key={t.href} href={t.href} className="flex flex-col items-center gap-0.5 p-2.5 text-muted">
-          <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-            <path d={t.icon} />
-          </svg>
-          <span className="text-[10px] font-bold">{t.label}</span>
+    <>
+      {pathname !== "/create" && (
+        <Link
+          href="/create"
+          aria-label="Start a cause"
+          className="fixed bottom-[84px] right-5 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-on-accent shadow-lg sm:hidden"
+        >
+          <NavIcon name="Create" />
         </Link>
-      ))}
-
-      <Link
-        href="/create"
-        className="-mt-5 flex items-center justify-center rounded-full bg-accent text-3xl font-bold text-on-accent shadow-[0_0_20px_rgba(0,186,124,0.4)]"
-        title="Start a Cause"
-        style={{ width: 52, height: 52 }}
+      )}
+      <nav
+        aria-label="Mobile navigation"
+        className="fixed inset-x-0 bottom-0 z-20 flex h-[calc(56px+env(safe-area-inset-bottom))] items-start justify-around border-t border-line bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden"
       >
-        +
-      </Link>
-
-      {TABS.slice(2).map((t) => (
-        <Link key={t.href} href={t.href} className="flex flex-col items-center gap-0.5 p-2.5 text-muted">
-          <span className="relative">
-            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-              <path d={t.icon} />
-            </svg>
-            {t.href === "/notifications" && (
-              <BellBadge
-                count={unread}
-                className="absolute -right-2 -top-1 h-[17px] min-w-[17px] px-1 text-[10px]"
-              />
-            )}
-          </span>
-          <span className="text-[10px] font-bold">{t.label}</span>
-        </Link>
-      ))}
-    </nav>
+        {TABS.map((t) => {
+          const active =
+            t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
+          return (
+            <Link
+              key={t.href}
+              href={t.href}
+              aria-label={t.label}
+              aria-current={active ? "page" : undefined}
+              className="relative flex h-14 w-16 items-center justify-center hover:bg-surface"
+            >
+              <NavIcon name={t.label} active={active} />
+              {t.label === "Notifications" && (
+                <BellBadge
+                  count={unread}
+                  className="absolute right-2 top-1 h-[17px] min-w-[17px] px-1 text-[10px]"
+                />
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+    </>
   );
 }

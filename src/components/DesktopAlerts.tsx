@@ -42,7 +42,8 @@ export default function DesktopAlerts() {
          never settles, and awaiting it would swallow the alert in silence.
          Give it a moment, then raise the notification directly instead. */
       const reg = await Promise.race([
-        navigator.serviceWorker?.ready.catch(() => null) ?? Promise.resolve(null),
+        navigator.serviceWorker?.ready.catch(() => null) ??
+          Promise.resolve(null),
         new Promise<null>((r) => setTimeout(() => r(null), 1500)),
       ]);
       try {
@@ -60,7 +61,9 @@ export default function DesktopAlerts() {
     /* 2 - and a poll, for this tab's own notifications */
     const tick = async () => {
       try {
-        const r = await fetch("/api/notifications/latest", { cache: "no-store" });
+        const r = await fetch("/api/notifications/latest", {
+          cache: "no-store",
+        });
         const { items } = await r.json();
         if (!primed.current) {
           items.forEach((n: { id: string }) => seen.current.add(n.id));
@@ -98,7 +101,7 @@ export default function DesktopAlerts() {
   return (
     <button
       onClick={async () => setPerm(await Notification.requestPermission())}
-      className="fixed bottom-4 right-4 z-50 rounded-full border border-accent/40 bg-background/90 px-4 py-2.5 text-sm font-bold text-accent shadow-lg backdrop-blur hover:bg-accent/10"
+      className="fixed bottom-4 right-4 z-50 hidden rounded-full sm:block border border-accent/40 bg-background/90 px-4 py-2.5 text-sm font-bold text-accent shadow-lg backdrop-blur hover:bg-accent/10"
     >
       Turn on payment alerts
     </button>
