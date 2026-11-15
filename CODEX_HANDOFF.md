@@ -46,7 +46,11 @@ All three existing ANTHROPIC_API_KEY records were updated as secrets for their e
 
 Invoicer deployment `dpl_CjJruvjhbkmMV4JgszwytAzSxtNQ` is READY and owns its live alias. PrinceBooks deployment `dpl_BHfL1j1wMgv6Fcmw8ZZLpiwR6Whd` is READY and owns its live alias. An earlier PrinceBooks retry failed on a transient Next font build error; retry succeeded. These were redeployments of the existing sources with the new environment.
 
-Kairos is being published through the existing GitHub/Vercel integration after a direct CLI upload returned a network fetch error. All functional checks passed; browser QA confirmed real PDF preview, the blank face placeholder and a readable 360-pixel phone layout. Final deployment verification remains to be recorded below.
+Kairos release commit `5bfc52d88817f5c6790b4cabe06f72f2db48105f` was pushed to `main` and deployed through the existing GitHub integration. Deployment `dpl_6iSDHhsqyjaC1BiEfNnLjoinzHEK` is READY and owns `kairos-community.vercel.app`. Its deployment URL is https://kairos-community-117ypmle6-ndujescos-projects-c1263a0d.vercel.app. A direct CLI upload had a network fetch error; the GitHub deployment succeeded.
+
+Live checks passed for handle/password login, the guest-anonymity notice on a shared cause, and the unchanged APWEN page. All 13 existing accounts were also authenticated successfully against the live login endpoint. Browser QA confirmed actual PDF upload and rendering, a blank face placeholder before NIN/Start, a readable 360×740 phone layout, and the complete interview → draft → identity → published cause flow with its document attached. Both face video URLs return 200 with the expected video MIME type. Media decode failure cannot block the identity save.
+
+The owned QA server is stopped and only `kairos_qa_01a1df22` was dropped. No fictional test causes/accounts/documents were written to the live database. No outstanding implementation work remains for the requests listed above.
 
 ## Files and commands
 
@@ -59,6 +63,6 @@ Kairos is being published through the existing GitHub/Vercel integration after a
 - Integration checks: `KAIROS_QA_DB=<matching_disposable_db_name> node --env-file=.env.local scripts/verify-demo-flow.mjs`, with a QA-configured server already running on port 3010. Never point that server at the live database. The test creates fictional records in the selected QA database only.
 - Old database snapshots intentionally restore old state, including passwords/contacts. Reapply the current requested demo password/contact settings after restoring an old snapshot.
 
-## Next actions if interrupted
+## Next session
 
-Finish the blank-face/browser creation check against the final build, including mobile layout. Verify attachments render using an actual PDF. Publish the existing Kairos Vercel project, verify the live result, record its commit/deployment here, stop the QA server and drop only the disposable `kairos_qa_01a1df22` database. Root `HISTORY.md` needs the final outcome entry. No key values belong in any tracked file.
+The requested release is complete. Read this file, inspect `git status`, and continue from the user’s next edit request. Do not repeat account resets, key rotation, an exhaustive archive review or destructive demo reset unless a new task requires it. The full histories above remain intact. Later documentation-only commits may follow the application release commit without changing its behavior.
