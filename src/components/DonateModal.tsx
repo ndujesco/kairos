@@ -342,8 +342,7 @@ export default function DonateModal({
               ← Change amount
             </button>
             <p className="mt-3 text-center text-[12px] text-muted">
-              Simulated gateway - Paystack/Flutterwave virtual accounts in
-              production
+              Use the payment reference above for this transfer.
             </p>
           </div>
         )}

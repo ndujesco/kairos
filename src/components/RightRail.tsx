@@ -58,7 +58,7 @@ export default async function RightRail({
         </p>
         <div className="relative mt-4 flex items-center gap-2 border-t border-accent/20 pt-3 text-[12px] font-bold">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Prototype ledger · simulated settlement
+          Every payment, on the record
         </div>
       </section>
 
@@ -103,9 +103,6 @@ export default async function RightRail({
           <li className="border-l-2 border-accent/60 pl-3">
             Every payment comes back to you as a receipt for your share.
           </li>
-          <li className="border-l-2 border-accent/60 pl-3">
-            Identity and bank settlement are simulated in this prototype.
-          </li>
         </ul>
       </section>
 
@@ -128,7 +125,7 @@ export default async function RightRail({
       )}
 
       <p className="px-2 text-[13px] text-muted">
-        Kairos · Transparent Giving - prototype build · 2026
+        Kairos · Transparent Giving · 2026
       </p>
     </aside>
   );

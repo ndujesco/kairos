@@ -23,6 +23,7 @@ This is the continuation of codex3’s **Edit website** conversation. The user a
 8. Email stays optional at signup and login. Existing account contacts: `abby` → `sokenuabigail@gmail.com`; `bukky` → `ugondu635@gmail.com`.
 9. Face-scan area is blank until the NIN is complete and **Start face check** is pressed. No first-frame face preview before that.
 10. Store supporting files in Cloudinary instead of MongoDB. Preserve upload behavior, existing URLs and draft privacy. Credentials were supplied directly in the ignored local environment file; no values belong in this handoff.
+11. The product UI should read as a normal live flow: no visible prototype, simulated-settlement, sample-capture or demo labels, and no question-limit caption. The presenters will explain the prototype context verbally. Keep the internal five-question cap, deadlines, demo acceptance and existing operational behavior; do not reintroduce these labels in later edits.
 
 ## Implemented and verified so far
 
@@ -76,5 +77,7 @@ The owned QA server is stopped and only `kairos_qa_01a1df22` was dropped. No fic
 - Production build and 20 demo-flow checks passed. Three additional checks passed for PDF delivery, legacy document access and checksum-verified migration. The demo-context response guard has deterministic regression checks as well. Final deployment and cleanup details are recorded in the workspace-root `CODEX_HANDOFF.md` follow-up, so this tracked document does not require another deployment just to record its own deployment ID.
 
 ## Next session
+
+16 November UI-copy follow-up: removed prototype/simulation wording from the impact card, right-rail guidance/footer, checkout, document note and identity step. Removed the interview's question counter/limit caption entirely. The AI prompt also keeps question limits and timing details out of replies, cause text and checks. These are presentation changes only; no new bank/registry integrations or verification capabilities were added. Build and final deployment status are recorded in the root handoff after release.
 
 The requested release is complete. Read this file, inspect `git status`, and continue from the user’s next edit request. Do not repeat account resets, key rotation, an exhaustive archive review or destructive demo reset unless a new task requires it. The full histories above remain intact. Later documentation-only commits may follow the application release commit without changing its behavior.

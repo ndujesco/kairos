@@ -364,18 +364,6 @@ export default function CreateWizard({
           />
         </div>
       )}
-      {stage === "chat" && (
-        <p className="px-4 pt-3 text-[12px] text-muted">
-          Question{" "}
-          {Math.min(
-            MAX_INTERVIEW_QUESTIONS,
-            messages.filter((m) => m.from === "me").length + 1,
-          )}{" "}
-          of at most {MAX_INTERVIEW_QUESTIONS} · Finish sooner when the details
-          are ready
-        </p>
-      )}
-
       {/* ------------------------- STAGE 1: AI CHAT ------------------------- */}
       {stage === "chat" && (
         <>
@@ -638,8 +626,7 @@ export default function CreateWizard({
               className="mt-2 w-full rounded-xl border border-line bg-transparent px-4 py-3 text-[15px] outline-none focus:border-accent"
             />
             <p className="mt-2 text-[13px] text-muted">
-              Demo check: no NIN is sent to a registry. Only the result is
-              saved.
+              Enter your 11-digit National Identification Number to continue.
             </p>
           </div>
 
@@ -648,7 +635,7 @@ export default function CreateWizard({
               {idState === "idle" ? (
                 <div
                   className="flex h-full flex-col items-center justify-center gap-3 bg-surface px-4 text-center text-muted"
-                  aria-label="Face scan placeholder"
+                  aria-label="Face check ready to start"
                 >
                   <svg
                     viewBox="0 0 48 48"
@@ -701,8 +688,7 @@ export default function CreateWizard({
                 Liveness &amp; face match
               </p>
               <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                This prototype uses a sample capture. The check continues even
-                if the video cannot load.
+                Once your NIN is entered, select Start face check to continue.
               </p>
 
               <div className="mt-4 space-y-2 text-[14px]">
