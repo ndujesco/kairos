@@ -4,6 +4,10 @@ import { dbConnect } from "@/lib/db";
 import { getSessionUser } from "@/lib/session";
 import { Cause } from "@/lib/models";
 import {
+  uploadEvidenceToCloudinary,
+  removeCloudinaryEvidence,
+} from "@/lib/cloudinary";
+import {
   SupportingFile,
   MAX_FILE_BYTES,
   MAX_CAUSE_FILES,
@@ -62,13 +66,36 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
   }
-  const stored = await SupportingFile.create({
-    owner: user._id,
-    cause: cause?._id ?? null,
-    name: file.name.slice(0, 160),
-    contentType,
-    content: Buffer.from(await file.arrayBuffer()),
-  });
+  let uploaded: Awaited<ReturnType<typeof uploadEvidenceToCloudinary>>;
+  try {
+    uploaded = await uploadEvidenceToCloudinary(
+      Buffer.from(await file.arrayBuffer()),
+      file.name,
+    );
+  } catch {
+    return NextResponse.json(
+      { error: "Document upload is unavailable. Please try again." },
+      { status: 503 },
+    );
+  }
+  let stored;
+  try {
+    stored = await SupportingFile.create({
+      owner: user._id,
+      cause: cause?._id ?? null,
+      name: file.name.slice(0, 160),
+      contentType,
+      ...uploaded,
+    });
+  } catch {
+    await removeCloudinaryEvidence(uploaded.cloudinaryPublicId).catch(() => {
+      console.warn("Temporary evidence asset cleanup needs a retry.");
+    });
+    return NextResponse.json(
+      { error: "Could not save the document. Please try again." },
+      { status: 503 },
+    );
+  }
   const evidence = {
     label: stored.name,
     url: `/api/evidence/${stored._id}`,

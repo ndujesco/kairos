@@ -6,7 +6,13 @@ const schema = new Schema(
     cause: { type: Schema.Types.ObjectId, ref: "Cause", default: null },
     name: { type: String, required: true },
     contentType: { type: String, required: true },
-    content: { type: Buffer, required: true },
+    storage: { type: String, enum: ["cloudinary", "mongodb"] },
+    cloudinaryPublicId: { type: String },
+    cloudinaryAssetId: { type: String },
+    size: { type: Number },
+    sha256: { type: String },
+    // Retained only for reading/migrating pre-Cloudinary records.
+    content: { type: Buffer, select: false },
   },
   { timestamps: true },
 );

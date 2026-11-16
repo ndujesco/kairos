@@ -16,11 +16,13 @@ An internal trust system caps how much newcomers can raise and unlocks bigger ca
 - **An LLM API** powers the AI intake interviewer with structured output
 - Tailwind CSS, Twitter-style social interface
 
-This is a functioning prototype: escrow accounting, disbursements, per-donor attribution, notifications, vouching, trust levels and the public ledger are real, running code. Identity checks (NIBSS/NIMC), card payments (Paystack/Flutterwave) are simulated, each mapping 1:1 to a production Nigerian API. Supporting files upload to MongoDB, can be attached during intake or later by the cause owner, and become public when attached to a published cause.
+This is a functioning prototype: escrow accounting, disbursements, per-donor attribution, notifications, vouching, trust levels and the public ledger are real, running code. Identity checks (NIBSS/NIMC), card payments (Paystack/Flutterwave) are simulated, each mapping 1:1 to a production Nigerian API. Supporting files upload to Cloudinary as authenticated assets. MongoDB stores only their metadata and cause links. They can be attached during intake or later by the cause owner, and become viewable through the app when the cause is published.
 
 The intake asks at most five questions, accepts supplied demonstration details, and falls back locally if the model times out. Email is optional; use a handle and password to sign in. Signed-out visitors can donate anonymously and follow the public ledger. Personal receipt notifications require an account.
 
 For current progress, deployment details and exact conversation history paths, read [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
+Cloudinary needs server-only `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_API_SECRET` in `.env.local` (and the deployed Vercel environment). Draft documents stay owner-only. Files are served through `/api/evidence/<id>`, preserving existing links. To move legacy MongoDB file contents to Cloudinary, run `npm run evidence:migrate` with Node 22+; it verifies the uploaded copy before removing the original binary field.
 
 ## Run it
 

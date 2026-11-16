@@ -85,6 +85,13 @@ try {
   check("identity check responds within six-second UI deadline");
   const doc = await upload(owner);
   assert.equal(doc.res.status, 200);
+  const storedDoc = await db
+    .collection("supportingfiles")
+    .findOne({ cloudinaryPublicId: { $exists: true } });
+  assert.equal(storedDoc.storage, "cloudinary");
+  assert.equal(Object.hasOwn(storedDoc, "content"), false);
+  assert.equal(storedDoc.size, doc.bytes.length);
+  check("file bytes are stored in Cloudinary, with metadata only in MongoDB");
   assert.equal((await fetch(base + doc.file.url)).status, 404);
   check("draft attachments are private");
   const create = await post(
@@ -112,10 +119,27 @@ try {
   assert.deepEqual(new Uint8Array(await publicFile.arrayBuffer()), doc.bytes);
   assert.equal(publicFile.headers.get("x-content-type-options"), "nosniff");
   check("uploaded file persists and becomes public with published cause");
-  const retry = await post("/api/causes", { requestId: "qa-"+suffix, title:"QA cause "+suffix, story:"Retry of the same draft", budget:[{label:"Tuition",amount:10000,vendorName:"Example School"}], attachments:[doc.file.id] }, owner);
-  assert.equal(retry.status,200);
-  assert.equal((await retry.json()).slug,slug);
-  assert.equal(await db.collection("causes").countDocuments({ creationKey: { $regex: "qa-"+suffix+"$" } }),1);
+  const retry = await post(
+    "/api/causes",
+    {
+      requestId: "qa-" + suffix,
+      title: "QA cause " + suffix,
+      story: "Retry of the same draft",
+      budget: [
+        { label: "Tuition", amount: 10000, vendorName: "Example School" },
+      ],
+      attachments: [doc.file.id],
+    },
+    owner,
+  );
+  assert.equal(retry.status, 200);
+  assert.equal((await retry.json()).slug, slug);
+  assert.equal(
+    await db
+      .collection("causes")
+      .countDocuments({ creationKey: { $regex: "qa-" + suffix + "$" } }),
+    1,
+  );
   check("retrying publication reuses the cause instead of duplicating it");
 
   assert.equal((await upload(donor, String(cause._id))).res.status, 403);

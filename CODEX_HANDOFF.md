@@ -1,6 +1,6 @@
 # Kairos website handoff
 
-Updated: 15 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
+Updated: 16 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
 ## Resume here
 
@@ -22,6 +22,7 @@ This is the continuation of codex3’s **Edit website** conversation. The user a
 7. Fix the long wait between identity step 3 and checks step 4. Sample-video playback must not block verification or publication. Show visible errors and allow retry after timeouts.
 8. Email stays optional at signup and login. Existing account contacts: `abby` → `sokenuabigail@gmail.com`; `bukky` → `ugondu635@gmail.com`.
 9. Face-scan area is blank until the NIN is complete and **Start face check** is pressed. No first-frame face preview before that.
+10. Store supporting files in Cloudinary instead of MongoDB. Preserve upload behavior, existing URLs and draft privacy. Credentials were supplied directly in the ignored local environment file; no values belong in this handoff.
 
 ## Implemented and verified so far
 
@@ -29,7 +30,7 @@ This is the continuation of codex3’s **Edit website** conversation. The user a
 - Abby/Bukky email updates were saved and read back from the current database. `scripts/demo-reset.mjs` preserves these requested demo addresses on future resets. Do not run that reset just to test the site.
 - Guest donations have `donor: null` and `anonymous: true`, irrespective of a spoofed client anonymous flag. Registered donor attribution and upkeep are preserved. Payout skips personal notifications for guests; guests follow the public ledger. Personal receipts require a signed-in account.
 - Refreshed desktop/mobile navigation, active states, real For you/Latest sorting, giving prompt, actual search, timeline media/category treatment and ledger impact panel. Guests get the same readable cause layout. Brand accent stays green; typography and controls follow the Twitter-style layout.
-- File uploads persist in MongoDB `supportingfiles`. Up to 10 files per cause, 3 MB each (fits Vercel request limits). PDF/images/Word/text accepted. Unpublished attachments are owner-only. Published attachments become public. Only owners may attach to an existing cause. HTML/SVG are excluded; files are served with nosniff/sandbox headers. This is storage/attachment support, not real document authentication.
+- File bytes now upload to Cloudinary as authenticated raw assets. MongoDB `supportingfiles` contains only metadata, provider IDs, size/checksum, owner and cause linkage. Up to 10 files per cause, 3 MB each (fits Vercel request limits). PDF/images/Word/text accepted. Unpublished attachments are owner-only. Published attachments become public. Only owners may attach to an existing cause. HTML/SVG are excluded; files are served with nosniff/sandbox headers. This is storage/attachment support, not real document authentication.
 - `src/lib/interview.ts` shares the five-question limit and bounded fallback with browser and server. Haiku has a 10-second timeout, no automatic retries, and a 14-second browser deadline. Initial greeting is local and immediate. Demo instructions and attachment names are included in model context. Live warm checks took ~2.4 seconds for a follow-up and ~5.7 seconds to assemble a complete cause; first structured response can take longer.
 - Identity saves in parallel with a short visual step, has a six-second request deadline, and no longer waits for video end or the prior 20-second watchdog. Publication has a 12-second deadline and draft request ID so retrying publication reuses its existing cause. Errors return the creator to an editable/retryable screen. Face media is conditionally mounted only after Start.
 - Production build and 19 integration checks passed. Checks ran only on disposable database `kairos_qa_01a1df22` at port 3010, with real inbox addresses removed. Coverage includes optional email, incorrect password rejection, guest anonymity, fee accounting, payouts with guest gifts, upload access before/after publication, owner-only additions, repeat publication, live AI acceptance of demo details, question cap and feed tabs.
@@ -42,7 +43,7 @@ Vercel CLI is authenticated as `ndujesco`. Scope: `ndujescos-projects-c1263a0d` 
 - Invoicer: `invoicer`, `prj_OT1gtCM0GT2HzRNTT0j1ZB3BVwLe`; https://invoicer-one-azure.vercel.app.
 - PrinceBooks: `ctybooksource`, `prj_bzvaAR4lKzuYWFdbdusKu4tDE7uT`; https://ctybooksource.vercel.app.
 
-All three existing ANTHROPIC_API_KEY records were updated as secrets for their existing production+preview targets. Local Kairos and `/Users/ndujekwuugochukwu/Documents/CODE/personal/invoicer/.env.local` match. A local PrinceBooks checkout was not found; its Vercel setting was updated.
+All three existing ANTHROPIC_API_KEY records were updated as secrets for their existing production+preview targets. Local Kairos and `/Users/ndujekwuugochukwu/Documents/CODE/personal/invoicer/.env.local` match. PrinceBooks was later restored to `/Users/ndujekwuugochukwu/Documents/CODE/personal/ctybooksource`; its ignored local environment now has the same new Anthropic key plus a verified MongoDB connection to `bookDB`. See the root handoff for restoration details.
 
 Invoicer deployment `dpl_CjJruvjhbkmMV4JgszwytAzSxtNQ` is READY and owns its live alias. PrinceBooks deployment `dpl_BHfL1j1wMgv6Fcmw8ZZLpiwR6Whd` is READY and owns its live alias. An earlier PrinceBooks retry failed on a transient Next font build error; retry succeeded. These were redeployments of the existing sources with the new environment.
 
@@ -57,11 +58,22 @@ The owned QA server is stopped and only `kairos_qa_01a1df22` was dropped. No fic
 - UI: `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/{Sidebar,MobileNav,RightRail,CauseCard,NavIcon}.tsx`, `src/app/globals.css`.
 - Guest giving: `src/components/DonateModal.tsx`, `src/app/cause/[slug]/{page,CauseActions}.tsx`, `src/app/api/causes/[id]/{donate,disburse}/route.ts`, donation schema in `src/lib/models.ts`.
 - Intake and identity: `src/app/create/CreateWizard.tsx`, `src/app/api/ai/interview/route.ts`, `src/lib/interview.ts`.
-- Uploads: `src/components/EvidenceUpload.tsx`, `src/lib/supporting-files.ts`, `src/app/api/evidence/route.ts`, `src/app/api/evidence/[id]/route.ts`, publication route `src/app/api/causes/route.ts`.
+- Uploads: `src/components/EvidenceUpload.tsx`, `src/lib/cloudinary.ts`, `src/lib/supporting-files.ts`, `src/app/api/evidence/route.ts`, `src/app/api/evidence/[id]/route.ts`, publication route `src/app/api/causes/route.ts`.
 - Password reset only: `npm run accounts:passwords` (safe to repeat; updates only differing password hashes).
 - Build: `npm run build`. Do not rebuild over a running production preview’s `.next` files; stop/restart the preview after builds.
 - Integration checks: `KAIROS_QA_DB=<matching_disposable_db_name> node --env-file=.env.local scripts/verify-demo-flow.mjs`, with a QA-configured server already running on port 3010. Never point that server at the live database. The test creates fictional records in the selected QA database only.
 - Old database snapshots intentionally restore old state, including passwords/contacts. Reapply the current requested demo password/contact settings after restoring an old snapshot.
+
+## 16 November Cloudinary change
+
+- Added the official Cloudinary SDK and `src/lib/cloudinary.ts`. Uploads preserve original bytes as `raw`/`authenticated` assets with a `kairos/evidence/` public-ID prefix. No unsigned asset URL or API secret is sent to the browser.
+- `/api/evidence/<id>` checks access before streaming a server-signed CDN response. Unpublished uploads remain owner-only; published causes retain public document viewing through the app.
+- New file records store provider IDs and SHA-256/size, without MongoDB binary contents. Legacy MongoDB reads remain compatible during rollout.
+- `npm run evidence:migrate` (Node 22+) uploads each old binary, verifies its download checksum, then atomically replaces the binary with Cloudinary metadata while keeping the same file ID/links. Initial live check found zero old files to migrate. Check again after deployment in case someone uploaded during rollout.
+- Configured `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` locally and as Vercel secrets for production+preview. Authentication, real upload/download byte equality and unsigned-access rejection were verified. Use `CLOUDINARY_UPLOAD_FOLDER=kairos/qa/<run>` only for isolated QA.
+- Added `scripts/verify-cloudinary-migration.mjs` to cover PDF bytes/headers, draft access, legacy links and verified migration. Test against a fresh `kairos_qa_*` database at port 3010; remove only that run’s Cloudinary assets before dropping its QA collections.
+- A regression check caught Haiku mentioning internal demo context despite the prompt. Added `publicInterviewReply` to suppress those sentences deterministically, with a clean fallback.
+- Production build and 20 demo-flow checks passed. Three additional checks passed for PDF delivery, legacy document access and checksum-verified migration. The demo-context response guard has deterministic regression checks as well. Final deployment and cleanup details are recorded in the workspace-root `CODEX_HANDOFF.md` follow-up, so this tracked document does not require another deployment just to record its own deployment ID.
 
 ## Next session
 

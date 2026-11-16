@@ -1,4 +1,27 @@
 export const MAX_INTERVIEW_QUESTIONS = 5;
+// Do not rely on the model alone to keep its internal demo context private.
+export function publicInterviewReply(
+  reply: string,
+  done: boolean,
+  fallback: string,
+) {
+  const sentences = reply.match(/[^.!?]+[.!?]*/g) ?? [];
+  const clean = sentences
+    .filter(
+      (sentence) =>
+        !/\b(?:demo|demonstration|prototype|simulated|simulation)\b/i.test(
+          sentence,
+        ),
+    )
+    .join(" ")
+    .trim();
+  return (
+    clean ||
+    (done
+      ? "I’ve assembled your cause for review. You can adjust the details and add supporting documents."
+      : fallback)
+  );
+}
 export const INTAKE_OPENER =
   "Hi, I’m the Kairos intake assistant. What happened, who needs help, and what would you like to raise money for?";
 export type InterviewMessage = { from: "ai" | "me"; text: string };

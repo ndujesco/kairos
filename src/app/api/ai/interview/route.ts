@@ -5,6 +5,7 @@ import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 
 import {
   fallbackInterview,
+  publicInterviewReply,
   MAX_INTERVIEW_QUESTIONS,
   INTAKE_OPENER,
   type InterviewMessage,
@@ -182,7 +183,15 @@ export async function POST(req: NextRequest) {
         ...fallbackInterview(chat, attachments, true),
         source: "bounded",
       });
-    return NextResponse.json({ ...parsed, source: "live" });
+    return NextResponse.json({
+      ...parsed,
+      reply: publicInterviewReply(
+        parsed.reply,
+        parsed.done,
+        fallbackInterview(chat, attachments).reply,
+      ),
+      source: "live",
+    });
   } catch {
     console.warn("AI interview used the bounded local fallback.");
     return NextResponse.json({
