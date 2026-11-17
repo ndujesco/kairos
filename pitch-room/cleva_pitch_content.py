@@ -22,8 +22,8 @@ for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "pro
 SLIDES[0].update(
     paragraphs=[
         shared.SLIDES[0]["paragraphs"][0],
-        "We built Kairos, which is a transparent crowdfunding platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.",
-        "We make that possible by controlling the flow of money, from the people giving to the school, hospital or supplier being paid.",
+        "Which is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.",
+        "We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.",
     ],
     cue="Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.",
 )
@@ -60,6 +60,7 @@ SLIDES[2].update(
               {"tag": "03", "title": "Pay verified vendors", "body": "Release funds to named providers, with a receipt for every donor."}],
           "band": "The prototype demonstrates the flow. Live custody and settlement remain to be integrated."},
 )
+SLIDES[3]["paragraphs"][0] = "A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for"
 SLIDES[3]["paragraphs"].append(
     "That is what makes Kairos different: every giver can follow their own part of the payment, even when many people funded the bill."
 )

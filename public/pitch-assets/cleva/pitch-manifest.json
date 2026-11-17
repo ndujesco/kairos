@@ -3,10 +3,10 @@
   "slides": 8,
   "questions": 110,
   "priority": 24,
-  "words": 602,
+  "words": 608,
   "seconds": 600,
   "source_content": "cleva_pitch_content.py",
-  "source_sha256": "048965fc258a86ccbe49ea756fb8b1a1352d5dcbf54250203511b65ffb9ab91a",
+  "source_sha256": "3c86536d0ee8d8bb45f5e78a8ecc347fd52e5029394c4339df189a68f6bf5824",
   "deckBase": "pitch-assets/cleva/deck",
   "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
@@ -73,12 +73,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 602,
+      "words": 608,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 602,
+      "words": 608,
       "script": "pitch-script-miracle.md"
     }
   },

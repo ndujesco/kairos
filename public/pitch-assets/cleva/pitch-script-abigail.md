@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail.
 
-8 slides, 602 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
+8 slides, 608 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
 
 Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.
 
@@ -14,9 +14,9 @@ Abigail · 0:00 to 0:40
 
 Good day everyone. My name is Sokenu Abigail, presenting on behalf of Team Kairos.
 
-We built Kairos, which is a transparent crowdfunding platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.
+Which is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.
 
-We make that possible by controlling the flow of money, from the people giving to the school, hospital or supplier being paid.
+We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.
 
 Delivery: Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.
 
@@ -50,7 +50,7 @@ Delivery: Need and budget, controlled provider payment, personal receipt. Licens
 
 Abigail · 3:10 to 3:40
 
-A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.
+A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for
 
 That is what makes Kairos different: every giver can follow their own part of the payment, even when many people funded the bill.
 
