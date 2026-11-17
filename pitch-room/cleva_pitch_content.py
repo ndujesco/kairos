@@ -7,21 +7,31 @@ from copy import deepcopy
 import cleva_content as shared
 
 META = dict(shared.META,
-            title="Kairos | Cleva Pitch Room",
-            event="Cleva × Tether", stage="Future of Payments · Abigail and Miracle",
-            version="cleva-office-hours-demo-2026-11-12")
+            title="Kairos | Cleva Grand Finale",
+            event="Cleva × Tether", stage="Future of Payments · Grand Finale",
+            date="21 November 2026",
+            version="cleva-grand-finale-payments-2026-11-17")
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = shared.DEFAULT_PRESENTER
 VIDEO_SECONDS = 227.033
+PRESENTATION_LIMIT_SECONDS = 12 * 60
 SLIDES = [deepcopy(shared.SLIDES[i]) for i in [0, 1, 2, 3, 4]]
 for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "prototype"]):
     section["deck_key"] = key
 
+SLIDES[0].update(
+    paragraphs=[
+        shared.SLIDES[0]["paragraphs"][0],
+        "We built Kairos, which is a transparent crowdfunding platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.",
+        "We make that possible by controlling the flow of money, from the people giving to the school, hospital or supplier being paid.",
+    ],
+    cue="Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.",
+)
 SLIDES[1].update(
     title="A transfer succeeds. The bill may still be unpaid.",
     paragraphs=[
         shared.SLIDES[1]["paragraphs"][0],
-        "People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we manage to keep money tied to the need it was given for, instead of risking it getting pocketed along the way?",
+        "People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we keep money tied to the need it was given for, especially when many people are contributing to the same bill?",
     ],
     cue="Use the school-fees story, then name the payment gap plainly. The problem is money reaching an account without proof it paid the intended bill.",
     deck={"eyebrow": "THE PAYMENT CHALLENGE",
@@ -37,9 +47,9 @@ SLIDES[2].update(
     paragraphs=[
         "Kairos is that trusted middle layer.",
         "Here is how it's designed to work.",
-        "First, the cause gets checked. The person raising money proves who they are with their BVN or NIN. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming real suppliers, and screens the evidence for reused photos and mismatched dates.",
-        "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget, and the ledger. The money lands in escrow, never a personal account.",
-        "Third, funds leave escrow only toward named, verified vendors.",
+        "First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.",
+        "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account.",
+        "Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment goes into the public record.",
     ],
     cue="Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.",
     deck={"eyebrow": "THE SOLUTION",
@@ -56,9 +66,9 @@ SLIDES[3]["paragraphs"].append(
 SLIDES[4].update(
     title="What we can show you today.",
     paragraphs=[
-        "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app.",
+        "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app. People can also upload supporting documents when creating a cause or come back to add them later.",
         "Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.",
-        "With Cleva's approval, we could also explore funding from supporters abroad, linking a contribution in dollars or USDT to the same bill and receipt.",
+        "We'd start with school fees, then hospital bills. And looking ahead, someone abroad should be able to help pay the same bill alongside supporters here in Nigeria, with the institution paid directly and each person getting proof of their share. With Cleva's approval, we'd explore a dollar or USDT funding connection for that flow.",
         "We aim to cover running costs through donations and NGO grants. Without that support, our tentative fallback is two percent upkeep, capped at five thousand naira per cause.",
         shared.SLIDES[8]["paragraphs"][0],
     ],
@@ -79,9 +89,14 @@ SLIDES += [
     dict(deepcopy(shared.SLIDES[9]), deck_key="team"),
     dict(deepcopy(shared.SLIDES[10]), deck_key="closing"),
 ]
-# Full presentation: 7:50, including the unmodified 3:47 recording.
-for section, seconds in zip(SLIDES, [21, 51, 55, 24, 59, 239, 9, 12]):
+# Rehearsal plan: 10:00, including the unmodified 3:47 recording.
+# The Grand Finale allows 12 minutes plus a separate five-minute Q&A.
+for section, seconds in zip(SLIDES, [40, 60, 90, 30, 100, 239, 12, 29]):
     section["seconds"] = seconds
+SLIDES[-1]["paragraphs"] = [
+    "Kairos makes crowdfunding transparent by controlling the flow of money. From the need, to the provider's payment, to each donor's receipt.",
+    "That is the future we want to build: people can help from wherever they are and see what their money paid for. Thank you so much. We're Team Kairos.",
+]
 SLIDES[-1]["cue"] = "Thank them, then stop. The demo has already played."
 
 
@@ -93,21 +108,35 @@ def slides_for_presenter(presenter):
 
 shared_paragraphs = shared.shared_paragraphs
 DEMO = deepcopy(shared.DEMO)
-SHORT_PITCH = deepcopy(shared.SHORT_PITCH)
-SHORT_PITCH[-1] = (
-    "We'd start with school fees. With Cleva's approval, we'd explore a connection for supporters abroad to fund those bills and receive the same personal proof. That integration is proposed, and licensed custody still needs a separate partner."
-)
+SHORT_PITCH = [
+    "Kairos makes crowdfunding transparent by controlling the flow of money. Think of a school-fee appeal shared on WhatsApp: people want to help, but an account number and a successful transfer don't tell them whether the bill was paid.",
+    "On Kairos, the organiser publishes an itemised budget naming the school, hospital or supplier. People contribute toward the same bill. In the intended live flow, a licensed partner holds the money and pays only those providers, within the budget. Each donor receives a receipt showing their own share of the payment.",
+    "The accounting, budget checks, donor attribution, document uploads and notifications are working. Bank transfer, Remita settlement and NIN lookup are simulated; independent verification and licensed custody still need connecting.",
+    "We'd start with school fees. With Cleva's approval, we'd explore funding from supporters abroad, so someone outside Nigeria could help pay the same bill and receive the same proof. That connection is proposed.",
+]
 
 EVENTS = [deepcopy(shared.EVENTS[0])]
 EVENTS[0].update(
-    assess="The latest organiser message prioritises Problem, Solution and Demo & Progress. It says a lengthy PowerPoint is unnecessary and practical execution matters more than polished slides. It does not confirm a ten-minute slot.",
-    spoken="We solve the gap between sending help and knowing it paid for the need. Kairos connects a contribution to a published budget, a controlled provider payment and each donor's receipt.",
-    notice="Use the eight-slide route with the integrated demo. The Cleva connection is a short future option in Progress, not the central payment problem.",
+    schedule=[
+        "Grand Finale: Saturday, 21 November 2026 at UNILAG. Kairos is one of the final five.",
+        "12 minutes to present, followed by five minutes of Q&A. Timing is strict.",
+        "Submit the final deck and/or demo links by Friday, 20 November, noon WAT: https://forms.gle/Uns2hbKPQmXq88TL9.",
+        "Abigail accepted the spot by email on 17 November at 11:41. All team members are encouraged to attend.",
+        "Complete Cleva account verification before the event; referral code UNILAG. Completion is not confirmed in these notes.",
+    ],
+    assess="The finale asks for the problem, solution, tangible prototype progress and vision. The earlier Office Hours emphasis on practical execution still informs this presentation.",
+    spoken="Kairos makes crowdfunding transparent by controlling the flow of money: contributions toward a named bill, provider payments within its budget and a receipt for each donor's own share.",
+    notice="Grand Finale: the flow of money is the thread.",
+    notice_detail="The 12-minute presentation limit and five-minute Q&A are confirmed. The existing recording is unchanged while the next demo is discussed.",
     follow_up="First confirm donation-platform eligibility, account structure and integration access with Cleva. No live collection, Cleva API, stablecoin integration or custody partnership is established by this prototype.",
 )
-EVENTS[0]["schedule"].append("Latest update: the top five teams will be notified by EOD Monday 16 November and invited to pitch on stage.")
 
 GROUPS = deepcopy([group for group in shared.GROUPS if group[0] != "APWEN focus"])
+# Keep question IDs and saved stars stable while aligning the payment answer.
+for _, rows in GROUPS:
+    for index, row in enumerate(rows):
+        if row[0] == "Why does this belong in a payments hackathon?":
+            rows[index] = (row[0], "Kairos controls how a group of contributions becomes a provider payment. It links the published bill and budget to the available balance, restricts recorded payouts to budget items and gives each contributor a receipt for their share. The intended live flow enforces those restrictions through a licensed custody/payment partner. Our prototype demonstrates the accounting and rules; real settlement still needs integration.", *row[2:])
 GROUPS.append(("Cleva integration", [
     ("Where exactly could Cleva fit?", "We would explore an approved connection for supporters abroad to fund a named Nigerian bill, with currency conversion where needed. Kairos would connect the settled contribution to its budget, provider payment and donor receipt. The proposed connection is unbuilt and eligibility must be confirmed.", True),
     ("Would Cleva hold the escrow?", "We have not established a Cleva escrow service for Kairos. Licensed custody and the release rules need a separate agreed arrangement. An ordinary account balance is not evidence that donated funds are segregated or restricted to a cause.", True),
@@ -129,6 +158,8 @@ for category, rows in GROUPS:
 assert len(QUESTIONS) == 110
 
 SOURCES_HTML = """<section class="prepbox"><h2>The Cleva connection: basis and open questions</h2>
+<p><a href="https://www.getcleva.com/blog/cleva-and-tether-launch-campus-initiative-to-empower-the-next-generation-with-digital-finance-education" target="_blank" rel="noopener">Official Campus Storm context</a>
+connects practical financial innovation with digital finance and global payments. Our proposed overseas funding flow builds on the same bill, payment controls and donor receipt. It is not a completed integration.</p>
 <p><a href="https://www.getcleva.com/business" target="_blank" rel="noopener">Cleva Business</a>
 lists foreign-currency receipts, stablecoin deposits and local-currency conversion.
 Using those services for Kairos is a proposal, not an approved integration.</p>
@@ -144,39 +175,43 @@ Integration access, account ownership, settlement evidence, fees and refunds rem
 PAGE = {
     "deck_base": "pitch-assets/cleva/deck",
     "demo_url": "pitch-assets/cleva/demo.mp4",
-    "header": "Cleva × Tether\nFuture of Payments",
-    "description": "Kairos pitch for Cleva: transparent giving, a proposed international funding connection, switchable presenters and judge questions.",
-    "footer": "Abigail + Miracle · Cleva pitch",
-    "prep_kicker": "Cleva × Tether · 13 November 2026",
-    "prep_title": "Problem. Solution. Working demo.",
-    "prep_intro": "Answer the three questions in the organiser's latest message. Keep the payment gap clear, show the existing flow, and let the demo carry the evidence.",
-    "script_title": "Kairos: Cleva pitch script",
-    "script_intro": "Either presenter can deliver the whole pitch. The 7:50 rehearsal plan includes the full 3:47 recording and handover. This eight-slide deck focuses on the payment problem, solution and practical progress. The organiser has not confirmed a ten-minute slot. The possible Cleva funding connection remains unbuilt and subject to approval.",
+    "header": "Cleva × Tether\nGrand Finale · Future of Payments",
+    "description": "Kairos makes crowdfunding transparent through control of contributions, provider payments and each donor's receipt. Cleva Grand Finale script for Abigail or Miracle.",
+    "hero_kicker": "The contribution. The provider. Your own receipt.",
+    "hero_title": "Transparent crowdfunding. Every payment accounted for.",
+    "hero_status": "Grand Finale · 12 min + 5 min Q&A",
+    "footer": "Abigail + Miracle · Cleva Grand Finale",
+    "prep_kicker": "Cleva × Tether · 21 November 2026 · UNILAG",
+    "prep_title": "Keep the flow of money clear.",
+    "prep_intro": "The finale asks for the problem, solution, tangible progress and vision. Keep the familiar story and show how control of payments makes crowdfunding transparent.",
+    "script_title": "Kairos: Cleva Grand Finale script",
+    "script_intro": "Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.",
     "qa_title": "Kairos: 110 questions for the Cleva pitch",
     "qa_intro": "Start with the priority questions, then the Cleva integration topic. Distinguish the working prototype from the proposed international funding connection. No Cleva approval, API access, stablecoin integration or custody partnership is claimed.",
     "qa_page_intro": "110 questions, including ten on the proposed Cleva connection. Start with those marked Rehearse first, then practise the eligibility, custody and integration questions.",
-    "event_title": "Kairos: Cleva preparation notes",
-    "event_intro": "The latest Office Hours brief prioritises Problem, Solution and Demo & Progress over a lengthy PowerPoint. The eight-slide route is planned at 7:50 including the 3:47 recording. Confirm the actual slot; these notes are not extra spoken sections.",
+    "event_title": "Kairos: Cleva Grand Finale preparation",
+    "event_intro": "The Grand Finale is at UNILAG on 21 November. The current rehearsal plan is 10:00 including the existing recording, against a strict 12-minute limit plus five minutes Q&A. Materials are due at noon WAT on 20 November. These are preparation notes, not extra spoken sections.",
     "focus_note": "A proposed connection for supporters abroad, subject to Cleva confirming eligibility and access. Licensed custody remains a separate requirement.",
-    "source_note": "Prepared from Abigail's voice note, the latest Office Hours message, the existing Kairos/JCI script and working prototype. Official Cleva sources were checked on 12 November 2026.",
-    "notes_note": "This Cleva PowerPoint has matching speaker notes and an embedded video. The PDF shows a poster; use the PowerPoint or presenter page for playback.",
-    "timing_note": "7:50 including the full 3:47 recording. Play the demo before Team and Thank You, with computer sound shared. The organiser's exact allowance is not confirmed.",
-    "prep_timing_note": "The eight-slide route is planned at 7:50 including the recording. The organiser asks for a concise explanation and evidence of progress, not a lengthy PowerPoint. Confirm the actual time allowance.",
+    "source_note": "Prepared from the 17 November finale email, the reported Office Hours feedback, Abigail's voice note and the existing Kairos/JCI script. Campus Storm context was checked on 17 November; integration research remains dated 12 November.",
+    "notes_note": "Use this updated browser/Markdown script for the finale. Native deck downloads retain the earlier slides and notes. The recording is unchanged.",
+    "timing_note": "10:00 including the existing 3:47 recording. The confirmed limit is 12 minutes, followed by five minutes Q&A. Keep the two-minute margin; the demo is unchanged for now.",
+    "prep_timing_note": "Rehearse below the confirmed 12-minute limit. Q&A has its own five-minute slot. The recording is unchanged while the next demonstration is discussed.",
     "demo_kicker": "Evidence of execution",
     "demo_title": "Show the working flow.",
     "demo_intro": "The same 3:47 recording is in slide 6, before Team and Thank You. It demonstrates the existing prototype rather than a Cleva integration.",
     "demo_notice": "Working prototype with demo data. Bank transfer, Remita settlement and NIN lookup are simulated. Independent verification and live custody still need integration.",
     "criteria": [["Problem", "Slide 2"], ["Solution and uniqueness", "Slides 3 and 4"],
-                 ["Demo & Progress", "Slides 5 and 6"], ["Team and closing", "Slides 7 and 8"]],
+                 ["Progress and vision", "Slide 5"], ["Demonstration", "Slide 6"], ["Team and closing", "Slides 7 and 8"]],
     "checklist": [
-        "Confirm the Cleva office-hour booking, meeting link, start time and pitch duration.",
+        "Confirm arrival time and presentation setup at UNILAG for 21 November.",
         "Check event registration and the Cleva KYC instructions from the invitation.",
         "Choose Abigail or Miracle and download that presenter's Cleva script.",
-        "Rehearse the 7:50 route including the recording; confirm the organiser's actual allowance.",
+        "Rehearse the 10:00 plan within the 12-minute limit, with five minutes Q&A separate.",
         "Ask whether the giving flow is eligible and what integration access could be available.",
         "Explain that custody needs a separate licensed arrangement and the connection is unbuilt.",
         "Open the Cleva deck, test its embedded video and share computer sound. Keep the MP4 as a backup.",
-        "Practise the priority questions and the Cleva integration topic.",
+        "Submit the final presentation by noon WAT on 20 November: https://forms.gle/Uns2hbKPQmXq88TL9.",
+        "Practise the payment-solution answer and the proposed overseas funding flow.",
     ],
 }
 

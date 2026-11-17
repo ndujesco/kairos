@@ -1,54 +1,56 @@
-# Kairos: Cleva pitch script
+# Kairos: Cleva Grand Finale script
 
 Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-8 slides, 474 presenter words. Planning time 7:50, including pauses and the full embedded demo recording.
+8 slides, 602 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
 
-Either presenter can deliver the whole pitch. The 7:50 rehearsal plan includes the full 3:47 recording and handover. This eight-slide deck focuses on the payment problem, solution and practical progress. The organiser has not confirmed a ten-minute slot. The possible Cleva funding connection remains unbuilt and subject to approval.
+Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.
 
 ## Slide 1: Transparent giving for Nigeria
 
-Abigail or Miracle · 0:00 to 0:21
+Abigail or Miracle · 0:00 to 0:40
 
 **As Abigail:** Good day everyone. My name is Sokenu Abigail, presenting on behalf of Team Kairos.
 
 **As Miracle:** Good day everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.
 
-We built Kairos, which is a transparent giving platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.
+We built Kairos, which is a transparent crowdfunding platform where helping is no longer an act of faith, because every naira you give can be watched until it reaches the need it was given for.
 
-Delivery: Camera on. Say Kairos clearly. The deck is already shared.
+We make that possible by controlling the flow of money, from the people giving to the school, hospital or supplier being paid.
+
+Delivery: Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.
 
 ## Slide 2: A transfer succeeds. The bill may still be unpaid.
 
-Abigail or Miracle · 0:21 to 1:12
+Abigail or Miracle · 0:40 to 1:40
 
 Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we manage to keep money tied to the need it was given for, instead of risking it getting pocketed along the way?
+People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we keep money tied to the need it was given for, especially when many people are contributing to the same bill?
 
 Delivery: Use the school-fees story, then name the payment gap plainly. The problem is money reaching an account without proof it paid the intended bill.
 
 ## Slide 3: Our solution.
 
-Abigail or Miracle · 1:12 to 2:07
+Abigail or Miracle · 1:40 to 3:10
 
 Kairos is that trusted middle layer.
 
 Here is how it's designed to work.
 
-First, the cause gets checked. The person raising money proves who they are with their BVN or NIN. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming real suppliers, and screens the evidence for reused photos and mismatched dates.
+First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.
 
-Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget, and the ledger. The money lands in escrow, never a personal account.
+Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account.
 
-Third, funds leave escrow only toward named, verified vendors.
+Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment goes into the public record.
 
 Delivery: Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.
 
 ## Slide 4: Every giver sees their own part.
 
-Abigail or Miracle · 2:07 to 2:31
+Abigail or Miracle · 3:10 to 3:40
 
 A donor doesn't just get a thank-you. They get a receipt: four thousand nine hundred naira of their seven thousand, paid to LUTH for surgery.
 
@@ -58,13 +60,13 @@ Delivery: Point at the receipt. Read the numbers slowly. This example allocates 
 
 ## Slide 5: What we can show you today.
 
-Abigail or Miracle · 2:31 to 3:30
+Abigail or Miracle · 3:40 to 5:20
 
-Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app.
+Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app. People can also upload supporting documents when creating a cause or come back to add them later.
 
 Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.
 
-With Cleva's approval, we could also explore funding from supporters abroad, linking a contribution in dollars or USDT to the same bill and receipt.
+We'd start with school fees, then hospital bills. And looking ahead, someone abroad should be able to help pay the same bill alongside supporters here in Nigeria, with the institution paid directly and each person getting proof of their share. With Cleva's approval, we'd explore a dollar or USDT funding connection for that flow.
 
 We aim to cover running costs through donations and NGO grants. Without that support, our tentative fallback is two percent upkeep, capped at five thousand naira per cause.
 
@@ -74,7 +76,7 @@ Delivery: Show the working app next. The Cleva connection is proposed, not built
 
 ## Slide 6: Watch the payment become a receipt.
 
-Abigail or Miracle · 3:30 to 7:29
+Abigail or Miracle · 5:20 to 9:19
 
 Now let us watch a demonstration of how the app works.
 
@@ -86,7 +88,7 @@ Recording: pitch-assets/cleva/demo.mp4 · 3:47. This section is already included
 
 ## Slide 7: Abigail and Miracle.
 
-Abigail or Miracle · 7:29 to 7:38
+Abigail or Miracle · 9:19 to 9:31
 
 **As Abigail:** And this is the team. I'm Abigail, the team lead and product manager. Miracle is our product designer.
 
@@ -96,18 +98,20 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 ## Slide 8: Give with proof, not faith.
 
-Abigail or Miracle · 7:38 to 7:50
+Abigail or Miracle · 9:31 to 10:00
 
-In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
+Kairos makes crowdfunding transparent by controlling the flow of money. From the need, to the provider's payment, to each donor's receipt.
+
+That is the future we want to build: people can help from wherever they are and see what their money paid for. Thank you so much. We're Team Kairos.
 
 Delivery: Thank them, then stop. The demo has already played.
 
 ## Short explanation
 
-Kairos is a transparent giving platform. Think of a hospital appeal on WhatsApp: you want to help, but an account number and a transfer confirmation don't tell you whether the bill was paid.
+Kairos makes crowdfunding transparent by controlling the flow of money. Think of a school-fee appeal shared on WhatsApp: people want to help, but an account number and a successful transfer don't tell them whether the bill was paid.
 
-On Kairos, the organiser publishes an itemised budget naming the hospital, school or supplier. The intended live flow holds donations with a licensed partner and pays those providers directly. Every donor receives a receipt showing their own share of each payment.
+On Kairos, the organiser publishes an itemised budget naming the school, hospital or supplier. People contribute toward the same bill. In the intended live flow, a licensed partner holds the money and pays only those providers, within the budget. Each donor receives a receipt showing their own share of the payment.
 
-The prototype already demonstrates the accounting, budget checks, donor attribution and notifications. Bank transfers, Remita settlement and NIN lookup are simulated. Provider checks and licensed custody still need to be connected, and no real donations have moved.
+The accounting, budget checks, donor attribution, document uploads and notifications are working. Bank transfer, Remita settlement and NIN lookup are simulated; independent verification and licensed custody still need connecting.
 
-We'd start with school fees. With Cleva's approval, we'd explore a connection for supporters abroad to fund those bills and receive the same personal proof. That integration is proposed, and licensed custody still needs a separate partner.
+We'd start with school fees. With Cleva's approval, we'd explore funding from supporters abroad, so someone outside Nigeria could help pay the same bill and receive the same proof. That connection is proposed.

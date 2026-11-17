@@ -336,8 +336,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 {keynote_download}<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a></div></div></div></header>
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
-<div class="intro"><div><p class="kicker">The need. The provider. Your own receipt.</p><h1>Give with proof, not faith.</h1>
-<p>{len(slides)} slides · <span id="spoken-total">{words}</span> presenter words · about {mmss(elapsed)} {timing_summary} · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">Working prototype · simulated settlement</span></div>
+<div class="intro"><div><p class="kicker">{e(page.get("hero_kicker", "The need. The provider. Your own receipt."))}</p><h1>{e(page.get("hero_title", "Give with proof, not faith."))}</h1>
+<p>{len(slides)} slides · <span id="spoken-total">{words}</span> presenter words · about {mmss(elapsed)} {timing_summary} · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">{e(page.get("hero_status", "Working prototype · simulated settlement"))}</span></div>
 <div class="presenterbar"><div class="presenterfield"><label for="presenter">Lead presenter</label><select id="presenter" aria-describedby="presenter-help">{presenter_options}</select></div>
 <p id="presenter-help">Either person can present the whole deck. Your choice is saved in this browser.</p></div>
 <div class="stage"><div class="scriptpaper" id="script-paper">{''.join(script_blocks)}</div>
@@ -450,6 +450,9 @@ def main():
         for edition in ("apwen", "cleva") if args.edition == "all" else (args.edition,):
             build(load_content(f"{edition}_pitch_content.py"), PUBLIC / f"{edition}-pitch.html", ASSETS / edition,
                   assets_base=f"pitch-assets/{edition}", storage_prefix=f"kairos-{edition}-room-v1", cleva=edition == "cleva")
+            if edition == "cleva":
+                # The requested short URL serves the same generated room and assets.
+                (PUBLIC / "cleva.html").write_bytes((PUBLIC / "cleva-pitch.html").read_bytes())
     finally:
         verify_preserved(before)
 

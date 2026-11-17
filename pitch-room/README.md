@@ -5,18 +5,18 @@ The event rooms now have independent decks, scripts, assets and video playback:
 
 | Room | Source | Slides | Full rehearsal plan |
 | --- | --- | --- | --- |
-| `/cleva-pitch.html` | `cleva_pitch_content.py` | 8 | 7:50 |
+| `/cleva.html` (also `/cleva-pitch.html`) | `cleva_pitch_content.py` | 8 | 10:00 |
 | `/apwen-pitch.html` | `apwen_pitch_content.py` | 12 | 7:37 |
 
-Both durations include the unchanged 3:47.033 recording, an introduction and
-pauses. These are rehearsal plans; neither organiser has confirmed that exact
-allowance. The recording is before Team and Thank You in both decks. Only
+The Cleva plan includes the unchanged 3:47.033 recording, an introduction and
+pauses. Its finale allowance is confirmed: 12 minutes presenting plus five
+minutes Q&A. Its recording remains before Team and Thank You. Only
 Abigail and Miracle appear; either can be selected to present the whole script.
 
-Cleva follows the latest Office Hours brief: Problem, Solution, Demo & Progress.
-Abigail's voice note informs the payment framing: a transfer can reach an
-account without paying the intended bill. The shorter deck connects money given
-to a published budget, controlled direct provider payment and donor receipt.
+Cleva's finale script retains the school-fees story and conversational voice,
+with crowdfunding transparency explained through control of the flow of money:
+contributions, budget-limited provider payments and each donor's own receipt.
+Progress also introduces the proposed overseas funding flow as a vision.
 The prototype, simulated parts and proposed Cleva connection stay distinct.
 APWEN retains the previous spoken content and original slide subjects, adding
 the demonstration before the last two slides. Its format can change separately.
@@ -28,6 +28,14 @@ and embedded video verified in the app. The PPTX notes-master registration is
 repaired for Keynote import too. The demo slide contains only the video; press
 Play. PDF copies show a static poster. The browser Demo tab shows only the same video player; press Play. Playback
 position is retained between Pitch and Demo, and leaving for Q&A pauses it.
+
+17 November scope: only the Cleva presenter page, Markdown scripts and
+preparation text were revised. Existing slide previews, native deck downloads,
+notes and video remain the preliminary edition. The browser/Markdown script
+is the current finale rehearsal text. `/cleva.html` is generated as an identical
+short alias by `pitch:cleva`; both URLs share the same browser preferences.
+The previous page/source/scripts were archived under the event's
+`02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.
 
 ```sh
 # Build event pages/scripts from already exported decks; preserve agnostic files

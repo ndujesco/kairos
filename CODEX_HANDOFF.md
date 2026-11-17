@@ -1,6 +1,24 @@
 # Kairos website handoff
 
-Updated: 16 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
+Updated: 17 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
+
+## Latest work: Cleva Grand Finale presenter page
+
+The user authorized updating `/cleva.html`, keeping their conversational voice
+and making payments the thread: transparent crowdfunding through control of
+contributions, provider payouts and each donor's receipt. The demo is explicitly
+deferred for later brainstorming and remains unchanged.
+
+- Content source: `pitch-room/cleva_pitch_content.py`; regenerate with `npm run pitch:cleva`.
+- `/cleva.html` and `/cleva-pitch.html` serve identical generated content with the same presenter preferences. Eight existing visual sections remain; the updated script has 602 words for Abigail or Miracle and a 10:00 rehearsal plan including the existing recording. The confirmed finale allowance is 12 minutes plus five minutes Q&A.
+- Kept the school-fees story, conversational structure, receipt example, NGO/grant-first funding model, tentative capped upkeep, fraud ambition and team. Added payment-flow language and the proposed overseas bill-funding vision. Current document uploads are acknowledged; independent verification and international settlement remain unbuilt.
+- Main page, presenter-specific Markdown scripts, short pitch and preparation text agree. Only the payment-hackathon answer changed in the existing 110-question bank; question IDs and saved-star behavior remain stable.
+- Demo slide content, 239-second section, 227.033-second video, player code, video bytes and native PDF/PPTX/Keynote decks are unchanged. The page says native downloads retain their previous slides/notes; the browser/Markdown script is the current finale text. General/APWEN pages, shared source and assets were fingerprinted and preserved.
+- The previous page/source/scripts are preserved in the event's `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`. Do not overwrite the earlier submission/recording while continuing the finale work.
+- Browser preview access was unavailable. Source, generated-content, preservation checks and the production build are used for this release; final deployment and live-check results are recorded in the workspace-root handoff.
+
+Continue from the user's next presentation/demo direction; do not revise the
+demo recording, rebuild native decks or alter other event rooms as a side effect.
 
 ## Resume here
 

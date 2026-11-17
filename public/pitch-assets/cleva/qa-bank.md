@@ -16,7 +16,7 @@ People want to help with a stranger's bill but cannot easily check the appeal or
 
 ### 003. ★ Why does this belong in a payments hackathon?
 
-The gap sits in the payment flow. We connect collection to a stated expense, restrict recorded payouts to its budget item, and attribute the payout back to the donors. The product is still transparent giving; the payments theme helps us explain how that accountability works.
+Kairos controls how a group of contributions becomes a provider payment. It links the published bill and budget to the available balance, restricts recorded payouts to budget items and gives each contributor a receipt for their share. The intended live flow enforces those restrictions through a licensed custody/payment partner. Our prototype demonstrates the accounting and rules; real settlement still needs integration.
 
 ### 004. ★ What makes your approach different?
 
