@@ -1,8 +1,20 @@
 # Kairos website handoff
 
-Updated: 17 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
+Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Latest work: Cleva Grand Finale presenter page
+## Current work: documented stage rooms, then camera-opening transition
+
+The user requested explicit event/stage URLs. Canonical pages are `/cleva-finale.html`, `/cleva-preliminary.html`, `/apwen-semi.html` and the proposed `/faith-and-tech-semis.html`. Legacy `/cleva.html` stays on the finale; `/cleva-pitch.html` now serves the recovered preliminary edition; `/apwen-pitch.html` serves the semi-final. APWEN finale is reserved, not created.
+
+Read `pitch-room/README.md` for the source and build map. Stage downloads and preferences are isolated. Existing APWEN script, native decks and recordings are preserved; the preliminary script is recovered from the 17 November archive. Faith & Tech is a new HTML deck with Abigail/Ugochukwu, an unconfirmed 9:30 rehearsal plan and no invented research. The user confirmed no per-team limit has arrived.
+
+The latest spoken finale script is 665 words, retaining the 10:00 plan and the user’s exact slide 1/4 wording. A light payments pass adds per-cause contribution accounting, matching payouts to their budget and donor shares. It contains no sponsor name, including the short explanation; event metadata and the specifically requested Cleva Q&A remain event-specific. The demo remains unchanged.
+
+The user additionally requested Cleva-specific finale Q&A. `cleva_finale_qa.py` supplies 38 questions (21 priorities) about the payments case, Cleva/Tether funding, external settlement, controls and execution. Question 1 is “How exactly is Kairos a payment solution?” and explains crowdfunding as the specific payment use case, combining existing services with budget/payment controls and donor receipts. The preliminary bank stays historical. Primary Cleva sources were checked on 18 November.
+
+The user took over pushing: initial page work was committed/pushed by them as `7d05e75`. Do not automatically push subsequent work unless they ask again. Finish and commit remaining changes for them to push. After pitch work, implement the separately requested simple camera-opening transition before face-check playback, while preserving NIN gating and bounded verification. Status and next action are kept in the root handoff.
+
+## Previous release: 17 November Cleva Grand Finale presenter page
 
 The user authorized updating `/cleva.html`, keeping their conversational voice
 and making payments the thread: transparent crowdfunding through control of

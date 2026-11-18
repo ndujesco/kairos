@@ -10,7 +10,7 @@ META = dict(shared.META,
             title="Kairos | Cleva Grand Finale",
             event="Cleva × Tether", stage="Future of Payments · Grand Finale",
             date="21 November 2026",
-            version="cleva-grand-finale-payments-2026-11-17")
+            version="cleva-grand-finale-payments-2026-11-18")
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = shared.DEFAULT_PRESENTER
 VIDEO_SECONDS = 227.033
@@ -45,11 +45,11 @@ SLIDES[1].update(
 SLIDES[2].update(
     title="Our solution.",
     paragraphs=[
-        "Kairos is that trusted middle layer.",
+        "Kairos is that trusted middle layer. We bring existing payment services together, with rules that keep the money tied to the need.",
         "Here is how it's designed to work.",
         "First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.",
-        "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account.",
-        "Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment goes into the public record.",
+        "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account. Every contribution is recorded against that cause, so we know what is available to pay out.",
+        "Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment is matched back to the budget and the contributions behind it, and goes into the public record.",
     ],
     cue="Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.",
     deck={"eyebrow": "THE SOLUTION",
@@ -62,18 +62,18 @@ SLIDES[2].update(
 )
 SLIDES[3]["paragraphs"][0] = "A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for"
 SLIDES[3]["paragraphs"].append(
-    "That is what makes Kairos different: every giver can follow their own part of the payment, even when many people funded the bill."
+    "We calculate each donor's share of the payment and attach the receipt. That way, every giver can follow their own part, even when many people funded the bill."
 )
 SLIDES[4].update(
     title="What we can show you today.",
     paragraphs=[
         "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app. People can also upload supporting documents when creating a cause or come back to add them later.",
         "Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.",
-        "We'd start with school fees, then hospital bills. And looking ahead, someone abroad should be able to help pay the same bill alongside supporters here in Nigeria, with the institution paid directly and each person getting proof of their share. With Cleva's approval, we'd explore a dollar or USDT funding connection for that flow.",
+        "We'd start with school fees, then hospital bills. And looking ahead, someone abroad should be able to help pay the same bill alongside supporters here in Nigeria, with the institution paid directly and each person getting proof of their share. In time, that could include funding in dollars or stablecoins, while the bill and each donor's share are accounted for in naira.",
         "We aim to cover running costs through donations and NGO grants. Without that support, our tentative fallback is two percent upkeep, capped at five thousand naira per cause.",
         shared.SLIDES[8]["paragraphs"][0],
     ],
-    cue="Show the working app next. The Cleva connection is proposed, not built. NGO support is not secured; the upkeep policy remains tentative. Say all three simulated parts clearly.",
+    cue="Show the working app next. International funding is proposed, not built. NGO support is not secured; the upkeep policy remains tentative. Say all three simulated parts clearly.",
     deck={"eyebrow": "DEMO & PROGRESS",
           "lead": "We can show the accounting, payment controls and personal receipts today.",
           "cards": [
@@ -113,7 +113,7 @@ SHORT_PITCH = [
     "Kairos makes crowdfunding transparent by controlling the flow of money. Think of a school-fee appeal shared on WhatsApp: people want to help, but an account number and a successful transfer don't tell them whether the bill was paid.",
     "On Kairos, the organiser publishes an itemised budget naming the school, hospital or supplier. People contribute toward the same bill. In the intended live flow, a licensed partner holds the money and pays only those providers, within the budget. Each donor receives a receipt showing their own share of the payment.",
     "The accounting, budget checks, donor attribution, document uploads and notifications are working. Bank transfer, Remita settlement and NIN lookup are simulated; independent verification and licensed custody still need connecting.",
-    "We'd start with school fees. With Cleva's approval, we'd explore funding from supporters abroad, so someone outside Nigeria could help pay the same bill and receive the same proof. That connection is proposed.",
+    "We'd start with school fees. Looking ahead, supporters abroad could help pay the same bill alongside people here in Nigeria, with each person receiving proof of their share. That funding connection is proposed.",
 ]
 
 EVENTS = [deepcopy(shared.EVENTS[0])]
@@ -248,3 +248,24 @@ The application previously answered No to stablecoins. That is still true of the
 # Canonical stage identity. Native previews/video retain their existing immutable paths.
 PAGE.update(canonical_path="/cleva-finale.html")
 SOURCES_HTML = SOURCES_HTML.replace('pitch-assets/cleva/sources.md', 'pitch-assets/cleva-finale/sources.md')
+
+# Finale-specific questions. Preliminary questions and stage source stay untouched.
+from cleva_finale_qa import build_qa
+GROUPS, QUESTIONS = build_qa(QUESTIONS)
+PAGE.update(
+    qa_title=f"Kairos: {len(QUESTIONS)} questions for the Cleva Grand Finale",
+    qa_intro="Rehearse the Cleva payment case first, then the proposed funding connection, external settlement, controls and pilot. Retained questions keep their saved IDs; new questions have independent IDs.",
+    qa_page_intro=f"{len(QUESTIONS)} questions for the Cleva judges: payments, Cleva/Tether, overseas funding, donor proof and execution. Start with Rehearse first.",
+    source_note="Finale logistics and script follow the supplied organizer email and user's wording. Cleva Business, activity restrictions and stablecoin policy were checked on 18 November 2026. Proposed integrations remain unapproved and unbuilt.",
+)
+SOURCES_HTML = '''<section class="prepbox"><h2>Cleva sources and open integration questions</h2><p><a href="https://www.getcleva.com/business" target="_blank" rel="noopener">Cleva Business</a> describes international account/funding features. Our use case, account model and access still need agreement.</p><p><a href="https://www.getcleva.com/legal/global/stablecoin-policy" target="_blank" rel="noopener">Stablecoin policy</a> describes conversion of approved stablecoin deposits to USD. It does not establish Kairos escrow.</p><p>Clarify the <a href="https://www.getcleva.com/legal/global/prohibited-countries-and-activities" target="_blank" rel="noopener">applicable activity restrictions</a> directly before planning live collection. Competition selection is separate from integration approval.</p><p><a href="pitch-assets/cleva-finale/sources.md" download>Sources and proposed flow ↓</a></p></section>'''
+RESEARCH_NOTES = '''# Cleva finale: sources and proposed connection
+
+Checked 18 November 2026. This is preparation, not evidence of a signed or approved integration.
+
+- [Cleva Business](https://www.getcleva.com/business): international account and funding capabilities. Developer access and the proposed use case remain unconfirmed.
+- [Stablecoin policy](https://www.getcleva.com/legal/global/stablecoin-policy): approved deposits convert to USD. Do not describe this as Kairos holding an unconverted USDT escrow balance.
+- [Activity restrictions](https://www.getcleva.com/legal/global/prohibited-countries-and-activities): clarify applicability to the intended transaction/account model directly.
+
+Proposed flow: permitted overseas funding, actual conversion and net naira credit, cause accounting, licensed provider settlement and the contributor's receipt. Account ownership, custody, references, confirmations, charges, failures and refunds need agreement. The built prototype has no Cleva or stablecoin integration.
+'''

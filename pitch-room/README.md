@@ -1,78 +1,44 @@
 # Kairos presentation rooms
 
-The agnostic `/pitch.html` and all its shared downloads remain unchanged.
-The event rooms now have independent decks, scripts, assets and video playback:
+Use the event and stage in every new room name. The original `/pitch.html` remains frozen.
 
-| Room | Source | Slides | Full rehearsal plan |
-| --- | --- | --- | --- |
-| `/cleva.html` (also `/cleva-pitch.html`) | `cleva_pitch_content.py` | 8 | 10:00 |
-| `/apwen-pitch.html` | `apwen_pitch_content.py` | 12 | 7:37 |
+| Canonical room | Content source | Current scope |
+| --- | --- | --- |
+| `/cleva-finale.html` | `cleva_finale_content.py` | User-corrected finale script, 665 words, 10:00 including the existing video; Cleva-focused Q&A |
+| `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
+| `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
+| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Proposed eleven-slide HTML deck, 640 words, 9:30 draft plan; individual time limit unconfirmed |
 
-The Cleva plan includes the unchanged 3:47.033 recording, an introduction and
-pauses. Its finale allowance is confirmed: 12 minutes presenting plus five
-minutes Q&A. Its recording remains before Team and Thank You. Only
-Abigail and Miracle appear; either can be selected to present the whole script.
+`/apwen-finale.html` is reserved for a later request; it is not created by this build.
 
-Cleva's finale script retains the school-fees story and conversational voice,
-with crowdfunding transparency explained through control of the flow of money:
-contributions, budget-limited provider payments and each donor's own receipt.
-Progress also introduces the proposed overseas funding flow as a vision.
-The prototype, simulated parts and proposed Cleva connection stay distinct.
-APWEN retains the previous spoken content and original slide subjects, adding
-the demonstration before the last two slides. Its format can change separately.
+## Previous URLs
 
-Each `public/pitch-assets/{cleva,apwen}/` contains its own deck PDF/PPTX, slide
-previews, `demo.mp4`, scripts, Q&A, event notes and manifest. The PPTX contains
-an internal MP4, not just a link. Native `.key` copies open directly in Keynote, with editable objects, notes
-and embedded video verified in the app. The PPTX notes-master registration is
-repaired for Keynote import too. The demo slide contains only the video; press
-Play. PDF copies show a static poster. The browser Demo tab shows only the same video player; press Play. Playback
-position is retained between Pitch and Demo, and leaving for Q&A pauses it.
+- `/cleva.html` serves the finale.
+- `/cleva-pitch.html` serves the preliminary edition, recovered from the archive rather than copied from the finale.
+- `/apwen-pitch.html` serves the semi-final.
 
-17 November scope: only the Cleva presenter page, Markdown scripts and
-preparation text were revised. Existing slide previews, native deck downloads,
-notes and video remain the preliminary edition. The browser/Markdown script
-is the current finale rehearsal text. `/cleva.html` is generated as an identical
-short alias by `pitch:cleva`; both URLs share the same browser preferences.
-The previous page/source/scripts were archived under the event's
-`02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.
+Aliases are generated from their canonical page. Each stage has separate scripts, Q&A, preparation notes and manifest under `public/pitch-assets/<stage>/`. Canonical metadata identifies the stage. Finale and APWEN retain their prior browser preference keys; the preliminary and Faith & Tech rooms have independent preferences.
+
+The original `cleva_pitch_content.py` and `apwen_pitch_content.py` filenames are compatibility imports. The frozen `cleva_content.py` is still the general/shared source; do not modify it for event work.
+
+## Build
 
 ```sh
-# Build event pages/scripts from already exported decks; preserve agnostic files
 npm run pitch:build
-npm run pitch:cleva
-npm run pitch:apwen
+npm run pitch:cleva-finale
+npm run pitch:cleva-preliminary
+npm run pitch:apwen-semi
+npm run pitch:faith-and-tech-semis
 ```
 
-To rebuild native event decks, preview images, notes and both pages together,
-run from the Kairos root:
+The existing `pitch:cleva` command builds both Cleva stages; `pitch:apwen` builds the semi-final. Normal builds protect the agnostic page and shared assets. Use these page commands for HTML work; the old native all-event export helper is not needed for these changes.
 
-```sh
-python3 'hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/build_prepitch.py'
-```
+## Content boundaries
 
-Use `--pages-only` when deck assets are already current. The old agnostic deck
-and page are regenerated only with the explicit `--rebuild-shared-deck` flag;
-do not use that for event edits. Safe builds hash-check the frozen agnostic
-HTML and shared assets. Never hand-edit generated public HTML.
+Cleva finale retains the user's exact slide 1 paragraphs 2–3 and slide 4 paragraph 1. The spoken script adds contribution accounting, payment matching and donor shares without naming a sponsor, so it can fit another payments event. Its tailored question bank is defined in `cleva_finale_qa.py`: 38 questions, 21 priorities. Retained questions keep their IDs; new ones have separate IDs. The preliminary bank remains the original 110 questions.
 
-Local bundles:
+Existing native Cleva/APWEN PDF, PowerPoint, Keynote, previews and videos remain at their prior immutable asset paths. Stage text downloads are separate. The existing native Cleva notes precede the latest finale script; use the browser/Markdown finale script as the current rehearsal copy. No new demo was recorded or substituted.
 
-- Cleva: `hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/cleva/`.
-- APWEN: `hackathons/2026-10 APWEN LASU/02 Virtual Pitch/`.
+Faith & Tech uses native HTML slide elements through `web_deck.py` and `web-deck.css`, with a standalone `deck.html` download. It retains Abigail and Ugochukwu from the submitted Faith & Tech deck; Cleva/APWEN retain Abigail and Miracle. No interview findings or live pilot results have been invented. The draft marks review, privacy and reconciliation operations as proposed, and keeps missing user evidence in Prep. The user confirmed on 18 November that no per-team time limit has arrived.
 
-Each has `deck/`, adjacent `demo.mp4`, Markdown scripts and an offline HTML page
-with local relative paths. Leave those files together for offline video playback.
-The original deck/demo in the old shared folder remain preserved.
-
-The recording is an earlier prototype walkthrough. Its narration includes
-intended verification/custody/settlement claims, so the new spoken introduction
-makes the unbuilt and simulated parts explicit. No live donations, approved
-Cleva integration or signed custody partner are claimed. The official Cleva
-research remains in its own Prep tab and sources download.
-
-On phones (up to 800px), both event pages always show the full script with a
-compact sticky preview that follows the section being read. Mobile controls
-are reduced to the presenter selector and current-slide caption; desktop modes
-are restored when returning to a wider viewport. The demo remains one shared
-player, and Q&A/Prep restores the prior reading position.
+Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.

@@ -24,7 +24,11 @@
     "icons": "node scripts/make-icons.mjs",
     "stage": "bash scripts/stage.sh",
     "advice": "node scripts/make-payment-advice.mjs",
-    "estimate": "node scripts/make-hospital-estimate.mjs"
+    "estimate": "node scripts/make-hospital-estimate.mjs",
+    "pitch:cleva-finale": "python3 scripts/build-pitch.py --edition cleva-finale",
+    "pitch:cleva-preliminary": "python3 scripts/build-pitch.py --edition cleva-preliminary",
+    "pitch:apwen-semi": "python3 scripts/build-pitch.py --edition apwen-semi",
+    "pitch:faith-and-tech-semis": "python3 scripts/build-pitch.py --edition faith-and-tech-semis"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",

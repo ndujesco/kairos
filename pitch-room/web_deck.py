@@ -34,7 +34,7 @@ def render_slide(section, total, read_asset, *, hidden=True):
             content += '<div class="web-points">' + ''.join(f'<div><h3>{e(label)}</h3><p>{e(text)}</p></div>' for label, text in v["points"]) + '</div>'
     if v.get("footnote"):
         content += f'<p class="web-footnote">{e(v["footnote"])}</p>'
-    return (f'<article class="slideimage slidemedia web-slide web-{e(kind)}" data-slide="{n}" role="group" aria-label="Slide {n}: {e(section["title"])}"'
+    return (f'<article class="slideimage slidemedia web-slide web-kind-{e(kind)}" data-slide="{n}" role="group" aria-label="Slide {n}: {e(section["title"])}"'
             + (' hidden' if hidden else '') + '><div class="web-slide-inner">'
             + f'<div class="web-slide-brand"><strong>KAIROS</strong><span>FAITH &amp; TECH · SEMI-FINAL</span></div>'
             + f'<div class="web-slide-content"><p class="web-eyebrow">{e(v.get("eyebrow", ""))}</p>{content}</div>'
