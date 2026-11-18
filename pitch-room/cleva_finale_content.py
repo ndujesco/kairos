@@ -22,7 +22,7 @@ for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "pro
 SLIDES[0].update(
     paragraphs=[
         shared.SLIDES[0]["paragraphs"][0],
-        "Which is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.",
+        "Kairos is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.",
         "We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.",
         "So for us, a crowdfunding payment is complete when the money reaches the need it was given for.",
     ],

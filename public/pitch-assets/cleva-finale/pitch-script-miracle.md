@@ -14,7 +14,7 @@ Miracle · 0:00 to 0:40
 
 Good day everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.
 
-Which is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.
+Kairos is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.
 
 We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.
 

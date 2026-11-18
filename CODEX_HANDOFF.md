@@ -4,6 +4,8 @@ Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/h
 
 ## Current follow-up: Cleva crowdfunding payments, 18 November
 
+Latest wording correction: Cleva finale slide 1 now begins “Kairos is a transparent crowdfunding platform…” instead of “Which is…”, for both presenters and script downloads. Other rooms are unchanged; the word count remains 750.
+
 The user explicitly limited this change to Cleva; other competitions keep their trust-focused framing. Their central point is now carried throughout the Cleva script: a crowdfunding payment is complete when the money reaches the need it was given for. Kairos is described as the system designed to control that route from contributors to the named institution, with receipts linking the outcome to each donor.
 
 Slide 2, immediately after the introduction, is “The money arrived. But was the bill paid?” It preserves the school-fees story, then explains separate transfers versus the intended school payment. Slide 3 has an editable browser flow: collect contributions → hold for the stated bill → pay the institution → send donor receipts. Introduction, receipt, closing, short explanation and first Q&A answer reinforce this meaning. The user's exact prior introduction paragraphs and receipt sentence are preserved. The spoken script remains sponsor-free.
