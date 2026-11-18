@@ -27,7 +27,7 @@ export default function Sidebar({
 }) {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 hidden h-dvh w-[88px] shrink-0 flex-col justify-between px-3 py-2 sm:flex xl:w-[275px] xl:px-3">
+    <header className="sticky top-0 z-30 hidden h-dvh w-[88px] shrink-0 flex-col justify-between px-3 py-2 sm:flex xl:w-[275px] xl:px-3">
       <div>
         <Link
           href="/"

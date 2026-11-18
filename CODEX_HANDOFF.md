@@ -2,6 +2,10 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest UI fix: account-menu stacking (18 November)
+
+Added `z-30` to the sticky sidebar so its profile/logout menu appears above cause cards. The dropdown already had a z-index, but its sidebar stacking context was behind the feed. Per the user’s explicit request, no build, test or browser check was run. Commit is left for their push.
+
 ## Latest data cleanup: Omohuma fees cause (18 November)
 
 At the user's explicit request, deleted the completed cause `6afdb5472f0bdf1ee3e53e88`, `help-omohuma-miracle-pay-school-fees-b76n`, and its related application records: two demo donations, one payout, four notifications and two supporting-file records (the linked fee advice plus the identical owner-only copy retained during the earlier reset). No comments existed. Both corresponding Cloudinary raw/authenticated assets were deleted with invalidation and verified absent using the Cloudinary API; no other cause referenced them.
