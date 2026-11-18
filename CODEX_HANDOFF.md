@@ -2,7 +2,20 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Latest fix: contextual intake, maximum seven questions
+## Latest product follow-up: intake, review preview and visible face check (18 November)
+
+This section supersedes the earlier two-answer completion and short face interval below. The user asked to round off and not open the website at delivery. Do not automatically push or deploy; they handle pushing.
+
+- Intake now asks **at least five and at most seven questions**, counting the opener. It explicitly requests supporting evidence within the first three questions, even if the model tries to finish early. Known facts stay in context. Follow-ups cover the deadline, financial shortfall and bill coverage without repeating answered fields. Documents remain optional and can be added later; supplied example documents/details are accepted without claiming authentication. Fixed “I am sick” being mistaken for the beneficiary name.
+- The review form immediately after intake now contains `EvidencePreview`: inline PDF/photo preview, a selector for multiple attachments and an Open document link. Other file types retain their attachment/open link. Existing private evidence URLs and access checks are unchanged.
+- The face video remains unmounted until complete NIN + Start. It then preloads behind the 600 ms opening panel. Muted MP4 playback is requested explicitly, with a maximum two-second startup wait and **6,200 ms visible interval** before proceeding. Verification runs in parallel with its existing six-second network deadline; no wait for video end. Aborts and media errors are bounded, with a visible unavailable state if playback fails. Silent Omohuma media is unchanged.
+- Deleted only the two explicitly requested, empty practice causes: Miracle `6afdacdcdc7f6ae21f2b8d30` (`help-miracle-pay-school-fees-qemi`) and Abby `6afdaf34ad3695d5e2f9dccb` (`help-sick-with-medical-care-98m5`). Both had zero raised/escrow/donors and no donations or payouts; transactional deletion verified those conditions. Accounts/contact information and unrelated causes were untouched. Miracle's supporting file was retained privately with its cause link cleared. Backups are in the workspace root `.local-backups/miracle-cause-1795010223866.json` and `.local-backups/abby-hospital-cause-1795010662805.json` (private local files, not committed).
+
+Validation: production build and all 14 contextual regression checks passed; `git diff --check` passed. Browser login in isolated `kairos_qa_preview_1795010745477` succeeded, but final inline-PDF rendering and six-second playback were **not visually reverified** before the user requested closure. Do not claim this latest UI sequence was watched end to end. Media decoding/orientation checks belong to the earlier media release. The owned port-3010 server was stopped and only that QA database's records were cleared. No frozen presentation/deck/recording files changed.
+
+The connected Anthropic account still needs credits; the improved deterministic backup is active when the provider is unavailable. No keys were changed or exposed. Next action: the user pushes the local commit, then a fresh app load uses the new client code. If a playback issue is reported, verify this exact new sequence before further changes; do not run the broad demo-clean/reset scripts.
+
+## Previous fix: contextual intake, maximum seven questions
 
 The user reported that intake ignored Miracle's name, UNILAG and ₦300,000, then asked for those details again. The exact text was the old fixed fallback, used because Anthropic still returns HTTP 400 for insufficient account credits (checked 18 November). No key was printed or changed. Top up that account to restore live-model responses.
 

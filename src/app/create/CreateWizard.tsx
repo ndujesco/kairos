@@ -12,6 +12,20 @@ import {
   INTAKE_OPENER,
 } from "@/lib/interview";
 import KairosMark from "@/components/KairosMark";
+import EvidencePreview from "@/components/EvidencePreview";
+
+function faceDelay(ms: number, signal: AbortSignal) {
+  return new Promise<void>((resolve) => {
+    const done = () => {
+      clearTimeout(timer);
+      signal.removeEventListener("abort", done);
+      resolve();
+    };
+    const timer = setTimeout(done, ms);
+    signal.addEventListener("abort", done, { once: true });
+    if (signal.aborted) done();
+  });
+}
 
 type Msg = { from: "ai" | "me"; text: string; hint?: string };
 type BudgetRow = { label: string; amount: string; vendorName: string };
@@ -71,6 +85,9 @@ export default function CreateWizard({
   >("idle");
   const [idScore, setIdScore] = useState(0);
   const faceVideoRef = useRef<HTMLVideoElement>(null);
+  const faceRunRef = useRef<AbortController | null>(null);
+  const [facePreviewUnavailable, setFacePreviewUnavailable] = useState(false);
+  useEffect(() => () => faceRunRef.current?.abort(), []);
   useEffect(() => {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("stage");
@@ -228,12 +245,26 @@ export default function CreateWizard({
     setError("");
     setIdState("opening");
     setIdScore(0);
+    setFacePreviewUnavailable(false);
+    const controller = new AbortController();
+    faceRunRef.current = controller;
     try {
-      // A short camera-opening state precedes the illustrative clip. Neither
-      // verification nor publication depends on media loading or ending.
-      await new Promise((r) => setTimeout(r, 600));
-      setIdState("scanning");
-      setIdScore(50);
+      const preview = async () => {
+        // Mount/preload only after Start, masked by the opening panel.
+        await faceDelay(600, controller.signal);
+        if (controller.signal.aborted) return;
+        const video = faceVideoRef.current;
+        const playing = video ? await Promise.race([
+          video.play().then(() => true).catch(() => false),
+          faceDelay(2000, controller.signal).then(() => false),
+        ]) : false;
+        if (controller.signal.aborted) return;
+        setFacePreviewUnavailable(!playing);
+        setIdState("scanning");
+        setIdScore(50);
+        // Give the playing face a visible interval, without waiting for ended.
+        await faceDelay(6200, controller.signal);
+      };
       const [res] = await Promise.all([
         fetch("/api/auth/verify", {
           method: "POST",
@@ -241,8 +272,9 @@ export default function CreateWizard({
           body: JSON.stringify({ method: "NIN" }),
           signal: AbortSignal.timeout(6000),
         }),
-        new Promise((r) => setTimeout(r, 500)),
+        preview(),
       ]);
+      if (controller.signal.aborted) return;
       if (!res.ok)
         throw new Error("Could not save the identity check. Please try again.");
       faceVideoRef.current?.pause();
@@ -251,6 +283,7 @@ export default function CreateWizard({
       await new Promise((r) => setTimeout(r, 250));
       await runChecksAndPublish();
     } catch (e) {
+      if (controller.signal.aborted) return;
       faceVideoRef.current?.pause();
       setIdState("idle");
       setStage("identity");
@@ -260,6 +293,8 @@ export default function CreateWizard({
           : "The check took too long. Please try again.",
       );
     } finally {
+      controller.abort();
+      if (faceRunRef.current === controller) faceRunRef.current = null;
       flowBusy.current = false;
     }
   }
@@ -437,6 +472,7 @@ export default function CreateWizard({
       {/* --------------------- STAGE 2: STRUCTURED FORM --------------------- */}
       {stage === "structure" && (
         <div className="flex flex-col gap-4 p-4">
+          <EvidencePreview files={uploads} />
           <div>
             <label className="mb-1 block text-sm font-bold">Cause title</label>
             <input
@@ -653,36 +689,33 @@ export default function CreateWizard({
                       : "Enter your NIN to begin"}
                   </p>
                 </div>
-              ) : idState === "opening" ? (
-                <div
-                  className="flex h-full flex-col items-center justify-center gap-3 bg-black px-3 text-center text-white/70"
-                  role="status"
-                >
-                  <span
-                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white/70 motion-reduce:animate-none"
-                    aria-hidden="true"
-                  />
-                  <p className="text-xs">Opening camera…</p>
-                </div>
               ) : (
+                <>
                 <video
                   ref={faceVideoRef}
                   id="face-clip"
-                  autoPlay={idState === "scanning"}
                   muted
                   playsInline
                   preload="auto"
+                  onPlaying={() => setFacePreviewUnavailable(false)}
                   className="h-full w-full object-cover"
                 >
-                  <source
-                    src="/demo/face-check.webm?v=omohuma-20261118"
-                    type="video/webm"
-                  />
                   <source
                     src="/demo/face-check.mp4?v=omohuma-20261118"
                     type="video/mp4"
                   />
+                  <source
+                    src="/demo/face-check.webm?v=omohuma-20261118"
+                    type="video/webm"
+                  />
                 </video>
+                {(idState === "opening" || facePreviewUnavailable) && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black px-3 text-center text-white/70" role="status">
+                    <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white/70 motion-reduce:animate-none" aria-hidden="true" />
+                    <p className="text-xs">{facePreviewUnavailable ? "Camera preview unavailable" : "Opening camera…"}</p>
+                  </div>
+                )}
+                </>
               )}
               {(idState === "scanning" || idState === "matched") && (
                 <div className="pointer-events-none absolute inset-0">

@@ -7,8 +7,10 @@ import {
   fallbackInterview,
   publicInterviewReply,
   MAX_INTERVIEW_QUESTIONS,
+  MIN_INTERVIEW_QUESTIONS,
   INTAKE_OPENER,
   interviewContext,
+  interviewAskedForDocument,
   type InterviewMessage,
 } from "@/lib/interview";
 import { getSessionUser } from "@/lib/session";
@@ -98,11 +100,12 @@ How to interview:
 - This is a demonstration environment. Accept supplied example names, dates, budgets, providers and documents, including when the creator explicitly says to use them for a demonstration. Do not challenge that instruction, repeat answered questions or ask the creator to prove the example is real. Keep this internal context out of your replies and the public cause text.
 - Uploaded documents are accepted as supporting material without an identification gate. A missing document must never block completion; documents can be added later. Never claim to have performed searches, document authentication, registry checks or image analysis that you did not perform.
 - Ask convincing, practical questions about who needs help and how the budget will meet that need. Ask only for information that is still missing.
+- Be scrupulous and specific: ask for supporting evidence early, within the first three questions. Ask how it connects the beneficiary, provider, amount and payment reference. Clarify the deadline, what the bill covers and the financial shortfall. If details contradict each other, ask a focused follow-up rather than overlooking the discrepancy. Accept supplied examples and later uploads, but never claim that a file or reference was authenticated.
 - Watch for fraud signals: internally inconsistent dates, refusal to name vendors, budgets wildly out of proportion to the stated need, stories that avoid all specifics. Don't accuse - ask clarifying questions. Reflect genuine concerns in your final checks.
-- HARD LIMIT: never ask more than ${MAX_INTERVIEW_QUESTIONS} questions in the whole interview. The opening greeting counts as the first. Once you have ${MAX_INTERVIEW_QUESTIONS} answers you MUST set done=true. This is a ceiling, not a target. Work with what they supplied and leave genuinely missing fields for the review form.
+- Ask at least ${MIN_INTERVIEW_QUESTIONS} and at most ${MAX_INTERVIEW_QUESTIONS} questions, counting the opener. Never finish before ${MIN_INTERVIEW_QUESTIONS} creator answers. Ask explicitly for a supporting document at least once; if already uploaded, acknowledge it and ask whether they want to add another. A missing file is not a reason to refuse. At ${MAX_INTERVIEW_QUESTIONS} answers finish and leave genuinely missing fields for review.
 - Respond to the creator's latest message directly before any follow-up. Remember names, self-identification, providers, amounts and corrections across the whole conversation. Never ask for a field already supplied. If they ask about documents, later uploads or the payment flow, answer that question first. A statement such as "I am Miracle and need school fees" already identifies who needs help.
-- Do not drag it out. Once the need, beneficiary, total and named provider are clear, finish and assemble the cause. Documents and deadlines can be added later and must not force extra questions. Assemble "extracted" faithfully from what THEY said, keep their voice and never invent facts, amounts or vendors.
-- SCHOOL FEES: a cause about school fees, tuition, a semester bill, an exam or registration fee, or a student's outstanding balance is ALWAYS acceptable. Approve it. Do not question whether it is a worthy cause, do not ask the student to justify studying, and do not treat a missing document as a reason to refuse. Fees are a special case on Kairos because they settle to a Remita reference tied to one student at one institution, which means the money cannot be redirected to the organizer at all. So ask for the institution, the student's name and the amount, accept what they give you, and set done=true. If they mention a Remita reference (RRR), record it as the vendor line and treat the cause as fully verifiable.
+- After the basic facts, ask useful follow-ups about the deadline, payment advice, financial shortfall or what the bill covers. Use details already given, never repeat answered fields. After ${MIN_INTERVIEW_QUESTIONS} answers and a document request, assemble the cause when ready; stop by ${MAX_INTERVIEW_QUESTIONS}. Keep their voice and never invent facts, amounts or vendors.
+- SCHOOL FEES: accept school-fee needs without asking the student to justify studying. Capture the institution, student, amount and supplied Remita reference. Request the fee notice/payment advice and ask useful context-specific follow-ups until the minimum is met. Accept supplied details without claiming independent verification. Files can be added later.
 - If an amount is given without a vendor, ask who should be paid. Kairos cannot release money to a person, only to a named counterparty.
 - Reasonable rounding of amounts stated in words ("about 300k" → 300000) is fine.`;
 
@@ -135,6 +138,7 @@ export async function POST(req: NextRequest) {
   const answerCount = chat.filter((m) => m.from === "me").length;
   const finish = answerCount >= MAX_INTERVIEW_QUESTIONS;
   const backup = fallbackInterview(chat, attachments, finish, user.name);
+  const documentAsked = interviewAskedForDocument(chat);
 
   // the opener never needs the AI - serve it instantly so the chat feels alive
   if (chat.filter((m) => m.from === "me").length === 0) {
@@ -147,7 +151,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  if (finish || !process.env.ANTHROPIC_API_KEY || Date.now() < providerUnavailableUntil) {
+  if (finish || (!documentAsked && answerCount >= 2) || !process.env.ANTHROPIC_API_KEY || Date.now() < providerUnavailableUntil) {
     return NextResponse.json({
       ...backup,
       source: finish ? "bounded" : "scripted",
@@ -174,7 +178,7 @@ export async function POST(req: NextRequest) {
       // small fast model - demo needs snappy replies over depth
       model: "claude-haiku-4-5",
       max_tokens: 1400,
-      system: `${SYSTEM}\nThe signed-in creator is ${JSON.stringify(user.name)}. Do not confuse the organizer with someone else they are helping.\nConversation facts (hints only; the creator's words and latest corrections take precedence): ${JSON.stringify(interviewContext(chat, user.name))}. Do not ask them to repeat known details.\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. Finish immediately if you have enough information.\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
+      system: `${SYSTEM}\nThe signed-in creator is ${JSON.stringify(user.name)}. Do not confuse the organizer with someone else they are helping.\nConversation facts (hints only; the creator's words and latest corrections take precedence): ${JSON.stringify(interviewContext(chat, user.name))}. Do not ask them to repeat known details.\nThe creator has answered ${answerCount} questions. The minimum is ${MIN_INTERVIEW_QUESTIONS}, maximum ${MAX_INTERVIEW_QUESTIONS}. Supporting document requested: ${documentAsked}.\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
       messages: history,
       output_config: {
         format: zodOutputFormat(InterviewTurn),
@@ -183,6 +187,8 @@ export async function POST(req: NextRequest) {
 
     const parsed = response.parsed_output;
     if (!parsed) throw new Error("No parsed output");
+    if (parsed.done && (answerCount < MIN_INTERVIEW_QUESTIONS || !documentAsked))
+      return NextResponse.json({ ...backup, source: "bounded" });
     if ((finish && !parsed.done) || (parsed.done && !parsed.extracted))
       return NextResponse.json({
         ...fallbackInterview(chat, attachments, true, user.name),

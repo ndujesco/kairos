@@ -1,3 +1,4 @@
+export const MIN_INTERVIEW_QUESTIONS = 5;
 export const MAX_INTERVIEW_QUESTIONS = 7;
 // Do not rely on the model alone to keep its internal demo context private.
 export function publicInterviewReply(
@@ -25,6 +26,11 @@ export function publicInterviewReply(
 export const INTAKE_OPENER =
   "Hi, I’m the Kairos intake assistant. What happened, who needs help, and what would you like to raise money for?";
 export type InterviewMessage = { from: "ai" | "me"; text: string };
+export function interviewAskedForDocument(messages: InterviewMessage[]) {
+  return messages.some((m) => m.from === "ai" &&
+    /\b(?:attach|upload|add|provide|share|available|have)\b/i.test(m.text) &&
+    /\b(?:document|documents|fee notice|payment advice|bill|evidence|proof|letter)\b/i.test(m.text));
+}
 type InterviewContext = {
   name: string;
   need: string;
@@ -40,7 +46,7 @@ function suppliedName(text: string) {
   const matches = text.matchAll(
     /(?:my name is|i am|i'm|i’m|student(?:'s)? name(?: is|:)?|use|(?:my|our)\s+(?:mother|father|brother|sister|friend|son|daughter|child))\s+([\p{L}][\p{L}'’ -]{0,75})/giu,
   );
-  const stop = /^(?:a|an|the|one|and|who|with|from|at|in|for|need|needs|am|is|student|affected|raising|asking|trying|unable|looking|hoping|struggling|example|these|this|my|our|due)$/i;
+  const stop = /^(?:a|an|the|one|and|who|with|from|at|in|for|need|needs|am|is|student|affected|raising|asking|trying|unable|looking|hoping|struggling|example|these|this|my|our|due|sick|ill|unwell|injured|hospitalized|hospitalised|unemployed|broke|short|late|not)$/i;
   for (const match of matches) {
     const name: string[] = [];
     for (const word of match[1].trim().split(/\s+/)) {
@@ -113,7 +119,7 @@ export function interviewContext(
     const text = message.text;
     const name = suppliedName(text);
     if (name) context.name = name;
-    else if (/\bname\b/i.test(previousQuestion) && /^[\p{L}'’ -]{2,60}$/u.test(text) && !/\b(?:unknown|later|skip|don't|not|sure)\b/i.test(text)) context.name = text.trim();
+    else if (/\b(?:what.*name|name of the person)\b/i.test(previousQuestion) && /^[\p{L}'’ -]{2,60}$/u.test(text) && !/\b(?:unknown|later|skip|don't|not|sure|yes|no)\b/i.test(text)) context.name = text.trim();
     const topicStatement = !context.need || !/^(?:can|could|do|does|how|what|where|who|is|are|will|should)\b.*\?\s*$/i.test(text);
     if (topicStatement && /school\s*fees?|tuition|student|university|college|UNILAG/i.test(text)) {
       context.category = "Education";
@@ -128,6 +134,7 @@ export function interviewContext(
     const provider = suppliedProvider(text) || (
       /\b(?:which school|which hospital|who should receive|which.*(?:supplier|organization))\b/i.test(previousQuestion) &&
       !/\b(?:don't|do not|not sure|unknown|later|skip)\b/i.test(text)
+      && !/^(?:i|we|it|yes|no|here|attached|uploaded|this|that)\b/i.test(text)
         ? suppliedProvider(`provider is ${text}`) : ""
     );
     if (provider) context.provider = provider;
@@ -174,14 +181,26 @@ export function fallbackInterview(
   const latest = answers.at(-1) ?? "";
   const response = answerCreatorQuestion(latest, context.category);
   const ready = Boolean(context.need && context.name && context.provider && context.amount);
-  if (!finish && answers.length < MAX_INTERVIEW_QUESTIONS && !ready) {
+  const documentAsked = interviewAskedForDocument(messages);
+  const mayFinish = answers.length >= MIN_INTERVIEW_QUESTIONS && documentAsked && (ready || finish);
+  if (answers.length < MAX_INTERVIEW_QUESTIONS && !mayFinish) {
     const missing: string[] = [];
     if (!context.need) missing.push("need");
     if (!context.name) missing.push("name");
     if (!context.provider) missing.push("provider");
     if (context.amount === null) missing.push("amount");
     let question: string;
-    if (missing.includes("need")) {
+    const previous = messages.filter((m) => m.from === "ai").map((m) => m.text).join("\n");
+    const supplied = answers.join("\n");
+    if (!documentAsked && answers.length >= 2) {
+      question = attachments.length
+        ? "Your uploaded document is attached. Is there another supporting document you would like to add?"
+        : /\b(?:later|don't have|do not have|can't|cannot|no document)\b/i.test(latest)
+          ? "Which supporting document could you provide later, such as a bill or payment advice?"
+        : context.category === "Education"
+          ? "Please attach your fee notice or payment advice using Add documents. Do you have one available? You can add it later if needed."
+          : "Please attach a bill, photo or letter using Add documents. Do you have a supporting document available? You can add it later if needed.";
+    } else if (missing.includes("need")) {
       question = "What do you need the money to pay for?";
     } else if (missing.includes("name")) {
       question = "What is the name of the person who needs this help?";
@@ -193,10 +212,22 @@ export function fallbackInterview(
       question = context.category === "Education"
         ? "Which school should receive the fee payment?"
         : "Which hospital, supplier or organization should receive the payment directly?";
-    } else {
+    } else if (missing.includes("amount")) {
       question = context.provider
         ? `What is the total amount needed for ${context.provider}?`
         : "What is the total amount needed in naira?";
+    } else if (!/\b(?:due|deadline|next week|next month|tomorrow|today)\b/i.test(supplied) && !/\b(?:due|deadline)\b/i.test(previous)) {
+      question = context.category === "Education"
+        ? "When are the fees due, and what happens if that deadline is missed?"
+        : "When is this payment needed, and what happens if it is delayed?";
+    } else if (!/\b(?:difficult|cover this|shortfall)\b/i.test(previous) && !/\b(?:cannot afford|can't afford|lost|unemployed|income|salary|struggling|shortfall)\b/i.test(supplied)) {
+      question = "What has made it difficult to cover this bill?";
+    } else if (!/\b(?:entire|remaining balance|full bill|full fee)\b/i.test(previous + supplied)) {
+      question = `Does ${context.amount ? money(context.amount) : "that amount"} cover the entire bill, or is it the remaining balance?`;
+    } else if (!/anything else.*public cause/i.test(previous)) {
+      question = "Is there anything else you would like supporters to know in the public cause?";
+    } else {
+      question = "Are the story and payment details ready for you to review?";
     }
     return {
       reply: [response, question].filter(Boolean).join(" "),
