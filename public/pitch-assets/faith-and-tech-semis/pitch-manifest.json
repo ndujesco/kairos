@@ -1,36 +1,36 @@
 {
-  "version": "faith-and-tech-semis-proposal-2026-11-18",
-  "slides": 11,
+  "version": "faith-and-tech-semis-3min-2026-11-18",
+  "slides": 6,
   "questions": 18,
   "priority": 12,
-  "words": 640,
-  "seconds": 570,
+  "words": 328,
+  "seconds": 180,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "255d15dd62dacde48c5af6c798d4fdfda5e757bc8db3533b776031493a2d0058",
+  "source_sha256": "829db9e22e30bd6899c6ed812ec0b51bcaf9f698ef096a041a1d8b4bdb51ff8a",
   "deckBase": "pitch-assets/faith-and-tech-semis",
-  "deck_pdf": null,
-  "deck_pptx": null,
-  "timing_includes_full_demo": true,
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min.pptx",
+  "timing_includes_full_demo": false,
   "slide_order": [
     {
       "n": 1,
       "key": "cover",
       "title": "Transparent crowdfunding",
-      "seconds": 30,
+      "seconds": 25,
       "is_demo": false
     },
     {
       "n": 2,
       "key": "problem",
-      "title": "A real need. A reason to hesitate.",
-      "seconds": 40,
+      "title": "The trust gap",
+      "seconds": 30,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
-      "title": "Our solution",
-      "seconds": 45,
+      "title": "How Kairos works",
+      "seconds": 35,
       "is_demo": false
     },
     {
@@ -43,50 +43,15 @@
     {
       "n": 5,
       "key": "review",
-      "title": "When a check needs another look",
-      "seconds": 40,
-      "is_demo": false
-    },
-    {
-      "n": 6,
-      "key": "privacy",
-      "title": "Proof with privacy",
+      "title": "Responsible operation",
       "seconds": 35,
       "is_demo": false
     },
     {
-      "n": 7,
-      "key": "accounting",
-      "title": "Every amount accounted for",
-      "seconds": 55,
-      "is_demo": false
-    },
-    {
-      "n": 8,
-      "key": "progress",
-      "title": "What works and what we would test",
-      "seconds": 30,
-      "is_demo": false
-    },
-    {
-      "n": 9,
-      "key": "demo",
-      "title": "Watch the giving flow",
-      "seconds": 239,
-      "is_demo": true
-    },
-    {
-      "n": 10,
-      "key": "team",
-      "title": "The team",
-      "seconds": 12,
-      "is_demo": false
-    },
-    {
-      "n": 11,
+      "n": 6,
       "key": "closing",
-      "title": "Give with proof, not faith",
-      "seconds": 9,
+      "title": "A focused first pilot",
+      "seconds": 20,
       "is_demo": false
     }
   ],
@@ -94,21 +59,17 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 640,
+      "words": 328,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 640,
+      "words": 328,
       "script": "pitch-script-ugochukwu.md"
     }
   },
   "assetsBase": "pitch-assets/faith-and-tech-semis",
   "storagePrefix": "kairos-faith-and-tech-semis-room-v1",
-  "demoUrl": "pitch-assets/cleva/demo.mp4",
-  "demo_slide": 9,
-  "demo_video_seconds": 227.033,
-  "demo_section_seconds": 239,
   "deck_html": "pitch-assets/faith-and-tech-semis/deck.html",
   "canonical_path": "/faith-and-tech-semis.html"
 }

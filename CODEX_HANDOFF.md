@@ -2,6 +2,18 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest presentation work: Faith & Tech three-minute pitch and two voiceovers
+
+The user explicitly chose **three minutes for the Faith & Tech pitch** and will decide demo timing. Do not shorten the pitch to fit a video or alter the footage. New organizer email confirms 19 November, 6:30–6:45 p.m. WAT, join by 6:25. Format is one-minute team intro, seven-minute presentation/demo, five-minute Q&A and two-minute scoring. The email copy with private meeting credentials is outside this repo in the event's `03 Semi-final Pitch/brief/`.
+
+Updated only the authorized Faith & Tech semifinal room: six slides, 328 words, a 180-second plan, with matching native PowerPoint speaker notes and PDF downloads under `public/pitch-assets/faith-and-tech-semis/deck/`. `pitch-room/faith_and_tech_semis_content.py` is the current text source. The page builder now permits native downloads alongside HTML slides and a separate narration download. It does not append an empty optional 90-second demo. Rebuild just this room with `npm run pitch:faith-and-tech-semis`.
+
+Canonical artifacts, native OOXML builder, current scripts and the earlier proposal archive are in `../hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/`. The original submitted native deck remains untouched. Two distinct four-part voiceover suggestions match the actual revised clips: Cleva's `03 Grand Finale/demo-voiceover-cleva.md` is longer/payments-focused; Faith & Tech's `03 Semi-final Pitch/demo-voiceover-faith-and-tech-general.md` is shorter/trust-focused and addresses panel feedback. A convenient Desktop copy is in `~/Desktop/Kairos - Cleva and Faith & Tech/`.
+
+The scripts correctly identify an anonymous first donor and Abigail second. Final records show gross ₦305,000, upkeep ₦5,000, net ₦300,000. Part 2's popup briefly disagrees with its final ledger; preparation notes flag this without rewriting the footage. Kairos's invoice is an application record, not independent school settlement proof. Human review, expired-reference replacement, private evidence controls and external reconciliation remain proposed. No actual research findings were provided, so the pilot remains prospective.
+
+Validation: six-slide 16:9 PDF rendered and all slides visually inspected, native notes match spoken text, timing/arithmetic/relationships checked, and protected public files outside the Faith & Tech edition retain their hashes. No product/database/video changes. Artifact runtime was unavailable on this host, so the native deck uses the existing theme with standard editable OOXML and a LibreOffice PDF export. No browser or website was opened. Commit is left for the user's push; do not automatically push/deploy.
+
 ## Current state: funded key, real AI interview and completed rotation (18 November)
 
 The user supplied a working funded key after two keys returned insufficient credits. A fresh Haiku request succeeded. **The previous Anthropic credit blocker is resolved.** The public Kairos API now returns `source: live`; the exact “Hi, I am Miracle and I need to pay fees” test received a natural question asking which school and how much, rather than the scripted repeated-need prompt. No test cause or donation was created in production.

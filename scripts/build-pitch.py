@@ -62,7 +62,7 @@ def timed_slides(content, presenter):
 def write_script(content, assets, page, slides, presenter=None):
     words = sum(s["words"] for s in slides)
     elapsed = slides[-1]["end"]
-    who = content.PRESENTERS[presenter]["name"] if presenter else "Abigail or Miracle"
+    who = content.PRESENTERS[presenter]["name"] if presenter else page.get("shared_presenter_label", "Abigail or Miracle")
     integrated_demo = any(s.get("is_demo") for s in slides)
     timing = (f"{len(slides)} slides, {words} presenter words. Planning time {mmss(elapsed)}, including pauses and the full embedded demo recording."
               if integrated_demo else f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.")
@@ -79,7 +79,7 @@ def write_script(content, assets, page, slides, presenter=None):
             script += ["Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.",
                        f'Recording: {page["demo_url"]} · {mmss(s.get("video_seconds", s["seconds"]))}. This section is already included in the main pitch timing.']
     script += ["## Short explanation"] + content.SHORT_PITCH
-    if not integrated_demo:
+    if not integrated_demo and getattr(content, "DEMO", []):
         script += ["## Optional 90-second demo"]
         for d in getattr(content, "DEMO", []):
             script += [f'### {d["title"]} ({d["seconds"]} seconds)', d["say"], "On screen: " + d["action"]]
@@ -198,18 +198,22 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     page = page_options(content, cleva=cleva)
     web_deck = page.get("web_deck", False)
     deck_base = page.get("deck_base", assets_base + "/deck" if storage_prefix else assets_base).rstrip("/")
-    deck_pdf = None if web_deck else page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
-    deck_pptx = None if web_deck else page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
+    deck_pdf = page.get("deck_pdf") if web_deck else page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
+    deck_pptx = page.get("deck_pptx") if web_deck else page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
     deck_html = assets_base + "/deck.html" if web_deck else None
     keynote_candidate = page.get("deck_keynote", deck_base + "/kairos-pitch-deck.key")
     deck_keynote = keynote_candidate if local_asset(keynote_candidate).is_file() else None
     keynote_download = (f'<a class="keynote-link" href="{e(deck_keynote)}" download>Keynote ↓</a>'
                         if deck_keynote else '')
-    for url in (() if web_deck else (deck_pdf, deck_pptx)):
-        if not local_asset(url).is_file():
+    for url in (deck_pdf, deck_pptx):
+        if url and not local_asset(url).is_file():
             raise FileNotFoundError(f"Export this edition's deck first: {local_asset(url)}")
     deck_downloads = (f'<a href="{e(deck_html)}" target="_blank" rel="noopener">HTML deck ↗</a> <a href="{e(deck_html)}" download>Download HTML ↓</a>'
                       if web_deck else f'<a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> {keynote_download}<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>')
+    if web_deck and deck_pdf:
+        deck_downloads += f' <a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>'
+    if web_deck and deck_pptx:
+        deck_downloads += f' <a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>'
     scripts = {}
     for key in content.PRESENTERS:
         variant = timed_slides(content, key)
@@ -341,6 +345,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     source_line = e(page["source_note"])
     if demo_slide:
         demo_panel = '<div class="demo-tab-stage" id="demo-tab-stage"></div>'
+    elif page.get("separate_demo_script"):
+        demo_panel = (f'<div class="intro"><div><p class="kicker">Separate from the pitch clock</p>'
+                      f'<h1>Four-part voiceover suggestion</h1><p>The three-minute pitch excludes the demo. '
+                      f'Use the separate narration with the four revised clips and choose your own demo timing.</p></div></div>'
+                      f'<a class="button" href="{e(page["separate_demo_script"])}" download>Faith &amp; Tech/general voiceover ↓</a>')
     else:
         demo_panel = f'''<div class="intro"><div><p class="kicker">Show one cause, then stop</p>
 <h1>The proof is in the receipt.</h1><p>A {mmss(at)} demonstration route. Rehearse on the seeded prototype before the call.</p></div>

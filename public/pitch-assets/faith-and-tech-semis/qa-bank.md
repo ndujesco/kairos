@@ -2,7 +2,7 @@
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
-Rehearse the feedback topics. Distinguish current accounting and uploads from proposed review/privacy operations and future external settlement.
+Answers distinguish working features from planned exception handling, privacy controls and external settlement.
 
 ## The giving flow
 
@@ -85,5 +85,5 @@ Licensed custody and live payments, independent verification, appropriate privat
 
 ### 018. How long is this pitch allowed to be?
 
-Only the 6–8 p.m. Zoom session window has been supplied. Per-team duration is unconfirmed. The displayed 9:30 is a proposed rehearsal estimate including the existing recording.
+The confirmed format is one minute for team introduction, seven minutes for presentation and demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated three minutes to the pitch; demo timing is separate.
 
