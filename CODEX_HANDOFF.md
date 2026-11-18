@@ -2,7 +2,19 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current intake instruction: restore the earlier flow, cap at seven (18 November)
+## Current intake instruction: restore the original recorded Ugo interview (18 November)
+
+The user's latest clarification supersedes the short “finish after basic fields” flow below: they mean the original roughly four-minute full demo before its 1.1× speed-up, not the recent simplified version. Reviewed the actual `../pitch-kit/demo/kairos-demo-full-1.1x.mp4` frames at 0:23, 0:32, 0:42 and 0:51, alongside Cleva Grand Finale `demo-current-voiceover.md` and the original route at `58e85ba`. Its interview identifies the student/school/amount, asks for the RRR, requests documentary support and then explores studies and urgency even after “No for now” to documents. Preserve this depth.
+
+Restored the original welcoming opener and probing style in the live prompt. Removed the instruction to finish merely after name, institution and amount; the model explores evidence, payment reference, circumstances and urgency. The shared/server/client ceiling is now **eight questions including the opener, with no numeric minimum**. Details supplied up front or explicitly deferred are accepted without repeating them. Documents remain optional/addable later, example details are accepted, and no file/reference authentication or registry lookup is claimed.
+
+The local fallback now covers the same meaningful topics instead of ending after basic fields. It is still deterministic and must not be described as a live model. Also recognizes the recording's “I need to pay 300000”, keeps later amount corrections and prevents year-of-study text replacing the applicant's name. Review previews, six-second face playback and frozen competition materials are unchanged.
+
+Validation: production build, focused ESLint, 20 pure contextual checks and six focused HTTP checks passed. The actual recorded Ugo exchange completes after five answers covering the original topics; an already complete case can finish after one, and thin answers stop at eight. HTTP tests used only `kairos_qa_ugo_1795018213823`, then its records were cleared and the owned port-3010 server stopped. No live data mutations or browser opening. The user's `scripts/snapshots/cleva-2026-11-18.json` remains untouched and untracked; do not add that database snapshot to Git.
+
+A fresh direct Anthropic check still returned HTTP 400, insufficient credits. Live AI interviewing needs the connected Anthropic account topped up; the fallback remains usable meanwhile. No key was changed or exposed. Commit locally and leave pushing/deployment to the user.
+
+## Previous intake instruction: restore the earlier flow, cap at seven (18 November)
 
 The user corrected the preceding request: “the way it was before was perfect, just set limit of 7 questions”. Restored the pre-minimum interview handling from `5823127`: **maximum seven questions, no minimum**, finish when ready. Removed the forced evidence-question schedule, completion gate and filler follow-ups introduced with the five-question minimum. The live prompt still includes evidence in the normal interview, and files remain optional/addable later. Do not reintroduce a minimum or padded follow-ups.
 
