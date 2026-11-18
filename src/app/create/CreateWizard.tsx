@@ -7,7 +7,6 @@ import EvidenceUpload, {
   type UploadedEvidence,
 } from "@/components/EvidenceUpload";
 import {
-  fallbackInterview,
   MAX_INTERVIEW_QUESTIONS,
   INTAKE_OPENER,
 } from "@/lib/interview";
@@ -151,17 +150,15 @@ export default function CreateWizard({
           messages: transcript.map(({ from, text }) => ({ from, text })),
           attachments: uploads.map((f) => f.label),
         }),
-        signal: AbortSignal.timeout(14_000), // don't hang forever on a dead connection
+        signal: AbortSignal.timeout(25_000),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return (await res.json()) as Turn;
-    } catch {
-      return fallbackInterview(
-        transcript,
-        uploads.map((f) => f.label),
-        false,
-        user.name,
-      );
+      const turn = await res.json().catch(() => null);
+      if (!res.ok || !turn || typeof turn.reply !== "string")
+        throw new Error(turn?.error || "The interview could not reply. Please try again.");
+      return turn as Turn;
+    } catch (error) {
+      if (error instanceof Error && error.name === "Error") throw error;
+      throw new Error("The connection was interrupted. Your answer is ready to send again.");
     }
   }
 
@@ -172,45 +169,50 @@ export default function CreateWizard({
     setMessages(transcript);
     setInput("");
     if (inputRef.current) inputRef.current.style.height = "auto"; // collapse back to one line
+    setError("");
     setThinking(true);
 
-    let j = await interviewTurn(transcript);
-    if (
-      !j.done &&
-      transcript.filter((m) => m.from === "me").length >=
-        MAX_INTERVIEW_QUESTIONS
-    )
-      j = fallbackInterview(
-        transcript,
-        uploads.map((f) => f.label),
-        true,
-        user.name,
-      );
-    setThinking(false);
-    setMessages((m) => [...m, { from: "ai", text: j.reply }]);
+    try {
+      const j = await interviewTurn(transcript);
+      if (
+        !j.done &&
+        transcript.filter((m) => m.from === "me").length >=
+          MAX_INTERVIEW_QUESTIONS
+      )
+        throw new Error("The interview could not finish. Please try your answer again.");
+      setMessages((m) => [...m, { from: "ai", text: j.reply }]);
 
-    if (!j.done) return;
+      if (!j.done) return;
 
-    // interview finished → the AI hands over the structured cause
-    setChecks(j.checks?.length ? j.checks : DEFAULT_CHECKS);
-    const x = j.extracted;
-    if (x) {
-      setTitle(x.title.slice(0, 70));
-      if (CATEGORIES.includes(x.category)) setCategory(x.category);
-      setSummary(x.summary ?? "");
-      setStory(x.story ?? "");
-      if (x.budget?.length) {
-        setBudget(
-          x.budget.map((b) => ({
-            label: b.label,
-            amount: String(Math.round(b.amount)),
-            vendorName: b.vendorName,
-          })),
-        );
+      // interview finished → the AI hands over the structured cause
+      setChecks(j.checks?.length ? j.checks : DEFAULT_CHECKS);
+      const x = j.extracted;
+      if (x) {
+        setTitle(x.title.slice(0, 70));
+        if (CATEGORIES.includes(x.category)) setCategory(x.category);
+        setSummary(x.summary ?? "");
+        setStory(x.story ?? "");
+        if (x.budget?.length) {
+          setBudget(
+            x.budget.map((b) => ({
+              label: b.label,
+              amount: String(Math.round(b.amount)),
+              vendorName: b.vendorName,
+            })),
+          );
+        }
+        setEvidence((x.evidence ?? []).slice(0, 8));
       }
-      setEvidence((x.evidence ?? []).slice(0, 8));
+      setTimeout(() => setStage("structure"), 200);
+    } catch (error) {
+      // Keep the failed answer editable and retry the same turn, without adding
+      // a scripted message or counting a retry as another interview question.
+      setMessages(transcript.slice(0, -1));
+      setInput(answer);
+      setError(error instanceof Error ? error.message : "The interview could not reply. Please try again.");
+    } finally {
+      setThinking(false);
     }
-    setTimeout(() => setStage("structure"), 200);
   }
 
   const goal = budget.reduce(
@@ -380,7 +382,7 @@ export default function CreateWizard({
         </div>
       </div>
 
-      {error && (
+      {error && stage !== "chat" && (
         <p
           role="alert"
           className="mx-4 mt-3 rounded-xl border border-rose-400/40 p-3 text-sm text-rose-400"
@@ -437,10 +439,12 @@ export default function CreateWizard({
             <div ref={bottomRef} />
           </div>
           <div className="sticky bottom-[68px] border-t border-line bg-background p-3 sm:bottom-0">
+            {error && <p role="alert" className="mb-2 text-sm text-rose-500">{error}</p>}
             <div className="flex items-end gap-2">
               <textarea
                 ref={inputRef}
                 value={input}
+                disabled={thinking}
                 rows={1}
                 onChange={(e) => {
                   setInput(e.target.value);
@@ -462,7 +466,7 @@ export default function CreateWizard({
                 disabled={thinking || uploading || !input.trim()}
                 className="rounded-full bg-accent px-5 py-3 font-bold text-on-accent disabled:opacity-40"
               >
-                Send
+                {error ? "Try again" : "Send"}
               </button>
             </div>
           </div>

@@ -4,16 +4,13 @@ import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 
 import {
-  fallbackInterview,
   publicInterviewReply,
   MAX_INTERVIEW_QUESTIONS,
   INTAKE_OPENER,
-  interviewReadiness,
   type InterviewMessage,
 } from "@/lib/interview";
 import { getSessionUser } from "@/lib/session";
-export const maxDuration = 20;
-let providerUnavailableUntil = 0;
+export const maxDuration = 30;
 
 /**
  * The Kairos AI intake interviewer - a real model-driven conversation.
@@ -23,8 +20,7 @@ let providerUnavailableUntil = 0;
  * only when satisfied returns the structured cause (title, category, story,
  * itemized budget, evidence list) that prefills the publication form.
  *
- * If no API key is configured (or the call fails), a scripted fallback keeps
- * the demo alive offline.
+ * An unavailable provider returns a retryable error, never scripted AI replies.
  */
 
 const CATEGORIES = [
@@ -86,6 +82,12 @@ const InterviewTurn = z.object({
     ),
 });
 
+const InterviewFinal = InterviewTurn.extend({
+  done: z.literal(true),
+  extracted: InterviewTurn.shape.extracted.unwrap(),
+  checks: InterviewTurn.shape.checks.unwrap(),
+});
+
 const SYSTEM = `You are the Kairos intake assistant. Kairos is a Nigerian transparent-giving platform: donations are held in escrow and paid directly to verified vendors (hospitals, caterers, suppliers) - never to the organizer's personal account - and every donor gets a receipt for their exact share of every payment.
 
 Your job is to interview someone who wants to create a cause, and to discern legitimacy while helping them make the strongest possible case.
@@ -136,8 +138,6 @@ export async function POST(req: NextRequest) {
     : [];
   const answerCount = chat.filter((m) => m.from === "me").length;
   const finish = answerCount >= MAX_INTERVIEW_QUESTIONS;
-  const backup = fallbackInterview(chat, attachments, finish, user.name);
-  const coverage = interviewReadiness(chat, attachments, user.name);
 
   // the opener never needs the AI - serve it instantly so the chat feels alive
   if (chat.filter((m) => m.from === "me").length === 0) {
@@ -150,15 +150,14 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  if (finish || !process.env.ANTHROPIC_API_KEY || Date.now() < providerUnavailableUntil) {
+  if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({
-      ...backup,
-      source: finish ? "bounded" : "scripted",
-    });
+      error: "The interview is temporarily unavailable. Please try again.",
+    }, { status: 503 });
   }
 
   try {
-    const client = new Anthropic({ timeout: 10_000, maxRetries: 0 });
+    const client = new Anthropic({ timeout: 20_000, maxRetries: 0 });
 
     const history: Anthropic.MessageParam[] = chat.map((m) => ({
       role: m.from === "me" ? ("user" as const) : ("assistant" as const),
@@ -177,42 +176,29 @@ export async function POST(req: NextRequest) {
       // Keep the fast model used in the original recorded interview.
       model: "claude-haiku-4-5",
       max_tokens: 2500,
-      system: `${SYSTEM}\nThe signed-in creator is ${JSON.stringify(user.name)}. Do not confuse the organizer with someone else they are helping.\nConversation facts and topic coverage (hints only; the creator's words and latest corrections take precedence): ${JSON.stringify(coverage)}. Use your judgment about missing details and never ask them to repeat known facts.\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. Finish when the case has been explored, not merely when basic form fields are filled.\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
+      system: `${SYSTEM}\nThe signed-in creator is ${JSON.stringify(user.name)}. Do not confuse the organizer with someone else they are helping. Read the whole conversation and respond naturally to the latest answer.\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. ${finish ? "The question limit has been reached. Return done=true with the cause assembled from the supplied facts, and note missing details in checks. Do not ask any more questions." : "Finish when the case has been explored, not merely when basic form fields are filled."}\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
       messages: history,
       output_config: {
-        format: zodOutputFormat(InterviewTurn),
+        format: zodOutputFormat(finish ? InterviewFinal : InterviewTurn),
       },
     });
 
     const parsed = response.parsed_output;
-    if (!parsed) throw new Error("No parsed output");
-    if ((finish && !parsed.done) || (parsed.done && !parsed.extracted))
-      return NextResponse.json({
-        ...fallbackInterview(chat, attachments, true, user.name),
-        source: "bounded",
-      });
+    if (!parsed || (parsed.done && !parsed.extracted))
+      throw new Error("Incomplete interview response");
+    const reply = publicInterviewReply(parsed.reply, parsed.done, "");
+    if (!reply) throw new Error("Empty interview response");
     return NextResponse.json({
       ...parsed,
-      reply: publicInterviewReply(
-        parsed.reply,
-        parsed.done,
-        backup.reply,
-      ),
+      reply,
       source: "live",
     });
   } catch (error) {
-    // Avoid retrying a known unavailable provider on every answer. A top-up or
-    // temporary failure is checked again after one minute; no secrets are logged.
-    if (error && typeof error === "object" && "status" in error) {
-      const status = Number(error.status);
-      const message = "message" in error ? String(error.message) : "";
-      if ([401, 403, 429].includes(status) || /credit balance.*too low/i.test(message))
-        providerUnavailableUntil = Date.now() + 60_000;
-    }
-    console.warn("AI interview used the context-aware local fallback.");
+    const status = error && typeof error === "object" && "status" in error
+      ? Number(error.status) : null;
+    console.warn("Live AI interview unavailable.", { status });
     return NextResponse.json({
-      ...backup,
-      source: "scripted",
-    });
+      error: "The interview could not reply. Please try your answer again.",
+    }, { status: 503 });
   }
 }

@@ -2,6 +2,24 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Current state: funded key, real AI interview and completed rotation (18 November)
+
+The user supplied a working funded key after two keys returned insufficient credits. A fresh Haiku request succeeded. **The previous Anthropic credit blocker is resolved.** The public Kairos API now returns `source: live`; the exact “Hi, I am Miracle and I need to pay fees” test received a natural question asking which school and how much, rather than the scripted repeated-need prompt. No test cause or donation was created in production.
+
+Rotated actual configured keys in five private local files: this repository's `.env.local`; `Documents/CODE/personal/ctybooksource/.env.local`; `Documents/CODE/personal/invoicer/.env.local`; `Documents/CODE/personal/LinguaFlow_v2_MMS-TTS/LinguaFlow/.env`; and `Documents/Current Projects/WORKPEG/app/kairos/.env.local`. Tracked example placeholders were preserved. Scanned Documents/Desktop/Downloads for environment uses and the relevant source roots for embedded keys; only these five active files contained configured keys. No secret value belongs in Git, this handoff or history.
+
+Inventoried all 51 projects in the existing personal Vercel team. Four used Anthropic; updated their existing sensitive records without changing targets: Kairos, CTY and Invoicer production+preview, Workpeg production. Redeployed their existing production sources to activate the key:
+- kairos-community: `dpl_82FcQav6gk16pBy7USwTKdswxTtU` (READY, production alias assigned).
+- ctybooksource: `dpl_AaYNUchaKkobqrVHJ2KfjtYC2JvA` (READY, production alias assigned).
+- invoicer: `dpl_FvFg9QzcWfZP7cKabx2nUXiGAzKN` (READY, production alias assigned).
+- kairos-workpeg: `dpl_4eAFPz8Rx1c7FUAQnqWME4PujUUv` (READY, production alias assigned).
+
+These redeployments preserve their existing source, including Kairos production commit `f17883b`. The **new code changes below are committed for the user's push**, not included in that key-only redeployment. Do not automatically push.
+
+Removed silent scripted interviewing from both `api/ai/interview` and `CreateWizard`. All successful follow-ups/final assembly now come from Anthropic; no regex-derived facts or local fallback dispatch steer the live prompt. At eight answers, a final structured schema requires completion from the model. On errors, return 503, retain the failed answer for editing/retry and do not count it twice. The opener remains immediate/local, as in the original. Provider timeout is 20 seconds, browser 25; no retries or artificial delays. Legacy fallback helpers/tests remain in `src/lib/interview.ts` but are disconnected from production server/client and must not be reintroduced as an invisible substitute.
+
+Validation: production build and API-route ESLint passed. Actual model checks in isolated `kairos_qa_live_1795020550197` verified the fees opener, contextual ₦300,000/UNILAG follow-up and model finalization at eight answers. A missing-key server returned 503 with no scripted reply. Live public API also confirmed `source: live` after rotation. Both owned preview servers (3010/3011) stopped and the single QA account was cleared. No browser opened. Full wizard ESLint still reports four pre-existing errors in the old stage-preview effect; this task did not change that effect. Document previews, face interval, snapshots, cause deletions and competition materials are unchanged.
+
 ## Latest UI fix: account-menu stacking (18 November)
 
 Added `z-30` to the sticky sidebar so its profile/logout menu appears above cause cards. The dropdown already had a z-index, but its sidebar stacking context was behind the feed. Per the user’s explicit request, no build, test or browser check was run. Commit is left for their push.
