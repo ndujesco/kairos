@@ -1,8 +1,10 @@
 # Kairos website handoff
 
-Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
+Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
 ## Latest presentation work: Faith & Tech three-minute pitch and two voiceovers
+
+19 November follow-up: created `demo-voiceover-cleva.pdf` and `demo-voiceover-faith-and-tech-general.pdf` beside their Markdown sources in the competition folders and Desktop bundle. Each has three pages: four spoken parts on pages 1–2, preparation notes on page 3. All source paragraphs are preserved and all six PDF pages were visually inspected. Export masters are in `../output/pdf/`. No website/public files or video changed; these PDF exports are local deliverables, not a deployment.
 
 The user explicitly chose **three minutes for the Faith & Tech pitch** and will decide demo timing. Do not shorten the pitch to fit a video or alter the footage. New organizer email confirms 19 November, 6:30–6:45 p.m. WAT, join by 6:25. Format is one-minute team intro, seven-minute presentation/demo, five-minute Q&A and two-minute scoring. The email copy with private meeting credentials is outside this repo in the event's `03 Semi-final Pitch/brief/`.
 
