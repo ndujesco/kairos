@@ -2,7 +2,7 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current work: documented stage rooms, then camera-opening transition
+## Latest work: stage rooms and camera-opening transition
 
 The user requested explicit event/stage URLs. Canonical pages are `/cleva-finale.html`, `/cleva-preliminary.html`, `/apwen-semi.html` and the proposed `/faith-and-tech-semis.html`. Legacy `/cleva.html` stays on the finale; `/cleva-pitch.html` now serves the recovered preliminary edition; `/apwen-pitch.html` serves the semi-final. APWEN finale is reserved, not created.
 
@@ -12,7 +12,11 @@ The latest spoken finale script is 665 words, retaining the 10:00 plan and the u
 
 The user additionally requested Cleva-specific finale Q&A. `cleva_finale_qa.py` supplies 38 questions (21 priorities) about the payments case, Cleva/Tether funding, external settlement, controls and execution. Question 1 is “How exactly is Kairos a payment solution?” and explains crowdfunding as the specific payment use case, combining existing services with budget/payment controls and donor receipts. The preliminary bank stays historical. Primary Cleva sources were checked on 18 November.
 
-The user took over pushing: initial page work was committed/pushed by them as `7d05e75`. Do not automatically push subsequent work unless they ask again. Finish and commit remaining changes for them to push. After pitch work, implement the separately requested simple camera-opening transition before face-check playback, while preserving NIN gating and bounded verification. Status and next action are kept in the root handoff.
+The user took over pushing: initial page work was committed/pushed by them as `7d05e75`. Do not automatically push subsequent work unless they ask again. Finish and commit remaining changes for them to push. Pitch follow-up is committed as `5b692d7`. The separately requested camera-opening transition is now implemented: a plain black panel and spinner for 600 ms after complete NIN + Start, then the existing clip. The video remains unmounted before that sequence; the six-second verification timeout and video-independent publishing are preserved. NIN editing is disabled during the check. Cause headings/tooltips now say Comments, with matching input/empty-state copy. Status and next action are kept in the root handoff.
+
+Production build passed. Native Edge QA verified empty/incomplete NIN gating, readiness without a face preview, the opening panel, subsequent video/confirmed state and a complete interview → structure → identity → published cause. Mutations used only `kairos_qa_face_1794988960057`; test records were cleared and both owned preview servers stopped. Empty QA collections remain because this database user cannot drop a database. No live records were changed.
+
+External issue found during QA: the configured Anthropic key returns HTTP 400 because its account credit balance is too low. Intake still completes via the existing five-question fallback. The user needs to top up that Anthropic account before expecting live model responses; no key value was printed or changed.
 
 ## Previous release: 17 November Cleva Grand Finale presenter page
 

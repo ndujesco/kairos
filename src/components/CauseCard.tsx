@@ -128,7 +128,7 @@ export default function CauseCard({ cause }: { cause: CauseCardData }) {
             <Link
               href={`/cause/${cause.slug}`}
               className="group flex min-w-0 items-center gap-1 text-xs transition hover:text-sky-400 sm:gap-1.5 sm:text-sm"
-              title="Words of support"
+              title="Comments"
             >
               <span className="rounded-full p-1 group-hover:bg-sky-400/10 sm:p-1.5">
                 <NavIcon name="Comment" className="h-[18px] w-[18px]" />

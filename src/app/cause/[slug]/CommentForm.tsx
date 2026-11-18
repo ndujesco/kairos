@@ -27,7 +27,7 @@ export default function CommentForm({ causeId }: { causeId: string }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && post()}
-        placeholder="Say something encouraging…"
+        placeholder="Write a comment…"
         className="flex-1 rounded-full border border-line bg-transparent px-4 py-2 text-[15px] outline-none placeholder:text-muted focus:border-accent"
       />
       <button

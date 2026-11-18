@@ -66,9 +66,9 @@ export default function CreateWizard({
   >("chat");
   /* identity step */
   const [nin, setNin] = useState("");
-  const [idState, setIdState] = useState<"idle" | "scanning" | "matched">(
-    "idle",
-  );
+  const [idState, setIdState] = useState<
+    "idle" | "opening" | "scanning" | "matched"
+  >("idle");
   const [idScore, setIdScore] = useState(0);
   const faceVideoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
@@ -220,22 +220,17 @@ export default function CreateWizard({
     setStage("identity");
   }
   async function runFaceCheck() {
-    if (flowBusy.current || uploading) return;
+    if (flowBusy.current || uploading || nin.length !== 11) return;
     flowBusy.current = true;
     setError("");
-    setIdState("scanning");
-    setIdScore(50);
-    const vid = faceVideoRef.current;
-    // The video is illustrative. Verification never waits for its load/end events.
+    setIdState("opening");
+    setIdScore(0);
     try {
-      if (vid) {
-        try {
-          vid.currentTime = 0;
-          void vid.play().catch(() => {});
-        } catch {
-          /* unavailable media never blocks verification */
-        }
-      }
+      // A short camera-opening state precedes the illustrative clip. Neither
+      // verification nor publication depends on media loading or ending.
+      await new Promise((r) => setTimeout(r, 600));
+      setIdState("scanning");
+      setIdScore(50);
       const [res] = await Promise.all([
         fetch("/api/auth/verify", {
           method: "POST",
@@ -623,6 +618,7 @@ export default function CreateWizard({
               }
               placeholder="11 digits"
               inputMode="numeric"
+              disabled={idState !== "idle"}
               className="mt-2 w-full rounded-xl border border-line bg-transparent px-4 py-3 text-[15px] outline-none focus:border-accent"
             />
             <p className="mt-2 text-[13px] text-muted">
@@ -654,6 +650,17 @@ export default function CreateWizard({
                       : "Enter your NIN to begin"}
                   </p>
                 </div>
+              ) : idState === "opening" ? (
+                <div
+                  className="flex h-full flex-col items-center justify-center gap-3 bg-black px-3 text-center text-white/70"
+                  role="status"
+                >
+                  <span
+                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white/70 motion-reduce:animate-none"
+                    aria-hidden="true"
+                  />
+                  <p className="text-xs">Opening camera…</p>
+                </div>
               ) : (
                 <video
                   ref={faceVideoRef}
@@ -668,7 +675,7 @@ export default function CreateWizard({
                   <source src="/demo/face-check.mp4" type="video/mp4" />
                 </video>
               )}
-              {idState !== "idle" && (
+              {(idState === "scanning" || idState === "matched") && (
                 <div className="pointer-events-none absolute inset-0">
                   <div className="absolute inset-x-3 top-3 bottom-3 rounded-lg border-2 border-accent/70" />
                   {idState === "scanning" && (
@@ -694,13 +701,21 @@ export default function CreateWizard({
               <div className="mt-4 space-y-2 text-[14px]">
                 <Row
                   label="Liveness"
-                  ok={idState !== "idle"}
-                  note={idState === "idle" ? "waiting" : "live person"}
+                  ok={idState === "scanning" || idState === "matched"}
+                  note={
+                    idState === "idle" || idState === "opening"
+                      ? "waiting"
+                      : "live person"
+                  }
                 />
                 <Row
                   label="Face match"
                   ok={idState === "matched"}
-                  note={idState === "idle" ? "waiting" : idScore + "%"}
+                  note={
+                    idState === "idle" || idState === "opening"
+                      ? "waiting"
+                      : idScore + "%"
+                  }
                 />
                 <Row
                   label="Name on record"

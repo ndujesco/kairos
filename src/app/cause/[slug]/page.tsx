@@ -449,9 +449,9 @@ export default async function CausePage(props: {
         </div>
       </section>
 
-      {/* words of support */}
+      {/* Comments */}
       <section className="mx-4 my-5 rounded-2xl border border-line p-4">
-        <h2 className="font-extrabold">Words of support</h2>
+        <h2 className="font-extrabold">Comments</h2>
         {viewer && <CommentForm causeId={String(cause._id)} />}
         <div className="mt-3 flex flex-col gap-3">
           {comments.map((c) => (
@@ -474,7 +474,7 @@ export default async function CausePage(props: {
           ))}
           {comments.length === 0 && (
             <p className="text-sm text-muted">
-              Be the first to leave a word of support.
+              Be the first to comment.
             </p>
           )}
         </div>
