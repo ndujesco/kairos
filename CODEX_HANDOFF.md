@@ -2,6 +2,12 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest artifact: Miracle payment advice
+
+Created the requested dummy school-fee payment advice in `~/Downloads/Miracle-School-Fees-Payment-Advice.pdf`, with a local archive in `hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/demo-documents/`. Student: OMOHUMA MIRACLE; University of Lagos example; total ₦300,000; dummy RRR `000000000000`; dummy matric `DEMO/MIRACLE/001`. Sample session 2026/2027 and due date 30 November 2026 are illustrative. Fee breakdown sums to ₦300,000. The one-page PDF is explicitly a demonstration copy, outstanding/unpaid and not payable; no official crest/signature is used. Parameters are saved alongside the event copy as `payment-advice-details.json`.
+
+Rendered and visually checked the page; text/amount/name/reference and one-page checks passed. File is 30,527 bytes, within the app's upload limit. Nothing was uploaded, sent, paid or written to MongoDB. Existing Ugo payment-advice files and historical recordings were preserved.
+
 ## Latest request: Omohuma demo applicant and new face capture
 
 The next Cleva recording now uses Omohuma (Miracle) as the person raising ₦300,000 for University of Lagos fees. Okefe and Abigail remain the donors and all fee/net amounts are unchanged. Updated the event's `03 Grand Finale/demo-flow.md` throughout, including applicant profile, fee notice/reference, wallet, payment and donor proof. The older plan is archived in `03 Grand Finale/archive/2026-11-18-before-omohuma/`. Existing full video and `demo-current-voiceover.md` remain the older Ugo recording; do not silently rewrite that transcript or claim a new full recording exists.
