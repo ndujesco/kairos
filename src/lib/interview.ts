@@ -1,4 +1,3 @@
-export const MIN_INTERVIEW_QUESTIONS = 5;
 export const MAX_INTERVIEW_QUESTIONS = 7;
 // Do not rely on the model alone to keep its internal demo context private.
 export function publicInterviewReply(
@@ -83,11 +82,13 @@ function suppliedProvider(text: string) {
 function suppliedAmount(text: string, previousQuestion = ""): number | null {
   // Never interpret an RRR, NIN, date or account number as the requested amount.
   const candidates: { amount: number; priority: boolean }[] = [];
-  const pattern = /(?:₦|\bNGN\s*|\bN(?=\s*\d))\s*(\d[\d,]*(?:\.\d+)?)\s*([km])?\b|(\d[\d,]*(?:\.\d+)?)\s*(k|m|naira)\b|\b(\d{1,3}(?:,\d{3})+)\b|\b(?:need|owe|raise|total|amount|budget|balance|fees?(?: are| is| of)?|costs?)\s*(?:of|is|are|about|roughly|approximately|:)?\s*(\d[\d,]*(?:\.\d+)?)\s*([km])?\b/gi;
+  const pattern = /(?:₦|\bNGN\s*|\bN(?=\s*\d))\s*(\d[\d,]*(?:\.\d+)?)\s*([km])?\b|(\d[\d,]*(?:\.\d+)?)\s*(k|m|naira)\b|\b(\d{1,3}(?:,\d{3})+)\b|\b(?:need|owe|raise|total|amount|budget|balance|tuition|fees?(?: are| is| of)?|costs?)\s*(?:of|is|are|about|roughly|approximately|:)?\s*(\d[\d,]*(?:\.\d+)?)\s*([km])?\b|\b(\d[\d,]*(?:\.\d+)?)\s*(?:for\s+)?(?:the\s+)?(?:tuition|school\s*fees?|fees?|rent|treatment|surgery|bill)\b/gi;
   for (const match of text.matchAll(pattern)) {
-    const raw = match[1] ?? match[3] ?? match[5] ?? match[6];
+    const raw = match[1] ?? match[3] ?? match[5] ?? match[6] ?? match[8];
     const suffix = (match[2] ?? match[4] ?? match[7] ?? "").toLowerCase();
     const prefix = text.slice(Math.max(0, match.index! - 28), match.index);
+    const after = text.slice(match.index! + match[0].length);
+    if (/\d[/-]\s*$/.test(prefix) || /^\s*[/-]\d/.test(after)) continue;
     if (/\b(?:rrr|remita|reference|nin|matric|account|phone)\s*[:#-]?\s*$/i.test(prefix)) continue;
     if (/\b(?:not|instead of|rather than)\s*$/i.test(prefix)) continue;
     if (raw.replace(/\D/g, "").length > 9) continue;
@@ -97,8 +98,9 @@ function suppliedAmount(text: string, previousQuestion = ""): number | null {
     if (!Number.isFinite(amount) || amount <= 0) continue;
     candidates.push({ amount, priority: /\b(?:total|need|owe|outstanding|balance|raise|amount)(?:\s+(?:is|are|of|about|roughly|approximately))?\s*$/i.test(prefix) || /^(?:need|owe|raise|total|amount|budget|balance)\b/i.test(match[0]) });
   }
-  if (!candidates.length && /\b(?:amount|how much|total)\b/i.test(previousQuestion) && /^\s*\d{1,9}(?:\.\d{1,2})?\s*$/.test(text)) {
-    const amount = Number(text);
+  const contextualNumber = text.match(/^\s*(?:(?:just|only|the|it is|it's|it’s|about|roughly|approximately|actually)\s+)*(\d{1,9}(?:\.\d{1,2})?)\s*(?:(?:only|please|in total|total|needed)\s*)?[.!]?\s*$/i);
+  if (!candidates.length && /\b(?:amount|how much|total)\b/i.test(previousQuestion) && contextualNumber) {
+    const amount = Number(contextualNumber[1]);
     if (amount > 0) return amount;
   }
   const preferred = candidates.filter((c) => c.priority);
@@ -149,8 +151,8 @@ export function interviewContext(
   return context;
 }
 
-function answerCreatorQuestion(text: string, category: string) {
-  if (/\b(?:doc(?:ument)?s?|bill|proof|evidence|payment advice|rrr|reference)\b/i.test(text) &&
+function answerCreatorQuestion(text: string, category: string, previousQuestion: string) {
+  if ((/\b(?:doc(?:ument)?s?|bill|proof|evidence|payment advice|rrr|reference)\b/i.test(text) || interviewAskedForDocument([{ from: "ai", text: previousQuestion }])) &&
       /\?|\b(?:can|how|what|where|later|don't have|do not have|can't|cannot|no document)\b/i.test(text)) {
     if (/\b(?:later|don't have|do not have|can't|cannot|no document)\b/i.test(text)) {
       return "That’s okay. You can add supporting documents now or return to add them after publishing.";
@@ -179,28 +181,16 @@ export function fallbackInterview(
   const answers = messages.filter((m) => m.from === "me").map((m) => m.text);
   const context = interviewContext(messages, profileName);
   const latest = answers.at(-1) ?? "";
-  const response = answerCreatorQuestion(latest, context.category);
+  const response = answerCreatorQuestion(latest, context.category, messages.filter((m) => m.from === "ai").at(-1)?.text ?? "");
   const ready = Boolean(context.need && context.name && context.provider && context.amount);
-  const documentAsked = interviewAskedForDocument(messages);
-  const mayFinish = answers.length >= MIN_INTERVIEW_QUESTIONS && documentAsked && (ready || finish);
-  if (answers.length < MAX_INTERVIEW_QUESTIONS && !mayFinish) {
+  if (!finish && answers.length < MAX_INTERVIEW_QUESTIONS && !ready) {
     const missing: string[] = [];
     if (!context.need) missing.push("need");
     if (!context.name) missing.push("name");
     if (!context.provider) missing.push("provider");
     if (context.amount === null) missing.push("amount");
     let question: string;
-    const previous = messages.filter((m) => m.from === "ai").map((m) => m.text).join("\n");
-    const supplied = answers.join("\n");
-    if (!documentAsked && answers.length >= 2) {
-      question = attachments.length
-        ? "Your uploaded document is attached. Is there another supporting document you would like to add?"
-        : /\b(?:later|don't have|do not have|can't|cannot|no document)\b/i.test(latest)
-          ? "Which supporting document could you provide later, such as a bill or payment advice?"
-        : context.category === "Education"
-          ? "Please attach your fee notice or payment advice using Add documents. Do you have one available? You can add it later if needed."
-          : "Please attach a bill, photo or letter using Add documents. Do you have a supporting document available? You can add it later if needed.";
-    } else if (missing.includes("need")) {
+    if (missing.includes("need")) {
       question = "What do you need the money to pay for?";
     } else if (missing.includes("name")) {
       question = "What is the name of the person who needs this help?";
@@ -212,22 +202,10 @@ export function fallbackInterview(
       question = context.category === "Education"
         ? "Which school should receive the fee payment?"
         : "Which hospital, supplier or organization should receive the payment directly?";
-    } else if (missing.includes("amount")) {
+    } else {
       question = context.provider
         ? `What is the total amount needed for ${context.provider}?`
         : "What is the total amount needed in naira?";
-    } else if (!/\b(?:due|deadline|next week|next month|tomorrow|today)\b/i.test(supplied) && !/\b(?:due|deadline)\b/i.test(previous)) {
-      question = context.category === "Education"
-        ? "When are the fees due, and what happens if that deadline is missed?"
-        : "When is this payment needed, and what happens if it is delayed?";
-    } else if (!/\b(?:difficult|cover this|shortfall)\b/i.test(previous) && !/\b(?:cannot afford|can't afford|lost|unemployed|income|salary|struggling|shortfall)\b/i.test(supplied)) {
-      question = "What has made it difficult to cover this bill?";
-    } else if (!/\b(?:entire|remaining balance|full bill|full fee)\b/i.test(previous + supplied)) {
-      question = `Does ${context.amount ? money(context.amount) : "that amount"} cover the entire bill, or is it the remaining balance?`;
-    } else if (!/anything else.*public cause/i.test(previous)) {
-      question = "Is there anything else you would like supporters to know in the public cause?";
-    } else {
-      question = "Are the story and payment details ready for you to review?";
     }
     return {
       reply: [response, question].filter(Boolean).join(" "),

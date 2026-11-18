@@ -2,7 +2,15 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Latest product follow-up: intake, review preview and visible face check (18 November)
+## Current intake instruction: restore the earlier flow, cap at seven (18 November)
+
+The user corrected the preceding request: “the way it was before was perfect, just set limit of 7 questions”. Restored the pre-minimum interview handling from `5823127`: **maximum seven questions, no minimum**, finish when ready. Removed the forced evidence-question schedule, completion gate and filler follow-ups introduced with the five-question minimum. The live prompt still includes evidence in the normal interview, and files remain optional/addable later. Do not reintroduce a minimum or padded follow-ups.
+
+The screenshot also revealed a genuine parsing bug: “Just the 300000 Tuition” was not recognized, so the fallback repeated the amount question. Fixed unformatted amounts with fee labels and ordinary short amount replies, while excluding identifiers and academic-session dates. Contextual “I will add it later” replies are acknowledged. Existing name/context fixes remain.
+
+Validation: all 19 pure contextual regressions and the production build passed, including the exact repeated-amount screenshot and immediate completion with sufficient facts. No database mutations or browser opening were needed. Document previews, the six-second face interval and the earlier scoped practice-cause deletions are unchanged. Commit locally for the user's push; refresh only after deployment to load the new client fallback. This instruction supersedes the five-to-seven behavior documented below.
+
+## Previous product follow-up: intake, review preview and visible face check (18 November)
 
 This section supersedes the earlier two-answer completion and short face interval below. The user asked to round off and not open the website at delivery. Do not automatically push or deploy; they handle pushing.
 
