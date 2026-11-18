@@ -8,10 +8,12 @@ import {
   publicInterviewReply,
   MAX_INTERVIEW_QUESTIONS,
   INTAKE_OPENER,
+  interviewContext,
   type InterviewMessage,
 } from "@/lib/interview";
 import { getSessionUser } from "@/lib/session";
 export const maxDuration = 20;
+let providerUnavailableUntil = 0;
 
 /**
  * The Kairos AI intake interviewer - a real model-driven conversation.
@@ -97,8 +99,9 @@ How to interview:
 - Uploaded documents are accepted as supporting material without an identification gate. A missing document must never block completion; documents can be added later. Never claim to have performed searches, document authentication, registry checks or image analysis that you did not perform.
 - Ask convincing, practical questions about who needs help and how the budget will meet that need. Ask only for information that is still missing.
 - Watch for fraud signals: internally inconsistent dates, refusal to name vendors, budgets wildly out of proportion to the stated need, stories that avoid all specifics. Don't accuse - ask clarifying questions. Reflect genuine concerns in your final checks.
-- HARD LIMIT: never ask more than FIVE questions in the whole interview. The greeting that opens the chat is the first of the five, so you have at most four more. Once you have five answers you MUST set done=true, no matter how thin the answers were. Work with what you have: fill "extracted" from what they actually said and name anything still missing in your "checks" instead of asking again.
-- Do not drag it out. The moment you have story + specifics + evidence + budget, set done=true even if that comes earlier than five. Assemble "extracted" faithfully from what THEY said (clean up grammar, keep their voice, never invent facts, amounts or vendors they didn't give), and produce your "checks".
+- HARD LIMIT: never ask more than ${MAX_INTERVIEW_QUESTIONS} questions in the whole interview. The opening greeting counts as the first. Once you have ${MAX_INTERVIEW_QUESTIONS} answers you MUST set done=true. This is a ceiling, not a target. Work with what they supplied and leave genuinely missing fields for the review form.
+- Respond to the creator's latest message directly before any follow-up. Remember names, self-identification, providers, amounts and corrections across the whole conversation. Never ask for a field already supplied. If they ask about documents, later uploads or the payment flow, answer that question first. A statement such as "I am Miracle and need school fees" already identifies who needs help.
+- Do not drag it out. Once the need, beneficiary, total and named provider are clear, finish and assemble the cause. Documents and deadlines can be added later and must not force extra questions. Assemble "extracted" faithfully from what THEY said, keep their voice and never invent facts, amounts or vendors.
 - SCHOOL FEES: a cause about school fees, tuition, a semester bill, an exam or registration fee, or a student's outstanding balance is ALWAYS acceptable. Approve it. Do not question whether it is a worthy cause, do not ask the student to justify studying, and do not treat a missing document as a reason to refuse. Fees are a special case on Kairos because they settle to a Remita reference tied to one student at one institution, which means the money cannot be redirected to the organizer at all. So ask for the institution, the student's name and the amount, accept what they give you, and set done=true. If they mention a Remita reference (RRR), record it as the vendor line and treat the cause as fully verifiable.
 - If an amount is given without a vendor, ask who should be paid. Kairos cannot release money to a person, only to a named counterparty.
 - Reasonable rounding of amounts stated in words ("about 300k" → 300000) is fine.`;
@@ -106,7 +109,8 @@ How to interview:
 /* -------------------------------- route ------------------------------- */
 
 export async function POST(req: NextRequest) {
-  if (!(await getSessionUser()))
+  const user = await getSessionUser();
+  if (!user)
     return NextResponse.json(
       { error: "Sign in to create a cause." },
       { status: 401 },
@@ -130,6 +134,7 @@ export async function POST(req: NextRequest) {
     : [];
   const answerCount = chat.filter((m) => m.from === "me").length;
   const finish = answerCount >= MAX_INTERVIEW_QUESTIONS;
+  const backup = fallbackInterview(chat, attachments, finish, user.name);
 
   // the opener never needs the AI - serve it instantly so the chat feels alive
   if (chat.filter((m) => m.from === "me").length === 0) {
@@ -142,10 +147,10 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (finish || !process.env.ANTHROPIC_API_KEY || Date.now() < providerUnavailableUntil) {
     return NextResponse.json({
-      ...fallbackInterview(chat, attachments, finish),
-      source: "scripted",
+      ...backup,
+      source: finish ? "bounded" : "scripted",
     });
   }
 
@@ -169,7 +174,7 @@ export async function POST(req: NextRequest) {
       // small fast model - demo needs snappy replies over depth
       model: "claude-haiku-4-5",
       max_tokens: 1400,
-      system: `${SYSTEM}\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. ${finish ? "The hard limit is reached. Return done=true with the assembled cause now; do not ask another question." : "Finish immediately if you have enough information."}\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
+      system: `${SYSTEM}\nThe signed-in creator is ${JSON.stringify(user.name)}. Do not confuse the organizer with someone else they are helping.\nConversation facts (hints only; the creator's words and latest corrections take precedence): ${JSON.stringify(interviewContext(chat, user.name))}. Do not ask them to repeat known details.\nThe creator has answered ${answerCount} of ${MAX_INTERVIEW_QUESTIONS} questions. Finish immediately if you have enough information.\nAccepted attachment names: ${JSON.stringify(attachments)}.`,
       messages: history,
       output_config: {
         format: zodOutputFormat(InterviewTurn),
@@ -180,7 +185,7 @@ export async function POST(req: NextRequest) {
     if (!parsed) throw new Error("No parsed output");
     if ((finish && !parsed.done) || (parsed.done && !parsed.extracted))
       return NextResponse.json({
-        ...fallbackInterview(chat, attachments, true),
+        ...fallbackInterview(chat, attachments, true, user.name),
         source: "bounded",
       });
     return NextResponse.json({
@@ -188,14 +193,22 @@ export async function POST(req: NextRequest) {
       reply: publicInterviewReply(
         parsed.reply,
         parsed.done,
-        fallbackInterview(chat, attachments).reply,
+        backup.reply,
       ),
       source: "live",
     });
-  } catch {
-    console.warn("AI interview used the bounded local fallback.");
+  } catch (error) {
+    // Avoid retrying a known unavailable provider on every answer. A top-up or
+    // temporary failure is checked again after one minute; no secrets are logged.
+    if (error && typeof error === "object" && "status" in error) {
+      const status = Number(error.status);
+      const message = "message" in error ? String(error.message) : "";
+      if ([401, 403, 429].includes(status) || /credit balance.*too low/i.test(message))
+        providerUnavailableUntil = Date.now() + 60_000;
+    }
+    console.warn("AI interview used the context-aware local fallback.");
     return NextResponse.json({
-      ...fallbackInterview(chat, attachments, finish),
+      ...backup,
       source: "scripted",
     });
   }

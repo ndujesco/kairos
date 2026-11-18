@@ -239,7 +239,7 @@ try {
   );
   assert.doesNotMatch(turn.reply, /demonstration|simulated|prototype|demo\b/i);
   check("AI accepts demonstration inputs without exposing internal context");
-  const messages = Array.from({ length: 5 }, (_, i) => [
+  const messages = Array.from({ length: 7 }, (_, i) => [
     { from: "ai", text: "Tell me more?" },
     { from: "me", text: "I need tuition help. " + i },
   ]).flat();
@@ -247,7 +247,7 @@ try {
   const final = await limit.json();
   assert.equal(final.done, true);
   assert.ok(final.extracted);
-  check("server finalizes at five answers");
+  check("server finalizes at seven answers");
   const html = await (
     await fetch(base + "/?feed=latest", { headers: { cookie: owner } })
   ).text();

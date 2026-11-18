@@ -2,6 +2,16 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest fix: contextual intake, maximum seven questions
+
+The user reported that intake ignored Miracle's name, UNILAG and ₦300,000, then asked for those details again. The exact text was the old fixed fallback, used because Anthropic still returns HTTP 400 for insufficient account credits (checked 18 November). No key was printed or changed. Top up that account to restore live-model responses.
+
+Replaced the fallback's numbered questions with conversation-derived fields in `src/lib/interview.ts`. It remembers the supplied beneficiary, purpose, institution/provider and amount, honors later amount corrections, asks only for missing fields, answers document/payment questions and prefills the review budget. The screenshot's two-answer conversation now completes with Miracle, University of Lagos and ₦300,000. This is a deterministic backup, not a claim that the external model is available or that documents are read/authenticated. Supporting files stay optional.
+
+At the user's explicit request, the hard ceiling is now **seven questions**, including the opener; finish earlier when the needed details are available. The constant, live prompt, server guard, client fallback, regression check and AGENTS instruction agree. No visible question counter or internal-context label was added. The server uses the signed-in creator's name only when appropriate, and gives a known unavailable provider a one-minute cooldown before retrying.
+
+Validation passed: production build, 13 pure contextual regression checks (`npm run test:interview`) and focused HTTP checks using only `kairos_qa_interview_1795009264798`. HTTP checks covered the exact Miracle conversation, the prefilled budget, seven-answer completion and unauthenticated rejection. The owned QA server was stopped and its test records cleared. No live records or presentation assets changed. Leave pushing to the user; refresh the page after their deployment to load the new client limit.
+
 ## Latest artifact: Miracle payment advice
 
 Created the requested dummy school-fee payment advice in `~/Downloads/Miracle-School-Fees-Payment-Advice.pdf`, with a local archive in `hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/demo-documents/`. Student: OMOHUMA MIRACLE; University of Lagos example; total ₦300,000; dummy RRR `000000000000`; dummy matric `DEMO/MIRACLE/001`. Sample session 2026/2027 and due date 30 November 2026 are illustrative. Fee breakdown sums to ₦300,000. The one-page PDF is explicitly a demonstration copy, outstanding/unpaid and not payable; no official crest/signature is used. Parameters are saved alongside the event copy as `payment-advice-details.json`.

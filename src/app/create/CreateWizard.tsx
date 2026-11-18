@@ -142,6 +142,8 @@ export default function CreateWizard({
       return fallbackInterview(
         transcript,
         uploads.map((f) => f.label),
+        false,
+        user.name,
       );
     }
   }
@@ -165,6 +167,7 @@ export default function CreateWizard({
         transcript,
         uploads.map((f) => f.label),
         true,
+        user.name,
       );
     setThinking(false);
     setMessages((m) => [...m, { from: "ai", text: j.reply }]);
