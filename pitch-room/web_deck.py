@@ -16,7 +16,15 @@ def render_slide(section, total, read_asset, *, hidden=True):
         content = f'<h2>{e(v["title"])}</h2>'
         if v.get("lead") and kind != "receipt":
             content += f'<p class="web-lead">{e(v["lead"])}</p>'
-        if kind == "receipt":
+        if kind == "payment_problem":
+            content += '<ol class="web-payment-gap">'
+            content += ''.join(f'<li><h3>{e(label)}</h3><p>{e(detail)}</p><p class="web-payment-status">{e(status)}</p></li>' for label, detail, status in v["stages"]) + '</ol>'
+            content += f'<p class="web-payment-band">{e(v["statement"])}</p>'
+        elif kind == "payment_flow":
+            content += '<ol class="web-payment-flow">'
+            content += ''.join(f'<li><span class="web-payment-number">{i:02}</span><h3>{e(label)}</h3><p>{e(detail)}</p></li>' for i, (label, detail) in enumerate(v["steps"], 1)) + '</ol>'
+            content += f'<p class="web-payment-band">{e(v["statement"])}</p>'
+        elif kind == "receipt":
             content += f'<p class="web-big">{e(v["big"])}</p><p class="web-lead">{e(v["lead"])}</p><dl class="web-details">'
             content += ''.join(f'<div><dt>{e(k)}</dt><dd>{e(value)}</dd></div>' for k, value in v["details"]) + '</dl>'
         elif kind == "table":
@@ -36,9 +44,9 @@ def render_slide(section, total, read_asset, *, hidden=True):
         content += f'<p class="web-footnote">{e(v["footnote"])}</p>'
     return (f'<article class="slideimage slidemedia web-slide web-kind-{e(kind)}" data-slide="{n}" role="group" aria-label="Slide {n}: {e(section["title"])}"'
             + (' hidden' if hidden else '') + '><div class="web-slide-inner">'
-            + f'<div class="web-slide-brand"><strong>KAIROS</strong><span>FAITH &amp; TECH · SEMI-FINAL</span></div>'
+            + f'<div class="web-slide-brand"><strong>KAIROS</strong><span>{e(v.get("brand_right", "FAITH & TECH · SEMI-FINAL"))}</span></div>'
             + f'<div class="web-slide-content"><p class="web-eyebrow">{e(v.get("eyebrow", ""))}</p>{content}</div>'
-            + f'<footer><span>TRANSPARENT CROWDFUNDING</span><span>{n:02d} / {total:02d}</span></footer></div></article>')
+            + f'<footer><span>{e(v.get("footer", "TRANSPARENT CROWDFUNDING"))}</span><span>{n:02d} / {total:02d}</span></footer></div></article>')
 
 def write_deck(path, slides, css, read_asset, page):
     media = []

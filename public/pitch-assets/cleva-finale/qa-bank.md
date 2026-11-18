@@ -8,7 +8,7 @@ Rehearse the Cleva payment case first, then the proposed funding connection, ext
 
 ### 1. ★ How exactly is Kairos a payment solution?
 
-Kairos addresses a specific type of payment: crowdfunding. The challenge is not just collecting money from several people, but making sure it pays for the need it was raised for. Our approach combines existing payment services with a published budget, controlled payments to providers and individual donor receipts. We connect those pieces into one transparent flow, so each donor can see what their own contribution paid for.
+Kairos addresses a specific type of payment: crowdfunding. For us, that payment is complete when the money reaches the need it was given for. Kairos is designed to control that route from contributors to the school, hospital or supplier, keeping the money tied to the stated bill. We combine existing payment services with budget controls and individual donor receipts, so each person can see what their money paid for.
 
 ### 2. ★ What real payment problem are you solving?
 

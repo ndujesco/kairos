@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-8 slides, 665 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
+8 slides, 750 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
 
 Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.
 
@@ -20,25 +20,29 @@ Which is a transparent crowdfunding platform created to solve the problem of tru
 
 We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.
 
+So for us, a crowdfunding payment is complete when the money reaches the need it was given for.
+
 Delivery: Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.
 
-## Slide 2: A transfer succeeds. The bill may still be unpaid.
+## Slide 2: The money arrived. But was the bill paid?
 
 Abigail or Miracle · 0:40 to 1:40
 
 Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we keep money tied to the need it was given for, especially when many people are contributing to the same bill?
+People were making separate transfers to help pay one school fee. But those transfers only showed that the fundraiser received money. They didn't show that the school was paid.
 
-Delivery: Use the school-fees story, then name the payment gap plainly. The problem is money reaching an account without proof it paid the intended bill.
+The payment we actually care about is the school fee. We need a system that carries those contributions all the way to the school, keeps them tied to that bill, and tells each person what their money covered. That is the payment problem Kairos is solving.
 
-## Slide 3: Our solution.
+Delivery: Keep the school-fees story. Emphasise several contributions toward one bill: the account was credited, but donors could not see whether the school was paid. This is the early payment-problem slide.
+
+## Slide 3: Our solution: one bill, every contribution accounted for
 
 Abigail or Miracle · 1:40 to 3:10
 
-Kairos is that trusted middle layer. We bring existing payment services together, with rules that keep the money tied to the need.
+Kairos is that trusted middle layer. It is a payment system for crowdfunding, designed to route money safely from the people contributing to the school, hospital or supplier that should be paid.
 
-Here is how it's designed to work.
+We bring existing payment services together in one controlled flow: collect contributions, hold them for the stated bill, pay the institution and return each donor's receipt.
 
 First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.
 
@@ -54,7 +58,7 @@ Abigail or Miracle · 3:10 to 3:40
 
 A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for
 
-We calculate each donor's share of the payment and attach the receipt. That way, every giver can follow their own part, even when many people funded the bill.
+We calculate each donor's share of the payment and attach the receipt. It connects what they gave to the bill it helped pay, so they can see that their money reached the need it was given for.
 
 Delivery: Point at the receipt. Read the numbers slowly. This example allocates seventy percent to the bill, with upkeep covered separately.
 
@@ -100,7 +104,7 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 Abigail or Miracle · 9:31 to 10:00
 
-Kairos makes crowdfunding transparent by controlling the flow of money. From the need, to the provider's payment, to each donor's receipt.
+Kairos is a payment system for crowdfunding. It routes contributions toward the need they were given for, with a record connecting each donor to the provider's payment.
 
 That is the future we want to build: people can help from wherever they are and see what their money paid for. Thank you so much. We're Team Kairos.
 
@@ -108,7 +112,7 @@ Delivery: Thank them, then stop. The demo has already played.
 
 ## Short explanation
 
-Kairos makes crowdfunding transparent by controlling the flow of money. Think of a school-fee appeal shared on WhatsApp: people want to help, but an account number and a successful transfer don't tell them whether the bill was paid.
+Kairos is a payment system for crowdfunding. For us, the payment is complete when the money reaches the need it was given for. Think of a school-fee appeal shared on WhatsApp: many people make separate transfers, but the fundraiser receiving money does not tell them that the school was paid.
 
 On Kairos, the organiser publishes an itemised budget naming the school, hospital or supplier. People contribute toward the same bill. In the intended live flow, a licensed partner holds the money and pays only those providers, within the budget. Each donor receives a receipt showing their own share of the payment.
 

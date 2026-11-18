@@ -24,16 +24,29 @@ SLIDES[0].update(
         shared.SLIDES[0]["paragraphs"][0],
         "Which is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. In Kairos, every naira you give can be watched until it reaches the need it was given for.",
         "We make that possible by controlling the flow of money, from the people giving to the whomever is supposed to be paid.",
+        "So for us, a crowdfunding payment is complete when the money reaches the need it was given for.",
     ],
     cue="Keep the familiar introduction. Make the flow of money clear from the start: contributions, provider payment, each donor's receipt.",
 )
 SLIDES[1].update(
-    title="A transfer succeeds. The bill may still be unpaid.",
+    title="The money arrived. But was the bill paid?",
     paragraphs=[
         shared.SLIDES[1]["paragraphs"][0],
-        "People wanted to help, but transferring to the fundraiser only proved that an account was credited. It didn't prove the school fee was paid. That is the payment gap; how do we keep money tied to the need it was given for, especially when many people are contributing to the same bill?",
+        "People were making separate transfers to help pay one school fee. But those transfers only showed that the fundraiser received money. They didn't show that the school was paid.",
+        "The payment we actually care about is the school fee. We need a system that carries those contributions all the way to the school, keeps them tied to that bill, and tells each person what their money covered. That is the payment problem Kairos is solving.",
     ],
-    cue="Use the school-fees story, then name the payment gap plainly. The problem is money reaching an account without proof it paid the intended bill.",
+    cue="Keep the school-fees story. Emphasise several contributions toward one bill: the account was credited, but donors could not see whether the school was paid. This is the early payment-problem slide.",
+    visual={"kind": "payment_problem", "eyebrow": "THE PAYMENT PROBLEM",
+            "title": "The money arrived. But was the bill paid?",
+            "lead": "Many people contribute toward one school fee.",
+            "brand_right": "FUTURE OF PAYMENTS",
+            "footer": "KAIROS · TRANSPARENT GIVING FOR NIGERIA",
+            "stages": [
+                ["Contributors", "Separate transfers", "Money sent"],
+                ["Fundraiser", "Personal account", "Money received"],
+                ["School", "One fee to settle", "Was the fee paid?"],
+            ],
+            "statement": "Money collected is one step. The destination is a paid bill."},
     deck={"eyebrow": "THE PAYMENT CHALLENGE",
           "lead": "The missing link is between money collected and the bill it was meant to pay.",
           "cards": [
@@ -43,15 +56,28 @@ SLIDES[1].update(
           "band": "A successful transfer is not proof that the need was met."},
 )
 SLIDES[2].update(
-    title="Our solution.",
+    title="Our solution: one bill, every contribution accounted for",
     paragraphs=[
-        "Kairos is that trusted middle layer. We bring existing payment services together, with rules that keep the money tied to the need.",
-        "Here is how it's designed to work.",
+        "Kairos is that trusted middle layer. It is a payment system for crowdfunding, designed to route money safely from the people contributing to the school, hospital or supplier that should be paid.",
+        "We bring existing payment services together in one controlled flow: collect contributions, hold them for the stated bill, pay the institution and return each donor's receipt.",
         "First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.",
         "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account. Every contribution is recorded against that cause, so we know what is available to pay out.",
         "Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment is matched back to the budget and the contributions behind it, and goes into the public record.",
     ],
     cue="Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.",
+    visual={"kind": "payment_flow", "eyebrow": "OUR SOLUTION",
+            "title": "One bill, every contribution accounted for",
+            "lead": "A crowdfunding payment is complete when the money reaches the need it was given for.",
+            "brand_right": "FUTURE OF PAYMENTS",
+            "footer": "KAIROS · TRANSPARENT GIVING FOR NIGERIA",
+            "steps": [
+                ["Collect contributions", "Each gift is linked to one cause."],
+                ["Hold for the stated bill", "Available funds and the budget limit release."],
+                ["Pay the institution", "Payment goes to the named provider."],
+                ["Send donor receipts", "Each person sees their share of the payment."],
+            ],
+            "statement": "Route the money to the need. Return proof to every contributor.",
+            "footnote": "Designed flow. Live custody and settlement remain to be integrated."},
     deck={"eyebrow": "THE SOLUTION",
           "lead": "Connect the contribution, the provider payment and each donor's own proof.",
           "cards": [
@@ -62,7 +88,7 @@ SLIDES[2].update(
 )
 SLIDES[3]["paragraphs"][0] = "A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for"
 SLIDES[3]["paragraphs"].append(
-    "We calculate each donor's share of the payment and attach the receipt. That way, every giver can follow their own part, even when many people funded the bill."
+    "We calculate each donor's share of the payment and attach the receipt. It connects what they gave to the bill it helped pay, so they can see that their money reached the need it was given for."
 )
 SLIDES[4].update(
     title="What we can show you today.",
@@ -95,7 +121,7 @@ SLIDES += [
 for section, seconds in zip(SLIDES, [40, 60, 90, 30, 100, 239, 12, 29]):
     section["seconds"] = seconds
 SLIDES[-1]["paragraphs"] = [
-    "Kairos makes crowdfunding transparent by controlling the flow of money. From the need, to the provider's payment, to each donor's receipt.",
+    "Kairos is a payment system for crowdfunding. It routes contributions toward the need they were given for, with a record connecting each donor to the provider's payment.",
     "That is the future we want to build: people can help from wherever they are and see what their money paid for. Thank you so much. We're Team Kairos.",
 ]
 SLIDES[-1]["cue"] = "Thank them, then stop. The demo has already played."
@@ -110,7 +136,7 @@ def slides_for_presenter(presenter):
 shared_paragraphs = shared.shared_paragraphs
 DEMO = deepcopy(shared.DEMO)
 SHORT_PITCH = [
-    "Kairos makes crowdfunding transparent by controlling the flow of money. Think of a school-fee appeal shared on WhatsApp: people want to help, but an account number and a successful transfer don't tell them whether the bill was paid.",
+    "Kairos is a payment system for crowdfunding. For us, the payment is complete when the money reaches the need it was given for. Think of a school-fee appeal shared on WhatsApp: many people make separate transfers, but the fundraiser receiving money does not tell them that the school was paid.",
     "On Kairos, the organiser publishes an itemised budget naming the school, hospital or supplier. People contribute toward the same bill. In the intended live flow, a licensed partner holds the money and pays only those providers, within the budget. Each donor receives a receipt showing their own share of the payment.",
     "The accounting, budget checks, donor attribution, document uploads and notifications are working. Bank transfer, Remita settlement and NIN lookup are simulated; independent verification and licensed custody still need connecting.",
     "We'd start with school fees. Looking ahead, supporters abroad could help pay the same bill alongside people here in Nigeria, with each person receiving proof of their share. That funding connection is proposed.",
@@ -177,14 +203,14 @@ PAGE = {
     "deck_base": "pitch-assets/cleva/deck",
     "demo_url": "pitch-assets/cleva/demo.mp4",
     "header": "Cleva × Tether\nGrand Finale · Future of Payments",
-    "description": "Kairos makes crowdfunding transparent through control of contributions, provider payments and each donor's receipt. Cleva Grand Finale script for Abigail or Miracle.",
-    "hero_kicker": "The contribution. The provider. Your own receipt.",
-    "hero_title": "Transparent crowdfunding. Every payment accounted for.",
+    "description": "Kairos is a payment system for crowdfunding, designed to route contributions to the stated need and return each donor's receipt. Cleva Grand Finale script for Abigail or Miracle.",
+    "hero_kicker": "Crowdfunding payments",
+    "hero_title": "The payment is complete when the need is paid for.",
     "hero_status": "Grand Finale · 12 min + 5 min Q&A",
     "footer": "Abigail + Miracle · Cleva Grand Finale",
     "prep_kicker": "Cleva × Tether · 21 November 2026 · UNILAG",
-    "prep_title": "Keep the flow of money clear.",
-    "prep_intro": "The finale asks for the problem, solution, tangible progress and vision. Keep the familiar story and show how control of payments makes crowdfunding transparent.",
+    "prep_title": "Follow the payment all the way to the need.",
+    "prep_intro": "Keep the school-fees story. Establish early that receiving contributions is one step: the intended payment ends with the institution paid. Show how Kairos is designed to control that route and return proof to each donor.",
     "script_title": "Kairos: Cleva Grand Finale script",
     "script_intro": "Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.",
     "qa_title": "Kairos: 110 questions for the Cleva pitch",

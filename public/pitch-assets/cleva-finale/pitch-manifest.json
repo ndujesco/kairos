@@ -3,10 +3,10 @@
   "slides": 8,
   "questions": 38,
   "priority": 21,
-  "words": 665,
+  "words": 750,
   "seconds": 600,
   "source_content": "cleva_finale_content.py",
-  "source_sha256": "a60953b285d546f0b9790a6f207888926d6585c1c12fde624862a4519e478dfe",
+  "source_sha256": "66ff6e74e6c2a5954bde9c9dfb8f23c0b0060eef28fc9bac456c2187431cc2f4",
   "deckBase": "pitch-assets/cleva/deck",
   "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
   "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
@@ -22,14 +22,14 @@
     {
       "n": 2,
       "key": "problem",
-      "title": "A transfer succeeds. The bill may still be unpaid.",
+      "title": "The money arrived. But was the bill paid?",
       "seconds": 60,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
-      "title": "Our solution.",
+      "title": "Our solution: one bill, every contribution accounted for",
       "seconds": 90,
       "is_demo": false
     },
@@ -73,12 +73,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 665,
+      "words": 750,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 665,
+      "words": 750,
       "script": "pitch-script-miracle.md"
     }
   },

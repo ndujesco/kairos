@@ -4,7 +4,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 
 | Canonical room | Content source | Current scope |
 | --- | --- | --- |
-| `/cleva-finale.html` | `cleva_finale_content.py` | User-corrected finale script, 665 words, 10:00 including the existing video; Cleva-focused Q&A |
+| `/cleva-finale.html` | `cleva_finale_content.py` | User-corrected finale script, 750 words, 10:00 including the existing video; Cleva-focused Q&A |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Proposed eleven-slide HTML deck, 640 words, 9:30 draft plan; individual time limit unconfirmed |
@@ -35,7 +35,9 @@ The existing `pitch:cleva` command builds both Cleva stages; `pitch:apwen` build
 
 ## Content boundaries
 
-Cleva finale retains the user's exact slide 1 paragraphs 2–3 and slide 4 paragraph 1. The spoken script adds contribution accounting, payment matching and donor shares without naming a sponsor, so it can fit another payments event. Its tailored question bank is defined in `cleva_finale_qa.py`: 38 questions, 21 priorities. Retained questions keep their IDs; new ones have separate IDs. The preliminary bank remains the original 110 questions.
+Cleva finale retains the user's exact slide 1 paragraphs 2–3 and slide 4 paragraph 1. For Cleva only, the script treats a crowdfunding payment as complete when the money reaches its stated need. Slide 2 establishes that problem immediately after the introduction; slide 3 shows collection → holding for the bill → provider payment → donor receipts. Receipt/closing/short-script copy carries the same meaning without naming a sponsor. Other event rooms retain their trust framing. Its tailored question bank is defined in `cleva_finale_qa.py`: 38 questions, 21 priorities. Retained questions keep their IDs; new ones have separate IDs. The preliminary bank remains the original 110 questions.
+
+The Cleva finale browser uses editable HTML visuals for slides 2–3 through the per-slide `visual` field; remaining slides use their existing previews. `build-pitch.py` supports these partial HTML overrides. The fullscreen size is explicit to prevent a zero-width HTML slide.
 
 Existing native Cleva/APWEN PDF, PowerPoint, Keynote, previews and videos remain at their prior immutable asset paths. Stage text downloads are separate. The existing native Cleva notes precede the latest finale script; use the browser/Markdown finale script as the current rehearsal copy. No new demo was recorded or substituted.
 

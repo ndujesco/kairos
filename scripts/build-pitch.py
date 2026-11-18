@@ -257,7 +257,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                           f'<video class="slideimage demo-video" controls preload="metadata" playsinline tabindex="0" '
                           f'poster="{e(demo_poster)}" src="{e(page["demo_url"])}" '
                           f'aria-label="Prototype demo recording"></video></div>')
-        elif web_deck:
+        elif web_deck or s.get("visual"):
             from web_deck import render_slide
             images.append(render_slide(s, len(slides), lambda url: local_asset(url).read_bytes(), hidden=s["n"] != 1))
         else:
@@ -315,10 +315,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
-    if web_deck:
-        from web_deck import write_deck
+    if web_deck or any(s.get("visual") for s in slides):
         deck_css = (SOURCE / "web-deck.css").read_text()
         css += '\n' + deck_css
+    if web_deck:
+        from web_deck import write_deck
         write_deck(assets / "deck.html", slides, deck_css, lambda url: local_asset(url).read_bytes(), page)
     js = (SOURCE / "pitch.js").read_text()
     canonical = f'<link rel="canonical" href="{e(page["canonical_path"])}">' if page.get("canonical_path") else ''

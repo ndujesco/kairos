@@ -2,13 +2,23 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Latest work: stage rooms and camera-opening transition
+## Current follow-up: Cleva crowdfunding payments, 18 November
+
+The user explicitly limited this change to Cleva; other competitions keep their trust-focused framing. Their central point is now carried throughout the Cleva script: a crowdfunding payment is complete when the money reaches the need it was given for. Kairos is described as the system designed to control that route from contributors to the named institution, with receipts linking the outcome to each donor.
+
+Slide 2, immediately after the introduction, is “The money arrived. But was the bill paid?” It preserves the school-fees story, then explains separate transfers versus the intended school payment. Slide 3 has an editable browser flow: collect contributions → hold for the stated bill → pay the institution → send donor receipts. Introduction, receipt, closing, short explanation and first Q&A answer reinforce this meaning. The user's exact prior introduction paragraphs and receipt sentence are preserved. The spoken script remains sponsor-free.
+
+Only the finale page/alias and its downloads are regenerated: eight slides, 750 words, unchanged 10:00 rehearsal plan and 3:47 recording. Browser slides 2–3 use per-slide `visual` overrides in `cleva_finale_content.py`, rendered by `web_deck.py`; other slide previews and all native PDF/PPTX/Keynote files remain their earlier edition. Do not describe those native downloads as updated. Preliminary, APWEN, Faith & Tech and general rooms/media were preserved by hashes. No product code or live data changed. The user is still handling pushing.
+
+Validation: generator and JavaScript checks passed; both presenter scripts are 750 words with the same 10:00 plan. Canonical/legacy finale pages agree. Exact user paragraphs, unchanged sections, Q&A IDs and 66 protected files were checked. Native Edge review verified the early problem and four-step flow at presentation size, including the corrected fullscreen layout. The owned static preview is stopped. No database tests were needed for this presentation-only change. Commit this follow-up locally and leave pushing to the user.
+
+## Previous follow-up: stage rooms and camera-opening transition
 
 The user requested explicit event/stage URLs. Canonical pages are `/cleva-finale.html`, `/cleva-preliminary.html`, `/apwen-semi.html` and the proposed `/faith-and-tech-semis.html`. Legacy `/cleva.html` stays on the finale; `/cleva-pitch.html` now serves the recovered preliminary edition; `/apwen-pitch.html` serves the semi-final. APWEN finale is reserved, not created.
 
 Read `pitch-room/README.md` for the source and build map. Stage downloads and preferences are isolated. Existing APWEN script, native decks and recordings are preserved; the preliminary script is recovered from the 17 November archive. Faith & Tech is a new HTML deck with Abigail/Ugochukwu, an unconfirmed 9:30 rehearsal plan and no invented research. The user confirmed no per-team limit has arrived.
 
-The latest spoken finale script is 665 words, retaining the 10:00 plan and the user’s exact slide 1/4 wording. A light payments pass adds per-cause contribution accounting, matching payouts to their budget and donor shares. It contains no sponsor name, including the short explanation; event metadata and the specifically requested Cleva Q&A remain event-specific. The demo remains unchanged.
+The latest spoken finale script is 750 words, retaining the 10:00 plan and the user’s exact slide 1/4 wording. A light payments pass adds per-cause contribution accounting, matching payouts to their budget and donor shares. It contains no sponsor name, including the short explanation; event metadata and the specifically requested Cleva Q&A remain event-specific. The demo remains unchanged.
 
 The user additionally requested Cleva-specific finale Q&A. `cleva_finale_qa.py` supplies 38 questions (21 priorities) about the payments case, Cleva/Tether funding, external settlement, controls and execution. Question 1 is “How exactly is Kairos a payment solution?” and explains crowdfunding as the specific payment use case, combining existing services with budget/payment controls and donor receipts. The preliminary bank stays historical. Primary Cleva sources were checked on 18 November.
 
