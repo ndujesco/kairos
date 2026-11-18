@@ -2,6 +2,14 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest data cleanup: Omohuma fees cause (18 November)
+
+At the user's explicit request, deleted the completed cause `6afdb5472f0bdf1ee3e53e88`, `help-omohuma-miracle-pay-school-fees-b76n`, and its related application records: two demo donations, one payout, four notifications and two supporting-file records (the linked fee advice plus the identical owner-only copy retained during the earlier reset). No comments existed. Both corresponding Cloudinary raw/authenticated assets were deleted with invalidation and verified absent using the Cloudinary API; no other cause referenced them.
+
+The cause and related MongoDB records were removed in a transaction after matching their backed-up state. Reversed only this cause's completion reward on `omohuma`: trust level 2→1, completed causes 1→0, raise limit ₦1,000,000→₦500,000. The account, login/contact details, identity status and unrelated records remain. Existing `scripts/snapshots/cleva-2026-11-18.json` is retained unchanged (it is now tracked by the user, unlike the earlier untracked state described below). No application or competition assets changed. Live checks confirmed HTTP 404 for the deleted cause and both document URLs.
+
+Recovery bundle: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos/.local-backups/omohuma-fees-reset-1795018967242`. It contains the scoped EJSON manifest, original completion stats, result and both PDFs with verified checksums, all private local files. **Restoring the MongoDB snapshot alone does not restore deleted Cloudinary bytes**; to recover its document links, reupload the saved PDFs as raw/authenticated assets under the original public IDs recorded in the manifest as well. Do not erase the user's snapshot or these recovery files during routine cleanup.
+
 ## Current intake instruction: restore the original recorded Ugo interview (18 November)
 
 The user's latest clarification supersedes the short “finish after basic fields” flow below: they mean the original roughly four-minute full demo before its 1.1× speed-up, not the recent simplified version. Reviewed the actual `../pitch-kit/demo/kairos-demo-full-1.1x.mp4` frames at 0:23, 0:32, 0:42 and 0:51, alongside Cleva Grand Finale `demo-current-voiceover.md` and the original route at `58e85ba`. Its interview identifies the student/school/amount, asks for the RRR, requests documentary support and then explores studies and urgency even after “No for now” to documents. Preserve this depth.
