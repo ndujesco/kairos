@@ -60,6 +60,7 @@ SLIDES[2].update(
     paragraphs=[
         "Kairos is that trusted middle layer. It is a payment system for crowdfunding, designed to route money safely from the people contributing to the school, hospital or supplier that should be paid.",
         "We bring existing payment services together in one controlled flow: collect contributions, hold them for the stated bill, pay the institution and return each donor's receipt.",
+        "How do we do this?",
         "First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.",
         "Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account. Every contribution is recorded against that cause, so we know what is available to pay out.",
         "Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment is matched back to the budget and the contributions behind it, and goes into the public record.",

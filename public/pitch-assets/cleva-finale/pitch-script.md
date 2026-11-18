@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-8 slides, 750 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
+8 slides, 755 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
 
 Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.
 
@@ -43,6 +43,8 @@ Abigail or Miracle · 1:40 to 3:10
 Kairos is that trusted middle layer. It is a payment system for crowdfunding, designed to route money safely from the people contributing to the school, hospital or supplier that should be paid.
 
 We bring existing payment services together in one controlled flow: collect contributions, hold them for the stated bill, pay the institution and return each donor's receipt.
+
+How do we do this?
 
 First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.
 

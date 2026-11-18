@@ -4,15 +4,17 @@ Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/h
 
 ## Current follow-up: Cleva crowdfunding payments, 18 November
 
+Latest slide 3 correction: inserted “How do we do this?” as a separate paragraph between the controlled-payment-flow explanation and “First, the cause gets checked.” Both presenter downloads and local Grand Finale copies agree. Current script: 755 words, same 10:00 plan.
+
 Latest wording correction: Cleva finale slide 1 now begins “Kairos is a transparent crowdfunding platform…” instead of “Which is…”, for both presenters and script downloads. Other rooms are unchanged; the word count remains 750.
 
 The user explicitly limited this change to Cleva; other competitions keep their trust-focused framing. Their central point is now carried throughout the Cleva script: a crowdfunding payment is complete when the money reaches the need it was given for. Kairos is described as the system designed to control that route from contributors to the named institution, with receipts linking the outcome to each donor.
 
 Slide 2, immediately after the introduction, is “The money arrived. But was the bill paid?” It preserves the school-fees story, then explains separate transfers versus the intended school payment. Slide 3 has an editable browser flow: collect contributions → hold for the stated bill → pay the institution → send donor receipts. Introduction, receipt, closing, short explanation and first Q&A answer reinforce this meaning. The user's exact prior introduction paragraphs and receipt sentence are preserved. The spoken script remains sponsor-free.
 
-Only the finale page/alias and its downloads are regenerated: eight slides, 750 words, unchanged 10:00 rehearsal plan and 3:47 recording. Browser slides 2–3 use per-slide `visual` overrides in `cleva_finale_content.py`, rendered by `web_deck.py`; other slide previews and all native PDF/PPTX/Keynote files remain their earlier edition. Do not describe those native downloads as updated. Preliminary, APWEN, Faith & Tech and general rooms/media were preserved by hashes. No product code or live data changed. The user is still handling pushing.
+Only the finale page/alias and its downloads are regenerated: eight slides, 755 words, unchanged 10:00 rehearsal plan and 3:47 recording. Browser slides 2–3 use per-slide `visual` overrides in `cleva_finale_content.py`, rendered by `web_deck.py`; other slide previews and all native PDF/PPTX/Keynote files remain their earlier edition. Do not describe those native downloads as updated. Preliminary, APWEN, Faith & Tech and general rooms/media were preserved by hashes. No product code or live data changed. The user is still handling pushing.
 
-Validation: generator and JavaScript checks passed; both presenter scripts are 750 words with the same 10:00 plan. Canonical/legacy finale pages agree. Exact user paragraphs, unchanged sections, Q&A IDs and 66 protected files were checked. Native Edge review verified the early problem and four-step flow at presentation size, including the corrected fullscreen layout. The owned static preview is stopped. No database tests were needed for this presentation-only change. Commit this follow-up locally and leave pushing to the user.
+Validation: generator and JavaScript checks passed; both presenter scripts are 755 words with the same 10:00 plan. Canonical/legacy finale pages agree. Exact user paragraphs, unchanged sections, Q&A IDs and 66 protected files were checked. Native Edge review verified the early problem and four-step flow at presentation size, including the corrected fullscreen layout. The owned static preview is stopped. No database tests were needed for this presentation-only change. Commit this follow-up locally and leave pushing to the user.
 
 ## Previous follow-up: stage rooms and camera-opening transition
 

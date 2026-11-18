@@ -4,7 +4,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 
 | Canonical room | Content source | Current scope |
 | --- | --- | --- |
-| `/cleva-finale.html` | `cleva_finale_content.py` | User-corrected finale script, 750 words, 10:00 including the existing video; Cleva-focused Q&A |
+| `/cleva-finale.html` | `cleva_finale_content.py` | User-corrected finale script, 755 words, 10:00 including the existing video; Cleva-focused Q&A |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Proposed eleven-slide HTML deck, 640 words, 9:30 draft plan; individual time limit unconfirmed |
