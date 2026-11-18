@@ -671,8 +671,14 @@ export default function CreateWizard({
                   preload="auto"
                   className="h-full w-full object-cover"
                 >
-                  <source src="/demo/face-check.webm" type="video/webm" />
-                  <source src="/demo/face-check.mp4" type="video/mp4" />
+                  <source
+                    src="/demo/face-check.webm?v=omohuma-20261118"
+                    type="video/webm"
+                  />
+                  <source
+                    src="/demo/face-check.mp4?v=omohuma-20261118"
+                    type="video/mp4"
+                  />
                 </video>
               )}
               {(idState === "scanning" || idState === "matched") && (

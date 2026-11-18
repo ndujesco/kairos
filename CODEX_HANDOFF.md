@@ -2,6 +2,16 @@
 
 Updated: 18 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest request: Omohuma demo applicant and new face capture
+
+The next Cleva recording now uses Omohuma (Miracle) as the person raising ₦300,000 for University of Lagos fees. Okefe and Abigail remain the donors and all fee/net amounts are unchanged. Updated the event's `03 Grand Finale/demo-flow.md` throughout, including applicant profile, fee notice/reference, wallet, payment and donor proof. The older plan is archived in `03 Grand Finale/archive/2026-11-18-before-omohuma/`. Existing full video and `demo-current-voiceover.md` remain the older Ugo recording; do not silently rewrite that transcript or claim a new full recording exists.
+
+Replaced the app's default `public/demo/face-check.mp4` and `.webm` from the user-supplied `~/Downloads/IMG_2444.mov`. Both are upright 480×854, 24 fps, approximately 6.792 s and have no audio/data tracks. MP4 is 614,814 bytes; WebM is 905,180 bytes (98.9% and 98.3% smaller than the source). The source remains untouched. See `docs/face-check-media.md` for provenance and encoding settings. A silent MP4 copy is in the Grand Finale folder as `face-check-omohuma.mp4`.
+
+The wizard uses `?v=omohuma-20261118` on both source URLs. Complete-NIN/Start gating, blank initial area, 600 ms opening state and verification/publication deadlines are unchanged. No live accounts, causes or documents were modified for this update. The user still handles pushing.
+
+Validation: production build passed. Both prepared formats fully decode with one video stream and no audio/data. Portrait framing was visually checked, including the app’s 3:4 crop. Source footage checksum is unchanged. The wizard’s logic is identical apart from the media URLs; 64 frozen presentation/media files were preserved. No QA server or test database was needed.
+
 ## Current follow-up: Cleva crowdfunding payments, 18 November
 
 Latest slide 3 correction: inserted “How do we do this?” as a separate paragraph between the controlled-payment-flow explanation and “First, the cause gets checked.” Both presenter downloads and local Grand Finale copies agree. Current script: 755 words, same 10:00 plan.
