@@ -22,6 +22,14 @@ PUBLIC = ROOT / "public"
 ASSETS = PUBLIC / "pitch-assets"
 e = html.escape
 
+# Canonical stage names, independent downloads and browser preferences.
+ROOMS = {
+    "cleva-finale": ("cleva_finale_content.py", ["cleva.html"], "kairos-cleva-room-v1", True),
+    "cleva-preliminary": ("cleva_preliminary_content.py", ["cleva-pitch.html"], "kairos-cleva-preliminary-room-v1", True),
+    "apwen-semi": ("apwen_semi_content.py", ["apwen-pitch.html"], "kairos-apwen-room-v1", False),
+    "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v1", False),
+}
+
 
 def load_content(filename):
     # Edition modules may import the unchanged shared content for common parts.
@@ -188,16 +196,20 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
           assets_base="pitch-assets", storage_prefix=None, cleva=False):
     assets.mkdir(parents=True, exist_ok=True)
     page = page_options(content, cleva=cleva)
+    web_deck = page.get("web_deck", False)
     deck_base = page.get("deck_base", assets_base + "/deck" if storage_prefix else assets_base).rstrip("/")
-    deck_pdf = page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
-    deck_pptx = page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
+    deck_pdf = None if web_deck else page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
+    deck_pptx = None if web_deck else page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
+    deck_html = assets_base + "/deck.html" if web_deck else None
     keynote_candidate = page.get("deck_keynote", deck_base + "/kairos-pitch-deck.key")
     deck_keynote = keynote_candidate if local_asset(keynote_candidate).is_file() else None
     keynote_download = (f'<a class="keynote-link" href="{e(deck_keynote)}" download>Keynote ↓</a>'
                         if deck_keynote else '')
-    for url in (deck_pdf, deck_pptx):
+    for url in (() if web_deck else (deck_pdf, deck_pptx)):
         if not local_asset(url).is_file():
             raise FileNotFoundError(f"Export this edition's deck first: {local_asset(url)}")
+    deck_downloads = (f'<a href="{e(deck_html)}" target="_blank" rel="noopener">HTML deck ↗</a> <a href="{e(deck_html)}" download>Download HTML ↓</a>'
+                      if web_deck else f'<a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> {keynote_download}<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>')
     scripts = {}
     for key in content.PRESENTERS:
         variant = timed_slides(content, key)
@@ -238,15 +250,20 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
-        image_path = local_asset(f'{deck_base}/slides/slide{s["n"]:02}.jpg')
-        if not image_path.is_file():
-            raise FileNotFoundError(f"Export the deck previews first: {image_path}")
         if s.get("is_demo"):
+            if not local_asset(demo_poster).is_file():
+                raise FileNotFoundError(f"Missing demo poster: {demo_poster}")
             images.append(f'<div class="slidemedia demo-slide" data-slide="{s["n"]}"{hidden}>'
                           f'<video class="slideimage demo-video" controls preload="metadata" playsinline tabindex="0" '
                           f'poster="{e(demo_poster)}" src="{e(page["demo_url"])}" '
                           f'aria-label="Prototype demo recording"></video></div>')
+        elif web_deck:
+            from web_deck import render_slide
+            images.append(render_slide(s, len(slides), lambda url: local_asset(url).read_bytes(), hidden=s["n"] != 1))
         else:
+            image_path = local_asset(f'{deck_base}/slides/slide{s["n"]:02}.jpg')
+            if not image_path.is_file():
+                raise FileNotFoundError(f"Export the deck previews first: {image_path}")
             image = base64.b64encode(image_path.read_bytes()).decode()
             images.append(f'<img class="slideimage slidemedia" data-slide="{s["n"]}" width="1440" height="810" '
                           f'src="data:image/jpeg;base64,{image}" alt="Slide {s["n"]}: {e(s["title"])}"{hidden}>')
@@ -290,13 +307,22 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         page_data["assetsBase"] = assets_base
     if storage_prefix:
         page_data["storagePrefix"] = storage_prefix
+    if page.get("canonical_path"):
+        page_data["canonicalPath"] = page["canonical_path"]
     data = json.dumps(page_data, ensure_ascii=False).replace('<', '\\u003c')
     presenter_options = ''.join(
         f'<option value="{key}"{" selected" if key == content.DEFAULT_PRESENTER else ""}>{e(person["name"])}</option>'
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
+    if web_deck:
+        from web_deck import write_deck
+        deck_css = (SOURCE / "web-deck.css").read_text()
+        css += '\n' + deck_css
+        write_deck(assets / "deck.html", slides, deck_css, lambda url: local_asset(url).read_bytes(), page)
     js = (SOURCE / "pitch.js").read_text()
+    canonical = f'<link rel="canonical" href="{e(page["canonical_path"])}">' if page.get("canonical_path") else ''
+    presenter_names = ' or '.join(p["name"] for p in content.PRESENTERS.values())
     short = ''.join(f'<p>{e(p)}</p>' for p in content.SHORT_PITCH)
     event_cards = []
     for event in content.EVENTS:
@@ -322,7 +348,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <div class="demosteps">{''.join(demo_steps)}</div><p class="sourceline"><a href="{e(content.META["demo_url"])}" target="_blank" rel="noopener">Existing full demo recording ↗</a> · Older narration includes planned checks. Explain the simulation limits before using it.</p>'''
     document = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(content.META["title"])}</title><meta name="description" content="{e(page["description"])}">
+<title>{e(content.META["title"])}</title><meta name="description" content="{e(page["description"])}">{canonical}
 <meta name="color-scheme" content="light"><meta name="kairos-pitch-version" content="{e(content.META["version"])}">
 <style>{css}</style></head><body><a class="skip" href="#main">Skip to presentation</a>
 <header class="top"><div class="shell"><div class="brandrow"><a href="#main" class="brand">KAIROS</a>
@@ -332,8 +358,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <button type="button" class="tab" role="tab" id="tab-demo" aria-controls="panel-demo" aria-selected="false" tabindex="-1">Demo</button>
 <button type="button" class="tab" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1">Q&A <span class="counter">{question_count}</span></button>
 <button type="button" class="tab" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1">Prep</button></nav>
-<div class="downloads"><a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>
-{keynote_download}<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a></div></div></div></header>
+<div class="downloads">{deck_downloads}</div></div></div></header>
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
 <div class="intro"><div><p class="kicker">{e(page.get("hero_kicker", "The need. The provider. Your own receipt."))}</p><h1>{e(page.get("hero_title", "Give with proof, not faith."))}</h1>
@@ -370,8 +395,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <section class="prepbox"><h2>Where the deck answers them</h2>{criteria}
 <div class="notice">The full pitch is planned at {mmss(elapsed)}, {timing_summary}. {e(page["prep_timing_note"])}</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
 <section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>{e(page["focus_label"])}</strong> {e(page["focus_note"])}</li></ul></section>
-<section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose Abigail or Miracle as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
-<p class="sourceline"><a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> · {keynote_download + ' · ' if deck_keynote else ''}<a href="{e(deck_pptx)}" download>PowerPoint ↓</a> · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
+<section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose {e(presenter_names)} as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
+<p class="sourceline">{deck_downloads} · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
 <p class="sourceline">{source_line}</p>{page["source_html"]}</section>
 </main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>{e(page["footer"])}</span></div></footer>
 <script type="application/json" id="pitch-data">{data}</script><script>{js}</script></body></html>'''
@@ -413,6 +438,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                          "demo_video_seconds": video_seconds, "demo_section_seconds": demo_slide["seconds"]})
     if deck_keynote:
         manifest["deck_keynote"] = deck_keynote
+    if deck_html:
+        manifest["deck_html"] = deck_html
+    if page.get("canonical_path"):
+        manifest["canonical_path"] = page["canonical_path"]
     (assets / "pitch-manifest.json").write_text(json.dumps(manifest, indent=2) + '\n')
     if cleva and hasattr(content, "RESEARCH_NOTES"):
         (assets / "sources.md").write_text(content.RESEARCH_NOTES.rstrip() + '\n')
@@ -423,7 +452,7 @@ def legacy_fingerprints():
     """Hash the frozen shared room and every asset outside the event editions."""
     files = [PUBLIC / "pitch.html"]
     files += [path for path in ASSETS.rglob("*")
-              if path.is_file() and path.relative_to(ASSETS).parts[0] not in {"cleva", "apwen"}]
+              if path.is_file() and path.relative_to(ASSETS).parts[0] not in {"cleva", "apwen", *ROOMS}]
     return {str(path.relative_to(PUBLIC)): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in files}
 
@@ -438,8 +467,8 @@ def verify_preserved(before):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--edition", choices=("all", "apwen", "cleva", "shared"), default="all",
-                        help="all (default): build APWEN and Cleva; apwen/cleva: build one event; shared: explicitly regenerate legacy shared files")
+    parser.add_argument("--edition", choices=("all", "apwen", "cleva", "shared", *ROOMS), default="all",
+                        help="Build canonical event/stage rooms. cleva builds both Cleva stages; apwen builds its semi-final. shared explicitly rebuilds frozen legacy files.")
     args = parser.parse_args()
     if args.edition == "shared":
         build(load_content("cleva_content.py"))
@@ -447,12 +476,16 @@ def main():
 
     before = legacy_fingerprints()
     try:
-        for edition in ("apwen", "cleva") if args.edition == "all" else (args.edition,):
-            build(load_content(f"{edition}_pitch_content.py"), PUBLIC / f"{edition}-pitch.html", ASSETS / edition,
-                  assets_base=f"pitch-assets/{edition}", storage_prefix=f"kairos-{edition}-room-v1", cleva=edition == "cleva")
-            if edition == "cleva":
-                # The requested short URL serves the same generated room and assets.
-                (PUBLIC / "cleva.html").write_bytes((PUBLIC / "cleva-pitch.html").read_bytes())
+        editions = list(ROOMS) if args.edition == "all" else (
+            ["cleva-finale", "cleva-preliminary"] if args.edition == "cleva" else
+            ["apwen-semi"] if args.edition == "apwen" else [args.edition])
+        for edition in editions:
+            source, aliases, storage, is_cleva = ROOMS[edition]
+            output = PUBLIC / f"{edition}.html"
+            build(load_content(source), output, ASSETS / edition,
+                  assets_base=f"pitch-assets/{edition}", storage_prefix=storage, cleva=is_cleva)
+            for alias in aliases:
+                (PUBLIC / alias).write_bytes(output.read_bytes())
     finally:
         verify_preserved(before)
 

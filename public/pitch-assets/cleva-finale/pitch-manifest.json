@@ -1,0 +1,93 @@
+{
+  "version": "cleva-grand-finale-payments-2026-11-17",
+  "slides": 8,
+  "questions": 110,
+  "priority": 24,
+  "words": 608,
+  "seconds": 600,
+  "source_content": "cleva_finale_content.py",
+  "source_sha256": "4530d07202cfc6cd0b122166dac733d8e07a05c3082d01442c17f78958978751",
+  "deckBase": "pitch-assets/cleva/deck",
+  "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
+  "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
+  "timing_includes_full_demo": true,
+  "slide_order": [
+    {
+      "n": 1,
+      "key": "cover",
+      "title": "Transparent giving for Nigeria",
+      "seconds": 40,
+      "is_demo": false
+    },
+    {
+      "n": 2,
+      "key": "problem",
+      "title": "A transfer succeeds. The bill may still be unpaid.",
+      "seconds": 60,
+      "is_demo": false
+    },
+    {
+      "n": 3,
+      "key": "solution",
+      "title": "Our solution.",
+      "seconds": 90,
+      "is_demo": false
+    },
+    {
+      "n": 4,
+      "key": "receipt",
+      "title": "Every giver sees their own part.",
+      "seconds": 30,
+      "is_demo": false
+    },
+    {
+      "n": 5,
+      "key": "prototype",
+      "title": "What we can show you today.",
+      "seconds": 100,
+      "is_demo": false
+    },
+    {
+      "n": 6,
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": 239,
+      "is_demo": true
+    },
+    {
+      "n": 7,
+      "key": "team",
+      "title": "Abigail and Miracle.",
+      "seconds": 12,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "closing",
+      "title": "Give with proof, not faith.",
+      "seconds": 29,
+      "is_demo": false
+    }
+  ],
+  "default_presenter": "abigail",
+  "presenters": {
+    "abigail": {
+      "name": "Abigail",
+      "words": 608,
+      "script": "pitch-script-abigail.md"
+    },
+    "miracle": {
+      "name": "Miracle",
+      "words": 608,
+      "script": "pitch-script-miracle.md"
+    }
+  },
+  "assetsBase": "pitch-assets/cleva-finale",
+  "storagePrefix": "kairos-cleva-room-v1",
+  "demoUrl": "pitch-assets/cleva/demo.mp4",
+  "demo_slide": 6,
+  "demo_video_seconds": 227.033,
+  "demo_section_seconds": 239,
+  "deck_keynote": "pitch-assets/cleva/deck/kairos-pitch-deck.key",
+  "canonical_path": "/cleva-finale.html"
+}
