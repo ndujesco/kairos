@@ -1,12 +1,12 @@
-# Kairos: Faith & Tech expanded feedback draft
+# Kairos: Faith & Tech revised draft
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Ugochukwu.
 
-15 slides, 1396 presenter words. No delivery schedule is set.
+10 slides, 576 presenter words. No delivery schedule is set.
 
-The first six slides preserve the requested wording and shared-deck selection. The remaining sections are suggestions for editing. The supplied JCI original-audio recording is followed by the department president’s story on the closing page, then Meet the team. No pitch-duration target is set.
+Ten slides. The first six preserve the supplied script and selected shared-deck visuals. Slide 7 combines the former 7–10. The demonstration, closing and succinct team introduction follow, with Meet the team last. No delivery schedule is set.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -72,120 +72,52 @@ Then we plan to move to hospitals and other service providers.
 
 Delivery: This is the launch sequence, not a completed pilot or signed partnership.
 
-## Slide 7: Technical approach and feasibility
+## Slide 7: Technical approach and responsible operation
 
 Ugochukwu
 
-Our technical approach separates collecting the story from controlling a payment. Next.js and TypeScript run the web application. Anthropic powers the interview, MongoDB stores the cause and transaction records, and Cloudinary stores supporting files.
+Next.js and TypeScript run the app, Anthropic powers the interview, MongoDB stores the cause and transaction records, and Cloudinary stores supporting files. The AI structures the need and budget. The server checks payment permissions, the available balance and budget limits, then calculates each donor’s share.
 
-The AI helps the organizer explain the need and structure the budget. The server checks who can request a payout, the available cause balance and the remaining amount on that budget item. It calculates each donor’s share of a recorded payment.
+Before handling real money, we need licensed custody, live identity and provider checks, and confirmed settlement. No custody partnership is signed today.
 
-That gives us a working software foundation. To handle real money, we still need a licensed custody arrangement, live identity and provider checks, and a payment integration that confirms the institution actually received the money. None of those partnerships is signed today.
+In our planned review flow, an expired payment reference pauses the payout. The AI asks for a replacement, which must match the same student, institution, bill and outstanding amount. Uncertain checks go to a human reviewer, who confirms the evidence and records a decision before payment continues.
 
-Delivery: Explain what runs in the app and what must come from external partners. AI cannot authorize a real payment.
+Draft evidence is owner-only, but published attachments are public today. Private review, redacted public proof, consent and clear access and retention rules are still needed to protect donors and recipients.
 
-## Slide 8: Human review and expired references
+For reconciliation, we would match each unique payout reference, amount and destination to the provider’s confirmed settlement. Uncertain responses stay pending, repeated notifications must not create duplicate payments, and mismatches go to review. Only confirmed settlement should produce the final paid status and donor receipt. External reconciliation and the dedicated review workflow remain to be built.
 
-Ugochukwu
+Delivery: Explain the working technical foundation, then the planned review, privacy and reconciliation controls. Keep their implementation status clear.
 
-Responsible innovation means deciding what happens when the system is uncertain, as well as showing the successful journey. For example, a student’s payment reference may expire before enough money has been raised.
-
-Our proposed flow would pause the payout and ask the organizer, through the AI interviewer, for a replacement. We would check that it still refers to the same student, institution and bill, and confirm the outstanding amount.
-
-If the details do not match, or an automated check remains uncertain, a human reviewer would examine the evidence, contact the institution through independently obtained details and record the decision. Payment would remain on hold until the issue is resolved. This dedicated exception and review workflow is still to be built.
-
-Delivery: This is the proposed exception flow, not a feature shown in the recording.
-
-## Slide 9: Privacy for donors and recipients
+## Slide 8: Prototype demonstration
 
 Ugochukwu
 
-Transparency should show how the money is used without exposing someone’s private life. In the current app, unpublished supporting files are owner-only, but attachments on a published cause are publicly viewable. A complete private-review process is not in place yet.
+Here is a demonstration of how the app works.
 
-Before a real pilot, we would separate evidence for reviewers from information donors need to see. Identity documents, contact details and sensitive student or medical records would need restricted access. The public page should show a clear budget, payment status and suitable redacted proof, with the beneficiary’s consent.
-
-We also need clear rules for who can access evidence, how long we retain it and how someone requests correction or removal. A donor should be able to understand their contribution without seeing another donor’s private contact details.
-
-Delivery: Be direct about public attachments today. Private evidence, consent and retention controls are launch work.
-
-## Slide 10: Reconciliation with the payment provider
-
-Ugochukwu
-
-Reconciliation is how we make sure Kairos’s records agree with what happened outside the app. A payment entry in our own database is not enough to prove that the school has been paid.
-
-In the live flow, each payout would have a unique reference. We would match the partner’s confirmed amount, destination and settlement status to the cause and budget item. A delayed response would stay pending while we query its status, and repeated notifications must not create a second payout.
-
-Only a confirmed settlement should produce a final paid status and the donor’s settled receipt. A mismatch would go to review with an audit trail. Today, the internal accounting and donor allocations work, but settlement is simulated and this external reconciliation still needs implementation.
-
-Delivery: Keep the distinction between an internal application record and independently confirmed settlement clear.
-
-## Slide 11: Progress and validation so far
-
-Ugochukwu
-
-We have a working web prototype and have checked guest contributions, evidence uploads, budget limits and donor allocations in isolated test flows. Our internal walkthroughs also helped us improve the depth of the interview and when the face-verification step appears.
-
-Those checks show that important parts of the software work. They do not tell us whether donors understand the receipt, whether applicants can supply the right evidence, or whether a school can support the settlement process.
-
-The next validation step is to put those questions to potential donors, students and an institution, then record what they find difficult and what we change. We have not completed a live-money pilot. I will share one early conversation about the need after the demo.
-
-Delivery: Describe internal checks as software validation. The department president’s qualitative feedback comes after the demo.
-
-## Slide 12: Next steps toward a school-fee pilot
-
-Ugochukwu
-
-Our next step is a small, clearly defined school-fee pilot. We want to work with students who have a verifiable bill, the people willing to support them and an institution that can confirm the bill and payment destination.
-
-Before collecting real donations, we need to agree the custody and settlement arrangement with a suitable licensed partner and connect the provider checks. We also need the private-evidence controls, human review and reconciliation process I have described, including clear ownership of refunds and disputes.
-
-We would first test the complete process without live funds, then run a consented pilot once those conditions are met. We would record whether donors understand their receipts, where applicants need help, and whether every payment matches the institution’s confirmation. Those findings would guide our changes before we expand to other needs.
-
-Delivery: This is a proposed pilot and integration sequence. No participants, dates or partnerships have been secured.
-
-## Slide 13: Prototype demonstration
-
-Ugochukwu
-
-Let me show you how these pieces come together in the prototype: the organizer explains the need, donors contribute toward the published budget, and a provider payment creates a record of each donor’s share.
-
-This recording uses demonstration data. Bank transfer, Remita settlement and NIN lookup are simulated, and the external checks described in the narration represent the intended live flow. The proposed human-review and reconciliation workflows are not shown.
-
-Delivery: Play the supplied original-audio JCI video in full. Advance to the closing story, then finish on Meet the team.
+Delivery: Play the selected original-audio JCI recording in full, then advance to the closing.
 
 Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
 Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule is set.
 
-## Slide 14: We are Team Kairos
+## Slide 9: Give with proof, not faith
 
 Ugochukwu
 
-One early conversation that stayed with me was with the past president of my department. He helps raise school fees for students and explained that, even though there is already a level of trust in the community, he sometimes has a hard time verifying the details behind a request.
+In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
 
-That concern is exactly where Kairos could help: giving the person raising support a clearer way to check the bill, and giving donors a record they can follow. This is early feedback about the problem, and we still need to test the product with people in that position.
+Delivery: Deliver the closing, then advance to Meet the team.
 
-We are Team Kairos, and we look forward to working with students, donors and institutions to turn that existing willingness to help into support that people can account for. Thank you. Let me leave you with the people behind the work.
-
-Delivery: Tell the department president’s story immediately after the demo, on this closing page. Do not invent a product endorsement or a pilot result.
-
-## Slide 15: Meet the team
+## Slide 10: Meet the team
 
 Ugochukwu
 
-Sokenu Abigail is our team lead and product manager. Her role is to coordinate the team, set product priorities and keep the work connected to the people we are building for. She helps translate the problem into a clear user journey and makes sure we are solving the right needs as the product develops.
+And this is the team. I'm Ugochukwu, the software engineer and CTO. Abigail is our team lead and product manager.
 
-I am Ndujekwu Ugochukwu, our software engineer and CTO. My role is to lead the technical implementation: connecting the AI interview to the application, building the records and payment-accounting logic, and developing the integrations needed to take the prototype toward a reliable pilot.
-
-Together, we bring product direction and technical delivery to Kairos. We want to keep learning from the communities that already help one another and build a clearer account of where that help goes. Thank you.
-
-Delivery: This is the final slide. Explain both roles fully, then leave the team visible for questions.
+Delivery: Keep the team introduction succinct. Leave this final slide visible for questions.
 
 ## Short explanation
 
 Kairos connects a published need and itemised budget to provider payments and each donor’s own receipt.
 
 The prototype runs the AI interview, uploads, internal accounting and donor updates. Live custody, external verification and provider-confirmed settlement remain to be integrated.
-
-Our next step is a focused school-fee pilot, informed by students, donors and an institution.

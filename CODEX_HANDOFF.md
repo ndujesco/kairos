@@ -2,7 +2,21 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current: expanded Faith & Tech feedback draft, closing story and selected JCI demo
+## Current: concise ten-slide Faith & Tech revision
+
+The user's latest instruction supersedes the expanded fifteen-slide outline: **combine former slides 7–10, remove 11–12 entirely, shorten the demo introduction, replace the closing and make the team introduction succinct**. Their two references to “13” were applied as the demo introduction followed by the closing, preserving the existing demo/closing/team order. No further timing constraint was introduced.
+
+Current room `/faith-and-tech-semis.html`: **10 slides, 576 presenter words, timing unset**. Slides 1–6 remain unchanged, preserving the exact supplied opening/problem/solution and frozen shared visual selection 1, 2, 3, 5, 6 and 7. Slide 7 combines technical approach, planned human review/expired references, privacy and external reconciliation, with their implementation limits intact. The former validation and next-steps slides are absent from the current deck and script.
+
+Slide 8 introduces the unchanged JCI original-audio video with exactly: “Here is a demonstration of how the app works.” Slide 9 uses exactly the user's new closing: “In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.” The previous department-president story/long closing is replaced by that wording. Meet the team is slide 10 and last, saying: “And this is the team. I'm Ugochukwu, the software engineer and CTO. Abigail is our team lead and product manager.” The Abigail presenter option has a matching short introduction. Ugochukwu remains default.
+
+Current native files: `Faith-and-Tech-Semis-Concise-Draft.pptx/.pdf`, public `pitch-assets/faith-and-tech-semis/concise-draft/`, event `03 Semi-final Pitch/deck/`, and Desktop `Kairos - Cleva and Faith & Tech/Faith & Tech/02 Deck/`. The PPTX embeds the exact original-audio MP4. The PDF is a static backup with no multimedia annotations. Standalone `faith-and-tech-semis-concise-draft.html` and browser room use a local video picker. Matching scripts, manifest and `CONCISE-DRAFT-GUIDE.md` are delivered. The selected MP4 in `01 Demo` remains byte-identical. Previous current Desktop folders are in `Archive/Before concise draft/`; the stage archive is `archive/2026-11-19-before-concise-draft/`. Older public paths remain intact.
+
+All ten slides individually rendered/reviewed. Package, layout and font checks have zero findings. Exact new scripts, preserved first-six content, note equality, demo bytes, local links, generated JavaScript and 109 protected reference assets pass. No native presentation-app playback, computer controls, product/database work, push or deployment. Website changes are local for the user's push.
+
+Reproduction: `../production/2026-11-19 Faith and Tech concise draft/README.md`, `build_deck.py`, `verify.py`, `deliver.py` and reports/manifests. Edit `pitch-room/faith_and_tech_semis_content.py` for further wording changes, then rebuild this edition only. Previous production builders target historical editions and should not overwrite the current concise deck.
+
+## Previous: expanded Faith & Tech feedback draft
 
 The user explicitly authorized applying their supplied outline to `/faith-and-tech-semis.html`, preserving all of it and adding suggested sections for the remaining judging feedback. They then said to leave timing aside. This supersedes the earlier 3:20 plan for the current Faith & Tech draft. **Work is complete locally; no push or deployment.**
 

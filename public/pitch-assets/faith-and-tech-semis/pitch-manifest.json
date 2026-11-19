@@ -1,15 +1,15 @@
 {
-  "version": "faith-and-tech-semis-feedback-draft-2026-11-19",
-  "slides": 15,
+  "version": "faith-and-tech-semis-concise-draft-2026-11-19",
+  "slides": 10,
   "questions": 18,
   "priority": 12,
-  "words": 1396,
+  "words": 576,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "5c44029b1bab3d3c3b9c709c4035017182f9b32c1fd3a6adaa41fce36523b010",
-  "deckBase": "pitch-assets/faith-and-tech-semis/feedback-draft",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pptx",
+  "source_sha256": "08bfea9305973908e9b848d5b9c016c4a0c9bca861f9b6337851e51834364b63",
+  "deckBase": "pitch-assets/faith-and-tech-semis/concise-draft",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pptx",
   "timing_includes_full_demo": false,
   "slide_order": [
     {
@@ -56,62 +56,27 @@
     },
     {
       "n": 7,
-      "key": "technical",
-      "title": "Technical approach and feasibility",
+      "key": "technical_responsible",
+      "title": "Technical approach and responsible operation",
       "seconds": null,
       "is_demo": false
     },
     {
       "n": 8,
-      "key": "review",
-      "title": "Human review and expired references",
-      "seconds": null,
-      "is_demo": false
-    },
-    {
-      "n": 9,
-      "key": "privacy",
-      "title": "Privacy for donors and recipients",
-      "seconds": null,
-      "is_demo": false
-    },
-    {
-      "n": 10,
-      "key": "reconciliation",
-      "title": "Reconciliation with the payment provider",
-      "seconds": null,
-      "is_demo": false
-    },
-    {
-      "n": 11,
-      "key": "validation",
-      "title": "Progress and validation so far",
-      "seconds": null,
-      "is_demo": false
-    },
-    {
-      "n": 12,
-      "key": "next_steps",
-      "title": "Next steps toward a school-fee pilot",
-      "seconds": null,
-      "is_demo": false
-    },
-    {
-      "n": 13,
       "key": "demo",
       "title": "Prototype demonstration",
       "seconds": null,
       "is_demo": true
     },
     {
-      "n": 14,
+      "n": 9,
       "key": "closing",
-      "title": "We are Team Kairos",
+      "title": "Give with proof, not faith",
       "seconds": null,
       "is_demo": false
     },
     {
-      "n": 15,
+      "n": 10,
       "key": "team",
       "title": "Meet the team",
       "seconds": null,
@@ -122,12 +87,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 1396,
+      "words": 576,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 1396,
+      "words": 576,
       "script": "pitch-script-ugochukwu.md"
     }
   },
@@ -135,7 +100,7 @@
   "assetsBase": "pitch-assets/faith-and-tech-semis",
   "storagePrefix": "kairos-faith-and-tech-semis-room-v2",
   "demoUrl": "",
-  "demo_slide": 13,
+  "demo_slide": 8,
   "demo_video_seconds": 216.333008,
   "demo_section_seconds": null,
   "local_demo": true,
