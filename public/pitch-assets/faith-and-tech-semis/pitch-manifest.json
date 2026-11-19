@@ -6,7 +6,7 @@
   "words": 536,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "613d37aef4fb2848bafa162ba75bb66b78f6e9a50ec26c27f7cb8c907523794d",
+  "source_sha256": "b1c5efea8930023b1b2cb7917c200e15efc42cd7807fb4449daa3ef81a8aeff5",
   "deckBase": "pitch-assets/faith-and-tech-semis/visual-deck",
   "deck_pdf": "pitch-assets/faith-and-tech-semis/visual-deck/Faith-and-Tech-Semis-Visual-Deck.pdf",
   "deck_pptx": null,
@@ -106,6 +106,7 @@
     }
   },
   "timing_set": false,
+  "elapsed_timer": true,
   "section_budgets": [
     {
       "label": "Technical approach and responsible operation",

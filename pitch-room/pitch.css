@@ -42,6 +42,17 @@
   .mobile-reader .decktools>div,.mobile-reader .clockbox,.mobile-reader .jump,.mobile-reader .modes,.mobile-reader .timingnote,.mobile-reader .scripthead>.subtle,.mobile-reader .cue,.mobile-reader .scriptfoot{display:none}
 }
 @media screen and (max-width:800px) and (max-height:500px){.mobile-reader .deck .shotwrap{height:min(14vh,56px);height:min(14dvh,56px)}}
+.has-elapsed-timer #clock-toggle,.has-elapsed-timer #clock-reset{min-height:44px;min-width:60px}
+.has-elapsed-timer #deck-view:fullscreen .clockrow>div:first-child{display:block}
+@media screen and (max-width:800px){
+  .has-elapsed-timer.mobile-reader .clockbox{display:block;padding:6px 0 2px;border:0;background:transparent}
+  .has-elapsed-timer.mobile-reader .clockrow{gap:12px}
+  .has-elapsed-timer.mobile-reader .clock{font-size:26px}
+  .has-elapsed-timer.mobile-reader .clocklabel{display:block;font-size:9px;margin-top:2px}
+  .has-elapsed-timer.mobile-reader .controls{flex-wrap:nowrap;gap:6px}
+  .has-elapsed-timer.mobile-reader .controls .arrow{display:none}
+  .has-elapsed-timer.mobile-reader #clock-toggle,.has-elapsed-timer.mobile-reader #clock-reset{padding:8px 12px;font-size:12px}
+}
 @media print{.stage{display:block}.deckonly .scriptpaper{display:block!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress i{transition:none}}
 @media print{body{background:white;font-size:11pt}.top,.footer,.deck,.intro .statusbadge,.questiontools,.star,.modes,.screen-only,.decktools,.clockbox,.downloads{display:none!important}.shell{padding:0;max-width:none}.panel[hidden],.scriptblock[hidden],.qcard[hidden]{display:block!important}.panel{padding:0 0 25px}.scriptpaper{border:0;box-shadow:none}.scriptbody{padding:0}.scripthead{padding:8px 0}.say{font-size:13pt;line-height:1.5}.scriptblock{page-break-inside:avoid;margin-bottom:20px}.scriptbody h2{font-size:17pt;margin:14px 0}.cue{margin-top:12px}.qcard{break-inside:avoid;margin-bottom:10px;border:0;border-bottom:1px solid #ddd}.qcard details summary{padding:10px 0;display:block}.qcard summary:before{display:none}.qanswer{margin:0 0 15px;font-size:11pt;line-height:1.5}.qheading{font-size:12pt}.qmeta{font-size:8pt}.prepgrid{display:block}.prepbox,.demostep{border:0;break-inside:avoid;padding:10px 0}.shortpitch{background:white;color:black;border:1px solid #ddd}.shortpitch summary{color:black}.shortpitch p{font-size:12pt}details::details-content{display:block!important}.notice{background:white}.intro h1{font-size:22pt}.intro{margin:20px 0}}

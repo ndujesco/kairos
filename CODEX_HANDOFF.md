@@ -2,6 +2,12 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest documentation: Faith & Tech feedback coverage audit
+
+Updated the existing `../hackathons/2026-10 Faith & Tech Conference/feedback/feedback.md` at the user's request. It now maps all judging-feedback items and the supplied presentation guidelines to covered, partial, absent or unverified status against the current eleven-slide Visual Deck. It preserves the original judging email, links the current files, distinguishes intended safeguards from implemented behavior, and lists remaining evidence/rehearsal actions. All eight local source links were checked. The requested Finder reveal uses `open -R`; no CUA/browser control is involved.
+
+This is a local documentation-only audit. Decks, scripts, video, product and deployed website are unchanged; production remains `cbe49ed`. No build, push or deployment is needed for this review. Continue with the user's next requested edit rather than treating the listed gaps as authorization to change the presentation or product.
+
 ## Current: corrected narration with simple visual slides 7–9
 
 The user clarified that their supplied prose was **the script**, not literal audience-slide text. The previous full-paragraph slides 7–9 were a wrong interpretation. They now use the same visual design as the other deck pages: technical approach uses the original split panel, responsible operation and school fees use the original three-card layout. Keep the **full narration in browser scripts and presenter notes**, and concise points on audience slides. Do not paste full paragraphs onto slides again.

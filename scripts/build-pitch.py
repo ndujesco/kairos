@@ -329,6 +329,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                  "questions": content.QUESTIONS, "deckBase": deck_base}
     if page.get('unscheduled'):
         page_data['timingSet'] = False
+    if page.get('elapsed_timer'):
+        page_data['elapsedTimer'] = True
     if page.get('section_budgets'):
         page_data['sectionBudgets'] = page['section_budgets']
     if demo_slide:
@@ -355,7 +357,9 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     if page.get('demo_placeholder'):
         css += '\n.demo-placeholder{aspect-ratio:16/9;display:grid;place-items:center;background:#f3f1e5;text-align:center;color:#205635}.demo-placeholder h2{font-size:clamp(36px,6vw,88px);margin:0}.demo-placeholder p{font-size:clamp(14px,2vw,24px);margin:18px 0 0}.downloads:empty{display:none}\n'
     if page.get('unscheduled'):
-        css += '\n#clock,.clocklabel,#clock-toggle,#clock-reset,.clockbox .progress,#clock-status{display:none!important}\n'
+        hidden_clock_parts = ('.clockbox .progress,#clock-status' if page.get('elapsed_timer') else
+                              '#clock,.clocklabel,#clock-toggle,#clock-reset,.clockbox .progress,#clock-status')
+        css += f'\n{hidden_clock_parts}{{display:none!important}}\n'
     if web_deck or any(s.get("visual") for s in slides):
         deck_css = (SOURCE / "web-deck.css").read_text()
         css += '\n' + deck_css
@@ -363,6 +367,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         from web_deck import write_deck
         write_deck(assets / "deck.html", slides, deck_css, lambda url: local_asset(url).read_bytes(), page)
     js = (SOURCE / "pitch.js").read_text()
+    body_class = ' class="has-elapsed-timer"' if page.get('elapsed_timer') else ''
+    clock_label = 'elapsed time' if page.get('elapsed_timer') else f'planning time {mmss(elapsed)}'
     canonical = f'<link rel="canonical" href="{e(page["canonical_path"])}">' if page.get("canonical_path") else ''
     presenter_names = ' or '.join(p["name"] for p in content.PRESENTERS.values())
     short = ''.join(f'<p>{e(p)}</p>' for p in content.SHORT_PITCH)
@@ -412,7 +418,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(content.META["title"])}</title><meta name="description" content="{e(page["description"])}">{canonical}
 <meta name="color-scheme" content="light"><meta name="kairos-pitch-version" content="{e(content.META["version"])}">
-<style>{css}</style></head><body><a class="skip" href="#main">Skip to presentation</a>
+<style>{css}</style></head><body{body_class}><a class="skip" href="#main">Skip to presentation</a>
 <header class="top"><div class="shell"><div class="brandrow"><a href="#main" class="brand">KAIROS</a>
 <div class="event">{header}</div><div class="people">{e(content.META["team"])}</div></div>
 <div class="navrow"><nav class="tabs" role="tablist" aria-label="Presenter tools">
@@ -432,7 +438,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <div class="decktools"><span class="subtle" id="current-label" aria-live="polite">Slide 1 of {len(slides)}</span><div>
 <button class="button" type="button" id="deck-mode" aria-pressed="false">Deck only</button>
 <button class="button" type="button" id="fullscreen">Fullscreen</button></div></div>
-<div class="clockbox"><div class="clockrow"><div><div class="clock" id="clock">0:00</div><div class="clocklabel">planning time {mmss(elapsed)}</div></div>
+<div class="clockbox"><div class="clockrow"><div><div class="clock" id="clock" role="timer" aria-label="Elapsed presentation time">0:00</div><div class="clocklabel">{e(clock_label)}</div></div>
 <div class="controls"><button class="button arrow" id="prev" type="button" aria-label="Previous slide">←</button>
 <button class="button arrow" id="next" type="button" aria-label="Next slide">→</button><button class="button primary" id="clock-toggle" type="button">Start</button>
 <button class="button" id="clock-reset" type="button">Reset</button></div></div><div class="progress"><i id="meterfill"></i></div>
@@ -495,6 +501,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         manifest.update(seconds=None, timing_set=False, timing_includes_full_demo=False)
         for section in manifest['slide_order']:
             section['seconds'] = None
+    if page.get('elapsed_timer'):
+        manifest['elapsed_timer'] = True
     if page.get('section_budgets'):
         manifest['section_budgets'] = page['section_budgets']
     for section, source_slide in zip(manifest['slide_order'], slides):
