@@ -73,7 +73,7 @@ A complete production refund and dispute process is still to be designed and int
 
 ### 015. ★ What user research supports this presentation?
 
-The supplied materials contain the team's school-fee observation, but no documented interview findings were provided for this draft. The team should add actual dated findings and their design implications before claiming user validation.
+The school-fee experience and a conversation with the past president of Ugochukwu’s department support the problem statement. He helps raise fees and reported that existing trust does not always make the details easy to verify. This is qualitative problem feedback, not a completed product test or a live pilot. No donor or institution usability findings have been supplied.
 
 ### 016. What would the first pilot measure?
 
@@ -85,5 +85,5 @@ Licensed custody and live payments, independent verification, appropriate privat
 
 ### 018. How long is this pitch allowed to be?
 
-The confirmed format is one minute for team introduction, seven minutes for presentation and demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated three minutes and twenty seconds to the pitch; demo timing is separate.
+The organizer’s format is one minute for team introduction, seven minutes for presentation and demo, five minutes for questions and two for scoring/transition. This expanded draft deliberately has no delivery schedule yet. Timing will be decided after the content is edited.
 

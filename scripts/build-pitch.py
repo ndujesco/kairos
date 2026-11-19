@@ -27,7 +27,7 @@ ROOMS = {
     "cleva-finale": ("cleva_finale_content.py", ["cleva.html"], "kairos-cleva-room-v1", True),
     "cleva-preliminary": ("cleva_preliminary_content.py", ["cleva-pitch.html"], "kairos-cleva-preliminary-room-v1", True),
     "apwen-semi": ("apwen_semi_content.py", ["apwen-pitch.html"], "kairos-apwen-room-v1", False),
-    "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v1", False),
+    "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v2", False),
 }
 
 
@@ -67,6 +67,8 @@ def write_script(content, assets, page, slides, presenter=None):
     demo_description = 'the accompanying demo recording' if page.get('local_demo') else 'the full embedded demo recording'
     timing = (f"{len(slides)} slides, {words} presenter words. Planning time {mmss(elapsed)}, including pauses and {demo_description}."
               if integrated_demo else f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.")
+    if page.get('unscheduled'):
+        timing = f"{len(slides)} slides, {words} presenter words. No delivery schedule is set."
     script = ["# " + page["script_title"], content.META["team"],
               f"Lead presenter: {who}.",
               timing,
@@ -74,14 +76,15 @@ def write_script(content, assets, page, slides, presenter=None):
     for i, s in enumerate(slides):
         paragraphs = s["paragraphs"] if presenter else content.shared_paragraphs(content.SLIDES[i], markdown=True)
         script += [f'## Slide {s["n"]}: {s["title"]}',
-                   f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
+                   who if page.get('unscheduled') else f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
         script += paragraphs + [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
-            instruction = ('Select the accompanying clear-voice MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
+            instruction = ('Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
                            if page.get('local_demo') else 'Play the embedded recording in full, then advance manually to the next slide.')
             recording = page.get('demo_name') if page.get('local_demo') else page['demo_url']
             script += [instruction + " The recording's narration is not included in the presenter word count.",
-                       f'Recording: {recording} · {mmss(s.get("video_seconds", s["seconds"]))}. This section is already included in the main pitch timing.']
+                       f'Recording: {recording} · {mmss(s.get("video_seconds", s["seconds"]))}. '
+                       + ('No overall pitch schedule is set.' if page.get('unscheduled') else 'This section is already included in the main pitch timing.')]
     script += ["## Short explanation"] + content.SHORT_PITCH
     if not integrated_demo and getattr(content, "DEMO", []):
         script += ["## Optional 90-second demo"]
@@ -238,6 +241,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         demo_poster = None
         video_seconds = 0
     timing_summary = "including the full demo and pauses" if demo_slide else "with pauses"
+    timing_display = '' if page.get('unscheduled') else f' · about {mmss(elapsed)} {timing_summary}'
     criteria = ''.join(f'<div class="criterion"><strong>{e(label)}</strong><span>{e(location)}</span></div>'
                        for label, location in criteria_for(slides, page))
     default_name = content.PRESENTERS[content.DEFAULT_PRESENTER]["name"]
@@ -250,7 +254,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         script_blocks.append(
             f'<article class="scriptblock" data-slide="{s["n"]}"{hidden}>'
             f'<div class="scripthead"><span class="slideindex">{s["n"]:02} / {len(slides):02}</span>'
-            f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>'
+            + ('' if page.get('unscheduled') else f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>') +
             f'<span class="speaker">{e(s["speaker"])}</span></div>'
             f'<div class="scriptbody"><h2>{e(s["title"])}</h2><div class="say">'
             + ''.join(f'<p>{e(p)}</p>' for p in s["paragraphs"])
@@ -278,7 +282,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                           f'src="data:image/jpeg;base64,{image}" alt="Slide {s["n"]}: {e(s["title"])}"{hidden}>')
         jump.append(f'<button type="button" aria-current="{str(s["n"]==1).lower()}" '
                     f'aria-label="Go to slide {s["n"]}: {e(s["title"])}">'
-                    f'<span>{s["n"]:02} · {mmss(s["start"])}</span>{e(s["title"])}</button>')
+                    f'<span>{s["n"]:02}' + ('' if page.get('unscheduled') else f' · {mmss(s["start"])}') + f'</span>{e(s["title"])}</button>')
     question_cards = []
     for q in content.QUESTIONS:
         priority = '<span class="prioritylabel">Rehearse first</span>' if q["priority"] else ''
@@ -307,6 +311,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     page_data = {"meta": content.META, "slides": slides, "scripts": scripts,
                  "presenters": content.PRESENTERS, "defaultPresenter": content.DEFAULT_PRESENTER,
                  "questions": content.QUESTIONS, "deckBase": deck_base}
+    if page.get('unscheduled'):
+        page_data['timingSet'] = False
     if demo_slide:
         page_data.update({"demoUrl": page["demo_url"], "demoSlide": demo_slide["n"],
                           "demoVideoSeconds": video_seconds})
@@ -326,6 +332,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
+    if page.get('unscheduled'):
+        css += '\n#clock,.clocklabel,#clock-toggle,#clock-reset,.clockbox .progress,#clock-status{display:none!important}\n'
     if web_deck or any(s.get("visual") for s in slides):
         deck_css = (SOURCE / "web-deck.css").read_text()
         css += '\n' + deck_css
@@ -391,7 +399,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
 <div class="intro"><div><p class="kicker">{e(page.get("hero_kicker", "The need. The provider. Your own receipt."))}</p><h1>{e(page.get("hero_title", "Give with proof, not faith."))}</h1>
-<p>{len(slides)} slides · <span id="spoken-total">{words}</span> presenter words · about {mmss(elapsed)} {timing_summary} · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">{e(page.get("hero_status", "Working prototype · simulated settlement"))}</span></div>
+<p>{len(slides)} slides · <span id="spoken-total">{words}</span> presenter words{timing_display} · <span id="presenter-summary">{e(default_name)} presenting</span></p></div><span class="statusbadge">{e(page.get("hero_status", "Working prototype · simulated settlement"))}</span></div>
 <div class="presenterbar"><div class="presenterfield"><label for="presenter">Lead presenter</label><select id="presenter" aria-describedby="presenter-help">{presenter_options}</select></div>
 <p id="presenter-help">Either person can present the whole deck. Your choice is saved in this browser.</p></div>
 <div class="stage"><div class="scriptpaper" id="script-paper">{''.join(script_blocks)}</div>
@@ -422,7 +430,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <div class="prepgrid">{event_cards}</div><p class="sourceline"><a href="{e(assets_base)}/event-notes.md" download>Download event notes ↓</a> · {e(page["event_download_note"])}</p>
 <div class="prepgrid"><section class="prepbox"><h2>Before joining</h2><div class="checklist">{check_html}</div></section>
 <section class="prepbox"><h2>Where the deck answers them</h2>{criteria}
-<div class="notice">The full pitch is planned at {mmss(elapsed)}, {timing_summary}. {e(page["prep_timing_note"])}</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
+<div class="notice">{'' if page.get('unscheduled') else f'The full pitch is planned at {mmss(elapsed)}, {timing_summary}. '}{e(page["prep_timing_note"])}</div><button type="button" class="button primary" data-priority-link>Practise the priority questions</button></section>
 <section class="prepbox"><h2>Keep these distinctions clear</h2><ul><li><strong>Working:</strong> prototype accounting, budget checks, attribution, notifications and public history.</li><li><strong>Simulated:</strong> bank transfer, Remita settlement and NIN lookup.</li><li><strong>Unbuilt:</strong> live CAC and account-name checks, general upload verification and the complete production operating flow.</li><li><strong>Not signed:</strong> licensed custody and payments partnership.</li><li><strong>{e(page["focus_label"])}</strong> {e(page["focus_note"])}</li></ul></section>
 <section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose {e(presenter_names)} as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
 <p class="sourceline">{deck_downloads} · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
@@ -458,6 +466,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         "default_presenter": content.DEFAULT_PRESENTER,
         "presenters": {key: {"name": content.PRESENTERS[key]["name"], "words": script["words"],
                               "script": f"pitch-script-{key}.md"} for key, script in scripts.items()}}
+    if page.get('unscheduled'):
+        manifest.update(seconds=None, timing_set=False, timing_includes_full_demo=False)
+        for section in manifest['slide_order']:
+            section['seconds'] = None
     if assets_base != "pitch-assets":
         manifest["assetsBase"] = assets_base
     if storage_prefix:
@@ -465,6 +477,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     if demo_slide:
         manifest.update({"demoUrl": page["demo_url"], "demo_slide": demo_slide["n"],
                          "demo_video_seconds": video_seconds, "demo_section_seconds": demo_slide["seconds"]})
+        if page.get('unscheduled'):
+            manifest['demo_section_seconds'] = None
         if page.get('local_demo'):
             manifest.update(local_demo=True, demo_name=page['demo_name'])
     if deck_keynote:
@@ -476,7 +490,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     (assets / "pitch-manifest.json").write_text(json.dumps(manifest, indent=2) + '\n')
     if cleva and hasattr(content, "RESEARCH_NOTES"):
         (assets / "sources.md").write_text(content.RESEARCH_NOTES.rstrip() + '\n')
-    print(f"Built {output.name}: {len(slides)} slides, {words} words, {mmss(elapsed)} plan, {question_count} questions ({priority_count} priority).")
+    plan_label = 'timing unset' if page.get('unscheduled') else f'{mmss(elapsed)} plan'
+    print(f"Built {output.name}: {len(slides)} slides, {words} words, {plan_label}, {question_count} questions ({priority_count} priority).")
 
 
 def legacy_fingerprints():

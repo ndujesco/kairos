@@ -1,75 +1,145 @@
 {
-  "version": "faith-and-tech-semis-3m20s-2026-11-19",
-  "slides": 6,
+  "version": "faith-and-tech-semis-feedback-draft-2026-11-19",
+  "slides": 15,
   "questions": 18,
   "priority": 12,
-  "words": 316,
-  "seconds": 200,
+  "words": 1396,
+  "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "eff54daebbbb20378ac23e60aa75ec4c1e68e40d27879608d73885afd69b0e4f",
-  "deckBase": "pitch-assets/faith-and-tech-semis/deck",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pptx",
+  "source_sha256": "5c44029b1bab3d3c3b9c709c4035017182f9b32c1fd3a6adaa41fce36523b010",
+  "deckBase": "pitch-assets/faith-and-tech-semis/feedback-draft",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pptx",
   "timing_includes_full_demo": false,
   "slide_order": [
     {
       "n": 1,
       "key": "cover",
-      "title": "Transparent crowdfunding",
-      "seconds": 20,
+      "title": "Transparent giving for Nigeria",
+      "seconds": null,
       "is_demo": false
     },
     {
       "n": 2,
       "key": "problem",
-      "title": "The trust gap and our first users",
-      "seconds": 25,
+      "title": "A transfer succeeds. The doubt stays.",
+      "seconds": null,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
-      "title": "Features that work today",
-      "seconds": 35,
+      "title": "From a published budget to a personal receipt.",
+      "seconds": null,
       "is_demo": false
     },
     {
       "n": 4,
-      "key": "receipt",
-      "title": "Technical approach and donor accounting",
-      "seconds": 40,
+      "key": "prototype",
+      "title": "What runs today.",
+      "seconds": null,
       "is_demo": false
     },
     {
       "n": 5,
-      "key": "review",
-      "title": "Feasibility and responsible innovation",
-      "seconds": 45,
+      "key": "business",
+      "title": "Useful to give. Sustainable to run.",
+      "seconds": null,
       "is_demo": false
     },
     {
       "n": 6,
+      "key": "roadmap",
+      "title": "Start with a bill that can be checked.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 7,
+      "key": "technical",
+      "title": "Technical approach and feasibility",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "review",
+      "title": "Human review and expired references",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 9,
+      "key": "privacy",
+      "title": "Privacy for donors and recipients",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 10,
+      "key": "reconciliation",
+      "title": "Reconciliation with the payment provider",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 11,
+      "key": "validation",
+      "title": "Progress and validation so far",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 12,
+      "key": "next_steps",
+      "title": "Next steps toward a school-fee pilot",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 13,
+      "key": "demo",
+      "title": "Prototype demonstration",
+      "seconds": null,
+      "is_demo": true
+    },
+    {
+      "n": 14,
       "key": "closing",
-      "title": "Validation and next steps",
-      "seconds": 35,
+      "title": "We are Team Kairos",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 15,
+      "key": "team",
+      "title": "Meet the team",
+      "seconds": null,
       "is_demo": false
     }
   ],
-  "default_presenter": "abigail",
+  "default_presenter": "ugochukwu",
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 316,
+      "words": 1396,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 316,
+      "words": 1396,
       "script": "pitch-script-ugochukwu.md"
     }
   },
+  "timing_set": false,
   "assetsBase": "pitch-assets/faith-and-tech-semis",
-  "storagePrefix": "kairos-faith-and-tech-semis-room-v1",
+  "storagePrefix": "kairos-faith-and-tech-semis-room-v2",
+  "demoUrl": "",
+  "demo_slide": 13,
+  "demo_video_seconds": 216.333008,
+  "demo_section_seconds": null,
+  "local_demo": true,
+  "demo_name": "kairos-jci-demo-original-audio.mp4",
   "deck_html": "pitch-assets/faith-and-tech-semis/deck.html",
   "canonical_path": "/faith-and-tech-semis.html"
 }

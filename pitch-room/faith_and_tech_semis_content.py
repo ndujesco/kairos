@@ -1,7 +1,6 @@
-"""Faith & Tech semifinal: a 3:20 pitch with a separate demo.
+"""Faith & Tech expanded feedback draft. Edit this source, not generated HTML.
 
-Edit the slide text here, then rebuild this edition only. Original submissions
-and the other competitions are deliberately independent.
+Shared /pitch.html sources remain frozen. No delivery schedule is set.
 """
 
 META = {'title': 'Kairos | Faith & Tech Semi-final',
@@ -9,371 +8,422 @@ META = {'title': 'Kairos | Faith & Tech Semi-final',
  'stage': 'Semi-final',
  'team': 'Sokenu Abigail · Ndujekwu Ugochukwu',
  'date': '19 November 2026',
- 'version': 'faith-and-tech-semis-3min-2026-11-18',
+ 'version': 'faith-and-tech-semis-feedback-draft-2026-11-19',
  'demo_url': ''}
 
 PRESENTERS = {'abigail': {'name': 'Abigail',
              'full_name': 'Sokenu Abigail',
-             'team_intro': "I'm Abigail, the team lead and product manager. Ugochukwu is our "
-                           'software engineer and CTO.'},
+             'team_intro': 'Sokenu Abigail is our team lead and product manager, coordinating product '
+                           'priorities and the user journey. Ndujekwu Ugochukwu is our software engineer and '
+                           'CTO, leading technical implementation and integration work.'},
  'ugochukwu': {'name': 'Ugochukwu',
                'full_name': 'Ndujekwu Ugochukwu',
-               'team_intro': "I'm Ugochukwu, the software engineer and CTO. Abigail is our team "
-                             'lead and product manager.'}}
+               'team_intro': 'Sokenu Abigail is our team lead and product manager, coordinating product '
+                             'priorities and the user journey. Ndujekwu Ugochukwu is our software engineer '
+                             'and CTO, leading technical implementation and integration work.'}}
 
-DEFAULT_PRESENTER = 'abigail'
+DEFAULT_PRESENTER = 'ugochukwu'
 
-SLIDES = [{'title': 'Transparent crowdfunding',
+SLIDES = [{'title': 'Transparent giving for Nigeria',
+  'seconds': 0,
+  'cue': 'Introduce yourself, then let the promise of traceable giving land.',
+  'paragraphs': ['Good evening everyone, my name is Ndujekwu Ugochukwu presenting on behalf of Team Kairos.',
+                 'Kairos is a transparent crowdfunding platform for people who want to help but need to know '
+                 'what happened to their money. Here, every naira you give can be traced until it reaches '
+                 'the need it was given for.'],
   'deck_key': 'cover',
-  'seconds': 25,
-  'paragraphs': ['Good evening everyone. We are Team Kairos. Kairos is a transparent crowdfunding '
-                 'platform created to solve the problem of trust when someone asks for help and '
-                 'several people donate their hard earned money. Every naira you give can be '
-                 'followed until it reaches the need it was given for.'],
-  'cue': 'Introduce Kairos and the trust problem. The separate team introduction is outside this '
-         '3:20 pitch.',
-  'visual': {'kind': 'cover',
-             'eyebrow': 'FAITH & TECH SEMI-FINAL',
-             'title': 'KAIROS',
-             'lead': 'Transparent crowdfunding',
-             'statement': 'Every naira accounted for.'}},
- {'title': 'The trust gap',
+  'shared_slide_number': 1},
+ {'title': 'A transfer succeeds. The doubt stays.',
+  'seconds': 0,
+  'cue': 'Tell the school-fees story in your own voice. Leave a pause before the trusted middle layer.',
+  'paragraphs': ["Our school fees went up recently and a final year student who couldn't afford it posted an "
+                 "appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends "
+                 'and I started to wonder if they were all real, because the screenshots looked identical '
+                 'and very easy to edit.',
+                 'Because of this skepticism, potential donors hold back and real needs go unmet. The '
+                 "missing piece is not compassion. It's a trusted middle layer."],
   'deck_key': 'problem',
-  'seconds': 30,
-  'paragraphs': ['Think of a student who needs help with school fees. Someone shares her appeal on '
-                 'WhatsApp. You want to help, but you still have questions. Is the bill real? How '
-                 'much is actually owed? And after you give, how do you know the fees were paid? '
-                 'That hesitation is the problem we are solving.'],
-  'cue': 'A familiar scenario, not a claim that this example is a verified real case.',
-  'visual': {'eyebrow': 'THE PROBLEM',
-             'title': 'What did my gift pay for?',
-             'lead': 'An appeal can reach you. A clear account of the spending often does not.',
-             'points': [['Before giving', 'Can I understand the need and the bill?'],
-                        ['After giving', 'Can I see what my contribution helped pay for?']]}},
- {'title': 'How Kairos works',
+  'shared_slide_number': 2},
+ {'title': 'From a published budget to a personal receipt.',
+  'seconds': 0,
+  'cue': 'The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.',
+  'paragraphs': ['Kairos is that trusted middle layer.',
+                 'First, an AI interviewer helps the organizer explain the need and publish an itemised '
+                 'budget naming the school, hospital or supplier.',
+                 'Second, the cause is shared as a link, so donors can see the story, budget and payment '
+                 'history. The plan is for a licensed partner to hold donations in escrow and pay only those '
+                 "verified providers, never the organizer's personal account.",
+                 'Third, every donor gets a receipt showing their own share of each payment.'],
   'deck_key': 'solution',
-  'seconds': 35,
-  'paragraphs': ['How do we do this? An AI interviewer asks about the need, the institution, the '
-                 'amount and supporting documents. That becomes a cause with an itemised budget '
-                 'naming who should be paid. People contribute to that bill. The organiser can '
-                 'request a provider payment, but there is no personal withdrawal. We make that '
-                 'possible by controlling the flow of money.'],
-  'cue': 'Explain the working application flow. Live custody and settlement need a licensed '
-         'partner.',
-  'visual': {'eyebrow': 'THE GIVING FLOW',
-             'title': 'The need, the bill and the receipt stay connected',
-             'points': [['Explain the need', 'AI interview and supporting evidence'],
-                        ['Name the expense', 'An itemised budget and the intended provider'],
-                        ['Give with a record',
-                         'Track contributions, provider payment and donor shares']],
-             'footnote': 'The organiser cannot withdraw contributions into a personal account.'}},
- {'title': 'Every giver sees their own part',
-  'deck_key': 'receipt',
-  'seconds': 35,
-  'paragraphs': ["A donor doesn't just get a thank you, they get a receipt which tells them "
-                 'exactly what their money was used for. In our school-fee example, each donor '
-                 'sees their share of the three hundred thousand naira payment. Before giving, '
-                 'they see the upkeep. Our tentative fallback is two percent, capped at five '
-                 'thousand naira per cause, while we seek grants and sponsorship.'],
-  'cue': 'Worked demo figures, not evidence of real institutional settlement. Grants and '
-         'sponsorship are not secured.',
-  'visual': {'kind': 'table',
-             'eyebrow': "THE DONOR'S RECORD",
-             'title': 'Your own share of the bill',
-             'columns': ['Contribution', 'Paid', 'Upkeep', 'To bill'],
-             'rows': [['Anonymous', '₦150,000', '₦3,000', '₦147,000'],
-                      ['Abigail', '₦155,000', '₦2,000', '₦153,000'],
-                      ['Total', '₦305,000', '₦5,000', '₦300,000']],
-             'footnote': 'Proposed upkeep: 2%, capped at ₦5,000 per cause. Application payment '
-                         'record shown.'}},
- {'title': 'Responsible operation',
+  'shared_slide_number': 3},
+ {'title': 'What runs today.',
+  'seconds': 0,
+  'cue': 'Say all three simulated parts. A seeded balance is not a bank balance.',
+  'paragraphs': ['The accounting, donor shares, notifications and public ledger are running.',
+                 'Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks '
+                 'are not built. No real donations have moved, and no custody partner is signed.'],
+  'deck_key': 'prototype',
+  'shared_slide_number': 5},
+ {'title': 'Useful to give. Sustainable to run.',
+  'seconds': 0,
+  'cue': 'NGO donations and grants are intended support, not secured funding. The upkeep is a tentative '
+         "fallback; its cap is per cause. The prototype's fee flow does not implement a grant-dependent "
+         'switch.',
+  'paragraphs': ['Kairos is built to be run, not sold.',
+                 'We aim to cover running costs through donations and grants from NGOs. Without that '
+                 "support, we'd tentatively take two percent per donation, capped at five thousand naira per "
+                 'cause. Donors see the fee before confirming.'],
+  'deck_key': 'business',
+  'shared_slide_number': 6},
+ {'title': 'Start with a bill that can be checked.',
+  'seconds': 0,
+  'cue': 'This is the launch sequence, not a completed pilot or signed partnership.',
+  'paragraphs': ["We start with school fees because they're easy to verify in Nigeria.",
+                 'Then we plan to move to hospitals and other service providers.'],
+  'deck_key': 'roadmap',
+  'shared_slide_number': 7},
+ {'title': 'Technical approach and feasibility',
+  'deck_key': 'technical',
+  'seconds': 0,
+  'paragraphs': ['Our technical approach separates collecting the story from controlling a payment. Next.js '
+                 'and TypeScript run the web application. Anthropic powers the interview, MongoDB stores the '
+                 'cause and transaction records, and Cloudinary stores supporting files.',
+                 'The AI helps the organizer explain the need and structure the budget. The server checks '
+                 'who can request a payout, the available cause balance and the remaining amount on that '
+                 'budget item. It calculates each donor’s share of a recorded payment.',
+                 'That gives us a working software foundation. To handle real money, we still need a '
+                 'licensed custody arrangement, live identity and provider checks, and a payment integration '
+                 'that confirms the institution actually received the money. None of those partnerships is '
+                 'signed today.'],
+  'cue': 'Explain what runs in the app and what must come from external partners. AI cannot authorize a real '
+         'payment.',
+  'suggested_addition': True},
+ {'title': 'Human review and expired references',
   'deck_key': 'review',
-  'seconds': 35,
-  'paragraphs': ['The interview, uploads, ledger and donor alerts work today. Identity checks and '
-                 'settlement in this demonstration are simulated. Before live use, we need '
-                 'licensed partners, protected sensitive evidence and reconciliation with provider '
-                 'confirmations. Published attachments are public today. In our planned flow, an '
-                 'expired reference prompts the AI to request a replacement. Unresolved checks go '
-                 'to a human reviewer before payment continues.'],
-  'cue': 'These exception, private-review and external-reconciliation controls are planned. Do not '
-         'imply that an unbuilt reviewer workflow appears in the recording.',
-  'visual': {'eyebrow': 'CURRENT WORK AND NEXT CONTROLS',
-             'title': 'A clear next step when a check is uncertain',
-             'points': [['Working today', 'Live AI interview, document uploads, ledger and alerts'],
-                        ['Before live operation',
-                         'Licensed custody, private evidence and confirmed settlement'],
-                        ['Planned review',
-                         'Replacement reference first; human review for unresolved cases']],
-             'footnote': 'Identity and settlement are simulated. Published attachments are '
-                         'currently public.'}},
- {'title': 'A focused first pilot',
+  'seconds': 0,
+  'paragraphs': ['Responsible innovation means deciding what happens when the system is uncertain, as well '
+                 'as showing the successful journey. For example, a student’s payment reference may expire '
+                 'before enough money has been raised.',
+                 'Our proposed flow would pause the payout and ask the organizer, through the AI '
+                 'interviewer, for a replacement. We would check that it still refers to the same student, '
+                 'institution and bill, and confirm the outstanding amount.',
+                 'If the details do not match, or an automated check remains uncertain, a human reviewer '
+                 'would examine the evidence, contact the institution through independently obtained details '
+                 'and record the decision. Payment would remain on hold until the issue is resolved. This '
+                 'dedicated exception and review workflow is still to be built.'],
+  'cue': 'This is the proposed exception flow, not a feature shown in the recording.',
+  'suggested_addition': True},
+ {'title': 'Privacy for donors and recipients',
+  'deck_key': 'privacy',
+  'seconds': 0,
+  'paragraphs': ['Transparency should show how the money is used without exposing someone’s private life. In '
+                 'the current app, unpublished supporting files are owner-only, but attachments on a '
+                 'published cause are publicly viewable. A complete private-review process is not in place '
+                 'yet.',
+                 'Before a real pilot, we would separate evidence for reviewers from information donors need '
+                 'to see. Identity documents, contact details and sensitive student or medical records would '
+                 'need restricted access. The public page should show a clear budget, payment status and '
+                 'suitable redacted proof, with the beneficiary’s consent.',
+                 'We also need clear rules for who can access evidence, how long we retain it and how '
+                 'someone requests correction or removal. A donor should be able to understand their '
+                 'contribution without seeing another donor’s private contact details.'],
+  'cue': 'Be direct about public attachments today. Private evidence, consent and retention controls are '
+         'launch work.',
+  'suggested_addition': True},
+ {'title': 'Reconciliation with the payment provider',
+  'deck_key': 'reconciliation',
+  'seconds': 0,
+  'paragraphs': ['Reconciliation is how we make sure Kairos’s records agree with what happened outside the '
+                 'app. A payment entry in our own database is not enough to prove that the school has been '
+                 'paid.',
+                 'In the live flow, each payout would have a unique reference. We would match the partner’s '
+                 'confirmed amount, destination and settlement status to the cause and budget item. A '
+                 'delayed response would stay pending while we query its status, and repeated notifications '
+                 'must not create a second payout.',
+                 'Only a confirmed settlement should produce a final paid status and the donor’s settled '
+                 'receipt. A mismatch would go to review with an audit trail. Today, the internal accounting '
+                 'and donor allocations work, but settlement is simulated and this external reconciliation '
+                 'still needs implementation.'],
+  'cue': 'Keep the distinction between an internal application record and independently confirmed settlement '
+         'clear.',
+  'suggested_addition': True},
+ {'title': 'Progress and validation so far',
+  'deck_key': 'validation',
+  'seconds': 0,
+  'paragraphs': ['We have a working web prototype and have checked guest contributions, evidence uploads, '
+                 'budget limits and donor allocations in isolated test flows. Our internal walkthroughs also '
+                 'helped us improve the depth of the interview and when the face-verification step appears.',
+                 'Those checks show that important parts of the software work. They do not tell us whether '
+                 'donors understand the receipt, whether applicants can supply the right evidence, or '
+                 'whether a school can support the settlement process.',
+                 'The next validation step is to put those questions to potential donors, students and an '
+                 'institution, then record what they find difficult and what we change. We have not '
+                 'completed a live-money pilot. I will share one early conversation about the need after the '
+                 'demo.'],
+  'cue': 'Describe internal checks as software validation. The department president’s qualitative feedback '
+         'comes after the demo.',
+  'suggested_addition': True},
+ {'title': 'Next steps toward a school-fee pilot',
+  'deck_key': 'next_steps',
+  'seconds': 0,
+  'paragraphs': ['Our next step is a small, clearly defined school-fee pilot. We want to work with students '
+                 'who have a verifiable bill, the people willing to support them and an institution that can '
+                 'confirm the bill and payment destination.',
+                 'Before collecting real donations, we need to agree the custody and settlement arrangement '
+                 'with a suitable licensed partner and connect the provider checks. We also need the '
+                 'private-evidence controls, human review and reconciliation process I have described, '
+                 'including clear ownership of refunds and disputes.',
+                 'We would first test the complete process without live funds, then run a consented pilot '
+                 'once those conditions are met. We would record whether donors understand their receipts, '
+                 'where applicants need help, and whether every payment matches the institution’s '
+                 'confirmation. Those findings would guide our changes before we expand to other needs.'],
+  'cue': 'This is a proposed pilot and integration sequence. No participants, dates or partnerships have '
+         'been secured.',
+  'suggested_addition': True},
+ {'title': 'Prototype demonstration',
+  'deck_key': 'demo',
+  'seconds': 216.333008,
+  'paragraphs': ['Let me show you how these pieces come together in the prototype: the organizer explains '
+                 'the need, donors contribute toward the published budget, and a provider payment creates a '
+                 'record of each donor’s share.',
+                 'This recording uses demonstration data. Bank transfer, Remita settlement and NIN lookup '
+                 'are simulated, and the external checks described in the narration represent the intended '
+                 'live flow. The proposed human-review and reconciliation workflows are not shown.'],
+  'cue': 'Play the supplied original-audio JCI video in full. Advance to the closing story, then finish on '
+         'Meet the team.',
+  'suggested_addition': True,
+  'is_demo': True,
+  'video_seconds': 216.333008},
+ {'title': 'We are Team Kairos',
   'deck_key': 'closing',
-  'seconds': 20,
-  'paragraphs': ['Next, we want to test a small school-fee pilot with students, donors and an '
-                 'institution, recording what they need and what we change. Nigerians already '
-                 'give. Kairos helps them give with a clear account of what happened next. Thank '
-                 'you.'],
-  'cue': 'Proposed pilot, not completed research. Stop at three minutes and twenty seconds; the demo is separate.',
-  'visual': {'kind': 'closing',
-             'eyebrow': 'NEXT STEP',
-             'title': 'Giving people can follow',
-             'lead': 'A small school-fee pilot with students, donors and a school.',
-             'statement': 'Sokenu Abigail and Ndujekwu Ugochukwu\nTeam Kairos'}}]
+  'seconds': 0,
+  'paragraphs': ['One early conversation that stayed with me was with the past president of my department. '
+                 'He helps raise school fees for students and explained that, even though there is already a '
+                 'level of trust in the community, he sometimes has a hard time verifying the details behind '
+                 'a request.',
+                 'That concern is exactly where Kairos could help: giving the person raising support a '
+                 'clearer way to check the bill, and giving donors a record they can follow. This is early '
+                 'feedback about the problem, and we still need to test the product with people in that '
+                 'position.',
+                 'We are Team Kairos, and we look forward to working with students, donors and institutions '
+                 'to turn that existing willingness to help into support that people can account for. Thank '
+                 'you. Let me leave you with the people behind the work.'],
+  'cue': 'Tell the department president’s story immediately after the demo, on this closing page. Do not '
+         'invent a product endorsement or a pilot result.',
+  'suggested_addition': True},
+ {'title': 'Meet the team',
+  'deck_key': 'team',
+  'seconds': 0,
+  'paragraphs': ['Sokenu Abigail is our team lead and product manager. Her role is to coordinate the team, '
+                 'set product priorities and keep the work connected to the people we are building for. She '
+                 'helps translate the problem into a clear user journey and makes sure we are solving the '
+                 'right needs as the product develops.',
+                 'I am Ndujekwu Ugochukwu, our software engineer and CTO. My role is to lead the technical '
+                 'implementation: connecting the AI interview to the application, building the records and '
+                 'payment-accounting logic, and developing the integrations needed to take the prototype '
+                 'toward a reliable pilot.',
+                 'Together, we bring product direction and technical delivery to Kairos. We want to keep '
+                 'learning from the communities that already help one another and build a clearer account of '
+                 'where that help goes. Thank you.'],
+  'cue': 'This is the final slide. Explain both roles fully, then leave the team visible for questions.',
+  'suggested_addition': True}]
 
 DEMO = []
 
-SHORT_PITCH = ['Kairos makes crowdfunding transparent. A published need and itemised budget name the provider to '
- 'be paid; each donor can follow their own contribution through the cause records.',
- 'The live AI interview, uploads, internal accounting and notifications work. Identity lookup and '
- 'settlement in this demonstration are simulated; licensed partners and private evidence review '
- 'are still needed.',
- 'Our next step is a small school-fee pilot with students, donors and an institution, using actual '
- 'findings to improve the flow.']
+SHORT_PITCH = ['Kairos connects a published need and itemised budget to provider payments and each donor’s own receipt.',
+ 'The prototype runs the AI interview, uploads, internal accounting and donor updates. Live custody, '
+ 'external verification and provider-confirmed settlement remain to be integrated.',
+ 'Our next step is a focused school-fee pilot, informed by students, donors and an institution.']
 
 EVENTS = [{'name': 'Faith & Tech semi-final',
   'focus': 'Trust, accountability and responsible operation',
   'schedule': ['Thursday 19 November 2026, 6:30–6:45 p.m. WAT. Join by 6:25.',
                'One-minute team introduction, seven-minute presentation and demo, five-minute Q&A, '
                'two-minute scoring/transition.',
-               'This deck uses a 3:20 pitch clock. The presenter will decide the separate '
-               'demo timing.'],
-  'assess': 'Explain the problem, target users, working features, validation, technical '
-            'feasibility, responsible innovation and next steps.',
+               'This expanded content draft has no pitch-duration target. Set the delivery plan after '
+               'reviewing the complete script.'],
+  'assess': 'Explain the problem, target users, working features, validation, technical feasibility, '
+            'responsible innovation and next steps.',
   'spoken': 'Every donor should be able to follow what their contribution helped pay for.',
-  'follow_up': 'Keep the Cleva payments narration separate. Add verified user findings if '
-               'available; do not invent them.',
+  'follow_up': 'The selected recording is the trimmed JCI original-audio video. Explain its simulated '
+               'checks, then tell the department president’s story on the closing slide. Meet the team is '
+               'last.',
   'notice': 'Confirmed semi-final slot',
-  'notice_detail': 'Meeting credentials stay in the private organizer PDF, not the public '
-                   'presenter room.'}]
+  'notice_detail': 'Meeting credentials stay in the private organizer PDF, not the public presenter room.'}]
 
 GROUPS = [('The giving flow',
   [('What does Kairos do?',
-    "It connects a published need and budget to provider payments and each donor's share. The "
-    'prototype implements the accounting and updates; live custody and settlement still require '
-    'integration.',
+    "It connects a published need and budget to provider payments and each donor's share. The prototype "
+    'implements the accounting and updates; live custody and settlement still require integration.',
     True),
    ('What stops the organizer withdrawing donations?',
-    'The prototype has no personal cash-withdrawal path and checks payment permissions, balance '
-    'and budget. Live operation needs a licensed custody/payment arrangement that enforces the '
-    'same restrictions.',
+    'The prototype has no personal cash-withdrawal path and checks payment permissions, balance and budget. '
+    'Live operation needs a licensed custody/payment arrangement that enforces the same restrictions.',
     True),
    ('Does the receipt independently prove the school received money?',
-    'The current receipt records a simulated application payout. A live settled receipt must be '
-    'tied to confirmed provider settlement; a locally generated invoice alone is insufficient.',
+    'The current receipt records a simulated application payout. A live settled receipt must be tied to '
+    'confirmed provider settlement; a locally generated invoice alone is insufficient.',
     True),
    ('Can someone give without an account?',
-    'Yes. Guest gifts are anonymous and appear in the public cause records. Signed-in donors can '
-    'receive personal in-app updates; email is optional.')]),
+    'Yes. Guest gifts are anonymous and appear in the public cause records. Signed-in donors can receive '
+    'personal in-app updates; email is optional.')]),
  ('Review and privacy',
   [('What if a Remita reference expires?',
-    'The agreed proposed flow pauses payout, asks the organizer through the AI for a replacement, '
-    'verifies the same student, institution and bill, then continues. This is not yet implemented.',
+    'The agreed proposed flow pauses payout, asks the organizer through the AI for a replacement, verifies '
+    'the same student, institution and bill, then continues. This is not yet implemented.',
     True),
    ('When does a human step in?',
-    'The proposed workflow escalates a mismatch or an unresolved check. The reviewer checks '
-    'evidence, records the decision and permits an appropriate next step. A dedicated reviewer '
-    'workflow is not built.',
+    'The proposed workflow escalates a mismatch or an unresolved check. The reviewer checks evidence, '
+    'records the decision and permits an appropriate next step. A dedicated reviewer workflow is not built.',
     True),
    ('Does AI authenticate documents or identify fraud?',
-    'It helps structure the need and can discuss consistency. Uploads are accepted supporting '
-    'material. Independent document authentication, image-reuse checks and live registry checks '
-    'are not operational.',
+    'It helps structure the need and can discuss consistency. Uploads are accepted supporting material. '
+    'Independent document authentication, image-reuse checks and live registry checks are not operational.',
     True),
    ('Who can view supporting files today?',
-    'Unpublished files are owner-only. Files attached to published causes are publicly viewable '
-    'through the app. Sensitive evidence needs a separate access/redaction design before live use.',
+    'Unpublished files are owner-only. Files attached to published causes are publicly viewable through the '
+    'app. Sensitive evidence needs a separate access/redaction design before live use.',
     True),
    ("Do you store a donor's or organizer's NIN?",
-    'The current identity endpoint stores the simulated verification result and method, not the '
-    'NIN number. This does not establish that live identity verification or a complete launch '
-    'privacy program is in place.')]),
+    'The current identity endpoint stores the simulated verification result and method, not the NIN number. '
+    'This does not establish that live identity verification or a complete launch privacy program is in '
+    'place.')]),
  ('Fees and records',
   [('How does the fee cap work?',
-    'The current rule takes 2% of each gross gift until total upkeep reaches ₦5,000 for that '
-    'cause. It is a per-cause cap. The charge and net cause credit are shown before confirmation.',
+    'The current rule takes 2% of each gross gift until total upkeep reaches ₦5,000 for that cause. It is a '
+    'per-cause cap. The charge and net cause credit are shown before confirmation.',
     True),
    ('How are donor shares calculated?',
-    "The allocation uses the donor's net contribution after upkeep. In the full school-fee "
-    "example, Abigail's ₦155,000 gross payment credits ₦153,000 and that net amount is attributed "
-    "to the school's recorded payout.",
+    "The allocation uses the donor's net contribution after upkeep. In the full school-fee example, "
+    "Abigail's ₦155,000 gross payment credits ₦153,000 and that net amount is attributed to the school's "
+    'recorded payout.',
     True),
    ('Have you reconciled real bank payments?',
-    'No. Internal balances and payment allocations run in the prototype. External reconciliation '
-    'needs unique references and a match to confirmed provider settlement, including pending, '
-    'failed and duplicate events.',
+    'No. Internal balances and payment allocations run in the prototype. External reconciliation needs '
+    'unique references and a match to confirmed provider settlement, including pending, failed and duplicate '
+    'events.',
     True),
    ('Is NGO funding already secured?',
-    'No. Donations and NGO grants are the intended primary support, with tentative capped upkeep '
-    'as a fallback. The prototype currently applies its upkeep rule; no grant-triggered switch or '
-    'proven unit economics is claimed.'),
+    'No. Donations and NGO grants are the intended primary support, with tentative capped upkeep as a '
+    'fallback. The prototype currently applies its upkeep rule; no grant-triggered switch or proven unit '
+    'economics is claimed.'),
    ('Are refunds implemented?',
-    'A complete production refund and dispute process is still to be designed and integrated. The '
-    'prototype does not prove that operation.')]),
+    'A complete production refund and dispute process is still to be designed and integrated. The prototype '
+    'does not prove that operation.')]),
  ('Evidence and launch',
   [('What user research supports this presentation?',
-    "The supplied materials contain the team's school-fee observation, but no documented interview "
-    'findings were provided for this draft. The team should add actual dated findings and their '
-    'design implications before claiming user validation.',
+    'The school-fee experience and a conversation with the past president of Ugochukwu’s department support '
+    'the problem statement. He helps raise fees and reported that existing trust does not always make the '
+    'details easy to verify. This is qualitative problem feedback, not a completed product test or a live '
+    'pilot. No donor or institution usability findings have been supplied.',
     True),
    ('What would the first pilot measure?',
-    'Start with school-fee bills settled, donor understanding of receipts, unresolved payment '
-    'issues and repeat giving. These are proposed measures, not completed pilot results.'),
+    'Start with school-fee bills settled, donor understanding of receipts, unresolved payment issues and '
+    'repeat giving. These are proposed measures, not completed pilot results.'),
    ('What remains before live donations?',
-    'Licensed custody and live payments, independent verification, appropriate private-evidence '
-    'controls, external reconciliation and an exception/refund process. No signed custody '
-    'partnership is claimed.',
+    'Licensed custody and live payments, independent verification, appropriate private-evidence controls, '
+    'external reconciliation and an exception/refund process. No signed custody partnership is claimed.',
     True),
    ('How long is this pitch allowed to be?',
-    'The confirmed format is one minute for team introduction, seven minutes for presentation and '
-    'demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated '
-    'three minutes and twenty seconds to the pitch; demo timing is separate.')])]
+    'The organizer’s format is one minute for team introduction, seven minutes for presentation and demo, '
+    'five minutes for questions and two for scoring/transition. This expanded draft deliberately has no '
+    'delivery schedule yet. Timing will be decided after the content is edited.')])]
 
 PAGE = {'web_deck': True,
  'canonical_path': '/faith-and-tech-semis.html',
- 'deck_base': 'pitch-assets/faith-and-tech-semis',
+ 'deck_base': 'pitch-assets/faith-and-tech-semis/feedback-draft',
  'header': 'Faith & Tech\nSemi-final',
- 'description': 'Kairos Faith & Tech semi-final: a 3:20 pitch about trust, transparent '
-                'giving and responsible operation.',
+ 'description': 'Kairos Faith & Tech semi-final: expanded feedback draft, preserved opening script, working '
+                'prototype and proposed safeguards.',
  'footer': 'Abigail + Ugochukwu · Faith & Tech semi-final',
  'hero_kicker': 'Faith & Tech Hackathon · Semi-final',
  'hero_title': 'Transparent crowdfunding. Every naira accounted for.',
- 'hero_status': '3:20 pitch · separate demo',
+ 'hero_status': 'Expanded draft · timing to follow',
  'prep_kicker': '19 November 2026 · 6:30–6:45 p.m. WAT',
- 'prep_title': 'Three minutes and twenty seconds for the pitch.',
- 'prep_intro': 'The user has allocated three minutes and twenty seconds to the pitch and will determine the demo '
-               'timing separately. The organizers allow seven minutes for presentation and demo '
-               'combined.',
- 'script_title': 'Kairos: Faith & Tech 3:20 pitch',
- 'script_intro': 'Six slides, 3:20 delivery plan. The demo is separate and is not included '
-                 'in this pitch clock. Use the separate four-part Faith & Tech/general narration '
-                 'as a suggestion. Team introduction has its own one-minute slot.',
+ 'prep_title': 'Complete content, ready for your edits',
+ 'prep_intro': 'The opening follows the supplied script and selected shared-deck slides. Added sections '
+               'cover the remaining judging feedback. Set the delivery plan after editing.',
+ 'script_title': 'Kairos: Faith & Tech expanded feedback draft',
+ 'script_intro': 'The first six slides preserve the requested wording and shared-deck selection. The '
+                 'remaining sections are suggestions for editing. The supplied JCI original-audio recording '
+                 'is followed by the department president’s story on the closing page, then Meet the team. '
+                 'No pitch-duration target is set.',
  'qa_title': 'Kairos: Faith & Tech semi-final questions',
- 'qa_intro': 'Answers distinguish working features from planned exception handling, privacy '
-             'controls and external settlement.',
+ 'qa_intro': 'Answers distinguish working features from planned exception handling, privacy controls and '
+             'external settlement.',
  'qa_page_intro': 'Questions focused on trust, responsible operation and the judging feedback.',
  'event_title': 'Kairos: Faith & Tech semi-final preparation',
- 'event_intro': 'Confirmed slot: Thursday 19 November, 6:30–6:45 p.m. WAT. Join by 6:25. '
-                'One-minute introduction, seven-minute pitch and demo, five-minute Q&A, two-minute '
-                'scoring/transition.',
- 'event_notice': '3:20 pitch',
- 'event_notice_detail': 'Demo timing remains with the presenter. The pitch clock excludes the '
-                        'video.',
+ 'event_intro': 'Confirmed slot: Thursday 19 November, 6:30–6:45 p.m. WAT. Join by 6:25. One-minute '
+                'introduction, seven-minute pitch and demo, five-minute Q&A, two-minute scoring/transition.',
+ 'event_notice': 'Expanded content draft',
+ 'event_notice_detail': 'Review the full material before deciding the delivery schedule.',
  'event_spoken_label': 'The thread:',
- 'event_download_note': 'The current native PowerPoint/PDF and scripts are the 3:20 '
-                        'semi-final edition. The original application deck is preserved.',
- 'source_note': 'Prepared from the 18 November presentation-details email, the 15 November panel '
-                'feedback, the original submitted Faith & Tech deck, current product status and '
-                'the four revised demo clips. No user research results have been invented.',
+ 'event_download_note': 'Current editable PowerPoint, PDF, standalone deck and matching notes. Earlier '
+                        'editions are archived.',
+ 'source_note': 'Based on the supplied opening script, selected frozen /pitch.html slides, 15 November '
+                'judging feedback, 18 November presentation-details email, current product records and the '
+                'user’s account of the department president’s concern.',
  'source_html': '',
  'focus_label': 'User evidence:',
- 'focus_note': 'Add an actual dated donor, student or institution finding if available. The '
-               'current pilot is a proposal; do not describe it as completed validation.',
- 'notes_note': 'PowerPoint speaker notes and the browser script use the same six-slide text.',
- 'timing_note': '3:20 pitch. Demo is separate.',
- 'prep_timing_note': 'The user will decide the demo timing. The organizer’s combined seven-minute '
-                     'allowance is recorded here for preparation.',
- 'criteria': [['Problem and target users', 'Slides 1–2'],
-              ['Working flow and donor proof', 'Slides 3–4'],
-              ['Feasibility and responsible operation', 'Slide 5'],
-              ['Validation and next step', 'Slide 6']],
- 'checklist': ['Join the assigned Zoom waiting room by 6:25 p.m. WAT.',
-               'Use the 3:20 pitch; manage demo timing separately.',
-               'Confirm screen sharing, sound and backup playback before the slot.',
-               'Use the Faith & Tech/general four-part voiceover, rather than the longer payments '
-               'version.',
-               'Keep planned human review, reference replacement and private evidence controls '
-               'clearly prospective.',
-               'Use only real user findings if adding a validation claim.'],
+ 'focus_note': 'An early department-president conversation supports the need. Internal walkthroughs and '
+               'isolated software checks are separate from product testing. No completed external usability '
+               'study or live-money pilot is claimed.',
+ 'notes_note': 'PowerPoint speaker notes and browser scripts match. Default presenter: Ugochukwu.',
+ 'timing_note': 'No pitch-duration target is set for this expanded draft. The chosen demo is 3:36; the '
+                'closing story follows it, and Meet the team is last.',
+ 'prep_timing_note': 'Set timing after the content is edited. The organizer’s format is retained only as '
+                     'preparation context.',
+ 'criteria': [['Problem, importance and target users', 'Slides 1–3, 5–6'],
+              ['Working product and demo', 'Slides 4, 11 and 13'],
+              ['Technical approach and feasibility', 'Slide 7'],
+              ['Human review and expired references', 'Slide 8'],
+              ['Privacy and responsible innovation', 'Slide 9'],
+              ['External reconciliation', 'Slide 10'],
+              ['Validation and user feedback', 'Slides 11 and 14'],
+              ['Pilot and next steps', 'Slide 12'],
+              ['Team and roles', 'Slide 15']],
+ 'checklist': ['Test screen sharing and shared computer audio with the selected original-audio video.',
+               'Check internet and keep the local PowerPoint, PDF and demo video available, with screenshots '
+               'as a further fallback.',
+               'Choose Ugochukwu or Abigail as lead and review the matching opening and team introduction.',
+               'Explain the simulated checks before the recording. Planned human review, privacy and '
+               'reconciliation controls remain prospective.',
+               'After the demo, tell the department president’s story on the closing page. Finish on Meet '
+               'the team.',
+               'Review the complete content before setting a delivery schedule.'],
  'shared_presenter_label': 'Abigail or Ugochukwu',
- 'deck_pdf': 'pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min.pdf',
- 'deck_pptx': 'pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min.pptx',
- 'separate_demo_script': 'pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.md'}
-
-# Current visual edition: the JCI finale palette, native layouts and branding.
-# The six spoken sections and 180-second pitch clock remain unchanged.
-META['version'] = 'faith-and-tech-semis-jci-style-2026-11-19'
-PAGE.update(
-    native_slides=True,
-    deck_base='pitch-assets/faith-and-tech-semis/deck',
-    deck_title='Kairos: Faith & Tech semi-final',
-    deck_pdf='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pdf',
-    deck_pptx='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pptx',
-    separate_demo_pdf='pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.pdf',
-    separate_demo_subtitles='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.srt',
-    separate_demo_webvtt='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.vtt',
-    script_intro='Six slides, 3:20 delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.',
-    event_download_note='The JCI-style PowerPoint/PDF and scripts retain the 3:20 semi-final text. The original application deck and earlier versions remain preserved.',
-)
-PAGE['checklist'] = [
-    text.replace('Use the Faith & Tech/general four-part voiceover, rather than the longer payments version.',
-                 'Use the Faith & Tech/general recording and its updated transcript. Keep the separate Cleva payment closing for Cleva.')
-    for text in PAGE['checklist']
-]
-
-# Current 3:20 delivery: preserve breathing room around the technical controls.
-META['version'] = 'faith-and-tech-semis-3m20s-2026-11-19'
-_updates = [
- ('Transparent crowdfunding', 20, [
-  'Good evening everyone. We are Team Kairos. Kairos is a transparent crowdfunding platform for people who want to help but need to know what happened to their money. Every donor should be able to follow their contribution.'
- ], 'Introduce the promise, then move into the school-fee example.'),
- ('The trust gap and our first users', 25, [
-  'Our first users are students who need help with fees and the people funding those bills. When an appeal arrives on WhatsApp, a donor asks: is the bill real, how much is owed, and will my money actually reach the school? That hesitation is the problem.'
- ], 'Keep the student and donor in the story. Leave a brief pause after the questions.'),
- ('Features that work today', 35, [
-  'The live AI interview turns the story into a cause with a named provider and an itemised budget. The organiser can upload evidence, and someone can give through the shared link without an account. Contributions update the cause and public ledger. The organiser can request payment against that bill, but has no personal withdrawal path.'
- ], 'Explain the working flow. The separate demo shows it. Real custody and settlement remain unbuilt.'),
- ('Technical approach and donor accounting', 40, [
-  'Technically, Next.js handles the app, Anthropic powers the interview, MongoDB stores the records, and Cloudinary stores uploads. The server checks the available balance and budget before recording a payout.',
-  "A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for. This table shows each donor's share of the school-fee payment. Upkeep is disclosed before giving."
- ], 'Dwell on the server checks and one donor row. These figures are application records, not real school settlement.'),
- ('Feasibility and responsible innovation', 45, [
-  'The working code demonstrates the flow. Identity checks and settlement are simulated. Real funds still require a licensed custody partner, live identity checks and provider-confirmed settlement.',
-  'Published attachments are public today; sensitive evidence needs private review. Our planned exception flow pauses an expired reference, requests a replacement and escalates unresolved checks to a human. A human should make the final decision on unresolved checks.'
- ], 'Take time here. Separate present safeguards from proposed privacy, reference replacement and human review.'),
- ('Validation and next steps', 35, [
-  'So far, validation is internal: guest donations, uploads, budget limits and donor allocations have been tested. Walkthrough feedback helped us improve the interview and verification flow.',
-  'Next is a small school-fee pilot with students, donors and an institution, recording what they understand and what we change. Thank you.'
- ], 'Internal testing is not external user validation. The donor/institution pilot is still proposed. Finish at 3:20; the demo is separate.'),
-]
-for section, (title, seconds, paragraphs, cue) in zip(SLIDES, _updates):
- section.update(title=title, seconds=seconds, paragraphs=paragraphs, cue=cue)
-SLIDES[3]['visual']['title'] = 'Budget checks and donor accounting'
-SLIDES[4]['visual']['title'] = 'Feasibility and responsible innovation'
-SLIDES[5]['visual']['title'] = 'Validation and next steps'
-PAGE.update(
- deck_pdf='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pdf',
- deck_pptx='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pptx',
- description='Kairos Faith & Tech semi-final: a 3:20 pitch covering users, working features, technical approach, responsible innovation and next steps.',
- hero_status='3:20 pitch · separate demo',
- prep_title='Three minutes and twenty seconds for the pitch',
- script_title='Kairos: Faith & Tech 3:20 pitch',
- script_intro='Six slides, 3:20 delivery plan. Extra room is reserved for the technical approach, feasibility, responsible innovation and validation. The demo remains separate from the pitch clock. Team introduction has its own one-minute slot.',
- timing_note='3:20 pitch, with 40 seconds for the technical approach and 45 seconds for feasibility and responsible innovation. Demo separate.',
- event_download_note='Current 3:20 JCI-style PowerPoint/PDF and matching speaker notes. The earlier three-minute version is preserved.',
- criteria=[['Problem and target users','Slides 1–2'],['Working product features','Slide 3'],['Technical approach and donor proof','Slide 4'],['Feasibility and responsible innovation','Slide 5'],['Internal validation and next steps','Slide 6']],
- focus_note='Current validation is internal walkthroughs and isolated flow/accounting tests. A student/donor/institution pilot is the next step, not a completed result.',
-)
-PAGE['checklist'] = [text.replace('Use the 3:20 pitch; manage demo timing separately.', 'Rehearse the 3:20 pitch; give the technical controls room and manage demo timing separately.') for text in PAGE['checklist']]
-PAGE['checklist'][2] = 'Test screen sharing, computer audio and internet in advance. Keep the local deck and a backup demo video or screenshots ready.'
-
+ 'deck_pdf': 'pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pdf',
+ 'deck_pptx': 'pitch-assets/faith-and-tech-semis/feedback-draft/Faith-and-Tech-Semis-Feedback-Draft.pptx',
+ 'native_slides': True,
+ 'deck_title': 'Kairos: Faith & Tech semi-final',
+ 'unscheduled': True,
+ 'local_demo': True,
+ 'demo_name': 'kairos-jci-demo-original-audio.mp4',
+ 'demo_url': '',
+ 'demo_source': '/Users/ndujekwuugochukwu/Desktop/Kairos - JCI Final Demo/01 '
+                'Compare/kairos-jci-demo-original-audio.mp4'}
 
 def paragraph_for_presenter(paragraph, presenter):
+    if presenter == 'abigail':
+        paragraph = paragraph.replace('my name is Ndujekwu Ugochukwu presenting', 'my name is Sokenu Abigail presenting')
+        paragraph = paragraph.replace('the past president of my department', 'the past president of Ugochukwu’s department')
+        paragraph = paragraph.replace('I am Ndujekwu Ugochukwu, our software engineer and CTO. My role is', 'Ndujekwu Ugochukwu is our software engineer and CTO. His role is')
+        paragraph = paragraph.replace('Sokenu Abigail is our team lead and product manager. Her role is', 'I am Sokenu Abigail, our team lead and product manager. My role is')
+        paragraph = paragraph.replace('She helps translate', 'I help translate').replace('and makes sure we are solving', 'and make sure we are solving')
     return paragraph
 
 
 def slides_for_presenter(presenter):
-    return [dict(s, speaker=PRESENTERS[presenter]["name"],
-                 paragraphs=list(s["paragraphs"])) for s in SLIDES]
+    return [dict(s, speaker=PRESENTERS[presenter]['name'],
+                 paragraphs=[paragraph_for_presenter(p, presenter) for p in s['paragraphs']]) for s in SLIDES]
 
 
 def shared_paragraphs(section, markdown=False):
-    return list(section["paragraphs"])
+    return list(section['paragraphs'])
 
 
 QUESTIONS = []
 for category, rows in GROUPS:
     for question, answer, *priority in rows:
-        QUESTIONS.append(dict(
-            id=f"q{len(QUESTIONS)+1:03d}", category=category,
-            question=question, answer=answer, priority=bool(priority and priority[0]),
-        ))
+        QUESTIONS.append(dict(id=f'q{len(QUESTIONS)+1:03d}', category=category,
+                              question=question, answer=answer, priority=bool(priority and priority[0])))

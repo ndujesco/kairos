@@ -109,6 +109,7 @@ function placeDemo(inTab,visible){
   demoMedia.hidden=!inTab&&current!==DATA.demoSlide-1;
 }
 function paintClock(){
+  if(DATA.timingSet===false)return;
   const t=seconds();$('clock').textContent=mmss(t);
   $('meterfill').style.width=Math.min(100,100*t/LAST)+'%';
   $('meterfill').classList.toggle('over',t>LAST);
