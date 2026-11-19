@@ -132,7 +132,7 @@ function showSlide(n,scroll=true){
   jumps.forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));
   $('prev').disabled=current===0;$('next').disabled=current===DATA.slides.length-1;
   $('current-label').textContent='Slide '+(current+1)+' of '+DATA.slides.length;
-  if(DATA.slides[current].is_demo)$('current-label').textContent+=' · demo recording';
+  if(DATA.slides[current].is_demo)$('current-label').textContent+=DATA.demoPlaceholder?' · Demo':' · demo recording';
   paintClock();
   if(readAll&&scroll)blocks[current].scrollIntoView({behavior:'smooth',block:'start'});
 }

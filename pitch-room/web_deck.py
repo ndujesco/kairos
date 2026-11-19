@@ -68,6 +68,10 @@ def write_native_deck(path, slides, read_asset, page):
     """Self-contained previews of the native deck; local video stays optional."""
     media = []
     for section in slides:
+        if section.get('is_demo') and page.get('demo_placeholder'):
+            media.append(f'<article class="slidemedia demo-placeholder" data-slide="{section["n"]}" hidden>'
+                         '<div><h1>Demo</h1><p>Play the separate video.</p></div></article>')
+            continue
         source = f'{page["deck_base"]}/slides/slide{section["n"]:02}.jpg'
         data = 'data:image/jpeg;base64,' + base64.b64encode(read_asset(source)).decode()
         if section.get('is_demo'):
@@ -76,11 +80,12 @@ def write_native_deck(path, slides, read_asset, page):
             item = f'<img src="{data}" alt="Slide {section["n"]}: {e(section["title"])}">'
         media.append(f'<article class="slidemedia" data-slide="{section["n"]}" hidden>{item}</article>')
     picker = ('<label class="picker">Choose demo video<input id="local-demo-file" type="file" accept="video/*" hidden></label>'
-              if page.get('local_demo') else '')
+              if page.get('local_demo') and not page.get('demo_placeholder') else '')
     title = e(page.get('deck_title', 'Kairos'))
     path.write_text('''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>''' + title + '''</title><style>
 *{box-sizing:border-box}body{margin:0;background:#18271e;display:grid;place-items:center;min-height:100dvh;font:13px Arial,sans-serif}.native-deck{width:min(100vw,177.7778dvh)}.slidemedia{aspect-ratio:16/9;background:#000;display:grid;place-items:center}.slidemedia[hidden]{display:none!important}.slidemedia img,.slidemedia video{display:block;width:100%;max-height:100dvh;object-fit:contain}.deck-nav{position:fixed;right:12px;bottom:10px;display:flex;gap:10px;align-items:center;color:white}.deck-nav button,.picker{font:inherit;cursor:pointer;background:#173f2d;color:white;border:1px solid #ffffff66;border-radius:4px;padding:7px 12px}@media print{body{display:block;background:white}.native-deck{width:100%}.slidemedia[hidden]{display:block!important}.slidemedia{break-after:page;break-inside:avoid}.deck-nav{display:none}}
+.demo-placeholder{background:#f3f1e5;color:#205635;text-align:center}.demo-placeholder h1{font-size:clamp(48px,8vw,96px);margin:0}.demo-placeholder p{font-size:clamp(16px,2vw,28px);margin:20px 0 0}
 </style></head><body><main class="native-deck">''' + ''.join(media) + '''</main><nav class="deck-nav" aria-label="Slide controls">''' + picker + '''<button id="previous" aria-label="Previous slide">←</button><span id="position" aria-live="polite"></span><button id="next" aria-label="Next slide">→</button><button id="fullscreen">Fullscreen</button></nav><script>
 const slides=[...document.querySelectorAll('.slidemedia')];let current=0,videoUrl=null;
 function show(n){current=Math.max(0,Math.min(n,slides.length-1));slides.forEach((s,i)=>{s.hidden=i!==current;if(i!==current)s.querySelector('video')?.pause()});document.getElementById('position').textContent=(current+1)+' / '+slides.length}

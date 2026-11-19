@@ -6,10 +6,10 @@
   "words": 495,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "2b83ccc17ceb0e205f853b20f2f77eacf6339dd254c0d02d24d81db887467725",
+  "source_sha256": "46060ac589fb004c753f3615759b9565d0ef6b5bd3b375107dec1d792f68797a",
   "deckBase": "pitch-assets/faith-and-tech-semis/brief-feedback",
   "deck_pdf": "pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pptx",
+  "deck_pptx": null,
   "timing_includes_full_demo": false,
   "slide_order": [
     {
@@ -122,7 +122,8 @@
   "demo_slide": 8,
   "demo_video_seconds": 216.333008,
   "demo_section_seconds": null,
-  "local_demo": true,
+  "demo_placeholder": true,
+  "local_demo": false,
   "demo_name": "kairos-jci-demo-original-audio.mp4",
   "deck_html": "pitch-assets/faith-and-tech-semis/deck.html",
   "canonical_path": "/faith-and-tech-semis.html"

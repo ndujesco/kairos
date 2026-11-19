@@ -2,7 +2,19 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current: two brief feedback slides around the demo, 1:20 combined
+## Current: lightweight web room and native Keynote for presenting
+
+The user reported a slow Git push, authorized removal of website videos/downloads, explicitly asked the assistant to push the resolved changes, and requested a native `.key` presentation. Their earlier push had already finished when checked: remote and local main both pointed to `b8afe25`. No published history was rewritten or force-pushed.
+
+The Faith & Tech website now shows a plain **Demo** placeholder at slide 8 and in the Demo tab. The four-link presentation-download bar is removed. Its standalone web deck is also a placeholder version, with no player or file picker. Three video-bearing public PowerPoints were removed from `feedback-draft/`, `concise-draft/` and `brief-feedback/`, reducing the current website asset tree by **81.95 MiB**. Their full originals are preserved outside Git in local deliveries and `../production/2026-11-19 Faith web demo placeholder/removed-web-downloads/`. Other competition rooms/assets remain unchanged. The generator rejects embedded videos in Faith public PowerPoints so future builds cannot silently reintroduce them.
+
+**Present locally with `~/Desktop/Kairos - Cleva and Faith & Tech/Faith & Tech/02 Deck/Faith-and-Tech-Semis.key`.** An identical copy is in the event semifinal `deck/`. This is a real native Keynote export, saved and reopened by Keynote through file-conversion commands, not a renamed PowerPoint. All 11 slides and exact presenter notes survived; the embedded original-audio JCI video bytes match. All eleven Keynote PDF previews were individually inspected. Other open Keynote documents were not closed or edited. No CUA/browser controls were used. Actual sound playback was not tested. Existing local PowerPoint/PDF/video files are unchanged, and the local README now identifies the `.key` file.
+
+The presentation order and wording are unchanged: technical 7 (0:40), demo 8, responsible operation 9 (0:40), closing 10, team 11. Website scripts now instruct playing the local video separately. `PAGE` enables `demo_placeholder`/`hide_deck_downloads`, disables `local_demo` and sets public `deck_pptx` to None. The local builder and delivery scripts in the feedback-summary production folder now keep complete offline files separate from website assets.
+
+QA: no video/player/file-picker elements or deck download links in the Faith web room; all 11 slides and the 80-second section budget remain. No remaining Faith public PowerPoint contains video. 63 existing local files and 106 other public assets retain hashes; only the local README changed and new `.key` files were added. Generated JS/links pass; a temporary Cleva timed/video-room regression passes. Source/validation and Keynote delivery reports are in `../production/2026-11-19 Faith web demo placeholder/`. The user authorized the final push; actual release confirmation is recorded in `../HISTORY.md` and the production release report.
+
+## Previous: two brief feedback slides around the demo, 1:20 combined
 
 The latest user steering splits the former combined slide 7 into two brief slides and budgets **about 1:20 for those two only**. Final order: technical approach **7, 0:40**; unchanged JCI demo **8**; responsible operation/feedback summary **9, 0:40**; supplied closing **10**; succinct Meet the team **11, last**. The user offered placing both after the demo or one on either side; the latter was selected and communicated. No extra validation or next-steps slides were restored.
 

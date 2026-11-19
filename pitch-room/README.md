@@ -45,7 +45,7 @@ Faith & Tech retains Abigail and Ugochukwu from its application, with Ugochukwu 
 
 Slide 3 has the requested revised custody sentence. Slide 7 omits the repeated custody/integration limitations and focuses on the app. The supplied short demo introduction, closing and succinct team introduction remain unchanged, with Meet the team slide 11 and last. The removed validation and next-steps slides remain absent. Review, privacy improvements and reconciliation are still described as planned work.
 
-Current native assets are under `pitch-assets/faith-and-tech-semis/brief-feedback/`. The PowerPoint embeds the exact selected video, the PDF is static, and browser/standalone HTML uses a local file picker. Matching script budgets and manifest metadata distinguish the pair's 1:20 from a full pitch clock. Previous public paths and archives are preserved.
+Current web previews are under `pitch-assets/faith-and-tech-semis/brief-feedback/`. The website and standalone web deck show a plain Demo placeholder, with no video player/file picker or deck download bar. Video-bearing public PowerPoints were removed; complete offline copies remain local. Present using the native `Faith-and-Tech-Semis.key` in Desktop Faith & Tech `02 Deck/`, with notes and the selected original-audio demo embedded. Matching budgets and manifest metadata distinguish the pair's 1:20 from a full pitch clock.
 
 Current builder: `../production/2026-11-19 Faith and Tech feedback summary/build_deck.py` from the Kairos root. Read that folder's README and verification/delivery reports. Earlier production folders target historical editions. Rebuild only the Faith room after source edits.
 

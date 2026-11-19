@@ -90,7 +90,7 @@ Here is a demonstration of how the app works.
 
 Delivery: Play the selected original-audio JCI recording in full, then advance to the closing.
 
-Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
+Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
 Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule is set.
 

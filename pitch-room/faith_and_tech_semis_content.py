@@ -1,6 +1,6 @@
-"""Faith & Tech: feedback summary before and after the demo, 1:20 total.
+"""Faith & Tech: brief feedback around a separate local demo.
 
-Slide 7 focuses on the app. Slide 3 uses the revised custody sentence.
+The website uses a Demo placeholder. Local presentation files retain the video.
 """
 
 META = {'title': 'Kairos | Faith & Tech Semi-final',
@@ -259,8 +259,8 @@ PAGE = {'web_deck': True,
  'event_notice_detail': 'Technical approach: 0:40 before the demo. Responsible operation: 0:40 after it. '
                         'Total for the two slides: 1:20.',
  'event_spoken_label': 'The thread:',
- 'event_download_note': 'Current eleven-slide PowerPoint, static PDF and matching scripts. The previous '
-                        'ten-slide edition is archived.',
+ 'event_download_note': 'Use the local presentation files. The website shows a Demo placeholder and has no '
+                        'presentation download bar.',
  'source_note': 'Based on the user’s supplied script, frozen /pitch.html visuals, judging feedback and '
                 'current product records. The closing and short team introduction follow the latest supplied '
                 'wording.',
@@ -293,18 +293,20 @@ PAGE = {'web_deck': True,
                'schedule.'],
  'shared_presenter_label': 'Abigail or Ugochukwu',
  'deck_pdf': 'pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pdf',
- 'deck_pptx': 'pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pptx',
+ 'deck_pptx': None,
  'native_slides': True,
  'deck_title': 'Kairos: Faith & Tech semi-final',
  'unscheduled': True,
- 'local_demo': True,
+ 'local_demo': False,
  'demo_name': 'kairos-jci-demo-original-audio.mp4',
  'demo_url': '',
  'demo_source': '/Users/ndujekwuugochukwu/Desktop/Kairos - JCI Final Demo/01 '
                 'Compare/kairos-jci-demo-original-audio.mp4',
  'section_budgets': [{'label': 'Technical approach and responsible operation',
                       'slides': [7, 9],
-                      'seconds': 80}]}
+                      'seconds': 80}],
+ 'demo_placeholder': True,
+ 'hide_deck_downloads': True}
 
 def paragraph_for_presenter(paragraph, presenter):
     if presenter == 'abigail':

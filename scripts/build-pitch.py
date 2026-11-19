@@ -15,6 +15,7 @@ import html
 import importlib.util
 import json
 import sys
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "pitch-room"
@@ -81,9 +82,10 @@ def write_script(content, assets, page, slides, presenter=None):
                    speaker_timing]
         script += paragraphs + [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
-            instruction = ('Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
+            instruction = ('Play the separate local MP4, then return to the next slide.' if page.get('demo_placeholder') else
+                           'Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
                            if page.get('local_demo') else 'Play the embedded recording in full, then advance manually to the next slide.')
-            recording = page.get('demo_name') if page.get('local_demo') else page['demo_url']
+            recording = page.get('demo_name') if page.get('local_demo') or page.get('demo_placeholder') else page['demo_url']
             script += [instruction + " The recording's narration is not included in the presenter word count.",
                        f'Recording: {recording} · {mmss(s.get("video_seconds", s["seconds"]))}. '
                        + ('No overall pitch schedule is set.' if page.get('unscheduled') else 'This section is already included in the main pitch timing.')]
@@ -205,6 +207,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
           assets_base="pitch-assets", storage_prefix=None, cleva=False):
     assets.mkdir(parents=True, exist_ok=True)
     page = page_options(content, cleva=cleva)
+    if page.get('demo_placeholder'):
+        for presentation in assets.rglob('*.pptx'):
+            with ZipFile(presentation) as package:
+                if any(Path(name).suffix.lower() in {'.mp4', '.mov', '.m4v', '.avi', '.wmv'} for name in package.namelist()):
+                    raise ValueError(f'Keep the video-bearing presentation outside public: {presentation}')
     web_deck = page.get("web_deck", False)
     deck_base = page.get("deck_base", assets_base + "/deck" if storage_prefix else assets_base).rstrip("/")
     deck_pdf = page.get("deck_pdf") if web_deck else page.get("deck_pdf", deck_base + "/kairos-pitch-deck.pdf")
@@ -223,6 +230,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         deck_downloads += f' <a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>'
     if web_deck and deck_pptx:
         deck_downloads += f' <a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>'
+    if page.get('hide_deck_downloads'):
+        deck_downloads = ''
     scripts = {}
     for key in content.PRESENTERS:
         variant = timed_slides(content, key)
@@ -233,7 +242,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     demo_slide = next((s for s in slides if s.get("is_demo")), None)
     if demo_slide:
         page["demo_url"] = page.get("demo_url", assets_base + "/demo.mp4")
-        if not page.get('local_demo') and not local_asset(page["demo_url"]).is_file():
+        if not page.get('local_demo') and not page.get('demo_placeholder') and not local_asset(page["demo_url"]).is_file():
             raise FileNotFoundError(f"Copy the demo recording first: {local_asset(page['demo_url'])}")
         demo_poster = page.get("demo_poster", f'{deck_base}/slides/slide{demo_slide["n"]:02}.jpg')
         video_seconds = demo_slide.get("video_seconds", demo_slide["seconds"])
@@ -266,7 +275,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
-        if s.get("is_demo"):
+        if s.get('is_demo') and page.get('demo_placeholder'):
+            images.append(f'<div class="slideimage slidemedia demo-placeholder" data-slide="{s["n"]}"{hidden}>'
+                          '<div><h2>Demo</h2><p>Play the separate video.</p></div></div>')
+        elif s.get("is_demo"):
             if not local_asset(demo_poster).is_file():
                 raise FileNotFoundError(f"Missing demo poster: {demo_poster}")
             source = '' if page.get('local_demo') else f' src="{e(page["demo_url"])}"'
@@ -324,6 +336,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                           "demoVideoSeconds": video_seconds})
         if page.get('local_demo'):
             page_data.update(localDemo=True, demoName=page.get('demo_name',''))
+        if page.get('demo_placeholder'):
+            page_data.update(demoPlaceholder=True, demoName=page.get('demo_name',''))
     if deck_keynote:
         page_data["deckKeynote"] = deck_keynote
     if assets_base != "pitch-assets":
@@ -338,6 +352,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
+    if page.get('demo_placeholder'):
+        css += '\n.demo-placeholder{aspect-ratio:16/9;display:grid;place-items:center;background:#f3f1e5;text-align:center;color:#205635}.demo-placeholder h2{font-size:clamp(36px,6vw,88px);margin:0}.demo-placeholder p{font-size:clamp(14px,2vw,24px);margin:18px 0 0}.downloads:empty{display:none}\n'
     if page.get('unscheduled'):
         css += '\n#clock,.clocklabel,#clock-toggle,#clock-reset,.clockbox .progress,#clock-status{display:none!important}\n'
     if web_deck or any(s.get("visual") for s in slides):
@@ -370,7 +386,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key,label in [('separate_demo_pdf','Narration PDF ↓'),('separate_demo_subtitles','Subtitles SRT ↓'),('separate_demo_webvtt','Subtitles VTT ↓')]:
             if page.get(key):
                 narration_links += f' <a class="button" href="{e(page[key])}" download>{label}</a>'
-    if demo_slide:
+    if demo_slide and page.get('demo_placeholder'):
+        demo_panel = ('<div class="intro"><div><h1>Demo</h1>'
+                      '<p>Play the separate video from your computer, then return to the next slide.</p></div></div>')
+    elif demo_slide:
         local_picker = ''
         if page.get('local_demo'):
             local_picker = (f'<section class="prepbox"><h2>Choose the accompanying recording</h2>'
@@ -492,6 +511,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             manifest['demo_section_seconds'] = None
         if page.get('local_demo'):
             manifest.update(local_demo=True, demo_name=page['demo_name'])
+        if page.get('demo_placeholder'):
+            manifest.update(demo_placeholder=True, local_demo=False, demo_name=page.get('demo_name',''))
     if deck_keynote:
         manifest["deck_keynote"] = deck_keynote
     if deck_html:
