@@ -8,7 +8,7 @@ Trust, accountability and responsible operation
 
 - Thursday 19 November 2026, 6:30–6:45 p.m. WAT. Join by 6:25.
 - One-minute team introduction, seven-minute presentation and demo, five-minute Q&A, two-minute scoring/transition.
-- This deck uses a three-minute pitch clock. The presenter will decide the separate demo timing.
+- This deck uses a 3:20 pitch clock. The presenter will decide the separate demo timing.
 
 Explain the problem, target users, working features, validation, technical feasibility, responsible innovation and next steps.
 

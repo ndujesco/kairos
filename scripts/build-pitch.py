@@ -366,7 +366,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         demo_panel = local_picker + '<div class="demo-tab-stage" id="demo-tab-stage"></div>'
     elif page.get("separate_demo_script"):
         demo_panel = (f'<div class="intro"><div><p class="kicker">Separate from the pitch clock</p>'
-                      f'<h1>Recorded narration and subtitles</h1><p>The three-minute pitch excludes the demo. '
+                      f'<h1>Recorded narration and subtitles</h1><p>The {mmss(elapsed)} pitch excludes the demo. '
                       f'The transcript follows the latest recording in natural sections. Choose your own demo timing.</p></div></div>'
                       + narration_links)
     else:

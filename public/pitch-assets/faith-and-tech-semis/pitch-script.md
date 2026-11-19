@@ -1,60 +1,66 @@
-# Kairos: Faith & Tech three-minute pitch
+# Kairos: Faith & Tech 3:20 pitch
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail or Ugochukwu.
 
-6 slides, 328 spoken words for either presenter. Planning time 3:00, including pauses.
+6 slides, 316 spoken words for either presenter. Planning time 3:20, including pauses.
 
-Six slides, three-minute delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.
+Six slides, 3:20 delivery plan. Extra room is reserved for the technical approach, feasibility, responsible innovation and validation. The demo remains separate from the pitch clock. Team introduction has its own one-minute slot.
 
 ## Slide 1: Transparent crowdfunding
 
-Abigail or Ugochukwu · 0:00 to 0:25
+Abigail or Ugochukwu · 0:00 to 0:20
 
-Good evening everyone. We are Team Kairos. Kairos is a transparent crowdfunding platform created to solve the problem of trust when someone asks for help and several people donate their hard earned money. Every naira you give can be followed until it reaches the need it was given for.
+Good evening everyone. We are Team Kairos. Kairos is a transparent crowdfunding platform for people who want to help but need to know what happened to their money. Every donor should be able to follow their contribution.
 
-Delivery: Introduce Kairos and the trust problem. The separate team introduction is outside this three-minute pitch.
+Delivery: Introduce the promise, then move into the school-fee example.
 
-## Slide 2: The trust gap
+## Slide 2: The trust gap and our first users
 
-Abigail or Ugochukwu · 0:25 to 0:55
+Abigail or Ugochukwu · 0:20 to 0:45
 
-Think of a student who needs help with school fees. Someone shares her appeal on WhatsApp. You want to help, but you still have questions. Is the bill real? How much is actually owed? And after you give, how do you know the fees were paid? That hesitation is the problem we are solving.
+Our first users are students who need help with fees and the people funding those bills. When an appeal arrives on WhatsApp, a donor asks: is the bill real, how much is owed, and will my money actually reach the school? That hesitation is the problem.
 
-Delivery: A familiar scenario, not a claim that this example is a verified real case.
+Delivery: Keep the student and donor in the story. Leave a brief pause after the questions.
 
-## Slide 3: How Kairos works
+## Slide 3: Features that work today
 
-Abigail or Ugochukwu · 0:55 to 1:30
+Abigail or Ugochukwu · 0:45 to 1:20
 
-How do we do this? An AI interviewer asks about the need, the institution, the amount and supporting documents. That becomes a cause with an itemised budget naming who should be paid. People contribute to that bill. The organiser can request a provider payment, but there is no personal withdrawal. We make that possible by controlling the flow of money.
+The live AI interview turns the story into a cause with a named provider and an itemised budget. The organiser can upload evidence, and someone can give through the shared link without an account. Contributions update the cause and public ledger. The organiser can request payment against that bill, but has no personal withdrawal path.
 
-Delivery: Explain the working application flow. Live custody and settlement need a licensed partner.
+Delivery: Explain the working flow. The separate demo shows it. Real custody and settlement remain unbuilt.
 
-## Slide 4: Every giver sees their own part
+## Slide 4: Technical approach and donor accounting
 
-Abigail or Ugochukwu · 1:30 to 2:05
+Abigail or Ugochukwu · 1:20 to 2:00
 
-A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for. In our school-fee example, each donor sees their share of the three hundred thousand naira payment. Before giving, they see the upkeep. Our tentative fallback is two percent, capped at five thousand naira per cause, while we seek grants and sponsorship.
+Technically, Next.js handles the app, Anthropic powers the interview, MongoDB stores the records, and Cloudinary stores uploads. The server checks the available balance and budget before recording a payout.
 
-Delivery: Worked demo figures, not evidence of real institutional settlement. Grants and sponsorship are not secured.
+A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for. This table shows each donor's share of the school-fee payment. Upkeep is disclosed before giving.
 
-## Slide 5: Responsible operation
+Delivery: Dwell on the server checks and one donor row. These figures are application records, not real school settlement.
 
-Abigail or Ugochukwu · 2:05 to 2:40
+## Slide 5: Feasibility and responsible innovation
 
-The interview, uploads, ledger and donor alerts work today. Identity checks and settlement in this demonstration are simulated. Before live use, we need licensed partners, protected sensitive evidence and reconciliation with provider confirmations. Published attachments are public today. In our planned flow, an expired reference prompts the AI to request a replacement. Unresolved checks go to a human reviewer before payment continues.
+Abigail or Ugochukwu · 2:00 to 2:45
 
-Delivery: These exception, private-review and external-reconciliation controls are planned. Do not imply that an unbuilt reviewer workflow appears in the recording.
+The working code demonstrates the flow. Identity checks and settlement are simulated. Real funds still require a licensed custody partner, live identity checks and provider-confirmed settlement.
 
-## Slide 6: A focused first pilot
+Published attachments are public today; sensitive evidence needs private review. Our planned exception flow pauses an expired reference, requests a replacement and escalates unresolved checks to a human. A human should make the final decision on unresolved checks.
 
-Abigail or Ugochukwu · 2:40 to 3:00
+Delivery: Take time here. Separate present safeguards from proposed privacy, reference replacement and human review.
 
-Next, we want to test a small school-fee pilot with students, donors and an institution, recording what they need and what we change. Nigerians already give. Kairos helps them give with a clear account of what happened next. Thank you.
+## Slide 6: Validation and next steps
 
-Delivery: Proposed pilot, not completed research. Stop at three minutes; the demo is separate.
+Abigail or Ugochukwu · 2:45 to 3:20
+
+So far, validation is internal: guest donations, uploads, budget limits and donor allocations have been tested. Walkthrough feedback helped us improve the interview and verification flow.
+
+Next is a small school-fee pilot with students, donors and an institution, recording what they understand and what we change. Thank you.
+
+Delivery: Internal testing is not external user validation. The donor/institution pilot is still proposed. Finish at 3:20; the demo is separate.
 
 ## Short explanation
 

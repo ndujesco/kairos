@@ -1,57 +1,57 @@
 {
-  "version": "faith-and-tech-semis-jci-style-2026-11-19",
+  "version": "faith-and-tech-semis-3m20s-2026-11-19",
   "slides": 6,
   "questions": 18,
   "priority": 12,
-  "words": 328,
-  "seconds": 180,
+  "words": 316,
+  "seconds": 200,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "0752961b360c6e1d6ea06dfe52b6cee509a6b3ecf3cd67ab3658e7bed3d747c5",
+  "source_sha256": "eff54daebbbb20378ac23e60aa75ec4c1e68e40d27879608d73885afd69b0e4f",
   "deckBase": "pitch-assets/faith-and-tech-semis/deck",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pptx",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pptx",
   "timing_includes_full_demo": false,
   "slide_order": [
     {
       "n": 1,
       "key": "cover",
       "title": "Transparent crowdfunding",
-      "seconds": 25,
+      "seconds": 20,
       "is_demo": false
     },
     {
       "n": 2,
       "key": "problem",
-      "title": "The trust gap",
-      "seconds": 30,
+      "title": "The trust gap and our first users",
+      "seconds": 25,
       "is_demo": false
     },
     {
       "n": 3,
       "key": "solution",
-      "title": "How Kairos works",
+      "title": "Features that work today",
       "seconds": 35,
       "is_demo": false
     },
     {
       "n": 4,
       "key": "receipt",
-      "title": "Every giver sees their own part",
-      "seconds": 35,
+      "title": "Technical approach and donor accounting",
+      "seconds": 40,
       "is_demo": false
     },
     {
       "n": 5,
       "key": "review",
-      "title": "Responsible operation",
-      "seconds": 35,
+      "title": "Feasibility and responsible innovation",
+      "seconds": 45,
       "is_demo": false
     },
     {
       "n": 6,
       "key": "closing",
-      "title": "A focused first pilot",
-      "seconds": 20,
+      "title": "Validation and next steps",
+      "seconds": 35,
       "is_demo": false
     }
   ],
@@ -59,12 +59,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 328,
+      "words": 316,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 328,
+      "words": 316,
       "script": "pitch-script-ugochukwu.md"
     }
   },

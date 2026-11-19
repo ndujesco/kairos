@@ -7,7 +7,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | `/cleva-finale.html` | `cleva_finale_content.py` | JCI-style native deck and previews, 755 words, 10:25 including the current 4:12 recording; Cleva-focused Q&A |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
-| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | JCI-style six-slide native deck and previews, 328 words, three-minute pitch; demo separate |
+| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | JCI-style six-slide native deck and previews, 316 words, 3:20 pitch; demo separate |
 
 `/apwen-finale.html` is reserved for a later request; it is not created by this build.
 
@@ -44,5 +44,7 @@ Existing preliminary Cleva/APWEN and shared native files remain at their immutab
 Faith & Tech retains Abigail and Ugochukwu from its submitted application. The confirmed Kairos slot is 19 November, 6:30–6:45 p.m. WAT, with one minute for introductions, seven minutes for pitch/demo, five for Q&A and two for scoring. The user chose a three-minute pitch and will decide demo timing separately. Both current rooms link recorded narration in nine natural sections, PDF and separate SRT/VTT subtitles. The video has no burned subtitles. No research results have been invented; human review, reference replacement, private evidence and external reconciliation remain proposed. Current public Faith & Tech deck assets remain under `pitch-assets/faith-and-tech-semis/deck/` with new `-JCI-Style` names.
 
 The copied-template builder for both new native decks is `../production/2026-11-19 JCI-style decks/build_decks.py` from the Kairos root, outside this Git repository. Read its README for the source template, LibreOffice export, validation and delivery locations. The older Faith & Tech builder and its original three-minute native exports remain available separately.
+
+The latest Faith & Tech revision supersedes the three-minute plan above with 3:20. Its native filenames contain `3m20s-JCI-Style`, current notes match the 316-word script, and 40/45 seconds are reserved for technical approach and feasibility/responsible innovation. Validation is explicitly internal testing, with a proposed external pilot. Earlier three-minute exports remain preserved. Rebuild only this room for further Faith & Tech edits.
 
 Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.

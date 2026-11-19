@@ -85,5 +85,5 @@ Licensed custody and live payments, independent verification, appropriate privat
 
 ### 018. How long is this pitch allowed to be?
 
-The confirmed format is one minute for team introduction, seven minutes for presentation and demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated three minutes to the pitch; demo timing is separate.
+The confirmed format is one minute for team introduction, seven minutes for presentation and demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated three minutes and twenty seconds to the pitch; demo timing is separate.
 

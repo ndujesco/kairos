@@ -1,4 +1,4 @@
-"""Faith & Tech semifinal: a three-minute pitch with a separate demo.
+"""Faith & Tech semifinal: a 3:20 pitch with a separate demo.
 
 Edit the slide text here, then rebuild this edition only. Original submissions
 and the other competitions are deliberately independent.
@@ -31,7 +31,7 @@ SLIDES = [{'title': 'Transparent crowdfunding',
                  'several people donate their hard earned money. Every naira you give can be '
                  'followed until it reaches the need it was given for.'],
   'cue': 'Introduce Kairos and the trust problem. The separate team introduction is outside this '
-         'three-minute pitch.',
+         '3:20 pitch.',
   'visual': {'kind': 'cover',
              'eyebrow': 'FAITH & TECH SEMI-FINAL',
              'title': 'KAIROS',
@@ -113,7 +113,7 @@ SLIDES = [{'title': 'Transparent crowdfunding',
                  'institution, recording what they need and what we change. Nigerians already '
                  'give. Kairos helps them give with a clear account of what happened next. Thank '
                  'you.'],
-  'cue': 'Proposed pilot, not completed research. Stop at three minutes; the demo is separate.',
+  'cue': 'Proposed pilot, not completed research. Stop at three minutes and twenty seconds; the demo is separate.',
   'visual': {'kind': 'closing',
              'eyebrow': 'NEXT STEP',
              'title': 'Giving people can follow',
@@ -135,7 +135,7 @@ EVENTS = [{'name': 'Faith & Tech semi-final',
   'schedule': ['Thursday 19 November 2026, 6:30–6:45 p.m. WAT. Join by 6:25.',
                'One-minute team introduction, seven-minute presentation and demo, five-minute Q&A, '
                'two-minute scoring/transition.',
-               'This deck uses a three-minute pitch clock. The presenter will decide the separate '
+               'This deck uses a 3:20 pitch clock. The presenter will decide the separate '
                'demo timing.'],
   'assess': 'Explain the problem, target users, working features, validation, technical '
             'feasibility, responsible innovation and next steps.',
@@ -226,25 +226,25 @@ GROUPS = [('The giving flow',
    ('How long is this pitch allowed to be?',
     'The confirmed format is one minute for team introduction, seven minutes for presentation and '
     'demo, five minutes for Q&A and two minutes for scoring/transition. The user has allocated '
-    'three minutes to the pitch; demo timing is separate.')])]
+    'three minutes and twenty seconds to the pitch; demo timing is separate.')])]
 
 PAGE = {'web_deck': True,
  'canonical_path': '/faith-and-tech-semis.html',
  'deck_base': 'pitch-assets/faith-and-tech-semis',
  'header': 'Faith & Tech\nSemi-final',
- 'description': 'Kairos Faith & Tech semi-final: a three-minute pitch about trust, transparent '
+ 'description': 'Kairos Faith & Tech semi-final: a 3:20 pitch about trust, transparent '
                 'giving and responsible operation.',
  'footer': 'Abigail + Ugochukwu · Faith & Tech semi-final',
  'hero_kicker': 'Faith & Tech Hackathon · Semi-final',
  'hero_title': 'Transparent crowdfunding. Every naira accounted for.',
- 'hero_status': 'Three-minute pitch · separate demo',
+ 'hero_status': '3:20 pitch · separate demo',
  'prep_kicker': '19 November 2026 · 6:30–6:45 p.m. WAT',
- 'prep_title': 'Three minutes for the pitch.',
- 'prep_intro': 'The user has allocated three minutes to the pitch and will determine the demo '
+ 'prep_title': 'Three minutes and twenty seconds for the pitch.',
+ 'prep_intro': 'The user has allocated three minutes and twenty seconds to the pitch and will determine the demo '
                'timing separately. The organizers allow seven minutes for presentation and demo '
                'combined.',
- 'script_title': 'Kairos: Faith & Tech three-minute pitch',
- 'script_intro': 'Six slides, three-minute delivery plan. The demo is separate and is not included '
+ 'script_title': 'Kairos: Faith & Tech 3:20 pitch',
+ 'script_intro': 'Six slides, 3:20 delivery plan. The demo is separate and is not included '
                  'in this pitch clock. Use the separate four-part Faith & Tech/general narration '
                  'as a suggestion. Team introduction has its own one-minute slot.',
  'qa_title': 'Kairos: Faith & Tech semi-final questions',
@@ -255,11 +255,11 @@ PAGE = {'web_deck': True,
  'event_intro': 'Confirmed slot: Thursday 19 November, 6:30–6:45 p.m. WAT. Join by 6:25. '
                 'One-minute introduction, seven-minute pitch and demo, five-minute Q&A, two-minute '
                 'scoring/transition.',
- 'event_notice': 'Three-minute pitch',
+ 'event_notice': '3:20 pitch',
  'event_notice_detail': 'Demo timing remains with the presenter. The pitch clock excludes the '
                         'video.',
  'event_spoken_label': 'The thread:',
- 'event_download_note': 'The current native PowerPoint/PDF and scripts are the three-minute '
+ 'event_download_note': 'The current native PowerPoint/PDF and scripts are the 3:20 '
                         'semi-final edition. The original application deck is preserved.',
  'source_note': 'Prepared from the 18 November presentation-details email, the 15 November panel '
                 'feedback, the original submitted Faith & Tech deck, current product status and '
@@ -269,7 +269,7 @@ PAGE = {'web_deck': True,
  'focus_note': 'Add an actual dated donor, student or institution finding if available. The '
                'current pilot is a proposal; do not describe it as completed validation.',
  'notes_note': 'PowerPoint speaker notes and the browser script use the same six-slide text.',
- 'timing_note': 'Three-minute pitch. Demo is separate.',
+ 'timing_note': '3:20 pitch. Demo is separate.',
  'prep_timing_note': 'The user will decide the demo timing. The organizer’s combined seven-minute '
                      'allowance is recorded here for preparation.',
  'criteria': [['Problem and target users', 'Slides 1–2'],
@@ -277,7 +277,7 @@ PAGE = {'web_deck': True,
               ['Feasibility and responsible operation', 'Slide 5'],
               ['Validation and next step', 'Slide 6']],
  'checklist': ['Join the assigned Zoom waiting room by 6:25 p.m. WAT.',
-               'Use the three-minute pitch; manage demo timing separately.',
+               'Use the 3:20 pitch; manage demo timing separately.',
                'Confirm screen sharing, sound and backup playback before the slot.',
                'Use the Faith & Tech/general four-part voiceover, rather than the longer payments '
                'version.',
@@ -301,14 +301,61 @@ PAGE.update(
     separate_demo_pdf='pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.pdf',
     separate_demo_subtitles='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.srt',
     separate_demo_webvtt='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.vtt',
-    script_intro='Six slides, three-minute delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.',
-    event_download_note='The JCI-style PowerPoint/PDF and scripts retain the three-minute semi-final text. The original application deck and earlier versions remain preserved.',
+    script_intro='Six slides, 3:20 delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.',
+    event_download_note='The JCI-style PowerPoint/PDF and scripts retain the 3:20 semi-final text. The original application deck and earlier versions remain preserved.',
 )
 PAGE['checklist'] = [
     text.replace('Use the Faith & Tech/general four-part voiceover, rather than the longer payments version.',
                  'Use the Faith & Tech/general recording and its updated transcript. Keep the separate Cleva payment closing for Cleva.')
     for text in PAGE['checklist']
 ]
+
+# Current 3:20 delivery: preserve breathing room around the technical controls.
+META['version'] = 'faith-and-tech-semis-3m20s-2026-11-19'
+_updates = [
+ ('Transparent crowdfunding', 20, [
+  'Good evening everyone. We are Team Kairos. Kairos is a transparent crowdfunding platform for people who want to help but need to know what happened to their money. Every donor should be able to follow their contribution.'
+ ], 'Introduce the promise, then move into the school-fee example.'),
+ ('The trust gap and our first users', 25, [
+  'Our first users are students who need help with fees and the people funding those bills. When an appeal arrives on WhatsApp, a donor asks: is the bill real, how much is owed, and will my money actually reach the school? That hesitation is the problem.'
+ ], 'Keep the student and donor in the story. Leave a brief pause after the questions.'),
+ ('Features that work today', 35, [
+  'The live AI interview turns the story into a cause with a named provider and an itemised budget. The organiser can upload evidence, and someone can give through the shared link without an account. Contributions update the cause and public ledger. The organiser can request payment against that bill, but has no personal withdrawal path.'
+ ], 'Explain the working flow. The separate demo shows it. Real custody and settlement remain unbuilt.'),
+ ('Technical approach and donor accounting', 40, [
+  'Technically, Next.js handles the app, Anthropic powers the interview, MongoDB stores the records, and Cloudinary stores uploads. The server checks the available balance and budget before recording a payout.',
+  "A donor doesn't just get a thank you, they get a receipt which tells them exactly what their money was used for. This table shows each donor's share of the school-fee payment. Upkeep is disclosed before giving."
+ ], 'Dwell on the server checks and one donor row. These figures are application records, not real school settlement.'),
+ ('Feasibility and responsible innovation', 45, [
+  'The working code demonstrates the flow. Identity checks and settlement are simulated. Real funds still require a licensed custody partner, live identity checks and provider-confirmed settlement.',
+  'Published attachments are public today; sensitive evidence needs private review. Our planned exception flow pauses an expired reference, requests a replacement and escalates unresolved checks to a human. A human should make the final decision on unresolved checks.'
+ ], 'Take time here. Separate present safeguards from proposed privacy, reference replacement and human review.'),
+ ('Validation and next steps', 35, [
+  'So far, validation is internal: guest donations, uploads, budget limits and donor allocations have been tested. Walkthrough feedback helped us improve the interview and verification flow.',
+  'Next is a small school-fee pilot with students, donors and an institution, recording what they understand and what we change. Thank you.'
+ ], 'Internal testing is not external user validation. The donor/institution pilot is still proposed. Finish at 3:20; the demo is separate.'),
+]
+for section, (title, seconds, paragraphs, cue) in zip(SLIDES, _updates):
+ section.update(title=title, seconds=seconds, paragraphs=paragraphs, cue=cue)
+SLIDES[3]['visual']['title'] = 'Budget checks and donor accounting'
+SLIDES[4]['visual']['title'] = 'Feasibility and responsible innovation'
+SLIDES[5]['visual']['title'] = 'Validation and next steps'
+PAGE.update(
+ deck_pdf='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pdf',
+ deck_pptx='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3m20s-JCI-Style.pptx',
+ description='Kairos Faith & Tech semi-final: a 3:20 pitch covering users, working features, technical approach, responsible innovation and next steps.',
+ hero_status='3:20 pitch · separate demo',
+ prep_title='Three minutes and twenty seconds for the pitch',
+ script_title='Kairos: Faith & Tech 3:20 pitch',
+ script_intro='Six slides, 3:20 delivery plan. Extra room is reserved for the technical approach, feasibility, responsible innovation and validation. The demo remains separate from the pitch clock. Team introduction has its own one-minute slot.',
+ timing_note='3:20 pitch, with 40 seconds for the technical approach and 45 seconds for feasibility and responsible innovation. Demo separate.',
+ event_download_note='Current 3:20 JCI-style PowerPoint/PDF and matching speaker notes. The earlier three-minute version is preserved.',
+ criteria=[['Problem and target users','Slides 1–2'],['Working product features','Slide 3'],['Technical approach and donor proof','Slide 4'],['Feasibility and responsible innovation','Slide 5'],['Internal validation and next steps','Slide 6']],
+ focus_note='Current validation is internal walkthroughs and isolated flow/accounting tests. A student/donor/institution pilot is the next step, not a completed result.',
+)
+PAGE['checklist'] = [text.replace('Use the 3:20 pitch; manage demo timing separately.', 'Rehearse the 3:20 pitch; give the technical controls room and manage demo timing separately.') for text in PAGE['checklist']]
+PAGE['checklist'][2] = 'Test screen sharing, computer audio and internet in advance. Keep the local deck and a backup demo video or screenshots ready.'
+
 
 def paragraph_for_presenter(paragraph, presenter):
     return paragraph
