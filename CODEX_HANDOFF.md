@@ -2,6 +2,16 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest JCI feedback: stronger repair at the user's actual squeak timestamps
+
+The user said the first squeak pass did not materially help. They then identified **24s, 42s, 53s and about 1:16 in the trimmed 3:36 video**. The earlier pass had only treated 0.505–0.645 seconds, so it missed these sections. Do not present that first result as a successful fix for the reported squeaks.
+
+New current comparison: `~/Desktop/Kairos - JCI Final Demo/01 Compare/kairos-jci-demo-squeak-reduced-v2.mp4`, beside the unchanged original-sound comparison. V2 uses stronger local time-varying spectral suppression in 22–26, 40–44, 51–55 and 74–78 seconds. It reduces the sharp upper-band resonances (up to about 20 dB at peaks, approximately 3–6 dB across each region's upper band) while leaving the lower voice band effectively unchanged. Outside those four regions it retains the previous PCM exactly before AAC export, including v1's tiny initial repair. No global speech model/EQ was used in the delivered V2.
+
+The first attempt is preserved under Desktop `Archive/First cleanup/`. All previous bytes and the untouched 3:47 original remain intact. Full V2 decoding passed; video packets and every picture timestamp match the trimmed original exactly. A contextual medium-model ASR check over 19–85 seconds agreed at 99.5%, differing only in name recognition; the earlier fragmentary short-sample check was inconclusive. This is still signal/recognition analysis, **not direct listening or user confirmation**. The user should compare the four specified spots.
+
+Reproduction and QA: `../production/2026-11-19 JCI demo squeak review/repair_timestamped_squeaks.py`, `timestamped-v2/manifest.json`, spectra and before/after audio excerpts. A local speech model was prepared but was not used in the final repair. No computer controls, website/media deployment, product/deck/database edits or uploads.
+
 ## Latest: Faith & Tech 3:20 pitch and separate JCI audio comparison
 
 The user asked what technical approach, feasibility, responsible innovation and next steps mean, then requested a **3:20 Faith & Tech pitch** that gives those points more room. Current deck is six slides, **316 words**, with a 200-second plan: intro 20, problem/users 25, working features 35, technical approach/accounting 40, feasibility/responsible innovation 45, internal validation/next steps 35. Demo remains separate. The deck explicitly covers Next.js, Anthropic, MongoDB, Cloudinary, server-side balance/budget checks, current safeguards, proposed private review/reference replacement/human escalation, and licensed live-operation dependencies. It identifies validation as internal walkthroughs and isolated tests, with an external student/donor/institution pilot still proposed.
