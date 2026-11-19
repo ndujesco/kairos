@@ -120,7 +120,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'seconds': 0,
   'paragraphs': ['In short, Kairos turns charitable giving from an act of blind trust into one of complete '
                  "transparency. We don't claim to make fraud impossible. We're building Kairos to make it "
-                 'visible, traceable, capped and unprofitable.'],
+                 'very difficult, visible, traceable, capped and unprofitable.'],
   'cue': 'Deliver the closing, then advance to Meet the team.',
   'suggested_addition': True},
  {'title': 'Meet the team',

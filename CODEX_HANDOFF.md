@@ -2,6 +2,22 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Current: closing adds “very difficult” first
+
+Applied the user's exact sentence on closing slide 10: “We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.” It is in browser/Markdown scripts and native presenter notes. The closing visual now begins “Very difficult, visible and traceable.” with its remaining statements preserved. Only slide 10 and its narration changed; all other PPTX parts and the embedded original demo are identical. The other ten native Keynote/PDF pages match the prior previews pixel for pixel. Eleven slides, 562 presenter words; timer/order/budgets unchanged.
+
+Updated current Desktop/event Keynote/PPTX/PDF/HTML/scripts and the requested Downloads Keynote. No extra archived video/deck copies are retained after the storage cleanup. Small validation records are in `../production/2026-11-19 Faith closing difficult/`; temporary build output is removed after delivery. The current full builder under `../production/2026-11-19 Faith responsible operation four cards/` contains the matching closing update. No email resend or product/database changes. Push/live confirmation follows in root HISTORY and the release report.
+
+## Latest: permanent cleanup of redundant outputs
+
+At the user's explicit request, permanently deleted obsolete Faith/Cleva/JCI media exports and archives, generated .build folders, audio-processing intermediates, safe build/download caches and task-owned temporary media virtual environments. Current Faith & Tech Keynote/PowerPoint, Cleva PowerPoint plus its necessary separate clean demo, JCI original final demo, and the two requested Downloads files were preserved and hash-verified. Current presentation remains the four-card slide-08 edition. About 16.75 GiB is now free. No application/database/deployed-page or Git-history changes.
+
+Cleanup manifest: `../production/2026-11-19 Storage cleanup/`. Prior .build output and historical preview-baseline links may now point to deliberately removed temporary files. Sources/build scripts remain; regenerate only when a new edit requires it. Do not restore old comparison bundles during routine continuation. Downloaded Xcode.app and Mercor work files are untouched pending the user's choice. This local bookkeeping requires no deployment.
+
+## Latest local delivery: Downloads
+
+Copied the current Desktop Faith & Tech `Faith-and-Tech-Semis-Visual-Deck.key` to `~/Downloads/` and extracted `~/Downloads/Kairos-JCI-Demo-Audio.m4a` from the selected JCI original-audio MP4 at the user's request. Keynote bytes match the Desktop source; AAC extraction preserves the original audio, with decoded equality checked. Duration is about 3:36. No original files, slide/script content or website deployment changed. This is local documentation only.
+
 ## Latest delivery: emailed the deck to Abby
 
 Sent the current Faith & Tech PowerPoint and PDF to `sokenuabigail@gmail.com` at the user's explicit request. Gmail accepted both attachments at 14:16 WAT on 19 November. The email uses a separate 13 MB PowerPoint copy because the original exceeds Gmail's attachment limit. Only embedded video encoding/resolution changes; all slides/notes and original audio are identical, with actual displayed frame count and duration preserved. PDF and Desktop originals are unchanged. Receipt and hashes: `../production/2026-11-19 Email Faith deck to Abby/`. Do not resend without checking `send-receipt.json`. This local documentation update requires no deployment; no application or presentation wording changed.

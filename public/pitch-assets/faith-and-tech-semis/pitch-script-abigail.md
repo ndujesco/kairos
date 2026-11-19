@@ -4,7 +4,7 @@ Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-11 slides, 560 presenter words. No delivery schedule is set.
+11 slides, 562 presenter words. No delivery schedule is set.
 
 Eleven slides. Demo 6, then Technical approach 7, Responsible operation 8 and the school-fee slide 9. The deck uses concise visual summaries; the full corrected narration is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, 1:20 combined.
 
@@ -110,7 +110,7 @@ Delivery: Use the supplied account of departmental feedback. No measured pilot r
 
 Abigail
 
-In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim to make fraud impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
+In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.
 
 Delivery: Deliver the closing, then advance to Meet the team.
 
