@@ -2,7 +2,21 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current: lightweight web room and native Keynote for presenting
+## Current: verbatim post-demo Faith sections and Cleva laptop scroll-follow fix
+
+The user supplied exact text for Technical approach, Responsible operation, and Start with a bill that can be checked, and explicitly moved all three after the demo. Current Faith order is **Demo 6, Technical 7, Responsible 8, school-fee/departmental feedback 9, closing 10, team 11**. Total: eleven slides and 532 presenter words. The three supplied sections are verbatim in browser scripts, visible native slides and notes, including “very a positive response” and lowercase “remita”. Do not silently polish their wording. The first five slides and last two remain unchanged. The prior 1:20 technical/responsible allowance is redistributed as 0:20 and 1:00 to match the new lengths; no full schedule is assigned.
+
+The responsible text makes unsupported current-operation claims about sensitive data, AI publication permission and expired-reference recovery. Its verbatim body is preserved, while the visible native slide is separately marked **INTENDED OPERATING MODEL** and its footer/delivery note clarifies the unbuilt automatic screening/reference-recovery controls. The existing prototype status remains. No product capabilities were implemented or privacy guarantees established by editing the deck.
+
+Current local presentation: `~/Desktop/Kairos - Cleva and Faith & Tech/Faith & Tech/02 Deck/Faith-and-Tech-Semis-Exact-Script.key`. Matching PPTX/PDF and local HTML are beside it and in the event semifinal stage. The prior current bundle is archived under Desktop `Archive/Before exact script/` and event `archive/2026-11-19-before-exact-script/`. Keynote saved/reopened the native file; all notes and original JCI demo bytes match, with the movie now on slide 6. All pages rendered, changed/reordered pages reviewed, and the other seven match the previous Keynote previews pixel for pixel. The website stays a Demo placeholder and no-download-bar version; public assets are under `pitch-assets/faith-and-tech-semis/exact-script/`. Video-bearing PPTX/Keynote remain outside Git.
+
+The user also supplied a Cleva laptop screenshot: Read through did not move the slide preview while scrolling. The cause was `queueReaderUpdate` being mobile-only, not a network dependency. Shared JS now follows script scroll in desktop Read through, updates the slide without scrolling the page, handles the script end and retains mobile/manual/deck-only/hidden-tab guards. The active `/cleva-finale.html` and `/cleva.html` alias receive the fix; their content, scripts, native decks and standalone assets remain byte-identical. Old/frozen rooms are unchanged. Reload the updated Cleva page once; scroll-follow itself uses no network.
+
+Validation: exact-copy, note/media/budget, link/JS and protected-file checks pass. Native package/layout/font checks have zero findings. The actual scroll-follow function has Node VM regressions for desktop forward/back/end, mobile behavior and guarded modes. No CUA/browser controls, actual sound playback or database/product mutations. Keynote was used only for conversion; unrelated open documents were not closed. The user previously authorized pushing fixes, and final release confirmation is recorded in `../HISTORY.md` and the production release report.
+
+Reproduction/QA: `../production/2026-11-19 exact Faith script and desktop reader/README.md`, builders, verifier, `test_read_through.mjs`, exact-copy contract and delivery manifests. Current content remains `pitch-room/faith_and_tech_semis_content.py`; do not run older historical production builders over it.
+
+## Previous: lightweight web room and native Keynote for presenting
 
 The user reported a slow Git push, authorized removal of website videos/downloads, explicitly asked the assistant to push the resolved changes, and requested a native `.key` presentation. Their earlier push had already finished when checked: remote and local main both pointed to `b8afe25`. No published history was rewritten or force-pushed.
 

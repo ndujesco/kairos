@@ -151,6 +151,7 @@ function setReadAll(on,scroll=true){
   $('one-slide').classList.toggle('on',!readAll);$('read-through').classList.toggle('on',readAll);
   $('one-slide').setAttribute('aria-pressed',String(!readAll));$('read-through').setAttribute('aria-pressed',String(readAll));
   showSlide(current,scroll);
+  queueReaderUpdate();
 }
 $('one-slide').addEventListener('click',()=>setReadAll(false));
 $('read-through').addEventListener('click',()=>setReadAll(true));
@@ -167,7 +168,7 @@ $('fullscreen').addEventListener('click',async()=>{
 });
 showSlide(0);
 
-// Phones keep the whole script open; only the small preview changes as it is read.
+// Read-through scrolls the preview with the script on laptops and phones.
 function measureReader(){
   if(!mobileReader)return;
   const root=document.documentElement;
@@ -177,19 +178,21 @@ function measureReader(){
   root.style.setProperty('--reader-preview',preview+'px');
 }
 function queueReaderUpdate(){
-  if(!mobileReader||readerFrame||$('panel-pitch').hidden)return;
+  if((!mobileReader&&!readAll)||deckOnly||readerFrame||$('panel-pitch').hidden)return;
   readerFrame=requestAnimationFrame(()=>{
     readerFrame=0;
-    if(!mobileReader||$('panel-pitch').hidden)return;
-    measureReader();
+    if((!mobileReader&&!readAll)||deckOnly||$('panel-pitch').hidden)return;
+    if(mobileReader)measureReader();
     const header=document.querySelector('.top').getBoundingClientRect().bottom;
-    const readingLine=Math.max(header,$('deck-view').getBoundingClientRect().bottom)+16;
+    const readingLine=mobileReader?Math.max(header,$('deck-view').getBoundingClientRect().bottom)+16:header+24;
     let active=0;
     for(let i=0;i<blocks.length;i++){
       if(blocks[i].getBoundingClientRect().top<=readingLine)active=i;
       else break;
     }
-    if(window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2)active=blocks.length-1;
+    const atEnd=mobileReader?window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2:
+      $('script-paper').getBoundingClientRect().bottom<=window.innerHeight&&blocks[0].getBoundingClientRect().top<readingLine;
+    if(atEnd)active=blocks.length-1;
     if(active!==current)showSlide(active,false);
   });
 }

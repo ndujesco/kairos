@@ -1,14 +1,14 @@
 {
-  "version": "faith-and-tech-semis-feedback-summary-2026-11-19",
+  "version": "faith-and-tech-semis-exact-script-2026-11-19",
   "slides": 11,
   "questions": 18,
   "priority": 12,
-  "words": 495,
+  "words": 532,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "46060ac589fb004c753f3615759b9565d0ef6b5bd3b375107dec1d792f68797a",
-  "deckBase": "pitch-assets/faith-and-tech-semis/brief-feedback",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pdf",
+  "source_sha256": "76a7934da1a45a48557367fc0fe824d5a659fa3c26ccf4e5d679734a1411cf42",
+  "deckBase": "pitch-assets/faith-and-tech-semis/exact-script",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/exact-script/Faith-and-Tech-Semis-Exact-Script.pdf",
   "deck_pptx": null,
   "timing_includes_full_demo": false,
   "slide_order": [
@@ -49,10 +49,10 @@
     },
     {
       "n": 6,
-      "key": "roadmap",
-      "title": "Start with a bill that can be checked.",
+      "key": "demo",
+      "title": "Prototype demonstration",
       "seconds": null,
-      "is_demo": false
+      "is_demo": true
     },
     {
       "n": 7,
@@ -60,22 +60,22 @@
       "title": "Technical approach",
       "seconds": null,
       "is_demo": false,
-      "budget_seconds": 40
+      "budget_seconds": 20
     },
     {
       "n": 8,
-      "key": "demo",
-      "title": "Prototype demonstration",
-      "seconds": null,
-      "is_demo": true
-    },
-    {
-      "n": 9,
       "key": "responsible_operation",
       "title": "Responsible operation",
       "seconds": null,
       "is_demo": false,
-      "budget_seconds": 40
+      "budget_seconds": 60
+    },
+    {
+      "n": 9,
+      "key": "roadmap",
+      "title": "Start with a bill that can be checked.",
+      "seconds": null,
+      "is_demo": false
     },
     {
       "n": 10,
@@ -96,12 +96,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 495,
+      "words": 532,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 495,
+      "words": 532,
       "script": "pitch-script-ugochukwu.md"
     }
   },
@@ -111,7 +111,7 @@
       "label": "Technical approach and responsible operation",
       "slides": [
         7,
-        9
+        8
       ],
       "seconds": 80
     }
@@ -119,7 +119,7 @@
   "assetsBase": "pitch-assets/faith-and-tech-semis",
   "storagePrefix": "kairos-faith-and-tech-semis-room-v2",
   "demoUrl": "",
-  "demo_slide": 8,
+  "demo_slide": 6,
   "demo_video_seconds": 216.333008,
   "demo_section_seconds": null,
   "demo_placeholder": true,

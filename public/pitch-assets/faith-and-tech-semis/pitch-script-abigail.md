@@ -1,12 +1,12 @@
-# Kairos: Faith & Tech feedback summary
+# Kairos: Faith & Tech exact presenter script
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-11 slides, 495 presenter words. No delivery schedule is set.
+11 slides, 532 presenter words. No delivery schedule is set.
 
-Eleven slides. Technical approach is slide 7, followed by the unchanged demonstration on slide 8. Responsible operation follows on slide 9. Budget 40 seconds for each feedback slide, 1:20 together. Slide 3 uses the updated custody sentence. The closing and team scripts remain unchanged. No overall delivery schedule is set.
+Eleven slides. Demo 6, Technical approach 7, Responsible operation 8, Start with a bill that can be checked 9, closing 10 and Meet the team 11. The three supplied sections are verbatim. The existing 1:20 budget is allocated as 0:20 technical and 1:00 responsible operation, reflecting their new lengths. The remaining schedule stays unset.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -62,49 +62,47 @@ We aim to cover running costs through donations and grants from NGOs. Without th
 
 Delivery: NGO donations and grants are intended support, not secured funding. The upkeep is a tentative fallback; its cap is per cause. The prototype's fee flow does not implement a grant-dependent switch.
 
-## Slide 6: Start with a bill that can be checked.
-
-Abigail
-
-We start with school fees because they're easy to verify in Nigeria.
-
-Then we plan to move to hospitals and other service providers.
-
-Delivery: This is the launch sequence, not a completed pilot or signed partnership.
-
-## Slide 7: Technical approach
-
-Abigail · 0:40 budget
-
-Next.js and TypeScript run the app. Anthropic powers the interview, MongoDB stores cause and transaction records, and Cloudinary stores supporting files.
-
-The AI structures the need and budget. Server rules check payment permissions, available funds and budget limits, then calculate each donor’s share.
-
-Delivery: Budget: 0:40. Summarize how the app works. The prototype limitations have already been covered.
-
-## Slide 8: Prototype demonstration
+## Slide 6: Prototype demonstration
 
 Abigail
 
 Here is a demonstration of how the app works.
 
-Delivery: Play the selected original-audio JCI recording in full, then advance to the closing.
+Delivery: Play the selected original-audio JCI recording in full, then continue with Technical approach.
 
 Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
 Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule is set.
 
-## Slide 9: Responsible operation
+## Slide 7: Technical approach
 
-Abigail · 0:40 budget
+Abigail · 0:20 budget
 
-Our planned review flow pauses an expired reference, requests a replacement and checks the same student, institution and bill. Uncertain checks go to a human reviewer.
+The app runs on Next.js and TypeScript. The interview is powered by Claude, and it is also this model that structures the need and budget for the organiser. We use MongoDB and Cloudinary to store the data.
 
-Draft evidence is private, but published attachments are public today. Private review, redacted proof, consent and retention rules are still needed.
+Delivery: Budget: 0:20. Use the supplied wording verbatim.
 
-Reconciliation would match each payout to confirmed provider settlement, keep uncertain responses pending and prevent duplicates. Only confirmed settlement should produce a final paid receipt. The review and reconciliation workflows remain to be built.
+## Slide 8: Responsible operation
 
-Delivery: Budget: 0:40. Briefly cover the feedback on human review, privacy and reconciliation. These controls remain planned.
+Abigail · 1:00 budget
+
+It is worth reiterating that we store no sensitive data and do not keep any money. When an organiser supplies documents as proof to support their cause the AI model discerns which is safe to display publicly and only does so with their permission.
+
+When a remita reference has expired at payout, we request a replacement and confirm it is the same student, institution and bill, and then proceed to payout.
+
+In the future, we plan to look into more sophisticated ways to reconcile disputes, especially when we move beyond school fees. We aim to make this as automated as possible while remaining accurate.
+
+Delivery: Budget: 1:00. Presenter-supplied operating-model wording. Current uploads are stored and published attachments are public. Automated publication review and expired-reference recovery remain planned.
+
+## Slide 9: Start with a bill that can be checked.
+
+Abigail
+
+We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response
+
+Then we plan to move to hospitals and other service providers.
+
+Delivery: Use the supplied account of departmental feedback. No measured pilot result is claimed.
 
 ## Slide 10: Give with proof, not faith
 
