@@ -88,7 +88,7 @@ Delivery: Share computer sound. Play the accompanying 4:12 clear-voice recording
 
 Select the accompanying clear-voice MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: kairos-cleva-clear-voice-jci-style.mp4 · 4:12. This section is already included in the main pitch timing.
+Recording: kairos-cleva-narrated-clean-audio.mp4 · 4:12. This section is already included in the main pitch timing.
 
 ## Slide 7: Abigail and Miracle.
 

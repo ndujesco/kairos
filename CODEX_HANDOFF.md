@@ -2,6 +2,18 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest: resynced clean-audio demos with switchable subtitles and organized folders
+
+The user reported a paused-looking department passage, requested removal of the **enhanced-voice** versions, switchable subtitles on the **clean-audio** versions, and clearer subfolders. This supersedes the earlier instruction to preserve every rendered comparison. The user also stopped computer-use tools because of credit cost: **continue with file/media commands; do not use computer controls for this task.**
+
+Current Desktop videos are `~/Desktop/Kairos - Cleva and Faith & Tech/Cleva/01 Demo/kairos-cleva-narrated-clean-audio.mp4` and the equivalent `Faith & Tech/01 Demo/kairos-faith-and-tech-narrated-clean-audio.mp4`. Canonical event copies remain directly in each stage's `demo/`. Retimed only the shared 39.5–55.187-second interview window, making the course/deadline answer visibly type during “other details like her department” and moving into financial circumstances with that narration. Every encoded picture, the clean AAC packets/timing, total lengths, later picture timing and recorded voice speed are preserved. No global speed-up or image/audio re-encoding.
+
+Both MP4s now contain a selectable, non-forced English `mov_text` subtitle track, with matching SRT/VTT sidecars. The English rendering and QuickTime's English/Off options were observed before the user stopped computer controls; do not claim the Off choice was subsequently clicked. Full FFmpeg decoding passed for both videos; extracted embedded captions exactly match the supplied SRT. All four Desktop/event copies match the new hashes.
+
+Desktop event folders are now `01 Demo`, `02 Deck`, `03 Scripts and subtitles`, `04 Preparation`, and `Archive`, with concise READMEs. Individual voice-note transcripts moved to root `Source transcripts/`. Retained original-sound, JCI-tone and previous clean exports are in `Archive`; current stage demos similarly put older files under `demo/Previous versions/` and sidecars under `demo/Subtitles/`. Exactly six named `*-narrated-enhanced-voice.mp4` copies (two each in Desktop, event stages and production renders) were hash-checked and moved to recoverable macOS Trash. Original recordings and processing sources remain intact. The movement/removal manifest records every destination.
+
+Production: `../production/2026-11-19 narrated demos/retime_clean_with_subtitles.py`, `organize_clean_delivery.py`, and `renders/synced-clean-audio/{manifest.json,delivery-and-organization.json}`. Older delivery manifests describe historical locations/hashes; use the new manifest for current files. The organization script is a completed one-time migration, not a routine rebuild. Current presenter metadata/caption downloads now identify the clean-audio version; deck content and native files are unchanged. Changes are local for the user's push; no website opening, deployment or database work.
+
 ## Completed codex4 continuation: JCI-style voice, transcripts and decks (19 November)
 
 Resumed the unfinished 04:40 UTC request in codex4's full history below. The user wanted a fresh voice comparison inspired by the JCI demo, transcripts regrouped beyond four parts, and both event decks polished in the JCI finale style. Their explicit subtitle choice was **clean video with separate transcript and subtitle files**. All of this work is complete locally; no push or deployment.

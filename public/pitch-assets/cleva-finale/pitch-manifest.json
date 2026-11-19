@@ -6,7 +6,7 @@
   "words": 755,
   "seconds": 625,
   "source_content": "cleva_finale_content.py",
-  "source_sha256": "9b1cf61c7f68ff64c72bad0be616e66e2a445e1b81be0f09eb7009f07ef3cc9d",
+  "source_sha256": "fe80750f4bea6b6a442cb58035d60c0cac39cbe127c8eaf4a79251492096b392",
   "deckBase": "pitch-assets/cleva-finale/deck",
   "deck_pdf": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pdf",
   "deck_pptx": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pptx",
@@ -89,7 +89,7 @@
   "demo_video_seconds": 251.853333,
   "demo_section_seconds": 264,
   "local_demo": true,
-  "demo_name": "kairos-cleva-clear-voice-jci-style.mp4",
+  "demo_name": "kairos-cleva-narrated-clean-audio.mp4",
   "deck_html": "pitch-assets/cleva-finale/deck.html",
   "canonical_path": "/cleva-finale.html"
 }

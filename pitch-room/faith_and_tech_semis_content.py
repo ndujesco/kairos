@@ -299,8 +299,8 @@ PAGE.update(
     deck_pdf='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pdf',
     deck_pptx='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pptx',
     separate_demo_pdf='pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.pdf',
-    separate_demo_subtitles='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-clear-voice-jci-style.srt',
-    separate_demo_webvtt='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-clear-voice-jci-style.vtt',
+    separate_demo_subtitles='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.srt',
+    separate_demo_webvtt='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-narrated-clean-audio.vtt',
     script_intro='Six slides, three-minute delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.',
     event_download_note='The JCI-style PowerPoint/PDF and scripts retain the three-minute semi-final text. The original application deck and earlier versions remain preserved.',
 )

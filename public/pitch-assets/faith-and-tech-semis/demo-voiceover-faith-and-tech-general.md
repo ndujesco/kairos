@@ -1,6 +1,6 @@
 # Faith & Tech / general: recorded demo narration
 
-Latest video: `kairos-faith-and-tech-clear-voice-jci-style.mp4` (4:06). Nine natural sections. Normal recorded voice speed. Separate `.srt` and `.vtt` files accompany the clean video.
+Latest video: `kairos-faith-and-tech-narrated-clean-audio.mp4` (4:06). Nine natural sections. Normal recorded voice speed. Switchable English subtitles are embedded in the MP4. Separate `.srt` and `.vtt` files are also supplied.
 
 ## Sign-in and the AI interview
 **0:00–0:55**
