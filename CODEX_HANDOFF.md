@@ -2,6 +2,12 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Current: expanded Faith & Tech Q&A
+
+Expanded the current bank from 18 to 80 questions, with suggested spoken answers and 21 Rehearse first flags. The original eighteen questions/IDs/answers remain intact so saved stars stay valid. Added 62 questions informed by judging feedback and the JCI, Forge and Cleva rehearsal banks, covering human-review examples, privacy, expired/duplicate bills, collusion, consent, reconciliation/retries/concurrency, donor attribution, AI limits, scalability, sustainability, validation, inclusion and concrete next steps. Older unbuilt-control claims are not reused as current capabilities. Proposed policies/pilots are labelled accordingly.
+
+New source: `pitch-room/faith_and_tech_semis_qa.py`, appended by the existing Faith edition content module. The live room Q&A, public Markdown, event-stage qa-bank.md, Desktop 04 Preparation/qa-bank.md and `~/Downloads/Kairos-Faith-and-Tech-QA.md` are updated. The pitch/slide/script text, native files, timer, other public rooms and media are unchanged. No large exports/archives created. Checks and source provenance: `../production/2026-11-19 Faith expanded QA/`. Release confirmation is in root HISTORY and release.json.
+
 ## Current: closing adds “very difficult” first
 
 Applied the user's exact sentence on closing slide 10: “We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.” It is in browser/Markdown scripts and native presenter notes. The closing visual now begins “Very difficult, visible and traceable.” with its remaining statements preserved. Only slide 10 and its narration changed; all other PPTX parts and the embedded original demo are identical. The other ten native Keynote/PDF pages match the prior previews pixel for pixel. Eleven slides, 562 presenter words; timer/order/budgets unchanged.

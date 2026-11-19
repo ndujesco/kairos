@@ -230,6 +230,10 @@ GROUPS = [('The giving flow',
     'five minutes for questions and two for scoring/transition. This expanded draft deliberately has no '
     'delivery schedule yet. Timing will be decided after the content is edited.')])]
 
+# Keep the original eighteen IDs stable; append additional rehearsal topics.
+from faith_and_tech_semis_qa import ADDITIONAL_GROUPS
+GROUPS += ADDITIONAL_GROUPS
+
 PAGE = {'web_deck': True,
  'canonical_path': '/faith-and-tech-semis.html',
  'deck_base': 'pitch-assets/faith-and-tech-semis/visual-deck',
@@ -250,9 +254,10 @@ PAGE = {'web_deck': True,
                  'is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, '
                  '1:20 combined.',
  'qa_title': 'Kairos: Faith & Tech semi-final questions',
- 'qa_intro': 'Answers distinguish working features from planned exception handling, privacy controls and '
-             'external settlement.',
- 'qa_page_intro': 'Questions focused on trust, responsible operation and the judging feedback.',
+ 'qa_intro': 'Suggested spoken answers informed by the judging feedback and earlier JCI, Forge and Cleva '
+             'rehearsal banks. Start with the starred questions. Answers distinguish the current prototype '
+             'from intended operation; pilot plans and policies are proposals, not completed results.',
+ 'qa_page_intro': '80 questions informed by the judges’ feedback, JCI, The Forge and Cleva. Start with Rehearse first. Answers distinguish current features from intended operation.',
  'event_title': 'Kairos: Faith & Tech semi-final preparation',
  'event_intro': 'Confirmed slot: Thursday 19 November, 6:30–6:45 p.m. WAT. Join by 6:25. One-minute '
                 'introduction, seven-minute pitch and demo, five-minute Q&A, two-minute scoring/transition.',

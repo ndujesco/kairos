@@ -50,3 +50,5 @@ The Cleva laptop Read-through fix enables the shared scroll-follow logic on desk
 Current production/QA: `../production/2026-11-19 Faith visual deck correction/`. Edit the tracked Faith content source and rebuild only active editions. Older production folders reproduce historical versions.
 
 Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.
+
+Faith & Tech Q&A now has 80 questions (21 marked Rehearse first). The original eighteen remain in the edition source; 62 additional rehearsal questions/answers are appended from `faith_and_tech_semis_qa.py`. Preserve existing question IDs when adding entries. This Q&A-only update does not regenerate native decks or change the pitch.
