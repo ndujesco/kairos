@@ -1,12 +1,12 @@
-# Kairos: Faith & Tech exact presenter script
+# Kairos: Faith & Tech corrected pitch script
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail or Ugochukwu.
 
-11 slides, 532 presenter words. No delivery schedule is set.
+11 slides, 536 presenter words. No delivery schedule is set.
 
-Eleven slides. Demo 6, Technical approach 7, Responsible operation 8, Start with a bill that can be checked 9, closing 10 and Meet the team 11. The three supplied sections are verbatim. The existing 1:20 budget is allocated as 0:20 technical and 1:00 responsible operation, reflecting their new lengths. The remaining schedule stays unset.
+Eleven slides. Demo 6, then Technical approach 7, Responsible operation 8 and the school-fee slide 9. The deck uses concise visual summaries; the full corrected narration is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, 1:20 combined.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -14,7 +14,7 @@ Abigail or Ugochukwu
 
 Good evening everyone, my name is Ndujekwu Ugochukwu presenting on behalf of Team Kairos.
 
-Kairos is a transparent crowdfunding platform for people who want to help but need to know what happened to their money. Here, every naira you give can be traced until it reaches the need it was given for.
+Kairos is a transparent crowdfunding platform for people who want to help but need to know what exactly happened to their money. Here, every naira you give can be traced until it reaches the need it was given for.
 
 Delivery: Introduce yourself, then let the promise of traceable giving land.
 
@@ -24,7 +24,7 @@ Abigail or Ugochukwu
 
 Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-Because of this skepticism, potential donors hold back and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
+Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
 
 Delivery: Tell the school-fees story in your own voice. Leave a pause before the trusted middle layer.
 
@@ -36,7 +36,7 @@ Kairos is that trusted middle layer.
 
 First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or supplier.
 
-Second, the cause is shared as a link, so donors can see the story, budget and payment history. A licensed partner holds donation in escrow and pays only those verified providers, never the organizer's personal account.
+Second, the cause is shared as a link, so donors can see the story, budget and payment history. The plan is for a licensed partner to hold donations in escrow and pay only those verified providers, never the organizer's personal account.
 
 Third, every donor gets a receipt showing their own share of each payment.
 
@@ -48,7 +48,7 @@ Abigail or Ugochukwu
 
 The accounting, donor shares, notifications and public ledger are running.
 
-Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks are not built. No real donations have moved, and no custody partner is signed.
+Bank transfer, Remita settlement and NIN lookup are simulated for now and no real money has been raised
 
 Delivery: Say all three simulated parts. A seeded balance is not a bank balance.
 
@@ -78,7 +78,7 @@ Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule
 
 Abigail or Ugochukwu · 0:20 budget
 
-The app runs on Next.js and TypeScript. The interview is powered by Claude, and it is also this model that structures the need and budget for the organiser. We use MongoDB and Cloudinary to store the data.
+The app runs on Next.js and TypeScript. The interview is powered by Claude that helps structure the need and budget for the organiser. We use MongoDB and Cloudinary to store the data.
 
 Delivery: Budget: 0:20. Use the supplied wording verbatim.
 

@@ -2,7 +2,19 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current: verbatim post-demo Faith sections and Cleva laptop scroll-follow fix
+## Current: corrected narration with simple visual slides 7–9
+
+The user clarified that their supplied prose was **the script**, not literal audience-slide text. The previous full-paragraph slides 7–9 were a wrong interpretation. They now use the same visual design as the other deck pages: technical approach uses the original split panel, responsible operation and school fees use the original three-card layout. Keep the **full narration in browser scripts and presenter notes**, and concise points on audience slides. Do not paste full paragraphs onto slides again.
+
+Applied the five script corrections: intro now says “what exactly happened to their money”; the problem paragraph begins “Dishonest people have made skepticism the rational response…”; the full “Second, the cause is shared…” paragraph again says “The plan is for a licensed partner to hold donations in escrow…”; status now says “Bank transfer, Remita settlement and NIN lookup are simulated for now and no real money has been raised”; the Claude clause now says it “helps structure” the need and budget. Other narration is preserved. Current total: **11 slides, 536 presenter words**. Order remains Demo 6, technical 7, responsible 8, school fees/departmental feedback 9, closing 10, team 11. The 1:20 technical/responsible budget remains 0:20 + 1:00.
+
+Current local presentation: `~/Desktop/Kairos - Cleva and Faith & Tech/Faith & Tech/02 Deck/Faith-and-Tech-Semis-Visual-Deck.key`, with matching PPTX/PDF/local HTML in that folder and the event semifinal stage. The previous edition is in Desktop `Archive/Before visual deck/` and event `archive/2026-11-19-before-visual-deck/`. Keynote saved/reopened the file with exact corrected notes and unchanged original JCI video on slide 6. Four changed pages were visually inspected, while the seven other pages match the preceding Keynote previews pixel for pixel. No actual audio playback was tested. Only conversion-owned Keynote documents were closed; no CUA/browser controls were used.
+
+Public previews/PDF are under `pitch-assets/faith-and-tech-semis/visual-deck/`. The website retains its Demo placeholder and no download bar. Full video-bearing files remain outside Git. Responsible-operation qualifications remain as concise status information, without changing the supplied narration. No new product capabilities were implemented. Cleva's laptop read-through fix and every other public room/asset remain unchanged.
+
+All script contracts, note equality, concise visual layout, media hashes, web placeholders, JavaScript and protected-file checks pass. Native package/layout/font reports have no findings. Reproduction and delivery reports: `../production/2026-11-19 Faith visual deck correction/`. User authorization to push presentation fixes persists; actual release confirmation is recorded in `../HISTORY.md` and that folder's `release.json`.
+
+## Previous: verbatim post-demo Faith sections and Cleva laptop scroll-follow fix
 
 The user supplied exact text for Technical approach, Responsible operation, and Start with a bill that can be checked, and explicitly moved all three after the demo. Current Faith order is **Demo 6, Technical 7, Responsible 8, school-fee/departmental feedback 9, closing 10, team 11**. Total: eleven slides and 532 presenter words. The three supplied sections are verbatim in browser scripts, visible native slides and notes, including “very a positive response” and lowercase “remita”. Do not silently polish their wording. The first five slides and last two remain unchanged. The prior 1:20 technical/responsible allowance is redistributed as 0:20 and 1:00 to match the new lengths; no full schedule is assigned.
 

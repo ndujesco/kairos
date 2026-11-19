@@ -1,14 +1,11 @@
-"""Faith & Tech: exact supplied sections, all after the demo.
-
-The website remains lightweight. Native local presentations include the video.
-"""
+"""Faith & Tech: concise visual slides and full corrected presenter script."""
 
 META = {'title': 'Kairos | Faith & Tech Semi-final',
  'event': 'Faith & Tech Hackathon',
  'stage': 'Semi-final',
  'team': 'Sokenu Abigail · Ndujekwu Ugochukwu',
  'date': '19 November 2026',
- 'version': 'faith-and-tech-semis-exact-script-2026-11-19',
+ 'version': 'faith-and-tech-semis-visual-deck-2026-11-19',
  'demo_url': ''}
 
 PRESENTERS = {'abigail': {'name': 'Abigail',
@@ -29,8 +26,8 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'cue': 'Introduce yourself, then let the promise of traceable giving land.',
   'paragraphs': ['Good evening everyone, my name is Ndujekwu Ugochukwu presenting on behalf of Team Kairos.',
                  'Kairos is a transparent crowdfunding platform for people who want to help but need to know '
-                 'what happened to their money. Here, every naira you give can be traced until it reaches '
-                 'the need it was given for.'],
+                 'what exactly happened to their money. Here, every naira you give can be traced until it '
+                 'reaches the need it was given for.'],
   'deck_key': 'cover',
   'shared_slide_number': 1},
  {'title': 'A transfer succeeds. The doubt stays.',
@@ -40,8 +37,9 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  "appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends "
                  'and I started to wonder if they were all real, because the screenshots looked identical '
                  'and very easy to edit.',
-                 'Because of this skepticism, potential donors hold back and real needs go unmet. The '
-                 "missing piece is not compassion. It's a trusted middle layer."],
+                 'Dishonest people have made skepticism the rational response and so potential donors hold '
+                 'back even when the plea is legitimate and real needs go unmet. The missing piece is not '
+                 "compassion. It's a trusted middle layer."],
   'deck_key': 'problem',
   'shared_slide_number': 2},
  {'title': 'From a published budget to a personal receipt.',
@@ -51,8 +49,8 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  'First, an AI interviewer helps the organizer explain the need and publish an itemised '
                  'budget naming the school, hospital or supplier.',
                  'Second, the cause is shared as a link, so donors can see the story, budget and payment '
-                 'history. A licensed partner holds donation in escrow and pays only those verified '
-                 "providers, never the organizer's personal account.",
+                 'history. The plan is for a licensed partner to hold donations in escrow and pay only those '
+                 "verified providers, never the organizer's personal account.",
                  'Third, every donor gets a receipt showing their own share of each payment.'],
   'deck_key': 'solution',
   'shared_slide_number': 3},
@@ -60,8 +58,8 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'seconds': 0,
   'cue': 'Say all three simulated parts. A seeded balance is not a bank balance.',
   'paragraphs': ['The accounting, donor shares, notifications and public ledger are running.',
-                 'Bank transfer, Remita settlement and NIN lookup are simulated. CAC and account-name checks '
-                 'are not built. No real donations have moved, and no custody partner is signed.'],
+                 'Bank transfer, Remita settlement and NIN lookup are simulated for now and no real money '
+                 'has been raised'],
   'deck_key': 'prototype',
   'shared_slide_number': 5},
  {'title': 'Useful to give. Sustainable to run.',
@@ -87,9 +85,9 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'technical',
   'seconds': 0,
   'budget_seconds': 20,
-  'paragraphs': ['The app runs on Next.js and TypeScript. The interview is powered by Claude, and it is also '
-                 'this model that structures the need and budget for the organiser. We use MongoDB and '
-                 'Cloudinary to store the data.'],
+  'paragraphs': ['The app runs on Next.js and TypeScript. The interview is powered by Claude that helps '
+                 'structure the need and budget for the organiser. We use MongoDB and Cloudinary to store '
+                 'the data.'],
   'cue': 'Budget: 0:20. Use the supplied wording verbatim.'},
  {'title': 'Responsible operation',
   'deck_key': 'responsible_operation',
@@ -232,24 +230,23 @@ GROUPS = [('The giving flow',
 
 PAGE = {'web_deck': True,
  'canonical_path': '/faith-and-tech-semis.html',
- 'deck_base': 'pitch-assets/faith-and-tech-semis/exact-script',
+ 'deck_base': 'pitch-assets/faith-and-tech-semis/visual-deck',
  'header': 'Faith & Tech\nSemi-final',
- 'description': 'Kairos Faith & Tech semi-final with the presenter’s exact post-demo script and a '
-                'lightweight web Demo placeholder.',
+ 'description': 'Kairos Faith & Tech semi-final: a concise visual deck with the corrected full narration in '
+                'the script and presenter notes.',
  'footer': 'Abigail + Ugochukwu · Faith & Tech semi-final',
  'hero_kicker': 'Faith & Tech Hackathon · Semi-final',
  'hero_title': 'Transparent crowdfunding. Every naira accounted for.',
  'hero_status': 'Presenter’s wording · three slides after Demo',
  'prep_kicker': '19 November 2026 · 6:30–6:45 p.m. WAT',
  'prep_title': 'Demo, technical approach, responsible operation, then school fees',
- 'prep_intro': 'The three supplied sections follow the demo in their stated order, with their exact wording. '
-               'Start with a bill that can be checked is now slide 9. The native presentation includes the '
-               'original video; the website remains a Demo placeholder.',
- 'script_title': 'Kairos: Faith & Tech exact presenter script',
- 'script_intro': 'Eleven slides. Demo 6, Technical approach 7, Responsible operation 8, Start with a bill '
-                 'that can be checked 9, closing 10 and Meet the team 11. The three supplied sections are '
-                 'verbatim. The existing 1:20 budget is allocated as 0:20 technical and 1:00 responsible '
-                 'operation, reflecting their new lengths. The remaining schedule stays unset.',
+ 'prep_intro': 'Slides 7–9 use the established deck layouts with brief points. Keep the detailed narration '
+               'in the script and presenter notes.',
+ 'script_title': 'Kairos: Faith & Tech corrected pitch script',
+ 'script_intro': 'Eleven slides. Demo 6, then Technical approach 7, Responsible operation 8 and the '
+                 'school-fee slide 9. The deck uses concise visual summaries; the full corrected narration '
+                 'is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, '
+                 '1:20 combined.',
  'qa_title': 'Kairos: Faith & Tech semi-final questions',
  'qa_intro': 'Answers distinguish working features from planned exception handling, privacy controls and '
              'external settlement.',
@@ -263,15 +260,14 @@ PAGE = {'web_deck': True,
  'event_spoken_label': 'The thread:',
  'event_download_note': 'Use the local presentation files. The website shows a Demo placeholder and has no '
                         'presentation download bar.',
- 'source_note': 'The three post-demo sections use the presenter’s supplied wording verbatim. Current '
-                'implementation limitations are retained in the existing status material and separate '
-                'delivery notes.',
+ 'source_note': 'The presenter’s corrected script is retained in the narration and notes. Slides 7–9 '
+                'summarize it using the established deck design.',
  'source_html': '',
  'focus_label': 'User evidence:',
  'focus_note': 'The presenter reports a positive response from departmental bodies that raise student fees. '
                'This is qualitative feedback, not a completed live-money pilot.',
- 'notes_note': 'Browser scripts and native presenter notes preserve the supplied wording. Operating-model '
-               'claims remain qualified separately.',
+ 'notes_note': 'Full corrected narration is in the browser script and native notes; audience slides use '
+               'concise visual summaries.',
  'timing_note': 'Demo 6. Technical approach 7: 0:20. Responsible operation 8: 1:00. School fees 9. Closing '
                 '10, Meet the team 11.',
  'prep_timing_note': 'The two technical/responsible-operation slides retain the 1:20 budget. Other sections '
@@ -293,7 +289,7 @@ PAGE = {'web_deck': True,
                'Distinguish the intended operating model from controls implemented in the current prototype.',
                'Finish with the supplied closing and short team introduction.'],
  'shared_presenter_label': 'Abigail or Ugochukwu',
- 'deck_pdf': 'pitch-assets/faith-and-tech-semis/exact-script/Faith-and-Tech-Semis-Exact-Script.pdf',
+ 'deck_pdf': 'pitch-assets/faith-and-tech-semis/visual-deck/Faith-and-Tech-Semis-Visual-Deck.pdf',
  'deck_pptx': None,
  'native_slides': True,
  'deck_title': 'Kairos: Faith & Tech semi-final',

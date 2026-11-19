@@ -1,14 +1,14 @@
 {
-  "version": "faith-and-tech-semis-exact-script-2026-11-19",
+  "version": "faith-and-tech-semis-visual-deck-2026-11-19",
   "slides": 11,
   "questions": 18,
   "priority": 12,
-  "words": 532,
+  "words": 536,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "76a7934da1a45a48557367fc0fe824d5a659fa3c26ccf4e5d679734a1411cf42",
-  "deckBase": "pitch-assets/faith-and-tech-semis/exact-script",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/exact-script/Faith-and-Tech-Semis-Exact-Script.pdf",
+  "source_sha256": "613d37aef4fb2848bafa162ba75bb66b78f6e9a50ec26c27f7cb8c907523794d",
+  "deckBase": "pitch-assets/faith-and-tech-semis/visual-deck",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/visual-deck/Faith-and-Tech-Semis-Visual-Deck.pdf",
   "deck_pptx": null,
   "timing_includes_full_demo": false,
   "slide_order": [
@@ -96,12 +96,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 532,
+      "words": 536,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 532,
+      "words": 536,
       "script": "pitch-script-ugochukwu.md"
     }
   },

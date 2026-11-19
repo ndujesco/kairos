@@ -7,7 +7,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | `/cleva-finale.html` | `cleva_finale_content.py` | JCI-style native deck and previews, 755 words, 10:25 including the current 4:12 recording; Cleva-focused Q&A |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
-| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 532 words; Demo 6 followed by the three verbatim supplied sections 7–9; closing 10 and team 11 |
+| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 536 words; concise visual slides 7–9 after Demo 6, with full corrected narration in scripts/notes |
 
 `/apwen-finale.html` is reserved for a later request; it is not created by this build.
 
@@ -41,12 +41,12 @@ The two current rooms use the new native-deck previews through `native_slides`. 
 
 Existing preliminary Cleva/APWEN and shared native files remain at their immutable paths. New finale files are isolated under `pitch-assets/cleva-finale/deck/`; their notes follow the current finale script. Only current finale and Faith & Tech pages/downloads changed in the JCI-style update. All older recordings remain intact.
 
-Faith & Tech retains Abigail and Ugochukwu, with Ugochukwu presenting by default. Current version: eleven slides, 532 presenter words. Demo 6 is followed by Technical approach 7, Responsible operation 8 and the school-fee/departmental-feedback slide 9, all using the supplied wording verbatim. Closing and team remain 10–11. The existing 1:20 technical/responsible allowance is 0:20 + 1:00; no overall schedule is assigned. Responsible operation is separately marked as the intended model because its automation/privacy claims are not implemented safeguards.
+Faith & Tech retains Abigail and Ugochukwu, with Ugochukwu presenting by default. The current version has eleven slides and 536 presenter words. Demo 6 is followed by Technical approach 7, Responsible operation 8 and school fees 9, then closing/team 10–11. The technical/responsible 1:20 budget stays 0:20 + 1:00. Full corrected narration belongs in scripts and notes; audience slides use brief split-panel/card layouts matching the reference. The former full-paragraph slides were a misinterpretation and are archived.
 
-Web assets live under `pitch-assets/faith-and-tech-semis/exact-script/`. The website and standalone web deck retain a Demo placeholder, no video player or deck download bar. Local `Faith-and-Tech-Semis-Exact-Script.key` includes the original demo and current notes, with matching local PPTX/PDF/HTML. Older deliveries are archived; video-bearing presentations are kept outside Git.
+Current public assets are under `pitch-assets/faith-and-tech-semis/visual-deck/`. The web keeps a Demo placeholder and no video player/download bar. Local `Faith-and-Tech-Semis-Visual-Deck.key` includes the original demo and corrected notes, with matching local PPTX/PDF/HTML. Video-bearing files remain outside Git. Current reproduction/QA is `../production/2026-11-19 Faith visual deck correction/`.
 
 The Cleva laptop Read-through fix enables the shared scroll-follow logic on desktop. Preview selection follows the script below the sticky header without moving the page, while manual/deck-only/hidden-tab and mobile behavior stay guarded. Only Cleva finale/alias and Faith current rooms are rebuilt; other room outputs remain frozen. Scroll-follow has no network dependency after page load.
 
-Current production/QA: `../production/2026-11-19 exact Faith script and desktop reader/`. Edit the tracked Faith content source and rebuild only active editions. Older production folders reproduce historical versions.
+Current production/QA: `../production/2026-11-19 Faith visual deck correction/`. Edit the tracked Faith content source and rebuild only active editions. Older production folders reproduce historical versions.
 
 Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.
