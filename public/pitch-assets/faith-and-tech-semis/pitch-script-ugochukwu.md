@@ -4,7 +4,7 @@ Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Ugochukwu.
 
-11 slides, 536 presenter words. No delivery schedule is set.
+11 slides, 541 presenter words. No delivery schedule is set.
 
 Eleven slides. Demo 6, then Technical approach 7, Responsible operation 8 and the school-fee slide 9. The deck uses concise visual summaries; the full corrected narration is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, 1:20 combined.
 
@@ -34,9 +34,9 @@ Ugochukwu
 
 Kairos is that trusted middle layer.
 
-First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or supplier.
+First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or whomever is to be paid.
 
-Second, the cause is shared as a link, so donors can see the story, budget and payment history. The plan is for a licensed partner to hold donations in escrow and pay only those verified providers, never the organizer's personal account.
+Second, the cause is shared as a link, so donors can see the story, budget and payment history. A licensed partner holds donations in escrow and pays only those verified providers, never the organizer's personal account.
 
 Third, every donor gets a receipt showing their own share of each payment.
 
@@ -78,7 +78,7 @@ Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule
 
 Ugochukwu · 0:20 budget
 
-The app runs on Next.js and TypeScript. The interview is powered by Claude that helps structure the need and budget for the organiser. We use MongoDB and Cloudinary to store the data.
+The app runs on Next.js and TypeScript. The interview is powered by Claude, and it is also this model that structures the need and budget for the organiser. We use MongoDB and Cloudinary to store the data.
 
 Delivery: Budget: 0:20. Use the supplied wording verbatim.
 
@@ -108,7 +108,7 @@ Delivery: Use the supplied account of departmental feedback. No measured pilot r
 
 Ugochukwu
 
-In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim fraud is impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
+In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. We don't claim to make fraud impossible. We're building Kairos to make it visible, traceable, capped and unprofitable.
 
 Delivery: Deliver the closing, then advance to Meet the team.
 

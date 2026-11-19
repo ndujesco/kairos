@@ -47,9 +47,9 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'cue': 'The case, the provider payment, the receipt. Describe licensed custody as the intended live flow.',
   'paragraphs': ['Kairos is that trusted middle layer.',
                  'First, an AI interviewer helps the organizer explain the need and publish an itemised '
-                 'budget naming the school, hospital or supplier.',
+                 'budget naming the school, hospital or whomever is to be paid.',
                  'Second, the cause is shared as a link, so donors can see the story, budget and payment '
-                 'history. The plan is for a licensed partner to hold donations in escrow and pay only those '
+                 'history. A licensed partner holds donations in escrow and pays only those '
                  "verified providers, never the organizer's personal account.",
                  'Third, every donor gets a receipt showing their own share of each payment.'],
   'deck_key': 'solution',
@@ -85,9 +85,9 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'technical',
   'seconds': 0,
   'budget_seconds': 20,
-  'paragraphs': ['The app runs on Next.js and TypeScript. The interview is powered by Claude that helps '
-                 'structure the need and budget for the organiser. We use MongoDB and Cloudinary to store '
-                 'the data.'],
+  'paragraphs': ['The app runs on Next.js and TypeScript. The interview is powered by Claude, and it is also '
+                 'this model that structures the need and budget for the organiser. We use MongoDB and '
+                 'Cloudinary to store the data.'],
   'cue': 'Budget: 0:20. Use the supplied wording verbatim.'},
  {'title': 'Responsible operation',
   'deck_key': 'responsible_operation',
@@ -117,7 +117,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'closing',
   'seconds': 0,
   'paragraphs': ['In short, Kairos turns charitable giving from an act of blind trust into one of complete '
-                 "transparency. We don't claim fraud is impossible. We're building Kairos to make it "
+                 "transparency. We don't claim to make fraud impossible. We're building Kairos to make it "
                  'visible, traceable, capped and unprofitable.'],
   'cue': 'Deliver the closing, then advance to Meet the team.',
   'suggested_addition': True},

@@ -2,6 +2,14 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Current: final wording supplied by the presenter
+
+The user's standing writing preference: preserve their phrasing and meaning. Make only objectively clear grammar or tense corrections; do not paraphrase or shorten their narration. Latest Faith script restores their full Claude sentence (“The interview is powered by Claude, and it is also this model that structures the need and budget for the organiser.”), changes the payee phrase to “school, hospital or whomever is to be paid”, and closes with “We don't claim to make fraud impossible.” The custody paragraph now directly says “A licensed partner holds donations in escrow and pays only those verified providers, never the organizer's personal account.” The user explicitly removed “The plan is for” because they describe the operating flow and explain prototype simulations separately.
+
+The other supplied sections/paragraphs remain exact, including the responsible-operation and departmental-feedback text. Eleven slides, 541 presenter words; Demo 6, then sections 7–9, closing 10 and team 11. The timer remains enabled on desktop/phone. Audience slides stay concise in their established design; full supplied narration is in browser/Markdown scripts and native presenter notes. Native audience slides 3, 7 and 10 reflect the relevant phrase changes. The remaining eight rendered pages are identical to the prior visuals. No product controls were implemented by these script edits; existing intended-model qualifications are preserved separately.
+
+Current filename remains `Faith-and-Tech-Semis-Visual-Deck.key` in Desktop Faith & Tech `02 Deck/` and the event semifinal `deck/`, with matching PPTX/PDF/HTML/scripts. Previous local copies are archived under `Before final wording`. Exact-copy, notes/media, package/layout and protected-room checks pass. Keynote save/reopen and delivery reports are under `../production/2026-11-19 Faith final wording/`. This task is explicitly authorized to push; actual release confirmation is in root HISTORY and the release report.
+
 ## Latest: elapsed presentation timer on desktop and phone
 
 Enabled an elapsed timer for the current Faith & Tech presenter room. Start, Pause/Resume and Reset work without assigning a delivery schedule or advancing slides. Desktop keeps it in the deck controls; phone shows compact controls inside the sticky preview with 44px touch targets. Fullscreen retains the elapsed display. It catches up after delayed updates while the page is open. Each browser has its own timer and reload resets it; no device synchronization is claimed.
