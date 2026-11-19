@@ -4,7 +4,7 @@ Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-11 slides, 541 presenter words. No delivery schedule is set.
+11 slides, 560 presenter words. No delivery schedule is set.
 
 Eleven slides. Demo 6, then Technical approach 7, Responsible operation 8 and the school-fee slide 9. The deck uses concise visual summaries; the full corrected narration is in this script and native notes. Technical/responsible budgets remain 0:20 and 1:00, 1:20 combined.
 
@@ -89,6 +89,8 @@ Abigail · 1:00 budget
 It is worth reiterating that we store no sensitive data and do not keep any money. When an organiser supplies documents as proof to support their cause the AI model discerns which is safe to display publicly and only does so with their permission.
 
 When a remita reference has expired at payout, we request a replacement and confirm it is the same student, institution and bill, and then proceed to payout.
+
+Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.
 
 In the future, we plan to look into more sophisticated ways to reconcile disputes, especially when we move beyond school fees. We aim to make this as automated as possible while remaining accurate.
 

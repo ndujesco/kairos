@@ -2,6 +2,12 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Current: slide 08 adds scale on existing rails
+
+Only Faith & Tech slide 08 and its narration changed. The user supplied a new third paragraph verbatim: “Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.” It appears between the expired-reference and future-disputes paragraphs. The three existing paragraphs are preserved exactly. The visual now has four matching cards: Document privacy, Expired references, Scale on existing rails, Dispute resolution. The third card uses brief excerpts of the supplied paragraph; full wording is in the script and presenter notes. Existing intended-model label/footer remain. This is supplied operating-model wording, not a newly verified product integration or security guarantee.
+
+Eleven slides, 560 presenter words; existing order, timing budgets and elapsed timer retained. Other narration and the other ten audience-slide renderings are unchanged. Matching Desktop/event `Faith-and-Tech-Semis-Visual-Deck.key`, PPTX/PDF/HTML and scripts are updated; prior local copies are archived under Before four-card operation. Reproduction and checks: `../production/2026-11-19 Faith responsible operation four cards/`. No product/database changes or CUA/browser controls. Push/live confirmation is recorded in root HISTORY and the release report.
+
 ## Current: final wording supplied by the presenter
 
 The user's standing writing preference: preserve their phrasing and meaning. Make only objectively clear grammar or tense corrections; do not paraphrase or shorten their narration. Latest Faith script restores their full Claude sentence (“The interview is powered by Claude, and it is also this model that structures the need and budget for the organiser.”), changes the payee phrase to “school, hospital or whomever is to be paid”, and closes with “We don't claim to make fraud impossible.” The custody paragraph now directly says “A licensed partner holds donations in escrow and pays only those verified providers, never the organizer's personal account.” The user explicitly removed “The plan is for” because they describe the operating flow and explain prototype simulations separately.

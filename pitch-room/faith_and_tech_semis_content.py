@@ -98,6 +98,8 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  'is safe to display publicly and only does so with their permission.',
                  'When a remita reference has expired at payout, we request a replacement and confirm it is '
                  'the same student, institution and bill, and then proceed to payout.',
+                 'Since we are integrating the services with licensed and verified third parties, our '
+                 'product is easily scalable and secure.',
                  'In the future, we plan to look into more sophisticated ways to reconcile disputes, '
                  'especially when we move beyond school fees. We aim to make this as automated as possible '
                  'while remaining accurate.'],

@@ -3,10 +3,10 @@
   "slides": 11,
   "questions": 18,
   "priority": 12,
-  "words": 541,
+  "words": 560,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "292110a3ecde4046a9762a478fcbb6eea0f591baf2d080ca19222abf4aaefd57",
+  "source_sha256": "ad0265b4f826e46543bb0bebe312bd270f8f41acbd4cdc02dc14508f40a68c79",
   "deckBase": "pitch-assets/faith-and-tech-semis/visual-deck",
   "deck_pdf": "pitch-assets/faith-and-tech-semis/visual-deck/Faith-and-Tech-Semis-Visual-Deck.pdf",
   "deck_pptx": null,
@@ -96,12 +96,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 541,
+      "words": 560,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 541,
+      "words": 560,
       "script": "pitch-script-ugochukwu.md"
     }
   },
