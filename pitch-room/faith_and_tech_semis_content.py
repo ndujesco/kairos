@@ -289,6 +289,27 @@ PAGE = {'web_deck': True,
  'deck_pptx': 'pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min.pptx',
  'separate_demo_script': 'pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.md'}
 
+# Current visual edition: the JCI finale palette, native layouts and branding.
+# The six spoken sections and 180-second pitch clock remain unchanged.
+META['version'] = 'faith-and-tech-semis-jci-style-2026-11-19'
+PAGE.update(
+    native_slides=True,
+    deck_base='pitch-assets/faith-and-tech-semis/deck',
+    deck_title='Kairos: Faith & Tech semi-final',
+    deck_pdf='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pdf',
+    deck_pptx='pitch-assets/faith-and-tech-semis/deck/Faith-and-Tech-Semis-3min-JCI-Style.pptx',
+    separate_demo_pdf='pitch-assets/faith-and-tech-semis/demo-voiceover-faith-and-tech-general.pdf',
+    separate_demo_subtitles='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-clear-voice-jci-style.srt',
+    separate_demo_webvtt='pitch-assets/faith-and-tech-semis/kairos-faith-and-tech-clear-voice-jci-style.vtt',
+    script_intro='Six slides, three-minute delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.',
+    event_download_note='The JCI-style PowerPoint/PDF and scripts retain the three-minute semi-final text. The original application deck and earlier versions remain preserved.',
+)
+PAGE['checklist'] = [
+    text.replace('Use the Faith & Tech/general four-part voiceover, rather than the longer payments version.',
+                 'Use the Faith & Tech/general recording and its updated transcript. Keep the separate Cleva payment closing for Cleva.')
+    for text in PAGE['checklist']
+]
+
 def paragraph_for_presenter(paragraph, presenter):
     return paragraph
 

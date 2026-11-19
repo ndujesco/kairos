@@ -64,7 +64,8 @@ def write_script(content, assets, page, slides, presenter=None):
     elapsed = slides[-1]["end"]
     who = content.PRESENTERS[presenter]["name"] if presenter else page.get("shared_presenter_label", "Abigail or Miracle")
     integrated_demo = any(s.get("is_demo") for s in slides)
-    timing = (f"{len(slides)} slides, {words} presenter words. Planning time {mmss(elapsed)}, including pauses and the full embedded demo recording."
+    demo_description = 'the accompanying demo recording' if page.get('local_demo') else 'the full embedded demo recording'
+    timing = (f"{len(slides)} slides, {words} presenter words. Planning time {mmss(elapsed)}, including pauses and {demo_description}."
               if integrated_demo else f"{len(slides)} slides, {words} spoken words for either presenter. Planning time {mmss(elapsed)}, including pauses.")
     script = ["# " + page["script_title"], content.META["team"],
               f"Lead presenter: {who}.",
@@ -76,8 +77,11 @@ def write_script(content, assets, page, slides, presenter=None):
                    f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
         script += paragraphs + [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
-            script += ["Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.",
-                       f'Recording: {page["demo_url"]} · {mmss(s.get("video_seconds", s["seconds"]))}. This section is already included in the main pitch timing.']
+            instruction = ('Select the accompanying clear-voice MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
+                           if page.get('local_demo') else 'Play the embedded recording in full, then advance manually to the next slide.')
+            recording = page.get('demo_name') if page.get('local_demo') else page['demo_url']
+            script += [instruction + " The recording's narration is not included in the presenter word count.",
+                       f'Recording: {recording} · {mmss(s.get("video_seconds", s["seconds"]))}. This section is already included in the main pitch timing.']
     script += ["## Short explanation"] + content.SHORT_PITCH
     if not integrated_demo and getattr(content, "DEMO", []):
         script += ["## Optional 90-second demo"]
@@ -224,7 +228,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     demo_slide = next((s for s in slides if s.get("is_demo")), None)
     if demo_slide:
         page["demo_url"] = page.get("demo_url", assets_base + "/demo.mp4")
-        if not local_asset(page["demo_url"]).is_file():
+        if not page.get('local_demo') and not local_asset(page["demo_url"]).is_file():
             raise FileNotFoundError(f"Copy the demo recording first: {local_asset(page['demo_url'])}")
         demo_poster = page.get("demo_poster", f'{deck_base}/slides/slide{demo_slide["n"]:02}.jpg')
         video_seconds = demo_slide.get("video_seconds", demo_slide["seconds"])
@@ -257,11 +261,12 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         if s.get("is_demo"):
             if not local_asset(demo_poster).is_file():
                 raise FileNotFoundError(f"Missing demo poster: {demo_poster}")
+            source = '' if page.get('local_demo') else f' src="{e(page["demo_url"])}"'
             images.append(f'<div class="slidemedia demo-slide" data-slide="{s["n"]}"{hidden}>'
                           f'<video class="slideimage demo-video" controls preload="metadata" playsinline tabindex="0" '
-                          f'poster="{e(demo_poster)}" src="{e(page["demo_url"])}" '
+                          f'poster="{e(demo_poster)}"{source} '
                           f'aria-label="Prototype demo recording"></video></div>')
-        elif web_deck or s.get("visual"):
+        elif not page.get('native_slides') and (web_deck or s.get("visual")):
             from web_deck import render_slide
             images.append(render_slide(s, len(slides), lambda url: local_asset(url).read_bytes(), hidden=s["n"] != 1))
         else:
@@ -305,6 +310,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     if demo_slide:
         page_data.update({"demoUrl": page["demo_url"], "demoSlide": demo_slide["n"],
                           "demoVideoSeconds": video_seconds})
+        if page.get('local_demo'):
+            page_data.update(localDemo=True, demoName=page.get('demo_name',''))
     if deck_keynote:
         page_data["deckKeynote"] = deck_keynote
     if assets_base != "pitch-assets":
@@ -343,13 +350,25 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     event_cards = ''.join(event_cards)
     header = '<br>'.join(e(line) for line in page["header"].split('\n'))
     source_line = e(page["source_note"])
+    narration_links = ''
+    if page.get('separate_demo_script'):
+        narration_links = f'<a class="button" href="{e(page["separate_demo_script"])}" download>Recorded narration ↓</a>'
+        for key,label in [('separate_demo_pdf','Narration PDF ↓'),('separate_demo_subtitles','Subtitles SRT ↓'),('separate_demo_webvtt','Subtitles VTT ↓')]:
+            if page.get(key):
+                narration_links += f' <a class="button" href="{e(page[key])}" download>{label}</a>'
     if demo_slide:
-        demo_panel = '<div class="demo-tab-stage" id="demo-tab-stage"></div>'
+        local_picker = ''
+        if page.get('local_demo'):
+            local_picker = (f'<section class="prepbox"><h2>Choose the accompanying recording</h2>'
+                            f'<p>{e(page.get("demo_name",""))}</p><label class="button">Choose video '
+                            f'<input type="file" accept="video/*" data-local-demo-input></label>'
+                            f'<p data-local-demo-status>The file plays from this computer.</p>{narration_links}</section>')
+        demo_panel = local_picker + '<div class="demo-tab-stage" id="demo-tab-stage"></div>'
     elif page.get("separate_demo_script"):
         demo_panel = (f'<div class="intro"><div><p class="kicker">Separate from the pitch clock</p>'
-                      f'<h1>Four-part voiceover suggestion</h1><p>The three-minute pitch excludes the demo. '
-                      f'Use the separate narration with the four revised clips and choose your own demo timing.</p></div></div>'
-                      f'<a class="button" href="{e(page["separate_demo_script"])}" download>Faith &amp; Tech/general voiceover ↓</a>')
+                      f'<h1>Recorded narration and subtitles</h1><p>The three-minute pitch excludes the demo. '
+                      f'The transcript follows the latest recording in natural sections. Choose your own demo timing.</p></div></div>'
+                      + narration_links)
     else:
         demo_panel = f'''<div class="intro"><div><p class="kicker">Show one cause, then stop</p>
 <h1>The proof is in the receipt.</h1><p>A {mmss(at)} demonstration route. Rehearse on the seeded prototype before the call.</p></div>
@@ -446,6 +465,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     if demo_slide:
         manifest.update({"demoUrl": page["demo_url"], "demo_slide": demo_slide["n"],
                          "demo_video_seconds": video_seconds, "demo_section_seconds": demo_slide["seconds"]})
+        if page.get('local_demo'):
+            manifest.update(local_demo=True, demo_name=page['demo_name'])
     if deck_keynote:
         manifest["deck_keynote"] = deck_keynote
     if deck_html:

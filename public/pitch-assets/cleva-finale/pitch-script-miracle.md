@@ -4,9 +4,9 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Miracle.
 
-8 slides, 755 presenter words. Planning time 10:00, including pauses and the full embedded demo recording.
+8 slides, 755 presenter words. Planning time 10:25, including pauses and the accompanying demo recording.
 
-Either presenter can deliver the whole pitch. The current plan is 10:00 including the unchanged 3:47 recording, within the confirmed 12-minute presentation limit. Five minutes of Q&A follow separately. The script keeps the school-fees story and follows contributions through provider payment to each donor's receipt. International funding remains proposed; the demo will be discussed separately.
+Either presenter can deliver the whole pitch. The current plan is 10:25 including the 4:12 narrated recording, within the 12-minute presentation limit. Five minutes of Q&A follow separately. The familiar school-fees story follows contributions through provider payment to each donor's receipt.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -80,19 +80,19 @@ Delivery: Show the working app next. International funding is proposed, not buil
 
 ## Slide 6: Watch the payment become a receipt.
 
-Miracle · 5:20 to 9:19
+Miracle · 5:20 to 9:44
 
 Now let us watch a demonstration of how the app works.
 
-Delivery: Share computer sound. Play the embedded 3:47 recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.
+Delivery: Share computer sound. Play the accompanying 4:12 clear-voice recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.
 
-Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
+Select the accompanying clear-voice MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: pitch-assets/cleva/demo.mp4 · 3:47. This section is already included in the main pitch timing.
+Recording: kairos-cleva-clear-voice-jci-style.mp4 · 4:12. This section is already included in the main pitch timing.
 
 ## Slide 7: Abigail and Miracle.
 
-Miracle · 9:19 to 9:31
+Miracle · 9:44 to 9:56
 
 And this is the team. I'm Miracle, the product designer. Abigail is our team lead and product manager.
 
@@ -100,7 +100,7 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 ## Slide 8: Give with proof, not faith.
 
-Miracle · 9:31 to 10:00
+Miracle · 9:56 to 10:25
 
 Kairos is a payment system for crowdfunding. It routes contributions toward the need they were given for, with a record connecting each donor to the provider's payment.
 

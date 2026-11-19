@@ -13,7 +13,7 @@ META = dict(shared.META,
             version="cleva-grand-finale-payments-2026-11-18")
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = shared.DEFAULT_PRESENTER
-VIDEO_SECONDS = 227.033
+VIDEO_SECONDS = 251.853333
 PRESENTATION_LIMIT_SECONDS = 12 * 60
 SLIDES = [deepcopy(shared.SLIDES[i]) for i in [0, 1, 2, 3, 4]]
 for section, key in zip(SLIDES, ["cover", "problem", "solution", "receipt", "prototype"]):
@@ -117,9 +117,9 @@ SLIDES += [
     dict(deepcopy(shared.SLIDES[9]), deck_key="team"),
     dict(deepcopy(shared.SLIDES[10]), deck_key="closing"),
 ]
-# Rehearsal plan: 10:00, including the unmodified 3:47 recording.
+# Rehearsal plan: 10:25, including the separate current 4:12 recording.
 # The Grand Finale allows 12 minutes plus a separate five-minute Q&A.
-for section, seconds in zip(SLIDES, [40, 60, 90, 30, 100, 239, 12, 29]):
+for section, seconds in zip(SLIDES, [40, 60, 90, 30, 100, 264, 12, 29]):
     section["seconds"] = seconds
 SLIDES[-1]["paragraphs"] = [
     "Kairos is a payment system for crowdfunding. It routes contributions toward the need they were given for, with a record connecting each donor to the provider's payment.",
@@ -296,3 +296,41 @@ Checked 18 November 2026. This is preparation, not evidence of a signed or appro
 
 Proposed flow: permitted overseas funding, actual conversion and net naira credit, cause accounting, licensed provider settlement and the contributor's receipt. Account ownership, custody, references, confirmations, charges, failures and refunds need agreement. The built prototype has no Cleva or stablecoin integration.
 '''
+
+# The current native edition follows the JCI finale's visual template. Keep the
+# archived preliminary/shared native deck and its recording unchanged.
+META['version'] = 'cleva-finale-jci-style-2026-11-19'
+SLIDES[5].update(
+    video_seconds=VIDEO_SECONDS,
+    cue='Share computer sound. Play the accompanying 4:12 clear-voice recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.',
+)
+PAGE.update(
+    web_deck=True,
+    native_slides=True,
+    deck_base='pitch-assets/cleva-finale/deck',
+    deck_pdf='pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pdf',
+    deck_pptx='pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pptx',
+    deck_title='Kairos: Cleva Grand Finale',
+    local_demo=True,
+    demo_url='',
+    demo_name='kairos-cleva-clear-voice-jci-style.mp4',
+    demo_poster='pitch-assets/cleva-finale/deck/slides/slide06.jpg',
+    separate_demo_script='pitch-assets/cleva-finale/demo-voiceover-cleva.md',
+    separate_demo_pdf='pitch-assets/cleva-finale/demo-voiceover-cleva.pdf',
+    separate_demo_subtitles='pitch-assets/cleva-finale/kairos-cleva-clear-voice-jci-style.srt',
+    separate_demo_webvtt='pitch-assets/cleva-finale/kairos-cleva-clear-voice-jci-style.vtt',
+    script_intro="Either presenter can deliver the whole pitch. The current plan is 10:25 including the 4:12 narrated recording, within the 12-minute presentation limit. Five minutes of Q&A follow separately. The familiar school-fees story follows contributions through provider payment to each donor's receipt.",
+    notes_note='The JCI-style PowerPoint/PDF and browser previews share the current finale text. Select the accompanying clear-voice MP4 in the Demo tab before presenting.',
+    timing_note='10:25 including the 4:12 recording. The confirmed presentation limit is 12 minutes, with five minutes of Q&A separately.',
+    prep_timing_note='Rehearse the 10:25 plan below the 12-minute limit. The accompanying recording stays at normal recorded voice speed.',
+    event_intro='Grand Finale at UNILAG on 21 November. Current rehearsal plan: 10:25 including the accompanying narrated demo. The strict limit is 12 minutes plus five minutes of Q&A. Materials are due at noon WAT on 20 November.',
+    event_download_note='Current JCI-style finale deck and speaker notes. The preliminary deck and earlier recordings remain preserved.',
+    demo_title='One bill, from the interview to the receipt',
+    demo_intro='Select the accompanying clear-voice MP4, then play it in full on slide 6 before Team and Thank You.',
+)
+PAGE['checklist'] = [
+    text.replace('the 10:00 plan', 'the 10:25 plan').replace(
+        'Open the Cleva deck, test its embedded video and share computer sound. Keep the MP4 as a backup.',
+        'Open the JCI-style finale deck and select the accompanying clear-voice MP4 in the Demo tab. Test playback and computer sound before presenting.')
+    for text in PAGE['checklist']
+]

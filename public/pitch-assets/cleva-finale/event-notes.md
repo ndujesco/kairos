@@ -1,6 +1,6 @@
 # Kairos: Cleva Grand Finale preparation
 
-The Grand Finale is at UNILAG on 21 November. The current rehearsal plan is 10:00 including the existing recording, against a strict 12-minute limit plus five minutes Q&A. Materials are due at noon WAT on 20 November. These are preparation notes, not extra spoken sections.
+Grand Finale at UNILAG on 21 November. Current rehearsal plan: 10:25 including the accompanying narrated demo. The strict limit is 12 minutes plus five minutes of Q&A. Materials are due at noon WAT on 20 November.
 
 ## Cleva × Tether
 

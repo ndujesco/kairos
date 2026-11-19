@@ -6,7 +6,7 @@ Lead presenter: Ugochukwu.
 
 6 slides, 328 spoken words for either presenter. Planning time 3:00, including pauses.
 
-Six slides, three-minute delivery plan. The demo is separate and is not included in this pitch clock. Use the separate four-part Faith & Tech/general narration as a suggestion. Team introduction has its own one-minute slot.
+Six slides, three-minute delivery plan. The demo remains separate from this pitch clock. The updated recorded narration has nine natural sections, with a PDF and separate subtitles. Team introduction has its own one-minute slot.
 
 ## Slide 1: Transparent crowdfunding
 

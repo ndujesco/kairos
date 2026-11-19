@@ -2,6 +2,25 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Completed codex4 continuation: JCI-style voice, transcripts and decks (19 November)
+
+Resumed the unfinished 04:40 UTC request in codex4's full history below. The user wanted a fresh voice comparison inspired by the JCI demo, transcripts regrouped beyond four parts, and both event decks polished in the JCI finale style. Their explicit subtitle choice was **clean video with separate transcript and subtitle files**. All of this work is complete locally; no push or deployment.
+
+Latest Desktop bundle: `~/Desktop/Kairos - Cleva and Faith & Tech/`, separated into `Cleva/` and `Faith & Tech/`. Each contains:
+- `kairos-<event>-clear-voice-jci-style.mp4`, plus matching `.srt` and `.vtt`. Cleva is 4:11.853 with the corrected payment closing. Faith & Tech is 4:06.205 with its wallet insert and trust ending. No burned subtitles, image re-encoding, timing change, synthetic speech or global speed-up.
+- Updated `demo-voiceover-*.md` and three-page PDF, and `recorded-narration-latest.md`: the actual recorded narration in nine natural sections. Earlier suggestions are archived under each stage's `archive/2026-11-19-before-jci-polish/`. Original video/transcript versions remain intact.
+- Editable `Cleva-Finale-JCI-Style.pptx` / `.pdf` or `Faith-and-Tech-Semis-3min-JCI-Style.pptx` / `.pdf`, pitch scripts and a standalone `*-jci-style-deck.html`. Canonical copies are in the corresponding event stage. Cleva has eight slides, 755 presenter words and a 10:25 plan including the recording. Faith & Tech retains six slides, 328 words and its three-minute pitch, with demo timing left to the user.
+
+The new voice pass uses gentler spectral noise reduction, reduced excess treble, midrange emphasis, light de-essing/compression and approximately -16 LUFS leveling, modeled on the archived JCI processing. **This is a new comparison, not a direct listening assessment or a guarantee of identical microphone sound.** All earlier delivered videos retain their hashes. The new files preserve all 19,724 encoded source pictures and established picture timing; complete decoding already passed. Delivery hashes, transcript/caption word equality and ordered caption timings were verified again during continuation.
+
+The decks copy the supplied JCI theme, native layouts, logos and portraits, preserving cream/deep green/lime and Helvetica Neue. All 14 new slides and six narration PDF pages were visually inspected. Package and layout checks report no findings; native allocation tables reconcile ₦305,000 gross, ₦5,000 upkeep and ₦300,000 school fees. Native speaker-note paragraphs match the current pitch sources. Artifact Tool/runtime was unavailable on this host, so the existing copied-OOXML builder and LibreOffice exports were retained; do not claim native PowerPoint execution was tested.
+
+Both current presenter rooms and downloads are regenerated, with the Cleva alias matching. Previews now match the new native decks. Cleva's HTML player asks for the accompanying local MP4, and the recording is **separate from the PowerPoint/PDF**. Select it before presenting. Faith & Tech's Demo tab links its transcript/PDF/SRT/VTT. Fixed the incomplete Faith deck preview path and stale Cleva 3:47 cue. All linked local assets and generated JavaScript syntax checked. No browser or website was opened. All 58 protected reference/other-event files retain their hashes; no product or database changes.
+
+Reproduction and QA: `../production/2026-11-19 JCI-style decks/README.md`, `build_decks.py`, `presenter-verification.json`; `../production/2026-11-19 narrated demos/README.md`, `make_jci_style_voice.py`, `update_recorded_scripts.py`, `jci-voice-delivery-manifest.json`, and `reports/jci-final-delivery-verification.json`. Rebuild only `pitch:cleva-finale` and `pitch:faith-and-tech-semis`; preserve the other rooms. Website changes are committed locally for the user's push. Next: the user can compare the new audio by ear and choose any later overall demo speed-up.
+
+Current continuation thread: `01a1f248-27f5-76d0-85ae-04f7583996e6`, history `/Users/ndujekwuugochukwu/.codex/sessions/2026/11/19/rollout-2026-11-19T06-29-37-01a1f248-27f5-76d0-85ae-04f7583996e6.jsonl`. The original codex4 history remains intact at the path below; it was read to recover the pending request. No session migration or deletion was performed.
+
 ## Latest media follow-up: corrected closing, noise reduction and clearer voice (19 November)
 
 The user requested **new comparison files, keeping every existing video intact**, then clarified that Cleva needs the supplied corrected closing in both its unfiltered and processed copies. The new pickup is `~/Downloads/WhatsApp Audio 2026-11-19 at 04.31.11.opus`, durably archived as VN 14. Exact recorded words: “That is the payment problem that we solve.” VN 11 is kept through 20.85 seconds, followed by VN 14 source 0.55–3.30 seconds. No generated speech, tempo change or global speed-up.
@@ -190,8 +209,8 @@ demo recording, rebuild native decks or alter other event rooms as a side effect
 This is the continuation of codex3’s **Edit website** conversation. The user asked for a focused review, then implementation; do not repeat the exhaustive document review.
 
 - Source full history (left intact): `/Users/ndujekwuugochukwu/.codex-acc3/sessions/2026/11/15/rollout-2026-11-15T13-07-51-01a1df1b-4f9f-7b32-b90f-11846e43d87c.jsonl`.
-- Current full working history, codex4: `/Users/ndujekwuugochukwu/.codex-acc4/sessions/2026/11/15/rollout-2026-11-15T13-15-32-01a1df22-57a8-78d2-bb2c-b53e0cd402df.jsonl`.
-- Current task ID: `01a1df22-57a8-78d2-bb2c-b53e0cd402df`, title **Continue website edit**.
+- Prior full working history, codex4 (preserved): `/Users/ndujekwuugochukwu/.codex-acc4/sessions/2026/11/15/rollout-2026-11-15T13-15-32-01a1df22-57a8-78d2-bb2c-b53e0cd402df.jsonl`.
+- Codex4 task ID: `01a1df22-57a8-78d2-bb2c-b53e0cd402df`, title **Continue website edit**. The current continuation path is recorded at the top of this handoff.
 - The parent `CLAUDE.md` describes competition boundaries. No slide/deck/pitch changes are part of this task.
 
 ## User’s requested behavior

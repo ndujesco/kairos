@@ -1,15 +1,15 @@
 {
-  "version": "cleva-grand-finale-payments-2026-11-18",
+  "version": "cleva-finale-jci-style-2026-11-19",
   "slides": 8,
   "questions": 38,
   "priority": 21,
   "words": 755,
-  "seconds": 600,
+  "seconds": 625,
   "source_content": "cleva_finale_content.py",
-  "source_sha256": "c11067eda12f6bfe1aae716bf59c9281e50ba93aa73064bc2b49b2aba0d0937b",
-  "deckBase": "pitch-assets/cleva/deck",
-  "deck_pdf": "pitch-assets/cleva/deck/kairos-pitch-deck.pdf",
-  "deck_pptx": "pitch-assets/cleva/deck/kairos-pitch-deck.pptx",
+  "source_sha256": "9b1cf61c7f68ff64c72bad0be616e66e2a445e1b81be0f09eb7009f07ef3cc9d",
+  "deckBase": "pitch-assets/cleva-finale/deck",
+  "deck_pdf": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pdf",
+  "deck_pptx": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pptx",
   "timing_includes_full_demo": true,
   "slide_order": [
     {
@@ -51,7 +51,7 @@
       "n": 6,
       "key": "demo",
       "title": "Watch the payment become a receipt.",
-      "seconds": 239,
+      "seconds": 264,
       "is_demo": true
     },
     {
@@ -84,10 +84,12 @@
   },
   "assetsBase": "pitch-assets/cleva-finale",
   "storagePrefix": "kairos-cleva-room-v1",
-  "demoUrl": "pitch-assets/cleva/demo.mp4",
+  "demoUrl": "",
   "demo_slide": 6,
-  "demo_video_seconds": 227.033,
-  "demo_section_seconds": 239,
-  "deck_keynote": "pitch-assets/cleva/deck/kairos-pitch-deck.key",
+  "demo_video_seconds": 251.853333,
+  "demo_section_seconds": 264,
+  "local_demo": true,
+  "demo_name": "kairos-cleva-clear-voice-jci-style.mp4",
+  "deck_html": "pitch-assets/cleva-finale/deck.html",
   "canonical_path": "/cleva-finale.html"
 }

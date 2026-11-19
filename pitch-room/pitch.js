@@ -45,6 +45,16 @@ tabs.forEach((tab,i)=>{
 const blocks=[...document.querySelectorAll('.scriptblock')];
 const media=[...document.querySelectorAll('.slidemedia')];
 const deckVideos=[...document.querySelectorAll('.demo-video')];
+if(DATA.localDemo){
+  let localDemoUrl=null;
+  document.querySelectorAll('[data-local-demo-input]').forEach(input=>input.addEventListener('change',()=>{
+    const file=input.files?.[0];if(!file)return;
+    if(localDemoUrl)URL.revokeObjectURL(localDemoUrl);
+    localDemoUrl=URL.createObjectURL(file);
+    deckVideos.forEach(video=>{video.pause();video.src=localDemoUrl;video.load();});
+    document.querySelectorAll('[data-local-demo-status]').forEach(status=>status.textContent=file.name+' is ready.');
+  }));
+}
 const demoMedia=document.querySelector('.demo-slide');
 const demoHome=demoMedia?.parentElement;
 const demoNextSibling=demoMedia?.nextSibling;

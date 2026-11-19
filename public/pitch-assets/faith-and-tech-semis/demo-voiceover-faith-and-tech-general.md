@@ -1,57 +1,74 @@
-# Faith & Tech / general: suggested demo voiceover
+# Faith & Tech / general: recorded demo narration
 
-Four parts matching the current clips in `~/Desktop/Revised`. This revision keeps the original recorded narration's voice, with the trust emphasis and Faith & Tech feedback. It is separate from the three-minute pitch. Spoken suggestions are below each screen cue.
+Latest video: `kairos-faith-and-tech-clear-voice-jci-style.mp4` (4:06). Nine natural sections. Normal recorded voice speed. Separate `.srt` and `.vtt` files accompany the clean video.
 
-## Part 1: Miracle creates the cause
+## Sign-in and the AI interview
+**0:00–0:55**
 
-**Clip:** `Screen Recording 2026-11-18 at 18.02.36.mov` (2:09.5).  
-**On screen:** Miracle signs in, starts the interview, reviews the budget, attaches her fee advice, completes the identity step and publishes.
+Now, having previously created an account, Miracle signs in, and then she goes ahead to create the cause. She is a student of University of Lagos and she needs help with her school fees.
 
-Having created an account, Miracle signs in to the website and goes ahead to create a cause. She needs help with her school fees.
+Now, as you can see, she does not just fill a form. This is an interview with AI, and this is a live model answering. It asks what exactly the money is for. It asks who exactly gets paid, how much will be paid, and when exactly the money is due. You can see that it asks for the Remita reference in this case because she claims to be a student of a federal university who wants to pay her school fees.
 
-As you can see, she doesn't just fill a form. This is an interview with AI, and that is a real live model answering. It asks what exactly the money is for, who exactly gets paid, how much will be paid, and when exactly the money is due. You can see it asks for the Remita reference and supporting documents.
+It asks for other details like her department, and if she is willing to share why exactly she cannot pay the school fees.
 
-And then out comes the itemised budget, with the receiver of the money clearly stated. In this case, three hundred thousand naira to be paid to the University of Lagos. Miracle attaches her payment advice here. Documents can also be added later.
+## Supporting documents and the budget
+**0:55–1:12**
 
-Draft uploads are private, but published attachments are public. Private review of sensitive evidence is one of our next steps.
+Notice that it also asks for documents that might support her claim. In this case, she adds a pay advice, and then she can see the itemised budget. Here, it is just three hundred thousand naira to be paid to the University of Lagos.
 
-She then enters her NIN and goes through the face check. After the checks, the cause is published.
+## Identity and screening
+**1:12–1:35**
 
-## Part 2: someone opens the link and gives
+She goes ahead to verify her identity, inputs her NIN, and then she gets her face scanned.
 
-**Clip:** `Screen Recording 2026-11-18 at 18.12.46.mov` (0:37).  
-**On screen:** An anonymous donor opens the cause in a separate browser and contributes.
+The AI scans for reused photos, timeline consistency, payment clarity, budget specificity. It does all these checks, and when it's done, the cause is live.
 
-Now, we see someone opening the cause through a link that can be shared on WhatsApp. They give a hundred and fifty thousand naira without signing in, so the gift is anonymous.
+## Sharing the cause
+**1:35–1:51**
 
-Before they agree, they are shown what we would take. Our tentative model is two percent, capped at five thousand naira per cause, as a fallback to sponsorship.
+Now, someone who wants to donate can simply click on this link that has been copied. Notice that it can be pasted on any social media platform, WhatsApp for example.
 
-## Part 3: Abigail gives the balance
+## An anonymous donor gives
+**1:51–2:28**
 
-**Clip:** `Screen Recording 2026-11-18 at 18.27.54.mov` (0:37).  
-**On screen:** Miracle's view on the left, Abigail's on the right. Abigail makes the second contribution.
+As we will see, donors are not mandated to open an account on Kairos, and anonymous donations are welcome. This person placed the link in a private browser, and you can see here that they are allowed to donate, but then the donation will be anonymous.
 
-Now, on the left is Miracle's account, and on the right is Abigail's. As you can see, a hundred and forty-seven thousand naira has been raised, and a hundred and fifty-three thousand naira is still needed.
+This person donates a hundred and fifty thousand, and they are shown what portion will be kept for maintaining the app. This is tentatively two percent. Now they go ahead to pay, and the public ledger is automatically updated.
 
-Abigail donates this balance, plus two thousand for upkeep. Notice that as soon as she gives, it updates automatically everywhere, and Miracle gets a notification that her money is complete.
+## Abigail completes the funding
+**2:28–3:02**
 
-## Part 4: the fees are paid and the donor gets a receipt
+Now on the left is Miracle's account, and on the right is a potential donor named Abigail. A hundred and forty-seven thousand naira has already been raised by the anonymous donor, and Abigail decides to donate this balance.
 
-**Clip:** `Screen Recording 2026-11-18 at 18.29.44.mov` (1:04.7).  
-**On screen:** Cause wallet, provider payment, application receipt, public ledger, Abigail's notification and email.
+Similarly, she's shown what portion of the money would be kept for maintaining the app. Like we said earlier, this is our tentative business model. We resort to this when we cannot get any sponsors at all. After she makes this payment, it is reflected everywhere.
 
-Now, let's look at Miracle's wallet. Notice that she cannot withdraw any of this money. She clicks on Pay vendor, and Abigail gets notified of her share of the payment. She does not just get a thank you. She gets a receipt, one that she can inspect herself.
+## Provider payment and the donor’s receipt
+**3:02–3:44**
 
-For an expired reference, our planned flow lets the AI ask for a replacement at payout. An unresolved check goes to a human reviewer. Live operation also needs licensed partners and reconciliation with provider confirmations. Payments and identity verification are simulated here, and the receipt is a Kairos record.
+Now, let us look at Miracle's wallet. Notice that Miracle cannot withdraw any of this money. She inputs how much she wants to pay to University of Lagos and then clicks on Pay vendor.
 
-Nigerians already give. What stops us is not compassion, but doubt, and consequently, hesitation. Kairos addresses this by making giving transparent.
+If at this point the Remita reference has expired, the AI simply asks for a replacement and verifies before paying.
+
+As soon as this payment is made, Abigail gets notified. And here she sees a breakdown of what portion of her donation paid the fees. She does not only get a thank you. She gets a receipt, and this is one that she can inspect herself. The payment also appears in the public ledger.
+
+## What works today
+**3:44–3:54**
+
+All of this is running code. Payment and identity verification for now are simulated, and all we have to do to fill the gap is to partner with a third party.
+
+## Giving with less hesitation
+**3:54–4:06**
+
+Nigerians already give. What stops us is not compassion, but doubt, and consequently hesitation. Kairos addresses this by making giving transparent.
 
 ---
 
 ## Preparation notes, not spoken
 
-- This keeps the original recording's sign-in, AI interview, budget, wallet, notification and receipt narration where it fits. It updates the names and actual donor flow, without carrying over unsupported verification or university-receipt claims.
-- The spoken version covers the panel's feedback on donations, bills, verification, receipts, privacy, reconciliation, fees, expired references and human review. The reference-replacement and reviewer workflows are planned, not shown as working features in the clips.
-- User evidence remains outstanding. No documented donor, applicant or institution interview findings were supplied. After Part 4, add one actual finding and the change it prompted if you have it. Otherwise explain the proposed school-fee pilot in the separate pitch. Do not invent conversations or results.
-- The anonymous gift credits ₦147,000 after ₦3,000 upkeep. Abigail pays ₦155,000: ₦153,000 for the fees and ₦2,000 upkeep. Total upkeep reaches the ₦5,000 cap. No sponsorship or grant is secured.
-- Part 2's popup conflicts briefly with the final ledger. Use the final figures. The detailed recording note is in the Cleva voiceover. No video edits were made.
+This follows the latest recorded narration, not the earlier suggested four-part script. The audio is authoritative. Recognition spellings such as Miracle, cause, Remita, NIN and pay advice are corrected. One short connective word before “get a thank you” in the receipt passage remains uncertain in the source recording.
+
+The latest clean-frame video keeps the recorded voice speed and all existing picture timing. Subtitle files are separate. Cleva includes the new closing pickup; Faith & Tech keeps the wallet reference insertion and trust ending.
+
+The recording describes intended screening and payment-reference checks. Independent document/image checks, live NIN lookup and settlement are not operational. Reference replacement and human review remain proposed. The separate pitch distinguishes these plans from the working intake, uploads, accounting and alerts.
+
+Faith & Tech feedback: the demo shows the bill, donations, proposed upkeep and donor receipt. Slide 5 covers privacy, reconciliation and unresolved checks; slide 6 proposes research with donors, applicants and an institution. No completed research or pilot findings have been supplied.
