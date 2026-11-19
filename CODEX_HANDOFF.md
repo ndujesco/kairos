@@ -2,6 +2,14 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest: elapsed presentation timer on desktop and phone
+
+Enabled an elapsed timer for the current Faith & Tech presenter room. Start, Pause/Resume and Reset work without assigning a delivery schedule or advancing slides. Desktop keeps it in the deck controls; phone shows compact controls inside the sticky preview with 44px touch targets. Fullscreen retains the elapsed display. It catches up after delayed updates while the page is open. Each browser has its own timer and reload resets it; no device synchronization is claimed.
+
+The unscheduled presentation previously hid its clock, and `paintClock` returned before updating the display. Faith now opts into `elapsed_timer`; only schedule progress/status remain hidden. All eleven slides, 536 presenter words, native files, video and other public rooms/assets are unchanged. Actual-function timer tests, delayed ticks, normal timed-room regression, generated JavaScript and desktop/mobile read-through checks pass; responsive visibility rules were checked without computer/browser controls. Reports: `../production/2026-11-19 Faith presenter timer/`.
+
+Timer code is included in `d9c64f8` (the existing local commit is titled as the feedback documentation update) and was pushed successfully to origin/main. No published history was rewritten. Final live verification is recorded in root HISTORY and that folder's release report. This handoff addition is local documentation only and does not need another deployment. No database/app changes.
+
 ## Latest documentation: Faith & Tech feedback coverage audit
 
 Updated the existing `../hackathons/2026-10 Faith & Tech Conference/feedback/feedback.md` at the user's request. It now maps all judging-feedback items and the supplied presentation guidelines to covered, partial, absent or unverified status against the current eleven-slide Visual Deck. It preserves the original judging email, links the current files, distinguishes intended safeguards from implemented behavior, and lists remaining evidence/rehearsal actions. All eight local source links were checked. The requested Finder reveal uses `open -R`; no CUA/browser control is involved.
