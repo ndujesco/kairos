@@ -2,6 +2,10 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest delivery: emailed the deck to Abby
+
+Sent the current Faith & Tech PowerPoint and PDF to `sokenuabigail@gmail.com` at the user's explicit request. Gmail accepted both attachments at 14:16 WAT on 19 November. The email uses a separate 13 MB PowerPoint copy because the original exceeds Gmail's attachment limit. Only embedded video encoding/resolution changes; all slides/notes and original audio are identical, with actual displayed frame count and duration preserved. PDF and Desktop originals are unchanged. Receipt and hashes: `../production/2026-11-19 Email Faith deck to Abby/`. Do not resend without checking `send-receipt.json`. This local documentation update requires no deployment; no application or presentation wording changed.
+
 ## Current: slide 08 adds scale on existing rails
 
 Only Faith & Tech slide 08 and its narration changed. The user supplied a new third paragraph verbatim: “Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.” It appears between the expired-reference and future-disputes paragraphs. The three existing paragraphs are preserved exactly. The visual now has four matching cards: Document privacy, Expired references, Scale on existing rails, Dispute resolution. The third card uses brief excerpts of the supplied paragraph; full wording is in the script and presenter notes. Existing intended-model label/footer remain. This is supplied operating-model wording, not a newly verified product integration or security guarantee.
