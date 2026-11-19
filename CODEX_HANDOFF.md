@@ -2,7 +2,24 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Latest media production: 13 voice notes synced to both event demos (19 November)
+## Latest media follow-up: corrected closing, noise reduction and clearer voice (19 November)
+
+The user requested **new comparison files, keeping every existing video intact**, then clarified that Cleva needs the supplied corrected closing in both its unfiltered and processed copies. The new pickup is `~/Downloads/WhatsApp Audio 2026-11-19 at 04.31.11.opus`, durably archived as VN 14. Exact recorded words: “That is the payment problem that we solve.” VN 11 is kept through 20.85 seconds, followed by VN 14 source 0.55–3.30 seconds. No generated speech, tempo change or global speed-up.
+
+Latest Desktop deliverables, under `~/Desktop/Kairos - Cleva and Faith & Tech/`:
+- `Cleva/kairos-cleva-narrated-corrected.mp4`: corrected closing with original voice-note sound, 4:11.853.
+- `Cleva/kairos-cleva-narrated-enhanced-voice.mp4`: corrected closing, noise/click reduction, voice clarity processing and consistent loudness, 4:11.853.
+- `Faith & Tech/kairos-faith-and-tech-narrated-enhanced-voice.mp4`: the same voice treatment, retaining the Faith wallet insert and trust ending, 4:06.205. No Cleva payment-problem closing.
+
+Identical copies are in the respective event stage `demo/` folders. Earlier `*-narrated.mp4` files and the intermediate `*-narrated-clean-audio.mp4` comparisons are preserved unchanged, with verified hashes. Cleva's new `recorded-narration-corrected.md` follows both corrected versions; old transcripts remain intact. `AUDIO-COMPARISON.md` explains the filenames. The original 13-note transcript is unchanged; the pickup has a separate transcript.
+
+The user additionally asked to research/use suitable tools and make the voice itself clear. Compared the first RNNoise cleanup against DeepFilterNet3, each with/without gentle clarity EQ/compression, on all 14 original notes. Selected each pass with level-matched Microsoft DNSMOS speech/background/overall estimates, then leveled each complete narration to about -16 LUFS with a -1.5 dB true-peak ceiling. Model/processing delays are compensated; the final leveler adds zero measured timing shift. **These are automated comparisons, not a direct listening assessment.** Do not claim that the noise was heard here or that all overlapping noise is removed. Adobe/ElevenLabs/Auphonic were researched; browser access was unavailable and no configured service credential was found in the four relevant project environments. No recording was uploaded to a hosted service. PDFLeader's model could not be verified.
+
+Everything is reproducible in `../production/2026-11-19 narrated demos/`: `audio/cleanup/` holds the first pass and unfiltered correction; `audio/clarity/` holds selected PCM, masters, model weights, primary-source research and selection reports. `enhanced-delivery-manifest.json` records final paths/hashes. New scripts are `clean_audio.py`, `package_clean_deliverables.py`, `clarity_trial.py`, `enhance_narration.py` and `render_enhanced_voice.py`. DeepFilterNet/PyTorch/ONNX use `/private/tmp/kairos-audio-enhance-venv` (Python 3.11); rendering checks use the earlier PyAV environment with the system Python. Read the production README before rebuilding; baseline packaging scripts target the original filenames.
+
+All new files passed complete FFmpeg audio/video decoding. All 19,724 compressed source pictures and the established picture timing are unchanged; track lengths differ by less than 1 ms. Local ASR checked the full enhanced Cleva narration, corrected closing, Faith wallet insert and trust ending. Source files and every earlier delivered video remain byte-identical. No product/deck/public asset changes, database writes, website opening, push or deployment. User can compare the files by ear and apply any final overall speed-up later.
+
+## Original media production: 13 voice notes synced to both event demos (19 November)
 
 Completed two standalone narrated videos from the user's 13 supplied WhatsApp M4As and four `Desktop/Revised` screen recordings. The user explicitly said **the audio rules**, to hold/slow important screens and accelerate unimportant navigation as necessary. Do not optimize the overall runtime or apply a global 1.18x speed-up; the user will do that later.
 
