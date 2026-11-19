@@ -1,15 +1,15 @@
 {
-  "version": "faith-and-tech-semis-concise-draft-2026-11-19",
-  "slides": 10,
+  "version": "faith-and-tech-semis-feedback-summary-2026-11-19",
+  "slides": 11,
   "questions": 18,
   "priority": 12,
-  "words": 576,
+  "words": 495,
   "seconds": null,
   "source_content": "faith_and_tech_semis_content.py",
-  "source_sha256": "08bfea9305973908e9b848d5b9c016c4a0c9bca861f9b6337851e51834364b63",
-  "deckBase": "pitch-assets/faith-and-tech-semis/concise-draft",
-  "deck_pdf": "pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pptx",
+  "source_sha256": "2b83ccc17ceb0e205f853b20f2f77eacf6339dd254c0d02d24d81db887467725",
+  "deckBase": "pitch-assets/faith-and-tech-semis/brief-feedback",
+  "deck_pdf": "pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pptx",
   "timing_includes_full_demo": false,
   "slide_order": [
     {
@@ -56,10 +56,11 @@
     },
     {
       "n": 7,
-      "key": "technical_responsible",
-      "title": "Technical approach and responsible operation",
+      "key": "technical",
+      "title": "Technical approach",
       "seconds": null,
-      "is_demo": false
+      "is_demo": false,
+      "budget_seconds": 40
     },
     {
       "n": 8,
@@ -70,13 +71,21 @@
     },
     {
       "n": 9,
+      "key": "responsible_operation",
+      "title": "Responsible operation",
+      "seconds": null,
+      "is_demo": false,
+      "budget_seconds": 40
+    },
+    {
+      "n": 10,
       "key": "closing",
       "title": "Give with proof, not faith",
       "seconds": null,
       "is_demo": false
     },
     {
-      "n": 10,
+      "n": 11,
       "key": "team",
       "title": "Meet the team",
       "seconds": null,
@@ -87,16 +96,26 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 576,
+      "words": 495,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 576,
+      "words": 495,
       "script": "pitch-script-ugochukwu.md"
     }
   },
   "timing_set": false,
+  "section_budgets": [
+    {
+      "label": "Technical approach and responsible operation",
+      "slides": [
+        7,
+        9
+      ],
+      "seconds": 80
+    }
+  ],
   "assetsBase": "pitch-assets/faith-and-tech-semis",
   "storagePrefix": "kairos-faith-and-tech-semis-room-v2",
   "demoUrl": "",

@@ -75,8 +75,10 @@ def write_script(content, assets, page, slides, presenter=None):
               page["script_intro"]]
     for i, s in enumerate(slides):
         paragraphs = s["paragraphs"] if presenter else content.shared_paragraphs(content.SLIDES[i], markdown=True)
+        speaker_timing = (f'{who} · {mmss(s["budget_seconds"])} budget' if s.get('budget_seconds') else
+                          who if page.get('unscheduled') else f'{who} · {mmss(s["start"])} to {mmss(s["end"])}')
         script += [f'## Slide {s["n"]}: {s["title"]}',
-                   who if page.get('unscheduled') else f'{who} · {mmss(s["start"])} to {mmss(s["end"])}']
+                   speaker_timing]
         script += paragraphs + [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
             instruction = ('Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
@@ -251,10 +253,12 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     for s in slides:
         hidden = "" if s["n"] == 1 else " hidden"
         next_name = slides[s["n"]]["title"] if s["n"] < len(slides) else "Pause, then take questions."
+        slide_timing = (f'<span class="subtle">Budget {mmss(s["budget_seconds"])}</span>' if s.get('budget_seconds') else
+                        '' if page.get('unscheduled') else f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>')
         script_blocks.append(
             f'<article class="scriptblock" data-slide="{s["n"]}"{hidden}>'
             f'<div class="scripthead"><span class="slideindex">{s["n"]:02} / {len(slides):02}</span>'
-            + ('' if page.get('unscheduled') else f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>') +
+            + slide_timing +
             f'<span class="speaker">{e(s["speaker"])}</span></div>'
             f'<div class="scriptbody"><h2>{e(s["title"])}</h2><div class="say">'
             + ''.join(f'<p>{e(p)}</p>' for p in s["paragraphs"])
@@ -282,7 +286,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                           f'src="data:image/jpeg;base64,{image}" alt="Slide {s["n"]}: {e(s["title"])}"{hidden}>')
         jump.append(f'<button type="button" aria-current="{str(s["n"]==1).lower()}" '
                     f'aria-label="Go to slide {s["n"]}: {e(s["title"])}">'
-                    f'<span>{s["n"]:02}' + ('' if page.get('unscheduled') else f' · {mmss(s["start"])}') + f'</span>{e(s["title"])}</button>')
+                    f'<span>{s["n"]:02}' + (f' · {mmss(s["budget_seconds"])}' if s.get('budget_seconds') else '' if page.get('unscheduled') else f' · {mmss(s["start"])}') + f'</span>{e(s["title"])}</button>')
     question_cards = []
     for q in content.QUESTIONS:
         priority = '<span class="prioritylabel">Rehearse first</span>' if q["priority"] else ''
@@ -313,6 +317,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                  "questions": content.QUESTIONS, "deckBase": deck_base}
     if page.get('unscheduled'):
         page_data['timingSet'] = False
+    if page.get('section_budgets'):
+        page_data['sectionBudgets'] = page['section_budgets']
     if demo_slide:
         page_data.update({"demoUrl": page["demo_url"], "demoSlide": demo_slide["n"],
                           "demoVideoSeconds": video_seconds})
@@ -470,6 +476,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         manifest.update(seconds=None, timing_set=False, timing_includes_full_demo=False)
         for section in manifest['slide_order']:
             section['seconds'] = None
+    if page.get('section_budgets'):
+        manifest['section_budgets'] = page['section_budgets']
+    for section, source_slide in zip(manifest['slide_order'], slides):
+        if source_slide.get('budget_seconds'):
+            section['budget_seconds'] = source_slide['budget_seconds']
     if assets_base != "pitch-assets":
         manifest["assetsBase"] = assets_base
     if storage_prefix:

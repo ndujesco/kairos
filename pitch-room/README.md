@@ -7,7 +7,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | `/cleva-finale.html` | `cleva_finale_content.py` | JCI-style native deck and previews, 755 words, 10:25 including the current 4:12 recording; Cleva-focused Q&A |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
-| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Revised ten-slide draft, 576 words, timing unset; combined technical/responsible-operation slide, selected JCI demo, supplied closing and short team introduction |
+| `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 495 words; technical 7 and responsible operation 9 have 0:40 each around demo 8; closing 10 and team 11 |
 
 `/apwen-finale.html` is reserved for a later request; it is not created by this build.
 
@@ -41,12 +41,12 @@ The two current rooms use the new native-deck previews through `native_slides`. 
 
 Existing preliminary Cleva/APWEN and shared native files remain at their immutable paths. New finale files are isolated under `pitch-assets/cleva-finale/deck/`; their notes follow the current finale script. Only current finale and Faith & Tech pages/downloads changed in the JCI-style update. All older recordings remain intact.
 
-Faith & Tech retains Abigail and Ugochukwu from its submitted application, with Ugochukwu the default presenter. Current draft: ten slides, 576 presenter words, timing unset. Slides 1–6 preserve the supplied opening/problem/solution and frozen shared visuals 1, 2, 3, 5, 6 and 7, including the scripts for 5–7. The former technical approach, human review, privacy and reconciliation sections share slide 7. The separate validation and next-steps slides are removed from the current presentation.
+Faith & Tech retains Abigail and Ugochukwu from its application, with Ugochukwu presenting by default. The current version has eleven slides and 495 presenter words. Technical approach is slide 7 before the unchanged original-audio JCI demo on slide 8. The brief responsible-operation summary is slide 9 after the demo. Each feedback slide has 40 seconds, about 1:20 combined; the rest of the schedule is unset.
 
-Slide 8 uses the selected `kairos-jci-demo-original-audio.mp4`, with the single-sentence introduction. Slide 9 uses the supplied “In short, Kairos…” closing. Meet the team is slide 10 and last, with a short Ugochukwu/software engineer/CTO and Abigail/team lead/PM introduction. The previous longer department-president story and detailed roles are archived with the expanded edition. Planned controls remain clearly identified as planned.
+Slide 3 has the requested revised custody sentence. Slide 7 omits the repeated custody/integration limitations and focuses on the app. The supplied short demo introduction, closing and succinct team introduction remain unchanged, with Meet the team slide 11 and last. The removed validation and next-steps slides remain absent. Review, privacy improvements and reconciliation are still described as planned work.
 
-Current native files and previews are under `pitch-assets/faith-and-tech-semis/concise-draft/`. The PowerPoint embeds the unchanged selected video. The browser room and standalone deck use a local video picker; the PDF is a static backup. Previous public download paths remain intact. The earlier Desktop/event delivery is archived separately. Old Faith narration and subtitles do not match the selected JCI recording.
+Current native assets are under `pitch-assets/faith-and-tech-semis/brief-feedback/`. The PowerPoint embeds the exact selected video, the PDF is static, and browser/standalone HTML uses a local file picker. Matching script budgets and manifest metadata distinguish the pair's 1:20 from a full pitch clock. Previous public paths and archives are preserved.
 
-The current builder is `../production/2026-11-19 Faith and Tech concise draft/build_deck.py` from the Kairos root. Its README, verifier, delivery script and reports record reproduction and checks. Older production builders target historical editions. Rebuild only the current Faith room after content edits. No timing target has been set.
+Current builder: `../production/2026-11-19 Faith and Tech feedback summary/build_deck.py` from the Kairos root. Read that folder's README and verification/delivery reports. Earlier production folders target historical editions. Rebuild only the Faith room after source edits.
 
 Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.

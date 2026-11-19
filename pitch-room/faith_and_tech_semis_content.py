@@ -1,6 +1,6 @@
-"""Faith & Tech revised ten-slide draft. Edit this source, not generated HTML.
+"""Faith & Tech: feedback summary before and after the demo, 1:20 total.
 
-Shared /pitch.html sources remain frozen. Timing is unset.
+Slide 7 focuses on the app. Slide 3 uses the revised custody sentence.
 """
 
 META = {'title': 'Kairos | Faith & Tech Semi-final',
@@ -8,7 +8,7 @@ META = {'title': 'Kairos | Faith & Tech Semi-final',
  'stage': 'Semi-final',
  'team': 'Sokenu Abigail · Ndujekwu Ugochukwu',
  'date': '19 November 2026',
- 'version': 'faith-and-tech-semis-concise-draft-2026-11-19',
+ 'version': 'faith-and-tech-semis-feedback-summary-2026-11-19',
  'demo_url': ''}
 
 PRESENTERS = {'abigail': {'name': 'Abigail',
@@ -51,8 +51,8 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  'First, an AI interviewer helps the organizer explain the need and publish an itemised '
                  'budget naming the school, hospital or supplier.',
                  'Second, the cause is shared as a link, so donors can see the story, budget and payment '
-                 'history. The plan is for a licensed partner to hold donations in escrow and pay only those '
-                 "verified providers, never the organizer's personal account.",
+                 'history. A licensed partner holds donation in escrow and pays only those verified '
+                 "providers, never the organizer's personal account.",
                  'Third, every donor gets a receipt showing their own share of each payment.'],
   'deck_key': 'solution',
   'shared_slide_number': 3},
@@ -82,29 +82,15 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  'Then we plan to move to hospitals and other service providers.'],
   'deck_key': 'roadmap',
   'shared_slide_number': 7},
- {'title': 'Technical approach and responsible operation',
-  'deck_key': 'technical_responsible',
+ {'title': 'Technical approach',
+  'deck_key': 'technical',
   'seconds': 0,
-  'paragraphs': ['Next.js and TypeScript run the app, Anthropic powers the interview, MongoDB stores the '
-                 'cause and transaction records, and Cloudinary stores supporting files. The AI structures '
-                 'the need and budget. The server checks payment permissions, the available balance and '
-                 'budget limits, then calculates each donor’s share.',
-                 'Before handling real money, we need licensed custody, live identity and provider checks, '
-                 'and confirmed settlement. No custody partnership is signed today.',
-                 'In our planned review flow, an expired payment reference pauses the payout. The AI asks '
-                 'for a replacement, which must match the same student, institution, bill and outstanding '
-                 'amount. Uncertain checks go to a human reviewer, who confirms the evidence and records a '
-                 'decision before payment continues.',
-                 'Draft evidence is owner-only, but published attachments are public today. Private review, '
-                 'redacted public proof, consent and clear access and retention rules are still needed to '
-                 'protect donors and recipients.',
-                 'For reconciliation, we would match each unique payout reference, amount and destination to '
-                 'the provider’s confirmed settlement. Uncertain responses stay pending, repeated '
-                 'notifications must not create duplicate payments, and mismatches go to review. Only '
-                 'confirmed settlement should produce the final paid status and donor receipt. External '
-                 'reconciliation and the dedicated review workflow remain to be built.'],
-  'cue': 'Explain the working technical foundation, then the planned review, privacy and reconciliation '
-         'controls. Keep their implementation status clear.'},
+  'budget_seconds': 40,
+  'paragraphs': ['Next.js and TypeScript run the app. Anthropic powers the interview, MongoDB stores cause '
+                 'and transaction records, and Cloudinary stores supporting files.',
+                 'The AI structures the need and budget. Server rules check payment permissions, available '
+                 'funds and budget limits, then calculate each donor’s share.'],
+  'cue': 'Budget: 0:40. Summarize how the app works. The prototype limitations have already been covered.'},
  {'title': 'Prototype demonstration',
   'deck_key': 'demo',
   'seconds': 216.333008,
@@ -113,6 +99,19 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'suggested_addition': True,
   'is_demo': True,
   'video_seconds': 216.333008},
+ {'title': 'Responsible operation',
+  'deck_key': 'responsible_operation',
+  'seconds': 0,
+  'budget_seconds': 40,
+  'paragraphs': ['Our planned review flow pauses an expired reference, requests a replacement and checks the '
+                 'same student, institution and bill. Uncertain checks go to a human reviewer.',
+                 'Draft evidence is private, but published attachments are public today. Private review, '
+                 'redacted proof, consent and retention rules are still needed.',
+                 'Reconciliation would match each payout to confirmed provider settlement, keep uncertain '
+                 'responses pending and prevent duplicates. Only confirmed settlement should produce a final '
+                 'paid receipt. The review and reconciliation workflows remain to be built.'],
+  'cue': 'Budget: 0:40. Briefly cover the feedback on human review, privacy and reconciliation. These '
+         'controls remain planned.'},
  {'title': 'Give with proof, not faith',
   'deck_key': 'closing',
   'seconds': 0,
@@ -140,12 +139,14 @@ EVENTS = [{'name': 'Faith & Tech semi-final',
   'schedule': ['Thursday 19 November 2026, 6:30–6:45 p.m. WAT. Join by 6:25.',
                'One-minute team introduction, seven-minute presentation and demo, five-minute Q&A, '
                'two-minute scoring/transition.',
-               'This revised ten-slide draft has no pitch-duration target. Set timing after rehearsal.'],
+               'Slides 7 and 9 have 40 seconds each, 1:20 combined, around the demo on slide 8. The rest of '
+               'the delivery schedule remains unset.'],
   'assess': 'Explain the problem, target users, working features, validation, technical feasibility, '
             'responsible innovation and next steps.',
   'spoken': 'Every donor should be able to follow what their contribution helped pay for.',
-  'follow_up': 'Use the unchanged original-audio JCI recording. Technical approach and responsible-operation '
-               'controls are combined on slide 7. The demo, closing and short team introduction follow.',
+  'follow_up': 'Use the unchanged original-audio JCI recording. Technical approach comes before it, and the '
+               'brief responsible-operation summary follows it. Keep the supplied demo introduction, closing '
+               'and short team introduction.',
   'notice': 'Confirmed semi-final slot',
   'notice_detail': 'Meeting credentials stay in the private organizer PDF, not the public presenter room.'}]
 
@@ -229,22 +230,24 @@ GROUPS = [('The giving flow',
 
 PAGE = {'web_deck': True,
  'canonical_path': '/faith-and-tech-semis.html',
- 'deck_base': 'pitch-assets/faith-and-tech-semis/concise-draft',
+ 'deck_base': 'pitch-assets/faith-and-tech-semis/brief-feedback',
  'header': 'Faith & Tech\nSemi-final',
- 'description': 'Kairos Faith & Tech semi-final: ten slides with the preserved opening, combined technical '
-                'approach and responsible-operation section, selected JCI demo and concise closing.',
+ 'description': 'Kairos Faith & Tech semi-final: two brief technical and responsible-operation slides, '
+                'budgeted at 1:20 combined, followed by the selected JCI demo and supplied closing.',
  'footer': 'Abigail + Ugochukwu · Faith & Tech semi-final',
  'hero_kicker': 'Faith & Tech Hackathon · Semi-final',
  'hero_title': 'Transparent crowdfunding. Every naira accounted for.',
- 'hero_status': 'Revised draft · timing unset',
+ 'hero_status': 'Feedback summary · 1:20 across slides 7 and 9',
  'prep_kicker': '19 November 2026 · 6:30–6:45 p.m. WAT',
- 'prep_title': 'Ten slides, ready for rehearsal',
- 'prep_intro': 'The first six slides remain unchanged. Technical approach, review, privacy and '
-               'reconciliation share one slide. The earlier validation and next-steps slides are removed.',
- 'script_title': 'Kairos: Faith & Tech revised draft',
- 'script_intro': 'Ten slides. The first six preserve the supplied script and selected shared-deck visuals. '
-                 'Slide 7 combines the former 7–10. The demonstration, closing and succinct team '
-                 'introduction follow, with Meet the team last. No delivery schedule is set.',
+ 'prep_title': 'Two feedback slides, one minute twenty seconds',
+ 'prep_intro': 'Technical approach comes before the demo and the brief responsible-operation summary follows '
+               'it, with 40 seconds for each. Slide 3 has the requested custody wording. The demo '
+               'introduction, closing and team scripts are unchanged.',
+ 'script_title': 'Kairos: Faith & Tech feedback summary',
+ 'script_intro': 'Eleven slides. Technical approach is slide 7, followed by the unchanged demonstration on '
+                 'slide 8. Responsible operation follows on slide 9. Budget 40 seconds for each feedback '
+                 'slide, 1:20 together. Slide 3 uses the updated custody sentence. The closing and team '
+                 'scripts remain unchanged. No overall delivery schedule is set.',
  'qa_title': 'Kairos: Faith & Tech semi-final questions',
  'qa_intro': 'Answers distinguish working features from planned exception handling, privacy controls and '
              'external settlement.',
@@ -252,11 +255,12 @@ PAGE = {'web_deck': True,
  'event_title': 'Kairos: Faith & Tech semi-final preparation',
  'event_intro': 'Confirmed slot: Thursday 19 November, 6:30–6:45 p.m. WAT. Join by 6:25. One-minute '
                 'introduction, seven-minute pitch and demo, five-minute Q&A, two-minute scoring/transition.',
- 'event_notice': 'Revised ten-slide draft',
- 'event_notice_detail': 'Timing remains unset. The selected JCI demo is unchanged.',
+ 'event_notice': 'Feedback section: 1:20 total',
+ 'event_notice_detail': 'Technical approach: 0:40 before the demo. Responsible operation: 0:40 after it. '
+                        'Total for the two slides: 1:20.',
  'event_spoken_label': 'The thread:',
- 'event_download_note': 'Current ten-slide editable PowerPoint, static PDF, standalone deck and matching '
-                        'scripts. The earlier expanded edition is archived.',
+ 'event_download_note': 'Current eleven-slide PowerPoint, static PDF and matching scripts. The previous '
+                        'ten-slide edition is archived.',
  'source_note': 'Based on the user’s supplied script, frozen /pitch.html visuals, judging feedback and '
                 'current product records. The closing and short team introduction follow the latest supplied '
                 'wording.',
@@ -266,28 +270,30 @@ PAGE = {'web_deck': True,
                'isolated software checks are separate from product testing. No completed external usability '
                'study or live-money pilot is claimed.',
  'notes_note': 'Native speaker notes and browser scripts match. Default presenter: Ugochukwu.',
- 'timing_note': 'Timing remains unset. The selected 3:36 demo is slide 8. The closing is slide 9 and Meet '
-                'the team is slide 10.',
- 'prep_timing_note': 'Set timing after the content is edited. The organizer’s format is retained only as '
-                     'preparation context.',
+ 'timing_note': 'Technical approach 7: 0:40. Demo 8. Responsible operation 9: 0:40. Feedback total: 1:20. '
+                'Closing 10, Meet the team 11.',
+ 'prep_timing_note': 'Allow about 1:20 across the two feedback slides, one before and one after the demo. '
+                     'The rest of the deck has no assigned schedule.',
  'criteria': [['Problem, solution and users', 'Slides 1–3, 5–6'],
               ['Working features and proposed upkeep', 'Slides 4–5'],
-              ['Technical approach, feasibility and responsible operation', 'Slide 7'],
+              ['Technical approach', 'Slide 7 · 0:40'],
               ['Demonstration', 'Slide 8'],
-              ['Closing', 'Slide 9'],
-              ['Team', 'Slide 10']],
+              ['Responsible operation and judging feedback', 'Slide 9 · 0:40'],
+              ['Closing', 'Slide 10'],
+              ['Team', 'Slide 11']],
  'checklist': ['Test screen sharing and shared computer audio with the selected original-audio video.',
                'Check internet and keep the local PowerPoint, static PDF and original-audio MP4 available.',
                'Choose Ugochukwu or Abigail as lead and review the matching opening and short team '
                'introduction.',
-               'Keep the implementation limits clear on slides 4 and 7. Review, private evidence and '
-               'external reconciliation remain planned.',
-               'Play the demo on slide 8, give the supplied closing on slide 9 and finish with Meet the team '
-               'on slide 10.',
-               'Set the delivery schedule after rehearsing the revised content.'],
+               'Allow 40 seconds for technical approach before the demo and 40 seconds for responsible '
+               'operation after it. Keep the planned controls clearly identified.',
+               'Play the demo on slide 8, give the feedback summary on slide 9, the supplied closing on '
+               'slide 10 and finish with Meet the team on slide 11.',
+               'Rehearse the two feedback slides in about 1:20 total. The rest of the deck has no assigned '
+               'schedule.'],
  'shared_presenter_label': 'Abigail or Ugochukwu',
- 'deck_pdf': 'pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pdf',
- 'deck_pptx': 'pitch-assets/faith-and-tech-semis/concise-draft/Faith-and-Tech-Semis-Concise-Draft.pptx',
+ 'deck_pdf': 'pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pdf',
+ 'deck_pptx': 'pitch-assets/faith-and-tech-semis/brief-feedback/Faith-and-Tech-Semis-Feedback-Summary.pptx',
  'native_slides': True,
  'deck_title': 'Kairos: Faith & Tech semi-final',
  'unscheduled': True,
@@ -295,7 +301,10 @@ PAGE = {'web_deck': True,
  'demo_name': 'kairos-jci-demo-original-audio.mp4',
  'demo_url': '',
  'demo_source': '/Users/ndujekwuugochukwu/Desktop/Kairos - JCI Final Demo/01 '
-                'Compare/kairos-jci-demo-original-audio.mp4'}
+                'Compare/kairos-jci-demo-original-audio.mp4',
+ 'section_budgets': [{'label': 'Technical approach and responsible operation',
+                      'slides': [7, 9],
+                      'seconds': 80}]}
 
 def paragraph_for_presenter(paragraph, presenter):
     if presenter == 'abigail':

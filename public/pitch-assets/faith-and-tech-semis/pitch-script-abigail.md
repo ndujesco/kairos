@@ -1,12 +1,12 @@
-# Kairos: Faith & Tech revised draft
+# Kairos: Faith & Tech feedback summary
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-10 slides, 576 presenter words. No delivery schedule is set.
+11 slides, 495 presenter words. No delivery schedule is set.
 
-Ten slides. The first six preserve the supplied script and selected shared-deck visuals. Slide 7 combines the former 7–10. The demonstration, closing and succinct team introduction follow, with Meet the team last. No delivery schedule is set.
+Eleven slides. Technical approach is slide 7, followed by the unchanged demonstration on slide 8. Responsible operation follows on slide 9. Budget 40 seconds for each feedback slide, 1:20 together. Slide 3 uses the updated custody sentence. The closing and team scripts remain unchanged. No overall delivery schedule is set.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -36,7 +36,7 @@ Kairos is that trusted middle layer.
 
 First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or supplier.
 
-Second, the cause is shared as a link, so donors can see the story, budget and payment history. The plan is for a licensed partner to hold donations in escrow and pay only those verified providers, never the organizer's personal account.
+Second, the cause is shared as a link, so donors can see the story, budget and payment history. A licensed partner holds donation in escrow and pays only those verified providers, never the organizer's personal account.
 
 Third, every donor gets a receipt showing their own share of each payment.
 
@@ -72,21 +72,15 @@ Then we plan to move to hospitals and other service providers.
 
 Delivery: This is the launch sequence, not a completed pilot or signed partnership.
 
-## Slide 7: Technical approach and responsible operation
+## Slide 7: Technical approach
 
-Abigail
+Abigail · 0:40 budget
 
-Next.js and TypeScript run the app, Anthropic powers the interview, MongoDB stores the cause and transaction records, and Cloudinary stores supporting files. The AI structures the need and budget. The server checks payment permissions, the available balance and budget limits, then calculates each donor’s share.
+Next.js and TypeScript run the app. Anthropic powers the interview, MongoDB stores cause and transaction records, and Cloudinary stores supporting files.
 
-Before handling real money, we need licensed custody, live identity and provider checks, and confirmed settlement. No custody partnership is signed today.
+The AI structures the need and budget. Server rules check payment permissions, available funds and budget limits, then calculate each donor’s share.
 
-In our planned review flow, an expired payment reference pauses the payout. The AI asks for a replacement, which must match the same student, institution, bill and outstanding amount. Uncertain checks go to a human reviewer, who confirms the evidence and records a decision before payment continues.
-
-Draft evidence is owner-only, but published attachments are public today. Private review, redacted public proof, consent and clear access and retention rules are still needed to protect donors and recipients.
-
-For reconciliation, we would match each unique payout reference, amount and destination to the provider’s confirmed settlement. Uncertain responses stay pending, repeated notifications must not create duplicate payments, and mismatches go to review. Only confirmed settlement should produce the final paid status and donor receipt. External reconciliation and the dedicated review workflow remain to be built.
-
-Delivery: Explain the working technical foundation, then the planned review, privacy and reconciliation controls. Keep their implementation status clear.
+Delivery: Budget: 0:40. Summarize how the app works. The prototype limitations have already been covered.
 
 ## Slide 8: Prototype demonstration
 
@@ -100,7 +94,19 @@ Select the accompanying MP4 in the Demo tab, play it in full, then advance manua
 
 Recording: kairos-jci-demo-original-audio.mp4 · 3:36. No overall pitch schedule is set.
 
-## Slide 9: Give with proof, not faith
+## Slide 9: Responsible operation
+
+Abigail · 0:40 budget
+
+Our planned review flow pauses an expired reference, requests a replacement and checks the same student, institution and bill. Uncertain checks go to a human reviewer.
+
+Draft evidence is private, but published attachments are public today. Private review, redacted proof, consent and retention rules are still needed.
+
+Reconciliation would match each payout to confirmed provider settlement, keep uncertain responses pending and prevent duplicates. Only confirmed settlement should produce a final paid receipt. The review and reconciliation workflows remain to be built.
+
+Delivery: Budget: 0:40. Briefly cover the feedback on human review, privacy and reconciliation. These controls remain planned.
+
+## Slide 10: Give with proof, not faith
 
 Abigail
 
@@ -108,7 +114,7 @@ In short, Kairos turns charitable giving from an act of blind trust into one of 
 
 Delivery: Deliver the closing, then advance to Meet the team.
 
-## Slide 10: Meet the team
+## Slide 11: Meet the team
 
 Abigail
 

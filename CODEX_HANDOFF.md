@@ -2,7 +2,21 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
-## Current: concise ten-slide Faith & Tech revision
+## Current: two brief feedback slides around the demo, 1:20 combined
+
+The latest user steering splits the former combined slide 7 into two brief slides and budgets **about 1:20 for those two only**. Final order: technical approach **7, 0:40**; unchanged JCI demo **8**; responsible operation/feedback summary **9, 0:40**; supplied closing **10**; succinct Meet the team **11, last**. The user offered placing both after the demo or one on either side; the latter was selected and communicated. No extra validation or next-steps slides were restored.
+
+Current room `/faith-and-tech-semis.html`: **11 slides, 495 presenter words**. Feedback scripts total 125 words (44 technical, 81 responsible operation). Budgets appear in the browser/Markdown scripts, jump navigation, manifest and native notes. The overall delivery schedule remains unset. The generator supports per-slide budgets independently of the full clock; no slides auto-advance.
+
+The user changed slide 3's custody sentence to exactly: “A licensed partner holds donation in escrow and pays only those verified providers, never the organizer's personal account.” Its surrounding paragraph, other opening/problem/solution wording and frozen reference visuals remain preserved. This describes the product's giving flow; existing prototype/partner limitations remain on the existing status slide and reference footnote. The user specifically removed repetition of those limitations from slide 7, so its script and visual now focus only on the app/AI/storage/server rules. Responsible-operation review, privacy and reconciliation remain identified as planned work. The supplied short demo introduction, “In short…” closing and Ugochukwu/Abigail team introduction are unchanged.
+
+Current native files: `Faith-and-Tech-Semis-Feedback-Summary.pptx/.pdf`, public `pitch-assets/faith-and-tech-semis/brief-feedback/`, event `03 Semi-final Pitch/deck/`, and Desktop `Kairos - Cleva and Faith & Tech/Faith & Tech/02 Deck/`. Standalone deck: `faith-and-tech-semis-feedback-summary.html`. Matching scripts, manifest and `FEEDBACK-SUMMARY-GUIDE.md` are delivered. The PPTX embeds the exact unchanged original-audio JCI MP4, PDF is static, HTML uses the local video picker. The current Desktop `01 Demo` MP4 remains byte-identical. Prior current files are in `Archive/Before feedback summary/`; event archive is `archive/2026-11-19-before-feedback-summary/`. Older public paths are preserved.
+
+All eleven rendered slides individually inspected. Native package/layout/font checks have zero findings. Exact wording, 40+40 budget, note equality (with separate delivery-budget paragraphs), unchanged video bytes, links/JavaScript and all 109 protected assets pass. A temporary Cleva build confirms normal timed rooms still work without touching public files. No native presentation-app playback, computer controls, product/database work, push or deployment. The website changes are local for the user's push.
+
+Reproduction: `../production/2026-11-19 Faith and Tech feedback summary/README.md`, `build_deck.py`, `verify.py`, `deliver.py` and reports/manifests. Further edits belong in `pitch-room/faith_and_tech_semis_content.py`; rebuild this edition only. Earlier production folders reproduce historical versions.
+
+## Previous: concise ten-slide Faith & Tech revision
 
 The user's latest instruction supersedes the expanded fifteen-slide outline: **combine former slides 7–10, remove 11–12 entirely, shorten the demo introduction, replace the closing and make the team introduction succinct**. Their two references to “13” were applied as the demo introduction followed by the closing, preserving the existing demo/closing/team order. No further timing constraint was introduced.
 
