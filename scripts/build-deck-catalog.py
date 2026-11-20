@@ -70,7 +70,7 @@ def snapshot(source, entries):
     if match:
         data = json.loads(match.group(2))
         scripts = list(data.get('scripts', {}).items())
-        data.update(demoUrl='', demoPlaceholder=True, localDemo=False,
+        data.update(demoUrl='', demoPlaceholder=True, localDemo=False, assetsBase='.',
                     storagePrefix='archive-' + sha[:16], canonicalPath='/all.html')
         data.pop('deckKeynote', None)
         text = text[:match.start()] + match.group(1) + json.dumps(data, ensure_ascii=False).replace('<', '\\u003c') + match.group(3) + text[match.end():]
