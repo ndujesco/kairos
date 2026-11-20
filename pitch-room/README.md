@@ -4,7 +4,7 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 
 | Canonical room | Content source | Current scope |
 | --- | --- | --- |
-| `/cleva-finale.html` | `cleva_finale_content.py` | JCI-style native deck and previews, 755 words, 10:25 including the current 4:12 recording; Cleva-focused Q&A |
+| `/cleva-finale.html` | `cleva_finale_content.py` | Nine-slide current room, 741 presenter words, unchanged 10:25 web rehearsal plan; local final demo is 4:37 in Drive |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 536 words; concise visual slides 7–9 after Demo 6, with full corrected narration in scripts/notes |
@@ -59,3 +59,6 @@ Faith & Tech Q&A now has 80 questions (21 marked Rehearse first). The original e
 `/all.html` lists current rooms and retained HTML/script editions. Run `npm run pitch:catalog` to rebuild the index from `deck-catalog.json`; importing retained local historical sources is an explicit `python3 scripts/build-deck-catalog.py --import-local` operation. The register is append-only for archived editions. Each presenter build snapshots its existing HTML before replacement, preserving slide/script text, removing hosted movie playback/downloads and giving the archive its own browser preferences. Original local sources remain untouched.
 
 Keep demo videos and video-bearing PowerPoint/Keynote files in `~/Documents/Kairos` and the existing Drive `Kairos/Media Archive`, with checksums and original-path mappings. All earlier editions must be retained before replacement. APWEN and Cleva preliminary now use Demo placeholders/PDF-only downloads. Their former four movie-bearing native web downloads and two hosted pitch movies are archived locally. `npm run build` runs the public-media guard. The current Faith/finale/shared room content and all historical local submissions are preserved.
+
+
+The catalogue now has 46 editions, including earlier NextAI, Meta GITEX, Access Youth Tech Forge, Forge, JCI, APWEN and Faith application decks. Native/PDF galleries retain original visuals and notes where present; related scripts remain available. The July Forge original and later-cover seven-slide PDF are separate. The complete media archive is local; the user is uploading the remaining 190 files through the prepared empty Drive child folder. See the latest handoff before resuming any transfer.
