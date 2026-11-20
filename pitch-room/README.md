@@ -52,3 +52,10 @@ Current production/QA: `../production/2026-11-19 Faith visual deck correction/`.
 Native presentation downloads and historical competition submissions are preserved. The previous Cleva page/script is also archived in `02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/`.
 
 Faith & Tech Q&A now has 80 questions (21 marked Rehearse first). The original eighteen remain in the edition source; 62 additional rehearsal questions/answers are appended from `faith_and_tech_semis_qa.py`. Preserve existing question IDs when adding entries. This Q&A-only update does not regenerate native decks or change the pitch.
+
+
+## Deck catalogue and media preservation (20 November)
+
+`/all.html` lists current rooms and retained HTML/script editions. Run `npm run pitch:catalog` to rebuild the index from `deck-catalog.json`; importing retained local historical sources is an explicit `python3 scripts/build-deck-catalog.py --import-local` operation. The register is append-only for archived editions. Each presenter build snapshots its existing HTML before replacement, preserving slide/script text, removing hosted movie playback/downloads and giving the archive its own browser preferences. Original local sources remain untouched.
+
+Keep demo videos and video-bearing PowerPoint/Keynote files in `~/Documents/Kairos` and the existing Drive `Kairos/Media Archive`, with checksums and original-path mappings. All earlier editions must be retained before replacement. APWEN and Cleva preliminary now use Demo placeholders/PDF-only downloads. Their former four movie-bearing native web downloads and two hosted pitch movies are archived locally. `npm run build` runs the public-media guard. The current Faith/finale/shared room content and all historical local submissions are preserved.

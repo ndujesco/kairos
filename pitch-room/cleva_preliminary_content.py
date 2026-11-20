@@ -143,7 +143,11 @@ Integration access, account ownership, settlement evidence, fees and refunds rem
 
 PAGE = {
     "deck_base": "pitch-assets/cleva/deck",
-    "demo_url": "pitch-assets/cleva/demo.mp4",
+    "deck_pptx": None,
+    "deck_keynote": None,
+    "demo_placeholder": True,
+    "demo_name": "Kairos JCI demo, 1.1x (in the Kairos Drive archive)",
+    "demo_url": "",
     "header": "Cleva × Tether\nFuture of Payments",
     "description": "Kairos pitch for Cleva: transparent giving, a proposed international funding connection, switchable presenters and judge questions.",
     "footer": "Abigail + Miracle · Cleva pitch",

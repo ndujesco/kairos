@@ -78,9 +78,9 @@ Now let us watch a demonstration of how the app works.
 
 Delivery: Share computer sound. Play the embedded 3:47 recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.
 
-Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
+Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: pitch-assets/cleva/demo.mp4 · 3:47. This section is already included in the main pitch timing.
+Recording: Kairos JCI demo, 1.1x (in the Kairos Drive archive) · 3:47. This section is already included in the main pitch timing.
 
 ## Slide 7: Abigail and Miracle.
 

@@ -104,7 +104,11 @@ EVENTS[0].update(
 
 PAGE = {
     "deck_base": "pitch-assets/apwen/deck",
-    "demo_url": "pitch-assets/apwen/demo.mp4",
+    "deck_pptx": None,
+    "deck_keynote": None,
+    "demo_placeholder": True,
+    "demo_name": "Kairos Forge demo, 1.2x (in the Kairos Drive archive)",
+    "demo_url": "",
     "header": "APWEN LASU\nSocial Innovation & Community Development",
     "description": "Kairos APWEN presentation with its own deck, script and embedded demonstration before Team and Thank You.",
     "footer": "Abigail + Miracle · APWEN pitch",

@@ -90,9 +90,9 @@ The next slide shows a quick demonstration of how it works
 
 Delivery: Say the introduction before advancing to the video. Share computer sound and play the 1:48 Forge recording at its baked-in 1.2x speed once, then move to Team and Thank You. The older narration describes intended checks and seeded data, not live settlement or independent verification.
 
-Play the embedded recording in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
+Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: pitch-assets/apwen/demo.mp4 · 1:48. This section is already included in the main pitch timing.
+Recording: Kairos Forge demo, 1.2x (in the Kairos Drive archive) · 1:48. This section is already included in the main pitch timing.
 
 ## Slide 9: Abigail and Miracle.
 

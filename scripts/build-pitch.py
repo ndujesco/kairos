@@ -205,6 +205,10 @@ def criteria_for(slides, page):
 
 def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
           assets_base="pitch-assets", storage_prefix=None, cleva=False):
+    catalog_spec = importlib.util.spec_from_file_location('deck_catalog', ROOT / 'scripts/build-deck-catalog.py')
+    catalog = importlib.util.module_from_spec(catalog_spec)
+    catalog_spec.loader.exec_module(catalog)
+    catalog.preserve_existing_page(output)
     assets.mkdir(parents=True, exist_ok=True)
     page = page_options(content, cleva=cleva)
     if page.get('demo_placeholder'):
@@ -218,14 +222,17 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     deck_pptx = page.get("deck_pptx") if web_deck else page.get("deck_pptx", deck_base + "/kairos-pitch-deck.pptx")
     deck_html = assets_base + "/deck.html" if web_deck else None
     keynote_candidate = page.get("deck_keynote", deck_base + "/kairos-pitch-deck.key")
-    deck_keynote = keynote_candidate if local_asset(keynote_candidate).is_file() else None
+    deck_keynote = keynote_candidate if keynote_candidate and local_asset(keynote_candidate).is_file() else None
     keynote_download = (f'<a class="keynote-link" href="{e(deck_keynote)}" download>Keynote ↓</a>'
                         if deck_keynote else '')
     for url in (deck_pdf, deck_pptx):
         if url and not local_asset(url).is_file():
             raise FileNotFoundError(f"Export this edition's deck first: {local_asset(url)}")
     deck_downloads = (f'<a href="{e(deck_html)}" target="_blank" rel="noopener">HTML deck ↗</a> <a href="{e(deck_html)}" download>Download HTML ↓</a>'
-                      if web_deck else f'<a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> {keynote_download}<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>')
+                      if web_deck else
+                      (f'<a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a> ' if deck_pdf else '')
+                      + keynote_download
+                      + (f'<a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>' if deck_pptx else ''))
     if web_deck and deck_pdf:
         deck_downloads += f' <a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>'
     if web_deck and deck_pptx:

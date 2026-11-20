@@ -1,0 +1,367 @@
+[
+  {
+    "title": "Cleva · Grand Finale",
+    "url": "/cleva-finale.html",
+    "status": "Current",
+    "detail": "Nine slides with full presenter scripts and Cleva questions."
+  },
+  {
+    "title": "Faith & Tech · Semi-final",
+    "url": "/faith-and-tech-semis.html",
+    "status": "Current",
+    "detail": "Eleven slides, full presenter scripts and 80 questions."
+  },
+  {
+    "title": "APWEN · Semi-final",
+    "url": "/apwen-semi.html",
+    "status": "Current",
+    "detail": "Ten-slide five-minute edition. Play the archived demo separately."
+  },
+  {
+    "title": "Cleva · Preliminary",
+    "url": "/cleva-preliminary.html",
+    "status": "Previous stage",
+    "detail": "Preserved preliminary script, slides and preparation."
+  },
+  {
+    "title": "Shared product pitch",
+    "url": "/pitch.html",
+    "status": "Reference",
+    "detail": "The preserved event-neutral room and scripts."
+  },
+  {
+    "title": "APWEN · apwen pitch standalone · presenter room",
+    "url": "/pitch-archive/apwen-apwen-pitch-standalone-presenter-room--26691778cb/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "26691778cbfc9b5a4734f4563b76f80362df3e37209dd70d5126bf44f24f85fd",
+    "sources": [
+      "hackathons/2026-10 APWEN LASU/02 Virtual Pitch/apwen-pitch-standalone.html"
+    ]
+  },
+  {
+    "title": "APWEN · 2026 11 14 before five minute version · presenter room",
+    "url": "/pitch-archive/apwen-2026-11-14-before-five-minute-version-presenter-room--6326a61f52/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "6326a61f528eaef207d743f927f5584df57bcd9453b4a0a203491c65cf3bba2e",
+    "sources": [
+      "hackathons/2026-10 APWEN LASU/02 Virtual Pitch/archive/2026-11-14-before-five-minute-version/apwen-pitch-standalone.html"
+    ]
+  },
+  {
+    "title": "Cleva · apwen pitch standalone · presenter room",
+    "url": "/pitch-archive/cleva-apwen-pitch-standalone-presenter-room--293d1aa7ff/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "293d1aa7ff243138dbca1d1ce8b00f968befdbee424bb61bfba82b791aff43b8",
+    "sources": [
+      "hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/apwen-pitch-standalone.html",
+      "hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/kairos-prepitch-standalone.html",
+      "production/2026-11-20 Kairos media archive/website-before/pitch.html",
+      "website/public/pitch.html"
+    ]
+  },
+  {
+    "title": "Cleva · 2026 11 17 before grand finale script · presenter room",
+    "url": "/pitch-archive/cleva-2026-11-17-before-grand-finale-script-presenter-room--ed84a0c4f5/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "ed84a0c4f53209d780f82254abe6c9a49d0eba5c3bb3f7f8a77d4211895cb417",
+    "sources": [
+      "hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/archive/2026-11-17-before-grand-finale-script/cleva-pitch.html"
+    ]
+  },
+  {
+    "title": "Cleva · cleva pitch standalone · presenter room",
+    "url": "/pitch-archive/cleva-cleva-pitch-standalone-presenter-room--f32fb1d208/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "f32fb1d2087cf0e24c690e04610a298134719626919fd583ddcb52a120f8bf3b",
+    "sources": [
+      "hackathons/2026-10 Cleva x Tether Future of Payments/02 Preliminary Pitch/cleva/cleva-pitch-standalone.html"
+    ]
+  },
+  {
+    "title": "Cleva · 2026 11 19 before jci polish · presenter room",
+    "url": "/pitch-archive/cleva-2026-11-19-before-jci-polish-presenter-room--c0403b908e/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "c0403b908eb08b103afe72361ffd4e01bba88a47866b0caad6856152cd078c5f",
+    "sources": [
+      "hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/archive/2026-11-19-before-jci-polish/presenter-room/cleva-finale.html",
+      "hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/archive/2026-11-19-before-jci-polish/presenter-room/cleva.html"
+    ]
+  },
+  {
+    "title": "Cleva · cleva finale jci style deck · slide deck",
+    "url": "/pitch-archive/cleva-cleva-finale-jci-style-deck-slide-deck--8d96ae7cf7/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "8d96ae7cf768ba1a48ed539f013ca84d9a0bf4df94ddd0e39a1eea79873e54c9",
+    "sources": [
+      "hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/cleva-finale-jci-style-deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 18 before 3min · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-18-before-3min-slide-deck--3951d14c3a/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "3951d14c3a2fd9e7d27b0916d9dacb20bc7f6c440b550dc79f3d9bd8149779e1",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-18-before-3min/faith-and-tech-semis-deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before 3m20 · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-3m20-slide-deck--34ba88603b/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "34ba88603b144f736b041a91a43918a9b370accba038d99712a4a7dac0629eb7",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-3m20/faith-and-tech-semis-jci-style-deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before 3m20 · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-3m20-presenter-room--0eab088df2/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "0eab088df20b013fc7846aac0f66e48c06185bb75e5afde97c245b48377776f5",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-3m20/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before concise draft · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-concise-draft-presenter-room--fc2101078e/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "fc2101078e346a6548de2adb1c1623221658601a18b44cbebab221c4f6d35e80",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-concise-draft/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before concise draft · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-concise-draft-slide-deck--70ec232663/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "70ec23266313b6167ef3b521b13ad66ab726ef22e63466e830b1c5d58649bff6",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-concise-draft/presenter-assets/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before exact script · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-exact-script-presenter-room--976f6f5207/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "976f6f520763a942f7b737cb50960ff361732d295086557810b6bfa110bb0876",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-exact-script/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before exact script · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-exact-script-slide-deck--be8149f2f0/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "be8149f2f0ab5a321218ab9cac8e0dffa2176e73fc59b3fd1cf7a8cd6c58e08b",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-exact-script/faith-presenter-assets/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before feedback expansion · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-feedback-expansion-slide-deck--eec4b49e0b/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides.",
+    "source_sha256": "eec4b49e0b47da61c0d7ac53391f1783d9c23b4d46d8f121156d2f67c3e988d7",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-expansion/desktop-deck/faith-and-tech-semis-jci-style-deck.html",
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-expansion/faith-and-tech-semis-jci-style-deck.html",
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-expansion/presenter-assets/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before feedback expansion · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-feedback-expansion-slide-deck--5cf3e0e980/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides.",
+    "source_sha256": "5cf3e0e98074fe0babeec3b08d49cdf91ef252561493689edf4e68fc91a076cc",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-expansion/faith-and-tech-semis-deck.html",
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-jci-polish/presenter-room/pitch-assets/faith-and-tech-semis/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before feedback expansion · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-feedback-expansion-presenter-room--7089248258/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "7089248258a9f5921b670bc29dbb8e265fcc396f2d03a00761b452feccbe8449",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-expansion/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before feedback summary · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-feedback-summary-presenter-room--736081aa72/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "736081aa72da52334e726a2b14d24a6eac6340b35bc3f9520ec2a709f825b608",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-summary/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before feedback summary · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-feedback-summary-slide-deck--54d170179b/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "54d170179b2a0d94ad5794b92802fd82ba9092d68a797fa93e58418448d5981d",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-feedback-summary/presenter-assets/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before final wording · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-final-wording-slide-deck--e5974dfd2d/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "e5974dfd2db8aa245554528b8c7b2a2ac2d21ad4b93a7f8284d292c145fbdf5b",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-final-wording/faith-and-tech-semis-visual-deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before four card operation · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-four-card-operation-slide-deck--8eb6d5ba8d/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "8eb6d5ba8d1970ea2625e9e9a78aa9877e4035d61cd522c2151de816ec5195db",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-four-card-operation/faith-and-tech-semis-visual-deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before jci polish · presenter room",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-jci-polish-presenter-room--b304e18af7/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "b304e18af706d0c337ed86d5da9693749c4a6eaaf57b6ad4745385a0a8a736ee",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-jci-polish/presenter-room/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · 2026 11 19 before visual deck · slide deck",
+    "url": "/pitch-archive/faith-tech-2026-11-19-before-visual-deck-slide-deck--2fa894fc87/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "2fa894fc87611d8845cb2d798daf7a9cafece3d0f4a82a068263aa3b16dfb245",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/archive/2026-11-19-before-visual-deck/presenter-assets/deck.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · faith and tech semis visual deck · slide deck",
+    "url": "/pitch-archive/faith-tech-faith-and-tech-semis-visual-deck-slide-deck--787807fe8d/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "787807fe8df68abe65825a9dedb2460b6cc9d4a2bfab61d4e34027d6d8689bf8",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/03 Semi-final Pitch/faith-and-tech-semis-visual-deck.html"
+    ]
+  },
+  {
+    "title": "JCI · kairos pitch room standalone · slide deck",
+    "url": "/pitch-archive/jci-kairos-pitch-room-standalone-slide-deck--3890d6bd5c/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides.",
+    "source_sha256": "3890d6bd5c7c5d1a6a8731941cb30b090dafb36e6a93cb02d6a7e567745aed6a",
+    "sources": [
+      "hackathons/2026-10 JCI GDE Hackathon/02 Virtual Pitch/kairos-pitch-room-standalone.html"
+    ]
+  },
+  {
+    "title": "Shared Kairos · kairos pitch room standalone · slide deck",
+    "url": "/pitch-archive/shared-kairos-kairos-pitch-room-standalone-slide-deck--fa6bf3cf6d/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides.",
+    "source_sha256": "fa6bf3cf6d0908dffb0ee761494bf49adc4dcfd799f8191f3bcf7075a73b55fe",
+    "sources": [
+      "pitch-kit/pitch-room/kairos-pitch-room-standalone.html"
+    ]
+  },
+  {
+    "title": "Shared Kairos · kairos pitch room · slide deck",
+    "url": "/pitch-archive/shared-kairos-kairos-pitch-room-slide-deck--bcc2dc8805/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides.",
+    "source_sha256": "bcc2dc88058c8bc1f5a12ec266a0824e7e91806cbaac7ec18fef341ff1a89cf0",
+    "sources": [
+      "pitch-kit/pitch-room/kairos-pitch-room.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · deck · slide deck",
+    "url": "/pitch-archive/faith-tech-deck-slide-deck--5e3cbe1fa5/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "5e3cbe1fa5d32184107dc166ef01b7eab5808511b6a7af1a11024e1ef2819255",
+    "sources": [
+      "production/2026-11-19 exact Faith script and desktop reader/cleva-assets-before/deck.html"
+    ]
+  },
+  {
+    "title": "APWEN · apwen pitch · presenter room",
+    "url": "/pitch-archive/apwen-apwen-pitch-presenter-room--91ab348bdf/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "91ab348bdf74fac953f0ed114a41d6407105c77be183239cb13393de980ed0c5",
+    "sources": [
+      "production/2026-11-20 Kairos media archive/website-before/apwen-pitch.html",
+      "website/public/apwen-pitch.html",
+      "website/public/apwen-semi.html"
+    ]
+  },
+  {
+    "title": "Cleva · cleva finale · presenter room",
+    "url": "/pitch-archive/cleva-cleva-finale-presenter-room--d6ac3a4a26/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "d6ac3a4a26d6b44fcb90a2f94286c36331da9e38e4675b75bc01799fae8a94c8",
+    "sources": [
+      "production/2026-11-20 Kairos media archive/website-before/cleva-finale.html",
+      "production/2026-11-20 Kairos media archive/website-before/cleva.html",
+      "website/public/cleva-finale.html",
+      "website/public/cleva.html"
+    ]
+  },
+  {
+    "title": "Cleva · cleva pitch · presenter room",
+    "url": "/pitch-archive/cleva-cleva-pitch-presenter-room--e9083586cc/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "e9083586cc5da810708b68f471fbacc3f70a9a18f85af81bb184d3936661f560",
+    "sources": [
+      "production/2026-11-20 Kairos media archive/website-before/cleva-pitch.html",
+      "website/public/cleva-pitch.html",
+      "website/public/cleva-preliminary.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · faith and tech semis · presenter room",
+    "url": "/pitch-archive/faith-tech-faith-and-tech-semis-presenter-room--41c07e5d70/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "41c07e5d70e377487d94af07ad8daa8c95605f1efeba88ef2622d105ea33bc37",
+    "sources": [
+      "production/2026-11-20 Kairos media archive/website-before/faith-and-tech-semis.html",
+      "website/public/faith-and-tech-semis.html"
+    ]
+  }
+]

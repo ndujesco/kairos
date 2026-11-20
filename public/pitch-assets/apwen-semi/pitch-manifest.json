@@ -6,10 +6,10 @@
   "words": 406,
   "seconds": 290,
   "source_content": "apwen_semi_content.py",
-  "source_sha256": "42908eaa96f6d6cfe40e49656b846995831bf70871ce19937244b72feb9f2f86",
+  "source_sha256": "352046a12afdf5881c5396fa95096c24101eeb2c56edb706c226238ed2fda620",
   "deckBase": "pitch-assets/apwen/deck",
   "deck_pdf": "pitch-assets/apwen/deck/kairos-pitch-deck.pdf",
-  "deck_pptx": "pitch-assets/apwen/deck/kairos-pitch-deck.pptx",
+  "deck_pptx": null,
   "timing_includes_full_demo": true,
   "slide_order": [
     {
@@ -98,10 +98,12 @@
   },
   "assetsBase": "pitch-assets/apwen-semi",
   "storagePrefix": "kairos-apwen-room-v1",
-  "demoUrl": "pitch-assets/apwen/demo.mp4",
+  "demoUrl": "",
   "demo_slide": 8,
   "demo_video_seconds": 108.333333,
   "demo_section_seconds": 115,
-  "deck_keynote": "pitch-assets/apwen/deck/kairos-pitch-deck.key",
+  "demo_placeholder": true,
+  "local_demo": false,
+  "demo_name": "Kairos Forge demo, 1.2x (in the Kairos Drive archive)",
   "canonical_path": "/apwen-semi.html"
 }
