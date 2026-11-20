@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-9 slides, 739 presenter words. Planning time 10:25, including pauses and the accompanying demo recording.
+9 slides, 741 presenter words. Planning time 10:25, including pauses and the accompanying demo recording.
 
 Either presenter can deliver the whole pitch. The current plan is 10:25 including the 4:12 narrated recording, within the 12-minute presentation limit. Five minutes of Q&A follow separately. The familiar school-fees story follows contributions through provider payment to each donor's receipt.
 
@@ -96,7 +96,7 @@ Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name
 
 We’d start with school fees and then move to verified hospitals and then to other service providers. And in the future we would also integrate funding in other currencies or stable coins so that someone abroad can also help to pay the same bill alongside supporters here in Nigeria, while the bill and each donor’s share are accounted for in naira.
 
-And because we are putting all of this existing payment services together in one controlled flow we do not have to worry about hacks or scalability.
+And because we are putting all of this existing payment services together in one controlled flow we do not have to worry about being hacked, or about scalability.
 
 Delivery: After the demo, distinguish working code from simulated services. International funding is proposed, not built. Say all three simulated parts clearly.
 

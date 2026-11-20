@@ -98,7 +98,7 @@ SLIDES[4].update(
         "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app. People can also upload supporting documents when creating a cause or come back to add them later.",
         "Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.",
         "We’d start with school fees and then move to verified hospitals and then to other service providers. And in the future we would also integrate funding in other currencies or stable coins so that someone abroad can also help to pay the same bill alongside supporters here in Nigeria, while the bill and each donor’s share are accounted for in naira.",
-        "And because we are putting all of this existing payment services together in one controlled flow we do not have to worry about hacks or scalability.",
+        "And because we are putting all of this existing payment services together in one controlled flow we do not have to worry about being hacked, or about scalability.",
     ],
     cue="After the demo, distinguish working code from simulated services. International funding is proposed, not built. Say all three simulated parts clearly.",
     deck={"eyebrow": "DEMO & PROGRESS",
