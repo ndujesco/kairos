@@ -1,5 +1,17 @@
 # Kairos website handoff
 
+## Latest: extra local archive copies removed; current demos retained — 20 November
+
+The user was confused by the number of archived videos and requested that unnecessary laptop copies be deleted while keeping `~/Desktop/Kairos - Upload remaining files/01 Current demos`. Explain the archive as five current videos, 20 earlier edits, 24 raw recordings/scene clips, two related-project videos, plus 26 movie-bearing presentations, 57 subtitles and 67 audio files; **201 is the total media-file count, not the video count**.
+
+A fresh Drive size/MD5/file-ID check passed for all 201 media files before removal. Deleted **387 redundant local media copies**: all 201 archive copies from `~/Documents/Kairos` and 186 completed non-current upload copies. Removed 30 empty directories. Those copies represented 5,565,367,110 logical bytes; measured free space increased about **2.79 GB**, since APFS clones share storage. The five current videos (390,410,136 bytes total) are complete and SHA256-verified in the user's named folder; the compressed Cleva copy missing from the upload batch was restored there before cleanup. Original working/source and presentation files at 276 paths remain available. No original competition submission, website media or Drive media was deleted.
+
+**Older media and raw sources on Drive:** https://drive.google.com/drive/folders/1osDD7sMJm8zO14_zh6Usmj7CnqahruEa (`Kairos/Media Archive`). All 201 media files and their saved IDs/checksums remain intact, together with the existing-video and six-clip legacy shortcuts. `~/Documents/Kairos` now contains a small catalogue and restore records, not a complete local media mirror. `START HERE.html` links each edition directly to Drive; `inventory.json`/CSV, `Drive verification.json` and `Local availability.json` map checksums, original paths, Drive IDs and current local demo locations. The Desktop upload root now has the current-demo folder, a short README and a Drive shortcut.
+
+**New standing preference, confirmed in the follow-up:** for future media work, upload raw recordings and superseded/intermediate edits to the existing Drive archive, verify them, and record their IDs and restore locations. Keep finished demos and files needed for active editing on the laptop. Remove unnecessary local archive/upload copies after verification; do not automatically rebuild or download the full historical archive. Both AGENTS files and CLAUDE.md record this.
+
+Deletion and restore proof: `production/2026-11-20 Kairos media archive/drive-before-local-prune.json`, `local-prune-plan.json`, `local-prune-deletions.jsonl`, `local-prune-result.json`, and `local-availability-after-prune.json`. Earlier checkpoints claiming a complete local grand archive are historical and superseded. The website/deck catalogue and session histories remain unchanged.
+
 ## Latest: Drive media archive completed and verified — 20 November
 
 The user confirmed the browser upload had finished and asked to continue. All **190/190** uploaded files matched their expected paths, sizes and MD5s, with no missing, mismatched, duplicate or unexpected paths. Ran the prepared `resume_after_manual_upload.py` once; its Drive-side merge completed successfully without re-uploading media, and all 190 browser-uploaded file IDs were preserved. The script and its child processes have exited; no uploader or watcher remains. Earlier stopped-checker/upload-pending instructions below are historical and superseded. Do not rerun the one-time browser-batch script against the now-merged folder.
