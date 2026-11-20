@@ -51,3 +51,8 @@ Create an account (mock BVN check), or sign in as a seeded persona - all use pas
 
 - **Sokenu Abigail Senume** - Backend Engineer · Product Manager · Team Lead
 - **Ndujekwu Peter Ugochukwu** - Software Engineer (Fullstack)
+
+## License
+
+Copyright 2026 Kairos contributors. Licensed under the [Apache License 2.0](LICENSE).
+Third-party components retain their own licences and notices.

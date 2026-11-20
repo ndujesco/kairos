@@ -2,6 +2,7 @@
   "name": "kairos",
   "version": "0.1.0",
   "private": true,
+  "license": "Apache-2.0",
   "scripts": {
     "pitch:build": "python3 scripts/build-pitch.py",
     "pitch:cleva": "python3 scripts/build-pitch.py --edition cleva",
