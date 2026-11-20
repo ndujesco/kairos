@@ -2,6 +2,16 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest Cleva structure — 20 November, nine slides
+
+Current Cleva finale/alias has nine slides: cover, problem, solution, receipt, business model, demo, working progress, team and closing. Business slide 5 is copied from the current Faith & Tech semifinal editable slide and uses its exact two-paragraph narration. Demo remains 6; What we have built/What we can show you today follows as 7. The duplicate funding paragraph and the fraud-tagline paragraph are removed from that section, with no relocation. All other spoken paragraphs are unchanged. Current count: 714 words. Existing 10:25 schedule is retained by splitting the former progress allowance into 0:30 business and 1:10 post-demo progress.
+
+Updated current Desktop/event PowerPoint, PDF, standalone HTML, presenter scripts and manifests; public previews/downloads match. Nine native notes match the script exactly; every existing visual is unchanged except folio numbers. The Faith business slide keeps its original design and editable objects. Other event rooms/assets (109 protected files) and demo media are unchanged. No product/database or computer-use controls. Production sources/validation: ../production/2026-11-20 Cleva nine slides/. The historical eight-slide builder must not overwrite the current edition. Authorized push/live confirmation follows in root HISTORY and release.json.
+
+## Latest targeted data change — Hopehaven, 20 November
+
+Per explicit user request, removed the latest anonymous ₦765,000 gift from hope-haven-shelter-q3 and its organiser notification, reversing ₦760,000 net and ₦5,000 upkeep. Transaction/readback confirmed ₦1,340,000 raised, ₦740,000 available, three donors, zero upkeep and live status. No subsequent payout existed; other donations and prior spending remain. No reseed/reset or deployment. Recovery snapshot is outside Git under ../.local-backups; result: ../production/2026-11-20 Hopehaven targeted cleanup/result.json. Do not repeat the removal.
+
 ## Latest Cleva pitch edit — 20 November
 
 The solution script's second paragraph now ends after “never in the organiser's personal account.” Its last “Every contribution is recorded...” sentence is removed. Third paragraph is exactly: “Third, funds leave escrow only toward those named, verified providers. Each payment is linked to the contributions that funded it and added to the public record.” Current finale/alias and local presenter Markdown copies are rebuilt; native decks/media and other paragraphs/rooms are unchanged. This is separate from the additional-demo essay proposal.

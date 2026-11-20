@@ -1,12 +1,12 @@
 {
   "version": "cleva-finale-jci-style-2026-11-19",
-  "slides": 8,
+  "slides": 9,
   "questions": 38,
   "priority": 21,
-  "words": 716,
+  "words": 714,
   "seconds": 625,
   "source_content": "cleva_finale_content.py",
-  "source_sha256": "1f9b837859063ffdaa99f9091dd7d17af8bbad95b45da86c41a0e0e43001eb69",
+  "source_sha256": "add4c0b65d4574d93fd6e47f7a5484f8115a499026b901afef1f425b0617fa6d",
   "deckBase": "pitch-assets/cleva-finale/deck",
   "deck_pdf": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pdf",
   "deck_pptx": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pptx",
@@ -42,9 +42,9 @@
     },
     {
       "n": 5,
-      "key": "prototype",
-      "title": "What we can show you today.",
-      "seconds": 100,
+      "key": "business",
+      "title": "Useful to give. Sustainable to run.",
+      "seconds": 30,
       "is_demo": false
     },
     {
@@ -56,13 +56,20 @@
     },
     {
       "n": 7,
+      "key": "prototype",
+      "title": "What we can show you today.",
+      "seconds": 70,
+      "is_demo": false
+    },
+    {
+      "n": 8,
       "key": "team",
       "title": "Abigail and Miracle.",
       "seconds": 12,
       "is_demo": false
     },
     {
-      "n": 8,
+      "n": 9,
       "key": "closing",
       "title": "Give with proof, not faith.",
       "seconds": 29,
@@ -73,12 +80,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 716,
+      "words": 714,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 716,
+      "words": 714,
       "script": "pitch-script-miracle.md"
     }
   },

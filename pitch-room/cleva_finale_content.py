@@ -5,6 +5,7 @@ the preserved general/APWEN material and is imported by the native deck.
 """
 from copy import deepcopy
 import cleva_content as shared
+from faith_and_tech_semis_content import SLIDES as faith_semis_slides
 
 META = dict(shared.META,
             title="Kairos | Cleva Grand Finale",
@@ -97,10 +98,8 @@ SLIDES[4].update(
         "Here is where we are today. The accounting, budget checks, donor shares, notifications and public history are running in the app. People can also upload supporting documents when creating a cause or come back to add them later.",
         "Bank transfer, Remita settlement and NIN lookup are simulated. CAC, account-name and automated evidence checks are not built, and no real donations have moved.",
         "We'd start with school fees, then hospital bills. And looking ahead, someone abroad should be able to help pay the same bill alongside supporters here in Nigeria, with the institution paid directly and each person getting proof of their share. In time, that could include funding in dollars or stablecoins, while the bill and each donor's share are accounted for in naira.",
-        "We aim to cover running costs through donations and NGO grants. Without that support, our tentative fallback is two percent upkeep, capped at five thousand naira per cause.",
-        shared.SLIDES[8]["paragraphs"][0],
     ],
-    cue="Show the working app next. International funding is proposed, not built. NGO support is not secured; the upkeep policy remains tentative. Say all three simulated parts clearly.",
+    cue="After the demo, distinguish working code from simulated services. International funding is proposed, not built. Say all three simulated parts clearly.",
     deck={"eyebrow": "DEMO & PROGRESS",
           "lead": "We can show the accounting, payment controls and personal receipts today.",
           "cards": [
@@ -117,9 +116,12 @@ SLIDES += [
     dict(deepcopy(shared.SLIDES[9]), deck_key="team"),
     dict(deepcopy(shared.SLIDES[10]), deck_key="closing"),
 ]
+# Business model before the demo; working progress immediately afterwards.
+business = deepcopy(next(s for s in faith_semis_slides if s['deck_key'] == 'business'))
+SLIDES = SLIDES[:4] + [business, SLIDES[5], SLIDES[4]] + SLIDES[6:]
 # Rehearsal plan: 10:25, including the separate current 4:12 recording.
 # The Grand Finale allows 12 minutes plus a separate five-minute Q&A.
-for section, seconds in zip(SLIDES, [40, 60, 90, 30, 100, 264, 12, 29]):
+for section, seconds in zip(SLIDES, [40, 60, 90, 30, 30, 264, 70, 12, 29]):
     section["seconds"] = seconds
 SLIDES[-1]["paragraphs"] = [
     "Kairos is a payment system for crowdfunding. It routes contributions toward the need they were given for, with a record connecting each donor to the provider's payment.",
@@ -302,7 +304,7 @@ Proposed flow: permitted overseas funding, actual conversion and net naira credi
 META['version'] = 'cleva-finale-jci-style-2026-11-19'
 SLIDES[5].update(
     video_seconds=VIDEO_SECONDS,
-    cue='Share computer sound. Play the accompanying 4:12 clear-voice recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.',
+    cue='Share computer sound. Play the accompanying 4:12 clean-audio recording once. After it ends, move to What we have built, then Team and Thank You. The Progress section distinguishes working code from the intended checks in the recording. Do not narrate over the recording.',
 )
 PAGE.update(
     web_deck=True,
@@ -326,7 +328,10 @@ PAGE.update(
     event_intro='Grand Finale at UNILAG on 21 November. Current rehearsal plan: 10:25 including the accompanying narrated demo. The strict limit is 12 minutes plus five minutes of Q&A. Materials are due at noon WAT on 20 November.',
     event_download_note='Current JCI-style finale deck and speaker notes. The preliminary deck and earlier recordings remain preserved.',
     demo_title='One bill, from the interview to the receipt',
-    demo_intro='Select the accompanying clear-voice MP4, then play it in full on slide 6 before Team and Thank You.',
+    demo_intro='Select the accompanying clean-audio MP4, then play it in full on slide 6. What we have built follows on slide 7, then Team and Thank You.',
+    criteria=[['Problem', 'Slide 2'], ['Solution and uniqueness', 'Slides 3 and 4'],
+              ['Business model', 'Slide 5'], ['Demonstration', 'Slide 6'],
+              ['Progress and vision', 'Slide 7'], ['Team and closing', 'Slides 8 and 9']],
 )
 PAGE['checklist'] = [
     text.replace('the 10:00 plan', 'the 10:25 plan').replace(
