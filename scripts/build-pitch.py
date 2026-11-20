@@ -312,11 +312,18 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         references = ' · '.join(f'<a href="{e(url)}" target="_blank" rel="noopener">{e(title)}</a>'
                                 for title, url in q.get("sources", []))
         references = f'<p class="qanswer subtle">Sources: {references}</p>' if references else ''
+        answer = f'<p class="qanswer">{e(q.get("partner_intro", q["answer"]))}</p>'
+        if q.get("partners"):
+            suppliers = ''.join(
+                f'<li><a href="{e(p["url"])}" target="_blank" rel="noopener">'
+                f'<strong>{e(p["name"])}</strong></a>: {e(p["role"])}</li>'
+                for p in q["partners"])
+            answer += f'<ul class="qanswer" style="padding-left:20px">{suppliers}</ul>'
         question_cards.append(
             f'<article class="qcard" data-id="{q["id"]}"><details><summary>'
             f'<span class="qheading">{e(q["question"])}<span class="qmeta">{priority}'
             f'{q.get("display_number", q["id"][1:])} · {e(q["category"])}</span></span></summary>'
-            f'<p class="qanswer">{e(q["answer"])}</p>{references}</details>'
+            f'{answer}{references}</details>'
             f'<button type="button" class="star" aria-pressed="false" '
             f'aria-label="Star: {e(q["question"])}">☆</button></article>'
         )
@@ -457,7 +464,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <p class="sourceline"><a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/pitch-script.md" download>Script with both introductions ↓</a> · {e(page["notes_note"])}</p></section>
 <section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden>{demo_panel}</section>
 <section class="panel" id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden><div class="intro"><div><p class="kicker">Direct answers. Then the supporting detail.</p>
-<h1>Ready for the follow-up.</h1><p>{e(page["qa_page_intro"])}</p></div><a class="button" href="{e(assets_base)}/qa-bank.md" download>Download Q&A ↓</a></div>
+<h1>{e(page.get("qa_heading", "Ready for the follow-up."))}</h1><p>{e(page["qa_page_intro"])}</p></div><a class="button" href="{e(assets_base)}/qa-bank.md" download>Download Q&A ↓</a></div>
 <div class="questiontools"><label for="search" class="searchlabel">Search questions and answers</label><div class="searchrow"><div class="searchwrap"><input id="search" type="search" placeholder="Try: stablecoins, escrow, refunds, AI…" autocomplete="off"><button type="button" id="clear-search" class="clearsearch" aria-label="Clear search" hidden>×</button></div><button class="button" type="button" id="expand-answers">Expand answers</button></div>
 <div class="filterrow"><select id="category" aria-label="Question topic"><option value="">All topics</option>{options}</select>
 <button type="button" class="chip" id="priority-filter" aria-pressed="false">Rehearse first · {priority_count}</button><button type="button" class="chip" id="star-filter" aria-pressed="false">My stars · <span id="star-count">0</span></button>
@@ -484,7 +491,9 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         qa += ["", f"## {category}", ""]
         for q in content.QUESTIONS:
             if q["category"] == category:
-                qa += [f'### {q.get("display_number", q["id"][1:])}. {"★ " if q["priority"] else ""}{q["question"]}', "", q["answer"], ""]
+                qa += [f'### {q.get("display_number", q["id"][1:])}. {"★ " if q["priority"] else ""}{q["question"]}', "", q.get("partner_intro", q["answer"]), ""]
+                if q.get("partners"):
+                    qa += [f'- [{p["name"]}]({p["url"]}): {p["role"]}.' for p in q["partners"]] + [""]
                 if q.get("sources"):
                     qa += ["Sources: " + ' · '.join(f'[{title}]({url})' for title, url in q["sources"]), ""]
     (assets / "qa-bank.md").write_text('\n'.join(qa) + '\n')

@@ -68,4 +68,33 @@ def build_qa(previous):
             if question == "Have you confirmed that Cleva permits donation platforms?":
                 record["sources"] = [("Applicable activity restrictions to clarify", "https://www.getcleva.com/legal/global/prohibited-countries-and-activities")]
             questions.append(record)
-    return GROUPS, questions
+    # Build the original bank first so adding the directory cannot renumber its
+    # c001-style IDs or invalidate saved stars. Directory IDs have their own
+    # stable namespace and appear before the judge questions.
+    from cleva_partner_directory import CATEGORY, partner_questions
+    partners = partner_questions()
+    cac_help = dict(
+        id="cc-cac-help", category="CAC: how it helps", priority=True,
+        question="How does CAC verification help Kairos?",
+        answer=("NIN helps identify the person; CAC helps identify a registered organization. "
+                "For a private school, hospital, supplier or NGO, CAC checks can confirm the registered legal name, "
+                "registration number, status and available director or trustee details. That gives us an independent "
+                "record to compare with the named payee, its official contacts and separately verified bank account, "
+                "making impersonation or payment to an unrelated entity easier to spot. For example, if an organizer "
+                "names a hospital but the entity or bank details do not match, we would pause the proposed payout "
+                "and investigate. Registration alone does not prove the bill is genuine, establish the organizer's "
+                "authority, confirm a medical/education licence or guarantee honest conduct. Public institutions may "
+                "need their statutory or sector-register evidence instead of a normal CAC company record. We would "
+                "still confirm the actual bill with the institution. Live CAC verification is not built in Kairos yet."),
+        sources=[
+            ("CAC company-search scope", "https://www.cac.gov.ng/services/company-search"),
+            ("Mono CAC profile and ownership lookup", "https://docs.mono.co/docs/lookup/cac-lookup"),
+            ("Dojah business-verification checks", "https://dojah.io/business-verification"),
+        ],
+    )
+    questions = partners + [cac_help] + questions
+    for number, record in enumerate(questions, 1):
+        record["display_number"] = number
+    partner_group = (CATEGORY, [(q["question"], q["answer"], True) for q in partners])
+    cac_group = (cac_help["category"], [(cac_help["question"], cac_help["answer"], True)])
+    return [partner_group, cac_group, *GROUPS], questions

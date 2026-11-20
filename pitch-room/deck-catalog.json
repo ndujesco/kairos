@@ -479,5 +479,15 @@
       "hackathons/2026-10 Faith & Tech Conference/deck/kairos-pitch-deck.pptx",
       "hackathons/2026-10 Faith & Tech Conference/deck/kairos-pitch-deck.pdf"
     ]
+  },
+  {
+    "title": "Cleva · cleva finale · presenter room",
+    "url": "/pitch-archive/cleva-cleva-finale-presenter-room--82f9399c8b/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "82f9399c8ba6895d51027f360ff79a227aa215529ec2fcc43697793892a42267",
+    "sources": [
+      "website/public/cleva-finale.html"
+    ]
   }
 ]
