@@ -3,10 +3,10 @@
   "slides": 8,
   "questions": 38,
   "priority": 21,
-  "words": 755,
+  "words": 716,
   "seconds": 625,
   "source_content": "cleva_finale_content.py",
-  "source_sha256": "fe80750f4bea6b6a442cb58035d60c0cac39cbe127c8eaf4a79251492096b392",
+  "source_sha256": "1f9b837859063ffdaa99f9091dd7d17af8bbad95b45da86c41a0e0e43001eb69",
   "deckBase": "pitch-assets/cleva-finale/deck",
   "deck_pdf": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pdf",
   "deck_pptx": "pitch-assets/cleva-finale/deck/Cleva-Finale-JCI-Style.pptx",
@@ -73,12 +73,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 755,
+      "words": 716,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 755,
+      "words": 716,
       "script": "pitch-script-miracle.md"
     }
   },

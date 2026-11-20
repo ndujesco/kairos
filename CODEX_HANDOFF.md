@@ -2,6 +2,26 @@
 
 Updated: 19 November 2026. Workspace: `/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos`; Git repository: its `website/` directory. Live app: https://kairos-community.vercel.app. GitHub: https://github.com/ndujesco/kairos.
 
+## Latest Cleva pitch edit — 20 November
+
+The solution script's second paragraph now ends after “never in the organiser's personal account.” Its last “Every contribution is recorded...” sentence is removed. Third paragraph is exactly: “Third, funds leave escrow only toward those named, verified providers. Each payment is linked to the contributions that funded it and added to the public record.” Current finale/alias and local presenter Markdown copies are rebuilt; native decks/media and other paragraphs/rooms are unchanged. This is separate from the additional-demo essay proposal.
+
+## Current task: revised Cleva addendum, awaiting the user’s new recording
+
+The user requested a fuller theme/source review of the addendum. Current authoritative script is `~/Downloads/Kairos-Cleva-Additional-Demo-Script.md`, identical to `../hackathons/2026-10 Cleva x Tether Future of Payments/03 Grand Finale/demo-addendum-script.md`. It is a 12-section script with narration/actions and no time budget, plus non-spoken source/brief coverage notes. The future global/stablecoin section is now part of the main story, not an optional pickup.
+
+New recording path: a separate partly funded school-fee case → shared/copied WhatsApp URL → signed-out private browser → anonymous final-balance contribution with disclosed fee/net → funded versus paid distinction → recorded provider payout → the same WhatsApp link showing the outcome. This makes the payment solution demonstrable, beyond the donation entry point. A signed-in anonymous donor is an optional separate pickup, never another gift to the completed case. Guests follow public records and do not get an account inbox.
+
+The script addresses the actual finale brief (problem, differentiated solution, tangible progress, vision) and Office Hours preparedness, the reported “how is it a payment solution” question, current Cleva page/source and public Cleva/Tether context. It connects local/overseas support to the same bill through an approved funding/conversion path and actual net naira credit. No Cleva access, live stablecoin handling or custody agreement is claimed; ordinary Cleva accounts are not described as Kairos escrow. Security/scaling responsibility remains with the application/integration team as well as providers. Main narration qualifies simulated transfers/settlement/NIN and unbuilt external/evidence checks. Review/source manifest: `../production/2026-11-19 Cleva addendum theme review/`.
+
+Only script and continuity documents changed; no media, deck, website, database or email change. The base JCI recording remains unchanged. Do not record/sync/merge or publish until the user supplies new footage and requests the next step. Faith & Tech semis are completed; feedback/result is still pending. Markdown is revealed in Finder through open -R.
+
+## Latest local deliverable: full AI briefing HTML
+
+Created `~/Downloads/Kairos-Complete-AI-Briefing.html` for uploading/pasting into an AI to run app/pitch questioning. About 63,300 words across 38 sections, only 430 KB: current facts/limits, user journeys, architecture/accounting, both Faith pitch variants, all 80 current Q&As, JCI/Forge/Cleva/APWEN/shared historical banks, full dossier/business prose, feedback, API inventory and selected implementation excerpts. Historical assertions are explicitly lower-priority than current facts; private account/access values, secrets and meeting credentials are excluded/redacted. No video/deck binaries are embedded.
+
+The first section instructs the AI to ask one question at a time and wait, use meaningful follow-ups, avoid invented implementation/validation, and preserve the user's phrasing. Open locally for Copy AI briefing/plain-text export, or attach the HTML directly. Full copy payload and static context were verified; no browser/computer controls used. Builder and source manifest: `../production/2026-11-19 AI briefing/`. Local documentation only, with no app/deck edits or deployment required.
+
 ## Current: expanded Faith & Tech Q&A
 
 Expanded the current bank from 18 to 80 questions, with suggested spoken answers and 21 Rehearse first flags. The original eighteen questions/IDs/answers remain intact so saved stars stay valid. Added 62 questions informed by judging feedback and the JCI, Forge and Cleva rehearsal banks, covering human-review examples, privacy, expired/duplicate bills, collusion, consent, reconciliation/retries/concurrency, donor attribution, AI limits, scalability, sustainability, validation, inclusion and concrete next steps. Older unbuilt-control claims are not reused as current capabilities. Proposed policies/pilots are labelled accordingly.

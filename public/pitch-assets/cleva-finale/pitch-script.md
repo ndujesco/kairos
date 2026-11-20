@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail or Miracle.
 
-8 slides, 755 presenter words. Planning time 10:25, including pauses and the accompanying demo recording.
+8 slides, 716 presenter words. Planning time 10:25, including pauses and the accompanying demo recording.
 
 Either presenter can deliver the whole pitch. The current plan is 10:25 including the 4:12 narrated recording, within the 12-minute presentation limit. Five minutes of Q&A follow separately. The familiar school-fees story follows contributions through provider payment to each donor's receipt.
 
@@ -48,9 +48,9 @@ How do we do this?
 
 First, the cause gets checked. The person raising money proves who they are. Then an AI interviewer takes them through it. What happened, when, which hospital. It builds an itemised budget naming the school, hospital or supplier that should be paid.
 
-Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account. Every contribution is recorded against that cause, so we know what is available to pay out.
+Second, every cause is just an ordinary link shared on social media. Anyone who opens it sees the story, the budget and the ledger. People contribute toward the same bill, and the money is held in escrow with a licensed partner, never in the organiser's personal account.
 
-Third, funds leave escrow only toward those named, verified providers. The organiser can request a payment, but it must stay within the available balance and what that expense has left. Each payment is matched back to the budget and the contributions behind it, and goes into the public record.
+Third, funds leave escrow only toward those named, verified providers. Each payment is linked to the contributions that funded it and added to the public record.
 
 Delivery: Need and budget, controlled provider payment, personal receipt. Licensed custody and live settlement are planned; today's demo shows the accounting and rules.
 
@@ -88,7 +88,7 @@ Now let us watch a demonstration of how the app works.
 
 Delivery: Share computer sound. Play the accompanying 4:12 clear-voice recording once. The Progress section distinguishes working code from the intended checks in the recording. After it ends, move to Team, then Thank You. Do not narrate over the recording.
 
-Select the accompanying clear-voice MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
+Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
 Recording: kairos-cleva-narrated-clean-audio.mp4 · 4:12. This section is already included in the main pitch timing.
 
