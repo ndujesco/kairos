@@ -363,5 +363,121 @@
       "production/2026-11-20 Kairos media archive/website-before/faith-and-tech-semis.html",
       "website/public/faith-and-tech-semis.html"
     ]
+  },
+  {
+    "title": "The Forge · Retained seven-slide PDF",
+    "url": "/pitch-archive/the-forge-retained-seven-slide-pdf--31470f311d/index.html",
+    "status": "Archived",
+    "detail": "Seven-slide PDF with a September cover. The original July native deck is listed separately.",
+    "source_sha256": "31470f311db88e7c41b19ddbc7f8759fe3614bf83712ded4c0407048d6ccda7a",
+    "source_pdf_sha256": "31470f311db88e7c41b19ddbc7f8759fe3614bf83712ded4c0407048d6ccda7a",
+    "format": "pdf-only",
+    "sources": [
+      "hackathons/2026-07 The Forge/kairos-pitch-deck.pdf"
+    ]
+  },
+  {
+    "title": "JCI · Finale native edition",
+    "url": "/pitch-archive/jci-finale-native-edition--a6f025e1d0/index.html",
+    "status": "Archived",
+    "detail": "6 original slides and all available native speaker notes.",
+    "source_sha256": "a6f025e1d03cbf4cc97d1ce66738193acd9ac26b2980756adb18adfcce49022e",
+    "source_pdf_sha256": "8cd4cebdfab57f091a10e1ff102bda9e5859a92183d6a45115ab7f8693e2c174",
+    "format": "native-pdf-notes",
+    "sources": [
+      "pitch-kit/deck/kairos-finale-deck.pptx",
+      "pitch-kit/deck/kairos-finale-deck.pdf"
+    ]
+  },
+  {
+    "title": "NextAI Innovators · September edition",
+    "url": "/pitch-archive/nextai-innovators-september-edition--ce184c398d/index.html",
+    "status": "Archived",
+    "detail": "8 original slides and all available native speaker notes.",
+    "source_sha256": "ce184c398d3c009b3ff07fa92b9939199fb14066e309087b7a0109f522a6e4da",
+    "source_pdf_sha256": "5f4aec0fa7905ff84f309a23e0f58e6d1af86581352e662f871b7f40c8ea12bd",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-09 NextAI Innovators/deck/kairos-pitch-deck.pptx",
+      "hackathons/2026-09 NextAI Innovators/deck/kairos-pitch-deck.pdf"
+    ]
+  },
+  {
+    "title": "Meta GITEX · August edition",
+    "url": "/pitch-archive/meta-gitex-august-edition--6805140593/index.html",
+    "status": "Archived",
+    "detail": "9 original slides and all available native speaker notes.",
+    "source_sha256": "680514059348eb402dc5c507468d70ae859de7eebd6b558d9ba91aab88b4ea91",
+    "source_pdf_sha256": "fe1116cdb37eea0749ee3032b964156252385bb737189d9f5eeefebc50712fe2",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-08 Meta GITEX/deck/kairos-pitch-deck.pptx",
+      "hackathons/2026-08 Meta GITEX/deck/kairos-pitch-deck.pdf"
+    ]
+  },
+  {
+    "title": "Access Youth Tech Forge · Application",
+    "url": "/pitch-archive/access-youth-tech-forge-application--f11e70bb12/index.html",
+    "status": "Archived",
+    "detail": "9 original slides and all available native speaker notes.",
+    "source_sha256": "f11e70bb125831a380456ee3c642f3a64d4044e7dd391022e2092434ccd84445",
+    "source_pdf_sha256": "cce8bc12a85e713a083cef850b8b275815887a997d9add5a084e46301aaf1aee",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-10 Access Youth Tech Forge/01 Application/deck/kairos-access-deck.pptx",
+      "hackathons/2026-10 Access Youth Tech Forge/01 Application/deck/kairos-access-deck.pdf"
+    ]
+  },
+  {
+    "title": "The Forge · Original July pitch",
+    "url": "/pitch-archive/the-forge-original-july-pitch--3ba1dec833/index.html",
+    "status": "Archived",
+    "detail": "7 original slides and all available native speaker notes.",
+    "source_sha256": "3ba1dec8333001e20f14f2ebc8e49301da0cc5145ec052e84f04ff6908eeb455",
+    "source_pdf_sha256": "9170c1c62fcf6890219e5862ca8c1616839fc25d6a818715148302f2ffc69781",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-07 The Forge/kairos-pitch-deck-original.pptx",
+      "production/2026-11-20 Kairos media archive/native-preview/kairos-pitch-deck-original.pdf"
+    ]
+  },
+  {
+    "title": "The Forge · Video deck",
+    "url": "/pitch-archive/the-forge-video-deck--f4bcd3cb00/index.html",
+    "status": "Archived",
+    "detail": "17 original slides and all available native speaker notes.",
+    "source_sha256": "f4bcd3cb0098575b6b7c335e7ecb8c5673e953bcd6055926dc3a21da11e0e076",
+    "source_pdf_sha256": "41ae68b1fa10729667c397b60c2926ac87f530e5aecec8b8d1e959d9354ec78e",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-07 The Forge/kairos-video-deck.pptx",
+      "hackathons/2026-07 The Forge/kairos-video-deck.pdf"
+    ]
+  },
+  {
+    "title": "APWEN · Original eleven-slide edition",
+    "url": "/pitch-archive/apwen-original-eleven-slide-edition--860e91bb3e/index.html",
+    "status": "Archived",
+    "detail": "11 original slides and all available native speaker notes.",
+    "source_sha256": "860e91bb3e8a5e0fc5a7981ebfd56c9f8c030b6afc9935a3825af3e50f75f6a0",
+    "source_pdf_sha256": "626d9d825d4720b6a6ac467c115a6e52eff266544e215fba2337bfdb9538c309",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-10 APWEN LASU/deck/kairos-deck.pptx",
+      "hackathons/2026-10 APWEN LASU/deck/kairos-deck-apwen-lasu.pdf"
+    ]
+  },
+  {
+    "title": "Faith & Tech · Application deck",
+    "url": "/pitch-archive/faith-tech-application-deck--9185f40008/index.html",
+    "status": "Archived",
+    "detail": "10 original slides and all available native speaker notes.",
+    "source_sha256": "9185f400087d47161d90944c3f721b2c649e378006c8a95345449927ee283a12",
+    "source_pdf_sha256": "67dbe968adaa7c4ec846d71c052676a417b0db84c9b7e214aded74d5e612bda4",
+    "format": "native-pdf-notes",
+    "sources": [
+      "hackathons/2026-10 Faith & Tech Conference/deck/kairos-pitch-deck.pptx",
+      "hackathons/2026-10 Faith & Tech Conference/deck/kairos-pitch-deck.pdf"
+    ]
   }
 ]
