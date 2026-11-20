@@ -43,6 +43,8 @@ npm run dev        # → http://localhost:3000
 
 To reset existing demo account passwords without changing any profiles, causes or payment history, run `npm run accounts:passwords`. Do not reseed the database for this.
 
+To rewind only Ugo's original JCI school-fees cause to just after Okefe's donation, run `npm run demo:reset:ugo` to preview, then `npm run demo:reset:ugo -- --apply` to apply. This preserves the original ₦150,000 donation (₦147,000 net), removes that cause's subsequent donations/payouts/alerts, and resets its budget spending. Accounts, other causes, comments and evidence remain untouched. A private cause-only recovery snapshot is saved under `../.local-backups/ugo-after-okefe/` before the transactional change. The older `demo:reset`, `demo:clean` and `snapshot:restore` commands change data outside this cause and are unsuitable for this task.
+
 Create an account (mock BVN check), or sign in as a seeded persona - all use password `password` (e.g. `ugo`, `david_outreach`). Try: donate to the **Kirikiri outreach**, then sign in as *david_outreach* → **Escrow Wallet** → pay the caterer - and check your notifications.
 
 ## Team

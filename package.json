@@ -15,6 +15,7 @@
     "accounts:passwords": "node --env-file=.env.local scripts/reset-account-passwords.mjs",
     "evidence:migrate": "node --env-file=.env.local scripts/migrate-evidence-to-cloudinary.mjs",
     "demo:reset": "node scripts/demo-reset.mjs",
+    "demo:reset:ugo": "node --env-file=.env.local scripts/reset-ugo-after-okefe.mjs",
     "demo:record": "node scripts/demo-reset.mjs --recording",
     "demo:clean": "node scripts/demo-clean.mjs",
     "snapshot:save": "node scripts/snapshot-save.mjs",
