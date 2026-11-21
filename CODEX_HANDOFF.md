@@ -1,5 +1,15 @@
 # Kairos website handoff
 
+## Latest: exact audio-player copy on Kairos Vercel — 21 November
+
+The user explicitly requested copying the exact current standalone player to **https://kairos-community.vercel.app/audio-ptch.html**, keeping future standalone changes mirrored there, optimising where useful and **pushing the code**. This supersedes the earlier GitHub-only hosting/no-agent-push instruction for this migration. Keep the existing GitHub repository/site intact; do not delete it or change its visibility.
+
+`public/audio-ptch.html` and `public/pitch.mp3` are byte-identical to `../kairos-audio-pitch/index.html` and `pitch.mp3`: HTML SHA256 `47fa4a774bdeddc6b481e42cbfaa19ef3b6316c27d8bbbb424ea6950a79e36aa` (14,250 bytes); MP3 `487e2735abd07b11a544821e71172de4216d575c06ea3de881b6db84bc5d7d5d` (6,363,745 bytes). The exact player design, touch controls, native audio/looping, recording quality and background-media support remain. Static delivery loads no main-app bundle or database/API route. Only these two new paths bypass request middleware; existing route matching remains verified. No recompression, new dependencies, service worker or replacement Vercel/Sites project.
+
+**Standing sync requirement:** edit the separate player source, then run **`npm run audio:sync` in `website/`** and commit both repositories. `scripts/sync-audio-pitch.mjs` copies the two files and writes `audio-pitch/manifest.json`; local `prebuild` syncs automatically. Vercel builds without the sibling repository verify committed bytes against the manifest. `node scripts/sync-audio-pitch.mjs --check` verifies without mutation. Root/website/player AGENTS and both READMEs record the requirement. Tests confirm cloud operation without source, stale-copy rejection and later-source-edit copying in disposable filesystem fixtures.
+
+Production build, TypeScript, public-media and whitespace checks pass. Local HTTP returns 200 with exact HTML/MP3 hashes and `audio/mpeg`; partial audio requests return 206 with the correct bytes, supporting seeking. No live-data writes or frozen presentation/media changes. Code publication and final live/phone-emulation verification are being completed; see `../production/2026-11-21 audio pitch website migration/` for the final release record and evidence. Do not claim a physical iPhone/lock-screen test.
+
 ## Latest: sleeker audio player with larger mobile seeking — 20 November
 
 The user asked to make the mobile controls for moving to a particular minute larger, then requested a generally sleeker design. Updated only the separate `../kairos-audio-pitch/` player and its README: a clean green/white card, full-width timeline, clear elapsed/total timestamps, a prominent 76px play/pause button and 56px ten-second back/forward buttons. On screens up to 480px, the seek input has a **60px interaction height and 36px handle**. The native range supports touch dragging/tapping and keyboard seeking; its accessible value includes current/total time. Native audio is still the playback engine, with its unchanged MP3, native loop, speed/restart and system media-session support. The native player remains the no-JavaScript fallback.

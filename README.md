@@ -47,6 +47,12 @@ To rewind only Ugo's original JCI school-fees cause to just after Okefe's donati
 
 Create an account (mock BVN check), or sign in as a seeded persona - all use password `password` (e.g. `ugo`, `david_outreach`). Try: donate to the **Kirikiri outreach**, then sign in as *david_outreach* → **Escrow Wallet** → pay the caterer - and check your notifications.
 
+## Audio pitch player
+
+The standalone audio player is served directly at [/audio-ptch.html](https://kairos-community.vercel.app/audio-ptch.html), with the original recording at `/pitch.mp3`. The page and recording are exact copies of the sibling `../kairos-audio-pitch/` project, served without the main app's JavaScript or API/database calls.
+
+After every player change, run `npm run audio:sync` here and commit both repositories. `npm run build` also syncs when the sibling source is available. On Vercel, the same step verifies the committed files against `audio-pitch/manifest.json`, so deployment does not need access to the separate player repository. Use `node scripts/sync-audio-pitch.mjs --check` to verify without changing files.
+
 ## Team
 
 - **Sokenu Abigail Senume** - Backend Engineer · Product Manager · Team Lead

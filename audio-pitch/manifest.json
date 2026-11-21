@@ -1,0 +1,18 @@
+{
+  "source": "../kairos-audio-pitch",
+  "page": "/audio-ptch.html",
+  "files": [
+    {
+      "source": "index.html",
+      "destination": "public/audio-ptch.html",
+      "size": 14250,
+      "sha256": "47fa4a774bdeddc6b481e42cbfaa19ef3b6316c27d8bbbb424ea6950a79e36aa"
+    },
+    {
+      "source": "pitch.mp3",
+      "destination": "public/pitch.mp3",
+      "size": 6363745,
+      "sha256": "487e2735abd07b11a544821e71172de4216d575c06ea3de881b6db84bc5d7d5d"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'self' file:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="A simple audio pitch player with automatic repeat.">
+  <title>Kairos audio pitch</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #162d25; background: #eef4f0; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 1.25rem; background: radial-gradient(ellipse at 50% 0, #dbece1, transparent 70%); }
+    main { width: 100%; max-width: 29rem; padding: clamp(1.5rem, 6vw, 2.5rem); background: #ffffffed; border: 1px solid #fff; border-radius: 2rem; box-shadow: 0 24px 80px #183c2910, 0 2px 6px #183c2905; }
+    .brand { display: flex; align-items: center; gap: .75rem; margin-bottom: 2rem; color: #52685e; font-size: .875rem; font-weight: 600; letter-spacing: .16em; }
+    .mark { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: .875rem; color: #fff; background: #1e5840; }
+    h1 { margin: 0; font-size: clamp(1.75rem, 7vw, 2rem); line-height: 1.2; letter-spacing: -.045em; font-weight: 650; }
+    p { margin: .625rem 0 1.75rem; color: #667a6f; font-size: 1rem; line-height: 1.6; }
+    audio { display: block; width: 100%; }
+    .timeline { margin-top: .5rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .seek { --progress: 0%; display: block; width: 100%; height: 3.5rem; margin: 0; padding: 0; appearance: none; -webkit-appearance: none; background: transparent; cursor: pointer; touch-action: pan-y; }
+    .seek::-webkit-slider-runnable-track { height: .625rem; border-radius: 1rem; background: linear-gradient(to right, #216b4e var(--progress), #dce7e1 var(--progress)); }
+    .seek::-moz-range-track { height: .625rem; border-radius: 1rem; background: #dce7e1; }
+    .seek::-moz-range-progress { height: .625rem; border-radius: 1rem; background: #216b4e; }
+    .seek::-webkit-slider-thumb { width: 2rem; height: 2rem; margin-top: -.6875rem; appearance: none; -webkit-appearance: none; border: 4px solid #fff; border-radius: 50%; background: #216b4e; box-shadow: 0 2px 8px #183c2933; }
+    .seek::-moz-range-thumb { box-sizing: border-box; width: 2rem; height: 2rem; border: 4px solid #fff; border-radius: 50%; background: #216b4e; box-shadow: 0 2px 8px #183c2933; }
+    .seek:disabled { opacity: .45; cursor: wait; }
+    .times { display: flex; justify-content: space-between; color: #667a6f; font-size: 1rem; font-variant-numeric: tabular-nums; }
+    #elapsed { color: #243e31; font-weight: 600; }
+    .transport { display: flex; justify-content: center; align-items: center; gap: 1.75rem; margin: 1.75rem 0 2rem; }
+    button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; padding: .75rem 1rem; border: 1px solid #dce7e1; border-radius: .875rem; background: transparent; color: #1e5840; font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    button:hover { background: #f0f7f3; border-color: #6d9b81; }
+    button:disabled { opacity: .45; cursor: wait; }
+    .skip { width: 3.5rem; height: 3.5rem; padding: 0; border: 0; border-radius: 50%; background: #eef4f0; }
+    .skip svg { width: 1.75rem; height: 1.75rem; }
+    .skip text { font-family: inherit; font-size: 10px; font-weight: 700; fill: currentColor; stroke: none; }
+    .play { width: 4.75rem; height: 4.75rem; padding: 0; border: 0; border-radius: 50%; color: #fff; background: #1e5840; box-shadow: 0 6px 18px #1e584026; }
+    .play:hover { background: #174631; }
+    .play svg { width: 1.75rem; height: 1.75rem; }
+    .settings { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding-top: 1.25rem; border-top: 1px solid #e6ede8; font-size: .9375rem; }
+    label { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
+    #repeat { width: 1.125rem; height: 1.125rem; margin: 0; accent-color: #216b4e; }
+    .select { display: inline-flex; align-items: center; position: relative; }
+    .select svg { position: absolute; right: .625rem; pointer-events: none; }
+    select { font: inherit; font-size: 1rem; color: inherit; background: #f5f8f6; border: 1px solid #e6ede8; border-radius: .75rem; padding: .5rem 1.875rem .5rem .75rem; min-height: 2.75rem; appearance: none; cursor: pointer; }
+    #restart { width: 100%; margin-top: 1rem; font-size: .9375rem; }
+    :focus-visible { outline: 3px solid #398668; outline-offset: 4px; }
+    .privacy { margin: 1.5rem 0 0; text-align: center; font-size: .875rem; color: #667a6f; }
+    #error { color: #a02727; margin-bottom: 0; }
+    @media (max-width: 480px) {
+      body { padding: .75rem; }
+      main { padding: 1.5rem; border-radius: 1.75rem; }
+      .seek { height: 3.75rem; }
+      .seek::-webkit-slider-thumb { width: 2.25rem; height: 2.25rem; margin-top: -.8125rem; }
+      .seek::-moz-range-thumb { width: 2.25rem; height: 2.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><div class="mark" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4"/>
+      </svg>
+    </div><span>KAIROS</span></div>
+    <h1>Kairos audio pitch</h1>
+    <p>Listen. Rehearse. Repeat.</p>
+    <audio id="audio" controls loop preload="auto" aria-label="Kairos audio pitch">
+      <source src="./pitch.mp3" type="audio/mpeg">
+      Your browser does not support audio playback.
+    </audio>
+    <div id="player" hidden>
+      <div class="timeline">
+        <label class="sr-only" for="seek">Playback position</label>
+        <input class="seek" id="seek" type="range" min="0" max="0" value="0" step="0.1" aria-valuetext="0:00" disabled>
+        <div class="times" aria-hidden="true"><span id="elapsed">0:00</span><span id="duration">0:00</span></div>
+      </div>
+      <div class="transport">
+        <button class="skip" id="back" type="button" aria-label="Back 10 seconds" disabled>
+          <svg aria-hidden="true" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7a10 10 0 1 1-3 10M7 2v5H2"/><text x="14" y="18" text-anchor="middle">10</text></svg>
+        </button>
+        <button class="play" id="play" type="button" aria-label="Play">
+          <svg id="play-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M7 3.5v17L21 12z"/></svg>
+          <svg id="pause-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" hidden><rect x="5" y="3" width="5" height="18" rx="1"/><rect x="14" y="3" width="5" height="18" rx="1"/></svg>
+        </button>
+        <button class="skip" id="forward" type="button" aria-label="Forward 10 seconds" disabled>
+          <svg aria-hidden="true" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7a10 10 0 1 0 3 10M21 2v5h5"/><text x="14" y="18" text-anchor="middle">10</text></svg>
+        </button>
+      </div>
+    </div>
+    <div class="settings">
+      <label><input id="repeat" type="checkbox" checked> Repeat</label>
+      <label for="speed">Speed
+        <span class="select">
+          <select id="speed">
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.1">1.1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 4.5 3 3 3-3"/></svg>
+        </span>
+      </label>
+    </div>
+    <button id="restart" type="button">Play from the start</button>
+    <p id="error" role="alert" hidden></p>
+    <p class="privacy">Works offline. No uploads.</p>
+  </main>
+  <script>
+    const audio = document.getElementById('audio');
+    const error = document.getElementById('error');
+    const seek = document.getElementById('seek');
+    const play = document.getElementById('play');
+    const back = document.getElementById('back');
+    const forward = document.getElementById('forward');
+    let scrubbing = false;
+    function formatTime(seconds) {
+      const wholeSeconds = Math.max(0, Math.floor(seconds || 0));
+      return `${Math.floor(wholeSeconds / 60)}:${String(wholeSeconds % 60).padStart(2, '0')}`;
+    }
+    function syncTimeline() {
+      const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+      seek.disabled = back.disabled = forward.disabled = duration <= 0;
+      seek.max = duration;
+      if (!scrubbing) seek.value = audio.currentTime;
+      const position = Number(seek.value);
+      seek.style.setProperty('--progress', `${duration ? position / duration * 100 : 0}%`);
+      seek.setAttribute('aria-valuetext', `${formatTime(position)} of ${formatTime(duration)}`);
+      document.getElementById('elapsed').textContent = formatTime(position);
+      document.getElementById('duration').textContent = formatTime(duration);
+    }
+    function seekTo(position) {
+      if (!Number.isFinite(audio.duration) || !Number.isFinite(position)) return;
+      audio.currentTime = Math.max(0, Math.min(position, audio.duration));
+      syncTimeline();
+    }
+    function syncPlayButton() {
+      const playing = !audio.paused && !audio.ended;
+      play.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      document.getElementById('play-icon').toggleAttribute('hidden', playing);
+      document.getElementById('pause-icon').toggleAttribute('hidden', !playing);
+    }
+    seek.addEventListener('pointerdown', () => { scrubbing = true; });
+    function finishScrubbing() { scrubbing = false; syncTimeline(); }
+    window.addEventListener('pointerup', finishScrubbing);
+    window.addEventListener('pointercancel', finishScrubbing);
+    seek.addEventListener('blur', finishScrubbing);
+    seek.addEventListener('input', () => seekTo(Number(seek.value)));
+    back.addEventListener('click', () => seekTo(audio.currentTime - 10));
+    forward.addEventListener('click', () => seekTo(audio.currentTime + 10));
+    play.addEventListener('click', () => { if (audio.paused) playAudio(); else audio.pause(); });
+    for (const event of ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked', 'emptied']) {
+      audio.addEventListener(event, syncTimeline);
+    }
+    for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, syncPlayButton);
+    function showError(message) {
+      error.textContent = message;
+      error.hidden = false;
+    }
+    document.getElementById('repeat').addEventListener('change', (event) => {
+      audio.loop = event.target.checked;
+    });
+    document.getElementById('speed').addEventListener('change', (event) => {
+      audio.playbackRate = Number(event.target.value);
+      audio.defaultPlaybackRate = audio.playbackRate;
+    });
+    async function playAudio() {
+      try {
+        await audio.play();
+      } catch (playError) {
+        if (playError.name !== 'AbortError') {
+          showError('Could not start playback. Try pressing Play again.');
+        }
+      }
+    }
+    document.getElementById('restart').addEventListener('click', () => {
+      seekTo(0);
+      playAudio();
+    });
+    audio.addEventListener('playing', () => { error.hidden = true; });
+    audio.addEventListener('error', () => {
+      showError('This browser could not play the audio. Try opening this file in Chrome or Safari.');
+    });
+
+    // Native audio and native looping keep playback independent of background JS timers.
+    if (navigator.audioSession) {
+      try {
+        navigator.audioSession.type = 'playback';
+      } catch {
+        // Browsers without this optional mode still use native audio playback.
+      }
+    }
+    const mediaSession = navigator.mediaSession;
+    if (mediaSession) {
+      if (typeof MediaMetadata === 'function') {
+        mediaSession.metadata = new MediaMetadata({
+          title: 'Kairos audio pitch',
+          artist: 'Kairos'
+        });
+      }
+      function syncMediaSession() {
+        mediaSession.playbackState = audio.ended ? 'none' : audio.paused ? 'paused' : 'playing';
+        if (typeof mediaSession.setPositionState === 'function' && Number.isFinite(audio.duration) && audio.duration > 0) {
+          mediaSession.setPositionState({
+            duration: audio.duration,
+            playbackRate: audio.playbackRate,
+            position: Math.max(0, Math.min(audio.currentTime, audio.duration))
+          });
+        }
+      }
+      const actions = {
+        play: playAudio,
+        pause: () => audio.pause(),
+        stop: () => { audio.pause(); seekTo(0); },
+        seekbackward: ({ seekOffset = 10 }) => seekTo(audio.currentTime - seekOffset),
+        seekforward: ({ seekOffset = 10 }) => seekTo(audio.currentTime + seekOffset),
+        seekto: ({ seekTime }) => seekTo(seekTime)
+      };
+      for (const [action, handler] of Object.entries(actions)) {
+        try {
+          mediaSession.setActionHandler(action, handler);
+        } catch {
+          // Each browser exposes only the system media controls it supports.
+        }
+      }
+      for (const event of ['loadedmetadata', 'durationchange', 'playing', 'pause', 'ended', 'seeked', 'ratechange', 'timeupdate']) {
+        audio.addEventListener(event, syncMediaSession);
+      }
+    }
+    // Keep the browser's native player as a fallback when JavaScript is unavailable.
+    syncTimeline();
+    syncPlayButton();
+    document.getElementById('player').hidden = false;
+    audio.hidden = true;
+  </script>
+</body>
+</html>
