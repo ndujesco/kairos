@@ -92,7 +92,7 @@ PAGE = dict(
     canonical_path='/apwen-finale.html', native_slides=True, web_deck=True,
     deck_base=BASE, deck_pdf=BASE+'/Kairos-APWEN-Finale.pdf', deck_pptx=None, deck_keynote=None,
     deck_title='Kairos · APWEN finale',
-    archive_downloads=[{'label': 'PowerPoint v2', 'url': 'https://drive.google.com/file/d/1WnZK9Q7qeR66N0WGzTeCXDj-OJwQxoQ0/view'}, {'label': 'Keynote v2', 'url': 'https://drive.google.com/file/d/1tF7POtF2UNkIsice68eRZEuTuP_2JceH/view'}, {'label': 'Demo v2 · 2:39', 'url': 'https://drive.google.com/file/d/1qiPfJxoMItDH0fDQ1lvzsSPWVryH4GMD/view'}],
+    archive_downloads=[{'label': 'PowerPoint', 'url': 'https://drive.google.com/file/d/1WnZK9Q7qeR66N0WGzTeCXDj-OJwQxoQ0/view'}, {'label': 'Keynote', 'url': 'https://drive.google.com/file/d/1tF7POtF2UNkIsice68eRZEuTuP_2JceH/view'}, {'label': 'Demo · 2:39', 'url': 'https://drive.google.com/file/d/1qiPfJxoMItDH0fDQ1lvzsSPWVryH4GMD/view'}],
     header='APWEN LASU\nFinale · Social Innovation',
     description='Kairos APWEN finale: the supplied script, short recorded demo transcript and native presentation previews.',
     footer='Abigail + Miracle · APWEN finale', hero_kicker='APWEN LASU · Finale',
