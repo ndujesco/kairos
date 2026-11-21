@@ -14,10 +14,19 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 ## Previous URLs
 
 - `/cleva.html` serves the finale.
+- `/cleva-final.html` also serves the finale, matching the requested mobile-room URL.
 - `/cleva-pitch.html` serves the preliminary edition, recovered from the archive rather than copied from the finale.
 - `/apwen-pitch.html` serves the semi-final.
 
 Aliases are generated from their canonical page. Each stage has separate scripts, Q&A, preparation notes and manifest under `public/pitch-assets/<stage>/`. Canonical metadata identifies the stage. Finale and APWEN retain their prior browser preference keys; the preliminary and Faith & Tech rooms have independent preferences.
+
+## Mobile navigation (21 November)
+
+Current Cleva finale, Faith & Tech semi-final and APWEN semi-final rooms show one slide and its script at a time on phones. Swipe left for the next page or right for the previous page, or use the fixed, large arrow buttons and slide counter. Long notes still scroll vertically within the selected page; changing pages starts the new notes at the top. The selected page and reading position survive a visit to Q&A or Prep. Presenter switching keeps the selected page.
+
+Navigation only changes visibility in the loaded document. Every slide preview and script is embedded, including Cleva's demo poster; swiping does not fetch data, change the URL or replace the document. Playing a separately selected local video remains a separate action. Gestures on controls, text selections, screen edges and multiple touches do not change pages. Browser vertical scrolling and pinch zoom remain available, and reduced-motion preferences disable the page animation.
+
+The shared CSS/JavaScript and builder supply this behavior to future rooms. It applies below 801px, or on touch devices up to 1100px to include landscape phones. Desktop one-slide, Read through, deck-only and printing behavior are retained, including mode restoration after resizing. The frozen shared and preliminary pages are not rebuilt. Production checks and screenshots: `../production/2026-11-21 mobile swipe presenter/`.
 
 The original `cleva_pitch_content.py` and `apwen_pitch_content.py` filenames are compatibility imports. The frozen `cleva_content.py` is still the general/shared source; do not modify it for event work.
 

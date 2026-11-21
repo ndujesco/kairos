@@ -489,5 +489,55 @@
     "sources": [
       "website/public/cleva-finale.html"
     ]
+  },
+  {
+    "title": "Cleva · cleva finale · presenter room",
+    "url": "/pitch-archive/cleva-cleva-finale-presenter-room--dace78052f/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "dace78052f9b3db0458f083a89dfe79910f273a7fd9d82c9159b6849bb8b92ca",
+    "sources": [
+      "website/public/cleva-finale.html"
+    ]
+  },
+  {
+    "title": "APWEN · apwen semi · presenter room",
+    "url": "/pitch-archive/apwen-apwen-semi-presenter-room--89c0502989/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "89c050298989f00b82231fffa2bf2c823fe9b7ba7970fe529ae2e11043c5d82f",
+    "sources": [
+      "website/public/apwen-semi.html"
+    ]
+  },
+  {
+    "title": "Cleva · cleva finale · presenter room",
+    "url": "/pitch-archive/cleva-cleva-finale-presenter-room--91c5253eb3/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "91c5253eb34d27166eb4fb4a1e7f868514de31fbf8b2ccc601c9330ac7e6fe62",
+    "sources": [
+      "website/public/cleva-finale.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · faith and tech semis · presenter room",
+    "url": "/pitch-archive/faith-tech-faith-and-tech-semis-presenter-room--7b05960592/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "7b0596059288088b6db94f0713166d758ec0801ed489a58c4afaa8c44be05493",
+    "sources": [
+      "website/public/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "APWEN · apwen semi · presenter room",
+    "url": "/pitch-archive/apwen-apwen-semi-presenter-room--a9eda443ed/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "a9eda443edfc58000821f84b0dd8a7b884bbac942461c83a96b74ba113434f46",
+    "sources": [
+      "website/public/apwen-semi.html"
+    ]
   }
 ]

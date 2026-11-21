@@ -25,7 +25,7 @@ e = html.escape
 
 # Canonical stage names, independent downloads and browser preferences.
 ROOMS = {
-    "cleva-finale": ("cleva_finale_content.py", ["cleva.html"], "kairos-cleva-room-v1", True),
+    "cleva-finale": ("cleva_finale_content.py", ["cleva.html", "cleva-final.html"], "kairos-cleva-room-v1", True),
     "cleva-preliminary": ("cleva_preliminary_content.py", ["cleva-pitch.html"], "kairos-cleva-preliminary-room-v1", True),
     "apwen-semi": ("apwen_semi_content.py", ["apwen-pitch.html"], "kairos-apwen-room-v1", False),
     "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v2", False),
@@ -288,10 +288,12 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         elif s.get("is_demo"):
             if not local_asset(demo_poster).is_file():
                 raise FileNotFoundError(f"Missing demo poster: {demo_poster}")
+            poster_bytes = base64.b64encode(local_asset(demo_poster).read_bytes()).decode()
+            poster_url = f'data:image/jpeg;base64,{poster_bytes}'
             source = '' if page.get('local_demo') else f' src="{e(page["demo_url"])}"'
             images.append(f'<div class="slidemedia demo-slide" data-slide="{s["n"]}"{hidden}>'
                           f'<video class="slideimage demo-video" controls preload="metadata" playsinline tabindex="0" '
-                          f'poster="{e(demo_poster)}"{source} '
+                          f'poster="{poster_url}"{source} '
                           f'aria-label="Prototype demo recording"></video></div>')
         elif not page.get('native_slides') and (web_deck or s.get("visual")):
             from web_deck import render_slide
@@ -460,7 +462,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <div class="jump">{''.join(jump)}</div><div class="modes"><button type="button" class="button on" id="one-slide" aria-pressed="true">One slide</button>
 <button type="button" class="button" id="read-through" aria-pressed="false">Read through</button><span class="subtle" style="margin:auto 0 auto auto">← → slides · / search</span></div>
 <p class="timingnote">{e(page["timing_note"])}</p>
-</aside></div><details class="shortpitch"><summary>Short on time? The 90-second explanation.</summary>{short}</details>
+</aside></div><nav class="mobile-pager" aria-label="Slide navigation">
+<button class="button arrow" id="mobile-prev" type="button" aria-label="Previous slide">←</button>
+<div><span id="mobile-position" role="status" aria-live="polite" aria-atomic="true">Slide 1 of {len(slides)}</span><span class="swipe-hint">Swipe left or right</span></div>
+<button class="button arrow" id="mobile-next" type="button" aria-label="Next slide">→</button>
+</nav><details class="shortpitch"><summary>Short on time? The 90-second explanation.</summary>{short}</details>
 <p class="sourceline"><a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/pitch-script.md" download>Script with both introductions ↓</a> · {e(page["notes_note"])}</p></section>
 <section class="panel" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" hidden>{demo_panel}</section>
 <section class="panel" id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden><div class="intro"><div><p class="kicker">Direct answers. Then the supporting detail.</p>

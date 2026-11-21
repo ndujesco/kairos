@@ -5,16 +5,17 @@ const tabs=[...document.querySelectorAll('[role="tab"]')];
 const panels=[...document.querySelectorAll('[role="tabpanel"]')];
 const mmss=s=>Math.floor(Math.max(0,s)/60)+':'+String(Math.floor(Math.max(0,s)%60)).padStart(2,'0');
 let current=0,readAll=false,deckOnly=false,demoInTab=false;
-const mobileReaderQuery=window.matchMedia('(max-width:800px)');
+const mobileReaderQuery=window.matchMedia('(max-width:800px), (max-width:1100px) and (hover:none) and (pointer:coarse)');
 let mobileReader=false,desktopReadingState=null,mobilePitchPosition=null,readerFrame=0;
 function activateTab(id,focus=false){
   const selected=tabs.find(t=>t.id===id)||tabs[0];
   const enteringPitch=$('panel-pitch').hidden&&selected.id==='tab-pitch';
   if(mobileReader&&!$('panel-pitch').hidden&&selected.id!=='tab-pitch'){
-    mobilePitchPosition={slide:current,offset:blocks[current].getBoundingClientRect().top};
+    mobilePitchPosition={slide:current,scrollY:window.scrollY};
   }
   tabs.forEach(t=>{const on=t===selected;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});
   panels.forEach(p=>p.hidden=p.id!==selected.getAttribute('aria-controls'));
+  document.body.classList.toggle('mobile-pitch',mobileReader&&!$('panel-pitch').hidden);
   const returningToPitch=demoInTab&&selected.id==='tab-pitch';
   if(returningToPitch)current=DATA.demoSlide-1;
   placeDemo(selected.id==='tab-demo',selected.id==='tab-demo'||selected.id==='tab-pitch');
@@ -22,11 +23,11 @@ function activateTab(id,focus=false){
   if(selected.id!=='tab-pitch'&&selected.id!=='tab-demo')pauseDeckVideos();
   if(mobileReader&&returningToPitch){
     measureReader();
-    blocks[current].scrollIntoView({behavior:'instant',block:'start'});
+    window.scrollTo({top:0,behavior:'instant'});
   }else if(mobileReader&&enteringPitch&&mobilePitchPosition){
     showSlide(mobilePitchPosition.slide,false);
     measureReader();
-    window.scrollTo({top:window.scrollY+blocks[current].getBoundingClientRect().top-mobilePitchPosition.offset,behavior:'instant'});
+    window.scrollTo({top:mobilePitchPosition.scrollY,behavior:'instant'});
   }else window.scrollTo(0,0);
   queueReaderUpdate();
   if(focus)selected.focus();
@@ -122,22 +123,38 @@ function paintClock(){
   else{status.textContent='You are ahead of the plan. Leave room for the receipt moment.';}
 }
 function showSlide(n,scroll=true){
+  const previous=current;
   current=Math.max(0,Math.min(DATA.slides.length-1,n));
   media.forEach(item=>{
     if(item===demoMedia&&demoInTab){item.hidden=false;return;}
     item.hidden=Number(item.dataset.slide)!==current+1;
     if(item.hidden)item.querySelectorAll('video').forEach(video=>video.pause());
   });
-  blocks.forEach((b,i)=>b.hidden=!(readAll||mobileReader)&&i!==current);
+  blocks.forEach((b,i)=>b.hidden=!readAll&&i!==current);
   jumps.forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));
   $('prev').disabled=current===0;$('next').disabled=current===DATA.slides.length-1;
   $('current-label').textContent='Slide '+(current+1)+' of '+DATA.slides.length;
   if(DATA.slides[current].is_demo)$('current-label').textContent+=DATA.demoPlaceholder?' · Demo':' · demo recording';
+  $('mobile-prev').disabled=current===0;
+  $('mobile-next').disabled=current===DATA.slides.length-1;
+  $('mobile-position').textContent='Slide '+(current+1)+' of '+DATA.slides.length;
   paintClock();
+  if(mobileReader&&scroll&&previous!==current){
+    window.scrollTo({top:0,behavior:'instant'});
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&typeof $('script-paper').animate==='function'){
+      $('script-paper').getAnimations?.().forEach(animation=>animation.cancel());
+      $('script-paper').animate([
+        {opacity:.5,transform:'translateX('+(current>previous?18:-18)+'px)'},
+        {opacity:1,transform:'translateX(0)'}
+      ],{duration:160,easing:'ease-out'});
+    }
+  }
   if(readAll&&scroll)blocks[current].scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('prev').addEventListener('click',()=>showSlide(current-1));
 $('next').addEventListener('click',()=>showSlide(current+1));
+$('mobile-prev').addEventListener('click',()=>showSlide(current-1));
+$('mobile-next').addEventListener('click',()=>showSlide(current+1));
 jumps.forEach((b,i)=>b.addEventListener('click',()=>showSlide(i)));
 function toggleClock(){
   if(startedAt!==null){elapsed=seconds();startedAt=null;clearInterval(interval);$('clock-toggle').textContent='Resume';}
@@ -147,7 +164,7 @@ function toggleClock(){
 $('clock-toggle').addEventListener('click',toggleClock);
 $('clock-reset').addEventListener('click',()=>{elapsed=0;startedAt=null;clearInterval(interval);$('clock-toggle').textContent='Start';paintClock();});
 function setReadAll(on,scroll=true){
-  readAll=mobileReader||on;$('script-paper').classList.toggle('readall',readAll);
+  readAll=mobileReader?false:on;$('script-paper').classList.toggle('readall',readAll);
   $('one-slide').classList.toggle('on',!readAll);$('read-through').classList.toggle('on',readAll);
   $('one-slide').setAttribute('aria-pressed',String(!readAll));$('read-through').setAttribute('aria-pressed',String(readAll));
   showSlide(current,scroll);
@@ -168,7 +185,7 @@ $('fullscreen').addEventListener('click',async()=>{
 });
 showSlide(0);
 
-// Read-through scrolls the preview with the script on laptops and phones.
+// Desktop Read through follows the script. Mobile always keeps one page selected.
 function measureReader(){
   if(!mobileReader)return;
   const root=document.documentElement;
@@ -178,20 +195,19 @@ function measureReader(){
   root.style.setProperty('--reader-preview',preview+'px');
 }
 function queueReaderUpdate(){
-  if((!mobileReader&&!readAll)||deckOnly||readerFrame||$('panel-pitch').hidden)return;
+  if(mobileReader){measureReader();return;}
+  if(!readAll||deckOnly||readerFrame||$('panel-pitch').hidden)return;
   readerFrame=requestAnimationFrame(()=>{
     readerFrame=0;
-    if((!mobileReader&&!readAll)||deckOnly||$('panel-pitch').hidden)return;
-    if(mobileReader)measureReader();
+    if(mobileReader||!readAll||deckOnly||$('panel-pitch').hidden)return;
     const header=document.querySelector('.top').getBoundingClientRect().bottom;
-    const readingLine=mobileReader?Math.max(header,$('deck-view').getBoundingClientRect().bottom)+16:header+24;
+    const readingLine=header+24;
     let active=0;
     for(let i=0;i<blocks.length;i++){
       if(blocks[i].getBoundingClientRect().top<=readingLine)active=i;
       else break;
     }
-    const atEnd=mobileReader?window.scrollY+window.innerHeight>=document.documentElement.scrollHeight-2:
-      $('script-paper').getBoundingClientRect().bottom<=window.innerHeight&&blocks[0].getBoundingClientRect().top<readingLine;
+    const atEnd=$('script-paper').getBoundingClientRect().bottom<=window.innerHeight&&blocks[0].getBoundingClientRect().top<readingLine;
     if(atEnd)active=blocks.length-1;
     if(active!==current)showSlide(active,false);
   });
@@ -202,11 +218,13 @@ function setMobileReader(){
   if(on)desktopReadingState={readAll,deckOnly};
   mobileReader=on;
   document.body.classList.toggle('mobile-reader',on);
+  document.body.classList.toggle('mobile-pitch',on&&!$('panel-pitch').hidden);
+  document.documentElement.classList.toggle('mobile-reader-page',on);
   deckOnly=on?false:desktopReadingState.deckOnly;
   document.body.classList.toggle('deckonly',deckOnly);
   $('deck-mode').textContent=deckOnly?'Show script':'Deck only';
   $('deck-mode').setAttribute('aria-pressed',String(deckOnly));
-  setReadAll(on?true:desktopReadingState.readAll,false);
+  setReadAll(on?false:desktopReadingState.readAll,false);
   if(on){measureReader();queueReaderUpdate();}
   else{
     cancelAnimationFrame(readerFrame);readerFrame=0;
@@ -225,6 +243,42 @@ if(typeof ResizeObserver==='function'){
   [document.querySelector('.top'),$('deck-view'),$('script-paper')].forEach(element=>readerObserver.observe(element));
 }
 setMobileReader();
+
+// All scripts, slide visuals and navigation code are already in this document.
+// A swipe changes local visibility only; it never changes the URL or fetches data.
+let swipe=null;
+const swipeSurface=document.querySelector('.stage');
+const swipeControl='a,button,input,select,textarea,video,audio,summary,[contenteditable]:not([contenteditable="false"])';
+const hasSelection=()=>Boolean(window.getSelection()?.toString());
+function cancelSwipe(){swipe=null;}
+swipeSurface.addEventListener('pointerdown',event=>{
+  if(!event.isPrimary){cancelSwipe();return;}
+  if(!mobileReader||$('panel-pitch').hidden||!['touch','pen'].includes(event.pointerType)||
+     event.target.closest(swipeControl)||hasSelection()||
+     event.clientX<24||event.clientX>window.innerWidth-24)return;
+  swipe={id:event.pointerId,x:event.clientX,y:event.clientY,horizontal:false};
+},{passive:true});
+window.addEventListener('pointerdown',event=>{if(!event.isPrimary)cancelSwipe();},{passive:true});
+window.addEventListener('pointermove',event=>{
+  if(!swipe||event.pointerId!==swipe.id)return;
+  const dx=Math.abs(event.clientX-swipe.x),dy=Math.abs(event.clientY-swipe.y);
+  // Let normal vertical scrolling/selection win before recognising a swipe.
+  if(!swipe.horizontal&&dy>10&&dy>dx){cancelSwipe();return;}
+  if(dx>10&&dx>dy*1.5)swipe.horizontal=true;
+},{passive:true});
+window.addEventListener('pointerup',event=>{
+  const start=swipe;cancelSwipe();
+  if(!start||event.pointerId!==start.id||!mobileReader||$('panel-pitch').hidden||hasSelection())return;
+  const dx=event.clientX-start.x,dy=event.clientY-start.y;
+  const threshold=Math.max(48,Math.min(80,window.innerWidth*.15));
+  if(start.horizontal&&Math.abs(dx)>=threshold&&Math.abs(dx)>Math.abs(dy)*1.5){
+    showSlide(current+(dx<0?1:-1));
+  }
+},{passive:true});
+window.addEventListener('pointercancel',cancelSwipe,{passive:true});
+window.addEventListener('blur',cancelSwipe);
+document.addEventListener('visibilitychange',cancelSwipe);
+mobileReaderQuery.addEventListener('change',cancelSwipe);
 
 const cards=[...document.querySelectorAll('.qcard')];
 const normalise=s=>s.normalize('NFKC').toLowerCase().replace(/[’']/g,'').replace(/\s+/g,' ');
