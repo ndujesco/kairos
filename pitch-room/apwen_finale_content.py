@@ -7,7 +7,7 @@ import cleva_content as shared
 
 DEMO_INFO = json.loads((Path(__file__).with_name('apwen_finale_demo.json')).read_text())
 META = dict(semi.META, title='Kairos | APWEN Finale', stage='Finale',
-            date='21 November 2026', version='apwen-finale-2026-11-21', demo_url='')
+            date='21 November 2026', version='apwen-finale-2026-11-21-v2', demo_url='')
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = 'miracle'
 
@@ -90,10 +90,7 @@ PAGE = dict(
     canonical_path='/apwen-finale.html', native_slides=True, web_deck=True,
     deck_base=BASE, deck_pdf=BASE+'/Kairos-APWEN-Finale.pdf', deck_pptx=None, deck_keynote=None,
     deck_title='Kairos · APWEN finale',
-    archive_downloads=[
-        {'label':'PowerPoint & Keynote', 'url':'https://drive.google.com/drive/folders/14tk6DUd2e85JNc2bKrxgpqhHPXfE37eP'},
-        {'label':'Demo · 2:39', 'url':'https://drive.google.com/file/d/1fnTagHQtZyfZaT9GDTlULkA-k6q5VuCO/view'},
-    ],
+    archive_downloads=[{'label': 'PowerPoint v2', 'url': 'https://drive.google.com/file/d/1WnZK9Q7qeR66N0WGzTeCXDj-OJwQxoQ0/view'}, {'label': 'Keynote v2', 'url': 'https://drive.google.com/file/d/1tF7POtF2UNkIsice68eRZEuTuP_2JceH/view'}, {'label': 'Demo v2 · 2:39', 'url': 'https://drive.google.com/file/d/1qiPfJxoMItDH0fDQ1lvzsSPWVryH4GMD/view'}],
     header='APWEN LASU\nFinale · Social Innovation',
     description='Kairos APWEN finale: the supplied script, short recorded demo transcript and native presentation previews.',
     footer='Abigail + Miracle · APWEN finale', hero_kicker='APWEN LASU · Finale',

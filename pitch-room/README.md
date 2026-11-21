@@ -10,6 +10,8 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 536 words; concise visual slides 7–9 after Demo 6, with full corrected narration in scripts/notes |
 
+The APWEN finale uses the corrected `Kairos-APWEN-Finale-Demo-v2.mp4` (159.1 seconds). Its opening “Now” is silenced through the actual quiet gap before the name; all video packets, captions and remaining timing are unchanged. Updated native PPTX/Keynote filenames end in `-v2`. The PDF and slide previews remain identical. Live phone touch and Start/Pause/Resume/Reset timer checks passed; the existing shared mobile reader and elapsed timer required no code changes.
+
 `/apwen-finale.html` is a separate finale with the supplied APWEN/Faith & Tech script. Its recording transcript is stored independently of live paragraphs, appears under slide 5 in the room/downloads/native notes, and is excluded from live word counts. New native files live in `../hackathons/2026-10 APWEN LASU/03 Finale Pitch/`; the web uses inline native previews/PDF and a local video picker.
 
 ## Previous URLs

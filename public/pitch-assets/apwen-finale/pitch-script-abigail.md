@@ -86,7 +86,7 @@ Delivery: Play the new APWEN finale recording once at normal player speed. Its 1
 
 Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: Kairos-APWEN-Finale-Demo.mp4 · 2:39. No overall pitch schedule is set.
+Recording: Kairos-APWEN-Finale-Demo-v2.mp4 · 2:39. No overall pitch schedule is set.
 
 ## Slide 6: Responsible operation
 

@@ -1,5 +1,23 @@
 # Kairos website handoff
 
+## Latest: APWEN opening corrected; live mobile/timer confirmed — 21 November
+
+User feedback showed the first opening edit left “Now” audible. Its heuristic ASR timestamp preceded the actual word; the initial 0.25 seconds removed only silence. The corrected **v2** silences the word through the quiet gap at 0.825 seconds in the Firebase source (0.5088496 in the first finale timeline), with a 3ms fade before the name. Every video packet, the email ending, caption timing, supplied script and **159.1-second duration** remain unchanged. Final movie SHA256 `951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733`.
+
+Use `Kairos-APWEN-Finale-Demo-v2.mp4` and native `Kairos-APWEN-Finale-v2.pptx/.key` under `../hackathons/2026-10 APWEN LASU/03 Finale Pitch/`. The native decks embed the exact corrected movie; all notes are unchanged. PDF/previews/transcription/subtitles are unchanged. Previous v1 MP4/PPTX/Keynote sources are retained under the stage `archive/2026-11-21 first opening cut/`; original Drive IDs remain valid. The three new v2 files passed remote SHA256/size verification. New direct download links identify v2 explicitly. The `Demos/05 APWEN Finale Demo/` shortcut and additive inventory/indexes identify only v2 as current.
+
+The user's follow-up asked for the Cleva mobile reader and a timer. Both were already present on the published APWEN page. Live headless Chrome touch checks verify forward/back swipes, hidden phone picture preview, no overflow, and an actual Start/Pause/Resume/Reset elapsed clock. No mobile/timer code change was needed. Movie decode, digital silence over the removed word, later narration correlation above 0.9999998, identical video packet hashes and Keynote save/reopen notes/movie checks pass. The published script/transcript wording is unchanged.
+
+Evidence, final archive IDs/hashes, local source relocations and deployment receipt: `../production/2026-11-21 APWEN opening correction/`. An unlinked filter trial failed validation and its upload was cancelled before a Drive file was created; it was never published or delivered. Final media is v2 with the SHA above. Push authorization carries forward from this same finale task. No other event edition, product, database, audio player, account or session changes.
+
+
+## In progress: clean APWEN opening; user taking over Drive upload — 21 November
+
+Corrected v2 MP4/PPTX/Keynote are ready under the APWEN finale stage; the exact new movie SHA256 is `951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733`. Initial v1 removed only silence, leaving “Now”; v2 silences it through the actual quiet gap before the name while preserving all picture packets, caption timing and the 159.1-second duration. Native notes/movie bytes and full decode/audio comparisons pass. The user also requested Cleva-like mobile swipes and a timer; both already exist in the published room and passed live touch and Start/Pause/Resume/Reset checks. No mobile code change was needed.
+
+The user explicitly chose manual Drive drag/drop after the automatic transfer was slow. Automatic upload is stopped. Finder shows the three corrected files via hard links at `../production/2026-11-21 APWEN opening correction/Upload these three corrected files/`; the existing destination is https://drive.google.com/drive/folders/14tk6DUd2e85JNc2bKrxgpqhHPXfE37eP . Await their “uploaded” reply. Then run that folder's parent `verify_manual_upload.py`, followed by `finish_delivery.py` once and live publication checks. Root `../CODEX_HANDOFF.md` and `manual-upload-manifest.json` give exact paths/state. Current website source metadata/README are dirty; public page/links are still the prior published release. Old media/source editions are untouched so far. Do not rerun automatic uploads or apply the non-idempotent finalizer before the three receipts exist.
+
+
 ## Latest: APWEN finale — 21 November
 
 The user requested a new, separate `/apwen-finale.html`, then explicitly said to push when done. This authorizes publishing this finale to the existing Kairos repository/project. The supplied script combines APWEN and Faith & Tech phrasing. Default presenter Miracle; Abigail changes only her two introductions. Ten visual slides, **397 live presenter words**, no inherited overall delivery schedule. Pasted UI fragments/old times are excluded. Full narration is retained verbatim; concise visual slides use the established green/lime APWEN/Faith layouts. Intended operating model and actual prototype limits are distinguished on slides/notes while preserving the supplied spoken copy.

@@ -1,6 +1,6 @@
 {
-  "filename": "Kairos-APWEN-Finale-Demo.mp4",
-  "local_path": "/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos/hackathons/2026-10 APWEN LASU/03 Finale Pitch/demo/Kairos-APWEN-Finale-Demo.mp4",
+  "filename": "Kairos-APWEN-Finale-Demo-v2.mp4",
+  "local_path": "/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos/hackathons/2026-10 APWEN LASU/03 Finale Pitch/demo/Kairos-APWEN-Finale-Demo-v2.mp4",
   "duration_seconds": 159.1,
   "speed_relative_to_firebase_cut": 1.13,
   "opening_removed_seconds": 0.25,
@@ -370,5 +370,11 @@
       "text": "she gets a receipt, one that she can inspect herself."
     }
   ],
-  "sha256": "500ae975ed82618bf63bda527f448b637baf8fe20e9814744b3eee44e4339510"
+  "sha256": "951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733",
+  "edition": "v2-clean-opening",
+  "timeline_trim_seconds": 0.25,
+  "opening_speech_removed_through_source_seconds": 0.825,
+  "opening_silent_samples": 24425,
+  "opening_silent_sample_rate": 48000,
+  "correction": "First edition removed silence before Now. This edition silences the actual word through the quiet gap before the name, preserving the original picture/audio timeline."
 }

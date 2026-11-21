@@ -1,12 +1,12 @@
 {
-  "version": "apwen-finale-2026-11-21",
+  "version": "apwen-finale-2026-11-21-v2",
   "slides": 10,
   "questions": 113,
   "priority": 28,
   "words": 397,
   "seconds": null,
   "source_content": "apwen_finale_content.py",
-  "source_sha256": "10272bec5ab36fa7cf28018c4672ef6170de62740187dedda4ea871d96e2950a",
+  "source_sha256": "0b5fc6c91e14b9ab82e65d2923e68e945936011f774c54d07c899c22e5ca7534",
   "deckBase": "pitch-assets/apwen-finale/deck",
   "deck_pdf": "pitch-assets/apwen-finale/deck/Kairos-APWEN-Finale.pdf",
   "deck_pptx": null,
@@ -105,7 +105,7 @@
   "demo_video_seconds": 159.1,
   "demo_section_seconds": null,
   "local_demo": true,
-  "demo_name": "Kairos-APWEN-Finale-Demo.mp4",
+  "demo_name": "Kairos-APWEN-Finale-Demo-v2.mp4",
   "deck_html": "pitch-assets/apwen-finale/deck.html",
   "canonical_path": "/apwen-finale.html"
 }
