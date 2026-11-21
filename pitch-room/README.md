@@ -1,5 +1,7 @@
 # Kairos presentation rooms
 
+For subsequent editions, the user confirmed that the HTML room should link directly to matching Drive-hosted PowerPoint/Keynote files **with the demo embedded**. Keep large movies/video-bearing decks off Vercel; lightweight previews/scripts/static PDFs may stay public. A standalone movie or a native deck without it does not satisfy that delivery. Validate the native notes/movie and remote hashes/IDs, then link to the exact current edition and retain earlier links.
+
 Use the event and stage in every new room name. The original `/pitch.html` remains frozen.
 
 | Canonical room | Content source | Current scope |

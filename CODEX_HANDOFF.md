@@ -1,5 +1,14 @@
 # Kairos website handoff
 
+## Final publication and standing presentation rule — 21 November
+
+APWEN opening correction is complete. The user manually uploaded all three v2 files; sizes/checksums match. Website commit `167ff55` is live in production deployment `dpl_4Rj1LxGYBqMrKDvaZ4TuJVDkVuQ6`, with fifteen live files matching their local bytes. Current `/apwen-finale.html` links directly to the uploaded **v2 PowerPoint and Keynote, both containing the exact corrected demo embedded**, and the v2 standalone recording. Native movie/notes checks, public Drive link checks, live mobile swipes and Start/Pause/Resume/Reset timer checks pass. No other room, spoken script, PDF or preview changed. Earlier manual-upload/in-progress entries below are completed history. Temporary upload hard links/diagnostic audio extracts were removed; current media and the archived v1 editing sources remain.
+
+**Standing user preference for future work:** keep large media/native decks in the existing Drive archive instead of Vercel, and link HTML directly to the matching current presentation **with the demo embedded**. A video-free deck or only a separate video link does not fulfill this preference. Lightweight scripts, previews and static PDFs may remain on the website. Verify native media/notes, remote hashes/IDs and page links; preserve previous edition IDs. This is also in root `AGENTS.md`/`CLAUDE.md`, website `AGENTS.md` and the presenter README. The user explicitly requested this handoff rule after understanding the APWEN delivery.
+
+Final evidence, IDs/checksums, exact old-to-new local source map, manual-upload and deployment receipts: `../production/2026-11-21 APWEN opening correction/`. The combined media index has 210 recorded editions and six current local demos; `/all.html` has 58 editions. The original 201-record archive evidence remains immutable. The unchanged PDF is still current; earlier native files/links are retained as backups.
+
+
 ## Latest: APWEN opening corrected; live mobile/timer confirmed — 21 November
 
 User feedback showed the first opening edit left “Now” audible. Its heuristic ASR timestamp preceded the actual word; the initial 0.25 seconds removed only silence. The corrected **v2** silences the word through the quiet gap at 0.825 seconds in the Firebase source (0.5088496 in the first finale timeline), with a 3ms fade before the name. Every video packet, the email ending, caption timing, supplied script and **159.1-second duration** remain unchanged. Final movie SHA256 `951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733`.
