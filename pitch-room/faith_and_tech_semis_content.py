@@ -305,8 +305,8 @@ PAGE = {'web_deck': True,
  'local_demo': False,
  'demo_name': 'kairos-jci-demo-original-audio.mp4',
  'demo_url': '',
- 'demo_source': '/Users/ndujekwuugochukwu/Desktop/Kairos - JCI Final Demo/01 '
-                'Compare/kairos-jci-demo-original-audio.mp4',
+ 'demo_source': '/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos/hackathons/'
+                '2026-10 Faith & Tech Conference/03 Semi-final Pitch/demo/kairos-jci-demo-original-audio.mp4',
  'section_budgets': [{'label': 'Technical approach and responsible operation',
                       'slides': [7, 8],
                       'seconds': 80}],
