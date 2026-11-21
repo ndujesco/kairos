@@ -1,5 +1,12 @@
 # Kairos website handoff
 
+## Latest: three chosen APWEN headings — 21 November
+
+After discussing alternatives, the user explicitly requested replacing these three headings together: solution “How Kairos works.”, sustainability “How we keep Kairos running.” and growth “Where we start. Where we go next.” Applied only to the current APWEN HTML presenter/script headings and their generated script/offline downloads. All spoken paragraphs, recent additions, recorded transcription, short explanation, word counts, mobile/timer code and embedded-demo Drive destinations are preserved. Native movie-bearing decks/notes, PDF and slide images remain the delivered files; this does not regenerate or upload media. Other competition rooms stay frozen.
+
+The prior page/scripts are automatically retained in the catalogue. Source before/after, chosen labels, title-only payload verification and publication receipt: `../production/2026-11-21 APWEN three headings/`. Push authorization continues from this finale task; final release details are in the root handoff after verification.
+
+
 ## Latest: two APWEN script additions — 21 November
 
 At the user's explicit “That is all” request, added “Kairos is that trusted middle layer.” as the first spoken paragraph of slide 3, and “We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.” as the first spoken paragraph of slide 10, before the existing closing. Both presenter variants and downloadable/offline scripts follow the changes. The existing short explanation remains unchanged. The final “That is all” was the request boundary, not narration.

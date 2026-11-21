@@ -25,13 +25,13 @@ SLIDES = [
         "Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.",
         "Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.",
     ], 'Let the school-fees story and the doubt land before introducing the solution.'),
-    section('From a published budget to a personal receipt.', 'solution', [
+    section('How Kairos works.', 'solution', [
         'Kairos is that trusted middle layer.',
         'First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or whomever is to be paid.',
         "Second, the cause is shared as a link, so donors can see the story, budget and payment history. A licensed partner holds donations in escrow and pays only those verified providers, never the organizer's personal account.",
         'Third, every donor gets a receipt showing their own share of each payment.',
     ], 'This is the intended live giving flow. Actual provider payment, custody and independent checks are simulated or unbuilt.'),
-    section('Useful to give. Sustainable to run.', 'business', [
+    section('How we keep Kairos running.', 'business', [
         'Kairos is built to be run, not sold.',
         "We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively take two percent per donation, capped at five thousand naira per cause. Donors see the fee before confirming.",
     ], 'NGO support is not secured. Upkeep is tentative and the cap is per cause.'),
@@ -47,7 +47,7 @@ SLIDES = [
         'The accounting, donor shares, notifications and public ledger are running.',
         'Every integration with third parties is simulated for now.',
     ], 'Distinguish simulated identity, custody and settlement from the actual Claude interview and hosted application/data services.'),
-    section('Start with a bill that can be checked.', 'growth', [
+    section('Where we start. Where we go next.', 'growth', [
         "We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response",
         'Then we plan to move to hospitals and other service providers.',
     ], 'Retain the supplied phrasing. Departmental feedback is qualitative interest, not a completed live-money pilot.'),

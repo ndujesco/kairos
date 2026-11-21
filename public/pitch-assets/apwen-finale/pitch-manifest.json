@@ -6,7 +6,7 @@
   "words": 424,
   "seconds": null,
   "source_content": "apwen_finale_content.py",
-  "source_sha256": "e5dab6825a3b6c1b467413df1bb7d6a408290179d899c8c7aa4637ff953bbe8d",
+  "source_sha256": "180009364769b863ce807d111846306542e15e98de4a2ca1b62dc032b129ad2e",
   "deckBase": "pitch-assets/apwen-finale/deck",
   "deck_pdf": "pitch-assets/apwen-finale/deck/Kairos-APWEN-Finale.pdf",
   "deck_pptx": null,
@@ -29,14 +29,14 @@
     {
       "n": 3,
       "key": "solution",
-      "title": "From a published budget to a personal receipt.",
+      "title": "How Kairos works.",
       "seconds": null,
       "is_demo": false
     },
     {
       "n": 4,
       "key": "business",
-      "title": "Useful to give. Sustainable to run.",
+      "title": "How we keep Kairos running.",
       "seconds": null,
       "is_demo": false
     },
@@ -64,7 +64,7 @@
     {
       "n": 8,
       "key": "growth",
-      "title": "Start with a bill that can be checked.",
+      "title": "Where we start. Where we go next.",
       "seconds": null,
       "is_demo": false
     },

@@ -28,7 +28,7 @@ Dishonest people have made skepticism the rational response and so potential don
 
 Delivery: Let the school-fees story and the doubt land before introducing the solution.
 
-## Slide 3: From a published budget to a personal receipt.
+## Slide 3: How Kairos works.
 
 Abigail or Miracle
 
@@ -42,7 +42,7 @@ Third, every donor gets a receipt showing their own share of each payment.
 
 Delivery: This is the intended live giving flow. Actual provider payment, custody and independent checks are simulated or unbuilt.
 
-## Slide 4: Useful to give. Sustainable to run.
+## Slide 4: How we keep Kairos running.
 
 Abigail or Miracle
 
@@ -108,7 +108,7 @@ Every integration with third parties is simulated for now.
 
 Delivery: Distinguish simulated identity, custody and settlement from the actual Claude interview and hosted application/data services.
 
-## Slide 8: Start with a bill that can be checked.
+## Slide 8: Where we start. Where we go next.
 
 Abigail or Miracle
 
