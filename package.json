@@ -35,7 +35,8 @@
     "pitch:apwen-semi": "python3 scripts/build-pitch.py --edition apwen-semi",
     "pitch:faith-and-tech-semis": "python3 scripts/build-pitch.py --edition faith-and-tech-semis",
     "test:interview": "node scripts/verify-interview-context.mjs",
-    "pitch:apwen-finale": "python3 scripts/build-pitch.py --edition apwen-finale"
+    "pitch:apwen-finale": "python3 scripts/build-pitch.py --edition apwen-finale",
+    "pitch:faith-and-tech-finale": "python3 scripts/build-pitch.py --edition faith-and-tech-finale"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",

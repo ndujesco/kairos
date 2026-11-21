@@ -1,0 +1,113 @@
+{
+  "version": "faith-and-tech-finale-current",
+  "slides": 10,
+  "questions": 80,
+  "priority": 21,
+  "words": 454,
+  "seconds": null,
+  "source_content": "faith_and_tech_finale_content.py",
+  "source_sha256": "24e1616a9d88e6352183549197900efb9daac581658498dc5894357a450bffb7",
+  "deckBase": "pitch-assets/faith-and-tech-finale/deck",
+  "deck_pdf": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pdf",
+  "deck_pptx": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pptx",
+  "timing_includes_full_demo": false,
+  "slide_order": [
+    {
+      "n": 1,
+      "key": "cover",
+      "title": "Transparent giving for Nigeria",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 2,
+      "key": "problem",
+      "title": "A transfer succeeds. The doubt stays.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 3,
+      "key": "solution",
+      "title": "How Kairos works.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 4,
+      "key": "business",
+      "title": "How we keep Kairos running.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 5,
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": null,
+      "is_demo": true
+    },
+    {
+      "n": 6,
+      "key": "responsible",
+      "title": "Responsible operation",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 7,
+      "key": "prototype",
+      "title": "What runs today.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "growth",
+      "title": "Where we start. Where we go next.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 9,
+      "key": "team",
+      "title": "Abigail and Ugochukwu.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 10,
+      "key": "closing",
+      "title": "Give with proof, not faith.",
+      "seconds": null,
+      "is_demo": false
+    }
+  ],
+  "default_presenter": "ugochukwu",
+  "presenters": {
+    "abigail": {
+      "name": "Abigail",
+      "words": 454,
+      "script": "pitch-script-abigail.md"
+    },
+    "ugochukwu": {
+      "name": "Ugochukwu",
+      "words": 454,
+      "script": "pitch-script-ugochukwu.md"
+    }
+  },
+  "timing_set": false,
+  "elapsed_timer": true,
+  "assetsBase": "pitch-assets/faith-and-tech-finale",
+  "storagePrefix": "kairos-faith-and-tech-finale-room-v1",
+  "demoUrl": "",
+  "demo_slide": 5,
+  "demo_video_seconds": 0,
+  "demo_section_seconds": null,
+  "demo_placeholder": true,
+  "local_demo": false,
+  "demo_name": "",
+  "deck_keynote": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.key",
+  "deck_html": "pitch-assets/faith-and-tech-finale/deck.html",
+  "canonical_path": "/faith-and-tech-finale.html"
+}

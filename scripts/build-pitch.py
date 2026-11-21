@@ -30,6 +30,7 @@ ROOMS = {
     "apwen-semi": ("apwen_semi_content.py", ["apwen-pitch.html"], "kairos-apwen-room-v1", False),
     "apwen-finale": ("apwen_finale_content.py", [], "kairos-apwen-finale-room-v1", False),
     "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v2", False),
+    "faith-and-tech-finale": ("faith_and_tech_finale_content.py", [], "kairos-faith-and-tech-finale-room-v1", False),
 }
 
 
@@ -242,6 +243,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         deck_downloads += f' <a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>'
     if web_deck and deck_pptx:
         deck_downloads += f' <a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>'
+    if web_deck and deck_keynote:
+        deck_downloads += ' ' + keynote_download
     for download in page.get('archive_downloads', []):
         deck_downloads += f' <a href="{e(download["url"])}" target="_blank" rel="noopener">{e(download["label"])}</a>'
     if page.get('hide_deck_downloads'):
