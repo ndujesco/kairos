@@ -1,5 +1,17 @@
 # Kairos website handoff
 
+## Latest UI research: book-style page curl — 21 November
+
+The user asked whether the phone script could have an Apple Books-style page-turn animation and requested online examples. Researched the primary StPageFlip demo/docs (https://nodlik.github.io/StPageFlip/ and https://github.com/Nodlik/StPageFlip) and its newer pre-1.0 successor OpenPageFlip (https://github.com/benhonda/openpageflip). Both offer soft-page folding/shadows; OpenPageFlip documents single-page layout, reduced motion and DOM/renderer cleanup. Registry versions observed: page-flip 2.0.7 and @openpageflip/core 0.7.0. Public types/CSS were inspected without installation or execution. Research and integration constraints: `../production/2026-11-21 book page curl research/README.md`.
+
+Recommendation: a finger-driven soft curl with subtle shadows and quick settling, retaining the current arrow buttons, script-only phone view, forgiving gestures, full long-script access and preloaded/offline navigation. This was research only; no presenter code, dependencies, room editions, deployment, data, media or sessions changed. Any implementation still needs touch/long-note/cancellation/backwards-turn/rotation checks. Existing unrelated handoff edits are preserved.
+
+## Latest: AI in Nigeria final two responses and video preference — 21 November
+
+The user supplied a sixth screenshot and requested only the two written fields: **Why is your team interested in the AI Startup Challenge?** and **What skills or experience does your team bring?** Added both as exact-label, answer-only text files under `../hackathons/2026-11 AI in Nigeria/01 Application/answers/`. There are now **12 response files and six retained screenshots**. The skills answer includes the confirmed JCI GDE first-place result without claiming receipt of prize money or assuming the event roster. No availability or consent answer was made.
+
+The user's intervening preference was **Video demonstration**, using their existing **https://youtu.be/KaIo6rXqsUI** upload. The supporting-material answer, README and manifest now reflect it. The old `Working product or prototype demo link.txt` retains the product URL as an alternative for Prototype link; for the video selection use the YouTube URL. Its conditional video-field label was not supplied, so no exact-label filename was invented. The existing upload previously had the Firebase demo title; no new upload/title change or submission is confirmed. Original draft records are retained under the preparation evidence's `Before final two answers/`. HISTORY is updated. No product, presenter/media, database, deployment, Drive or account/session changes.
+
 ## Latest: AI in Nigeria project application answers prepared — 21 November
 
 The user supplied five screenshots of the AI in Nigeria × Flutterwave AI Startup Challenge project section and clarified that the beginning of the form is already filled. Prepare only these project answers; no further team/eligibility questions are needed for this request. Saved ten answer-only, exact-visible-label `.txt` files in `../hackathons/2026-11 AI in Nigeria/01 Application/answers/`, with all five original screenshots retained byte for byte. Recommended dropdowns are **Early prototype** and **Prototype link**. The conditional URL label is **Working product or prototype demo link**, exactly as shown in the screenshots; its answer is **https://kairos-community.vercel.app**.
