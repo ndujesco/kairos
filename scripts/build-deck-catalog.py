@@ -79,6 +79,8 @@ def snapshot(source, entries):
             rows = ['# ' + title, 'Presenter: ' + presenter]
             for i, slide in enumerate(script['slides'], 1):
                 rows += ['## Slide ' + str(i) + ': ' + slide['title'], *slide['paragraphs']]
+                if slide.get('recorded_transcript'):
+                    rows += ['### Recorded demo transcription', *slide['recorded_transcript']]
             (directory / ('pitch-script-' + presenter + '.md')).write_text('\n\n'.join(rows) + '\n')
         if scripts:
             shutil.copy2(directory / ('pitch-script-' + scripts[0][0] + '.md'), directory / 'pitch-script.md')
