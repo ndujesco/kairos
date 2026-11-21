@@ -26,6 +26,7 @@ SLIDES = [
         "Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.",
     ], 'Let the school-fees story and the doubt land before introducing the solution.'),
     section('From a published budget to a personal receipt.', 'solution', [
+        'Kairos is that trusted middle layer.',
         'First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or whomever is to be paid.',
         "Second, the cause is shared as a link, so donors can see the story, budget and payment history. A licensed partner holds donations in escrow and pays only those verified providers, never the organizer's personal account.",
         'Third, every donor gets a receipt showing their own share of each payment.',
@@ -54,6 +55,7 @@ SLIDES = [
         "And this is the team. I'm Miracle, the product designer. Abigail is our team lead and product manager.",
     ], 'Introduce both people on the slide. Either Abigail or Miracle can lead this presentation.'),
     section('Give with proof, not faith.', 'closing', [
+        "We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.",
         "In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.",
     ], 'Thank them, then stop.'),
 ]
@@ -74,7 +76,7 @@ def shared_paragraphs(slide, markdown=False):
     return list(slide['paragraphs'])
 
 
-SHORT_PITCH = list(SLIDES[-1]['paragraphs'])
+SHORT_PITCH = list(SLIDES[-1]['paragraphs'][1:])
 DEMO = []
 GROUPS = deepcopy(semi.GROUPS)
 QUESTIONS = deepcopy(semi.QUESTIONS)

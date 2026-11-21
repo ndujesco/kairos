@@ -3,10 +3,10 @@
   "slides": 10,
   "questions": 113,
   "priority": 28,
-  "words": 397,
+  "words": 424,
   "seconds": null,
   "source_content": "apwen_finale_content.py",
-  "source_sha256": "0b5fc6c91e14b9ab82e65d2923e68e945936011f774c54d07c899c22e5ca7534",
+  "source_sha256": "ba743d2d087ca51bab7eb6c97a8b0470e04931e8169bc8db6d3ad6d82646dd5d",
   "deckBase": "pitch-assets/apwen-finale/deck",
   "deck_pdf": "pitch-assets/apwen-finale/deck/Kairos-APWEN-Finale.pdf",
   "deck_pptx": null,
@@ -87,12 +87,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 397,
+      "words": 424,
       "script": "pitch-script-abigail.md"
     },
     "miracle": {
       "name": "Miracle",
-      "words": 397,
+      "words": 424,
       "script": "pitch-script-miracle.md"
     }
   },

@@ -4,7 +4,7 @@ Sokenu Abigail · Omohuma Miracle
 
 Lead presenter: Abigail.
 
-10 slides, 397 presenter words. No delivery schedule is set.
+10 slides, 424 presenter words. No delivery schedule is set.
 
 Ten slides. Default presenter: Miracle. The supplied wording is retained; pasted interface labels and old timings are excluded. The demo transcript is shown at slide 5 and is not extra live narration. No overall pitch schedule is assigned.
 
@@ -31,6 +31,8 @@ Delivery: Let the school-fees story and the doubt land before introducing the so
 ## Slide 3: From a published budget to a personal receipt.
 
 Abigail
+
+Kairos is that trusted middle layer.
 
 First, an AI interviewer helps the organizer explain the need and publish an itemised budget naming the school, hospital or whomever is to be paid.
 
@@ -127,6 +129,8 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 ## Slide 10: Give with proof, not faith.
 
 Abigail
+
+We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.
 
 In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
 

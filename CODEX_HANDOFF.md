@@ -1,5 +1,12 @@
 # Kairos website handoff
 
+## Latest: two APWEN script additions — 21 November
+
+At the user's explicit “That is all” request, added “Kairos is that trusted middle layer.” as the first spoken paragraph of slide 3, and “We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.” as the first spoken paragraph of slide 10, before the existing closing. Both presenter variants and downloadable/offline scripts follow the changes. The existing short explanation remains unchanged. The final “That is all” was the request boundary, not narration.
+
+This is an HTML/script wording update only. All other narration, the full recorded transcript, timing, native v2 decks/notes, PDF/previews, embedded-demo Drive links, video bytes and mobile/timer behavior remain as previously delivered. No native rebuild, media upload or other event edit. Source and text-preservation/publication receipts: `../production/2026-11-21 APWEN two script additions/`. The prior published room is automatically retained in `/all.html`. Publish permission continues from the same finale task.
+
+
 ## Final publication and standing presentation rule — 21 November
 
 APWEN opening correction is complete. The user manually uploaded all three v2 files; sizes/checksums match. Website commit `167ff55` is live in production deployment `dpl_4Rj1LxGYBqMrKDvaZ4TuJVDkVuQ6`, with fifteen live files matching their local bytes. Current `/apwen-finale.html` links directly to the uploaded **v2 PowerPoint and Keynote, both containing the exact corrected demo embedded**, and the v2 standalone recording. Native movie/notes checks, public Drive link checks, live mobile swipes and Start/Pause/Resume/Reset timer checks pass. No other room, spoken script, PDF or preview changed. Earlier manual-upload/in-progress entries below are completed history. Temporary upload hard links/diagnostic audio extracts were removed; current media and the archived v1 editing sources remain.

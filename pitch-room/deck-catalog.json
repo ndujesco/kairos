@@ -595,5 +595,15 @@
     "sources": [
       "website/public/apwen-finale.html"
     ]
+  },
+  {
+    "title": "APWEN · apwen finale · presenter room",
+    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--5b583fc24f/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "5b583fc24f9deb59e7abf97a323ff9f25504c0535ec94243b445eb626127a413",
+    "sources": [
+      "website/public/apwen-finale.html"
+    ]
   }
 ]
