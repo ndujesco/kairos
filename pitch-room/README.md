@@ -1,5 +1,7 @@
 # Kairos presentation rooms
 
+Current delivery policy, confirmed 21 November: keep only the latest presentation files with clean names. Apply requested headings to actual native slides, PDF/slide previews, HTML and full current presenter notes together. Keep the demo embedded in native PowerPoint/Keynote, host those large files in Drive, and link HTML directly to the current files. Replace current Drive files when updating; no visible version suffixes or automatic snapshots. Snapshot support is opt-in via preserve_editions=True. Superseded APWEN finale copies were explicitly authorized for deletion; other competition histories remain separate.
+
 For subsequent editions, the user confirmed that the HTML room should link directly to matching Drive-hosted PowerPoint/Keynote files **with the demo embedded**. Keep large movies/video-bearing decks off Vercel; lightweight previews/scripts/static PDFs may stay public. A standalone movie or a native deck without it does not satisfy that delivery. Validate the native notes/movie and remote hashes/IDs, then link to the exact current edition and retain earlier links.
 
 Use the event and stage in every new room name. The original `/pitch.html` remains frozen.
@@ -8,11 +10,11 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | --- | --- | --- |
 | `/cleva-finale.html` | `cleva_finale_content.py` | Nine-slide current room, 741 presenter words, unchanged 10:25 web rehearsal plan; local final demo is 4:37 in Drive |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
-| `/apwen-finale.html` | `apwen_finale_content.py` | Ten slides, 397 live presenter words, full demo transcript on slide 5, 2:39.1 demo; native PPTX/Keynote/PDF |
+| `/apwen-finale.html` | `apwen_finale_content.py` | Ten slides, 424 live presenter words, full demo transcript on slide 5, 2:39.1 demo; native PPTX/Keynote/PDF |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 536 words; concise visual slides 7–9 after Demo 6, with full corrected narration in scripts/notes |
 
-The APWEN finale uses the corrected `Kairos-APWEN-Finale-Demo-v2.mp4` (159.1 seconds). Its opening “Now” is silenced through the actual quiet gap before the name; all video packets, captions and remaining timing are unchanged. Updated native PPTX/Keynote filenames end in `-v2`. The PDF and slide previews remain identical. Live phone touch and Start/Pause/Resume/Reset timer checks passed; the existing shared mobile reader and elapsed timer required no code changes.
+The APWEN finale uses the corrected `Kairos-APWEN-Finale-Demo.mp4` (159.1 seconds). Its opening “Now” is silenced through the actual quiet gap before the name; all video packets, captions and remaining timing are unchanged. Native PowerPoint/Keynote/PDF and web previews use the chosen titles and clean filenames. Only current delivery files are retained. Live phone touch and Start/Pause/Resume/Reset timer checks passed; the existing shared mobile reader and elapsed timer required no code changes.
 
 `/apwen-finale.html` is a separate finale with the supplied APWEN/Faith & Tech script. Its recording transcript is stored independently of live paragraphs, appears under slide 5 in the room/downloads/native notes, and is excluded from live word counts. New native files live in `../hackathons/2026-10 APWEN LASU/03 Finale Pitch/`; the web uses inline native previews/PDF and a local video picker.
 
@@ -73,9 +75,9 @@ Faith & Tech Q&A now has 80 questions (21 marked Rehearse first). The original e
 
 ## Deck catalogue and media preservation (20 November)
 
-`/all.html` lists current rooms and retained HTML/script editions. Run `npm run pitch:catalog` to rebuild the index from `deck-catalog.json`; importing retained local historical sources is an explicit `python3 scripts/build-deck-catalog.py --import-local` operation. The register is append-only for archived editions. Each presenter build snapshots its existing HTML before replacement, preserving slide/script text, removing hosted movie playback/downloads and giving the archive its own browser preferences. Original local sources remain untouched.
+`/all.html` lists current rooms and retained HTML/script editions. Run `npm run pitch:catalog` to rebuild the index from `deck-catalog.json`; importing retained local historical sources is an explicit `python3 scripts/build-deck-catalog.py --import-local` operation. The register is append-only for archived editions. Snapshots are now opt-in via preserve_editions=True; an explicitly requested snapshot can preserve HTML before replacement, preserving slide/script text, removing hosted movie playback/downloads and giving the archive its own browser preferences. Original local sources remain untouched.
 
-Keep demo videos and video-bearing PowerPoint/Keynote files in `~/Documents/Kairos` and the existing Drive `Kairos/Media Archive`, with checksums and original-path mappings. All earlier editions must be retained before replacement. APWEN and Cleva preliminary now use Demo placeholders/PDF-only downloads. Their former four movie-bearing native web downloads and two hosted pitch movies are archived locally. `npm run build` runs the public-media guard. The current Faith/finale/shared room content and all historical local submissions are preserved.
+Keep demo videos and video-bearing PowerPoint/Keynote files in `~/Documents/Kairos` and the existing Drive `Kairos/Media Archive`, with checksums and original-path mappings. The latest user instruction is to keep only the current delivery; older competition histories are separate. APWEN and Cleva preliminary now use Demo placeholders/PDF-only downloads. Their former four movie-bearing native web downloads and two hosted pitch movies are archived locally. `npm run build` runs the public-media guard. The current Faith/finale/shared room content and all historical local submissions are preserved.
 
 
 The catalogue now has 47 editions, including earlier NextAI, Meta GITEX, Access Youth Tech Forge, Forge, JCI, APWEN and Faith application decks. Native/PDF galleries retain original visuals and notes where present; related scripts remain available. The July Forge original and later-cover seven-slide PDF are separate. The media archive is complete and checksum-verified in Drive. The local catalogue retains restore IDs; redundant local historical media copies were removed at the user's request. See the latest handoff before restoring media or resuming any transfer.

@@ -212,9 +212,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     catalog_spec = importlib.util.spec_from_file_location('deck_catalog', ROOT / 'scripts/build-deck-catalog.py')
     catalog = importlib.util.module_from_spec(catalog_spec)
     catalog_spec.loader.exec_module(catalog)
-    catalog.preserve_existing_page(output)
     assets.mkdir(parents=True, exist_ok=True)
     page = page_options(content, cleva=cleva)
+    if page.get('preserve_editions', False):
+        catalog.preserve_existing_page(output)
     if page.get('demo_placeholder'):
         for presentation in assets.rglob('*.pptx'):
             with ZipFile(presentation) as package:

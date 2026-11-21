@@ -1,5 +1,26 @@
 # Kairos website handoff
 
+## Latest: native slides corrected; latest-only delivery — 21 November
+
+The user clarified that the selected headings must change in the actual slides, and explicitly requested deleting older versions. Updated native slides 3/4/8 to “How Kairos works.”, “How we keep Kairos running.” and “Where we start. Where we go next.” Updated the full presenter notes to the complete current script, including both recent additions. PowerPoint and native Keynote embed the exact corrected 159.1-second movie. The matching PDF, all native slide previews, HTML deck, script room and offline files now agree. Native Keynote save/reopen verified all notes and the embedded movie; actual slide titles were checked in the PDF and visually inspected.
+
+Delivery uses clean canonical filenames under `../hackathons/2026-10 APWEN LASU/03 Finale Pitch/deck/` and `demo/`; no v2 suffixes or duplicate finale deliveries. The three replacement files were manually uploaded by the user and checksums/IDs verified before publication. Superseded APWEN finale local binaries and web snapshots were deleted; older Drive copies were moved to Drive Trash. Current Drive file IDs stay stable when replaced. Other competitions and their submissions were outside this cleanup.
+
+**New standing instruction supersedes retain-every-edition:** keep only the latest delivery, update native slide/script headings and full notes together, and stop automatic snapshot/version-copy creation unless explicitly requested. The presenter builder now snapshots only with preserve_editions=True. Keep large current native decks/movies in Drive; HTML links directly to the presentation with demo embedded. Evidence, cleanup receipts, current-file/upload manifests and final publication receipt: `../production/2026-11-21 APWEN latest only/`. Follow this newest handoff rather than historical preservation notes below.
+
+
+## Awaiting three manual replacements: actual slides fixed; latest-only cleanup complete — 21 November
+
+All local current slides/notes/native decks/PDF/previews now agree with the selected headings and complete current script. Local and Drive filenames are canonical without v2; superseded APWEN finale copies and its five web snapshots are removed. Drive current IDs remain the same. User has been shown the prepared three-file hard-link folder and existing Drive folder and told to choose Replace for PPTX, Keynote and PDF. No movie upload is required. Await their upload confirmation, then run `../production/2026-11-21 APWEN latest only/verify_replacements.py`, `publish_latest.py` and final live checks. Do not rerun the completed cleanup scripts. Root handoff has exact status and instructions. Website changes are still local; no final live release is claimed until verification/publication. Latest-only policy supersedes historical retention notes below.
+
+
+## In progress: actual native slides and latest-only files — 21 November
+
+The user corrected the prior script-only interpretation: actual slide titles must match, and only the latest delivery should remain. Explicitly authorized deleting older APWEN finale versions and offered manual upload help. Clean current native PPTX/Keynote/PDF now have the chosen titles and full current notes; notes/movie/hash checks pass and PDF previews were visually inspected. Older local native copies and APWEN web snapshots are removed; Drive cleanup/renaming is ongoing. No automatic uploads.
+
+See root `../CODEX_HANDOFF.md` and `../production/2026-11-21 APWEN latest only/` for exact state and commands. Wait for Drive canonical-name cleanup, then open the prepared three-file replacement folder and existing APWEN Drive folder. User should choose Replace for PPTX/Keynote/PDF; movie only needed renaming. After they confirm upload, run verify_replacements.py then publish_latest.py and the live deployment checks. Public website files have been prepared locally but are not yet released; uploaded native contents still need replacement. Do not declare done or leave the website linked to stale actual slides. The user latest-only policy supersedes preservation/versioning instructions below and is already in active project rules.
+
+
 ## Latest: three chosen APWEN headings — 21 November
 
 After discussing alternatives, the user explicitly requested replacing these three headings together: solution “How Kairos works.”, sustainability “How we keep Kairos running.” and growth “Where we start. Where we go next.” Applied only to the current APWEN HTML presenter/script headings and their generated script/offline downloads. All spoken paragraphs, recent additions, recorded transcription, short explanation, word counts, mobile/timer code and embedded-demo Drive destinations are preserved. Native movie-bearing decks/notes, PDF and slide images remain the delivered files; this does not regenerate or upload media. Other competition rooms stay frozen.

@@ -7,7 +7,7 @@ import cleva_content as shared
 
 DEMO_INFO = json.loads((Path(__file__).with_name('apwen_finale_demo.json')).read_text())
 META = dict(semi.META, title='Kairos | APWEN Finale', stage='Finale',
-            date='21 November 2026', version='apwen-finale-2026-11-21-v2', demo_url='')
+            date='21 November 2026', version='apwen-finale-current', demo_url='')
 PRESENTERS = deepcopy(shared.PRESENTERS)
 DEFAULT_PRESENTER = 'miracle'
 

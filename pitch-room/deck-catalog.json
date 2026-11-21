@@ -575,55 +575,5 @@
     "sources": [
       "website/public/apwen-semi.html"
     ]
-  },
-  {
-    "title": "APWEN · apwen finale · presenter room",
-    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--78923369b0/index.html",
-    "status": "Archived",
-    "detail": "Preserved slides and full presenter scripts.",
-    "source_sha256": "78923369b0a98fc101def903cb81f18638617c9169cf8b49d356b495d92bc1f9",
-    "sources": [
-      "website/public/apwen-finale.html"
-    ]
-  },
-  {
-    "title": "APWEN · apwen finale · presenter room",
-    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--ebc7e7d689/index.html",
-    "status": "Archived",
-    "detail": "Preserved slides and full presenter scripts.",
-    "source_sha256": "ebc7e7d68981600a3ffd369281b8de6f94b26d4a81b04860baa02cb9553554e7",
-    "sources": [
-      "website/public/apwen-finale.html"
-    ]
-  },
-  {
-    "title": "APWEN · apwen finale · presenter room",
-    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--5b583fc24f/index.html",
-    "status": "Archived",
-    "detail": "Preserved slides and full presenter scripts.",
-    "source_sha256": "5b583fc24f9deb59e7abf97a323ff9f25504c0535ec94243b445eb626127a413",
-    "sources": [
-      "website/public/apwen-finale.html"
-    ]
-  },
-  {
-    "title": "APWEN · apwen finale · presenter room",
-    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--1a6bec3780/index.html",
-    "status": "Archived",
-    "detail": "Preserved slides and full presenter scripts.",
-    "source_sha256": "1a6bec3780e89303ed749e1af330001eeae2c87c5b8e35bda222ccaa0d4dbf1b",
-    "sources": [
-      "website/public/apwen-finale.html"
-    ]
-  },
-  {
-    "title": "APWEN · apwen finale · presenter room",
-    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--671cf2cceb/index.html",
-    "status": "Archived",
-    "detail": "Preserved slides and full presenter scripts.",
-    "source_sha256": "671cf2cceb9878a8fc466adb512bb1455c6a3351005bf521b2d165d2399de730",
-    "sources": [
-      "website/public/apwen-finale.html"
-    ]
   }
 ]
