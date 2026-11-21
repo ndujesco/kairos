@@ -22,11 +22,13 @@ Aliases are generated from their canonical page. Each stage has separate scripts
 
 ## Mobile navigation (21 November)
 
-Current Cleva finale, Faith & Tech semi-final and APWEN semi-final rooms show one slide and its script at a time on phones. Swipe left for the next page or right for the previous page, or use the fixed, large arrow buttons and slide counter. Long notes still scroll vertically within the selected page; changing pages starts the new notes at the top. The selected page and reading position survive a visit to Q&A or Prep. Presenter switching keeps the selected page.
+Current Cleva finale, Faith & Tech semi-final and APWEN semi-final rooms show one script page at a time on phones. Following phone feedback, the picture preview is hidden to give the script more room; the separate Demo tab and Faith's elapsed timer remain available. Swipe left for the next page or right for the previous page, or use the fixed, large arrow buttons and slide counter. Long notes still scroll vertically within the selected page; changing pages starts the new notes at the top. The selected page and reading position survive a visit to Q&A or Prep. Presenter switching keeps the selected page.
+
+Short strokes, quick flicks and modest diagonal thumb movement change pages across the reading area, including its gutters. The script follows the finger and returns smoothly if the gesture is too small or at a boundary. Touch Events handle phone gestures, with Pointer Events for pens and touch browsers without Touch Events.
 
 Navigation only changes visibility in the loaded document. Every slide preview and script is embedded, including Cleva's demo poster; swiping does not fetch data, change the URL or replace the document. Playing a separately selected local video remains a separate action. Gestures on controls, text selections, screen edges and multiple touches do not change pages. Browser vertical scrolling and pinch zoom remain available, and reduced-motion preferences disable the page animation.
 
-The shared CSS/JavaScript and builder supply this behavior to future rooms. It applies below 801px, or on touch devices up to 1100px to include landscape phones. Desktop one-slide, Read through, deck-only and printing behavior are retained, including mode restoration after resizing. The frozen shared and preliminary pages are not rebuilt. Production checks and screenshots: `../production/2026-11-21 mobile swipe presenter/`.
+The shared CSS/JavaScript and builder supply this behavior to future rooms. It applies below 801px, or on touch devices up to 1100px to include landscape phones. Desktop retains its slide preview, one-slide, Read through, deck-only and printing behavior, including mode restoration after resizing. The frozen shared and preliminary pages are not rebuilt. Latest checks and screenshots: `../production/2026-11-21 mobile script swipe refinement/`; earlier QA: `../production/2026-11-21 mobile swipe presenter/`.
 
 The original `cleva_pitch_content.py` and `apwen_pitch_content.py` filenames are compatibility imports. The frozen `cleva_content.py` is still the general/shared source; do not modify it for event work.
 

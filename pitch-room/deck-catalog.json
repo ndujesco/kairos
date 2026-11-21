@@ -539,5 +539,35 @@
     "sources": [
       "website/public/apwen-semi.html"
     ]
+  },
+  {
+    "title": "Cleva · cleva finale · presenter room",
+    "url": "/pitch-archive/cleva-cleva-finale-presenter-room--a287e84667/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "a287e846679d303692ebe239020680193cfb4a0ed9fce5e81736f2fb660e606f",
+    "sources": [
+      "website/public/cleva-finale.html"
+    ]
+  },
+  {
+    "title": "Faith & Tech · faith and tech semis · presenter room",
+    "url": "/pitch-archive/faith-tech-faith-and-tech-semis-presenter-room--39ab5513c5/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "39ab5513c5414a25564dd20d8a84b40ad9910cb84d9d6c50b50279781273f5f9",
+    "sources": [
+      "website/public/faith-and-tech-semis.html"
+    ]
+  },
+  {
+    "title": "APWEN · apwen semi · presenter room",
+    "url": "/pitch-archive/apwen-apwen-semi-presenter-room--1e892ba02b/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "1e892ba02b00628b74411896ede4cb9ec3428873422bfd92c7d17ffeb7fd0088",
+    "sources": [
+      "website/public/apwen-semi.html"
+    ]
   }
 ]

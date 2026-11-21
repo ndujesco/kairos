@@ -144,7 +144,7 @@ function showSlide(n,scroll=true){
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&typeof $('script-paper').animate==='function'){
       $('script-paper').getAnimations?.().forEach(animation=>animation.cancel());
       $('script-paper').animate([
-        {opacity:.5,transform:'translateX('+(current>previous?18:-18)+'px)'},
+        {opacity:.85,transform:'translateX('+(current>previous?24:-24)+'px)'},
         {opacity:1,transform:'translateX(0)'}
       ],{duration:160,easing:'ease-out'});
     }
@@ -246,36 +246,90 @@ setMobileReader();
 
 // All scripts, slide visuals and navigation code are already in this document.
 // A swipe changes local visibility only; it never changes the URL or fetches data.
-let swipe=null;
-const swipeSurface=document.querySelector('.stage');
+let swipe=null,swipeFrame=0;
+const swipeSurface=$('main'),swipePaper=$('script-paper');
 const swipeControl='a,button,input,select,textarea,video,audio,summary,[contenteditable]:not([contenteditable="false"])';
 const hasSelection=()=>Boolean(window.getSelection()?.toString());
-function cancelSwipe(){swipe=null;}
+const reducedSwipeMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function resetSwipeVisual(settle=false){
+  cancelAnimationFrame(swipeFrame);swipeFrame=0;
+  const transform=swipePaper.style.transform;
+  swipePaper.style.removeProperty('transform');
+  document.body.classList.remove('swiping');
+  if(settle&&transform&&!reducedSwipeMotion.matches&&typeof swipePaper.animate==='function'){
+    swipePaper.animate([{transform},{transform:'translateX(0)'}],{duration:140,easing:'ease-out'});
+  }
+}
+function cancelSwipe(){swipe=null;resetSwipeVisual();}
+function beginSwipe(x,y,id,input,time,target){
+  if(!mobileReader||$('panel-pitch').hidden||target.closest(swipeControl)||hasSelection()||
+     x<16||x>window.innerWidth-16)return;
+  cancelSwipe();
+  swipePaper.getAnimations?.().forEach(animation=>animation.cancel());
+  swipe={id,input,x,y,time,dx:0,horizontal:false};
+}
+function moveSwipe(x,y){
+  if(!swipe)return;
+  const dx=x-swipe.x,dy=Math.abs(y-swipe.y),distance=Math.abs(dx);
+  // A little diagonal drift is normal. Only lock vertical when it clearly wins.
+  if(!swipe.horizontal&&dy>12&&dy>distance*1.2){cancelSwipe();return;}
+  if(!swipe.horizontal&&distance>8&&distance>dy*1.15){
+    swipe.horizontal=true;document.body.classList.add('swiping');
+  }
+  swipe.dx=dx;
+  if(swipe.horizontal&&!swipeFrame&&!reducedSwipeMotion.matches){
+    swipeFrame=requestAnimationFrame(()=>{
+      swipeFrame=0;if(!swipe)return;
+      const atEdge=swipe.dx>0?current===0:current===DATA.slides.length-1;
+      const travel=Math.max(-120,Math.min(120,swipe.dx*(atEdge?.2:1)));
+      swipePaper.style.transform='translate3d('+travel+'px,0,0)';
+    });
+  }
+}
+function finishSwipe(x,y,time){
+  const start=swipe;swipe=null;
+  if(!start||!mobileReader||$('panel-pitch').hidden||hasSelection()){resetSwipeVisual(true);return;}
+  const dx=x-start.x,dy=Math.abs(y-start.y),distance=Math.abs(dx);
+  const threshold=Math.max(28,Math.min(44,window.innerWidth*.08));
+  const quickFlick=distance>=18&&distance/Math.max(1,time-start.time)>=.35;
+  const next=Math.max(0,Math.min(DATA.slides.length-1,current+(dx<0?1:-1)));
+  const advance=start.horizontal&&distance>dy*1.1&&(distance>=threshold||quickFlick)&&next!==current;
+  resetSwipeVisual(!advance);
+  if(advance)showSlide(next);
+}
+// Touch events keep a slightly diagonal swipe from turning into a scroll before
+// release. Pointer events cover pens and touch browsers without Touch Events.
+swipeSurface.addEventListener('touchstart',event=>{
+  if(event.touches.length!==1){cancelSwipe();return;}
+  const touch=event.touches[0];
+  beginSwipe(touch.clientX,touch.clientY,touch.identifier,'touch',event.timeStamp,event.target);
+},{passive:true});
+swipeSurface.addEventListener('touchmove',event=>{
+  if(!swipe||swipe.input!=='touch')return;
+  if(event.touches.length!==1){cancelSwipe();return;}
+  const touch=event.touches[0];if(touch.identifier!==swipe.id)return;
+  moveSwipe(touch.clientX,touch.clientY);
+  if(swipe?.horizontal&&event.cancelable)event.preventDefault();
+},{passive:false});
+swipeSurface.addEventListener('touchend',event=>{
+  if(!swipe||swipe.input!=='touch')return;
+  const touch=[...event.changedTouches].find(t=>t.identifier===swipe.id);
+  if(touch)finishSwipe(touch.clientX,touch.clientY,event.timeStamp);
+},{passive:true});
+swipeSurface.addEventListener('touchcancel',cancelSwipe,{passive:true});
 swipeSurface.addEventListener('pointerdown',event=>{
   if(!event.isPrimary){cancelSwipe();return;}
-  if(!mobileReader||$('panel-pitch').hidden||!['touch','pen'].includes(event.pointerType)||
-     event.target.closest(swipeControl)||hasSelection()||
-     event.clientX<24||event.clientX>window.innerWidth-24)return;
-  swipe={id:event.pointerId,x:event.clientX,y:event.clientY,horizontal:false};
+  if(event.pointerType==='touch'&&'ontouchstart' in window)return;
+  if(['touch','pen'].includes(event.pointerType))beginSwipe(event.clientX,event.clientY,event.pointerId,'pointer',event.timeStamp,event.target);
 },{passive:true});
 window.addEventListener('pointerdown',event=>{if(!event.isPrimary)cancelSwipe();},{passive:true});
 window.addEventListener('pointermove',event=>{
-  if(!swipe||event.pointerId!==swipe.id)return;
-  const dx=Math.abs(event.clientX-swipe.x),dy=Math.abs(event.clientY-swipe.y);
-  // Let normal vertical scrolling/selection win before recognising a swipe.
-  if(!swipe.horizontal&&dy>10&&dy>dx){cancelSwipe();return;}
-  if(dx>10&&dx>dy*1.5)swipe.horizontal=true;
+  if(swipe?.input==='pointer'&&event.pointerId===swipe.id)moveSwipe(event.clientX,event.clientY);
 },{passive:true});
 window.addEventListener('pointerup',event=>{
-  const start=swipe;cancelSwipe();
-  if(!start||event.pointerId!==start.id||!mobileReader||$('panel-pitch').hidden||hasSelection())return;
-  const dx=event.clientX-start.x,dy=event.clientY-start.y;
-  const threshold=Math.max(48,Math.min(80,window.innerWidth*.15));
-  if(start.horizontal&&Math.abs(dx)>=threshold&&Math.abs(dx)>Math.abs(dy)*1.5){
-    showSlide(current+(dx<0?1:-1));
-  }
+  if(swipe?.input==='pointer'&&event.pointerId===swipe.id)finishSwipe(event.clientX,event.clientY,event.timeStamp);
 },{passive:true});
-window.addEventListener('pointercancel',cancelSwipe,{passive:true});
+window.addEventListener('pointercancel',()=>{if(swipe?.input==='pointer')cancelSwipe();},{passive:true});
 window.addEventListener('blur',cancelSwipe);
 document.addEventListener('visibilitychange',cancelSwipe);
 mobileReaderQuery.addEventListener('change',cancelSwipe);

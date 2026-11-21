@@ -1,0 +1,296 @@
+1
+00:00:00,650 --> 00:00:05,700
+Now, having previously created an account,
+Miracle signs in,
+
+2
+00:00:06,160 --> 00:00:08,280
+and then she goes ahead to create the
+cause.
+
+3
+00:00:08,820 --> 00:00:13,820
+She is a student of University of Lagos
+and she needs help with her school
+
+4
+00:00:13,830 --> 00:00:18,830
+fees. Now, as you can see, she does not
+
+5
+00:00:18,840 --> 00:00:20,100
+just fill a form.
+
+6
+00:00:20,180 --> 00:00:25,200
+This is an interview with AI, and this is
+a live model answering.
+
+7
+00:00:25,660 --> 00:00:28,170
+It asks what exactly the money is for.
+
+8
+00:00:28,180 --> 00:00:30,800
+It asks who exactly gets paid,
+
+9
+00:00:31,440 --> 00:00:34,900
+how much will be paid, and when exactly
+the money is due.
+
+10
+00:00:35,520 --> 00:00:40,020
+You can see that it asks for the Remita
+reference in this case because she
+
+11
+00:00:40,030 --> 00:00:44,590
+claims to be a student of a federal
+university who wants to pay her school
+
+12
+00:00:44,600 --> 00:00:45,500
+fees.
+
+13
+00:00:47,190 --> 00:00:52,420
+It asks for other details like her
+department, and if she is willing to share
+
+14
+00:00:52,460 --> 00:00:54,690
+why exactly she cannot pay the school
+fees.
+
+15
+00:00:55,937 --> 00:01:00,367
+Notice that it also asks for documents
+that might support her claim.
+
+16
+00:01:00,627 --> 00:01:03,087
+In this case, she adds a pay advice,
+
+17
+00:01:03,807 --> 00:01:06,587
+and then she can see the itemised budget.
+
+18
+00:01:07,907 --> 00:01:11,217
+Here, it is just three hundred thousand
+naira to be paid to the University of
+
+19
+00:01:11,227 --> 00:01:16,457
+Lagos. She goes ahead to verify her
+identity, inputs
+
+20
+00:01:16,467 --> 00:01:19,837
+her NIN, and then she gets her face
+scanned.
+
+21
+00:01:22,078 --> 00:01:26,628
+The AI scans for reused photos, timeline
+consistency,
+
+22
+00:01:27,148 --> 00:01:30,208
+payment clarity, budget specificity.
+
+23
+00:01:30,908 --> 00:01:35,228
+It does all these checks, and when it's
+done, the cause is live.
+
+24
+00:01:35,568 --> 00:01:39,868
+Now, someone who wants to donate can
+simply
+
+25
+00:01:40,748 --> 00:01:43,328
+click on this link that has been copied.
+
+26
+00:01:43,608 --> 00:01:46,828
+Notice that it can be pasted on any social
+media platform,
+
+27
+00:01:47,508 --> 00:01:48,918
+WhatsApp for example.
+
+28
+00:01:51,949 --> 00:01:56,119
+As we will see, donors are not mandated to
+open an account on Kairos,
+
+29
+00:01:56,599 --> 00:01:58,919
+and anonymous donations are welcome.
+
+30
+00:01:59,059 --> 00:02:04,029
+This person placed the link in a private
+browser, and you can see here that
+
+31
+00:02:04,039 --> 00:02:07,429
+they are allowed to donate, but then the
+donation will be anonymous.
+
+32
+00:02:09,023 --> 00:02:12,013
+This person donates a hundred and fifty
+thousand,
+
+33
+00:02:12,673 --> 00:02:16,993
+and they are shown what portion will be
+kept for maintaining the app.
+
+34
+00:02:17,003 --> 00:02:19,133
+This is tentatively two percent.
+
+35
+00:02:20,473 --> 00:02:25,203
+Now they go ahead to pay, and the public
+ledger is
+
+36
+00:02:25,213 --> 00:02:26,543
+automatically updated.
+
+37
+00:02:28,847 --> 00:02:32,507
+Now on the left is Miracle's account, and
+on the right is a potential donor
+
+38
+00:02:32,517 --> 00:02:36,277
+named Abigail. A hundred and forty-seven
+thousand naira has already been
+
+39
+00:02:36,287 --> 00:02:41,117
+raised by the anonymous donor, and Abigail
+decides to donate this
+
+40
+00:02:41,127 --> 00:02:42,027
+balance.
+
+41
+00:02:43,898 --> 00:02:48,368
+Similarly, she's shown what portion of the
+money would be kept
+
+42
+00:02:48,828 --> 00:02:50,308
+for maintaining the app.
+
+43
+00:02:50,868 --> 00:02:54,178
+Like we said earlier, this is our
+tentative business model.
+
+44
+00:02:54,188 --> 00:02:57,418
+We resort to this when we cannot get any
+sponsors at all.
+
+45
+00:02:57,428 --> 00:03:01,178
+After she makes this payment, it is
+reflected everywhere.
+
+46
+00:03:03,158 --> 00:03:05,368
+Now, let us look at Miracle's wallet.
+
+47
+00:03:05,828 --> 00:03:09,388
+Notice that Miracle cannot withdraw any of
+this money.
+
+48
+00:03:10,148 --> 00:03:15,118
+She inputs how much she wants to pay to
+University of Lagos and then clicks
+
+49
+00:03:15,128 --> 00:03:16,528
+on Pay vendor.
+
+50
+00:03:18,588 --> 00:03:23,148
+As soon as this payment is made, Abigail
+gets notified.
+
+51
+00:03:23,748 --> 00:03:28,588
+And here she sees a breakdown of what
+portion of her donation paid the fees.
+
+52
+00:03:28,868 --> 00:03:30,138
+She does not only get a thank you.
+
+53
+00:03:30,148 --> 00:03:33,548
+She gets a receipt, and this is one that
+she can inspect herself.
+
+54
+00:03:34,148 --> 00:03:36,878
+The payment also appears in the public
+ledger.
+
+55
+00:03:38,451 --> 00:03:40,291
+All of this is running code.
+
+56
+00:03:40,301 --> 00:03:44,791
+Payment and identity verification for now
+are simulated, and all we have to do
+
+57
+00:03:44,801 --> 00:03:48,071
+to fill the gap is to partner with a third
+party.
+
+58
+00:03:48,843 --> 00:03:53,973
+In crowdfunding, payment is not really
+complete until the money reaches who
+
+59
+00:03:53,983 --> 00:03:55,933
+it was given for.
+
+60
+00:03:55,993 --> 00:04:01,143
+Kairos combines existing payment tools to
+control that flow from
+
+61
+00:04:01,153 --> 00:04:02,753
+the people who give
+
+62
+00:04:03,813 --> 00:04:05,653
+to the need it was given for.
+
+63
+00:04:05,973 --> 00:04:09,003
+And then it gives a breakdown of each
+donor's share.
+
+64
+00:04:09,283 --> 00:04:11,853
+That is the payment problem that we solve.

@@ -16,6 +16,7 @@
   html.mobile-reader-page{scroll-behavior:auto}
   .mobile-reader .shell{padding-left:18px;padding-right:18px}
   .mobile-reader.mobile-pitch{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .mobile-reader.mobile-pitch #main{min-height:calc(100dvh - 160px);touch-action:pan-y pinch-zoom;overflow-x:clip}
   .mobile-reader .brandrow{min-height:34px;flex-wrap:nowrap;gap:10px;padding:4px 0}
   .mobile-reader .brand{font-size:20px;line-height:1}
   .mobile-reader .event{font-size:8px;line-height:1.3;letter-spacing:.5px;padding-left:10px}
@@ -32,29 +33,25 @@
   .mobile-reader .presenterbar p{display:none}
   .mobile-reader .stage{display:flex;flex-direction:column;gap:8px;align-items:stretch}
   .mobile-reader .scriptpaper{display:block;overflow:hidden}
-  .mobile-reader .stage{touch-action:pan-y pinch-zoom}
+  .mobile-reader.swiping .scriptpaper{will-change:transform;user-select:none;-webkit-user-select:none}
   .mobile-reader .mobile-pager{position:fixed;z-index:11;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px max(18px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -4px 16px #173f2508}
   .mobile-reader .mobile-pager>div{text-align:center;min-width:0}
   .mobile-reader #mobile-position{display:block;color:var(--green);font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
   .mobile-reader .swipe-hint{display:block;color:var(--muted);font-size:12px}
   .mobile-reader .mobile-pager .arrow{min-width:52px;min-height:48px;font-size:24px}
   .mobile-reader .scriptblock{scroll-margin-top:calc(var(--reader-header,129px) + var(--reader-preview,190px) + 16px)}
-  .mobile-reader .deck{position:sticky;top:var(--reader-header,129px);z-index:9;order:-1;width:100%;align-self:stretch;flex-shrink:0;padding:4px 0;background:var(--paper);border-bottom:1px solid var(--line)}
-  .mobile-reader .deck .shotwrap{height:min(14vh,88px);height:min(14dvh,88px);display:flex;justify-content:center;align-items:center}
-  .mobile-reader .deck .slideimage{width:auto;height:100%;max-width:100%;max-height:100%;object-fit:contain}
-  .mobile-reader .deck .demo-slide{height:100%;display:flex;justify-content:center;align-items:center}
-  .mobile-reader .decktools{justify-content:center;margin:3px 0 0;line-height:1.2}
-  .mobile-reader #current-label{font-size:10px}
+  .mobile-reader .deck{display:none}
+  .mobile-reader .deck .shotwrap,.mobile-reader .decktools{display:none}
   .mobile-reader .scripthead{padding:7px 14px;gap:10px}
   .mobile-reader .scriptbody{padding:16px}
   .mobile-reader .say{font-size:clamp(20px,5vw,22px)}
   .mobile-reader .scriptbody h2{font-size:19px;line-height:1.25;margin-bottom:14px}
   .mobile-reader .decktools>div,.mobile-reader .clockbox,.mobile-reader .jump,.mobile-reader .modes,.mobile-reader .timingnote,.mobile-reader .scripthead>.subtle,.mobile-reader .cue,.mobile-reader .scriptfoot{display:none}
 }
-@media screen and (max-height:500px){.mobile-reader .deck .shotwrap{height:min(14vh,56px);height:min(14dvh,56px)}}
 .has-elapsed-timer #clock-toggle,.has-elapsed-timer #clock-reset{min-height:44px;min-width:60px}
 .has-elapsed-timer #deck-view:fullscreen .clockrow>div:first-child{display:block}
 @media screen{
+  .has-elapsed-timer.mobile-reader .deck{display:block;position:static;order:-1;width:100%;padding:4px 0;background:var(--paper);border-bottom:1px solid var(--line)}
   .has-elapsed-timer.mobile-reader .clockbox{display:block;padding:6px 0 2px;border:0;background:transparent}
   .has-elapsed-timer.mobile-reader .clockrow{gap:12px}
   .has-elapsed-timer.mobile-reader .clock{font-size:26px}
