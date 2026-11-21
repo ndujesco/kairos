@@ -28,6 +28,7 @@ ROOMS = {
     "cleva-finale": ("cleva_finale_content.py", ["cleva.html", "cleva-final.html"], "kairos-cleva-room-v1", True),
     "cleva-preliminary": ("cleva_preliminary_content.py", ["cleva-pitch.html"], "kairos-cleva-preliminary-room-v1", True),
     "apwen-semi": ("apwen_semi_content.py", ["apwen-pitch.html"], "kairos-apwen-room-v1", False),
+    "apwen-finale": ("apwen_finale_content.py", [], "kairos-apwen-finale-room-v1", False),
     "faith-and-tech-semis": ("faith_and_tech_semis_content.py", [], "kairos-faith-and-tech-semis-room-v2", False),
 }
 
@@ -80,7 +81,10 @@ def write_script(content, assets, page, slides, presenter=None):
                           who if page.get('unscheduled') else f'{who} · {mmss(s["start"])} to {mmss(s["end"])}')
         script += [f'## Slide {s["n"]}: {s["title"]}',
                    speaker_timing]
-        script += paragraphs + [f'Delivery: {s["cue"]}']
+        script += paragraphs
+        if s.get('recorded_transcript'):
+            script += ['### Recorded demo transcription'] + s['recorded_transcript']
+        script += [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
             instruction = ('Play the separate local MP4, then return to the next slide.' if page.get('demo_placeholder') else
                            'Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
@@ -237,6 +241,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         deck_downloads += f' <a href="{e(deck_pdf)}" target="_blank" rel="noopener">Deck PDF ↗</a>'
     if web_deck and deck_pptx:
         deck_downloads += f' <a class="pptx-link" href="{e(deck_pptx)}" download>PowerPoint ↓</a>'
+    for download in page.get('archive_downloads', []):
+        deck_downloads += f' <a href="{e(download["url"])}" target="_blank" rel="noopener">{e(download["label"])}</a>'
     if page.get('hide_deck_downloads'):
         deck_downloads = ''
     scripts = {}
@@ -271,6 +277,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         next_name = slides[s["n"]]["title"] if s["n"] < len(slides) else "Pause, then take questions."
         slide_timing = (f'<span class="subtle">Budget {mmss(s["budget_seconds"])}</span>' if s.get('budget_seconds') else
                         '' if page.get('unscheduled') else f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>')
+        transcript = ('<section class="recorded-transcript" aria-label="Recorded demo transcription">'
+                      '<h3>Recorded demo transcription</h3><div class="say">'
+                      + ''.join(f'<p>{e(p)}</p>' for p in s['recorded_transcript']) + '</div></section>'
+                      if s.get('recorded_transcript') else '')
         script_blocks.append(
             f'<article class="scriptblock" data-slide="{s["n"]}"{hidden}>'
             f'<div class="scripthead"><span class="slideindex">{s["n"]:02} / {len(slides):02}</span>'
@@ -278,7 +288,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             f'<span class="speaker">{e(s["speaker"])}</span></div>'
             f'<div class="scriptbody"><h2>{e(s["title"])}</h2><div class="say">'
             + ''.join(f'<p>{e(p)}</p>' for p in s["paragraphs"])
-            + f'</div><div class="cue"><strong>DELIVERY NOTE</strong><span class="delivery-note">{e(s["cue"])}</span></div></div>'
+            + f'</div>{transcript}<div class="cue"><strong>DELIVERY NOTE</strong><span class="delivery-note">{e(s["cue"])}</span></div></div>'
             + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
@@ -370,6 +380,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
+    if any(s.get('recorded_transcript') for s in slides):
+        css += '\n.recorded-transcript{margin-top:28px;padding-top:20px;border-top:1px solid #bcc7b9}.recorded-transcript h3{font-size:1rem;color:#205635;margin:0 0 16px}.recorded-transcript .say p:last-child{margin-bottom:0}\n'
     if page.get('demo_placeholder'):
         css += '\n.demo-placeholder{aspect-ratio:16/9;display:grid;place-items:center;background:#f3f1e5;text-align:center;color:#205635}.demo-placeholder h2{font-size:clamp(36px,6vw,88px);margin:0}.demo-placeholder p{font-size:clamp(14px,2vw,24px);margin:18px 0 0}.downloads:empty{display:none}\n'
     if page.get('unscheduled'):

@@ -1,5 +1,11 @@
 [
   {
+    "title": "APWEN · Finale",
+    "url": "/apwen-finale.html",
+    "status": "Current",
+    "detail": "Ten slides, full presenter scripts and the 2:39 demo transcription."
+  },
+  {
     "title": "Cleva · Grand Finale",
     "url": "/cleva-finale.html",
     "status": "Current",
@@ -14,7 +20,7 @@
   {
     "title": "APWEN · Semi-final",
     "url": "/apwen-semi.html",
-    "status": "Current",
+    "status": "Previous stage",
     "detail": "Ten-slide five-minute edition. Play the archived demo separately."
   },
   {
@@ -568,6 +574,16 @@
     "source_sha256": "1e892ba02b00628b74411896ede4cb9ec3428873422bfd92c7d17ffeb7fd0088",
     "sources": [
       "website/public/apwen-semi.html"
+    ]
+  },
+  {
+    "title": "APWEN · apwen finale · presenter room",
+    "url": "/pitch-archive/apwen-apwen-finale-presenter-room--78923369b0/index.html",
+    "status": "Archived",
+    "detail": "Preserved slides and full presenter scripts.",
+    "source_sha256": "78923369b0a98fc101def903cb81f18638617c9169cf8b49d356b495d92bc1f9",
+    "sources": [
+      "website/public/apwen-finale.html"
     ]
   }
 ]

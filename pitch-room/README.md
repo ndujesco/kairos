@@ -6,10 +6,11 @@ Use the event and stage in every new room name. The original `/pitch.html` remai
 | --- | --- | --- |
 | `/cleva-finale.html` | `cleva_finale_content.py` | Nine-slide current room, 741 presenter words, unchanged 10:25 web rehearsal plan; local final demo is 4:37 in Drive |
 | `/cleva-preliminary.html` | `cleva_preliminary_content.py` | Archived Office Hours edition, 474 words, 7:50 including the video |
+| `/apwen-finale.html` | `apwen_finale_content.py` | Ten slides, 397 live presenter words, full demo transcript on slide 5, 2:39.1 demo; native PPTX/Keynote/PDF |
 | `/apwen-semi.html` | `apwen_semi_content.py` | Existing ten-slide semi-final, 406 words, 4:50 including the 1:48 Forge cut |
 | `/faith-and-tech-semis.html` | `faith_and_tech_semis_content.py` | Eleven slides, 536 words; concise visual slides 7–9 after Demo 6, with full corrected narration in scripts/notes |
 
-`/apwen-finale.html` is reserved for a later request; it is not created by this build.
+`/apwen-finale.html` is a separate finale with the supplied APWEN/Faith & Tech script. Its recording transcript is stored independently of live paragraphs, appears under slide 5 in the room/downloads/native notes, and is excluded from live word counts. New native files live in `../hackathons/2026-10 APWEN LASU/03 Finale Pitch/`; the web uses inline native previews/PDF and a local video picker.
 
 ## Previous URLs
 
@@ -39,6 +40,7 @@ npm run pitch:build
 npm run pitch:cleva-finale
 npm run pitch:cleva-preliminary
 npm run pitch:apwen-semi
+npm run pitch:apwen-finale
 npm run pitch:faith-and-tech-semis
 ```
 

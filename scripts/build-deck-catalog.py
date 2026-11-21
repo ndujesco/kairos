@@ -22,9 +22,10 @@ REGISTER = ROOT / 'pitch-room/deck-catalog.json'
 ARCHIVE = PUBLIC / 'pitch-archive'
 BAD_MEDIA = {'.mp4', '.mov', '.m4v', '.webm', '.avi', '.wmv', '.mkv', '.pptx', '.key'}
 CURRENT = [
+    {'title': 'APWEN · Finale', 'url': '/apwen-finale.html', 'status': 'Current', 'detail': 'Ten slides, full presenter scripts and the 2:39 demo transcription.'},
     {'title': 'Cleva · Grand Finale', 'url': '/cleva-finale.html', 'status': 'Current', 'detail': 'Nine slides with full presenter scripts and Cleva questions.'},
     {'title': 'Faith & Tech · Semi-final', 'url': '/faith-and-tech-semis.html', 'status': 'Current', 'detail': 'Eleven slides, full presenter scripts and 80 questions.'},
-    {'title': 'APWEN · Semi-final', 'url': '/apwen-semi.html', 'status': 'Current', 'detail': 'Ten-slide five-minute edition. Play the archived demo separately.'},
+    {'title': 'APWEN · Semi-final', 'url': '/apwen-semi.html', 'status': 'Previous stage', 'detail': 'Ten-slide five-minute edition. Play the archived demo separately.'},
     {'title': 'Cleva · Preliminary', 'url': '/cleva-preliminary.html', 'status': 'Previous stage', 'detail': 'Preserved preliminary script, slides and preparation.'},
     {'title': 'Shared product pitch', 'url': '/pitch.html', 'status': 'Reference', 'detail': 'The preserved event-neutral room and scripts.'},
 ]

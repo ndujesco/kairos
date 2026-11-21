@@ -1,0 +1,111 @@
+{
+  "version": "apwen-finale-2026-11-21",
+  "slides": 10,
+  "questions": 113,
+  "priority": 28,
+  "words": 397,
+  "seconds": null,
+  "source_content": "apwen_finale_content.py",
+  "source_sha256": "10272bec5ab36fa7cf28018c4672ef6170de62740187dedda4ea871d96e2950a",
+  "deckBase": "pitch-assets/apwen-finale/deck",
+  "deck_pdf": "pitch-assets/apwen-finale/deck/Kairos-APWEN-Finale.pdf",
+  "deck_pptx": null,
+  "timing_includes_full_demo": false,
+  "slide_order": [
+    {
+      "n": 1,
+      "key": "cover",
+      "title": "Transparent giving for Nigeria",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 2,
+      "key": "problem",
+      "title": "A transfer succeeds. The doubt stays.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 3,
+      "key": "solution",
+      "title": "From a published budget to a personal receipt.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 4,
+      "key": "business",
+      "title": "Useful to give. Sustainable to run.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 5,
+      "key": "demo",
+      "title": "Watch the payment become a receipt.",
+      "seconds": null,
+      "is_demo": true
+    },
+    {
+      "n": 6,
+      "key": "responsible",
+      "title": "Responsible operation",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 7,
+      "key": "prototype",
+      "title": "What runs today.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 8,
+      "key": "growth",
+      "title": "Start with a bill that can be checked.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 9,
+      "key": "team",
+      "title": "Abigail and Miracle.",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 10,
+      "key": "closing",
+      "title": "Give with proof, not faith.",
+      "seconds": null,
+      "is_demo": false
+    }
+  ],
+  "default_presenter": "miracle",
+  "presenters": {
+    "abigail": {
+      "name": "Abigail",
+      "words": 397,
+      "script": "pitch-script-abigail.md"
+    },
+    "miracle": {
+      "name": "Miracle",
+      "words": 397,
+      "script": "pitch-script-miracle.md"
+    }
+  },
+  "timing_set": false,
+  "elapsed_timer": true,
+  "assetsBase": "pitch-assets/apwen-finale",
+  "storagePrefix": "kairos-apwen-finale-room-v1",
+  "demoUrl": "",
+  "demo_slide": 5,
+  "demo_video_seconds": 159.1,
+  "demo_section_seconds": null,
+  "local_demo": true,
+  "demo_name": "Kairos-APWEN-Finale-Demo.mp4",
+  "deck_html": "pitch-assets/apwen-finale/deck.html",
+  "canonical_path": "/apwen-finale.html"
+}

@@ -34,7 +34,8 @@
     "pitch:cleva-preliminary": "python3 scripts/build-pitch.py --edition cleva-preliminary",
     "pitch:apwen-semi": "python3 scripts/build-pitch.py --edition apwen-semi",
     "pitch:faith-and-tech-semis": "python3 scripts/build-pitch.py --edition faith-and-tech-semis",
-    "test:interview": "node scripts/verify-interview-context.mjs"
+    "test:interview": "node scripts/verify-interview-context.mjs",
+    "pitch:apwen-finale": "python3 scripts/build-pitch.py --edition apwen-finale"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.109.1",
