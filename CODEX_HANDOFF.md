@@ -1,5 +1,13 @@
 # Kairos website handoff
 
+## Latest: AI in Nigeria project application answers prepared — 21 November
+
+The user supplied five screenshots of the AI in Nigeria × Flutterwave AI Startup Challenge project section and clarified that the beginning of the form is already filled. Prepare only these project answers; no further team/eligibility questions are needed for this request. Saved ten answer-only, exact-visible-label `.txt` files in `../hackathons/2026-11 AI in Nigeria/01 Application/answers/`, with all five original screenshots retained byte for byte. Recommended dropdowns are **Early prototype** and **Prototype link**. The conditional URL label is **Working product or prototype demo link**, exactly as shown in the screenshots; its answer is **https://kairos-community.vercel.app**.
+
+Copy retains the user's school-fees opening and natural voice, with no em dashes, vouching, trust scores or fundraising limits. It identifies the actual Claude Haiku 4.5 interviewer and structured extraction, distinguishes AI from deterministic accounting/payment controls, and preserves simulated payments/Remita/NIN and unbuilt live verification/custody. No live donations or pilot are claimed. Challenge work is a proposed interview improvement and test-data demonstration, not a product change already made. Optional uploads are two visually inspected, byte-identical existing PNGs (AI interview and donor receipt), each below 5 MB; they show historical demonstration data.
+
+Official application: https://aiinnigeria.com/ai-startup-challenge/ . No visible word/character caps or public-field `maxlength` attributes were found. The product URL returns 200 after redirecting to `/login`; no sign-in, AI call, live-data test, upload or submission was performed. Root HISTORY and START HERE link the new application. Preparation hashes and URL receipt: `../production/2026-11-21 AI in Nigeria application/`. No product, presenter/media, deployment, Drive or account/session changes.
+
 ## Latest: phone preview removed and easier script swipes — 21 November
 
 The user supplied real-phone feedback: swiping was difficult, the buttons were fine, and the deck picture should be removed on phones so the script is easier to read. Current Cleva finale (including `/cleva-final.html` and `/cleva.html`), Faith & Tech semi-final and APWEN semi-final now hide the picture preview in mobile mode. Desktop retains its original preview/layout. Faith's elapsed timer and the separate Demo tab remain available; arrow buttons are unchanged.
