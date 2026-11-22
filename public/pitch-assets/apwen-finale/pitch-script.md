@@ -12,7 +12,7 @@ Ten slides. Default presenter: Miracle. The supplied wording is retained; pasted
 
 Abigail or Miracle
 
-Good day everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.
+Good day, everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.
 
 We built Kairos, which is a transparent giving platform where every naira that you give can be watched until it reaches the need it was given for.
 
@@ -22,9 +22,9 @@ Delivery: Introduce yourself. Keep the opening in the supplied wording.
 
 Abigail or Miracle
 
-Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
+Our school fees went up recently, and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared, and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
+Dishonest people have made skepticism the rational response, and so potential donors hold back even when the plea is legitimate, and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
 
 Delivery: Let the school-fees story and the doubt land before introducing the solution.
 
@@ -56,7 +56,7 @@ Delivery: NGO support is not secured. Upkeep is tentative and the cap is per cau
 
 Abigail or Miracle
 
-The next slide shows a quick demonstration of how it works
+The next slide shows a quick demonstration of how it works.
 
 ### Recorded demo transcription
 
@@ -112,7 +112,7 @@ Delivery: Distinguish simulated identity, custody and settlement from the actual
 
 Abigail or Miracle
 
-We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response
+We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response.
 
 Then we plan to move to hospitals and other service providers.
 
@@ -130,9 +130,11 @@ Delivery: Introduce both people on the slide. Either Abigail or Miracle can lead
 
 Abigail or Miracle
 
+In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency.
+
 We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.
 
-In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.
+Thank you so much. We're Team Kairos.
 
 Delivery: Thank them, then stop.
 

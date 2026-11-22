@@ -29,7 +29,7 @@ DEFAULT_PRESENTER = 'ugochukwu'
 
 SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'cover',
-  'paragraphs': ['Good day everyone. My name is Ndujekwu Ugochukwu, presenting on behalf of Team '
+  'paragraphs': ['Good day, everyone. My name is Ndujekwu Ugochukwu, presenting on behalf of Team '
                  'Kairos.',
                  'We built Kairos, which is a transparent giving platform where every naira that you '
                  'give can be watched until it reaches the need it was given for.'],
@@ -37,13 +37,13 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'seconds': 0},
  {'title': 'A transfer succeeds. The doubt stays.',
   'deck_key': 'problem',
-  'paragraphs': ["Our school fees went up recently and a final year student who couldn't afford it "
-                 "posted an appeal so he wouldn't drop out. People gave. But then more posts appeared "
+  'paragraphs': ["Our school fees went up recently, and a final year student who couldn't afford it "
+                 "posted an appeal so he wouldn't drop out. People gave. But then more posts appeared, "
                  'and my friends and I started to wonder if they were all real, because the screenshots '
                  'looked identical and very easy to edit.',
-                 'Dishonest people have made skepticism the rational response and so potential donors '
-                 'hold back even when the plea is legitimate and real needs go unmet. The missing piece '
-                 "is not compassion. It's a trusted middle layer."],
+                 'Dishonest people have made skepticism the rational response, and so potential donors '
+                 'hold back even when the plea is legitimate, and real needs go unmet. The missing '
+                 "piece is not compassion. It's a trusted middle layer."],
   'cue': 'Let the school-fees story and the doubt land before introducing the solution.',
   'seconds': 0},
  {'title': 'How Kairos works.',
@@ -68,7 +68,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'seconds': 0},
  {'title': 'Watch the payment become a receipt.',
   'deck_key': 'demo',
-  'paragraphs': ['The next slide shows a quick demonstration of how it works'],
+  'paragraphs': ['The next slide shows a quick demonstration of how it works.'],
   'cue': 'Demo placeholder only. The tentative recording is kept separately on the laptop; choose '
          'timing and embedding after qualification and the pitch allowance are confirmed.',
   'seconds': 0,
@@ -77,7 +77,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
  {'title': 'Responsible operation',
   'deck_key': 'responsible',
   'paragraphs': ['It is worth reiterating that we store no sensitive data and do not keep any money. '
-                 'When an organiser supplies documents as proof to support their cause the AI model '
+                 'When an organiser supplies documents as proof to support their cause, the AI model '
                  'discerns which is safe to display publicly and only does so with their permission.',
                  'Since we are integrating the services with licensed and verified third parties, our '
                  'product is easily scalable and secure.'],
@@ -96,7 +96,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'growth',
   'paragraphs': ["We start with school fees because they're easy to verify in Nigeria. We have spoken "
                  'with our department bodies that help raise funds for students and have got very a '
-                 'positive response',
+                 'positive response.',
                  'Then we plan to move to hospitals and other service providers.'],
   'cue': 'Retain the supplied phrasing. Departmental feedback is qualitative interest, not a completed '
          'live-money pilot.',
@@ -143,7 +143,7 @@ EVENTS = [{'name': 'Faith & Tech tentative finale',
   'notice': 'Qualification and pitch allowance unconfirmed.',
   'notice_detail': 'Preparation only. The semi-final remains a separate edition.'}]
 
-PAGE = {'canonical_path': '/faith-and-tech-finale.html',
+PAGE = {'include_presenter_notes': False,'canonical_path': '/faith-and-tech-finale.html',
  'native_slides': True,
  'web_deck': True,
  'deck_base': 'pitch-assets/faith-and-tech-finale/deck',
@@ -173,7 +173,7 @@ PAGE = {'canonical_path': '/faith-and-tech-finale.html',
  'event_intro': 'Prepare provisionally. Qualification, timing and demo embedding are not confirmed.',
  'prep_kicker': 'Faith & Tech tentative finale',
  'prep_title': 'The need, the giving flow and the receipt.',
- 'prep_intro': 'Ten visual slides and complete presenter notes. The separately prepared local recording '
+ 'prep_intro': 'Ten visual slides with separate presenter scripts. The separately prepared local recording '
                'is not embedded.',
  'event_notice': 'Tentative finale preparation',
  'event_notice_detail': 'Await qualification and the confirmed pitch allowance.',
@@ -189,8 +189,7 @@ PAGE = {'canonical_path': '/faith-and-tech-finale.html',
  'separate_demo_subtitles': None,
  'separate_demo_webvtt': None,
  'source_html': '',
- 'notes_note': 'The complete supplied narration and recorded demo transcript are in scripts and '
-               'presenter notes.',
+ 'notes_note': 'The complete supplied narration is in the separate presenter scripts.',
  'timing_note': 'No overall pitch schedule is set.',
  'prep_timing_note': 'Await qualification and the pitch allowance before adjusting or embedding the '
                      'recording.',

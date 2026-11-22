@@ -18,12 +18,12 @@ def section(title, key, paragraphs, cue, **extra):
 
 SLIDES = [
     section('Transparent giving for Nigeria', 'cover', [
-        'Good day everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.',
+        'Good day, everyone. My name is Omohuma Miracle, presenting on behalf of Team Kairos.',
         'We built Kairos, which is a transparent giving platform where every naira that you give can be watched until it reaches the need it was given for.',
     ], 'Introduce yourself. Keep the opening in the supplied wording.'),
     section('A transfer succeeds. The doubt stays.', 'problem', [
-        "Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.",
-        "Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.",
+        "Our school fees went up recently, and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared, and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.",
+        "Dishonest people have made skepticism the rational response, and so potential donors hold back even when the plea is legitimate, and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.",
     ], 'Let the school-fees story and the doubt land before introducing the solution.'),
     section('How Kairos works.', 'solution', [
         'Kairos is that trusted middle layer.',
@@ -36,7 +36,7 @@ SLIDES = [
         "We aim to cover running costs through donations and grants from NGOs. Without that support, we'd tentatively take two percent per donation, capped at five thousand naira per cause. Donors see the fee before confirming.",
     ], 'NGO support is not secured. Upkeep is tentative and the cap is per cause.'),
     section('Watch the payment become a receipt.', 'demo', [
-        'The next slide shows a quick demonstration of how it works',
+        'The next slide shows a quick demonstration of how it works.',
     ], 'Play the new APWEN finale recording once at normal player speed. Its 1.13x speed is already baked in. The transcript below is the recording, not extra live narration.',
             is_demo=True, video_seconds=DEMO_INFO['duration_seconds'],
             recorded_transcript=DEMO_INFO['transcript_paragraphs']),
@@ -48,15 +48,16 @@ SLIDES = [
         'Every integration with third parties is simulated for now.',
     ], 'Distinguish simulated identity, custody and settlement from the actual Claude interview and hosted application/data services.'),
     section('Where we start. Where we go next.', 'growth', [
-        "We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response",
+        "We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response.",
         'Then we plan to move to hospitals and other service providers.',
     ], 'Retain the supplied phrasing. Departmental feedback is qualitative interest, not a completed live-money pilot.'),
     section('Abigail and Miracle.', 'team', [
         "And this is the team. I'm Miracle, the product designer. Abigail is our team lead and product manager.",
     ], 'Introduce both people on the slide. Either Abigail or Miracle can lead this presentation.'),
     section('Give with proof, not faith.', 'closing', [
+        'In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency.',
         "We are not claiming to make fraud impossible. We're building Kairos to make it very difficult, visible, traceable, capped and unprofitable.",
-        "In short, Kairos turns charitable giving from an act of blind trust into one of complete transparency. Thank you so much. We're Team Kairos.",
+        "Thank you so much. We're Team Kairos.",
     ], 'Thank them, then stop.'),
 ]
 SLIDES[4]['seconds'] = DEMO_INFO['duration_seconds']
@@ -76,7 +77,7 @@ def shared_paragraphs(slide, markdown=False):
     return list(slide['paragraphs'])
 
 
-SHORT_PITCH = list(SLIDES[-1]['paragraphs'][1:])
+SHORT_PITCH = [SLIDES[-1]['paragraphs'][0] + ' ' + SLIDES[-1]['paragraphs'][2]]
 DEMO = []
 GROUPS = deepcopy(semi.GROUPS)
 QUESTIONS = deepcopy(semi.QUESTIONS)
@@ -89,6 +90,7 @@ EVENTS = [dict(semi.EVENTS[0], name='APWEN finale',
                follow_up='Play the supplied new MP4 at 1x. All speed changes are already in the file.')]
 BASE = 'pitch-assets/apwen-finale/deck'
 PAGE = dict(
+    include_presenter_notes=False,
     canonical_path='/apwen-finale.html', native_slides=True, web_deck=True,
     deck_base=BASE, deck_pdf=BASE+'/Kairos-APWEN-Finale.pdf', deck_pptx=None, deck_keynote=None,
     deck_title='Kairos · APWEN finale',
@@ -104,7 +106,7 @@ PAGE = dict(
     event_title='Kairos: APWEN finale preparation',
     event_intro='Use the new finale files. The APWEN semi-final stays unchanged.',
     prep_kicker='APWEN finale', prep_title='The need, the giving flow and the receipt.',
-    prep_intro='Ten visual slides with full narration in the script and native notes. The new recorded demo is below 2:40.',
+    prep_intro='Ten visual slides with full narration in the separate script. The new recorded demo is below 2:40.',
     event_notice='New APWEN finale edition', event_notice_detail='No inherited five-minute delivery schedule.',
     event_spoken_label='The thread:', event_download_note='Native PowerPoint and Keynote with the embedded demo are delivered locally; the web PDF is a static backup.',
     focus_label='Prototype status:', focus_note='Identity/provider checks, custody and payment settlement are simulated or unbuilt. The AI interview and prototype accounting are functioning.',
@@ -112,7 +114,7 @@ PAGE = dict(
     separate_demo_script='pitch-assets/apwen-finale/demo-transcript.txt',
     separate_demo_subtitles='pitch-assets/apwen-finale/Kairos-APWEN-Finale-Demo.en.srt',
     separate_demo_webvtt='pitch-assets/apwen-finale/Kairos-APWEN-Finale-Demo.en.vtt',
-    source_html='', notes_note='The complete supplied narration and recorded demo transcript are in scripts and presenter notes.',
+    source_html='', notes_note='The complete supplied narration and recorded demo transcript are in the separate scripts.',
     timing_note='Demo is below 2:40; play at 1x. No overall pitch schedule is assigned.',
     prep_timing_note='Confirm the finale allowance separately. The old semi-final clock is not reused.',
     criteria=[['Problem and solution','Slides 1–3'], ['Sustainability','Slide 4'], ['Demonstration','Slide 5'],

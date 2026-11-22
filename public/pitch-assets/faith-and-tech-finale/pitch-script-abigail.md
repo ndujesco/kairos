@@ -12,7 +12,7 @@ Ten slides. Default presenter: Ugochukwu. Qualification and pitch allowance are 
 
 Abigail
 
-Good day everyone. My name is Sokenu Abigail, presenting on behalf of Team Kairos.
+Good day, everyone. My name is Sokenu Abigail, presenting on behalf of Team Kairos.
 
 We built Kairos, which is a transparent giving platform where every naira that you give can be watched until it reaches the need it was given for.
 
@@ -22,9 +22,9 @@ Delivery: Introduce yourself. Keep the opening in the supplied wording.
 
 Abigail
 
-Our school fees went up recently and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
+Our school fees went up recently, and a final year student who couldn't afford it posted an appeal so he wouldn't drop out. People gave. But then more posts appeared, and my friends and I started to wonder if they were all real, because the screenshots looked identical and very easy to edit.
 
-Dishonest people have made skepticism the rational response and so potential donors hold back even when the plea is legitimate and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
+Dishonest people have made skepticism the rational response, and so potential donors hold back even when the plea is legitimate, and real needs go unmet. The missing piece is not compassion. It's a trusted middle layer.
 
 Delivery: Let the school-fees story and the doubt land before introducing the solution.
 
@@ -56,7 +56,7 @@ Delivery: NGO support is not secured. Upkeep is tentative and the cap is per cau
 
 Abigail
 
-The next slide shows a quick demonstration of how it works
+The next slide shows a quick demonstration of how it works.
 
 Delivery: Demo placeholder only. The tentative recording is kept separately on the laptop; choose timing and embedding after qualification and the pitch allowance are confirmed.
 
@@ -68,7 +68,7 @@ Recording:  · 0:00. No overall pitch schedule is set.
 
 Abigail
 
-It is worth reiterating that we store no sensitive data and do not keep any money. When an organiser supplies documents as proof to support their cause the AI model discerns which is safe to display publicly and only does so with their permission.
+It is worth reiterating that we store no sensitive data and do not keep any money. When an organiser supplies documents as proof to support their cause, the AI model discerns which is safe to display publicly and only does so with their permission.
 
 Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.
 
@@ -88,7 +88,7 @@ Delivery: Distinguish simulated identity, custody and settlement from the actual
 
 Abigail
 
-We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response
+We start with school fees because they're easy to verify in Nigeria. We have spoken with our department bodies that help raise funds for students and have got very a positive response.
 
 Then we plan to move to hospitals and other service providers.
 
