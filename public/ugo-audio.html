@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#153f32">
+<meta name="description" content="Ugo’s Kairos pitch rehearsal. Play the full pitch, skip the demo, or repeat any section.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src 'self' file:; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Ugo’s pitch rehearsal · Kairos</title>
+<style>
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#1b322a;background:#f3f6f3;font-synthesis:none;--green:#153f32;--muted:#65766e;--line:#dde5de;--accent:#cbe998}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:radial-gradient(ellipse at 0 0,#e5eee5,transparent 55%);min-height:100vh;min-height:100svh}button,input,select{font:inherit}button,a,select,input{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:wait;opacity:.55}a{color:inherit}button,select{min-height:44px}svg{display:block;width:22px;height:22px;flex-shrink:0}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #77a647;outline-offset:4px}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.shell{max-width:1100px;margin:0 auto;padding:36px 32px 26px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.14em;font-size:14px;text-decoration:none}.mark{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--green);color:var(--accent)}.edition{color:var(--muted);font-size:14px}.intro{margin:42px 0 25px}.eyebrow{font-size:14px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(30px,4vw,43px);line-height:1.15;letter-spacing:-.045em;font-weight:650;margin:9px 0 12px}.intro p{font-size:16px;line-height:1.6;color:var(--muted);margin:0}.modes{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.mode{display:inline-flex;align-items:center;gap:12px;padding:12px 17px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--green);font-size:15px;font-weight:600}.mode .mode-time{color:var(--muted);font-size:14px;font-weight:400;font-variant-numeric:tabular-nums}.mode[aria-pressed=true]{background:var(--green);border-color:var(--green);color:white}.mode[aria-pressed=true] .mode-time{color:#d2e3d6}.mode:hover{border-color:#7c9988}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:24px;align-items:start}.player{position:sticky;top:24px;background:var(--green);color:white;border-radius:24px;padding:28px;box-shadow:0 14px 35px #153f3212;overflow:hidden}.player-top{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#c5d8ce;font-size:14px}.badge{display:inline-flex;align-items:center;gap:7px;font-size:14px}.signal{display:flex;align-items:center;gap:3px;height:18px;color:var(--accent)}.signal i{width:3px;height:6px;border-radius:2px;background:currentColor}.signal i:nth-child(2){height:14px}.signal i:nth-child(3){height:10px}.signal i:nth-child(4){height:18px}.playing .signal i{animation:wave .8s ease-in-out infinite alternate}.playing .signal i:nth-child(2){animation-delay:-.4s}.playing .signal i:nth-child(3){animation-delay:-.2s}@keyframes wave{to{transform:scaleY(.35)}}.now{padding:38px 0 30px;min-height:181px}.now small{color:var(--accent);font-size:14px;font-weight:600}.now h2{margin:12px 0;font-size:clamp(28px,3.6vw,35px);font-weight:550;line-height:1.16;letter-spacing:-.035em}.now p{margin:0;font-size:14px;line-height:1.5;color:#c5d8ce;min-height:21px}.progress-label{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#c5d8ce;font-size:14px}.progress-label span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.seek{--progress:0%;display:block;width:100%;height:44px;appearance:none;-webkit-appearance:none;background:transparent;margin:0;cursor:pointer;touch-action:pan-y}.seek::-webkit-slider-runnable-track{height:5px;border-radius:8px;background:linear-gradient(to right,var(--accent) var(--progress),#48685a var(--progress))}.seek::-moz-range-track{height:5px;border-radius:8px;background:#48685a}.seek::-moz-range-progress{height:5px;border-radius:8px;background:var(--accent)}.seek::-webkit-slider-thumb{width:21px;height:21px;margin-top:-8px;appearance:none;-webkit-appearance:none;border:4px solid white;border-radius:50%;background:var(--green);box-shadow:0 1px 8px #0002}.seek::-moz-range-thumb{box-sizing:border-box;width:21px;height:21px;border:4px solid white;border-radius:50%;background:var(--green)}.times{display:flex;justify-content:space-between;font-size:14px;color:#c5d8ce;font-variant-numeric:tabular-nums}.times span:first-child{color:white}.transport{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:28px -4px}.icon-button{display:grid;place-items:center;width:44px;height:48px;padding:0;border:0;background:transparent;color:#d8e4db;border-radius:50%}.icon-button:hover{background:#ffffff12}.skip svg{width:29px;height:29px}.skip text{font-family:inherit;font-size:10px;font-weight:650;fill:currentColor;stroke:none}.play{display:grid;place-items:center;flex-shrink:0;width:72px;height:72px;padding:0;border:0;border-radius:50%;background:var(--accent);color:var(--green);box-shadow:0 5px 20px #0001}.play:hover{background:#d9f4ac}.play svg{width:28px;height:28px}.settings{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #ffffff24;padding-top:16px;font-size:14px}.repeat{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}.repeat input{width:18px;height:18px;accent-color:var(--accent);margin:0}.speed{display:flex;align-items:center;gap:6px}.select{position:relative}.select svg{width:12px;height:12px;position:absolute;right:10px;top:16px;pointer-events:none}select{appearance:none;background:#ffffff0d;color:#fff;border:1px solid #ffffff30;border-radius:10px;padding:8px 27px 8px 11px;font-size:16px}option{color:var(--green);background:#fff}.player-links{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}.text-button{border:0;background:transparent;color:inherit;padding:8px 0;font-size:14px;text-underline-offset:4px}.text-button:hover{text-decoration:underline}.download{font-size:14px;padding:12px 0;color:#c5d8ce;text-decoration:none}.download:hover{text-decoration:underline}#error{color:#ffe1d8;font-size:14px;line-height:1.5;border-top:1px solid #ffffff24;padding-top:16px;margin:12px 0 0}.native{width:100%;margin-top:15px}
+.library{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden}.library-head{padding:25px 24px 19px;border-bottom:1px solid #edf1ed}.library-head h2{margin:0;font-size:19px;font-weight:650;letter-spacing:-.025em}.library-head p{margin:7px 0 0;color:var(--muted);font-size:14px;line-height:1.5}.track-list{list-style:none;padding:6px 12px;margin:0}.track-row{display:flex;width:100%;align-items:center;gap:13px;background:transparent;color:inherit;text-align:left;border:1px solid transparent;border-radius:12px;padding:13px 12px;min-height:61px}.track-row:hover{background:#f6f8f5}.track-row[aria-current=true]{background:#edf4e8;border-color:#dce9d2}.track-number{width:25px;flex-shrink:0;color:#7a8981;font-size:14px;font-variant-numeric:tabular-nums}.track-row[aria-current=true] .track-number{color:#316240;font-weight:650}.track-title{flex:1;min-width:0;font-size:15px;font-weight:550;line-height:1.4}.track-duration{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}.track-action{display:grid;place-items:center;color:#4d6a59;width:27px;height:27px;border:1px solid #e1e8e0;border-radius:50%}.track-action svg{width:11px;height:11px}.track-row[aria-current=true] .track-action{border-color:#427453;background:#427453;color:#fff}.demo-note{display:block;color:#65764f;font-size:13px;font-weight:400;margin-top:1px}.track-row.excluded{opacity:.58}.offline{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px 0}.offline p{font-size:14px;line-height:1.5;margin:0;color:var(--muted);max-width:580px}.offline button{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid #ccd9cc;border-radius:11px;padding:10px 14px;color:var(--green);font-size:14px}.offline button:hover{background:#e8f0e5}.offline svg{width:18px;height:18px}footer{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}footer a{text-underline-offset:4px}.key-hint{font-size:13px}.key-hint kbd{font:inherit;border:1px solid #d6dfd5;border-radius:4px;padding:2px 5px}#announcement{margin:0}.offline-status{display:block;margin-top:4px;color:var(--green)}
+@media(max-width:760px){.shell{padding:24px 18px}.intro{margin-top:30px}.edition{font-size:13px}.workspace{grid-template-columns:1fr;gap:20px}.player{position:relative;top:auto}.now{min-height:154px;padding:28px 0 24px}.modes{gap:8px}.mode{flex:1;justify-content:center;min-width:0;gap:6px;padding:11px 9px;font-size:14px;flex-wrap:wrap}.mode .mode-time{font-size:13px}.transport{justify-content:center;gap:clamp(12px,5vw,30px)}.library-head{padding:22px 22px 16px}.offline{align-items:flex-start}.key-hint{display:none}}
+@media(max-width:380px){.shell{padding:20px 12px}.edition{max-width:112px;text-align:right}.player{padding:23px 20px}.mode{flex-basis:40%}.mode:last-child{flex-grow:0}.track-row{padding:12px 8px;gap:9px}.settings{gap:8px}.offline{flex-wrap:wrap}.transport{gap:13px}.play{width:66px;height:66px}.intro p{max-width:280px}}
+@media(prefers-reduced-motion:reduce){.playing .signal i{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><a class="brand" href="./audio-ptch.html" aria-label="Kairos original audio player"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4"/></svg></span>KAIROS</a><span class="edition">Faith &amp; Tech finale</span></header>
+<div class="intro"><span class="eyebrow">Listen. Rehearse. Repeat.</span><h1>Ugo’s pitch rehearsal.</h1><p>Run through the pitch, or take it one section at a time.</p></div>
+<div id="enhanced" hidden>
+<div class="modes" role="group" aria-label="Playback sessions">
+<button class="mode" data-mode="all" aria-pressed="true">Play all <span class="mode-time" id="all-time">6:02</span></button>
+<button class="mode" data-mode="without-demo" aria-pressed="false">Without demo <span class="mode-time" id="talk-time">2:45</span></button>
+<button class="mode" data-mode="demo" aria-pressed="false">Demo only <span class="mode-time">3:17</span></button>
+</div>
+</div>
+<div class="workspace">
+<section class="player" aria-label="Audio player">
+<div class="player-top"><span class="badge"><span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="state-label">Ready to rehearse</span></span><span id="chapter-count">1 / 10</span></div>
+<div class="now"><small id="slide-label">Slide 1</small><h2 id="track-title">Intro</h2><p id="up-next">Up next: Problem</p></div>
+<audio class="native" id="audio" controls preload="metadata" src="./ugo-audio/all.m4a" aria-label="Full Kairos pitch audio">Your browser does not support audio playback.</audio>
+<div id="custom-controls" hidden>
+<div class="progress-label"><span id="session-title">Full pitch · 10 sections</span><span id="section-time">0:00 in section</span></div>
+<label for="seek" class="sr-only">Playback position in this session</label><input class="seek" id="seek" type="range" min="0" max="0" step="0.1" value="0" disabled>
+<div class="times" aria-hidden="true"><span id="elapsed">0:00</span><span id="duration">6:02</span></div>
+<div class="transport">
+<button class="icon-button" id="previous" aria-label="Previous section" title="Previous section"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2v14H6zm12 0v14L9 12z"/></svg></button>
+<button class="icon-button skip" id="back" aria-label="Back 10 seconds" title="Back 10 seconds"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7a10 10 0 1 1-3 10M7 2v5H2"/><text x="14" y="18" text-anchor="middle">10</text></svg></button>
+<button class="play" id="play" aria-label="Play"><svg id="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 4v16l13-8z"/></svg><svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg></button>
+<button class="icon-button skip" id="forward" aria-label="Forward 10 seconds" title="Forward 10 seconds"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7a10 10 0 1 0 3 10M21 2v5h5"/><text x="14" y="18" text-anchor="middle">10</text></svg></button>
+<button class="icon-button" id="next" aria-label="Next section" title="Next section"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5h2v14h-2zM6 5l9 7-9 7z"/></svg></button>
+</div>
+<div class="settings"><label class="repeat"><input type="checkbox" id="repeat"><span id="repeat-label">Repeat session</span></label><label class="speed" for="speed">Speed <span class="select"><select id="speed"><option value="0.75">0.75×</option><option value="0.9">0.9×</option><option value="1" selected>1×</option><option value="1.1">1.1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></span></label></div>
+<div class="player-links"><button class="text-button" id="restart">Start over</button><a class="download" id="download" href="./ugo-audio/all.m4a" download="Kairos-full-pitch.m4a">Download audio</a></div>
+</div>
+<p id="error" role="alert" hidden></p>
+</section>
+<section class="library" aria-labelledby="sections-title"><div class="library-head"><h2 id="sections-title">Your sections</h2><p>Choose one to practise on its own. Turn on repeat to keep it playing.</p></div><ol id="track-list" class="track-list"></ol><noscript><p style="padding:0 24px 20px">Enable JavaScript to choose sections and use rehearsal controls. The full pitch plays above.</p></noscript></section>
+</div>
+<div class="offline" id="offline-panel" hidden><p>Keep this tab open for background listening.<span class="offline-status" id="offline-status" role="status">Save all audio here to rehearse without a connection.</span></p><button id="offline-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></svg><span id="offline-label">Save for offline</span></button></div>
+<footer><span>Recorded pace · <a href="./audio-ptch.html">Original audio player</a></span><span class="key-hint"><kbd>space</kbd> to play or pause</span></footer>
+<p id="announcement" class="sr-only" aria-live="polite"></p>
+</div>
+<script>
+// CATALOG_START
+const CATALOG = {
+  "title": "Ugo\u2019s pitch rehearsal",
+  "date": "2026-11-23",
+  "tracks": [
+    {
+      "id": "intro",
+      "number": 1,
+      "title": "Intro",
+      "duration": 13.525333,
+      "samples": 649216,
+      "file": "tracks/01-intro.m4a",
+      "sha256": "2e3fa06803e0909bacdc7c8879b3993386ce3c827ed21483db30712b69e6bb97"
+    },
+    {
+      "id": "problem",
+      "number": 2,
+      "title": "Problem",
+      "duration": 30.506667,
+      "samples": 1464320,
+      "file": "tracks/02-problem.m4a",
+      "sha256": "5e59c30230a9fd263c989159e1f6dcd453b6d47d0e2515bd38c1ba7e5f1f5df5"
+    },
+    {
+      "id": "solution",
+      "number": 3,
+      "title": "Solution",
+      "duration": 32.426667,
+      "samples": 1556480,
+      "file": "tracks/03-solution.m4a",
+      "sha256": "f9a36eee5a3a0d433a18f5f153516bcfb2e299c7bf0f0f71083ea6324f96e161"
+    },
+    {
+      "id": "business-model",
+      "number": 4,
+      "title": "Business Model",
+      "duration": 16.533333,
+      "samples": 793600,
+      "file": "tracks/04-business-model.m4a",
+      "sha256": "227b8e77a9dbb3621f289feda2c00f4f42cd01351b7d3e8b3fa726c933db8dc3"
+    },
+    {
+      "id": "demo",
+      "number": 5,
+      "title": "Demo",
+      "duration": 197.733,
+      "samples": 9491456,
+      "file": "tracks/05-demo.m4a",
+      "sha256": "d237d28eadf46d3266895c0300b38c4a725acb8b55749f9d5267e40ef5babf3b"
+    },
+    {
+      "id": "responsible-operation",
+      "number": 6,
+      "title": "Responsible Operation",
+      "duration": 22.954667,
+      "samples": 1101824,
+      "file": "tracks/06-responsible-operation.m4a",
+      "sha256": "a7160735994ecb4702de6ac4e1ca4d79e6dbb641d57ba958edff0b16360fefd8"
+    },
+    {
+      "id": "what-runs-today",
+      "number": 7,
+      "title": "What runs today",
+      "duration": 9.173333,
+      "samples": 440320,
+      "file": "tracks/07-what-runs-today.m4a",
+      "sha256": "96a507740422b90f96ff95a48e505f536be87d6e7dcc78e7bb8e11cb129d8e10"
+    },
+    {
+      "id": "where-we-start",
+      "number": 8,
+      "title": "Where we start",
+      "duration": 14.101333,
+      "samples": 676864,
+      "file": "tracks/08-where-we-start.m4a",
+      "sha256": "d71fc1c76bede8945d52200d633bb09e1b2667e3a47012e4d07f0468349ce64d"
+    },
+    {
+      "id": "meet-the-team",
+      "number": 9,
+      "title": "Meet the team",
+      "duration": 6.976,
+      "samples": 334848,
+      "file": "tracks/09-meet-the-team.m4a",
+      "sha256": "36258ca241aff78d9d88f90fe0200d10357a4801b301e8ef28ece83488ce0947"
+    },
+    {
+      "id": "conclusion",
+      "number": 10,
+      "title": "Conclusion",
+      "duration": 19.029333,
+      "samples": 913408,
+      "file": "tracks/10-conclusion.m4a",
+      "sha256": "945c28b71da1c9ae43f405336fdbbadd281ade6fb383092bc006a939ca9fb6a1"
+    }
+  ],
+  "sessions": {
+    "all": {
+      "file": "all.m4a",
+      "duration": 362.965,
+      "chapters": [
+        {
+          "id": "intro",
+          "start": 0.0,
+          "end": 13.525333333333334
+        },
+        {
+          "id": "problem",
+          "start": 13.525333333333334,
+          "end": 44.032
+        },
+        {
+          "id": "solution",
+          "start": 44.032,
+          "end": 76.45866666666667
+        },
+        {
+          "id": "business-model",
+          "start": 76.45866666666667,
+          "end": 92.992
+        },
+        {
+          "id": "demo",
+          "start": 92.992,
+          "end": 290.73066666666665
+        },
+        {
+          "id": "responsible-operation",
+          "start": 290.73066666666665,
+          "end": 313.68533333333335
+        },
+        {
+          "id": "what-runs-today",
+          "start": 313.68533333333335,
+          "end": 322.8586666666667
+        },
+        {
+          "id": "where-we-start",
+          "start": 322.8586666666667,
+          "end": 336.96
+        },
+        {
+          "id": "meet-the-team",
+          "start": 336.96,
+          "end": 343.936
+        },
+        {
+          "id": "conclusion",
+          "start": 343.936,
+          "end": 362.9653333333333
+        }
+      ],
+      "sha256": "e3f00ee32fcb4b7c4f55eee97b7806f876d35aaa49b854d3dff8ec2c0713f918"
+    },
+    "without-demo": {
+      "file": "without-demo.m4a",
+      "duration": 165.226,
+      "chapters": [
+        {
+          "id": "intro",
+          "start": 0.0,
+          "end": 13.525333333333334
+        },
+        {
+          "id": "problem",
+          "start": 13.525333333333334,
+          "end": 44.032
+        },
+        {
+          "id": "solution",
+          "start": 44.032,
+          "end": 76.45866666666667
+        },
+        {
+          "id": "business-model",
+          "start": 76.45866666666667,
+          "end": 92.992
+        },
+        {
+          "id": "responsible-operation",
+          "start": 92.992,
+          "end": 115.94666666666667
+        },
+        {
+          "id": "what-runs-today",
+          "start": 115.94666666666667,
+          "end": 125.12
+        },
+        {
+          "id": "where-we-start",
+          "start": 125.12,
+          "end": 139.22133333333332
+        },
+        {
+          "id": "meet-the-team",
+          "start": 139.22133333333332,
+          "end": 146.19733333333335
+        },
+        {
+          "id": "conclusion",
+          "start": 146.19733333333335,
+          "end": 165.22666666666666
+        }
+      ],
+      "sha256": "c91b4e2af1a61991c22b477188d11ff44a9d74b4d36c1c93411c51113d4dbec9"
+    }
+  },
+  "revision": "6e241a065a3c"
+};
+// CATALOG_END
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const audio = $('audio');
+const tracks = CATALOG.tracks;
+const byId = new Map(tracks.map(t => [t.id,t]));
+const media = navigator.mediaSession;
+let mode='all', solo='intro', currentId='', scrubbing=false, pendingSeek=null, loadId=0, lastSave=0;
+const format = value => { const n=Math.max(0,Math.floor(value||0)); return `${Math.floor(n/60)}:${String(n%60).padStart(2,'0')}`; };
+const asset = (file,hash) => `./ugo-audio/${file}?v=${hash.slice(0,12)}`;
+const readSaved = () => { try { return JSON.parse(localStorage.getItem('kairos-ugo-rehearsal')||'null'); } catch { return null; } };
+function save(force=false){
+ if(!force && Date.now()-lastSave<1500)return;
+ lastSave=Date.now();
+ try{localStorage.setItem('kairos-ugo-rehearsal',JSON.stringify({revision:CATALOG.revision,mode,solo,time:pendingSeek??audio.currentTime,speed:audio.playbackRate,repeat:audio.loop}));}catch{}
+}
+function session(){return mode==='single'?{...byId.get(solo),chapters:[{id:solo,start:0,end:byId.get(solo).duration}]}:CATALOG.sessions[mode];}
+function chapter(){const chapters=session().chapters; return chapters.find(c=>audio.currentTime>=c.start&&audio.currentTime<c.end)|| (audio.currentTime>=chapters.at(-1).end?chapters.at(-1):chapters[0]);}
+function announce(message){$('announcement').textContent=message;}
+function showError(message){$('error').textContent=message;$('error').hidden=false;}
+function syncMedia(){
+ if(!media)return;
+ try{
+  media.playbackState=audio.ended?'none':audio.paused?'paused':'playing';
+  if(Number.isFinite(audio.duration)&&audio.duration>0&&media.setPositionState)media.setPositionState({duration:audio.duration,playbackRate:audio.playbackRate,position:Math.max(0,Math.min(audio.currentTime,audio.duration))});
+ }catch{}
+}
+function sync(){
+ const s=session(), c=chapter(), track=byId.get(c.id), playing=!audio.paused&&!audio.ended;
+ const duration=Number.isFinite(audio.duration)?audio.duration:s.duration;
+ if(currentId!==c.id){
+  currentId=c.id;$('track-title').textContent=track.title;$('slide-label').textContent=`Slide ${track.number}${track.id==='demo'?' · Demo audio':''}`;
+  const index=s.chapters.indexOf(c), next=s.chapters[index+1];
+  $('up-next').textContent=mode==='single'?'Practising this section on its own.':next?`Up next: ${byId.get(next.id).title}`:'Final section. You’ve got this.';
+  $('chapter-count').textContent=mode==='single'?`${track.number} / 10`:`${index+1} / ${s.chapters.length}`;
+  for(const row of document.querySelectorAll('.track-row'))row.setAttribute('aria-current',String(row.dataset.id===c.id));
+  if(media&&typeof MediaMetadata==='function')media.metadata=new MediaMetadata({title:track.title,artist:'Ugo · Team Kairos',album:mode==='single'?'Section practice':mode==='all'?'Full pitch':'Pitch without demo'});
+ }
+ const ready=Number.isFinite(audio.duration)&&audio.duration>0;
+ $('seek').disabled=!ready;$('seek').max=duration;
+ if(!scrubbing)$('seek').value=pendingSeek??audio.currentTime;
+ const position=Number($('seek').value);
+ $('seek').style.setProperty('--progress',`${duration?position/duration*100:0}%`);
+ $('seek').setAttribute('aria-valuetext',`${format(position)} of ${format(duration)}`);
+ $('elapsed').textContent=format(position);$('duration').textContent=format(duration);
+ $('section-time').textContent=`${format(Math.max(0,audio.currentTime-c.start))} in section`;
+ $('play').setAttribute('aria-label',playing?'Pause':'Play');$('play-icon').hidden=playing;$('pause-icon').hidden=!playing;
+ document.querySelector('.player').classList.toggle('playing',playing);
+ $('state-label').textContent=audio.ended?'Session complete':playing?'Now playing':audio.currentTime>0?'Paused':'Ready to rehearse';
+ const index=mode==='single'?tracks.indexOf(track):s.chapters.indexOf(c);
+ $('previous').disabled=index===0 && audio.currentTime<=.1;
+ $('next').disabled=index===(mode==='single'?tracks.length:s.chapters.length)-1;
+ syncMedia();save();
+}
+async function playAudio(){
+ const requested=loadId;
+ try{await audio.play();}catch(e){if(e.name!=='AbortError'&&requested===loadId)showError('Playback could not start. Press Play to try again.');}
+}
+function choose(nextMode,nextSolo='intro',play=true,position=0){
+ ++loadId;audio.pause();mode=nextMode;solo=nextSolo;currentId='';pendingSeek=Math.max(0,Math.min(position,session().duration-.01));
+ const s=session();audio.src=asset(s.file,s.sha256);audio.load();
+ audio.defaultPlaybackRate=audio.playbackRate=Number($('speed').value);audio.loop=$('repeat').checked;
+ for(const button of document.querySelectorAll('[data-mode]'))button.setAttribute('aria-pressed',String(button.dataset.mode===mode||(button.dataset.mode==='demo'&&mode==='single'&&solo==='demo')));
+ for(const row of document.querySelectorAll('.track-row'))row.classList.toggle('excluded',mode==='without-demo'&&row.dataset.id==='demo');
+ $('session-title').textContent=mode==='single'?'Single section':mode==='all'?'Full pitch · 10 sections':'Without demo · 9 sections';
+ $('repeat-label').textContent=mode==='single'?'Repeat section':'Repeat session';
+ $('download').href=asset(s.file,s.sha256);$('download').download=`Kairos-${mode==='single'?solo:mode}.m4a`;
+ $('error').hidden=true;sync();save(true);
+ if(play){if(mode==='single'&&matchMedia('(max-width:760px)').matches)document.querySelector('.player').scrollIntoView({block:'start',behavior:'instant'});announce(mode==='single'?`Playing ${byId.get(solo).title} only.`:mode==='all'?'Playing all ten sections.':'Playing nine sections without the demo.');playAudio();}
+}
+function seekTo(time){
+ const duration=Number.isFinite(audio.duration)?audio.duration:session().duration;
+ const position=Math.max(0,Math.min(time,duration));
+ if(audio.readyState>0){audio.currentTime=position;pendingSeek=null;}else pendingSeek=position;
+ sync();save(true);
+}
+function adjacent(delta){
+ const c=chapter(), s=session(), playing=!audio.paused;
+ if(delta<0&&audio.currentTime-c.start>3){seekTo(c.start);return;}
+ if(mode==='single'){
+  const next=tracks[tracks.findIndex(t=>t.id===solo)+delta];if(next)choose('single',next.id,playing);
+ }else{
+  const next=s.chapters[s.chapters.indexOf(c)+delta];if(next)seekTo(next.start);else if(delta<0)seekTo(0);
+ }
+}
+$('track-list').innerHTML=tracks.map(t=>`<li><button type="button" class="track-row" data-id="${t.id}" aria-current="false" aria-label="Play section ${t.number}: ${t.title} on its own"><span class="track-number" aria-hidden="true">${String(t.number).padStart(2,'0')}</span><span class="track-title">${t.title}${t.id==='demo'?'<span class="demo-note">Audio from the 3:17 demo</span>':''}</span><span class="track-duration">${format(t.duration)}</span><span class="track-action" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 2v12l10-6z"/></svg></span></button></li>`).join('');
+$('all-time').textContent=format(CATALOG.sessions.all.duration);$('talk-time').textContent=format(CATALOG.sessions['without-demo'].duration);
+for(const button of document.querySelectorAll('[data-mode]'))button.addEventListener('click',()=>choose(button.dataset.mode==='demo'?'single':button.dataset.mode,'demo'));
+$('track-list').addEventListener('click',e=>{const row=e.target.closest('.track-row');if(row)choose('single',row.dataset.id);});
+$('play').addEventListener('click',()=>audio.paused?playAudio():audio.pause());
+$('back').addEventListener('click',()=>seekTo(audio.currentTime-10));$('forward').addEventListener('click',()=>seekTo(audio.currentTime+10));
+$('previous').addEventListener('click',()=>adjacent(-1));$('next').addEventListener('click',()=>adjacent(1));
+$('restart').addEventListener('click',()=>{seekTo(0);playAudio();});
+$('repeat').addEventListener('change',()=>{audio.loop=$('repeat').checked;save(true);});
+$('speed').addEventListener('change',()=>{audio.defaultPlaybackRate=audio.playbackRate=Number($('speed').value);syncMedia();save(true);});
+$('seek').addEventListener('pointerdown',()=>{scrubbing=true;});
+function stopScrubbing(){scrubbing=false;sync();}
+window.addEventListener('pointerup',stopScrubbing);window.addEventListener('pointercancel',stopScrubbing);$('seek').addEventListener('blur',stopScrubbing);
+$('seek').addEventListener('input',()=>seekTo(Number($('seek').value)));
+for(const name of ['timeupdate','durationchange','playing','pause','ended','seeked','ratechange','emptied'])audio.addEventListener(name,sync);
+audio.addEventListener('loadedmetadata',()=>{if(pendingSeek!==null){audio.currentTime=Math.min(pendingSeek,audio.duration);pendingSeek=null;}audio.playbackRate=Number($('speed').value);sync();});
+audio.addEventListener('playing',()=>{$('error').hidden=true;});
+audio.addEventListener('error',()=>{showError('The audio could not load. Check your connection, then choose the session again.');});
+window.addEventListener('pagehide',()=>save(true));document.addEventListener('visibilitychange',()=>{if(document.hidden)save(true);});
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&!e.altKey&&!e.metaKey&&!e.ctrlKey&&(e.target===document.body||e.target===document.documentElement)){e.preventDefault();audio.paused?playAudio():audio.pause();}});
+if(navigator.audioSession){try{navigator.audioSession.type='playback';}catch{}}
+if(media){for(const [name,handler] of Object.entries({play:playAudio,pause:()=>audio.pause(),stop:()=>{audio.pause();seekTo(0);},seekbackward:({seekOffset=10})=>seekTo(audio.currentTime-seekOffset),seekforward:({seekOffset=10})=>seekTo(audio.currentTime+seekOffset),seekto:({seekTime})=>seekTo(seekTime),previoustrack:()=>adjacent(-1),nexttrack:()=>adjacent(1)})){try{media.setActionHandler(name,handler);}catch{}}}
+const saved=readSaved();
+if(saved&&saved.revision===CATALOG.revision){
+ if([...$('speed').options].some(o=>o.value===String(saved.speed)))$('speed').value=String(saved.speed);
+ $('repeat').checked=!!saved.repeat;
+ choose(['all','without-demo','single'].includes(saved.mode)?saved.mode:'all',byId.has(saved.solo)?saved.solo:'intro',false,Number.isFinite(saved.time)?saved.time:0);
+}else choose('all','intro',false);
+$('enhanced').hidden=false;$('custom-controls').hidden=false;audio.hidden=true;
+// The worker is scoped to this one page; the product notification worker is untouched.
+if('serviceWorker'in navigator&&location.protocol!=='file:'){
+ $('offline-panel').hidden=false;
+ let registration;
+ const register=async()=>{registration=await navigator.serviceWorker.register('./ugo-audio-sw.js',{scope:'./ugo-audio.html'});const worker=registration.installing||registration.waiting;if(worker&&worker.state!=='activated')await new Promise((resolve,reject)=>{worker.addEventListener('statechange',()=>{if(worker.state==='activated')resolve();if(worker.state==='redundant')reject(new Error('Worker unavailable'));});});return registration.active;};
+ navigator.serviceWorker.addEventListener('message',e=>{
+  const d=e.data||{};if(d.revision!==CATALOG.revision)return;
+  if(d.type==='progress')$('offline-status').textContent=`Saving audio… ${d.done} of ${d.total} files`;
+  if(d.type==='saved'){$('offline-status').textContent='All sections saved on this browser. Ready for offline rehearsal.';$('offline-label').textContent='Saved for offline';$('offline-save').disabled=false;}
+  if(d.type==='failed'){$('offline-status').textContent='Could not save everything. Check your connection or available storage, then try again.';$('offline-label').textContent='Try saving again';$('offline-save').disabled=false;}
+ });
+ $('offline-save').addEventListener('click',async()=>{
+  $('offline-save').disabled=true;$('offline-label').textContent='Saving…';
+  try{const worker=await register();worker.postMessage({type:'save',revision:CATALOG.revision});}catch{$('offline-status').textContent='Offline saving is unavailable in this browser. You can download the current audio instead.';$('offline-save').disabled=false;$('offline-label').textContent='Try saving again';}
+ });
+ navigator.serviceWorker.getRegistration(new URL('./ugo-audio.html',location.href).href).then(r=>{if(r?.active&&r.scope===new URL('./ugo-audio.html',location.href).href)r.active.postMessage({type:'status',revision:CATALOG.revision});}).catch(()=>{});
+}
+})();
+</script>
+</body>
+</html>

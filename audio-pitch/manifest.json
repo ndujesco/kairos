@@ -1,6 +1,7 @@
 {
   "source": "../kairos-audio-pitch",
   "page": "/audio-ptch.html",
+  "rehearsalPage": "/ugo-audio.html",
   "files": [
     {
       "source": "index.html",
@@ -13,6 +14,96 @@
       "destination": "public/pitch.mp3",
       "size": 6363745,
       "sha256": "487e2735abd07b11a544821e71172de4216d575c06ea3de881b6db84bc5d7d5d"
+    },
+    {
+      "source": "ugo-audio.html",
+      "destination": "public/ugo-audio.html",
+      "size": 33469,
+      "sha256": "2b0810bbc59903fbbadc9f7727353821019aceedb203bfd9c26c60e054e654f8"
+    },
+    {
+      "source": "ugo-audio-sw.js",
+      "destination": "public/ugo-audio-sw.js",
+      "size": 3739,
+      "sha256": "789fa1f2ef5185b45e6eac3887d854f10199d666cb9068cea01e7b5a05cf5374"
+    },
+    {
+      "source": "ugo-audio/catalog.json",
+      "destination": "public/ugo-audio/catalog.json",
+      "size": 5430,
+      "sha256": "367b049cf0e9f22a9160e9b826d8570b523222a47192a4dd29a8f288083c47ce"
+    },
+    {
+      "source": "ugo-audio/tracks/01-intro.m4a",
+      "destination": "public/ugo-audio/tracks/01-intro.m4a",
+      "size": 119865,
+      "sha256": "2e3fa06803e0909bacdc7c8879b3993386ce3c827ed21483db30712b69e6bb97"
+    },
+    {
+      "source": "ugo-audio/tracks/02-problem.m4a",
+      "destination": "public/ugo-audio/tracks/02-problem.m4a",
+      "size": 261888,
+      "sha256": "5e59c30230a9fd263c989159e1f6dcd453b6d47d0e2515bd38c1ba7e5f1f5df5"
+    },
+    {
+      "source": "ugo-audio/tracks/03-solution.m4a",
+      "destination": "public/ugo-audio/tracks/03-solution.m4a",
+      "size": 274563,
+      "sha256": "f9a36eee5a3a0d433a18f5f153516bcfb2e299c7bf0f0f71083ea6324f96e161"
+    },
+    {
+      "source": "ugo-audio/tracks/04-business-model.m4a",
+      "destination": "public/ugo-audio/tracks/04-business-model.m4a",
+      "size": 144856,
+      "sha256": "227b8e77a9dbb3621f289feda2c00f4f42cd01351b7d3e8b3fa726c933db8dc3"
+    },
+    {
+      "source": "ugo-audio/tracks/05-demo.m4a",
+      "destination": "public/ugo-audio/tracks/05-demo.m4a",
+      "size": 3765815,
+      "sha256": "d237d28eadf46d3266895c0300b38c4a725acb8b55749f9d5267e40ef5babf3b"
+    },
+    {
+      "source": "ugo-audio/tracks/06-responsible-operation.m4a",
+      "destination": "public/ugo-audio/tracks/06-responsible-operation.m4a",
+      "size": 199853,
+      "sha256": "a7160735994ecb4702de6ac4e1ca4d79e6dbb641d57ba958edff0b16360fefd8"
+    },
+    {
+      "source": "ugo-audio/tracks/07-what-runs-today.m4a",
+      "destination": "public/ugo-audio/tracks/07-what-runs-today.m4a",
+      "size": 80855,
+      "sha256": "96a507740422b90f96ff95a48e505f536be87d6e7dcc78e7bb8e11cb129d8e10"
+    },
+    {
+      "source": "ugo-audio/tracks/08-where-we-start.m4a",
+      "destination": "public/ugo-audio/tracks/08-where-we-start.m4a",
+      "size": 123194,
+      "sha256": "d71fc1c76bede8945d52200d633bb09e1b2667e3a47012e4d07f0468349ce64d"
+    },
+    {
+      "source": "ugo-audio/tracks/09-meet-the-team.m4a",
+      "destination": "public/ugo-audio/tracks/09-meet-the-team.m4a",
+      "size": 62056,
+      "sha256": "36258ca241aff78d9d88f90fe0200d10357a4801b301e8ef28ece83488ce0947"
+    },
+    {
+      "source": "ugo-audio/tracks/10-conclusion.m4a",
+      "destination": "public/ugo-audio/tracks/10-conclusion.m4a",
+      "size": 164397,
+      "sha256": "945c28b71da1c9ae43f405336fdbbadd281ade6fb383092bc006a939ca9fb6a1"
+    },
+    {
+      "source": "ugo-audio/all.m4a",
+      "destination": "public/ugo-audio/all.m4a",
+      "size": 6847393,
+      "sha256": "e3f00ee32fcb4b7c4f55eee97b7806f876d35aaa49b854d3dff8ec2c0713f918"
+    },
+    {
+      "source": "ugo-audio/without-demo.m4a",
+      "destination": "public/ugo-audio/without-demo.m4a",
+      "size": 3181972,
+      "sha256": "c91b4e2af1a61991c22b477188d11ff44a9d74b4d36c1c93411c51113d4dbec9"
     }
   ]
 }

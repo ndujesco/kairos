@@ -1,0 +1,208 @@
+{
+  "title": "Ugo\u2019s pitch rehearsal",
+  "date": "2026-11-23",
+  "tracks": [
+    {
+      "id": "intro",
+      "number": 1,
+      "title": "Intro",
+      "duration": 13.525333,
+      "samples": 649216,
+      "file": "tracks/01-intro.m4a",
+      "sha256": "2e3fa06803e0909bacdc7c8879b3993386ce3c827ed21483db30712b69e6bb97"
+    },
+    {
+      "id": "problem",
+      "number": 2,
+      "title": "Problem",
+      "duration": 30.506667,
+      "samples": 1464320,
+      "file": "tracks/02-problem.m4a",
+      "sha256": "5e59c30230a9fd263c989159e1f6dcd453b6d47d0e2515bd38c1ba7e5f1f5df5"
+    },
+    {
+      "id": "solution",
+      "number": 3,
+      "title": "Solution",
+      "duration": 32.426667,
+      "samples": 1556480,
+      "file": "tracks/03-solution.m4a",
+      "sha256": "f9a36eee5a3a0d433a18f5f153516bcfb2e299c7bf0f0f71083ea6324f96e161"
+    },
+    {
+      "id": "business-model",
+      "number": 4,
+      "title": "Business Model",
+      "duration": 16.533333,
+      "samples": 793600,
+      "file": "tracks/04-business-model.m4a",
+      "sha256": "227b8e77a9dbb3621f289feda2c00f4f42cd01351b7d3e8b3fa726c933db8dc3"
+    },
+    {
+      "id": "demo",
+      "number": 5,
+      "title": "Demo",
+      "duration": 197.733,
+      "samples": 9491456,
+      "file": "tracks/05-demo.m4a",
+      "sha256": "d237d28eadf46d3266895c0300b38c4a725acb8b55749f9d5267e40ef5babf3b"
+    },
+    {
+      "id": "responsible-operation",
+      "number": 6,
+      "title": "Responsible Operation",
+      "duration": 22.954667,
+      "samples": 1101824,
+      "file": "tracks/06-responsible-operation.m4a",
+      "sha256": "a7160735994ecb4702de6ac4e1ca4d79e6dbb641d57ba958edff0b16360fefd8"
+    },
+    {
+      "id": "what-runs-today",
+      "number": 7,
+      "title": "What runs today",
+      "duration": 9.173333,
+      "samples": 440320,
+      "file": "tracks/07-what-runs-today.m4a",
+      "sha256": "96a507740422b90f96ff95a48e505f536be87d6e7dcc78e7bb8e11cb129d8e10"
+    },
+    {
+      "id": "where-we-start",
+      "number": 8,
+      "title": "Where we start",
+      "duration": 14.101333,
+      "samples": 676864,
+      "file": "tracks/08-where-we-start.m4a",
+      "sha256": "d71fc1c76bede8945d52200d633bb09e1b2667e3a47012e4d07f0468349ce64d"
+    },
+    {
+      "id": "meet-the-team",
+      "number": 9,
+      "title": "Meet the team",
+      "duration": 6.976,
+      "samples": 334848,
+      "file": "tracks/09-meet-the-team.m4a",
+      "sha256": "36258ca241aff78d9d88f90fe0200d10357a4801b301e8ef28ece83488ce0947"
+    },
+    {
+      "id": "conclusion",
+      "number": 10,
+      "title": "Conclusion",
+      "duration": 19.029333,
+      "samples": 913408,
+      "file": "tracks/10-conclusion.m4a",
+      "sha256": "945c28b71da1c9ae43f405336fdbbadd281ade6fb383092bc006a939ca9fb6a1"
+    }
+  ],
+  "sessions": {
+    "all": {
+      "file": "all.m4a",
+      "duration": 362.965,
+      "chapters": [
+        {
+          "id": "intro",
+          "start": 0.0,
+          "end": 13.525333333333334
+        },
+        {
+          "id": "problem",
+          "start": 13.525333333333334,
+          "end": 44.032
+        },
+        {
+          "id": "solution",
+          "start": 44.032,
+          "end": 76.45866666666667
+        },
+        {
+          "id": "business-model",
+          "start": 76.45866666666667,
+          "end": 92.992
+        },
+        {
+          "id": "demo",
+          "start": 92.992,
+          "end": 290.73066666666665
+        },
+        {
+          "id": "responsible-operation",
+          "start": 290.73066666666665,
+          "end": 313.68533333333335
+        },
+        {
+          "id": "what-runs-today",
+          "start": 313.68533333333335,
+          "end": 322.8586666666667
+        },
+        {
+          "id": "where-we-start",
+          "start": 322.8586666666667,
+          "end": 336.96
+        },
+        {
+          "id": "meet-the-team",
+          "start": 336.96,
+          "end": 343.936
+        },
+        {
+          "id": "conclusion",
+          "start": 343.936,
+          "end": 362.9653333333333
+        }
+      ],
+      "sha256": "e3f00ee32fcb4b7c4f55eee97b7806f876d35aaa49b854d3dff8ec2c0713f918"
+    },
+    "without-demo": {
+      "file": "without-demo.m4a",
+      "duration": 165.226,
+      "chapters": [
+        {
+          "id": "intro",
+          "start": 0.0,
+          "end": 13.525333333333334
+        },
+        {
+          "id": "problem",
+          "start": 13.525333333333334,
+          "end": 44.032
+        },
+        {
+          "id": "solution",
+          "start": 44.032,
+          "end": 76.45866666666667
+        },
+        {
+          "id": "business-model",
+          "start": 76.45866666666667,
+          "end": 92.992
+        },
+        {
+          "id": "responsible-operation",
+          "start": 92.992,
+          "end": 115.94666666666667
+        },
+        {
+          "id": "what-runs-today",
+          "start": 115.94666666666667,
+          "end": 125.12
+        },
+        {
+          "id": "where-we-start",
+          "start": 125.12,
+          "end": 139.22133333333332
+        },
+        {
+          "id": "meet-the-team",
+          "start": 139.22133333333332,
+          "end": 146.19733333333335
+        },
+        {
+          "id": "conclusion",
+          "start": 146.19733333333335,
+          "end": 165.22666666666666
+        }
+      ],
+      "sha256": "c91b4e2af1a61991c22b477188d11ff44a9d74b4d36c1c93411c51113d4dbec9"
+    }
+  },
+  "revision": "6e241a065a3c"
+}

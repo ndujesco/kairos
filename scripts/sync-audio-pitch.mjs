@@ -11,6 +11,8 @@ const manifestPath = resolve(website, 'audio-pitch/manifest.json');
 const files = [
   { source: 'index.html', destination: 'public/audio-ptch.html' },
   { source: 'pitch.mp3', destination: 'public/pitch.mp3' },
+  { source: 'ugo-audio.html', destination: 'public/ugo-audio.html' },
+  { source: 'ugo-audio-sw.js', destination: 'public/ugo-audio-sw.js' },
 ];
 const args = process.argv.slice(2);
 if (args.some((arg) => arg !== '--check')) throw new Error('Usage: node scripts/sync-audio-pitch.mjs [--check]');
@@ -26,7 +28,18 @@ async function writeChanged(path, bytes) {
   await writeFile(path, bytes);
 }
 
-if (await exists(source)) {
+// On Vercel only the committed website exists, so discover asset paths from
+// the committed catalogue. Locally, use the canonical source catalogue.
+const hasSource = await exists(source);
+const catalog = JSON.parse(await readFile(resolve(hasSource ? source : resolve(website, 'public'), 'ugo-audio/catalog.json'), 'utf8'));
+const assets = ['catalog.json', ...catalog.tracks.map((track) => track.file), ...Object.values(catalog.sessions).map((session) => session.file)];
+if (new Set(assets).size !== assets.length) throw new Error('Duplicate rehearsal audio asset.');
+for (const asset of assets) {
+  if (!/^[a-z0-9./-]+$/.test(asset) || asset.includes('..') || asset.startsWith('/')) throw new Error('Invalid rehearsal asset path.');
+  files.push({ source: `ugo-audio/${asset}`, destination: `public/ugo-audio/${asset}` });
+}
+
+if (hasSource) {
   // Read every input before writing, so an incomplete source cannot create a
   // mismatched page/recording pair. No Git/network or credentials are needed.
   const inputs = await Promise.all(files.map(async (file) => {
@@ -37,6 +50,7 @@ if (await exists(source)) {
   const manifest = Buffer.from(JSON.stringify({
     source: '../kairos-audio-pitch',
     page: '/audio-ptch.html',
+    rehearsalPage: '/ugo-audio.html',
     files: inputs.map(({ bytes, ...file }) => file),
   }, null, 2) + '\n');
   if (!check) {
@@ -62,4 +76,4 @@ for (const file of files) {
     throw new Error(`Audio player integrity check failed: ${file.destination}. Run npm run audio:sync from the full Kairos workspace.`);
   }
 }
-console.log(`Audio pitch ${check ? 'check' : 'sync'} passed: /audio-ptch.html and its unchanged recording.`);
+console.log(`Audio pitch ${check ? 'check' : 'sync'} passed: both players and ${assets.length - 1} rehearsal recordings.`);
