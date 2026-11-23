@@ -87,6 +87,8 @@ def write_script(content, assets, page, slides, presenter=None):
             script += ['### Recorded demo transcription'] + s['recorded_transcript']
         script += [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
+            if page.get('demo_drive_url'):
+                script += [f'[Open or download the {page.get("demo_duration_label", "demo")} demo on Google Drive]({page["demo_drive_url"]}). Download it before presenting and play at 1x.']
             instruction = ('Play the separate local MP4, then return to the next slide.' if page.get('demo_placeholder') else
                            'Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide.'
                            if page.get('local_demo') else 'Play the embedded recording in full, then advance manually to the next slide.')
@@ -285,6 +287,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
                       '<h3>Recorded demo transcription</h3><div class="say">'
                       + ''.join(f'<p>{e(p)}</p>' for p in s['recorded_transcript']) + '</div></section>'
                       if s.get('recorded_transcript') else '')
+        demo_link = (f'<p class="demo-drive-link"><a class="button" href="{e(page["demo_drive_url"])}" target="_blank" rel="noopener">Open or download demo · {e(page.get("demo_duration_label", "Google Drive"))}</a></p>'
+                     if s.get('is_demo') and page.get('demo_drive_url') else '')
         script_blocks.append(
             f'<article class="scriptblock" data-slide="{s["n"]}"{hidden}>'
             f'<div class="scripthead"><span class="slideindex">{s["n"]:02} / {len(slides):02}</span>'
@@ -292,7 +296,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
             f'<span class="speaker">{e(s["speaker"])}</span></div>'
             f'<div class="scriptbody"><h2>{e(s["title"])}</h2><div class="say">'
             + ''.join(f'<p>{e(p)}</p>' for p in s["paragraphs"])
-            + f'</div>{transcript}<div class="cue"><strong>DELIVERY NOTE</strong><span class="delivery-note">{e(s["cue"])}</span></div></div>'
+            + f'</div>{transcript}{demo_link}<div class="cue"><strong>DELIVERY NOTE</strong><span class="delivery-note">{e(s["cue"])}</span></div></div>'
             + f'<div class="scriptfoot"><span class="spoken-words">{s["words"]} spoken words</span>'
             + f'<span><strong>{"Next: " if s["n"] < len(slides) else ""}</strong>{e(next_name)}</span></div></article>'
         )
@@ -427,6 +431,10 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     if demo_slide and page.get('demo_placeholder'):
         demo_panel = ('<div class="intro"><div><h1>Demo</h1>'
                       '<p>Play the separate video from your computer, then return to the next slide.</p></div></div>')
+        if page.get('demo_drive_url'):
+            demo_panel += (f'<section class="prepbox"><h2>The {e(page.get("demo_duration_label", ""))} recording</h2>'
+                           f'<p>Download the recording before presenting and play it at 1x. Its pace and section cards are already included.</p>'
+                           f'<a class="button primary" href="{e(page["demo_drive_url"])}" target="_blank" rel="noopener">Open demo on Google Drive</a></section>')
     elif demo_slide:
         local_picker = ''
         if page.get('local_demo'):

@@ -2,357 +2,744 @@
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
-Suggested spoken answers informed by the judging feedback and earlier JCI, Forge and Cleva rehearsal banks. Start with the starred questions. Answers distinguish the current prototype from intended operation; pilot plans and policies are proposals, not completed results.
+Plain-English spoken answers covering the 15 November and finalist feedback, earlier rehearsal topics, and examples of third parties for each role. Start with the starred questions. Current features, simulations and proposed processes are kept separate. Supplier names are research examples, not signed Kairos partnerships.
+
+## Finals feedback: rehearse first
+
+### 1. ★ What are the judges asking you to strengthen for the finals?
+
+They want us to explain who holds the funds, who handles uncertain decisions and how identity, organisations and beneficiaries are checked. They also want a focused example from the checks through to the donor’s receipt. We can demonstrate the application work already done while identifying the partnerships and processes still needed. Their email does not require us to finish every suggested feature before the finals.
+
+### 2. ★ Walk us through exactly where a real donation would go.
+
+In the proposed live arrangement, a donor pays through the agreed collection channel and the approved financial institution holds the money under the agreed rules. Kairos records the contribution and permits a payment request only for the checked provider and budget item. The financial partner executes the payment. We then match its result to our records and show the donor their share. The holding and settlement arrangement is not live yet.
+
+### 3. ★ Which institution is already holding money for Kairos?
+
+None is established in our current prototype or presentation materials. We have examples of banks, trustees and payment providers to approach, but we must confirm the exact service, permissions and agreement before collecting real funds. A payment gateway account alone would not establish the intended holding-and-release arrangement. We should state the dependency plainly rather than invent a signed partner.
+
+### 4. ★ What would you confirm with a financial partner before launch?
+
+We would explain the donation use case and confirm who holds the funds, who can approve a payment, which recipients are allowed and how fees, refunds and disputes work. We would also agree how we receive payment results and compare our records. The provider must support the particular arrangement we need. A general statement that it is licensed is not enough to answer those operational questions.
+
+### 5. ★ Who requests, approves and actually sends the payment?
+
+The organiser would request a payment for the published budget item. Our rules and any required authorised review would check the bill, provider, amount and remaining funds. The institution holding or processing the money would execute an approved instruction under the agreed arrangement. We need clear separation of those responsibilities. The prototype currently demonstrates organiser permissions and checks, rather than a complete independent approval operation.
+
+### 6. ★ What if the account is debited but the school says it received nothing?
+
+We would keep the payment under investigation and compare the reference and result with the provider and school. We should not assume failure and send it again while the outcome is unknown. The donor should see that it is pending or being checked, rather than a false success message. Once the outcome is established, the agreed retry, reversal or dispute process would apply. This is a live-operation requirement still to build.
+
+### 7. ★ Who would the human reviewer be, and how would they work?
+
+We need to assign an authorised person with a clear procedure before a live pilot. They would see only the evidence needed, check it through an independently obtained institutional contact and record what they decided and why. The organiser should not approve their own exception. We have not hired or demonstrated a complete review team, so this is a responsibility to establish, not an operation we can already claim.
+
+### 8. ★ What if a legitimate applicant disagrees with the reviewer?
+
+They should receive an understandable reason and a way to supply corrected or additional information. A different authorised person should review a contested decision where possible, with any conflict of interest declared. The records should show what changed and why. We have not built that full appeal route or promised a response time; we need a workable procedure for the size of the first pilot.
+
+### 9. ★ Can a human reviewer simply override a failed check and release money?
+
+Human review should resolve the underlying issue, not switch off the payment rules. For example, the reviewer could confirm why the student’s initials differ from the school record and document that evidence. The provider, amount and budget limits must still be checked. A reviewer should not label an unresolved transfer as paid or direct the money to a new personal account. Those permissions and records need to be implemented.
+
+### 10. ★ What is the difference between identity, organisation, beneficiary and provider checks?
+
+Identity asks who is organising the appeal. Organisation checks ask whether an institution or business exists and whether the person can act for it. Beneficiary checks ask whether the named person has the stated need and agrees to the appeal. Provider checks establish who should receive payment and whether the bill and receiving details belong together. Passing one check does not automatically answer the other three.
+
+### 11. ★ What would verification look like for one school-fee case?
+
+We would confirm the organiser’s identity and relationship to the student, the student’s agreement, the fee evidence and what is still owed. We would check the school and its official payment destination through a trusted route, then validate the reference and check for an already-paid or duplicate bill. After payment, we would confirm the correct bill was credited. The demo illustrates the intended flow; independent external checks are still simulated or unbuilt.
+
+### 12. ★ How does CAC verification help, and what does it not prove?
+
+CAC records can help us compare a registered organisation’s name and registration details with the provider being named. We still need to check that the organiser is authorised, the receiving account belongs to the right institution and the bill is genuine. Registration does not prove honest conduct or a medical or education licence. A public institution may need its establishing law or relevant official register instead. Live CAC checking is not built in Kairos yet.
+
+### 13. ★ What does a verified badge in the current demo actually mean?
+
+Some verification results are demonstration states. The current identity endpoint records a positive result without calling a live identity provider, and cause creation marks provider checks as passed for the demo. Those badges should not be offered as independent proof of a person or business. The live application logic around them works, but trusted results need a connected checking service and tested handling of failures.
+
+### 14. ★ Your script says every third-party integration is simulated. Is that accurate?
+
+That sentence needs its scope explained. Claude, hosted application and database services, file storage and the email-sending path are actual services used by the prototype. Identity checks, licensed funds holding and external payment settlement are the intended integrations that are simulated or not built. We should name that distinction when asked rather than imply that the AI interview or hosting is also a mock.
+
+
+## Third parties: examples for each role
+
+### 15. Who could provide NIN and BVN identity checks?
+
+These are examples to investigate for checking identity details such as NIN or BVN. A lookup of an identity record, a comparison with a selfie and a check that a real person is present are different jobs. We must confirm access, permission and Nigeria coverage. Kairos’s current identity check is simulated.
+
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): NIN, BVN and NIN-with-face APIs.
+- [Dojah](https://support.dojah.io/articles/what-does-dojah-do): NIN and BVN lookup / onboarding.
+- [Youverify](https://youverify.co/en/ng): Nigerian identity and compliance checks.
+- [Smile ID](https://docs.usesmileid.com/): ID-number and biometric KYC; check Nigeria coverage.
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): NIN, BVN, NIN-face and NIN-liveness services.
+- [Seamfix Verify](https://seamfix.com/product/weve-made-changes-to-our-nin-verification-service-in-nigeria/): official NIN verification.
+- [Sumsub](https://docs.sumsub.com/docs/non-doc-identity-verification): document-free Nigeria NIN / BVN checks.
+- [Mono](https://docs.mono.co/docs/lookup/nin-lookup): Nigeria NIN lookup.
+- [MetaMap](https://docs.metamap.com/reference/govchecks-nigeria-nin-1): Nigeria NIN GovChecks endpoint.
+- [NIMC / NINAuth](https://ninauth.nimc.gov.ng/): authoritative NIN authentication route; access approval required.
+
+### 16. Who could provide selfie matching and face liveness checks?
+
+These providers offer different kinds of face comparison or checks that someone is present rather than a photograph. A face-check tool does not automatically give access to a Nigerian identity record. We would test the relevant phones and conditions before choosing a service. The demo does not establish a live face-verification connection.
+
+- [Prembly / IdentityPass](https://docs.prembly.com/guides/products/biometrics/channels): face comparison and liveness.
+- [Dojah](https://checkin.dojah.io/liveness-check): selfie / government-ID matching and liveness.
+- [Smile ID](https://docs.usesmileid.com/): biometric onboarding / SmartSelfie.
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): NIN face matching and liveness.
+- [Youverify](https://youverify.co/en/ng): biometric identity verification.
+- [Sumsub](https://docs.sumsub.com/docs/identity-verification): liveness and face match.
+- [iProov](https://www.iproov.com/): global biometric presence and identity checks.
+- [FaceTec](https://www.facetec.com/): global 3D liveness and face matching.
+- [Veriff](https://www.veriff.com/product/liveness): global biometric liveness.
+- [Persona](https://withpersona.com/product/verifications/selfie-recognition/): global selfie recognition and liveness.
+- [Incode](https://www.incode.com/): global liveness and biometric verification.
+- [Entrust / Onfido](https://www.entrust.com/products/identity-verification): global document and biometric verification.
+- [Shufti](https://shuftipro.com/): global identity and biometric checks.
+- [Amazon Web Services](https://aws.amazon.com/rekognition/face-liveness/): Amazon Rekognition Face Liveness; separate NIN source.
+
+### 17. Who could verify CAC registration, businesses and provider ownership?
+
+These are examples for checking registered organisations and their ownership details. We would compare the legal record with the named provider, its official contacts and separately checked account. Registration alone does not prove a bill is real or that the organiser can act for that institution. Live organisation checking is not built.
+
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): CAC basic / advanced business verification.
+- [Dojah](https://dojah.io/business-verification): CAC, TIN and company-data checks.
+- [Youverify](https://youverify.co/en/ng): business and beneficial-owner verification.
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): CAC verification.
+- [Mono](https://docs.mono.co/docs/lookup/cac-lookup): CAC company profile, directors / ownership and status-report lookup.
+- [Regfyl](https://regfyl.com/kyb): entity registration, beneficial owners and director screening.
+- [Smile ID](https://www.youtube.com/watch?v=3yabLKa4GMA): business verification; confirm current Nigeria product access.
+- [Sumsub](https://docs.sumsub.com/docs/business-verification): global KYB; confirm Nigeria coverage.
+- [Trulioo](https://developer.trulioo.com/reference/guide-business-verification): global business / ownership verification; confirm Nigeria data.
+- [Corporate Affairs Commission (CAC)](https://www.cac.gov.ng/services/company-search): official company-search evidence source; not a signed partner.
+
+### 18. Who could check a bank account name before paying a provider?
+
+These are examples for checking a receiving account’s details. Looking up the name associated with an account helps us spot a mismatch, but we must still establish that it is the intended provider and that the bill belongs to this cause. A matching name does not establish the organiser’s authority.
+
+- [Paystack](https://paystack.com/docs/api/verification/): Nigerian account resolution.
+- [Flutterwave](https://developer.flutterwave.com/docs/payout-outflow/introduction): Nigerian beneficiary verification.
+- [Monnify / Moniepoint](https://developers.monnify.com/): bank-account detail verification.
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): bank-account basic and comparison APIs.
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): NUBAN regular / BVN-data checks.
+- [Dojah](https://docs.dojah.io/api-reference/endpoint/general_service/resolve_nuban): NUBAN account-name resolution.
+- [Mono](https://support.mono.co/en/articles/8394537-how-to-use-lookup-on-the-dashboard): bank-account Lookup; confirm required ownership data.
+- [Safe Haven Microfinance Bank](https://safehavenmfb.readme.io/reference/name-enquiry): bank-account name-enquiry endpoint.
+
+### 19. Which banks or trustees could we approach for escrow and custody?
+
+These are institutions to approach about holding money and releasing it under agreed rules. Some explicitly describe escrow services; others are leads for a discussion about trust or charitable funds. We must confirm suitability, permissions and donation eligibility. None is being claimed as a signed Kairos custody partner.
+
+- [Stanbic IBTC Bank](https://www.stanbicibtcbank.com/nigeriabank/corporate-and-investment/transaction-banking/Escrow-services): explicit bank escrow and conditional release service.
+- [FirstBank / FirstEscrow](https://firstescrow.firstbanknigeria.com/): FirstEscrow; confirm suitability for pooled donations.
+- [Access Bank](https://www.accessbankplc.com/corporate/corporate-sector/access-investor-services): escrow within Access Investor Services.
+- [United Capital Trustees](https://unitedcapitalplcgroup.com/faq/): corporate escrow and trustee services.
+- [Coronation Trustees](https://coronation.ng/institutional/products-solutions/asset-management/corporate-trust/corporate-client-services/): corporate-trust escrow service.
+- [First Trustees](https://firsttrustees.com/solutions/corporate-trust/): corporate trustee; bespoke donation-custody / escrow fit unconfirmed.
+- [STL Trustees](https://stltrustees.com/corporate-trust/): corporate trustee; bespoke donation-custody / escrow fit unconfirmed.
+- [Quantum Zenith Trustees & Investments](https://quantumzenithtrustees.com.ng/): charitable trust / structured giving; escrow/API fit unconfirmed.
+
+### 20. Which escrow technology companies could we also investigate?
+
+These companies describe escrow-related technology. We would need to establish which institution actually holds the money, how it is protected and how releases, disagreements and refunds work. A website advertising escrow is not proof of an agreed or approved Kairos arrangement.
+
+- [Vesicash](https://vesicash.com/terms/): published escrow terms and integration history; current site emphasizes merchant-of-record services.
+- [Trustcrow](https://gotrustcrow.gitbook.io/trustcrow-api-v1): API for funding, holding and releasing escrow transactions.
+- [EscrowLock](https://www.escrowlock.com/): Nigeria escrow service; confirm API and charity use case.
+
+### 21. Who could collect local donations and process checkout payments?
+
+These are examples of services that could accept donations through supported payment channels. We would confirm that they permit the use case, what they charge and how they confirm a payment. Collecting a payment and holding donations under our intended release rules are separate responsibilities.
+
+- [Paystack](https://paystack.com/docs/payments/accept-payments/): cards, transfers and checkout.
+- [Flutterwave](https://developer.flutterwave.com/docs): payment collection and checkout.
+- [Monnify / Moniepoint](https://developers.monnify.com/): bank-transfer and card collections.
+- [Squad / GTCO HabariPay](https://docs.squadco.com/): online collection and payment APIs; current docs may require access.
+- [Interswitch / Quickteller](https://developer.interswitchng.com/): Webpay / Quickteller payment acceptance.
+- [Remita / SystemSpecs](https://api.remita.net/): multichannel collections and biller references.
+- [Fincra](https://docs.fincra.com/docs/payin-overview): checkout and pay-ins.
+- [Kora](https://www.korahq.com/): pay-ins and payment infrastructure.
+- [Nomba](https://developer.nomba.com/docs/introduction/welcome-to-nomba): online payments and collection APIs.
+- [Payaza](https://payaza.africa/faq/): collections and payment links.
+- [SeerBit](https://www.seerbit.com/contact-us/get-started): online payment collection.
+- [Paga](https://www.mypaga.com/home/business.html): payment gateway and business collections.
+- [eTranzact](https://www.etranzact.com/): electronic-payment infrastructure; confirm selected product.
+- [Xpress Payment Solutions](https://xpresspayments.com/business): payment collections / eCashier.
+
+### 22. Who could supply virtual accounts or embedded banking infrastructure?
+
+A dedicated collection account or reference can help us identify which cause an incoming transfer belongs to. These providers are examples to investigate. An account number does not by itself establish who may hold the funds or which payments are allowed. The financial arrangement still needs to be agreed.
+
+- [Anchor](https://docs.getanchor.co/docs/developer-onboarding-to-anchor-api): deposit accounts, incoming payments and transfers.
+- [Safe Haven Microfinance Bank](https://safehavenmfb.readme.io/reference/create-virtual-account): virtual accounts and collection callbacks.
+- [9 Payment Service Bank (9PSB)](https://9psb.com.ng/): virtual accounts and payout infrastructure.
+- [ProvidusUnity Bank](https://www.providusbank.com/banking-apis/corporate): digital collection service / virtual accounts.
+- [Sterling Bank](https://sterling.ng/corporate/sme/spay/): sPay open API banking; agree required account structure.
+- [Monnify / Moniepoint](https://developers.monnify.com/): reserved collection accounts.
+- [Squad / GTCO HabariPay](https://docs.squadco.com/): reserved / dynamic virtual accounts.
+- [Paystack](https://paystack.com/docs/payments/accept-payments/): dedicated virtual accounts.
+- [Fincra](https://fincra.com/): virtual-account products.
+- [Payaza](https://payaza.africa/faq/): virtual-account collection products.
+
+### 23. Who could send the money to schools, hospitals and suppliers?
+
+These are examples of services that could send approved payments to a provider. We would check recipient details, payment references, result updates, delays and safe retries. The agreed institution holding the funds must also support the restrictions on where money may go. Kairos has not connected live payouts.
+
+- [Paystack](https://paystack.com/docs/transfers/single-transfers/): bank transfer API.
+- [Flutterwave](https://developer.flutterwave.com/v4.0.0/docs/bank-transfer): bank-account payouts.
+- [Monnify / Moniepoint](https://developers.monnify.com/): Nigerian-bank transfers / payouts.
+- [Fincra](https://docs.fincra.com/docs/payout-overview): payout API.
+- [Kora](https://www.korahq.com/): payout infrastructure.
+- [Nomba](https://developer.nomba.com/docs/introduction/welcome-to-nomba): transfer APIs.
+- [Payaza](https://payaza.africa/faq/): business payouts.
+- [Paga](https://www.mypaga.com/home/business.html): bank / Paga disbursements.
+- [Remita / SystemSpecs](https://api.remita.net/): funds-transfer APIs.
+- [Xpress Payment Solutions](https://xpresspayments.com/business): fund disbursements.
+- [Anchor](https://docs.getanchor.co/docs/developer-onboarding-to-anchor-api): bank-transfer infrastructure.
+- [Safe Haven Microfinance Bank](https://safehavenmfb.readme.io/reference/introduction): transfers and beneficiary management.
+- [9 Payment Service Bank (9PSB)](https://9psb.com.ng/): Nigeria payout infrastructure.
+- [ProvidusUnity Bank](https://www.providusbank.com/banking-apis/corporate): corporate transfer APIs.
+
+### 24. Who could validate bill references and settle school or hospital bills?
+
+The school or hospital must support the actual bill-payment method. Remita is the relevant example for a Remita Retrieval Reference. Another provider’s bill API cannot automatically be treated as a way to validate that reference. We still need to confirm the beneficiary, amount, outstanding bill and institution’s acknowledgement.
+
+- [Remita / SystemSpecs](https://api.remita.net/): RRR generation / lookup, collections and bill settlement.
+- [Wema Bank / ALAT](https://playground.alat.ng/product-remita-product): ALAT Remita Payment Service: catalogue, validation and RRR generation.
+- [Interswitch / Quickteller](https://docs.interswitchgroup.com/docs/quickteller-business): Quickteller / biller integration; institution availability varies.
+- [Flutterwave](https://developer.flutterwave.com/api): Tuition and payment APIs; confirm the specific institution and access.
+- [eTranzact](https://www.etranzact.com/): institutional payment integration; confirm school's active channel.
+- [Xpress Payment Solutions](https://xpresspayments.com/business): Xpress Biller Services / institutional collections.
+- [Paga](https://developer-docs.paga.com/docs/business-rest-api-operations): biller and registered-merchant payments.
+- [Monnify / Moniepoint](https://developers.monnify.com/): bills APIs; confirm catalogue instead of assuming school/RRR coverage.
+
+### 25. Who could support overseas funding, currency conversion and naira settlement?
+
+These are possible options for later overseas contributions. We would need permission for the donation use case, supported donor countries and clear conversion charges and naira amounts before recording a contribution. An ordinary foreign-currency business account is not automatically a donation-platform integration. None of these is connected for this purpose today.
+
+- [Cleva](https://www.getcleva.com/business): priority event conversation: overseas funding; eligibility and integration unconfirmed.
+- [Fincra](https://fincra.com/): cross-currency pay-in / payout infrastructure.
+- [Flutterwave](https://developer.flutterwave.com/docs): international collection and payout products.
+- [Verto](https://verto.co/): business FX, international payments and APIs.
+- [Leatherback](https://leatherback.co/): multicurrency accounts and international transfers.
+- [Klasha](https://www.klasha.com/): cross-border payment collection and APIs.
+- [Raenest](https://www.raenest.com/): business foreign-currency accounts; platform/donation API fit unconfirmed.
+- [Grey Business](https://grey.co/business): business multicurrency accounts; platform/donation API fit unconfirmed.
+- [Thunes](https://www.thunes.com/): global bank / wallet payment network; corridor access to confirm.
+- [TerraPay](https://www.terrapay.com/): global wallet / bank transfer infrastructure; corridor access to confirm.
+- [Nium](https://www.nium.com/): enterprise FX / global payouts; Nigeria flow to confirm.
+- [dLocal](https://www.dlocal.com/): emerging-market pay-ins and payouts, including Nigeria coverage.
+
+### 26. Who could handle future stablecoin funding, conversion or custody?
+
+These are optional future examples for different jobs around digital currencies, conversion or wallet technology. Their services are not interchangeable, and this is not required for our first school-fee case. We would need to confirm supported assets, countries, permissions and who holds the funds. No stablecoin funding or custody integration is claimed.
+
+- [Cleva](https://www.getcleva.com/legal/global/stablecoin-policy): approved stablecoin deposits convert to USD; no Kairos USDT escrow.
+- [Yellow Card](https://yellowcard.io/): Africa stablecoin / local-currency infrastructure; Nigeria listed.
+- [Bridge](https://www.bridge.xyz/): stablecoin orchestration, wallets and conversion APIs.
+- [BVNK](https://www.bvnk.com/): enterprise fiat / stablecoin payment infrastructure.
+- [zerohash](https://zerohash.com/): crypto / stablecoin infrastructure and custody products.
+- [Circle](https://www.circle.com/): USDC and payments infrastructure; not the issuer of USDT.
+- [Fireblocks](https://www.fireblocks.com/): wallet, policy and asset-transfer infrastructure; custody structure separate.
+- [BitGo](https://www.bitgo.com/): institutional digital-asset custody / wallet services.
+- [Grey Business](https://grey.co/business): business USDC deposits / payouts; confirm Nigeria and donation eligibility.
+- [Nium](https://www.nium.com/): USDC funding / global payout products; eligibility to confirm.
+
+### 27. Who could screen sanctions, politically exposed persons and money-laundering risks?
+
+These services can help check restricted-person lists or other financial-risk information. Those checks are different from proving that a student owes school fees. We would follow the agreed financial partner’s requirements and have a person review uncertain results. This provider list is research, not an operating Kairos compliance service.
+
+- [Youverify](https://youverify.co/en/ng): Nigeria AML / fraud, screening and monitoring.
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): AML, PEP, sanctions and transaction-screening endpoints.
+- [Dojah](https://support.dojah.io/articles/what-does-dojah-do): identity, compliance and fraud services.
+- [Smile ID](https://docs.usesmileid.com/): AML screening; confirm purchased product.
+- [Sumsub](https://docs.sumsub.com/docs/identity-verification): AML screening and transaction monitoring.
+- [ComplyAdvantage](https://complyadvantage.com/): sanctions / watchlists, payment screening and monitoring.
+- [LSEG World-Check](https://www.lseg.com/en/risk-intelligence/screening-solutions/world-check-kyc-screening): World-Check KYC / sanctions risk intelligence.
+- [LexisNexis Risk Solutions](https://www.lexisnexis.com/en-us/products/bridger-insight.page): Bridger Insight screening and due diligence.
+- [Moody's](https://www.moodys.com/web/en/us/kyc.html): KYC data and Grid screening.
+- [SEON](https://seon.io/): fraud and AML tools.
+- [Sardine](https://www.sardine.ai/): fraud and AML operations.
+- [Unit21](https://www.unit21.ai/): sanctions, AML and investigation workflows.
+- [Regfyl](https://regfyl.com/kyb): entity, UBO, director and sanctions / PEP screening.
+
+### 28. Who could help monitor suspicious activity, devices and payment fraud?
+
+These are examples of tools that look for unusual activity, suspicious devices or payment patterns. A warning is a reason to investigate, not proof that a particular appeal is false. We would need to test the tool and handle mistakes fairly. No tool makes the whole product automatically secure.
+
+- [Youverify](https://youverify.co/en/ng): fraud and transaction monitoring.
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): Fraud Lens and transaction screening.
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): fraud-prevention products.
+- [SEON](https://seon.io/): device / digital-footprint and fraud signals.
+- [Sardine](https://www.sardine.ai/): device, behavior and payment-fraud checks.
+- [Feedzai](https://www.feedzai.com/): payment fraud and financial-crime monitoring.
+- [Unit21](https://www.unit21.ai/): fraud monitoring and case investigation.
+- [Fingerprint](https://fingerprint.com/): device identification and abuse signals.
+
+### 29. Who could independently check providers, addresses and supporting evidence?
+
+Some examples below are verification businesses; public bodies are authoritative information sources rather than proposed commercial partners. We would still contact the school’s fees office or the hospital’s finance office through an independently obtained route to confirm the actual bill. A registered organisation alone does not prove this beneficiary’s need.
+
+- [VerifyMe / QoreID](https://docs.qoreid.com/docs/our-service-availability): background / business-address verification; agree evidence-review scope.
+- [Prembly / IdentityPass](https://docs.prembly.com/api-reference): background-check products; agree institution-specific scope.
+- [Youverify](https://youverify.co/en/ng): entity, ownership and due-diligence checks.
+- [Dojah](https://support.dojah.io/articles/what-does-dojah-do): business / identity checks; confirm physical-review scope.
+- [Corporate Affairs Commission (CAC)](https://www.cac.gov.ng/services/company-search): source only: registered company / NGO entity details.
+- [National Universities Commission (NUC)](https://www.nuc.edu.ng/): source only: university recognition / accreditation, not student bills.
+- [HEFAMAA, Lagos](https://hefamaa.lagosstate.gov.ng/): source only: Lagos health-facility registration / accreditation.
+- [Medical and Dental Council of Nigeria (MDCN)](https://www.mdcn.gov.ng/): source only: medical/dental professional registration, not hospital invoices.
+- [Pharmacy Council of Nigeria (PCN)](https://pcn.gov.ng/): source only: pharmacy / professional registration, not invoice truth.
+
+### 30. Who could read invoices and receipts or detect document tampering?
+
+Some tools read text and amounts from invoices; others look for possible alterations. These are different tasks. Neither automatically proves that a Nigerian school or hospital issued the document or is still owed money. We would check with the issuer where needed and keep a person involved when the evidence is uncertain.
+
+- [Amazon Web Services](https://aws.amazon.com/textract/): Textract: OCR, forms, invoices and receipts.
+- [Google Cloud / Gemini](https://cloud.google.com/document-ai): Document AI: extraction, classification and splitting.
+- [Microsoft Azure](https://azure.microsoft.com/en-us/products/ai-foundry/tools/document-intelligence): Document Intelligence: forms / invoice extraction.
+- [Mindee](https://www.mindee.com/): document extraction API.
+- [Veryfi](https://www.veryfi.com/): invoice / receipt OCR and fraud products.
+- [Doxis / Klippa](https://www.klippa.com/en/home-en/): document automation / extraction.
+- [Rossum](https://rossum.ai/): transactional document-processing workflows.
+- [Ocrolus](https://www.ocrolus.com/): financial-document analysis / fraud checks; document support to confirm.
+- [Resistant AI](https://resistant.ai/): tampered / synthetic document detection.
+- [Inscribe](https://www.inscribe.ai/): document-fraud detection.
+
+### 31. Who could help reconcile payments, refunds and the money ledger?
+
+These examples could help compare our records with payment-provider records. The essential job is to match the amount, recipient, reference and outcome, including refunds or reversals. General record-matching tools do not become Nigerian funds-holding partners. Kairos remains responsible for its budget rules and donor-share calculations.
+
+- [Paystack](https://paystack.com/docs/payments/accept-payments/): payment verification, transfers, refunds and transaction records.
+- [Flutterwave](https://developer.flutterwave.com/docs): payment records, settlements, transfers and refunds.
+- [Monnify / Moniepoint](https://developers.monnify.com/): collection / transfer status and transaction records.
+- [Fincra](https://fincra.com/): pay-in and payout records.
+- [ReconArt](https://www.reconart.com/): financial / transaction reconciliation software.
+- [AutoRek](https://autorek.com/): payment and ledger reconciliation.
+- [Duco](https://du.co/): cash / transaction reconciliation.
+- [Solvexia](https://www.solvexia.com/): finance-data matching and reconciliation.
+- [Modern Treasury](https://www.moderntreasury.com/): payment operations and ledgers; Nigeria connectivity unconfirmed.
+- [Fragment](https://fragment.dev/): ledger infrastructure / idempotency.
+- [Formance](https://www.formance.com/): programmable ledger and money-movement infrastructure.
+
+### 32. Who supplies the AI interview and budget structuring?
+
+Claude is the AI service currently used for the interview and cause details. The other names are alternatives to investigate, not integrations already in Kairos. We would compare answer quality, cost, reliability and data handling. An AI interview is separate from independently checking identity, bills or payments.
+
+- [Anthropic / Claude](https://platform.claude.com/docs/en/intro): CURRENT: Claude interview and structured cause/budget generation.
+- [OpenAI](https://developers.openai.com/api/docs): alternative language-model / structured-output APIs.
+- [Google Cloud / Gemini](https://ai.google.dev/gemini-api/docs): alternative Gemini API.
+- [Mistral AI](https://docs.mistral.ai/): alternative model and document-processing APIs.
+- [Cohere](https://docs.cohere.com/): alternative enterprise language-model APIs.
+- [Groq](https://console.groq.com/docs/overview): alternative hosted model inference.
+- [Amazon Web Services](https://aws.amazon.com/bedrock/): Bedrock: managed model access; model support varies.
+
+### 33. Who could store uploaded supporting documents and receipts?
+
+Cloudinary currently stores supporting files. The other names are storage alternatives. We would still have to decide who can see a file, what may be published and how long information is kept. Today draft files are owner-only and published attachments can be viewed publicly through Kairos. Storage does not establish document authenticity.
+
+- [Cloudinary](https://cloudinary.com/documentation/upload_parameters): CURRENT: supporting-file uploads / delivery.
+- [Amazon Web Services](https://aws.amazon.com/s3/): S3 object storage.
+- [Google Cloud / Gemini](https://cloud.google.com/storage): Cloud Storage.
+- [Microsoft Azure](https://azure.microsoft.com/en-us/products/storage/blobs): Blob Storage.
+- [Cloudflare](https://www.cloudflare.com/products/r2/): R2 object storage.
+- [Backblaze](https://www.backblaze.com/cloud-storage): B2 object storage.
+- [Supabase](https://supabase.com/storage): Storage with access policies.
+- [DigitalOcean](https://www.digitalocean.com/products/spaces): Spaces object storage.
+- [Uploadcare](https://uploadcare.com/): file upload, storage and delivery.
+
+### 34. Who could deliver donor receipts and email notifications?
+
+These are examples of companies that deliver application emails. Kairos uses Nodemailer, which is a sending library rather than a delivery company. We have not named one of these as our current delivery provider here. Email is optional, and sending a receipt does not by itself prove a school received payment.
+
+- [Twilio / SendGrid](https://www.twilio.com/en-us/sendgrid): SendGrid Email API / SMTP.
+- [Amazon Web Services](https://aws.amazon.com/ses/): Amazon SES.
+- [Postmark](https://postmarkapp.com/): transactional email / SMTP.
+- [Resend](https://resend.com/): email API and delivery events.
+- [Sinch / Mailgun](https://www.mailgun.com/): Mailgun transactional email API.
+- [Brevo](https://www.brevo.com/products/transactional-email/): transactional email.
+- [Zoho CPaaS (formerly ZeptoMail)](https://www.zoho.com/cpaas/): transactional email; formerly ZeptoMail.
+- [SMTP2GO](https://www.smtp2go.com/): SMTP and email API.
+
+### 35. Who could deliver SMS, OTP or WhatsApp updates?
+
+These are possible services for SMS, one-time codes or WhatsApp updates. They are optional future channels, not existing Kairos messaging integrations. Sharing a normal cause link on WhatsApp is different from connecting its business-messaging service. Delivery support and permission to send the message would need to be checked.
+
+- [Termii](https://termii.com/): Nigeria-focused SMS, OTP and messaging.
+- [Africa's Talking](https://help.africastalking.com/en/articles/2241664-does-africa-s-talking-support-sending-of-sms-to-dnd-numbers-in-nigeria): SMS APIs with Nigerian-network support.
+- [Twilio / SendGrid](https://www.twilio.com/en-us/messaging): SMS / WhatsApp / verification APIs.
+- [Infobip](https://www.infobip.com/): SMS, WhatsApp and omnichannel messaging.
+- [Bird (formerly MessageBird)](https://bird.com/): SMS, WhatsApp and verification.
+- [Vonage](https://www.vonage.com/communications-apis/): SMS, messaging and verification APIs.
+- [Sinch / Mailgun](https://sinch.com/): messaging and verification APIs.
+- [Meta / WhatsApp Business Platform](https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform): direct WhatsApp Business Platform access.
+- [Gupshup](https://www.gupshup.ai/): WhatsApp and business-messaging platform.
+
+### 36. Which third parties support hosting, databases and scaling?
+
+Vercel and MongoDB Atlas are already used for the application and database. The other examples are alternatives, not extra financial partners. Hosting can help us run the product, but we still have to control access, protect information, keep backups and check payment records. A cloud account does not solve those jobs automatically.
+
+- [Vercel](https://vercel.com/docs): CURRENT: Next.js app hosting / deployment.
+- [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database): CURRENT: hosted MongoDB database.
+- [Amazon Web Services](https://aws.amazon.com/): compute, managed data and security infrastructure.
+- [Google Cloud / Gemini](https://cloud.google.com/): cloud compute and managed data.
+- [Microsoft Azure](https://azure.microsoft.com/): cloud compute and managed data.
+- [Cloudflare](https://developers.cloudflare.com/): edge, Workers and application-security products.
+- [Supabase](https://supabase.com/database): managed PostgreSQL alternative; migration required.
+- [Neon](https://neon.com/): managed PostgreSQL alternative; migration required.
+- [Render](https://render.com/): application / data hosting alternative.
+- [Railway](https://railway.com/): application / data hosting alternative.
+
 
 ## The giving flow
 
-### 001. ★ What does Kairos do?
+### 37. ★ What does Kairos do?
 
-It connects a published need and budget to provider payments and each donor's share. The prototype implements the accounting and updates; live custody and settlement still require integration.
+Kairos helps people raise money for a clear need and shows donors what their money paid for. The organiser names the school, hospital or supplier and publishes a budget. Our intended live model pays that provider directly and gives each donor a record of their share. The prototype already runs the budget, records and updates; real money holding and payment still need the right partner arrangement.
 
-### 002. ★ What stops the organizer withdrawing donations?
+### 38. ★ What stops the organizer withdrawing donations?
 
-The prototype has no personal cash-withdrawal path and checks payment permissions, balance and budget. Live operation needs a licensed custody/payment arrangement that enforces the same restrictions.
+There is no button for an organiser to withdraw donations into a personal account. Our payment code checks who is making the request, the named provider, the available balance and what remains in the budget. Those checks run on demo money today. Before live use, the institution holding the funds must also enforce the agreed payment restrictions.
 
-### 003. ★ Does the receipt independently prove the school received money?
+### 39. ★ Does the receipt independently prove the school received money?
 
-The current receipt records a simulated application payout. A live settled receipt must be tied to confirmed provider settlement; a locally generated invoice alone is insufficient.
+The current receipt records a payment made inside the demonstration. It does not independently prove that a school received real money. For a live receipt, we would match our payment record to the payment partner’s confirmation and the relevant school bill. A document generated by Kairos alone is not enough proof of external payment.
 
-### 004. Can someone give without an account?
+### 40. Can someone give without an account?
 
-Yes. Guest gifts are anonymous and appear in the public cause records. Signed-in donors can receive personal in-app updates; email is optional.
+Yes. A guest can give without opening an account, and the contribution appears anonymously in the cause’s records. A signed-in donor can receive personal updates in the app and, if they provide an email address, by email. Anonymous guest giving does not currently provide a personal account inbox or a private email receipt.
 
 
 ## Review and privacy
 
-### 005. ★ What if a Remita reference expires?
+### 41. ★ What if a Remita reference expires?
 
-The agreed proposed flow pauses payout, asks the organizer through the AI for a replacement, verifies the same student, institution and bill, then continues. This is not yet implemented.
+If a reference has expired, our proposed response is to pause the payment and ask for a replacement reference. We would confirm that it is for the same student, institution and bill, and check the amount and whether the bill has already been paid. A mismatch would go to a reviewer. The replacement-reference process is not built yet, so we should explain it as the next step.
 
-### 006. ★ When does a human step in?
+### 42. ★ When does a human step in?
 
-The proposed workflow escalates a mismatch or an unresolved check. The reviewer checks evidence, records the decision and permits an appropriate next step. A dedicated reviewer workflow is not built.
+A person should step in when a check is unclear, details disagree, someone challenges a decision or a payment’s outcome cannot be confirmed. The reviewer would ask for what is missing, check it through a trusted source and record the reason for the decision. We have not built a complete review queue and decision record yet.
 
-### 007. ★ Does AI authenticate documents or identify fraud?
+### 43. ★ Does AI authenticate documents or identify fraud?
 
-It helps structure the need and can discuss consistency. Uploads are accepted supporting material. Independent document authentication, image-reuse checks and live registry checks are not operational.
+Claude currently helps the organiser explain the need and turn that conversation into cause details and a budget. It does not independently certify a document, a person’s identity or a payment. We still need checks against the institution or an appropriate verification service. A convincing story or an uploaded document is supporting information, not a guarantee that the claim is true.
 
-### 008. ★ Who can view supporting files today?
+### 44. ★ Who can view supporting files today?
 
-Unpublished files are owner-only. Files attached to published causes are publicly viewable through the app. Sensitive evidence needs a separate access/redaction design before live use.
+Draft attachments are available to their owner. Once attached to a published cause, they can be viewed publicly through the app. That means we need a separate place for private evidence, a way to remove personal details and clear permission before publication. Those additional protections must be completed before we use sensitive documents in real cases.
 
-### 009. Do you store a donor's or organizer's NIN?
+### 45. Do you store a donor's or organizer's NIN?
 
-The current identity endpoint stores the simulated verification result and method, not the NIN number. This does not establish that live identity verification or a complete launch privacy program is in place.
+The current verification endpoint records a result and the type of check, rather than saving the NIN number. But that result is simulated today; it has not come from a live identity service. Also, a person could put identity details in an uploaded document. We therefore cannot turn this one design choice into a claim that no sensitive information is ever stored.
 
 
 ## Fees and records
 
-### 010. ★ How does the fee cap work?
+### 46. ★ How does the fee cap work?
 
-The current rule takes 2% of each gross gift until total upkeep reaches ₦5,000 for that cause. It is a per-cause cap. The charge and net cause credit are shown before confirmation.
+The current rule takes two percent of a donation, but total upkeep stops at five thousand naira for that cause. The cap is for the whole cause, not each donation or donor. The donor sees the charge and what will reach the cause before confirming. In our intended funding model, NGO support and grants are the preferred way to cover running costs.
 
-### 011. ★ How are donor shares calculated?
+### 47. ★ How are donor shares calculated?
 
-The allocation uses the donor's net contribution after upkeep. In the full school-fee example, Abigail's ₦155,000 gross payment credits ₦153,000 and that net amount is attributed to the school's recorded payout.
+We use the amount that reached the cause after any upkeep. For example, if your net contribution is one tenth of the cause’s funded amount, the displayed allocation for a payment from that pool is one tenth of that payment. This is a record of how pooled money was used, not a separate bank transfer from every donor. Later donations and rounding also need careful accounting.
 
-### 012. ★ Have you reconciled real bank payments?
+### 48. ★ Have you reconciled real bank payments?
 
-No. Internal balances and payment allocations run in the prototype. External reconciliation needs unique references and a match to confirmed provider settlement, including pending, failed and duplicate events.
+No real bank payments have been matched to our records yet. The prototype maintains its own balances and payment records. For live use, we would compare those records with the payment partner’s confirmations using the payment reference, amount, destination and status. We also need to handle delays, failures and repeated messages without recording the same payment twice.
 
-### 013. Is NGO funding already secured?
+### 49. Is NGO funding already secured?
 
-No. Donations and NGO grants are the intended primary support, with tentative capped upkeep as a fallback. The prototype currently applies its upkeep rule; no grant-triggered switch or proven unit economics is claimed.
+No. Donations and grants from NGOs are our intended main support, but none is secured in the material we have presented. The prototype applies the capped upkeep rule. We should not claim a funded operating budget, a working grant-based switch or proven running costs yet.
 
-### 014. Are refunds implemented?
+### 50. Are refunds implemented?
 
-A complete production refund and dispute process is still to be designed and integrated. The prototype does not prove that operation.
+A complete real-money refund process is not implemented. We need to agree with the financial partner who can approve a refund, how it returns to the original donor and what happens to fees and already-spent money. Those rules must be shown before people give real funds. A proposed policy is not the same as a tested refund service.
 
 
 ## Evidence and launch
 
-### 015. ★ What user research supports this presentation?
+### 51. ★ What user research supports this presentation?
 
-The school-fee experience and a conversation with the past president of Ugochukwu’s department support the problem statement. He helps raise fees and reported that existing trust does not always make the details easy to verify. This is qualitative problem feedback, not a completed product test or a live pilot. No donor or institution usability findings have been supplied.
+Our own school-fee experience and a conversation with a past departmental president support the need we describe. He helps raise students’ fees and said personal trust does not always make the details easy to verify. We have also reported a positive response from departmental bodies. That is useful early feedback, but we have not presented a completed usability study or a real-money pilot.
 
-### 016. What would the first pilot measure?
+### 52. What would the first pilot measure?
 
-Start with school-fee bills settled, donor understanding of receipts, unresolved payment issues and repeat giving. These are proposed measures, not completed pilot results.
+We would start with a small number of school-fee cases. We would check whether the correct bills were settled, whether donors understood their receipts, how often a person had to resolve a problem and what it cost to handle each case. We would also ask organisers and donors where the process was confusing. These are proposed measures, not results we already have.
 
-### 017. ★ What remains before live donations?
+### 53. ★ What remains before live donations?
 
-Licensed custody and live payments, independent verification, appropriate private-evidence controls, external reconciliation and an exception/refund process. No signed custody partnership is claimed.
+We need an agreed institution to hold and release the funds, connected payment and identity checks, private handling of evidence and a way to resolve mistakes, failed payments and refunds. We must also test that the records match the money and that a repeated request cannot pay twice. No signed custody partnership or live-money launch is being claimed.
 
-### 018. How long is this pitch allowed to be?
+### 54. How long is this pitch allowed to be?
 
-The organizer’s format is one minute for team introduction, seven minutes for presentation and demo, five minutes for questions and two for scoring/transition. This expanded draft deliberately has no delivery schedule yet. Timing will be decided after the content is edited.
+The final presentation time has not been confirmed. The earlier semi-final format does not automatically apply to the finals. Our current demo is three minutes seventeen seconds, and we will fit the rest of the presentation around the organiser’s final allowance once it arrives. The preparation page keeps an elapsed clock without pretending that a final schedule has been agreed.
 
 
 ## Questions behind the feedback
 
-### 019. ★ Walk us through a human reviewer handling an uncertain check.
+### 55. ★ Walk us through a human reviewer handling an uncertain check.
 
-Suppose the student name on a replacement bill differs from the original. The proposed response is to pause payout, obtain the original and replacement records, and confirm the discrepancy through an independently established institutional contact. The reviewer records the evidence and decision before payment resumes. The prototype does not yet have that reviewer queue or decision log.
+Suppose a school bill uses a student’s initials while the identity record uses the full name. We would pause the affected payment, explain the mismatch and ask for supporting details. An authorised reviewer would check with an independently contacted school office and record the decision. A real student should have a chance to correct a mismatch. This review process is proposed, not an existing feature.
 
-### 020. What if the replacement reference belongs to a different student or bill?
+### 56. What if the replacement reference belongs to a different student or bill?
 
-A replacement must not become a way to redirect the donation. In the intended flow we compare student, institution, bill purpose and amount, and independently confirm any discrepancy. An unresolved mismatch keeps the payout paused. The expired-reference replacement workflow remains to be implemented.
+We would not use the new reference until we had checked who and what it pays for. The student, institution, purpose and amount should agree with the cause, and the outstanding bill must be confirmed. If the replacement is for a different person or obligation, the payment stays paused while the issue is resolved. Automatic reference replacement is not implemented.
 
-### 021. ★ Is your current app already screening documents and asking permission to publish them?
+### 57. ★ Is your current app already screening documents and asking permission to publish them?
 
-No. The prototype accepts and stores supporting files; unpublished files are owner-only and published attachments are public. Automatic screening, redaction and a separate publication-permission workflow are intended controls. We should not present the described operating model as proof that those controls already run.
+No. File upload and storage work, but automatic screening, removal of private details and a separate permission step for publication are still planned. Draft files are owner-only; attachments on published causes are public. We need to change that handling before presenting private-document review as an operational safeguard.
 
-### 022. Your script says you store no sensitive data. What about the documents people upload?
+### 58. Your script says you store no sensitive data. What about the documents people upload?
 
-Supporting documents are stored, and a document can itself contain sensitive information. Today draft files are owner-only and published attachments are public. The intended model needs to separate private verification evidence from material approved for publication. That distinction, consent and redaction must be completed before handling sensitive live cases.
+An uploaded document can contain sensitive details, so that phrase needs qualification. We do store account information, cause details and supporting files. Our intended approach is to keep identity checks with the right verification provider, keep private evidence separate and publish only material approved for that purpose. We have not finished the private-evidence, permission and redaction processes yet.
 
-### 023. What exactly did the departmental feedback validate?
+### 59. What exactly did the departmental feedback validate?
 
-It supports the problem: people who already raise school fees can still find the details difficult to verify, even where there is personal trust. The presenter also reports a positive response from departmental bodies. That is qualitative problem feedback. It is not proof of completed payments, donor adoption or a successful pilot.
+It supports the problem we are solving: even people who know a student can struggle to confirm an appeal and follow the money. The positive response is encouraging interest. It does not prove that people will use the product repeatedly, that the process is easy or that a real school bill has been paid through Kairos. We still need observed tests and a carefully prepared pilot.
 
-### 024. What did you change because of a specific user finding?
+### 60. What did you change because of a specific user finding?
 
-The verification concern supports our focus on a named bill, a named provider and a visible payment record. We do not yet have a documented before-and-after usability finding to claim. The next research step is to observe organisers and donors using the flow, record where they struggle, and show the resulting change.
+The concern about checking appeals helped focus the idea on a named bill, a named provider and visible payment records. We do not have a documented product test showing a specific before-and-after improvement to claim. Our next step is to watch people use the flow, record their difficulties and show what we changed because of those findings.
 
-### 025. If you could demonstrate one more feature for the judges, what would it be?
+### 61. If you could demonstrate one more feature for the judges, what would it be?
 
-An exception handled from beginning to end: an uncertain or expired reference, payout paused, evidence reviewed, a decision recorded and the correct next action shown to the donor. That would address the feedback more directly than another normal successful payment. It is a proposed next demonstration, not a feature already completed.
+I would show one uncertain case being resolved: a mismatch is explained, the affected payment is paused, evidence is checked and the reason for the decision is recorded. That would answer the judges’ concern about what happens when the ordinary flow breaks. It is a proposed next feature; we should not pretend the existing demo already shows it.
 
 
 ## Bills, fraud and exceptions
 
-### 026. Why use Kairos instead of paying the school directly?
+### 62. Why use Kairos instead of paying the school directly?
 
-If one donor already knows the student, bill and payment channel, direct payment may be enough. Kairos is useful when several people contribute and need one shared budget, a record of what remains unpaid and a clear account of each contribution. We coordinate the giving and the proof around the bill.
+If you already know the student, the bill and the school’s payment channel, paying the school directly can be enough. Kairos helps when several people contribute and need a shared record of the bill, what remains unpaid and how their contributions were used. The value is making that shared process easier to check and follow.
 
-### 027. Why start with school fees rather than every kind of need?
+### 63. Why start with school fees rather than every kind of need?
 
-School fees give us a narrow starting point with an identifiable student, institution, bill and payment reference. We can test that workflow before taking on less standard situations. This does not mean every school bill is automatically genuine; each still needs appropriate confirmation.
+A school-fee case gives us a specific student, institution, fee and payment reference to investigate. That is a manageable starting point for testing the process. It does not make every fee appeal genuine. We would still confirm the student’s connection to the bill, the outstanding amount and the correct destination before payment.
 
-### 028. What if an organiser names themselves or a fake business as the provider?
+### 64. What if an organiser names themselves or a fake business as the provider?
 
-A typed provider name or uploaded registration is not enough. The live design needs independent checks connecting the institution or business, its receiving account and the actual bill. A suspicious relationship needs review before payment. CAC and account-name verification are not built into the prototype today.
+A typed business name is not enough. We would check that the provider exists, that the receiving details belong to it and that the bill is genuine. An unusual connection between the organiser and provider would need review. The prototype currently uses simulated provider checks, so it cannot be presented as having already ruled out fake providers.
 
-### 029. ★ What if the organiser and a genuine provider collude?
+### 65. ★ What if the organiser and a genuine provider collude?
 
-Paying a provider reduces one route for misuse, but it does not eliminate collusion. The proposed response combines independently checked bills, limits on exposure, records and review of unusual activity. A registered identity alone does not prove honest behaviour, and we cannot promise recovery after money has been paid.
+A genuine provider could still cooperate with a dishonest organiser. Direct payment makes one kind of misuse harder, but it cannot remove every form of fraud. We would need independent bill checks, limits on the amount at risk and review of suspicious activity. We should not promise that registration guarantees honesty or that we can always recover money after it has been paid.
 
-### 030. What if someone uses a real bill without the beneficiary knowing?
+### 66. What if someone uses a real bill without the beneficiary knowing?
 
-A real bill does not establish permission to fundraise for that person. The intended process needs to confirm the beneficiary or an authorised representative agrees to the cause, especially before publishing personal information. That consent check is a launch requirement, not something a convincing story can replace.
+We would need to confirm that the beneficiary, or an appropriate representative, agrees to the fundraising and the information being published. A genuine bill does not give anyone permission to tell that person’s story publicly. The consent process is a requirement for live use and is not replaced by a convincing document.
 
-### 031. What if two causes raise for the same bill?
+### 67. What if two causes raise for the same bill?
 
-The live workflow should recognise the institution, beneficiary and bill or reference across causes, then check the outstanding obligation again before payout. If it has already been settled, we must not pay it again. Cross-cause duplicate detection and live bill-status checks are not yet implemented.
+Before real payouts, we would compare the institution, student and bill or reference across causes and check what remains owed. If the same bill has already been funded or paid, we must not pay it again. The prototype does not yet provide complete duplicate-bill detection across causes or live checks of whether an institution has received payment.
 
-### 032. What happens if a relative pays the bill while fundraising is still going on?
+### 68. What happens if a relative pays the bill while fundraising is still going on?
 
-That is a reason to check the bill again before releasing funds. If the need has already been met, the proposed process pauses the affected payout and tells donors what happened. Any refund or revised use needs an agreed process; the money should not silently move to another purpose.
+We would check the bill again before releasing money. If someone else has already settled it, the affected payment should pause and donors should be told. The remaining funds would follow the agreed refund or change-of-purpose rules. They should not quietly move to another need just because the organiser asks. Those live procedures are still to be built.
 
-### 033. Can the organiser change the budget or receiving account after people donate?
+### 69. Can the organiser change the budget or receiving account after people donate?
 
-A change must not quietly change what donors agreed to fund. In the live design, the affected payout should pause while the reason and replacement bill or payee are checked and donors are informed. A complete budget-change and donor-consent workflow is still to be designed and tested.
+A change after donations could change what people agreed to support. Our proposed response is to pause the affected payment, check the reason and the replacement details, and obtain any permission required under the published rules. The review and change should be visible in the records. A complete budget-change and donor-consent process is not implemented yet.
 
-### 034. What happens if the cause raises too little or too much?
+### 70. What happens if the cause raises too little or too much?
 
-We need a clear policy for deadlines, usable partial funding and surplus before real collection starts. A school must confirm whether a partial payment can satisfy a genuine part of the bill. Otherwise the proposed options are a properly approved revision or a refund. The prototype is not evidence of a complete surplus or refund process.
+We need rules for deadlines, partial funding and money that is no longer needed before collection begins. A school would need to confirm whether a partial payment is useful and accepted. If it is not, a refund or an agreed change may be needed. The prototype caps donations against its goal, but that alone is not a complete real-money closure and refund process.
 
-### 035. What happens if the organiser disappears?
+### 71. What happens if the organiser disappears?
 
-In the intended custody model, disappearance must not transfer the remaining money to the organiser. We would stop further instructions, establish the status of the bill and use the agreed closure or refund process. The actual custody agreement and exception procedures still need to be established.
+In our intended arrangement, the remaining money would stay with the institution holding it. We would stop accepting instructions from the missing organiser, establish whether the bill still needs payment and follow the agreed closure or refund process. That depends on a real partner agreement and clear responsibilities, which are not secured yet.
 
 
 ## Payments and reconciliation
 
-### 036. ★ Walk us through reconciliation rather than just recording a payout.
+### 72. ★ Walk us through reconciliation rather than just recording a payout.
 
-For a live payment, match the internal instruction and unique reference to the provider record: amount, destination, bill and final settlement status. Pending or mismatched results go into an exception process, not a paid receipt. The prototype maintains internal accounting; it does not yet reconcile independent bank or institution settlement records.
+It means checking that our records agree with the outside payment records. For each payment, we would match the reference, amount, recipient and result, then confirm the right bill was credited where needed. A disagreement stays unresolved until investigated. Our current app keeps an internal ledger; it is not yet connected to independent bank or school records.
 
-### 037. What if your server crashes just after instructing a payment?
+### 73. What if your server crashes just after instructing a payment?
 
-A retry must first establish what happened to the original instruction. The production design needs a durable instruction record, an idempotency key and a provider-status check so the same obligation is not paid twice. We have not demonstrated that crash-and-retry path against a live payment provider.
+We must first find out whether the original payment happened. Each instruction needs a saved, unique reference so a retry can find the same payment instead of creating a second one. If the result is unknown, we should check with the provider before trying again. We have not yet tested that failure-and-recovery process with a live payment partner.
 
-### 038. What stops two simultaneous payout requests spending the same balance?
+### 74. What stops two simultaneous payout requests spending the same balance?
 
-The current endpoint checks the balance and remaining budget, but those checks alone are not a complete concurrency guarantee. Live operation needs an atomic reservation or transaction and a unique payment instruction. That is a technical control to implement and test before real money, not something we should assume from a successful demo.
+Checking the balance twice is not enough if both requests arrive at the same moment. Before live use, the money for one instruction must be reserved in a single protected database operation, so the second request cannot spend it again. Each payment also needs a unique reference. The current checks are useful, but they do not establish that full guarantee.
 
-### 039. What if a provider sends the same confirmation twice?
+### 75. What if a provider sends the same confirmation twice?
 
-The planned integration must recognise the same provider event or payment reference and apply it once. It should also handle events arriving late or out of order, rather than treating every message as a new payment. That requires provider integration and reconciliation tests; it is not currently demonstrated.
+We would recognise the payment or message reference and apply its effect once. Receiving the same confirmation twice must not reduce the balance twice or send two paid receipts. Late messages also need to be compared with the latest known result. This needs provider integration and testing; the current demonstration does not prove that handling is complete.
 
-### 040. Does a successful transfer prove the student can return to school?
+### 76. Does a successful transfer prove the student can return to school?
 
-It proves only the payment status that has been independently confirmed. A stronger outcome check would confirm the correct student bill was credited and, with consent, whether the student could continue. We must separate money paid, obligation settled and the wider educational outcome.
+Not by itself. A provider may confirm processing before the receiving bank credits the money. We should report exactly what has been confirmed, then check that the correct student’s obligation was settled where necessary. Whether the student actually returned to school is a further outcome that would need its own evidence and appropriate permission.
 
-### 041. Can you give a simple example of a donor share?
+### 77. Can you give a simple example of a donor share?
 
-Suppose a donor has contributed ₦10,000 net of any upkeep, and the cause has received ₦100,000 net. Their share of that pool is 10%. For a ₦40,000 recorded payout against that pool, the displayed allocation is ₦4,000. That explains attribution; it is not a separate transfer from the donor to the provider.
+Suppose you give ten thousand naira after upkeep and the cause receives one hundred thousand naira in total. Your contribution is ten percent of that pool. If forty thousand naira is paid from it, the displayed allocation to you is four thousand naira. It explains your share of a pooled payment; it is not a second bank transfer.
 
-### 042. ★ What if I donate after an earlier payout has already happened?
+### 78. ★ What if I donate after an earlier payout has already happened?
 
-Your later gift should not be described as funding a payment made before you gave. A production ledger needs to preserve the funding position at each payout and attribute later funds to later spending. The prototype calculates notifications from contributions recorded at payout time, but the complete late-gift and audit history needs explicit testing.
+A later donation should never be described as paying for something that happened before it was given. We need to preserve which contributions were available for each payout and assign later donations to later spending. The prototype generates shares using the contributions recorded when it makes a payout. The full history for repeated payouts and later gifts still needs more testing before real money.
 
-### 043. Do the displayed donor shares always add up to the last naira?
+### 79. Do the displayed donor shares always add up to the last naira?
 
-The current notifications round individual shares to whole naira, so displayed totals can have a rounding difference. Production accounting should calculate in the smallest supported unit, preserve the calculation and allocate any remainder consistently. We should not claim exact last-naira display reconciliation from rounded notifications alone.
+Not necessarily in the displayed messages, because the current app rounds individual shares to whole naira. That can leave a small difference when the messages are added together. For live accounting, we need to record the smallest supported currency unit and distribute any rounding remainder consistently. We should not claim perfect last-naira reconciliation from the current rounded messages.
 
-### 044. What happens if the custody partner freezes funds or Kairos shuts down?
+### 80. What happens if the custody partner freezes funds or Kairos shuts down?
 
-The partner agreement must establish access to records, responsibility for unresolved payments and how funds are returned or obligations completed. An app balance cannot substitute for that arrangement. We do not have a signed custody agreement to point to today, so continuity and closure procedures remain launch work.
+The agreement with the institution holding the funds must explain what happens to the money and who can access the necessary records if Kairos stops operating or funds are frozen. We cannot promise a recovery route before that agreement exists. This is one of the questions we must settle before inviting people to donate real money.
 
 
 ## AI, data and security
 
-### 045. ★ What does Claude actually do in the product?
+### 81. ★ What does Claude actually do in the product?
 
-It interviews the organiser and helps turn the conversation into a structured need and budget. The application then presents that draft for review. The model is not independent evidence that the story is true, and its output should not be authority to release money.
+Claude asks follow-up questions and helps turn the organiser’s answers into a story, named provider and budget. Our own code applies the payment and budget rules. Claude is not the institution holding the money and does not certify a bank transfer or identity check. The live Claude connection works today; the financial and identity checks shown in the demo are simulated.
 
-### 046. Why use an AI interview instead of a form?
+### 82. Why use an AI interview instead of a form?
 
-An organiser may know what happened but struggle to turn it into a clear cause and itemised costs. A conversation can ask for missing details and produce an editable draft. We still need to test whether real users find that easier than a form; the interface choice itself is not validation.
+People do not always arrive with a neatly written appeal. A conversation can ask about a missing bill, provider, amount or deadline and help them explain the situation. We still need to test whether it helps people more than a simple form. The model’s job is to organise the information, not make an unsupported story true.
 
-### 047. What if the AI invents a cost, provider or detail?
+### 83. What if the AI invents a cost, provider or detail?
 
-The organiser needs to review and correct the generated draft. For a live cause, an invented detail must not become a verified bill or payment destination: those need independent evidence. We should keep uncertainty visible and test the interview with incomplete and contradictory answers.
+The organiser should check the summary and budget before publishing, and a live payment should depend on checked provider and bill details. A model’s suggestion must not become proof of a price or permission to pay. Our code checks the output’s structure, but that does not establish that every generated detail is correct.
 
-### 048. What if someone puts instructions inside an uploaded document to manipulate the AI?
+### 84. What if someone puts instructions inside an uploaded document to manipulate the AI?
 
-An uploaded document must be treated as untrusted evidence, not as instructions that can change payment rules. Critical amounts, permissions and payees need server checks and independent verification. Document prompt-injection testing and a robust document-processing pipeline remain work to complete before relying on automated screening.
+Text inside an uploaded document should be treated as material to inspect, not as instructions that can change the rules. Payment permission and approval should remain in controlled application code. We would need to test attempts to trick the model before claiming protection against them. The prototype does not establish that this whole class of attack has been solved.
 
-### 049. What happens when Claude is slow or unavailable?
+### 85. What happens when Claude is slow or unavailable?
 
-The prototype uses a bounded interview and timeouts, with fallback responses to keep the flow from waiting indefinitely. A fallback does not verify a cause or make guessed facts reliable. For live operation, users need a clear way to review incomplete information and continue without an invented approval.
+The app keeps the organiser’s answer and offers a retry when the AI service fails. It should not silently replace Claude with a scripted reply and make that look like a real AI answer. Before wider use, we would also need to test interruptions, recovery and what support people need if the service stays unavailable.
 
-### 050. Can AI safely decide what personal information to publish?
+### 86. Can AI safely decide what personal information to publish?
 
-It can assist review, but we should not treat its judgment as a guarantee. The intended design needs clear public/private fields, explicit publication consent, redaction and a way to handle uncertain documents. Those controls must be built and tested; the current upload feature is not that complete system.
+AI may help identify details that need attention, but a model’s judgement should not be our only reason to publish someone’s private information. The intended process needs private evidence handling, removal of unnecessary details, clear permission and a person to resolve uncertain cases. That automatic publication-review process is not built in the current app.
 
-### 051. ★ Does using licensed and verified third parties automatically make Kairos secure?
+### 87. ★ Does using licensed and verified third parties automatically make Kairos secure?
 
-No. Existing services can reduce the amount we need to build, but our permissions, integrations, document access and accounting can still fail. We must verify the actual service arrangement and test our side of it. The scale-on-existing-rails point is an approach to feasibility, not proof of security.
+No. A provider may perform one task well while Kairos still exposes a document, accepts the wrong payment instruction or gives someone too much access. We remain responsible for our own permissions, data handling and matching payment records. Each partner also needs to support our specific use case. A third-party connection is not a security guarantee for the whole product.
 
-### 052. Why Next.js, TypeScript, MongoDB and Cloudinary?
+### 88. Why Next.js, TypeScript, MongoDB and Cloudinary?
 
-Next.js provides the web application and server endpoints, TypeScript helps keep the code consistent, MongoDB stores application records, and Cloudinary stores supporting-file bytes. This stack supports the current prototype. Technology names alone do not prove that the payment operation is secure or ready to scale.
+Next.js and TypeScript support the web application. MongoDB stores the cause, donation and payment records. Cloudinary stores uploaded files, and Claude helps with the interview. These services let us build and test the flow without building every piece of infrastructure ourselves. They do not replace the financial partner or the missing review and verification processes.
 
-### 053. Is the public ledger impossible for an administrator to alter?
+### 89. Is the public ledger impossible for an administrator to alter?
 
-No. Public visibility is not the same as an immutable record, and this is not a blockchain claim. Someone with sufficient database access could alter records. The production design needs restricted administration, change history, backups and reconciliation to independent payment records.
+No. The public history makes activity visible, but it is still stored in our application database. We have not demonstrated a record that an administrator could never change. Live operation would need controlled access, records of changes and comparison with the financial partner’s records. We should describe the actual visibility we provide without claiming an unchangeable ledger.
 
-### 054. Why can an API request not simply bypass the interface?
+### 90. Why can an API request not simply bypass the interface?
 
-Important rules must be checked on the server. The current payout endpoint checks the signed-in organiser, budget line, verification flag, amount and balance. That flag is part of the prototype workflow, not proof of an independent check. A full security review must also cover concurrency, abuse and administrative access.
+The server must check requests even if someone avoids the normal screen. Our payout route checks sign-in, cause ownership, the vendor flag, the amount, balance and remaining budget. However, the identity and vendor checks behind some flags are simulated. Real verification and stronger payment controls are still needed before those flags can be trusted for live money.
 
 
 ## Adoption, sustainability and impact
 
-### 055. Who would bring the first real causes and donors?
+### 91. Who would bring the first real causes and donors?
 
-Our first route is the departmental bodies and community organisers already helping students raise fees. They have an existing need and audience. We would seek a small, consent-based trial with them; a positive conversation is not yet an agreement to bring causes or donors.
+A sensible starting point is the departmental bodies and community organisers who already help students raise fees. We have early interest, not a confirmed stream of causes or donors. We would first agree a small test with a willing institution and recruit people who understand what is being tested. We should not present those conversations as signed pilot commitments.
 
-### 056. Why would a school cooperate?
+### 92. Why would a school cooperate?
 
-Kairos aims to settle bills through channels the school already uses, rather than asking it to adopt an entirely new fundraising system. But confirmation of the bill, student consent, data access and settlement evidence may still need institutional cooperation. We cannot assume an existing payment channel grants access to all those records.
+A school might benefit from clearer payment references and fewer unclear appeals, but we need to ask the relevant staff what would actually help them. We would need an agreed way to check bills and confirm payment without exposing unnecessary student information. We have not secured an institutional integration or permission simply by naming a school in the prototype.
 
-### 057. Why would donors use Kairos when a WhatsApp transfer is free?
+### 93. Why would donors use Kairos when a WhatsApp transfer is free?
 
-WhatsApp is already where the appeal and trust relationship often start. Kairos adds a shared budget, controlled provider-payment model and records showing what contributions paid for. We need to test whether that extra confidence is valuable enough to justify the added steps and any disclosed fee.
+A transfer can be convenient, especially when you know the person. Kairos adds a shared budget, a named destination and a record showing each donor’s share of what was paid. We still need to test whether donors find that worth using and what cost they will accept. We should explain the difference without pretending ordinary giving has no value.
 
-### 058. What makes Kairos different from other crowdfunding services?
+### 94. What makes Kairos different from other crowdfunding services?
 
-Our intended focus is the connection between a named need, a provider payment and each donor’s share of the payment. We should demonstrate that flow rather than claim every other service lacks safeguards. The important comparison for an initial user is often their existing appeal and bank-transfer process.
+Our focus is on connecting the stated need, a published budget, the provider payment and each donor’s own share. The donor can follow more than the total amount raised. That is the experience we are demonstrating. We still need a more complete comparison with other services and evidence that people prefer this approach in practice.
 
-### 059. What does “capped and unprofitable” mean? Are you guaranteeing fraud cannot pay?
+### 95. What does “capped and unprofitable” mean? Are you guaranteeing fraud cannot pay?
 
-No. We mean reducing the opportunity for misuse by limiting exposure, restricting the intended payment destination and making the records visible. That does not prove collusion is impossible or that every fraud attempt loses money. We still need real limits, monitoring and evidence from operation.
+We are describing a design goal, not guaranteeing that fraud can never pay. Smaller exposure, direct provider payments and records can make some misuse harder to hide. People can still collude, lie or misuse genuine documents. We need independent checks and review, and we should be clear that the current prototype has not proved that every dishonest attempt becomes unprofitable.
 
-### 060. ★ Can the capped fee sustain the whole business?
+### 96. ★ Can the capped fee sustain the whole business?
 
-We have not established that. The script proposes donations and NGO grants as primary support, with capped upkeep as a fallback. We need to measure checks, AI, messaging, support and payment costs per cause. The current fee rule is implemented, but the funding model and unit economics are still hypotheses.
+We have not proved that it can. The cap limits what one cause contributes toward running costs, while verification and support still cost money. We need to measure those costs in a small pilot and compare them with reliable funding. Grants and NGO support are intended sources, but they are not secured. A working fee calculation is not proof of a sustainable operation.
 
-### 061. Explain the fee cap with numbers.
+### 97. Explain the fee cap with numbers.
 
-At 2%, ₦100,000 in gross gifts would produce ₦2,000 upkeep if the cap had not already been reached. At ₦250,000 the cumulative upkeep reaches ₦5,000. Further gifts to that cause do not increase that cap. The fee reduces the net amount credited to the cause, which must be made clear before confirmation.
+If the cause has paid no upkeep yet and someone gives one hundred thousand naira, two thousand naira goes to upkeep and ninety-eight thousand reaches the cause. If total upkeep later reaches five thousand naira, no more upkeep is taken for that cause under the current rule. The example describes our platform upkeep; outside payment-provider charges still need to be agreed and disclosed.
 
-### 062. What if grants never arrive?
+### 98. What if grants never arrive?
 
-We would need to establish whether the disclosed upkeep can support the actual operating costs, find another suitable source of support, or limit the pilot. We should not collect more real causes than we can service responsibly. No grant commitment or proven break-even point is claimed today.
+We would have to match the scope of the service to funding we can actually rely on. That could mean a smaller pilot, fewer supported cases or a revised model that is explained before people give. We should not keep accepting real responsibilities on the assumption that a future grant will cover them. The current fallback fee is tentative, not a proven answer to every cost.
 
-### 063. How would you measure success beyond money raised?
+### 99. How would you measure success beyond money raised?
 
-For an initial trial, we would measure correct bills settled, time to resolve exceptions, donor understanding of receipts and whether organisers and donors return. With appropriate consent, we can also ask whether the funded need was met. These are proposed measures; we do not yet have results to report.
+We would measure whether the correct bills were settled, donors understood the receipt, problems were resolved and people were willing to use the service again. We would also track privacy incidents, support effort and cost per case. Money raised alone can look impressive while a student’s actual bill remains unpaid. These are proposed measures, not completed results.
 
 
 ## Team, faith and next steps
 
-### 064. ★ What is the first concrete step after this presentation?
+### 100. ★ What is the first concrete step after this presentation?
 
-Agree a narrowly scoped school-fee trial with a willing departmental body, establish the payment and verification arrangements, and test the full exception and reconciliation paths before accepting real funds. We would define success and stop conditions in advance. The first step is to secure those conditions, not to announce an unrestricted launch.
+Agree a small school-fee test with willing organisers and an institution, while confirming the financial partner arrangement and the checks needed before any real funds. We should write down who reviews uncertain cases, what information stays private and what would make us stop the test. Then we can test the full process rather than add unrelated features.
 
-### 065. How long will a live launch take?
+### 101. How long will a live launch take?
 
-We do not have a validated launch date. Partner access, verification, privacy controls and settlement testing determine the critical path, not just building another screen. We can give milestones and report progress against them; a date without those dependencies would be a guess.
+We cannot give a reliable launch date before the external dependencies are agreed. The remaining work includes a suitable funds-holding arrangement, connected checks and payments, privacy controls and tested handling of mistakes and refunds. We can set a realistic plan once those responsibilities and access requirements are clear. Finishing presentation files does not mean the service is ready for real donations.
 
-### 066. Why move to hospitals later rather than immediately?
+### 102. Why move to hospitals later rather than immediately?
 
-Healthcare adds difficult questions about patient consent, sensitive documents, changing treatment bills and what happens when the planned care changes. Starting with school fees lets us test a narrower bill-payment workflow. Expansion should follow evidence that we can handle those new responsibilities.
+Hospitals can involve different billing processes, urgent decisions and particularly private information. Starting with a narrow school-fee case lets us test our basic process first. We would expand only after understanding the new verification and privacy needs. A hospital’s name in an example does not mean those additional processes have already been built.
 
-### 067. How does Kairos reflect the faith-and-technology theme?
+### 103. How does Kairos reflect the faith-and-technology theme?
 
-It applies stewardship, honesty and care for people to a practical giving problem. Donors deserve an account of entrusted money, and people asking for help deserve dignity and privacy. Those values need to appear in how the product operates, not only in how we describe it.
+The idea supports care for others with clear responsibility for how help is used. Technology can make it easier to check a need and follow a contribution, while people still have to make careful decisions and treat applicants with dignity. We see transparency as a way to support generosity without asking donors or applicants to ignore legitimate concerns.
 
-### 068. Is Kairos only for Christians or faith organisations?
+### 104. Is Kairos only for Christians or faith organisations?
 
-The giving problem is not limited to one faith. The intended service should be open to people with eligible needs and willing donors, with consistent verification and treatment. Faith communities can be useful early partners without making religious membership a condition for receiving help.
+No. The proposed service is for legitimate needs and people willing to follow its checks, whatever their faith. Participating in this event does not make religious membership a requirement for help. We would need to test that our process treats different people fairly and does not make access depend on who tells the most persuasive story.
 
-### 069. What are your team’s responsibilities?
+### 105. What are your team’s responsibilities?
 
-Abigail is the team lead and product manager, responsible for product direction and the user journey. Ugochukwu is the software engineer and CTO, responsible for technical implementation and integrations. The pitch should distinguish those current responsibilities from any future specialist roles in review, operations or compliance.
+For this presentation, Abigail is the team lead and product manager, coordinating priorities and the user journey. Ugochukwu is the software engineer and CTO, responsible for technical implementation and integration work. Those roles do not mean we already have a staffed review, compliance or customer-support operation. The responsibilities for a live pilot still need to be assigned clearly.
 
-### 070. What useful help are you asking the judges or organisers for?
+### 106. What useful help are you asking the judges or organisers for?
 
-Introductions to a suitable payment/custody partner and institutions willing to validate a narrow school-fee trial would help most. We also need critical feedback on exception handling, privacy and whether donors understand the records. These are requests for support, not claims that a partnership or funding has already been secured.
+Introductions to an institution willing to test a school-fee case and a financial partner able to discuss the intended funds arrangement would be especially useful. Feedback on our review and privacy processes would also help. We would rather leave with a concrete next conversation and a realistic test than imply that an event connection is already a signed partnership.
 
 
 ## Hard follow-ups and inclusion
 
-### 071. What if AI wrongly flags an honest applicant or treats some people unfairly?
+### 107. What if AI wrongly flags an honest applicant or treats some people unfairly?
 
-A model flag should not become an unchallengeable finding of dishonesty. The intended process needs a clear explanation, a chance to correct information and human review of unresolved cases. We also need to test different language styles and circumstances. We have not completed a fairness evaluation or built a dedicated appeal workflow.
+A flag should lead to a check, not automatically label an honest person a fraudster. The applicant should understand the issue, have a chance to correct information and be able to ask a person to review the decision. We also need to test different language styles and circumstances. We have not completed that fairness testing or built a full appeal process.
 
-### 072. What if someone has a genuine need but cannot pass the identity checks?
+### 108. What if someone has a genuine need but cannot pass the identity checks?
 
-A failed or unavailable check is not automatically evidence of fraud. We would need an agreed alternative-evidence and review route that still protects donors. Until we can support that route responsibly, we should be clear about the pilot’s eligibility rather than promise access we cannot deliver.
+A missing or failed check does not by itself prove dishonesty. We would need an agreed route for alternative evidence and human review that still protects the donor and beneficiary. Where we cannot support a case safely, we should explain that limit. We should not claim we can serve every genuine need before those alternatives are designed and tested.
 
-### 073. How would people with limited English, connectivity or smartphone access use it?
+### 109. How would people with limited English, connectivity or smartphone access use it?
 
-The first prototype is a web flow, not proof of universal access. We would test assisted use through trusted community organisers, simpler language and what happens on a weak connection. We should not claim local-language, offline or accessibility support that has not been implemented and tested.
+We would test assisted use through trusted organisers, simpler wording and how the flow behaves on weak connections. The current prototype is a web application; it does not prove that someone without a smartphone or with limited English can complete it independently. Local-language and offline application support should be described as possibilities unless they have actually been built and tested.
 
-### 074. Must someone make their hardship public to receive help?
+### 110. Must someone make their hardship public to receive help?
 
-They should not have to publish unnecessary personal information to prove a bill exists. The intended model separates the public fundraising explanation from private evidence used for checks, with beneficiary agreement. The current published-attachment behaviour needs to change before it can support that distinction safely.
+They should only have to share the information needed for the cause and appropriate checks. Our intended process separates the public explanation from private evidence and requires agreement about what is published. The current public-attachment behaviour needs further work to support that safely. A person’s need for help should not be treated as permission to publish all their documents.
 
-### 075. How would someone report a suspicious cause without publicly accusing the beneficiary?
+### 111. How would someone report a suspicious cause without publicly accusing the beneficiary?
 
-The intended process should accept a private report, assess the evidence and pause affected activity where appropriate. The organiser needs an opportunity to respond, and a suspicion should not be published as a proven fact. We have not yet built the complete reporting, investigation and appeal workflow.
+We would need a private reporting route so a concern can be investigated without publicly labelling someone dishonest. An authorised person should assess the evidence, pause affected activity where necessary and let the organiser respond. A suspicion and a proven finding are different things. The full reporting and appeal process is not implemented yet.
 
-### 076. What prevents an inflated bill from a real provider?
+### 112. What prevents an inflated bill from a real provider?
 
-Confirming that a provider exists does not prove its price is reasonable. We would check the underlying obligation and investigate unusual amounts, using appropriate comparisons where available. Automatic price benchmarking and a complete overcharging-review process are not current features, especially for future healthcare cases.
+Checking that a provider exists does not prove that every amount it charges is justified. We would confirm the actual obligation and investigate unusual amounts through appropriate comparisons or an independent contact. A bill from a real institution can still need review. Automatic price checking and a complete overcharging process are not current features.
 
-### 077. Could overseas donors contribute, and is Cleva already connected?
+### 113. Could overseas donors contribute, and is Cleva already connected?
 
-That is a possible extension, not a current integration. We would need confirmed provider support for the use case, verified receipt of funds, clear conversion costs and attribution to the same cause before crediting it. Participation in a competition does not establish API access, custody approval or a signed partnership.
+That is a possible later extension. We would first need a provider that permits this kind of contribution and clear records of the amount and charges before money reaches the Nigerian cause. Cleva is not connected to Kairos. Taking part in a competition does not establish provider access, permission to handle donations or a custody agreement.
 
-### 078. What would you do if a private document were accidentally published?
+### 114. What would you do if a private document were accidentally published?
 
-The response needs to stop public access, establish what was exposed, protect affected people and follow the applicable notification process with appropriate advice. We must also fix the cause of the exposure. That is why consent, access controls and incident procedures need to be in place before sensitive live cases.
+We would stop public access, establish what information was exposed, support the affected person and follow the applicable response and notification process. We would also fix the underlying cause. We have not completed a production incident process. That is another reason private evidence and publication controls must be in place before we handle sensitive real cases.
 
-### 079. How long would you keep documents, and can someone ask for deletion?
+### 115. How long would you keep documents, and can someone ask for deletion?
 
-We have not established a complete retention and deletion policy. The live design should minimise what is collected, set clear retention periods and explain how requests interact with necessary payment records. We should not promise that deleting a public post automatically removes every stored copy or third-party record.
+We need a clear retention and deletion policy before live use. It should explain what is collected, who can see it, how long it stays and what happens when someone asks for deletion. Some payment records may need different treatment from an uploaded document. Deleting a public cause should not be described as automatically removing every stored or third-party copy.
 
-### 080. What would make you stop or narrow the first pilot?
+### 116. What would make you stop or narrow the first pilot?
 
-We would define stop conditions before collection begins, such as unexplained balance differences, unresolved payee mismatches or a privacy-control failure. The response should be to pause the affected operation and resolve it, rather than keep growing through an unexplained problem. Those are proposed pilot controls, not completed trial results.
+We would agree stop conditions before the pilot, such as money records that do not match, an unresolved provider mismatch or private information being exposed. The affected activity should pause until the problem is understood. A small test should teach us whether the process is safe enough to continue, rather than become a reason to ignore a serious fault.
 

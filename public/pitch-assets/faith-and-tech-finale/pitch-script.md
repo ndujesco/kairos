@@ -60,6 +60,8 @@ The next slide shows a quick demonstration of how it works.
 
 Delivery: Demo placeholder only. The tentative recording is kept separately on the laptop; choose timing and embedding after qualification and the pitch allowance are confirmed.
 
+[Open or download the 3:17 demo on Google Drive](https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/view). Download it before presenting and play at 1x.
+
 Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
 Recording:  · 0:00. No overall pitch schedule is set.

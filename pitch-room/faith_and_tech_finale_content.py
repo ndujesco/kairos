@@ -1,7 +1,7 @@
-"""Tentative Faith & Tech finale, copied from APWEN commit 23d7f4b.
+"""Confirmed Faith & Tech finale using the unchanged APWEN-derived slides.
 
-Independent script/metadata: later APWEN edits must not silently alter this room.
-The existing Faith rehearsal bank is retained. No movie belongs in web/native files.
+The spoken script and native files are preserved. This room has an independent
+plain-English question bank and a separate Drive demo link.
 """
 from copy import deepcopy
 import faith_and_tech_semis_content as faith
@@ -131,8 +131,8 @@ def shared_paragraphs(slide, markdown=False):
 
 SHORT_PITCH = list(SLIDES[-1]["paragraphs"])
 DEMO = []
-GROUPS = deepcopy(faith.GROUPS)
-QUESTIONS = deepcopy(faith.QUESTIONS)
+from faith_and_tech_finale_qa import build_questions
+GROUPS, QUESTIONS = build_questions(faith.QUESTIONS)
 EVENTS = [{'name': 'Faith & Tech tentative finale',
   'focus': 'Trust, accountability and responsible operation',
   'schedule': ['Confirm qualification, finale date and pitch allowance with the organiser.'],
@@ -216,3 +216,41 @@ PAGE = {'include_presenter_notes': False,'canonical_path': '/faith-and-tech-fina
  'demo_source': '',
  'preserve_editions': False}
 
+
+# Finalist update: narration and slide content above are deliberately unchanged.
+# The movie remains separate, as requested; only its Drive link is added.
+DEMO_DRIVE = 'https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/view'
+META.update(stage='Finale', date='Conference 28 November 2026 · finalist', demo_url=DEMO_DRIVE)
+PAGE.update(
+    demo_drive_url=DEMO_DRIVE, demo_duration_label='3:17',
+    archive_downloads=[{'label':'Demo · 3:17 on Drive', 'url':DEMO_DRIVE}],
+    header='Faith & Tech\nFinale',
+    description='Faith & Tech finalist preparation: the existing pitch, separate demo and plain-English answers to all judging feedback.',
+    hero_kicker='Faith & Tech · Finale', hero_status='One of five finalists · conference 28 November',
+    qa_intro='Plain-English spoken answers covering the 15 November and finalist feedback, earlier rehearsal topics, and examples of third parties for each role. Start with the starred questions. Current features, simulations and proposed processes are kept separate. Supplier names are research examples, not signed Kairos partnerships.',
+    qa_page_intro=f'{len(QUESTIONS)} questions. Finals feedback first, third-party examples next, then the earlier topics. Answers explain what works today and what still needs to be built.',
+    event_title='Kairos: Faith & Tech finals preparation',
+    event_intro='Kairos is one of five finalists. Conference: 28 November. The final pitch allowance is still pending. Slides and spoken wording are preserved.',
+    prep_kicker='Faith & Tech finale',
+    prep_intro='Use the existing ten slides and presenter script. The separate 3:17 demo is available on Drive; download it before presenting.',
+    event_notice='Finalist selection confirmed',
+    event_notice_detail='Masterclass: 25 November, 7–8 p.m. WAT on Zoom. Conference: 28 November. Final-stage presentation time is not yet confirmed.',
+    event_download_note='The existing native decks remain unchanged. The demo is a separate Drive download.',
+    prep_timing_note='Confirm the final pitch allowance; no semi-final timing is inherited.',
+    checklist=['Download the separate 3:17 demo from Drive and test it before presenting.',
+               'Use the existing slides and select Abigail or Ugochukwu for the spoken script.',
+               'Rehearse the starred questions covering both rounds of judging feedback.',
+               'Learn the third-party examples and distinguish possible providers from actual integrations.',
+               'Explain simulated checks and payment steps, and share computer sound for the recording.',
+               'Confirm the final pitch allowance and Zoom details when supplied.'],
+)
+EVENTS = [dict(
+    name='Faith & Tech finale', focus='Trust, accountability and responsible operation',
+    schedule=['Selected as one of five finalists.',
+              'Masterclass: Wednesday 25 November 2026, 7–8 p.m. WAT, Zoom details pending.',
+              'Conference: Saturday 28 November 2026; final pitch allowance pending.'],
+    assess='Be ready to explain fund holding, human review, practical verification, privacy, payment matching, fees and actual user feedback.',
+    spoken='Follow the need through the named provider payment to each donor receipt.',
+    follow_up='The separate 3:17 demo is on Drive. Download it and play at 1x; the pace and four section cards are already in the file.',
+    notice='Finalist selection confirmed', notice_detail='The original slides and spoken script are preserved. The semi-final remains separate.'
+)]
