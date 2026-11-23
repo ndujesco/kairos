@@ -18,14 +18,14 @@
     {
       "source": "ugo-audio.html",
       "destination": "public/ugo-audio.html",
-      "size": 33469,
-      "sha256": "2b0810bbc59903fbbadc9f7727353821019aceedb203bfd9c26c60e054e654f8"
+      "size": 33507,
+      "sha256": "56faa42424182df7f3e2ac27b6dc10292aca43b67ed7322a77460ba1fe72c1dc"
     },
     {
       "source": "ugo-audio-sw.js",
       "destination": "public/ugo-audio-sw.js",
       "size": 3739,
-      "sha256": "789fa1f2ef5185b45e6eac3887d854f10199d666cb9068cea01e7b5a05cf5374"
+      "sha256": "e4ad9ec698a41e2d89f33bd23a43c6b88b73fa261e2f2e5a982a8f1e0eebc845"
     },
     {
       "source": "ugo-audio/catalog.json",

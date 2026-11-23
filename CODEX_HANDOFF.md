@@ -1,5 +1,11 @@
 # Kairos website handoff
 
+## Latest: play/pause icon corrected — 23 November
+
+The user reported that `/ugo-audio.html` continued showing the Play triangle during playback. Native audio, status text and button label were correct; assigning `.hidden` on the inline SVG elements did not update their `hidden` attributes. The canonical player now toggles the actual SVG attributes, using the existing CSS visibility rule. The two icons now follow actual playback, pause, restart, section completion and offline playback. No audio files or other player behaviour changed. Rebuilt the page-derived offline cache version and ran `npm run audio:sync`.
+
+Added a regression check of actual rendered SVG visibility and the button’s accessible label to the existing browser harness. The assertion reproduced the bug before the fix; it passes after the fix alongside all playback/offline/responsive checks. Source and live verification receipts are in `production/2026-11-23 Ugo audio rehearsal/`. Publication is recorded in its current publication-verification.json; refresh the page online to receive the fix.
+
 ## Latest: Ugo’s section audio rehearsal player — 23 November
 
 **Published and verified:** website feature commit `7395f55`, audio source commit `fd7e4f8`, both pushed. All 17 manifest files on the production alias match their source checksums, including both player pages and the unchanged original MP3. A real demo audio range request returns 206. Full live-browser playback/offline/responsive QA also passes, with zero runtime errors. Every pre-existing public artifact is unchanged; fifteen new files were added.

@@ -313,7 +313,7 @@ function sync(){
  $('seek').setAttribute('aria-valuetext',`${format(position)} of ${format(duration)}`);
  $('elapsed').textContent=format(position);$('duration').textContent=format(duration);
  $('section-time').textContent=`${format(Math.max(0,audio.currentTime-c.start))} in section`;
- $('play').setAttribute('aria-label',playing?'Pause':'Play');$('play-icon').hidden=playing;$('pause-icon').hidden=!playing;
+ $('play').setAttribute('aria-label',playing?'Pause':'Play');$('play-icon').toggleAttribute('hidden',playing);$('pause-icon').toggleAttribute('hidden',!playing);
  document.querySelector('.player').classList.toggle('playing',playing);
  $('state-label').textContent=audio.ended?'Session complete':playing?'Now playing':audio.currentTime>0?'Paused':'Ready to rehearse';
  const index=mode==='single'?tracks.indexOf(track):s.chapters.indexOf(c);

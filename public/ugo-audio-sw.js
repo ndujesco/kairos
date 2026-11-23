@@ -1,6 +1,6 @@
 // Offline storage is opt-in and scoped to /ugo-audio.html only.
 const REVISION = "6e241a065a3c";
-const CACHE = "kairos-ugo-6e241a065a3c-2b0810bb";
+const CACHE = "kairos-ugo-6e241a065a3c-56faa424";
 const FILES = [
   "/ugo-audio.html",
   "/ugo-audio/tracks/01-intro.m4a?v=2e3fa06803e0",
