@@ -1,5 +1,10 @@
 # Kairos website handoff
 
+## Latest: substantive Kairos Additional Info PDF — 23 November
+
+The user clarified that Additional Info means actual information about the app, not a PDF containing only the two-word heading. Replaced that mistaken placeholder in place with a two-page, 664-word PDF covering Kairos's purpose, need-to-receipt flow, real AI role, technical stack, implemented/simulated/unbuilt components, project history/next steps and three clickable app/demo/source links. Same current upload path: `hackathons/2026-11 Slay Hacks/01 Application/answers/Additional info/Upload a File/Additional Info.pdf`. Current file is 6,993 bytes. The application guide and Upload a File.txt select it; older two-word-placeholder instructions below are superseded and must not be restored. Full PDF text and both rendered pages checked. Reproducer: `production/2026-11-23 Slay Hacks application/build_additional_info.py`; current hash/content receipt: additional-info-pdf.json in that folder. No upload/submission or other answer/media change.
+
+
 ## Latest: SLAY HACKS Additional info PDF — 23 November
 
 The user replaced the proposed supporting ZIP with a simple PDF containing only “Additional Info”. Current upload: `hackathons/2026-11 Slay Hacks/01 Application/answers/Additional info/Upload a File/Additional Info.pdf`. One A4 page; exact extracted text and rendered page verified. Upload a File.txt and the application guide select this PDF. The earlier ZIP is a superseded draft, not the requested attachment. No upload or submission. Other answers/media are unchanged. Verification: `production/2026-11-23 Slay Hacks application/additional-info-pdf.json`.
