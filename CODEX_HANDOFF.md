@@ -1,5 +1,10 @@
 # Kairos website handoff
 
+## Latest: SLAY HACKS Additional info PDF — 23 November
+
+The user replaced the proposed supporting ZIP with a simple PDF containing only “Additional Info”. Current upload: `hackathons/2026-11 Slay Hacks/01 Application/answers/Additional info/Upload a File/Additional Info.pdf`. One A4 page; exact extracted text and rendered page verified. Upload a File.txt and the application guide select this PDF. The earlier ZIP is a superseded draft, not the requested attachment. No upload or submission. Other answers/media are unchanged. Verification: `production/2026-11-23 Slay Hacks application/additional-info-pdf.json`.
+
+
 ## Latest application: SLAY HACKS drafts and researched supporting pack — 23 November
 
 At the user's request, prepared `hackathons/2026-11 Slay Hacks/01 Application/` from eight supplied screenshots. The user has already entered Kairos in Devpost; the story ends with the exact “What's next for Kairos” heading. No final submission or Devpost project-page URL is confirmed. Seven visible text-field responses are saved as answer-only files with exact field labels, including the six main responses and Additional info/Upload a File.txt. Elevator pitch is 163/200 characters; project name 6/60; story 693 words with all seven requested Markdown sections; Built with has 12/25 actual technology tags.
