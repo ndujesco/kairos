@@ -251,6 +251,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         deck_downloads += f' <a href="{e(download["url"])}" target="_blank" rel="noopener">{e(download["label"])}</a>'
     if page.get('hide_deck_downloads'):
         deck_downloads = ''
+    from presentation_files import presentation_files
+    file_shortcuts, files_dialog, _ = presentation_files(
+        page, deck_html=deck_html, deck_pdf=deck_pdf, deck_pptx=deck_pptx,
+        deck_keynote=deck_keynote, assets_base=assets_base,
+        presenter=content.DEFAULT_PRESENTER, presenters=content.PRESENTERS)
     scripts = {}
     for key in content.PRESENTERS:
         variant = timed_slides(content, key)
@@ -466,7 +471,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <button type="button" class="tab" role="tab" id="tab-demo" aria-controls="panel-demo" aria-selected="false" tabindex="-1">Demo</button>
 <button type="button" class="tab" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1">Q&A <span class="counter">{question_count}</span></button>
 <button type="button" class="tab" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1">Prep</button></nav>
-<div class="downloads">{deck_downloads}</div></div></div></header>
+<div class="downloads">{deck_downloads}</div></div>{file_shortcuts}</div></header>
 <main class="shell" id="main">
 <section class="panel" id="panel-pitch" role="tabpanel" aria-labelledby="tab-pitch">
 <div class="intro"><div><p class="kicker">{e(page.get("hero_kicker", "The need. The provider. Your own receipt."))}</p><h1>{e(page.get("hero_title", "Give with proof, not faith."))}</h1>
@@ -510,7 +515,7 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <section class="prepbox"><h2>Delivery, in the JCI spirit</h2><ul><li>Use the original school-fees story. Let the hesitation land.</li><li>Explain the case, provider payment and receipt before discussing integrations.</li><li>Read the donor's numbers slowly. Leave a beat for the receipt.</li><li>Choose {e(presenter_names)} as lead. The opening and team introduction follow that choice; both remain on the team slide.</li><li>Answer the question first. Add one piece of evidence, then stop.</li><li>If a technical detail is uncertain, check it. Keep the simulated parts explicit.</li></ul></section></div>
 <p class="sourceline">{deck_downloads} · <a class="presenter-script" href="{e(assets_base)}/pitch-script-{content.DEFAULT_PRESENTER}.md" download>Download {e(default_name)}’s script ↓</a> · <a href="{e(assets_base)}/qa-bank.md" download>{question_count} questions ↓</a></p>
 <p class="sourceline">{source_line}</p>{page["source_html"]}</section>
-</main><footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>{e(page["footer"])}</span></div></footer>
+</main>{files_dialog}<footer class="footer"><div class="shell"><span>KAIROS · TRANSPARENT GIVING FOR NIGERIA</span><span>{e(page["footer"])}</span></div></footer>
 <script type="application/json" id="pitch-data">{data}</script><script>{js}</script></body></html>'''
     output.write_text(document)
     write_script(content, assets, page, slides)

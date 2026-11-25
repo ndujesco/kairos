@@ -62,6 +62,27 @@ const demoNextSibling=demoMedia?.nextSibling;
 const demoTabStage=$('demo-tab-stage');
 const jumps=[...document.querySelectorAll('.jump button')];
 const ASSETS_BASE=DATA.assetsBase||'pitch-assets';
+const filesDialog=$('presentation-files-dialog');
+const filesButton=$('open-presentation-files');
+if(filesDialog&&filesButton){
+  filesButton.addEventListener('click',()=>filesDialog.showModal());
+  filesDialog.querySelector('.files-close').addEventListener('click',()=>filesDialog.close());
+  filesDialog.addEventListener('click',event=>{
+    const rect=filesDialog.getBoundingClientRect();
+    if(event.target===filesDialog&&(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom))filesDialog.close();
+  });
+  filesDialog.addEventListener('keydown',event=>{
+    if(event.key!=='Tab')return;
+    const focusable=[...filesDialog.querySelectorAll('a[href],button:not([disabled])')];
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  });
+  filesDialog.addEventListener('close',()=>{
+    const target=filesButton.getClientRects().length?filesButton:tabs.find(tab=>tab.getAttribute('aria-selected')==='true');
+    target?.focus({preventScroll:true});
+  });
+}
 const roomKey=name=>DATA.storagePrefix?DATA.storagePrefix+':'+name:null;
 const PRESENTER_KEY=roomKey('presenter')||'kairos-pitch-presenter-v1';
 function setPresenter(key,persist=false){
@@ -82,6 +103,10 @@ function setPresenter(key,persist=false){
   document.querySelectorAll('.presenter-script').forEach(link=>{
     link.href=ASSETS_BASE+'/pitch-script-'+chosen+'.md';
     link.textContent='Download '+person.name+'’s script ↓';
+  });
+  document.querySelectorAll('[data-file-script]').forEach(link=>{
+    link.href=ASSETS_BASE+'/pitch-script-'+chosen+'.md';
+    link.querySelector('[data-file-script-name]').textContent='For '+person.name;
   });
   if(persist){try{localStorage.setItem(PRESENTER_KEY,chosen);}catch{}}
   queueReaderUpdate();
@@ -395,6 +420,7 @@ let printOpen=[];
 window.addEventListener('beforeprint',()=>{printOpen=[...document.querySelectorAll('details')].map(d=>[d,d.open]);printOpen.forEach(([d])=>d.open=true);});
 window.addEventListener('afterprint',()=>printOpen.forEach(([d,open])=>d.open=open));
 document.addEventListener('keydown',ev=>{
+  if(filesDialog?.open)return;
   const editable=/^(INPUT|TEXTAREA|SELECT|VIDEO|AUDIO)$/.test(ev.target.tagName)||ev.target.isContentEditable;
   if(ev.key==='Escape'&&ev.target===$('search')){$('search').value='';filterQuestions();return;}
   if(editable||ev.altKey||ev.ctrlKey||ev.metaKey)return;

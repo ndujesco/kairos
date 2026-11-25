@@ -63,3 +63,27 @@
 @media print{.stage{display:block}.deckonly .scriptpaper{display:block!important}.mobile-pager{display:none!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress i{transition:none}}
 @media print{body{background:white;font-size:11pt}.top,.footer,.deck,.intro .statusbadge,.questiontools,.star,.modes,.screen-only,.decktools,.clockbox,.downloads{display:none!important}.shell{padding:0;max-width:none}.panel[hidden],.scriptblock[hidden],.qcard[hidden]{display:block!important}.panel{padding:0 0 25px}.scriptpaper{border:0;box-shadow:none}.scriptbody{padding:0}.scripthead{padding:8px 0}.say{font-size:13pt;line-height:1.5}.scriptblock{page-break-inside:avoid;margin-bottom:20px}.scriptbody h2{font-size:17pt;margin:14px 0}.cue{margin-top:12px}.qcard{break-inside:avoid;margin-bottom:10px;border:0;border-bottom:1px solid #ddd}.qcard details summary{padding:10px 0;display:block}.qcard summary:before{display:none}.qanswer{margin:0 0 15px;font-size:11pt;line-height:1.5}.qheading{font-size:12pt}.qmeta{font-size:8pt}.prepgrid{display:block}.prepbox,.demostep{border:0;break-inside:avoid;padding:10px 0}.shortpitch{background:white;color:black;border:1px solid #ddd}.shortpitch summary{color:black}.shortpitch p{font-size:12pt}details::details-content{display:block!important}.notice{background:white}.intro h1{font-size:22pt}.intro{margin:20px 0}}
+
+/* Keep the presentation files one tap away while using the mobile reader. */
+.file-shortcuts{display:none;gap:8px;padding:8px 0 10px}
+.mobile-reader .file-shortcuts{display:flex}
+.file-shortcut{display:inline-flex;align-items:center;justify-content:center;flex:1;min-width:0;min-height:44px;padding:9px 10px;border:1px solid var(--line);border-radius:7px;background:var(--white);color:var(--green);font-size:14px;font-weight:700;text-decoration:none;line-height:1.25;text-align:center}
+.file-shortcut:hover{background:var(--soft)}
+.file-shortcut.files-open{flex:0 0 auto;background:var(--green);color:white;border-color:var(--green);padding-inline:15px}
+.files-dialog{box-sizing:border-box;width:min(620px,calc(100vw - 24px));max-height:calc(100dvh - 32px);padding:0;margin:auto;border:1px solid var(--line);border-radius:16px;color:var(--ink);background:var(--paper);box-shadow:0 20px 80px #173f2540;overscroll-behavior:contain}
+.files-dialog::backdrop{background:#11291dc2}
+.files-heading{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;background:var(--paper);border-bottom:1px solid var(--line)}
+.files-kicker{margin:0 0 5px;color:var(--muted);font-size:13px;font-weight:700}
+.files-heading h2{font-size:24px;line-height:1.2;letter-spacing:-.5px;margin:0}
+.files-close{display:grid;place-items:center;flex-shrink:0;min-width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--white);color:var(--green);font-size:30px;line-height:1}
+.files-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:16px 20px}
+.presentation-file{display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0;min-height:74px;padding:14px;border:1px solid var(--line);border-radius:9px;background:var(--white);text-decoration:none;overflow-wrap:anywhere}
+.presentation-file:hover{background:var(--soft);border-color:var(--green)}
+.presentation-file strong{font-size:16px;line-height:1.35;color:var(--green)}
+.presentation-file span{font-size:14px;line-height:1.4;color:var(--muted)}
+.presentation-file[data-file-kind=demo]{background:var(--green);border-color:var(--green)}
+.presentation-file[data-file-kind=demo] strong,.presentation-file[data-file-kind=demo] span{color:white}
+.files-footer{padding:2px 20px 20px;font-size:14px}
+@media(max-width:520px){.files-heading{padding:16px}.files-heading h2{font-size:21px}.files-list{grid-template-columns:1fr;padding:12px 16px}.presentation-file{min-height:68px;padding:12px 14px}.files-footer{padding:2px 16px 18px}}
+@media(max-width:800px){.file-shortcuts{display:flex}}
+@media print{.file-shortcuts,.files-dialog{display:none!important}}
