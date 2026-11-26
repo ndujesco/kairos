@@ -1,7 +1,7 @@
-"""Confirmed Faith & Tech finale using the unchanged APWEN-derived slides.
+"""Faith & Tech finale with APWEN-derived slides and a prize-funding summary.
 
-The spoken script and native files are preserved. This room has an independent
-plain-English question bank and a separate Drive demo link.
+The separate demo stays unchanged. Narration stays in the browser/scripts;
+the current native decks have no presenter notes or embedded movies.
 """
 from copy import deepcopy
 from pathlib import Path
@@ -83,13 +83,11 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
  {'title': 'Responsible operation',
   'deck_key': 'responsible',
   'paragraphs': ['It is worth reiterating that we store no sensitive data and do not keep any money. '
-                 'When an organiser supplies documents as proof to support their cause, the AI model '
-                 'discerns which is safe to display publicly and only does so with their permission.',
                  'Since we are integrating the services with licensed and verified third parties, our '
                  'product is easily scalable and secure.'],
-  'cue': 'User-supplied wording retained as the intended operating model. The prototype stores '
-         'account/cause/evidence data; automated safe-publication review and consent gating remain '
-         'planned. Third-party integration does not establish a security guarantee.',
+  'cue': 'Supplied wording matches APWEN. The audience slide identifies the intended operating model. '
+         'The prototype stores account/cause/evidence data; live safeguards require validation. '
+         'Third-party integration does not establish a security guarantee.',
   'seconds': 0},
  {'title': 'What runs today.',
   'deck_key': 'prototype',
@@ -111,7 +109,7 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
   'deck_key': 'team',
   'paragraphs': ["And this is the team. I'm Ugochukwu, the software engineer and CTO. Abigail is our "
                  'team lead and product manager.'],
-  'cue': 'Introduce Abigail and Ugochukwu. Either presenter can lead this tentative finale.',
+  'cue': 'Introduce Abigail and Ugochukwu. Either presenter can lead this finale.',
   'seconds': 0},
  {'title': 'Give with proof, not faith.',
   'deck_key': 'closing',
@@ -122,6 +120,18 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
                  "Thank you so much. We're Team Kairos."],
   'cue': 'Thank them, then stop.',
   'seconds': 0}]
+
+# Funding follows prototype status, preserving the existing demo lead-in.
+SLIDES.insert(7, {
+ 'title': 'Our funding priorities', 'deck_key': 'funding',
+ 'paragraphs': ['We prioritise user testing, then payment integration and a supervised school-fee '
+                'pilot. The detailed spending plans are in our submission to the organising team.'],
+ 'cue': 'The three prizes are alternative awards. $750 funds validation over eight weeks; $1,500 '
+        'funds sandbox testing over twelve; $2,500 prepares a small supervised pilot over twelve, '
+        'conditional on partner approval and readiness checks. Submit the spreadsheet by 27 November, '
+        '6 p.m. WAT before presenting this line. All figures are targets from receipt of funds.',
+ 'seconds': 0,
+})
 
 def slides_for_presenter(presenter):
     def spoken(text):
@@ -263,4 +273,44 @@ EVENTS = [dict(
     spoken='Follow the need through the named provider payment to each donor receipt.',
     follow_up='The separate 3:17 demo is on Drive. Download it and play at 1x; the pace and four section cards are already in the file.',
     notice='Finalist selection confirmed', notice_detail='The original slides and spoken script are preserved. The semi-final remains separate.'
+)]
+
+# Authoritative 26 November logistics and funding update.
+PAGE.update(
+    deck_title='Kairos · Faith & Tech finale',
+    footer='Abigail + Ugochukwu · Faith & Tech finale',
+    description='Faith & Tech finale: the current pitch, separate demo, three prize-funding plans and rehearsal questions.',
+    script_title='Kairos: Faith & Tech finale pitch script',
+    script_intro='Eleven slides. Default presenter: Ugochukwu. Funding follows What runs today at slide 8. The recorded demo transcription is rehearsal material, not additional live narration. The organiser allows five minutes in total; no fitted delivery schedule is assigned.',
+    timing_note='Confirmed maximum: five minutes including pitch, demo and funding summary. Rehearse the retained script and separate recording together.',
+    event_intro='Kairos is one of five finalists. Finale: 28 November 2026. The organiser confirms five minutes in total. The completed spending spreadsheet for all three prizes is due 27 November, 6 p.m. WAT.',
+    prep_intro='Eleven slides. Funding follows prototype status at slide 8. Download the separate 3:17 demo and current files before presenting.',
+    event_notice='Five-minute finale pitch',
+    event_notice_detail='Submit the spreadsheet for $2,500, $1,500 and $750 by Friday 27 November 2026, 6 p.m. WAT. Finale: Saturday 28 November. The recommended section structure is guidance; the five-minute total is the confirmed limit.',
+    event_download_note='Current note-free native decks, separate scripts and the spending-plan spreadsheet are available below. The demo remains separate.',
+    prep_timing_note='Maximum five minutes including demonstration. The existing 3:17 recording and retained script need a timed rehearsal; no fitted schedule or shorter recording is claimed.',
+    source_note='APWEN-derived pitch with Faith presenters, the requested slide-6 removal and a brief funding summary based on the supplied 26 November guidelines and completed spending plan.',
+    criteria=[['Problem and solution', 'Slides 1–3'], ['Sustainability', 'Slide 4'],
+              ['Demonstration', 'Slide 5'], ['Responsible operation and prototype status', 'Slides 6–7'],
+              ['Funding and impact', 'Slide 8'], ['First use case', 'Slide 9'], ['Team and closing', 'Slides 10–11']],
+    checklist=['Submit the completed three-scenario spreadsheet by 27 November, 6 p.m. WAT.',
+               'Download the current eleven-slide deck, script and separate 3:17 demo.',
+               'Select Abigail or Ugochukwu before presenting.',
+               'Rehearse the complete pitch, demo and funding summary within five minutes.',
+               'Rehearse the starred questions covering both rounds of feedback.',
+               'Explain simulated checks and payments, distinguish possible providers from signed partners, and share computer sound.',
+               'Keep funding targets conditional on access, partner approval and readiness checks.'],
+)
+PAGE['archive_downloads'].append({'label': 'Prize spending plan · Excel',
+                                'url': 'pitch-assets/faith-and-tech-finale/Kairos-Prize-Funding-and-Spending-Plan.xlsx'})
+EVENTS = [dict(
+    name='Faith & Tech finale', focus='Trust, accountability, responsible operation and funding impact',
+    schedule=['Selected as one of five finalists.',
+              'Spending plan for all three prizes: Friday 27 November 2026, 6 p.m. WAT.',
+              'Finale: Saturday 28 November 2026. Maximum five minutes including demo and funding.'],
+    assess='Explain the problem, current readiness, evidence and what each prize would enable. The spreadsheet supplies the detailed costs, milestones and impact measures.',
+    spoken='Follow the need through the named provider payment to each donor receipt.',
+    follow_up='The separate 3:17 demo remains on Drive. Funding follows What runs today at slide 8. The new narration is no longer than the removed sentence.',
+    notice='Five-minute finale pitch',
+    notice_detail='The current deck has eleven slides. The semi-final and other competitions remain separate.'
 )]

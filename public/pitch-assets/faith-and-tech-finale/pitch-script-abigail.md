@@ -1,12 +1,12 @@
-# Kairos: Faith & Tech tentative finale pitch script
+# Kairos: Faith & Tech finale pitch script
 
 Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-10 slides, 454 presenter words. No delivery schedule is set.
+11 slides, 450 presenter words. No delivery schedule is set.
 
-Ten slides. Default presenter: Ugochukwu. Qualification and pitch allowance are unconfirmed. No delivery schedule is set. Slide 5 is a Demo placeholder; the recording stays separate locally.
+Eleven slides. Default presenter: Ugochukwu. Funding follows What runs today at slide 8. The recorded demo transcription is rehearsal material, not additional live narration. The organiser allows five minutes in total; no fitted delivery schedule is assigned.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -112,11 +112,9 @@ Recording: Kairos-Faith-and-Tech-Finale-Demo.mp4 · 3:17. No overall pitch sched
 
 Abigail
 
-It is worth reiterating that we store no sensitive data and do not keep any money. When an organiser supplies documents as proof to support their cause, the AI model discerns which is safe to display publicly and only does so with their permission.
+It is worth reiterating that we store no sensitive data and do not keep any money. Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.
 
-Since we are integrating the services with licensed and verified third parties, our product is easily scalable and secure.
-
-Delivery: User-supplied wording retained as the intended operating model. The prototype stores account/cause/evidence data; automated safe-publication review and consent gating remain planned. Third-party integration does not establish a security guarantee.
+Delivery: Supplied wording matches APWEN. The audience slide identifies the intended operating model. The prototype stores account/cause/evidence data; live safeguards require validation. Third-party integration does not establish a security guarantee.
 
 ## Slide 7: What runs today.
 
@@ -128,7 +126,15 @@ Every integration with third parties is simulated for now.
 
 Delivery: Distinguish simulated identity, custody and settlement from the actual Claude interview and hosted application/data services.
 
-## Slide 8: Where we start. Where we go next.
+## Slide 8: Our funding priorities
+
+Abigail
+
+We prioritise user testing, then payment integration and a supervised school-fee pilot. The detailed spending plans are in our submission to the organising team.
+
+Delivery: The three prizes are alternative awards. $750 funds validation over eight weeks; $1,500 funds sandbox testing over twelve; $2,500 prepares a small supervised pilot over twelve, conditional on partner approval and readiness checks. Submit the spreadsheet by 27 November, 6 p.m. WAT before presenting this line. All figures are targets from receipt of funds.
+
+## Slide 9: Where we start. Where we go next.
 
 Abigail
 
@@ -138,15 +144,15 @@ Then we plan to move to hospitals and other service providers.
 
 Delivery: Retain the supplied phrasing. Departmental feedback is qualitative interest, not a completed live-money pilot.
 
-## Slide 9: Abigail and Ugochukwu.
+## Slide 10: Abigail and Ugochukwu.
 
 Abigail
 
 And this is the team. I'm Abigail, the team lead and product manager. Ugochukwu is our software engineer and CTO.
 
-Delivery: Introduce Abigail and Ugochukwu. Either presenter can lead this tentative finale.
+Delivery: Introduce Abigail and Ugochukwu. Either presenter can lead this finale.
 
-## Slide 10: Give with proof, not faith.
+## Slide 11: Give with proof, not faith.
 
 Abigail
 

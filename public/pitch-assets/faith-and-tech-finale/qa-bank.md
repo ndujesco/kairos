@@ -611,7 +611,7 @@ We need an agreed institution to hold and release the funds, connected payment a
 
 ### 78. How long is this pitch allowed to be?
 
-The final presentation time has not been confirmed. The earlier semi-final format does not automatically apply to the finals. Our current demo is three minutes seventeen seconds, and we will fit the rest of the presentation around the organiser’s final allowance once it arrives. The preparation page keeps an elapsed clock without pretending that a final schedule has been agreed.
+The organiser's 26 November guidelines confirm a maximum of five minutes for the whole pitch, including the demonstration and funding plan. The current separate recording is three minutes seventeen seconds, so we need to rehearse the complete delivery against that total. The suggested section timings are guidance. Our page keeps an elapsed clock; it does not claim the retained script and unchanged recording already fit.
 
 
 ## Questions behind the feedback

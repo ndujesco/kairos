@@ -22,7 +22,7 @@ REGISTER = ROOT / 'pitch-room/deck-catalog.json'
 ARCHIVE = PUBLIC / 'pitch-archive'
 BAD_MEDIA = {'.mp4', '.mov', '.m4v', '.webm', '.avi', '.wmv', '.mkv', '.pptx', '.key'}
 CURRENT = [
-    {'title': 'Faith & Tech · Finale', 'url': '/faith-and-tech-finale.html', 'status': 'Current', 'detail': 'Confirmed finalist. Existing slides and script, separate 3:17 Drive demo, and plain-English answers to all judging feedback.'},
+    {'title': 'Faith & Tech · Finale', 'url': '/faith-and-tech-finale.html', 'status': 'Current', 'detail': 'Eleven slides with a brief funding summary, three prize-spending plans, separate 3:17 Drive demo and 140 rehearsal answers.'},
     {'title': 'APWEN · Finale', 'url': '/apwen-finale.html', 'status': 'Current', 'detail': 'Ten slides, full presenter scripts and the 2:39 demo transcription.'},
     {'title': 'Cleva · Grand Finale', 'url': '/cleva-finale.html', 'status': 'Current', 'detail': 'Nine slides with full presenter scripts and Cleva questions.'},
     {'title': 'Faith & Tech · Semi-final', 'url': '/faith-and-tech-semis.html', 'status': 'Current', 'detail': 'Eleven slides, full presenter scripts and 80 questions.'},

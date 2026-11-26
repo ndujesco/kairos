@@ -1,12 +1,12 @@
 {
   "version": "faith-and-tech-finale-current",
-  "slides": 10,
+  "slides": 11,
   "questions": 140,
   "priority": 49,
-  "words": 454,
+  "words": 450,
   "seconds": null,
   "source_content": "faith_and_tech_finale_content.py",
-  "source_sha256": "e27cacb54a34b336b5f7e99a1b4141867a66a23d241cef1786cbce6f2dcbbdc0",
+  "source_sha256": "2088470f8a1b02cb16de7fbf7bfb2f2ea2d921a78ac3fb0ffd4e4a59d26cbe60",
   "deckBase": "pitch-assets/faith-and-tech-finale/deck",
   "deck_pdf": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pdf",
   "deck_pptx": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pptx",
@@ -63,20 +63,27 @@
     },
     {
       "n": 8,
+      "key": "funding",
+      "title": "Our funding priorities",
+      "seconds": null,
+      "is_demo": false
+    },
+    {
+      "n": 9,
       "key": "growth",
       "title": "Where we start. Where we go next.",
       "seconds": null,
       "is_demo": false
     },
     {
-      "n": 9,
+      "n": 10,
       "key": "team",
       "title": "Abigail and Ugochukwu.",
       "seconds": null,
       "is_demo": false
     },
     {
-      "n": 10,
+      "n": 11,
       "key": "closing",
       "title": "Give with proof, not faith.",
       "seconds": null,
@@ -87,12 +94,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 454,
+      "words": 450,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 454,
+      "words": 450,
       "script": "pitch-script-ugochukwu.md"
     }
   },

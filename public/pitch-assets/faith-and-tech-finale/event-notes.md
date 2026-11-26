@@ -1,19 +1,19 @@
 # Kairos: Faith & Tech finals preparation
 
-Kairos is one of five finalists. Conference: 28 November. The final pitch allowance is still pending. Slides and spoken wording are preserved.
+Kairos is one of five finalists. Finale: 28 November 2026. The organiser confirms five minutes in total. The completed spending spreadsheet for all three prizes is due 27 November, 6 p.m. WAT.
 
 ## Faith & Tech finale
 
-Trust, accountability and responsible operation
+Trust, accountability, responsible operation and funding impact
 
 - Selected as one of five finalists.
-- Masterclass: Wednesday 25 November 2026, 7–8 p.m. WAT, Zoom details pending.
-- Conference: Saturday 28 November 2026; final pitch allowance pending.
+- Spending plan for all three prizes: Friday 27 November 2026, 6 p.m. WAT.
+- Finale: Saturday 28 November 2026. Maximum five minutes including demo and funding.
 
-Be ready to explain fund holding, human review, practical verification, privacy, payment matching, fees and actual user feedback.
+Explain the problem, current readiness, evidence and what each prize would enable. The spreadsheet supplies the detailed costs, milestones and impact measures.
 
 The thread:
 
 Follow the need through the named provider payment to each donor receipt.
 
-The separate 3:17 demo is on Drive. Download it and play at 1x; the pace and four section cards are already in the file.
+The separate 3:17 demo remains on Drive. Funding follows What runs today at slide 8. The new narration is no longer than the removed sentence.
