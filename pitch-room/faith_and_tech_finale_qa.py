@@ -132,6 +132,7 @@ PLAIN_PARTNER_INTROS = {
 
 def build_questions(base):
     from cleva_partner_directory import partner_questions
+    from faith_and_tech_compliance_questions import compliance_questions
     existing=deepcopy(base)
     assert {q['id'] for q in existing}==set(ANSWERS)
     for q in existing:q['answer']=ANSWERS[q['id']]
@@ -141,7 +142,7 @@ def build_questions(base):
         service=q['id'][3:];intro=PLAIN_PARTNER_INTROS[service]
         q.update(id='fp-'+service,category='Third parties: examples for each role',priority=False,partner_intro=intro,
                  answer=intro+'\n\n'+'\n'.join(p['name']+': '+p['role']+'.' for p in q['partners']))
-    questions=finals+partners+existing
+    questions=finals+compliance_questions()+partners+existing
     for i,q in enumerate(questions,1):q['display_number']=i
     assert len({q['id'] for q in questions})==len(questions)
     assert len({q['question'] for q in questions})==len(questions)
