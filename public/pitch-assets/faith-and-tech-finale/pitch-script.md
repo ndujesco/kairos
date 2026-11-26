@@ -58,13 +58,55 @@ Abigail or Ugochukwu
 
 The next slide shows a quick demonstration of how it works.
 
-Delivery: Demo placeholder only. The tentative recording is kept separately on the laptop; choose timing and embedding after qualification and the pitch allowance are confirmed.
+### Recorded demo transcription
+
+*[Silent title card · 0:00.0–0:03.5 · Pause 3.5 seconds: Ugo Creates a School Fees Cause]*
+
+Ugochukwu needs help with his school fees, and so having created an account, he signs up to the website and goes ahead to create a cause.
+
+As you can see, he doesn't just fill a form. This is an interview with AI, and that is a real live model answering. It asks for what exactly the money is for. It asks for who exactly gets paid, how much will be paid, and when exactly the money is due.
+
+You can see it asks for the Remita reference in this case, because he claims to be a student of a federal university who wants to pay his fees. This is the detail that he cannot forge, and even if it seems like the AI interviewer isn't thorough in drilling him for document proofs and the like, it notes this verifiable detail and goes ahead to create the case for him.
+
+And then out comes the published itemised budget, with the receiver of the money clearly stated. In this case, three hundred thousand naira to be paid to the University of Lagos.
+
+He then proves who he is, with his NIN and his face matched against the registry. This is important, because an NIN number can be leaked, but not a live face.
+
+And this is where it runs the fraud check. It scans for reused images, contradictory dates and unrealistic budgets, and also in this case a valid Remita number that is actually owned by Ugochukwu.
+
+*[Silent title card · 1:09.3–1:12.8 · Pause 3.5 seconds: Okefe Makes the First Donation]*
+
+Now, we see a donor named Okefe, who gives a hundred and fifty thousand naira. Before he agreed, he is shown what we would take. This is tentatively two percent, capped at five thousand naira. All this lands in escrow, not in Ugo's account.
+
+*[Silent title card · 1:26.6–1:30.1 · Pause 3.5 seconds: A Visitor Tries Donating Anonymously]*
+
+While signing up on Kairos is very easy, some people might still choose not to and so Ugochukwu can copy this link and paste it on any social media platform, WhatsApp in this case.
+
+Anyone who sees this link can click on it or copy it and paste it in any browser. Now this potential donor pastes it on the private browser and as you can see the donation will be anonymous.
+
+*[Silent title card · 1:54.8–1:58.3 · Pause 3.5 seconds: Abby Donates the Balance.]*
+
+Now, on the left is Ugochukwu's account, and on the right is another potential donor, namely Abigail. These are two separate browsers with the named accounts logged in.
+
+Now as you can see, a hundred and forty seven thousand naira has been raised by Okefe, and a hundred and fifty three thousand naira is still needed. Abigail donates this balance.
+
+Before she agrees to pay, notice that she is told what portion of the amount will be taken to maintain the app. As earlier mentioned, this is our tentative business model. We resort to this when we are unable to get any sponsors at all.
+
+Notice also that as soon as she gives this money, it updates automatically everywhere, and Ugo gets a notification that his money is complete.
+
+Now, let's look at Ugo's wallet. Notice that this money does not land in Ugo's account, neither can Ugo even withdraw any of it. The money is kept in escrow with a licensed partner, and Ugo cannot touch any of it.
+
+He clicks on Pay fees, and the AI, after getting results from the API, confirms the biller, the amount, and checks if it is unpaid, and then it settles it. We then get a receipt from the university.
+
+As soon as this payment is made, Abigail gets notified that Ugo's fees has been paid, as well as a breakdown of what portion of her donation paid the fees. She does not just get a thank you, she gets a receipt, one that she can inspect herself.
+
+Delivery: Play the separate 3:17 recording at 1x. The transcription below is the recorded narration, not extra live narration. Four marked title cards are silent 3.5-second pauses.
 
 [Open or download the 3:17 demo on Google Drive](https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/view). Download it before presenting and play at 1x.
 
 Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording:  · 0:00. No overall pitch schedule is set.
+Recording: Kairos-Faith-and-Tech-Finale-Demo.mp4 · 3:17. No overall pitch schedule is set.
 
 ## Slide 6: Responsible operation
 

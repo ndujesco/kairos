@@ -6,7 +6,7 @@
   "words": 454,
   "seconds": null,
   "source_content": "faith_and_tech_finale_content.py",
-  "source_sha256": "c580ecc2be6c6cc2a94c0dec97d5b89b86f3f696808472ab8ce1c53c3078ff1d",
+  "source_sha256": "e27cacb54a34b336b5f7e99a1b4141867a66a23d241cef1786cbce6f2dcbbdc0",
   "deckBase": "pitch-assets/faith-and-tech-finale/deck",
   "deck_pdf": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pdf",
   "deck_pptx": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pptx",
@@ -106,7 +106,7 @@
   "demo_section_seconds": null,
   "demo_placeholder": true,
   "local_demo": false,
-  "demo_name": "",
+  "demo_name": "Kairos-Faith-and-Tech-Finale-Demo.mp4",
   "deck_keynote": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.key",
   "deck_html": "pitch-assets/faith-and-tech-finale/deck.html",
   "canonical_path": "/faith-and-tech-finale.html"

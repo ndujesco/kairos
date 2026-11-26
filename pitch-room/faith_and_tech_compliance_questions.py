@@ -57,9 +57,9 @@ QUESTIONS = [
         ("act", "gaid"),
     ),
     (
-        "returning", "How could you recognise someone returning after a confirmed fraud-related restriction?", True,
-        "Our proposed approach is to verify identity through an authorised provider, obtain a stable private identity token and check it against a restricted-access record. If the same verified identity returns under a new account, its restriction can be checked. That requires retaining a small amount of justified information; storing nothing would not support it. It would not stop someone using another person's identity, so additional checks and human review still matter. This is not implemented today.",
-        ("enisa", "nist"),
+        "returning", "How can you recognise a restricted person returning with a new name or account without storing their raw NIN?", True,
+        "We would first verify that the identity belongs to the applicant, then look up a stable private identity token directly. We would not filter by full name: names can change or belong to different people. A suitable verification provider could issue the token, or we could consider HMAC-SHA-256 with a secret key protected separately from the database, instead of an ordinary NIN hash. The same verified NIN would then match despite a new name or email. We would retain only justified restriction information, including the reason, necessary evidence, reviewer and review date, with an appeal route. The token is still personal data, so it needs a lawful purpose, protection and a retention policy. An AI flag alone would not establish fraud. This cannot prevent every stolen-identity or accomplice attempt, and it is a proposed safeguard, not a feature already built.",
+        ("enisa", "nist", "act", "gaid"),
     ),
     (
         "names", "Should you compare full names before comparing the identity token?", True,

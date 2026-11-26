@@ -4,7 +4,11 @@ The spoken script and native files are preserved. This room has an independent
 plain-English question bank and a separate Drive demo link.
 """
 from copy import deepcopy
+from pathlib import Path
+import json
 import faith_and_tech_semis_content as faith
+
+DEMO_INFO = json.loads(Path(__file__).with_name('faith_and_tech_finale_demo.json').read_text())
 
 META = {'title': 'Kairos | Faith & Tech Finale',
  'event': 'Faith & Tech Hackathon',
@@ -69,11 +73,13 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
  {'title': 'Watch the payment become a receipt.',
   'deck_key': 'demo',
   'paragraphs': ['The next slide shows a quick demonstration of how it works.'],
-  'cue': 'Demo placeholder only. The tentative recording is kept separately on the laptop; choose '
-         'timing and embedding after qualification and the pitch allowance are confirmed.',
+  'cue': 'Play the separate 3:17 recording at 1x. The transcription below is the recorded narration, '
+         'not extra live narration. Four marked title cards are silent 3.5-second pauses.',
   'seconds': 0,
   'is_demo': True,
-  'video_seconds': 0},
+  'video_seconds': 0,
+  'recorded_transcript': DEMO_INFO['transcript_paragraphs'],
+  'recorded_transcript_pauses': DEMO_INFO['card_pauses']},
  {'title': 'Responsible operation',
   'deck_key': 'responsible',
   'paragraphs': ['It is worth reiterating that we store no sensitive data and do not keep any money. '
@@ -223,6 +229,10 @@ DEMO_DRIVE = 'https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/
 META.update(stage='Finale', date='Conference 28 November 2026 · finalist', demo_url=DEMO_DRIVE)
 PAGE.update(
     demo_drive_url=DEMO_DRIVE, demo_duration_label='3:17',
+    demo_name=DEMO_INFO['filename'], demo_recording_seconds=DEMO_INFO['duration_seconds'],
+    separate_demo_script='pitch-assets/faith-and-tech-finale/demo-transcript.txt',
+    separate_demo_subtitles='pitch-assets/faith-and-tech-finale/Kairos-Faith-and-Tech-Finale-Demo.en.srt',
+    separate_demo_webvtt='pitch-assets/faith-and-tech-finale/Kairos-Faith-and-Tech-Finale-Demo.en.vtt',
     archive_downloads=[{'label':'Demo · 3:17 on Drive', 'url':DEMO_DRIVE}],
     header='Faith & Tech\nFinale',
     description='Faith & Tech finalist preparation: the existing pitch, separate demo and plain-English answers to all judging feedback.',

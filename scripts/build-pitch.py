@@ -84,7 +84,9 @@ def write_script(content, assets, page, slides, presenter=None):
                    speaker_timing]
         script += paragraphs
         if s.get('recorded_transcript'):
-            script += ['### Recorded demo transcription'] + s['recorded_transcript']
+            from demo_transcripts import transcript_items
+            script += ['### Recorded demo transcription']
+            script += [f'*[{text}]*' if kind == 'pause' else text for kind, text in transcript_items(s)]
         script += [f'Delivery: {s["cue"]}']
         if s.get("is_demo"):
             if page.get('demo_drive_url'):
@@ -94,7 +96,7 @@ def write_script(content, assets, page, slides, presenter=None):
                            if page.get('local_demo') else 'Play the embedded recording in full, then advance manually to the next slide.')
             recording = page.get('demo_name') if page.get('local_demo') or page.get('demo_placeholder') else page['demo_url']
             script += [instruction + " The recording's narration is not included in the presenter word count.",
-                       f'Recording: {recording} · {mmss(s.get("video_seconds", s["seconds"]))}. '
+                       f'Recording: {recording} · {page.get("demo_duration_label", mmss(page.get("demo_recording_seconds", s.get("video_seconds", s["seconds"]))))}. '
                        + ('No overall pitch schedule is set.' if page.get('unscheduled') else 'This section is already included in the main pitch timing.')]
     script += ["## Short explanation"] + content.SHORT_PITCH
     if not integrated_demo and getattr(content, "DEMO", []):
@@ -288,9 +290,11 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         next_name = slides[s["n"]]["title"] if s["n"] < len(slides) else "Pause, then take questions."
         slide_timing = (f'<span class="subtle">Budget {mmss(s["budget_seconds"])}</span>' if s.get('budget_seconds') else
                         '' if page.get('unscheduled') else f'<span class="subtle">{mmss(s["start"])} to {mmss(s["end"])}</span>')
+        from demo_transcripts import transcript_items
         transcript = ('<section class="recorded-transcript" aria-label="Recorded demo transcription">'
                       '<h3>Recorded demo transcription</h3><div class="say">'
-                      + ''.join(f'<p>{e(p)}</p>' for p in s['recorded_transcript']) + '</div></section>'
+                      + ''.join(f'<p class="transcript-pause">{e(text)}</p>' if kind == 'pause' else f'<p>{e(text)}</p>'
+                                for kind, text in transcript_items(s)) + '</div></section>'
                       if s.get('recorded_transcript') else '')
         demo_link = (f'<p class="demo-drive-link"><a class="button" href="{e(page["demo_drive_url"])}" target="_blank" rel="noopener">Open or download demo · {e(page.get("demo_duration_label", "Google Drive"))}</a></p>'
                      if s.get('is_demo') and page.get('demo_drive_url') else '')
@@ -395,6 +399,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
     css = (SOURCE / "pitch.css").read_text()
     if any(s.get('recorded_transcript') for s in slides):
         css += '\n.recorded-transcript{margin-top:28px;padding-top:20px;border-top:1px solid #bcc7b9}.recorded-transcript h3{font-size:1rem;color:#205635;margin:0 0 16px}.recorded-transcript .say p:last-child{margin-bottom:0}\n'
+    if any(s.get('recorded_transcript_pauses') for s in slides):
+        css += '\n.recorded-transcript .say .transcript-pause{font-family:inherit;font-size:1rem;line-height:1.6;padding:14px 16px;background:#edf3e8;border-left:3px solid #205635;border-radius:4px;color:#205635}\n'
     if page.get('demo_placeholder'):
         css += '\n.demo-placeholder{aspect-ratio:16/9;display:grid;place-items:center;background:#f3f1e5;text-align:center;color:#205635}.demo-placeholder h2{font-size:clamp(36px,6vw,88px);margin:0}.demo-placeholder p{font-size:clamp(14px,2vw,24px);margin:18px 0 0}.downloads:empty{display:none}\n'
     if page.get('unscheduled'):

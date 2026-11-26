@@ -113,11 +113,11 @@ We need a documented lawful basis for that particular use, a clear explanation t
 
 Sources: [Nigeria Data Protection Act 2023](https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf) · [NDPC implementation guidance, 2025](https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf)
 
-### 23. ★ How could you recognise someone returning after a confirmed fraud-related restriction?
+### 23. ★ How can you recognise a restricted person returning with a new name or account without storing their raw NIN?
 
-Our proposed approach is to verify identity through an authorised provider, obtain a stable private identity token and check it against a restricted-access record. If the same verified identity returns under a new account, its restriction can be checked. That requires retaining a small amount of justified information; storing nothing would not support it. It would not stop someone using another person's identity, so additional checks and human review still matter. This is not implemented today.
+We would first verify that the identity belongs to the applicant, then look up a stable private identity token directly. We would not filter by full name: names can change or belong to different people. A suitable verification provider could issue the token, or we could consider HMAC-SHA-256 with a secret key protected separately from the database, instead of an ordinary NIN hash. The same verified NIN would then match despite a new name or email. We would retain only justified restriction information, including the reason, necessary evidence, reviewer and review date, with an appeal route. The token is still personal data, so it needs a lawful purpose, protection and a retention policy. An AI flag alone would not establish fraud. This cannot prevent every stolen-identity or accomplice attempt, and it is a proposed safeguard, not a feature already built.
 
-Sources: [ENISA: pseudonymisation techniques and risks](https://www.enisa.europa.eu/publications/pseudonymisation-techniques-and-best-practices) · [NIST: pairwise pseudonymous identifiers](https://pages.nist.gov/800-63-4/sp800-63c.html)
+Sources: [ENISA: pseudonymisation techniques and risks](https://www.enisa.europa.eu/publications/pseudonymisation-techniques-and-best-practices) · [NIST: pairwise pseudonymous identifiers](https://pages.nist.gov/800-63-4/sp800-63c.html) · [Nigeria Data Protection Act 2023](https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf) · [NDPC implementation guidance, 2025](https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf)
 
 ### 24. ★ Should you compare full names before comparing the identity token?
 
