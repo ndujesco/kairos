@@ -1,3 +1,12 @@
 {
-  "native_downloads": []
+  "native_downloads": [
+    {
+      "label": "PowerPoint",
+      "url": "https://drive.google.com/file/d/1LEUdajj93a8J-z31jUabPmpVjs7goS56/view"
+    },
+    {
+      "label": "Keynote",
+      "url": "https://drive.google.com/file/d/1ewZeEdDB6lf3EgM3bEVE1AtmRdZroljG/view"
+    }
+  ]
 }

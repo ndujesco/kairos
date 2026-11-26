@@ -303,6 +303,8 @@ PAGE.update(
 )
 PAGE['archive_downloads'].append({'label': 'Prize spending plan · Excel',
                                 'url': 'pitch-assets/faith-and-tech-finale/Kairos-Prize-Funding-and-Spending-Plan.xlsx'})
+PAGE['archive_downloads'].append({'label': 'Spending guide · PDF',
+                                'url': 'pitch-assets/faith-and-tech-finale/Kairos-Prize-Spending-Plan-Explained.pdf'})
 EVENTS = [dict(
     name='Faith & Tech finale', focus='Trust, accountability, responsible operation and funding impact',
     schedule=['Selected as one of five finalists.',
@@ -318,13 +320,14 @@ EVENTS = [dict(
 
 # 27 November: the exact APWEN movie is now embedded in the native presentations.
 PAGE.update(
+    wrap_downloads=True,
     local_demo=True, demo_placeholder=False, demo_source=DEMO_INFO['local_path'], demo_url='',
     deck_pptx=None, deck_keynote=None,
     description='Faith & Tech finale with the APWEN 2:40 demo, embedded native presentations and three prize-funding plans.',
     prep_intro='Eleven slides. Funding is slide 8. The PowerPoint and Keynote contain the exact APWEN demo on slide 5, with no presenter notes.',
     event_download_note='PowerPoint and Keynote contain the APWEN demo embedded. PDF, scripts and the prize-spending spreadsheet are separate downloads.',
     prep_timing_note='Maximum five minutes including demonstration. The selected recording is 2:39.1 (rounded to 2:40), leaving about 2:20 for the retained 450 live words. Rehearse the full delivery.',
-    source_html='<a href="pitch-assets/faith-and-tech-finale/Kairos-Prize-Funding-and-Spending-Plan.xlsx" download>Download the completed prize funding and spending plan (Excel)</a>',
+    source_html='<a href="pitch-assets/faith-and-tech-finale/Kairos-Prize-Funding-and-Spending-Plan.xlsx" download>Download the completed prize funding and spending plan (Excel)</a> · <a href="pitch-assets/faith-and-tech-finale/Kairos-Prize-Spending-Plan-Explained.pdf" download>Read the spending guide (PDF)</a>',
 )
 PAGE['checklist'][1]='Use the current PowerPoint or Keynote with the APWEN video embedded on slide 5. Play at 1x.'
 PAGE['checklist'].append('For the HTML player, select Kairos-APWEN-Finale-Demo.mp4 in the Demo tab. The same recording is linked on Drive.')

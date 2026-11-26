@@ -397,6 +397,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
         for key, person in content.PRESENTERS.items()
     )
     css = (SOURCE / "pitch.css").read_text()
+    if page.get('wrap_downloads'):
+        css += '\n.top .navrow{flex-wrap:wrap;padding-top:4px;padding-bottom:4px}.top .downloads{flex-wrap:wrap;justify-content:flex-end;white-space:normal;row-gap:8px;min-width:0}.top .downloads a{white-space:nowrap}.top .tabs{flex-shrink:0}\n'
     if any(s.get('recorded_transcript') for s in slides):
         css += '\n.recorded-transcript{margin-top:28px;padding-top:20px;border-top:1px solid #bcc7b9}.recorded-transcript h3{font-size:1rem;color:#205635;margin:0 0 16px}.recorded-transcript .say p:last-child{margin-bottom:0}\n'
     if any(s.get('recorded_transcript_pauses') for s in slides):
