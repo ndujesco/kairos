@@ -611,7 +611,7 @@ We need an agreed institution to hold and release the funds, connected payment a
 
 ### 78. How long is this pitch allowed to be?
 
-The organiser's 26 November guidelines confirm a maximum of five minutes for the whole pitch, including the demonstration and funding plan. The current separate recording is three minutes seventeen seconds, so we need to rehearse the complete delivery against that total. The suggested section timings are guidance. Our page keeps an elapsed clock; it does not claim the retained script and unchanged recording already fit.
+The organiser's 26 November guidelines confirm a maximum of five minutes for the whole pitch, including the demonstration and funding plan. The current separate recording is two minutes forty seconds, so we need to rehearse the complete delivery against that total. The suggested section timings are guidance. Our page keeps an elapsed clock; it does not claim the retained script and unchanged recording already fit.
 
 
 ## Questions behind the feedback

@@ -1,7 +1,7 @@
 """Faith & Tech finale with APWEN-derived slides and a prize-funding summary.
 
-The separate demo stays unchanged. Narration stays in the browser/scripts;
-the current native decks have no presenter notes or embedded movies.
+The exact APWEN demo is embedded in the native decks. Narration stays in the
+browser/scripts; the current native decks have no presenter notes.
 """
 from copy import deepcopy
 from pathlib import Path
@@ -73,13 +73,13 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
  {'title': 'Watch the payment become a receipt.',
   'deck_key': 'demo',
   'paragraphs': ['The next slide shows a quick demonstration of how it works.'],
-  'cue': 'Play the separate 3:17 recording at 1x. The transcription below is the recorded narration, '
-         'not extra live narration. Four marked title cards are silent 3.5-second pauses.',
-  'seconds': 0,
+  'cue': 'Play the exact APWEN finale recording at 1x: 2:39.1, rounded to 2:40. The speed is already '
+         'baked in. The transcription below is its recorded narration, not extra live speech.',
+  'seconds': DEMO_INFO['duration_seconds'],
   'is_demo': True,
-  'video_seconds': 0,
+  'video_seconds': DEMO_INFO['duration_seconds'],
   'recorded_transcript': DEMO_INFO['transcript_paragraphs'],
-  'recorded_transcript_pauses': DEMO_INFO['card_pauses']},
+  'recorded_transcript_pauses': DEMO_INFO.get('card_pauses', [])},
  {'title': 'Responsible operation',
   'deck_key': 'responsible',
   'paragraphs': ['It is worth reiterating that we store no sensitive data and do not keep any money. '
@@ -235,15 +235,15 @@ PAGE = {'include_presenter_notes': False,'canonical_path': '/faith-and-tech-fina
 
 # Finalist update: narration and slide content above are deliberately unchanged.
 # The movie remains separate, as requested; only its Drive link is added.
-DEMO_DRIVE = 'https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/view'
+DEMO_DRIVE = 'https://drive.google.com/file/d/1qiPfJxoMItDH0fDQ1lvzsSPWVryH4GMD/view'
 META.update(stage='Finale', date='Conference 28 November 2026 · finalist', demo_url=DEMO_DRIVE)
 PAGE.update(
-    demo_drive_url=DEMO_DRIVE, demo_duration_label='3:17',
+    demo_drive_url=DEMO_DRIVE, demo_duration_label='2:40',
     demo_name=DEMO_INFO['filename'], demo_recording_seconds=DEMO_INFO['duration_seconds'],
     separate_demo_script='pitch-assets/faith-and-tech-finale/demo-transcript.txt',
-    separate_demo_subtitles='pitch-assets/faith-and-tech-finale/Kairos-Faith-and-Tech-Finale-Demo.en.srt',
-    separate_demo_webvtt='pitch-assets/faith-and-tech-finale/Kairos-Faith-and-Tech-Finale-Demo.en.vtt',
-    archive_downloads=[{'label':'Demo · 3:17 on Drive', 'url':DEMO_DRIVE}],
+    separate_demo_subtitles='pitch-assets/faith-and-tech-finale/Kairos-APWEN-Finale-Demo.en.srt',
+    separate_demo_webvtt='pitch-assets/faith-and-tech-finale/Kairos-APWEN-Finale-Demo.en.vtt',
+    archive_downloads=[{'label':'Demo · 2:40 on Drive', 'url':DEMO_DRIVE}],
     header='Faith & Tech\nFinale',
     description='Faith & Tech finalist preparation: the existing pitch, separate demo and plain-English answers to all judging feedback.',
     hero_kicker='Faith & Tech · Finale', hero_status='One of five finalists · conference 28 November',
@@ -252,12 +252,12 @@ PAGE.update(
     event_title='Kairos: Faith & Tech finals preparation',
     event_intro='Kairos is one of five finalists. Conference: 28 November. The final pitch allowance is still pending. Slides and spoken wording are preserved.',
     prep_kicker='Faith & Tech finale',
-    prep_intro='Use the existing ten slides and presenter script. The separate 3:17 demo is available on Drive; download it before presenting.',
+    prep_intro='Use the existing ten slides and presenter script. The separate 2:40 demo is available on Drive; download it before presenting.',
     event_notice='Finalist selection confirmed',
     event_notice_detail='Masterclass: 25 November, 7–8 p.m. WAT on Zoom. Conference: 28 November. Final-stage presentation time is not yet confirmed.',
     event_download_note='The existing native decks remain unchanged. The demo is a separate Drive download.',
     prep_timing_note='Confirm the final pitch allowance; no semi-final timing is inherited.',
-    checklist=['Download the separate 3:17 demo from Drive and test it before presenting.',
+    checklist=['Download the separate 2:40 demo from Drive and test it before presenting.',
                'Use the existing slides and select Abigail or Ugochukwu for the spoken script.',
                'Rehearse the starred questions covering both rounds of judging feedback.',
                'Learn the third-party examples and distinguish possible providers from actual integrations.',
@@ -271,7 +271,7 @@ EVENTS = [dict(
               'Conference: Saturday 28 November 2026; final pitch allowance pending.'],
     assess='Be ready to explain fund holding, human review, practical verification, privacy, payment matching, fees and actual user feedback.',
     spoken='Follow the need through the named provider payment to each donor receipt.',
-    follow_up='The separate 3:17 demo is on Drive. Download it and play at 1x; the pace and four section cards are already in the file.',
+    follow_up='The separate 2:40 demo is on Drive. Download it and play at 1x; its speed is already baked in.',
     notice='Finalist selection confirmed', notice_detail='The original slides and spoken script are preserved. The semi-final remains separate.'
 )]
 
@@ -284,17 +284,17 @@ PAGE.update(
     script_intro='Eleven slides. Default presenter: Ugochukwu. Funding follows What runs today at slide 8. The recorded demo transcription is rehearsal material, not additional live narration. The organiser allows five minutes in total; no fitted delivery schedule is assigned.',
     timing_note='Confirmed maximum: five minutes including pitch, demo and funding summary. Rehearse the retained script and separate recording together.',
     event_intro='Kairos is one of five finalists. Finale: 28 November 2026. The organiser confirms five minutes in total. The completed spending spreadsheet for all three prizes is due 27 November, 6 p.m. WAT.',
-    prep_intro='Eleven slides. Funding follows prototype status at slide 8. Download the separate 3:17 demo and current files before presenting.',
+    prep_intro='Eleven slides. Funding follows prototype status at slide 8. Download the separate 2:40 demo and current files before presenting.',
     event_notice='Five-minute finale pitch',
     event_notice_detail='Submit the spreadsheet for $2,500, $1,500 and $750 by Friday 27 November 2026, 6 p.m. WAT. Finale: Saturday 28 November. The recommended section structure is guidance; the five-minute total is the confirmed limit.',
     event_download_note='Current note-free native decks, separate scripts and the spending-plan spreadsheet are available below. The demo remains separate.',
-    prep_timing_note='Maximum five minutes including demonstration. The existing 3:17 recording and retained script need a timed rehearsal; no fitted schedule or shorter recording is claimed.',
+    prep_timing_note='Maximum five minutes including demonstration. The existing 2:40 recording and retained script need a timed rehearsal; no fitted schedule or shorter recording is claimed.',
     source_note='APWEN-derived pitch with Faith presenters, the requested slide-6 removal and a brief funding summary based on the supplied 26 November guidelines and completed spending plan.',
     criteria=[['Problem and solution', 'Slides 1–3'], ['Sustainability', 'Slide 4'],
               ['Demonstration', 'Slide 5'], ['Responsible operation and prototype status', 'Slides 6–7'],
               ['Funding and impact', 'Slide 8'], ['First use case', 'Slide 9'], ['Team and closing', 'Slides 10–11']],
     checklist=['Submit the completed three-scenario spreadsheet by 27 November, 6 p.m. WAT.',
-               'Download the current eleven-slide deck, script and separate 3:17 demo.',
+               'Download the current eleven-slide deck, script and separate 2:40 demo.',
                'Select Abigail or Ugochukwu before presenting.',
                'Rehearse the complete pitch, demo and funding summary within five minutes.',
                'Rehearse the starred questions covering both rounds of feedback.',
@@ -310,7 +310,28 @@ EVENTS = [dict(
               'Finale: Saturday 28 November 2026. Maximum five minutes including demo and funding.'],
     assess='Explain the problem, current readiness, evidence and what each prize would enable. The spreadsheet supplies the detailed costs, milestones and impact measures.',
     spoken='Follow the need through the named provider payment to each donor receipt.',
-    follow_up='The separate 3:17 demo remains on Drive. Funding follows What runs today at slide 8. The new narration is no longer than the removed sentence.',
+    follow_up='The separate 2:40 demo remains on Drive. Funding follows What runs today at slide 8. The new narration is no longer than the removed sentence.',
     notice='Five-minute finale pitch',
     notice_detail='The current deck has eleven slides. The semi-final and other competitions remain separate.'
 )]
+
+
+# 27 November: the exact APWEN movie is now embedded in the native presentations.
+PAGE.update(
+    local_demo=True, demo_placeholder=False, demo_source=DEMO_INFO['local_path'], demo_url='',
+    deck_pptx=None, deck_keynote=None,
+    description='Faith & Tech finale with the APWEN 2:40 demo, embedded native presentations and three prize-funding plans.',
+    prep_intro='Eleven slides. Funding is slide 8. The PowerPoint and Keynote contain the exact APWEN demo on slide 5, with no presenter notes.',
+    event_download_note='PowerPoint and Keynote contain the APWEN demo embedded. PDF, scripts and the prize-spending spreadsheet are separate downloads.',
+    prep_timing_note='Maximum five minutes including demonstration. The selected recording is 2:39.1 (rounded to 2:40), leaving about 2:20 for the retained 450 live words. Rehearse the full delivery.',
+    source_html='<a href="pitch-assets/faith-and-tech-finale/Kairos-Prize-Funding-and-Spending-Plan.xlsx" download>Download the completed prize funding and spending plan (Excel)</a>',
+)
+PAGE['checklist'][1]='Use the current PowerPoint or Keynote with the APWEN video embedded on slide 5. Play at 1x.'
+PAGE['checklist'].append('For the HTML player, select Kairos-APWEN-Finale-Demo.mp4 in the Demo tab. The same recording is linked on Drive.')
+PAGE['script_intro']='Eleven slides, 450 live words. Default presenter: Ugochukwu. The APWEN 2:40 demo is embedded on slide 5 in PowerPoint/Keynote. Funding is slide 8. The recorded transcription is rehearsal material, not extra live speech. Five minutes is the total limit; no fitted schedule is claimed.'
+EVENTS[0]['follow_up']='Use the APWEN finale movie at 1x: exactly 2:39.1, rounded to 2:40. It is embedded on slide 5 in PowerPoint and Keynote. The spreadsheet link is in the header and All files.'
+# Native Drive URLs are added only after the replacement uploads are checksum-verified.
+_DELIVERY = Path(__file__).with_name('faith_and_tech_finale_delivery.json')
+if _DELIVERY.exists():
+    for item in json.loads(_DELIVERY.read_text()).get('native_downloads', []):
+        PAGE['archive_downloads'].append(item)

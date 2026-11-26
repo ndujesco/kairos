@@ -6,7 +6,7 @@ Lead presenter: Ugochukwu.
 
 11 slides, 450 presenter words. No delivery schedule is set.
 
-Eleven slides. Default presenter: Ugochukwu. Funding follows What runs today at slide 8. The recorded demo transcription is rehearsal material, not additional live narration. The organiser allows five minutes in total; no fitted delivery schedule is assigned.
+Eleven slides, 450 live words. Default presenter: Ugochukwu. The APWEN 2:40 demo is embedded on slide 5 in PowerPoint/Keynote. Funding is slide 8. The recorded transcription is rehearsal material, not extra live speech. Five minutes is the total limit; no fitted schedule is claimed.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -60,8 +60,6 @@ The next slide shows a quick demonstration of how it works.
 
 ### Recorded demo transcription
 
-*[Silent title card · 0:00.0–0:03.5 · Pause 3.5 seconds: Ugo Creates a School Fees Cause]*
-
 Ugochukwu needs help with his school fees, and so having created an account, he signs up to the website and goes ahead to create a cause.
 
 As you can see, he doesn't just fill a form. This is an interview with AI, and that is a real live model answering. It asks for what exactly the money is for. It asks for who exactly gets paid, how much will be paid, and when exactly the money is due.
@@ -74,17 +72,7 @@ He then proves who he is, with his NIN and his face matched against the registry
 
 And this is where it runs the fraud check. It scans for reused images, contradictory dates and unrealistic budgets, and also in this case a valid Remita number that is actually owned by Ugochukwu.
 
-*[Silent title card · 1:09.3–1:12.8 · Pause 3.5 seconds: Okefe Makes the First Donation]*
-
 Now, we see a donor named Okefe, who gives a hundred and fifty thousand naira. Before he agreed, he is shown what we would take. This is tentatively two percent, capped at five thousand naira. All this lands in escrow, not in Ugo's account.
-
-*[Silent title card · 1:26.6–1:30.1 · Pause 3.5 seconds: A Visitor Tries Donating Anonymously]*
-
-While signing up on Kairos is very easy, some people might still choose not to and so Ugochukwu can copy this link and paste it on any social media platform, WhatsApp in this case.
-
-Anyone who sees this link can click on it or copy it and paste it in any browser. Now this potential donor pastes it on the private browser and as you can see the donation will be anonymous.
-
-*[Silent title card · 1:54.8–1:58.3 · Pause 3.5 seconds: Abby Donates the Balance.]*
 
 Now, on the left is Ugochukwu's account, and on the right is another potential donor, namely Abigail. These are two separate browsers with the named accounts logged in.
 
@@ -100,13 +88,13 @@ He clicks on Pay fees, and the AI, after getting results from the API, confirms 
 
 As soon as this payment is made, Abigail gets notified that Ugo's fees has been paid, as well as a breakdown of what portion of her donation paid the fees. She does not just get a thank you, she gets a receipt, one that she can inspect herself.
 
-Delivery: Play the separate 3:17 recording at 1x. The transcription below is the recorded narration, not extra live narration. Four marked title cards are silent 3.5-second pauses.
+Delivery: Play the exact APWEN finale recording at 1x: 2:39.1, rounded to 2:40. The speed is already baked in. The transcription below is its recorded narration, not extra live speech.
 
-[Open or download the 3:17 demo on Google Drive](https://drive.google.com/file/d/1SjmK5i4ySrnldlJK3hxOAtB9UXTxnX6E/view). Download it before presenting and play at 1x.
+[Open or download the 2:40 demo on Google Drive](https://drive.google.com/file/d/1qiPfJxoMItDH0fDQ1lvzsSPWVryH4GMD/view). Download it before presenting and play at 1x.
 
-Play the separate local MP4, then return to the next slide. The recording's narration is not included in the presenter word count.
+Select the accompanying MP4 in the Demo tab, play it in full, then advance manually to the next slide. The recording's narration is not included in the presenter word count.
 
-Recording: Kairos-Faith-and-Tech-Finale-Demo.mp4 · 3:17. No overall pitch schedule is set.
+Recording: Kairos-APWEN-Finale-Demo.mp4 · 2:40. No overall pitch schedule is set.
 
 ## Slide 6: Responsible operation
 

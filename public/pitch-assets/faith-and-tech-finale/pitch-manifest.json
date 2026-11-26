@@ -6,10 +6,10 @@
   "words": 450,
   "seconds": null,
   "source_content": "faith_and_tech_finale_content.py",
-  "source_sha256": "2088470f8a1b02cb16de7fbf7bfb2f2ea2d921a78ac3fb0ffd4e4a59d26cbe60",
+  "source_sha256": "ede2a88266ed320601dce79eb9db0f14730e0a7a29566dca429dab88ff351d7d",
   "deckBase": "pitch-assets/faith-and-tech-finale/deck",
   "deck_pdf": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pdf",
-  "deck_pptx": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pptx",
+  "deck_pptx": null,
   "timing_includes_full_demo": false,
   "slide_order": [
     {
@@ -109,12 +109,10 @@
   "storagePrefix": "kairos-faith-and-tech-finale-room-v1",
   "demoUrl": "",
   "demo_slide": 5,
-  "demo_video_seconds": 0,
+  "demo_video_seconds": 159.1,
   "demo_section_seconds": null,
-  "demo_placeholder": true,
-  "local_demo": false,
-  "demo_name": "Kairos-Faith-and-Tech-Finale-Demo.mp4",
-  "deck_keynote": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.key",
+  "local_demo": true,
+  "demo_name": "Kairos-APWEN-Finale-Demo.mp4",
   "deck_html": "pitch-assets/faith-and-tech-finale/deck.html",
   "canonical_path": "/faith-and-tech-finale.html"
 }

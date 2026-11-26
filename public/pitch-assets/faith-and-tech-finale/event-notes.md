@@ -16,4 +16,4 @@ The thread:
 
 Follow the need through the named provider payment to each donor receipt.
 
-The separate 3:17 demo remains on Drive. Funding follows What runs today at slide 8. The new narration is no longer than the removed sentence.
+Use the APWEN finale movie at 1x: exactly 2:39.1, rounded to 2:40. It is embedded on slide 5 in PowerPoint and Keynote. The spreadsheet link is in the header and All files.

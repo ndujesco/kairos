@@ -91,3 +91,8 @@ The catalogue now has 47 editions, including earlier NextAI, Meta GITEX, Access 
 ## Faith finale funding update, 26 November
 
 The current finale has eleven slides and 450 live words. Responsible operation matches APWEN after the requested removal; the 24-word funding summary is slide 8, after What runs today. Native decks/PDF/previews and scripts agree, with no native notes or embedded movie. The original three-tab prize workbook is linked in All files. The organiser confirms five minutes in total and a 27 November, 6 p.m. WAT spreadsheet deadline. The full separate 3:17 recording is unchanged; no fitted schedule is claimed. Current production evidence: `../../production/2026-11-26 Faith and Tech funding plan/`. Do not use the earlier ten-slide native builder for this current edition. Other competition editions remain unchanged.
+
+
+## Faith embedded APWEN demo, 27 November
+
+The selected recording is the exact APWEN 159.1-second cut (displayed as 2:40), embedded on slide 5 in the current Faith PowerPoint and Keynote. Native notes remain empty. The HTML uses the same movie through its local picker, with the APWEN Drive link, fourteen transcript paragraphs, matching subtitles and a visible prize-spending spreadsheet link. Native video-bearing files stay in Drive. Current upload sources and verification are in `../../production/2026-11-27 Faith APWEN demo selection/`. The earlier movie-free Faith instructions are superseded for this edition.

@@ -1,7 +1,9 @@
 {
-  "filename": "Kairos-Faith-and-Tech-Finale-Demo.mp4",
-  "duration_seconds": 197.73333333333332,
-  "sha256": "5013fb60b0ed06a3124739ab0c3365ba93ea0770514ba663c26aedcefe0fd16b",
+  "filename": "Kairos-APWEN-Finale-Demo.mp4",
+  "local_path": "/Users/ndujekwuugochukwu/Documents/CODE/hackathon/Kairos/hackathons/2026-10 APWEN LASU/03 Finale Pitch/demo/Kairos-APWEN-Finale-Demo.mp4",
+  "duration_seconds": 159.1,
+  "speed_relative_to_firebase_cut": 1.13,
+  "opening_removed_seconds": 0.25,
   "transcript_paragraphs": [
     "Ugochukwu needs help with his school fees, and so having created an account, he signs up to the website and goes ahead to create a cause.",
     "As you can see, he doesn't just fill a form. This is an interview with AI, and that is a real live model answering. It asks for what exactly the money is for. It asks for who exactly gets paid, how much will be paid, and when exactly the money is due.",
@@ -10,8 +12,6 @@
     "He then proves who he is, with his NIN and his face matched against the registry. This is important, because an NIN number can be leaked, but not a live face.",
     "And this is where it runs the fraud check. It scans for reused images, contradictory dates and unrealistic budgets, and also in this case a valid Remita number that is actually owned by Ugochukwu.",
     "Now, we see a donor named Okefe, who gives a hundred and fifty thousand naira. Before he agreed, he is shown what we would take. This is tentatively two percent, capped at five thousand naira. All this lands in escrow, not in Ugo's account.",
-    "While signing up on Kairos is very easy, some people might still choose not to and so Ugochukwu can copy this link and paste it on any social media platform, WhatsApp in this case.",
-    "Anyone who sees this link can click on it or copy it and paste it in any browser. Now this potential donor pastes it on the private browser and as you can see the donation will be anonymous.",
     "Now, on the left is Ugochukwu's account, and on the right is another potential donor, namely Abigail. These are two separate browsers with the named accounts logged in.",
     "Now as you can see, a hundred and forty seven thousand naira has been raised by Okefe, and a hundred and fifty three thousand naira is still needed. Abigail donates this balance.",
     "Before she agrees to pay, notice that she is told what portion of the amount will be taken to maintain the app. As earlier mentioned, this is our tentative business model. We resort to this when we are unable to get any sponsors at all.",
@@ -20,34 +20,365 @@
     "He clicks on Pay fees, and the AI, after getting results from the API, confirms the biller, the amount, and checks if it is unpaid, and then it settles it. We then get a receipt from the university.",
     "As soon as this payment is made, Abigail gets notified that Ugo's fees has been paid, as well as a breakdown of what portion of her donation paid the fees. She does not just get a thank you, she gets a receipt, one that she can inspect herself."
   ],
-  "card_pauses": [
+  "cues": [
     {
-      "before_paragraph": 0,
       "start": 0,
-      "end": 3.5,
-      "seconds": 3.5,
-      "title": "Ugo Creates a School Fees Cause"
+      "end": 2.8867256637168146,
+      "text": "Ugochukwu needs help with his school fees,"
     },
     {
-      "before_paragraph": 6,
-      "start": 69.26666666666667,
-      "end": 72.76666666666667,
-      "seconds": 3.5,
-      "title": "Okefe Makes the First Donation"
+      "start": 2.8867256637168146,
+      "end": 4.508849557522124,
+      "text": "and so having created an account,"
     },
     {
-      "before_paragraph": 7,
-      "start": 86.63333333333334,
-      "end": 90.13333333333334,
-      "seconds": 3.5,
-      "title": "A Visitor Tries Donating Anonymously"
+      "start": 4.508849557522124,
+      "end": 7.226548672566373,
+      "text": "he signs up to the website and goes ahead to create a cause."
     },
     {
-      "before_paragraph": 9,
-      "start": 114.76666666666668,
-      "end": 118.26666666666668,
-      "seconds": 3.5,
-      "title": "Abby Donates the Balance."
+      "start": 7.950442477876107,
+      "end": 9.907964601769912,
+      "text": "As you can see, he doesn't just fill a form."
+    },
+    {
+      "start": 9.907964601769912,
+      "end": 11.515044247787612,
+      "text": "This is an interview with AI,"
+    },
+    {
+      "start": 11.515044247787612,
+      "end": 14.279646017699116,
+      "text": "and that is a real live model answering."
+    },
+    {
+      "start": 14.279646017699116,
+      "end": 16.611504424778765,
+      "text": "It asks for what exactly the money is for."
+    },
+    {
+      "start": 16.611504424778765,
+      "end": 17.974336283185842,
+      "text": "It asks for who exactly gets paid,"
+    },
+    {
+      "start": 17.974336283185842,
+      "end": 19.977876106194692,
+      "text": "how much will be paid, and when exactly the money is due."
+    },
+    {
+      "start": 19.977876106194692,
+      "end": 22.583185840707966,
+      "text": "You can see it asks for the Remita reference"
+    },
+    {
+      "start": 22.583185840707966,
+      "end": 25.044247787610622,
+      "text": "in this case, because he claims to be a"
+    },
+    {
+      "start": 25.044247787610622,
+      "end": 26.712389380530976,
+      "text": "student of a federal university who wants to pay"
+    },
+    {
+      "start": 26.712389380530976,
+      "end": 27.88495575221239,
+      "text": "his fees."
+    },
+    {
+      "start": 27.88495575221239,
+      "end": 29.97345132743363,
+      "text": "This is the detail that he cannot forge,"
+    },
+    {
+      "start": 29.97345132743363,
+      "end": 31.892920353982305,
+      "text": "and even if it seems like the AI interviewer"
+    },
+    {
+      "start": 31.892920353982305,
+      "end": 33.49203539823009,
+      "text": "isn't thorough in drilling him for document proofs and"
+    },
+    {
+      "start": 33.49203539823009,
+      "end": 36.10530973451328,
+      "text": "the like, it notes this verifiable detail and goes"
+    },
+    {
+      "start": 36.10530973451328,
+      "end": 38.12743362831859,
+      "text": "ahead to create the case for him."
+    },
+    {
+      "start": 38.837168141592926,
+      "end": 41.63185840707965,
+      "text": "And then out comes the published itemised budget,"
+    },
+    {
+      "start": 41.63185840707965,
+      "end": 43.37699115044248,
+      "text": "with the receiver of the money clearly stated."
+    },
+    {
+      "start": 43.37699115044248,
+      "end": 45.56283185840708,
+      "text": "In this case, three hundred thousand naira to be"
+    },
+    {
+      "start": 45.56283185840708,
+      "end": 47.092035398230095,
+      "text": "paid to the University of Lagos."
+    },
+    {
+      "start": 48.05132743362832,
+      "end": 49.20973451327434,
+      "text": "He then proves who he is,"
+    },
+    {
+      "start": 49.20973451327434,
+      "end": 51.190265486725664,
+      "text": "with his NIN and his face matched against the"
+    },
+    {
+      "start": 51.190265486725664,
+      "end": 52.263716814159295,
+      "text": "registry."
+    },
+    {
+      "start": 52.263716814159295,
+      "end": 54.56460176991151,
+      "text": "This is important, because an NIN number can be"
+    },
+    {
+      "start": 54.56460176991151,
+      "end": 55.79115044247788,
+      "text": "leaked, but not a live face."
+    },
+    {
+      "start": 56.48141592920354,
+      "end": 58.088495575221245,
+      "text": "And this is where it runs the fraud check."
+    },
+    {
+      "start": 58.088495575221245,
+      "end": 60.83805309734514,
+      "text": "It scans for reused images, contradictory dates and unrealistic"
+    },
+    {
+      "start": 60.83805309734514,
+      "end": 63.56637168141594,
+      "text": "budgets, and also in this case a valid Remita"
+    },
+    {
+      "start": 63.56637168141594,
+      "end": 65.55221238938053,
+      "text": "number that is actually owned by Ugochukwu."
+    },
+    {
+      "start": 66.26725663716815,
+      "end": 68.4920353982301,
+      "text": "Now, we see a donor named Okefe,"
+    },
+    {
+      "start": 68.4920353982301,
+      "end": 70.94513274336285,
+      "text": "who gives a hundred and fifty thousand naira."
+    },
+    {
+      "start": 70.94513274336285,
+      "end": 73.11592920353982,
+      "text": "Before he agreed, he is shown what we would take."
+    },
+    {
+      "start": 73.11592920353982,
+      "end": 76.6203539823009,
+      "text": "This is tentatively two percent, capped at five thousand naira."
+    },
+    {
+      "start": 76.6203539823009,
+      "end": 79.58849557522124,
+      "text": "All this lands in escrow, not in Ugo's account."
+    },
+    {
+      "start": 79.870796460177,
+      "end": 81.64513274336284,
+      "text": "Now, on the left is Ugochukwu's account,"
+    },
+    {
+      "start": 81.64513274336284,
+      "end": 83.59557522123895,
+      "text": "and on the right is another potential donor,"
+    },
+    {
+      "start": 83.59557522123895,
+      "end": 84.94336283185841,
+      "text": "namely Abigail."
+    },
+    {
+      "start": 84.94336283185841,
+      "end": 88.65398230088496,
+      "text": "These are two separate browsers with the named accounts logged in."
+    },
+    {
+      "start": 88.65398230088496,
+      "end": 92.05840707964603,
+      "text": "Now as you can see, a hundred"
+    },
+    {
+      "start": 92.05840707964603,
+      "end": 93.79557522123895,
+      "text": "and forty seven thousand naira has been raised by"
+    },
+    {
+      "start": 93.79557522123895,
+      "end": 95.18230088495577,
+      "text": "Okefe, and a hundred and fifty three thousand naira"
+    },
+    {
+      "start": 95.18230088495577,
+      "end": 96.08053097345133,
+      "text": "is still needed."
+    },
+    {
+      "start": 97.6424778761062,
+      "end": 99.26460176991151,
+      "text": "Abigail donates this balance."
+    },
+    {
+      "start": 99.26460176991151,
+      "end": 100.99380530973451,
+      "text": "Before she agrees to pay, notice that she is"
+    },
+    {
+      "start": 100.99380530973451,
+      "end": 102.68495575221239,
+      "text": "told what portion of the amount will be taken"
+    },
+    {
+      "start": 102.68495575221239,
+      "end": 103.77433628318585,
+      "text": "to maintain the app."
+    },
+    {
+      "start": 103.77433628318585,
+      "end": 106.65398230088498,
+      "text": "As earlier mentioned, this is our tentative business model."
+    },
+    {
+      "start": 106.65398230088498,
+      "end": 108.1929203539823,
+      "text": "We resort to this when we are unable to"
+    },
+    {
+      "start": 108.1929203539823,
+      "end": 109.61769911504426,
+      "text": "get any sponsors at all."
+    },
+    {
+      "start": 111.87256637168143,
+      "end": 113.54070796460176,
+      "text": "Notice also that as soon as she gives this"
+    },
+    {
+      "start": 113.54070796460176,
+      "end": 117.08230088495576,
+      "text": "money, it updates automatically everywhere, and Ugo gets a"
+    },
+    {
+      "start": 117.08230088495576,
+      "end": 119.56637168141596,
+      "text": "notification that his money is complete."
+    },
+    {
+      "start": 121.05840707964602,
+      "end": 122.77256637168144,
+      "text": "Now, let's look at Ugo's wallet."
+    },
+    {
+      "start": 122.77256637168144,
+      "end": 124.59557522123896,
+      "text": "Notice that this money does not land in Ugo's"
+    },
+    {
+      "start": 124.59557522123896,
+      "end": 127.51858407079648,
+      "text": "account, neither can Ugo even withdraw any of it."
+    },
+    {
+      "start": 127.51858407079648,
+      "end": 130.48938053097348,
+      "text": "The money is kept in escrow with a licensed"
+    },
+    {
+      "start": 130.48938053097348,
+      "end": 132.39380530973452,
+      "text": "partner, and Ugo cannot touch any of it."
+    },
+    {
+      "start": 133.56017699115046,
+      "end": 135.63893805309735,
+      "text": "He clicks on Pay fees, and the AI,"
+    },
+    {
+      "start": 135.63893805309735,
+      "end": 137.612389380531,
+      "text": "after getting results from the API,"
+    },
+    {
+      "start": 137.612389380531,
+      "end": 140.8646017699115,
+      "text": "confirms the biller, the amount, and checks if it"
+    },
+    {
+      "start": 140.8646017699115,
+      "end": 142.9132743362832,
+      "text": "is unpaid, and then it settles it."
+    },
+    {
+      "start": 142.9132743362832,
+      "end": 144.90973451327434,
+      "text": "We then get a receipt from the university."
+    },
+    {
+      "start": 146.37168141592923,
+      "end": 147.05044247787612,
+      "text": "As soon as this payment is made,"
+    },
+    {
+      "start": 147.05044247787612,
+      "end": 151.07256637168143,
+      "text": "Abigail gets notified that Ugo's fees has been paid,"
+    },
+    {
+      "start": 151.07256637168143,
+      "end": 152.6646017699115,
+      "text": "as well as a breakdown of what portion of"
+    },
+    {
+      "start": 152.6646017699115,
+      "end": 154.370796460177,
+      "text": "her donation paid the fees."
+    },
+    {
+      "start": 154.370796460177,
+      "end": 155.81061946902656,
+      "text": "She does not just get a thank you,"
+    },
+    {
+      "start": 155.81061946902656,
+      "end": 158.58318584070798,
+      "text": "she gets a receipt, one that she can inspect herself."
     }
-  ]
+  ],
+  "sha256": "951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733",
+  "edition": "current",
+  "timeline_trim_seconds": 0.25,
+  "opening_speech_removed_through_source_seconds": 0.825,
+  "opening_silent_samples": 24425,
+  "opening_silent_sample_rate": 48000,
+  "correction": "First edition removed silence before Now. This edition silences the actual word through the quiet gap before the name, preserving the original picture/audio timeline.",
+  "card_pauses": [],
+  "selected_for": "Faith & Tech finale, explicitly requested 27 November 2026"
 }
