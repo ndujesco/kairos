@@ -2,6 +2,7 @@
   "source": "../kairos-audio-pitch",
   "page": "/audio-ptch.html",
   "rehearsalPage": "/ugo-audio.html",
+  "demoAudioPage": "/faith-demo-audio.html",
   "files": [
     {
       "source": "index.html",
@@ -26,6 +27,18 @@
       "destination": "public/ugo-audio-sw.js",
       "size": 3739,
       "sha256": "e4ad9ec698a41e2d89f33bd23a43c6b88b73fa261e2f2e5a982a8f1e0eebc845"
+    },
+    {
+      "source": "faith-demo-audio.html",
+      "destination": "public/faith-demo-audio.html",
+      "size": 37974,
+      "sha256": "bc965bc49af48223de6a34b7e25604a15426c44d2190fb897d591dacf87332de"
+    },
+    {
+      "source": "faith-demo-audio-sw.js",
+      "destination": "public/faith-demo-audio-sw.js",
+      "size": 3840,
+      "sha256": "c0d1699c072f7c9d64b15c726f73d645bfb937184a489025523905d1140fd8ae"
     },
     {
       "source": "ugo-audio/catalog.json",
@@ -104,6 +117,78 @@
       "destination": "public/ugo-audio/without-demo.m4a",
       "size": 3181972,
       "sha256": "c91b4e2af1a61991c22b477188d11ff44a9d74b4d36c1c93411c51113d4dbec9"
+    },
+    {
+      "source": "faith-demo-audio/catalog.json",
+      "destination": "public/faith-demo-audio/catalog.json",
+      "size": 9692,
+      "sha256": "937fedc3a3acab934411dd35508625a5cdc78e1fafe3ee1e0078764bd117dc52"
+    },
+    {
+      "source": "faith-demo-audio/tracks/01-ai-interview.m4a",
+      "destination": "public/faith-demo-audio/tracks/01-ai-interview.m4a",
+      "size": 622634,
+      "sha256": "9cb431985e8fc1514cfb89735a944965f0d603f801e8a2c8bda67fd5f073a5b9"
+    },
+    {
+      "source": "faith-demo-audio/tracks/02-itemised-budget.m4a",
+      "destination": "public/faith-demo-audio/tracks/02-itemised-budget.m4a",
+      "size": 146718,
+      "sha256": "b5a25bda0a861629afbece9c0ea2d9f6cfc2bc8d32476cdd720c0bc8ee59e15d"
+    },
+    {
+      "source": "faith-demo-audio/tracks/03-nin-face-check.m4a",
+      "destination": "public/faith-demo-audio/tracks/03-nin-face-check.m4a",
+      "size": 142255,
+      "sha256": "25226c9b3ec1f4fa1b1aed2d7c510883deedba04fac340b0d8c46d1469a51e9f"
+    },
+    {
+      "source": "faith-demo-audio/tracks/04-verification.m4a",
+      "destination": "public/faith-demo-audio/tracks/04-verification.m4a",
+      "size": 163617,
+      "sha256": "b77256ceaadc8c1581b198f004a937e7f963f0ce21b00b89572f3f51b1e6531c"
+    },
+    {
+      "source": "faith-demo-audio/tracks/05-okefe-donates.m4a",
+      "destination": "public/faith-demo-audio/tracks/05-okefe-donates.m4a",
+      "size": 226016,
+      "sha256": "698ce4fa6dccd58d80639372d2e1cc9efa84e6ccf20927d1e3789a65c4ca3c3f"
+    },
+    {
+      "source": "faith-demo-audio/tracks/06-abigail-donates.m4a",
+      "destination": "public/faith-demo-audio/tracks/06-abigail-donates.m4a",
+      "size": 493564,
+      "sha256": "f6dd3cdb6e087b63f9bc2e10c5896ca9da1909556bbafc1d9146039205bce67d"
+    },
+    {
+      "source": "faith-demo-audio/tracks/07-live-updates.m4a",
+      "destination": "public/faith-demo-audio/tracks/07-live-updates.m4a",
+      "size": 163511,
+      "sha256": "4ee0fe0b7639b84b8864a6d980c852bda045a237a36db691db980884bf29f7d4"
+    },
+    {
+      "source": "faith-demo-audio/tracks/08-wallet.m4a",
+      "destination": "public/faith-demo-audio/tracks/08-wallet.m4a",
+      "size": 207314,
+      "sha256": "2294c92a2fd31726d33bff47dff1a323aa1b87d7e087d0bd255edbea96b1d82b"
+    },
+    {
+      "source": "faith-demo-audio/tracks/09-pay-fees.m4a",
+      "destination": "public/faith-demo-audio/tracks/09-pay-fees.m4a",
+      "size": 211850,
+      "sha256": "d9f392f9ba00f3f24435d139b53162ba7c666a7b409df0d4b19721a5cced836f"
+    },
+    {
+      "source": "faith-demo-audio/tracks/10-donor-receipt.m4a",
+      "destination": "public/faith-demo-audio/tracks/10-donor-receipt.m4a",
+      "size": 221721,
+      "sha256": "18b26260485164fe6d22d0efc19cb19f2c00aac6beff0e32442b6ef30b779cfa"
+    },
+    {
+      "source": "faith-demo-audio/all.m4a",
+      "destination": "public/faith-demo-audio/all.m4a",
+      "size": 2606275,
+      "sha256": "139aaceab652c7f0b5fd22579078d3ab58633222940565a4e9b04398724f8526"
     }
   ]
 }

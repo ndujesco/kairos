@@ -467,6 +467,8 @@ def build(content, output=PUBLIC / "pitch.html", assets=ASSETS, *,
 <div class="controls"><span class="clock" id="demo-clock">0:00</span><button class="button primary" type="button" id="demo-start">Start</button><button class="button" type="button" id="demo-reset">Reset</button></div></div>
 <div class="notice">Say this first: “This is a working prototype using demo data. Bank transfer, Remita settlement and NIN lookup are simulated.”</div>
 <div class="demosteps">{''.join(demo_steps)}</div><p class="sourceline"><a href="{e(content.META["demo_url"])}" target="_blank" rel="noopener">Existing full demo recording ↗</a> · Older narration includes planned checks. Explain the simulation limits before using it.</p>'''
+    if page.get('demo_audio_url'):
+        demo_panel = (f'<p><a class="button" href="{e(page["demo_audio_url"])}" target="_blank" rel="noopener">Demo audio · play or repeat each section ↗</a></p>' + demo_panel)
     document = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(content.META["title"])}</title><meta name="description" content="{e(page["description"])}">{canonical}

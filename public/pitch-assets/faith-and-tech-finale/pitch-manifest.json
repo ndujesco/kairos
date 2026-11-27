@@ -1,12 +1,12 @@
 {
   "version": "faith-and-tech-finale-current",
   "slides": 11,
-  "questions": 140,
-  "priority": 49,
-  "words": 450,
+  "questions": 146,
+  "priority": 55,
+  "words": 458,
   "seconds": null,
   "source_content": "faith_and_tech_finale_content.py",
-  "source_sha256": "0ceaf852eca0b6a80c28519649f80412e956126c732a7840ed37a397b91ea555",
+  "source_sha256": "59af1d8775593eeae0b48af28ff4f43b8ee8cc6ef1ca41a293490c0e14e005ba",
   "deckBase": "pitch-assets/faith-and-tech-finale/deck",
   "deck_pdf": "pitch-assets/faith-and-tech-finale/deck/Kairos-Faith-and-Tech-Finale.pdf",
   "deck_pptx": null,
@@ -94,12 +94,12 @@
   "presenters": {
     "abigail": {
       "name": "Abigail",
-      "words": 450,
+      "words": 458,
       "script": "pitch-script-abigail.md"
     },
     "ugochukwu": {
       "name": "Ugochukwu",
-      "words": 450,
+      "words": 458,
       "script": "pitch-script-ugochukwu.md"
     }
   },

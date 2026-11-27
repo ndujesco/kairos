@@ -1,0 +1,233 @@
+{
+  "title": "Faith & Tech demo audio",
+  "date": "2026-11-27",
+  "tracks": [
+    {
+      "id": "ai-interview",
+      "number": 1,
+      "title": "AI interview",
+      "description": "The need, named payee and school-fee reference",
+      "file": "tracks/01-ai-interview.m4a",
+      "duration": 38.216,
+      "size": 622634,
+      "sha256": "9cb431985e8fc1514cfb89735a944965f0d603f801e8a2c8bda67fd5f073a5b9",
+      "source_start": 0.0,
+      "source_end": 38.216145833333336,
+      "transcript": [
+        "Ugochukwu needs help with his school fees, and so having created an account, he signs up to the website and goes ahead to create a cause.",
+        "As you can see, he doesn't just fill a form. This is an interview with AI, and that is a real live model answering. It asks for what exactly the money is for. It asks for who exactly gets paid, how much will be paid, and when exactly the money is due.",
+        "You can see it asks for the Remita reference in this case, because he claims to be a student of a federal university who wants to pay his fees. This is the detail that he cannot forge, and even if it seems like the AI interviewer isn't thorough in drilling him for document proofs and the like, it notes this verifiable detail and goes ahead to create the case for him."
+      ]
+    },
+    {
+      "id": "itemised-budget",
+      "number": 2,
+      "title": "Itemised budget",
+      "description": "The amount and the institution to be paid",
+      "file": "tracks/02-itemised-budget.m4a",
+      "duration": 8.996,
+      "size": 146718,
+      "sha256": "b5a25bda0a861629afbece9c0ea2d9f6cfc2bc8d32476cdd720c0bc8ee59e15d",
+      "source_start": 38.216145833333336,
+      "source_end": 47.2119375,
+      "transcript": [
+        "And then out comes the published itemised budget, with the receiver of the money clearly stated. In this case, three hundred thousand naira to be paid to the University of Lagos."
+      ]
+    },
+    {
+      "id": "nin-face-check",
+      "number": 3,
+      "title": "NIN and face check",
+      "description": "The identity check shown in the recording",
+      "file": "tracks/03-nin-face-check.m4a",
+      "duration": 8.665,
+      "size": 142255,
+      "sha256": "25226c9b3ec1f4fa1b1aed2d7c510883deedba04fac340b0d8c46d1469a51e9f",
+      "source_start": 47.2119375,
+      "source_end": 55.8774375,
+      "transcript": [
+        "He then proves who he is, with his NIN and his face matched against the registry. This is important, because an NIN number can be leaked, but not a live face."
+      ]
+    },
+    {
+      "id": "verification",
+      "number": 4,
+      "title": "Fraud and bill verification",
+      "description": "The checks described before fundraising",
+      "file": "tracks/04-verification.m4a",
+      "duration": 9.907,
+      "size": 163617,
+      "sha256": "b77256ceaadc8c1581b198f004a937e7f963f0ce21b00b89572f3f51b1e6531c",
+      "source_start": 55.8774375,
+      "source_end": 65.78460416666667,
+      "transcript": [
+        "And this is where it runs the fraud check. It scans for reused images, contradictory dates and unrealistic budgets, and also in this case a valid Remita number that is actually owned by Ugochukwu."
+      ]
+    },
+    {
+      "id": "okefe-donates",
+      "number": 5,
+      "title": "Okefe donates",
+      "description": "His contribution, fee and intended funds route",
+      "file": "tracks/05-okefe-donates.m4a",
+      "duration": 13.86,
+      "size": 226016,
+      "sha256": "698ce4fa6dccd58d80639372d2e1cc9efa84e6ccf20927d1e3789a65c4ca3c3f",
+      "source_start": 65.78460416666667,
+      "source_end": 79.64495833333334,
+      "transcript": [
+        "Now, we see a donor named Okefe, who gives a hundred and fifty thousand naira. Before he agreed, he is shown what we would take. This is tentatively two percent, capped at five thousand naira. All this lands in escrow, not in Ugo's account."
+      ]
+    },
+    {
+      "id": "abigail-donates",
+      "number": 6,
+      "title": "Abigail donates and sees the fee",
+      "description": "Two accounts, the remaining balance and upkeep",
+      "file": "tracks/06-abigail-donates.m4a",
+      "duration": 30.254,
+      "size": 493564,
+      "sha256": "f6dd3cdb6e087b63f9bc2e10c5896ca9da1909556bbafc1d9146039205bce67d",
+      "source_start": 79.64495833333334,
+      "source_end": 109.8995625,
+      "transcript": [
+        "Now, on the left is Ugochukwu's account, and on the right is another potential donor, namely Abigail. These are two separate browsers with the named accounts logged in.",
+        "Now as you can see, a hundred and forty seven thousand naira has been raised by Okefe, and a hundred and fifty three thousand naira is still needed. Abigail donates this balance.",
+        "Before she agrees to pay, notice that she is told what portion of the amount will be taken to maintain the app. As earlier mentioned, this is our tentative business model. We resort to this when we are unable to get any sponsors at all."
+      ]
+    },
+    {
+      "id": "live-updates",
+      "number": 7,
+      "title": "Live updates",
+      "description": "Balances update and Ugo receives a notification",
+      "file": "tracks/07-live-updates.m4a",
+      "duration": 10.04,
+      "size": 163511,
+      "sha256": "4ee0fe0b7639b84b8864a6d980c852bda045a237a36db691db980884bf29f7d4",
+      "source_start": 109.8995625,
+      "source_end": 119.939375,
+      "transcript": [
+        "Notice also that as soon as she gives this money, it updates automatically everywhere, and Ugo gets a notification that his money is complete."
+      ]
+    },
+    {
+      "id": "wallet",
+      "number": 8,
+      "title": "Wallet and controlled funds",
+      "description": "Why the organiser cannot withdraw the money",
+      "file": "tracks/08-wallet.m4a",
+      "duration": 12.688,
+      "size": 207314,
+      "sha256": "2294c92a2fd31726d33bff47dff1a323aa1b87d7e087d0bd255edbea96b1d82b",
+      "source_start": 119.939375,
+      "source_end": 132.62708333333333,
+      "transcript": [
+        "Now, let's look at Ugo's wallet. Notice that this money does not land in Ugo's account, neither can Ugo even withdraw any of it. The money is kept in escrow with a licensed partner, and Ugo cannot touch any of it."
+      ]
+    },
+    {
+      "id": "pay-fees",
+      "number": 9,
+      "title": "Pay fees",
+      "description": "Check the bill, settle it and obtain the receipt",
+      "file": "tracks/09-pay-fees.m4a",
+      "duration": 12.94,
+      "size": 211850,
+      "sha256": "d9f392f9ba00f3f24435d139b53162ba7c666a7b409df0d4b19721a5cced836f",
+      "source_start": 132.62708333333333,
+      "source_end": 145.56760416666665,
+      "transcript": [
+        "He clicks on Pay fees, and the AI, after getting results from the API, confirms the biller, the amount, and checks if it is unpaid, and then it settles it. We then get a receipt from the university."
+      ]
+    },
+    {
+      "id": "donor-receipt",
+      "number": 10,
+      "title": "Donor receipt and email",
+      "description": "Abigail sees her own share of the payment",
+      "file": "tracks/10-donor-receipt.m4a",
+      "duration": 13.532,
+      "size": 221721,
+      "sha256": "18b26260485164fe6d22d0efc19cb19f2c00aac6beff0e32442b6ef30b779cfa",
+      "source_start": 145.56760416666665,
+      "source_end": 159.1,
+      "transcript": [
+        "As soon as this payment is made, Abigail gets notified that Ugo's fees has been paid, as well as a breakdown of what portion of her donation paid the fees. She does not just get a thank you, she gets a receipt, one that she can inspect herself."
+      ]
+    }
+  ],
+  "sessions": {
+    "all": {
+      "file": "all.m4a",
+      "duration": 159.1,
+      "size": 2606275,
+      "sha256": "139aaceab652c7f0b5fd22579078d3ab58633222940565a4e9b04398724f8526",
+      "chapters": [
+        {
+          "id": "ai-interview",
+          "start": 0.0,
+          "end": 38.216145833333336
+        },
+        {
+          "id": "itemised-budget",
+          "start": 38.216145833333336,
+          "end": 47.2119375
+        },
+        {
+          "id": "nin-face-check",
+          "start": 47.2119375,
+          "end": 55.8774375
+        },
+        {
+          "id": "verification",
+          "start": 55.8774375,
+          "end": 65.78460416666667
+        },
+        {
+          "id": "okefe-donates",
+          "start": 65.78460416666667,
+          "end": 79.64495833333334
+        },
+        {
+          "id": "abigail-donates",
+          "start": 79.64495833333334,
+          "end": 109.8995625
+        },
+        {
+          "id": "live-updates",
+          "start": 109.8995625,
+          "end": 119.939375
+        },
+        {
+          "id": "wallet",
+          "start": 119.939375,
+          "end": 132.62708333333333
+        },
+        {
+          "id": "pay-fees",
+          "start": 132.62708333333333,
+          "end": 145.56760416666665
+        },
+        {
+          "id": "donor-receipt",
+          "start": 145.56760416666665,
+          "end": 159.1
+        }
+      ]
+    }
+  },
+  "source": {
+    "file": "hackathons/2026-10 APWEN LASU/03 Finale Pitch/demo/Kairos-APWEN-Finale-Demo.mp4",
+    "sha256": "951809de7d17e0f0cc9b192a9377ebefd8d2a5d3ce00cb49c8fbc283aae77733",
+    "duration": 159.1,
+    "note": "Same decoded audio as the supplied submitted-template PowerPoint. Original movie unchanged."
+  },
+  "processing": {
+    "filters": "highpass=f=80,lowpass=f=10000,equalizer=f=2300:t=o:w=1.2:g=1.5,acompressor=threshold=0.14:ratio=2.5:attack=10:release=130:knee=3:makeup=1",
+    "target_lufs": -16,
+    "target_true_peak_dbtp": -2,
+    "note": "Whole-recording speech leveling; original voice, words, pace and timing retained."
+  },
+  "revision": "9cd4ab280a37"
+}

@@ -124,12 +124,11 @@ SLIDES = [{'title': 'Transparent giving for Nigeria',
 # Funding follows prototype status, preserving the existing demo lead-in.
 SLIDES.insert(7, {
  'title': 'Our funding priorities', 'deck_key': 'funding',
- 'paragraphs': ['We prioritise user testing, then payment integration and a supervised school-fee '
-                'pilot. The detailed spending plans are in our submission to the organising team.'],
+ 'paragraphs': ['We sent a proper breakdown of these to the organisers but summarily speaking for want of time our priority is user testing followed by the payment integration and then a school-fees pilot'],
  'cue': 'The three prizes are alternative awards. $750 funds validation over eight weeks; $1,500 '
         'funds sandbox testing over twelve; $2,500 prepares a small supervised pilot over twelve, '
-        'conditional on partner approval and readiness checks. Submit the spreadsheet by 27 November, '
-        '6 p.m. WAT before presenting this line. All figures are targets from receipt of funds.',
+        'conditional on partner approval and readiness checks. The supplied narration says the '
+        'breakdown was sent to the organisers. All figures are targets from receipt of funds.',
  'seconds': 0,
 })
 
@@ -248,7 +247,7 @@ PAGE.update(
     description='Faith & Tech finalist preparation: the existing pitch, separate demo and plain-English answers to all judging feedback.',
     hero_kicker='Faith & Tech · Finale', hero_status='One of five finalists · conference 28 November',
     qa_intro='Plain-English spoken answers covering the 15 November and finalist feedback, compliance and identity safeguards, earlier rehearsal topics, and examples of third parties for each role. Start with the starred questions. Current features, simulations and proposed processes are kept separate. Supplier names are research examples, not signed Kairos partnerships.',
-    qa_page_intro=f'{len(QUESTIONS)} questions. Finals feedback first, compliance and identity safeguards next, then third-party examples and the earlier topics. Answers explain what works today and what still needs to be built.',
+    qa_page_intro=f'{len(QUESTIONS)} questions. Funding priorities and finals feedback first, compliance and identity safeguards next, then third-party examples and the earlier topics. Answers explain what works today and what still needs to be built.',
     event_title='Kairos: Faith & Tech finals preparation',
     event_intro='Kairos is one of five finalists. Conference: 28 November. The final pitch allowance is still pending. Slides and spoken wording are preserved.',
     prep_kicker='Faith & Tech finale',
@@ -338,3 +337,16 @@ _DELIVERY = Path(__file__).with_name('faith_and_tech_finale_delivery.json')
 if _DELIVERY.exists():
     for item in json.loads(_DELIVERY.read_text()).get('native_downloads', []):
         PAGE['archive_downloads'].append(item)
+
+# 27 November follow-up: separate chaptered demo audio and the user's funding wording.
+_LIVE_WORDS = sum(len(p.split()) for slide in SLIDES for p in slide['paragraphs'])
+PAGE['demo_audio_url'] = 'faith-demo-audio.html'
+PAGE['archive_downloads'].append({'label': 'Demo audio · sections', 'url': PAGE['demo_audio_url']})
+PAGE['source_html'] += ' · <a href="faith-demo-audio.html" target="_blank" rel="noopener">Listen to the demo by section</a>'
+PAGE['script_intro'] = f'Eleven slides, {_LIVE_WORDS} live words. Default presenter: Ugochukwu. The APWEN 2:40 demo is embedded on slide 5 in PowerPoint/Keynote. Funding is slide 8. The separate demo-audio page has ten sections for rehearsal. The recorded transcription is not extra live speech. Five minutes is the total limit; no fitted schedule is claimed.'
+PAGE['prep_timing_note'] = f'Maximum five minutes including demonstration. The recording is 2:39.1 (rounded to 2:40), leaving about 2:20 for the {_LIVE_WORDS} live words. Rehearse the full delivery.'
+PAGE['event_intro'] = 'Kairos is one of five finalists. Finale: 28 November 2026. The organiser confirms five minutes including demo and funding. The 27 November email also requests the supplied presentation template, separate supporting media and a team member in the multimedia room to guide transitions.'
+PAGE['event_notice_detail'] = 'The spending-plan deadline was 27 November, 6 p.m. WAT. The latest email requested template slides by 9 p.m. and separate media for testing. The supplied email thread includes Abigail’s 2:47 p.m. reply with the completed presentation and separate demo link. Finale: Saturday 28 November.'
+PAGE['checklist'].append('Practise the ten demo-audio sections and arrange a team member to guide transitions in the multimedia control room, as requested in the latest email.')
+EVENTS[0]['schedule'].append('27 November email: use the supplied template, share supporting media separately, and have one team member guide the multimedia team during the pitch.')
+EVENTS[0]['follow_up'] = 'Use the APWEN demo at 1x: 2:39.1, rounded to 2:40. A separate audio page offers ten sections. The funding paragraph uses the supplied wording; the spreadsheet and spending guide remain linked above.'

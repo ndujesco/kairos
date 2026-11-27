@@ -4,9 +4,9 @@ Sokenu Abigail · Ndujekwu Ugochukwu
 
 Lead presenter: Abigail.
 
-11 slides, 450 presenter words. No delivery schedule is set.
+11 slides, 458 presenter words. No delivery schedule is set.
 
-Eleven slides, 450 live words. Default presenter: Ugochukwu. The APWEN 2:40 demo is embedded on slide 5 in PowerPoint/Keynote. Funding is slide 8. The recorded transcription is rehearsal material, not extra live speech. Five minutes is the total limit; no fitted schedule is claimed.
+Eleven slides, 458 live words. Default presenter: Ugochukwu. The APWEN 2:40 demo is embedded on slide 5 in PowerPoint/Keynote. Funding is slide 8. The separate demo-audio page has ten sections for rehearsal. The recorded transcription is not extra live speech. Five minutes is the total limit; no fitted schedule is claimed.
 
 ## Slide 1: Transparent giving for Nigeria
 
@@ -118,9 +118,9 @@ Delivery: Distinguish simulated identity, custody and settlement from the actual
 
 Abigail
 
-We prioritise user testing, then payment integration and a supervised school-fee pilot. The detailed spending plans are in our submission to the organising team.
+We sent a proper breakdown of these to the organisers but summarily speaking for want of time our priority is user testing followed by the payment integration and then a school-fees pilot
 
-Delivery: The three prizes are alternative awards. $750 funds validation over eight weeks; $1,500 funds sandbox testing over twelve; $2,500 prepares a small supervised pilot over twelve, conditional on partner approval and readiness checks. Submit the spreadsheet by 27 November, 6 p.m. WAT before presenting this line. All figures are targets from receipt of funds.
+Delivery: The three prizes are alternative awards. $750 funds validation over eight weeks; $1,500 funds sandbox testing over twelve; $2,500 prepares a small supervised pilot over twelve, conditional on partner approval and readiness checks. The supplied narration says the breakdown was sent to the organisers. All figures are targets from receipt of funds.
 
 ## Slide 9: Where we start. Where we go next.
 

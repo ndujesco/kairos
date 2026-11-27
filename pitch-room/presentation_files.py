@@ -31,7 +31,8 @@ def presentation_files(page, *, deck_html, deck_pdf, deck_pptx, deck_keynote, as
     add('demo','Demo video',page.get('demo_drive_url'),'Watch or download on Google Drive')
     for item in page.get('archive_downloads',[]):
         text=item['label'].lower()
-        if text.startswith('demo'):add('demo','Demo video',item['url'],item['label'].replace('Demo','Recording',1))
+        if text.startswith('demo audio'):add('demo-audio','Demo audio by section',item['url'],'Play the full demo or repeat any of its ten steps')
+        elif text.startswith('demo'):add('demo','Demo video',item['url'],item['label'].replace('Demo','Recording',1))
         elif 'powerpoint' in text:add('powerpoint','PowerPoint',item['url'],'Includes the demo video')
         elif 'keynote' in text:add('keynote','Keynote',item['url'],'Includes the demo video')
         elif 'spending guide' in text:
@@ -62,7 +63,7 @@ def presentation_files(page, *, deck_html, deck_pdf, deck_pptx, deck_keynote, as
     quick += '<button type="button" class="file-shortcut files-open" id="open-presentation-files" aria-haspopup="dialog" aria-controls="presentation-files-dialog">All files</button>'
     tray=f'<nav class="file-shortcuts" aria-label="Presentation files">{quick}</nav>'
     links=[]
-    order=['demo','powerpoint','keynote','pdf','html','funding','funding-pdf','script','both-scripts','qa','transcript','srt','vtt','notes']
+    order=['demo','demo-audio','powerpoint','keynote','pdf','html','funding','funding-pdf','script','both-scripts','qa','transcript','srt','vtt','notes']
     for kind in order:
         if kind not in by_kind:continue
         r=by_kind[kind]
